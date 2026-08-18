@@ -2,13 +2,13 @@
 
 Java Programlama Dili
 
-[Yeni Başlayanlar İçin Java](java.htm)
+[Yeni Başlayanlar İçin Java](Java-Programlama-Dili-12.md)
 
-[Örnek Java Programları (Console)](javaconsole.htm)
+[Örnek Java Programları (Console)](Java-Programlama-Dili-13.md)
 
-[Örnek Java Appletleri](appletler.htm)
+[Örnek Java Appletleri](Java-Programlama-Dili-1.md)
 
-[Java Download](java.exe)
+[Java Download](https://www.java.com/tr/download/)
 
 [Javasoft](http://www.javasoft.com/)
 

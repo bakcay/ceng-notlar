@@ -4,9 +4,9 @@
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders6.htm)
+[](PHP-2-9.md)
 
 **
 Personel Web Server Kurulumu ve Php Kurulumu For Win. 95-98**
@@ -71,9 +71,9 @@ Bu kodu biraz önce yarattığımız klasöre test.php3 olarak kaydedelim. Şimd
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders6.htm)
+[](PHP-2-9.md)
 
 [ ](javascript:window.external.AddFavorite('http://www.e-dersane.com','E-DERSANE.com - Internetle Yasamayi Ogretir!'))
 

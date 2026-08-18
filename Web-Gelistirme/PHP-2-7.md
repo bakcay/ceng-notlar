@@ -4,9 +4,9 @@
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders5.htm)
+[](PHP-2-8.md)
 
 ****
 Apache Web Sunucusu Kurulumu****
@@ -104,9 +104,9 @@ Apache ve PHP'nin kurulumu hakkında bilmeniz gerekenler bu kadar. İleride Apac
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders5.htm)
+[](PHP-2-8.md)
 
 [ ](javascript:window.external.AddFavorite('http://www.e-dersane.com','E-DERSANE.com - Internetle Yasamayi Ogretir!'))
 

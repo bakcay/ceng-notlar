@@ -4,9 +4,9 @@
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders4.htm)
+[](PHP-2-7.md)
 
 **
 Neden PHP?**
@@ -27,9 +27,9 @@ PHP internet üzerinde oldukça hızlı yayılan dillerden biri. Yayılma hızı
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders4.htm)
+[](PHP-2-7.md)
 
 [ ](javascript:window.external.AddFavorite('http://www.e-dersane.com','E-DERSANE.com - Internetle Yasamayi Ogretir!'))
 

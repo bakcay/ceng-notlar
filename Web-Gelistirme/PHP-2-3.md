@@ -4,9 +4,9 @@
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders11.htm)
+[](PHP-2-4.md)
 
 **
 MySQL Kurulumu ve SQL\`e Giris for Win. 95-98-2000 **
@@ -155,9 +155,9 @@ Wrox's Professional PHP Programming <http://www.wrox.com>
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders11.htm)
+[](PHP-2-4.md)
 
 [ ](javascript:window.external.AddFavorite('http://www.e-dersane.com','E-DERSANE.com - Internetle Yasamayi Ogretir!'))
 

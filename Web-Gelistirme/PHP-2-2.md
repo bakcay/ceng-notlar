@@ -4,9 +4,9 @@
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders2.htm)
+[](PHP-2-5.md)
 
 ****
 **Php Nedir? **
@@ -27,9 +27,9 @@ PHP ayni zamanda diger hizmetlerle iletisimi saglayan IMAP, SNMP, NNTP, POP3 ve 
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders2.htm)
+[](PHP-2-5.md)
 
 [ ](javascript:window.external.AddFavorite('http://www.e-dersane.com','E-DERSANE.com - Internetle Yasamayi Ogretir!'))
 

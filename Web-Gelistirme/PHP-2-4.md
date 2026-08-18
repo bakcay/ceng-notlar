@@ -4,7 +4,7 @@
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
 **
 Apache, PHP ve mySQL\`in son versiyonlarını bilgisayarınıza indirdikten sonra kurulumu şu şekilde yapabilirsiniz : **
@@ -98,7 +98,7 @@ Ekrana "**Merhaba Dünya**" da yazdırdığımıza göre geriye pek birşey kalm
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
 [ ](javascript:window.external.AddFavorite('http://www.e-dersane.com','E-DERSANE.com - Internetle Yasamayi Ogretir!'))
 

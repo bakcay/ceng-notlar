@@ -71,7 +71,7 @@ Dikkat edilmesi gereken hususlardan biri class adı ile program adının aynı o
 
 Program, herhangi bir editörde (NotePad, WordPad, Word, Edit,...) yazılabilir. Kaydederken .java uzantısı ile kaydedilmek şartıyla.
 
-[Java Sayfası](javac.htm)
+[Java Sayfası](Java-Programlama-Dili-11.md)
 
 ---
 *Kaynak: `JAVA PROGRAMLAMA DİLİ/ekitap-H_Takci-Java_Programlama_Dili/java.htm`*

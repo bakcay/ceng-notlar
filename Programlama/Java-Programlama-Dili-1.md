@@ -4,25 +4,25 @@
 
 Java appletleri appletviewer programı aracılığıyla veya web üzerinden izlenebilmektedir. Appletler sayesinde görsel araçlar kullanılabilmektedir. Editbox, label ve buton gibi nesneler appletler sayesinde kullanılabilir. Yazılan java kodları önce class şekline getirilir, ardından da bir html dosyası içinde kullanıcıya sunulur.
 
-[Merhaba Dünya Appleti](capplet1.htm)
+[Merhaba Dünya Appleti](Java-Programlama-Dili-2.md)
 
-[Bilgi Giriş Kutusu (Editbox) Örneği](capplet2.htm)
+[Bilgi Giriş Kutusu (Editbox) Örneği](Java-Programlama-Dili-3.md)
 
-[Sayısal Bilgilerin Gösterimi](capplet4.htm)
+[Sayısal Bilgilerin Gösterimi](Java-Programlama-Dili-4.md)
 
-[ButtonActionTest Appleti](cbuttonactions.htm)
+[ButtonActionTest Appleti](Java-Programlama-Dili-5.md)
 
-[ButtonTest Appleti](cbuttonapplet.htm)
+[ButtonTest Appleti](Java-Programlama-Dili-6.md)
 
-[Mouse Applet](cmouseapplet.htm)
+[Mouse Applet](Java-Programlama-Dili-7.md)
 
-[Output Applet (JDBC örneği)](coutputapplet.htm)
+[Output Applet (JDBC örneği)](Java-Programlama-Dili-8.md)
 
-[Veritabanından Değer Seçme](cselect.htm)
+[Veritabanından Değer Seçme](Java-Programlama-Dili-9.md)
 
-[SimpleSelect.java](csimpleselect.htm)
+[SimpleSelect.java](Java-Programlama-Dili-10.md)
 
-[Java Sayfası](javac.htm)
+[Java Sayfası](Java-Programlama-Dili-11.md)
 
 ---
 *Kaynak: `JAVA PROGRAMLAMA DİLİ/ekitap-H_Takci-Java_Programlama_Dili/appletler.htm`*

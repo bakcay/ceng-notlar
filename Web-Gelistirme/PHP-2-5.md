@@ -4,9 +4,9 @@
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders3.htm)
+[](PHP-2-6.md)
 
 **
 PHP ile Internet Programciligina Giris**
@@ -95,9 +95,9 @@ Son olarak formdan aldiginiz bilgileri formatlayip e-posta yoluyla size göndere
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders3.htm)
+[](PHP-2-6.md)
 
 [ ](javascript:window.external.AddFavorite('http://www.e-dersane.com','E-DERSANE.com - Internetle Yasamayi Ogretir!'))
 

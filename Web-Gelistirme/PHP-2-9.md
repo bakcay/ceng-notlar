@@ -4,9 +4,9 @@
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders7.htm)
+[](PHP-2-10.md)
 
 **
 Windows 95/98 Altında POP3/SMTP Sunucu Kurulumu**
@@ -139,9 +139,9 @@ Bu yazıyla ilgili phptr posta listesinden destek alabilirsiniz.
 
 [](javascript:history.go(-1))
 
-[](index.htm)
+[](PHP-2-13.md)
 
-[](ders7.htm)
+[](PHP-2-10.md)
 
 [ ](javascript:window.external.AddFavorite('http://www.e-dersane.com','E-DERSANE.com - Internetle Yasamayi Ogretir!'))
 
