@@ -2,9 +2,11 @@
 
 **MySQL**
 
-PHP web geliştiricileri genel olarak database tercihlerini çok rahat sql komutları yardımıyla kontrol edilebilen MySQL’den yana kullanılar. Özellikle PHP+MySQL+Apache üçlüsü performans olarak web sitelerinde performans isteyenler tarafından sıkça kullanılır. MySQL’i kullanabilmek için o an çalışıyor olması gerekir. Bunun için ms-dos komut isteminde c:\\mysql\\bin\\ dizini altına inip orda şu komutu yazmalıyız.
+PHP web geliştiricileri genel olarak database tercihlerini çok rahat sql komutları yardımıyla kontrol edilebilen MySQL’den yana kullanılar. Özellikle PHP+MySQL+Apache üçlüsü performans olarak web sitelerinde performans isteyenler tarafından sıkça kullanılır. MySQL’i kullanabilmek için o an çalışıyor olması gerekir. Bunun için ms-dos komut isteminde c:\mysql\bin\ dizini altına inip orda şu komutu yazmalıyız.
 
+```bash
 :mysqld –standalone
+```
 
 Bu işlemden sonra mysql kullanıma hazır haldedir.
 
@@ -26,15 +28,13 @@ Eğer database sorunsuz olarak oluşturulursa sağ frame’de karşımıza bir s
 
 Mesela run sql query bölümünde bir tablo oluşturalım.
 
+```sql
 CREATE TABLE isim (
-
 ad VARCHAR (10) not null ,
-
 soyad VARCHAR (10) not null ,
-
 posta VARCHAR (50) not null
-
 )
+```
 
 **“Your SQL-query has been executed successfully“ **şeklinde bir yanıt alınırsa tablo sorunsuz olarak oluşturulmuş demektir.
 
@@ -78,15 +78,13 @@ Data only: Sadece tablolara kayıtlı alanları tutar.
 
 Eğer herhangi birini secip sorunsuz şekilde çalışırsa karşımıza söyle bir görüntü gelir.
 
-CREATE TABLE \`isim\` (
-
-\`ad\` varchar(10) NOT NULL default '',
-
-\`soyad\` varchar(10) NOT NULL default '',
-
-\`posta\` varchar(50) NOT NULL default ''
-
+```sql
+CREATE TABLE `isim` (
+`ad` varchar(10) NOT NULL default '',
+`soyad` varchar(10) NOT NULL default '',
+`posta` varchar(50) NOT NULL default ''
 ) TYPE=MyISAM;
+```
 
 Eğer bunu herhangi bir text dosyasına kaydedip saklarsanız ilerde tekrar oluşturmaya gerek kalmadan direkt database oluşturulduktan sonra PhpMyAdmin’deki “Run sql query” bölümü kullanılarak tablo oluşturulabilir.
 
@@ -100,11 +98,15 @@ Bir tablodan kayıt çekmek için select deyimi kullanılır.
 
 Kullanım şekli:
 
+```sql
 Select (alan adi) from (tablo adı);
+```
 
 Örnekler:
 
-Select \* from isim;
+```sql
+Select * from isim;
+```
 
 İsim adlı tablodaki tüm kayıtları çeker.
 
@@ -114,17 +116,23 @@ Sql cümleciği içinde arama kriteri belirtmek için kullanılır.
 
 Kullanım şekli:
 
-DELETE \[Alan Adi\] FROM \[Tablo Adı\] WHERE \[Seçilen Kriter\]
-SELECT \[Alan Adi\] FROM \[Tablo Adı\] WHERE \[Seçilen Kriter\]
-UPDATE \[Tablo Adi\] SET \[Yeni Değer\] WHERE \[Seçilen Kriter\]
+```sql
+DELETE [Alan Adi] FROM [Tablo Adı] WHERE [Seçilen Kriter]
+SELECT [Alan Adi] FROM [Tablo Adı] WHERE [Seçilen Kriter]
+UPDATE [Tablo Adi] SET [Yeni Değer] WHERE [Seçilen Kriter]
+```
 
 Örnekler:
 
-Select \* from isim where adi=’murat’;
+```sql
+Select * from isim where adi=’murat’;
+```
 
 adi=’murat’ olan kayitlari tablodan çeker.
 
-Select \* from dene where plaka>60;
+```sql
+Select * from dene where plaka>60;
+```
 
 Dene tablosundaki plaka alanı 60’dan büyük olan kayıtları çeker.
 
@@ -134,11 +142,15 @@ Tablodan çekilen kayıtları belli kriterlere göre sıralamak için kullanıl�
 
 Kullanım şekli:
 
-SELECT \[Alan Adi\] FROM \[Tablo Adı\] WHERE \[Seçilen Kriter\] Group By \[Alan Adı\];
+```sql
+SELECT [Alan Adi] FROM [Tablo Adı] WHERE [Seçilen Kriter] Group By [Alan Adı];
+```
 
 Örnekler:
 
-Select \* from isim group by ad;
+```sql
+Select * from isim group by ad;
+```
 
 İsim adlı tablodaki tüm kayıtlar çekilir bu sırada ad alanına göre’de sıralanırlar.
 
@@ -148,11 +160,15 @@ Tablodan çekilen alanları sıralamak için kullanılır. Group by deyimi ile b
 
 Kullanım Şekli:
 
-SELECT \[Alan Adi\] FROM \[Tablo Adı\] WHERE \[Seçilen Kriter\] Order By \[Alan Adı\];
+```sql
+SELECT [Alan Adi] FROM [Tablo Adı] WHERE [Seçilen Kriter] Order By [Alan Adı];
+```
 
 Örnekler:
 
+```sql
 Select ad from isim order by ad;
+```
 
 İsim adlı tablodan ad alanı çekilerek gene ad alanına göre sıralanıyor.
 
@@ -162,17 +178,22 @@ Where kalıbını kullanırken birden çok kritere göre cümle yazılması gere
 
 Kullanım Şekli:
 
+```sql
 ... where kriter1 and kriter2
-
 ... where kriter1 or kriter2
+```
 
 Örnekler
 
-Select \* from isim where adi=’ali’ and soyadi=’mehmet’;
+```sql
+Select * from isim where adi=’ali’ and soyadi=’mehmet’;
+```
 
 İsim adlı tablodan adı ali ve soyadı mehmet olan tüm kayıtlar çekilir.
 
-Select \* from isim where adi=’ali’ or adi=’mehmet’;
+```sql
+Select * from isim where adi=’ali’ or adi=’mehmet’;
+```
 
 İsim adlı tablodan adi ali veya mehmet olan tüm kayıtlar çekilir.
 
@@ -182,15 +203,21 @@ Where kalıbı içerisinde kullanılan bu yapı bir alan içindeki kayıtlarda b
 
 Kullanım Şekli:
 
+```sql
 ... where alan adı like kriter
+```
 
 Örnekler:
 
-Select \* from egg where renk like “%a?ı”;
+```sql
+Select * from egg where renk like “%a?ı”;
+```
 
 Burada egg isimli tablodan renk alanına göre ilk başı önemli olmayan sonunda 3 harfinden ilki a sonraki önemli olmayan son harfi de ı olan tüm kayıtlar çekilir. Mesela “ayarı” gibi bir kayıt olsa bu kritere uyacaktır.
 
-Select \* from egg where renk like “be%”;
+```sql
+Select * from egg where renk like “be%”;
+```
 
 Burada egg isimli tablodan renk alanına göre ilk iki harfi be olan tüm kayıtlar çekilecektir.
 
@@ -200,15 +227,21 @@ Bir tabloya kayit eklemek için kullanılır.
 
 Kullanım şekli:
 
+```sql
 Insert Into Tablo adı (alan1,alan2,..,alanN) values (‘değer1’, ‘değer2’,.., ‘değerN’);
+```
 
 Örnekler:
 
+```sql
 Insert Into isim (ad,soyad) values (‘ali’,’rizeli’);
+```
 
 İsim adlı tabloya sadece ad ve soyad alanlarına olmak üzere kayıt yapar.
 
+```sql
 Insert Into isim values (‘ali’,null,’ali@rizeli.com’);
+```
 
 Bu kullanım şeklinde alanlar belirtilmediğinden tüm alanların değeri belirtilmek zorundadır. Eğer girilecek alanlar belirtilmiş olsa idi boş kayıtlar belirtilmek zorunda kalmazdı.
 
@@ -218,15 +251,21 @@ Bir alanı güncellemek için kullanılır.
 
 Kullanım şekli:
 
-Update \[Tablo Adı\] Set alan=yeni deger Where aranan alan= alan değeri
+```sql
+Update [Tablo Adı] Set alan=yeni deger Where aranan alan= alan değeri
+```
 
 Örnekler:
 
+```sql
 Update isim set ad=’murat’ where soy=’yüce’;
+```
 
 Soyadı yüce olan kayıtların adını murat yapar.
 
+```sql
 Update isim set posta=’a@b.net’ where ad=’murat’ or soy=‘yüce’;
+```
 
 Ad değeri murat veya soy değeri yüce olan kayıtların posta alanını a@b.net olarak günceller.
 
@@ -236,15 +275,21 @@ Arama şartı belirtilen kayıtları siler.
 
 Kullanım şekli:
 
-Delete \* From \[tablo\] where arama şartı;
+```sql
+Delete * From [tablo] where arama şartı;
+```
 
 Örnekler:
 
-Delete \* from isim where adi=’murat’;
+```sql
+Delete * from isim where adi=’murat’;
+```
 
 Adi alani murat olan tüm kayitlari siler.
 
-Delete \* from isim where posta=null;
+```sql
+Delete * from isim where posta=null;
+```
 
 Posta alanı boş olan tüm kayıtları siler.
 
@@ -252,165 +297,152 @@ Posta alanı boş olan tüm kayıtları siler.
 
 Yukarıda MySQL’i php’den bağımsız nasıl kullanabileceğimizi ve de MySQL ile PHP arasında bağlantıyı kuracak olan SQL’e birazda olsun değindik. Fakat genel manada yukarıdaki bilgiler yeterli olmayabilir. Bu durumda MySQL manual’i ve SQL referanslarına internetten ulaşabilir. Daha geniş bilgilere ulaşabilirsiniz. Şimdi mysql ile php arasındaki bağlantılar ve komutları görelim:
 
-**mysql\_connect() deyimi(Databese bağlantısı)**
+**mysql_connect() deyimi(Databese bağlantısı)**
 
 Php ile mysql ile bağlantıyı sağlayan komuttur. Kullanım şekli ise
 
-mysql\_connect(“adres”,“kullanici”,”şifre”);
+```php
+mysql_connect(“adres”,“kullanici”,”şifre”);
+```
 
 genel olarak mysql kurulduğunda kullanıcı tanımlanmamış ise tek kullanıcı vardır. Bu kullanıcı “root”dur. Ve şifresi boş geçilecektir. Adres bölümüne ise eğer kendi makinemizde kullanıyorsak localhost yazarız. Buna göre bağlantı için:
 
-mysql\_connect(“localhost”,”root”,””);
+```php
+mysql_connect(“localhost”,”root”,””);
+```
 
 şeklinde bir cümlecik eğer mysql çalışıyor ise bağlantı için yeterlidir.
 
-**mysql\_select\_db() deyimi**
+**mysql_select_db() deyimi**
 
-Eğer mysql ile bağlantı kurulmuş ise o an çalışılacak veritabanı adı belirtilme ve seçilmelidir. Bu işe için mysql\_select\_db(); komutu kullanılır. Kullanım şekli:
+Eğer mysql ile bağlantı kurulmuş ise o an çalışılacak veritabanı adı belirtilme ve seçilmelidir. Bu işe için mysql_select_db(); komutu kullanılır. Kullanım şekli:
 
-mysql\_select\_db(“veritabanı adı”);
+```php
+mysql_select_db(“veritabanı adı”);
+```
 
 şeklindedir.
 
 **PHP kullanarak mysql’e sorgu göndermek**
 
-PHP'de MySQL'e sorgu göndermek için mysql\_query() komutu kullanılır. Parantez içinde tırnak arasında sql sorgusu veya daha önce sql olarak hazırlanmış değişken yazılabilir. Örneğin:
+PHP'de MySQL'e sorgu göndermek için mysql_query() komutu kullanılır. Parantez içinde tırnak arasında sql sorgusu veya daha önce sql olarak hazırlanmış değişken yazılabilir. Örneğin:
 
-$sorgu=”select \* from phpisbest”;
-
-$islem=mysql\_query($sorgu);
+```php
+$sorgu=”select * from phpisbest”;
+$islem=mysql_query($sorgu);
+```
 
 veya
 
-$islem=mysql\_query(“select \* from phpisbest”);
+```php
+$islem=mysql_query(“select * from phpisbest”);
+```
 
 aynı işlemi yapar.
 
-Kaç tane kayıt geldiğini öğrenmek için mysql\_numrows() komutu kullanılır. Bu daha sonra sorgudan gelen kayıtları almak işimize yarayacaktır.
+Kaç tane kayıt geldiğini öğrenmek için mysql_numrows() komutu kullanılır. Bu daha sonra sorgudan gelen kayıtları almak işimize yarayacaktır.
 
-$kac=mysql\_numrows($islem);
+```php
+$kac=mysql_numrows($islem);
+```
 
-yukarıdaki sorgudan kaç tane kayıt geldiğini bize verecektir. Eğer sorgudan gelen kayıtları değişkenlere almak istiyorsak bunun icinde mysql\_result() komutu kullanılır. M
+yukarıdaki sorgudan kaç tane kayıt geldiğini bize verecektir. Eğer sorgudan gelen kayıtları değişkenlere almak istiyorsak bunun icinde mysql_result() komutu kullanılır. M
 
 Mesela yukarıdaki sorgudan php ve asp diye iki alan geldiğini düşünelim burdan gelen tüm kayıtları ayrı ayrı iki değişkene aktaralım.
 
+```php
 $i=0;
-
 while($i<$kac):
-
-$asp\[\]=mysql\_result($islem,$i,”asp”);
-
-$php\[\]=mysql\_result($islem,$i,”php”);
-
+$asp[]=mysql_result($islem,$i,”asp”);
+$php[]=mysql_result($islem,$i,”php”);
 $i++;
-
 endwhile;
+```
 
 Yukarıda $i değişkeni sorgudan gelen sonuçları alırken kullandığımız tampon değişkendir. Sırası ile her sıradaki asp ve php alanlarındaki kayıtlar $asp ve $php isimli iki dizi değişkene aktarıyor. Böylece mysql’de yer alan yaptığımız sorgu ile alakalı tüm kayıtlar artık php’nin içine aktarılmıştır. **Bunları ekrana dökmek için:**
 
+```php
 for($j=0;$j<$kac;$j++):
-
-echo $asp\[j\].” “.$php\[j\].”<br>”;
-
+echo $asp[j].” “.$php[j].”<br>”;
 endfor;
+```
 
 şeklinde kısa bir döngü kullanılabilir. Tabii ki bunu html kullanarak daha görsel hale getirmek mümkündür.
 
 Php’den gelen değişkenleri de sorgularda kullanmamız mümkündür. Mesela $ad diye bir değişken gelecek ve bu değişkenin ad, soyad ve eposta bilgileri ekrana yazılacaktır. Kullanılan database isimler olsun isim adlı bir tablo kullanılsın. Örneğin aşağıda dökelim:
 
+```php
 <?
-
 $host = “localhost”;
-
 $user = “root”;
-
 $pass = “”;
-
 $database = “isimler”;
-
-/\* Daha dinamik bir program yapısı olması açısından bu şekilde tanımlamalar ile kullanmak ileride değişikliler yapıldığında işimizi kolaylaştıracaktır\*/
-
-mysql\_connect($host,$user,$pass)
-
-mysql\_select\_db($database);
-
+/* Daha dinamik bir program yapısı olması açısından bu şekilde tanımlamalar ile kullanmak ileride değişikliler yapıldığında işimizi kolaylaştıracaktır*/
+mysql_connect($host,$user,$pass)
+mysql_select_db($database);
 $sorgu = “select ad,soyad,eposta from isim where ad=’$ad’”;
-
-$islem = mysql\_query($sorgu);
-
-$kac = mysql\_numrows($islem);
-
+$islem = mysql_query($sorgu);
+$kac = mysql_numrows($islem);
 $i=0;
-
 while($i<$kac):
-
-$isim = mysql\_result($islem,$i,”ad”);
-
-$soyisim = mysql\_result($islem,$i,”soyad”);
-
-$posta = mysql\_result($islem,$i,”eposta”);
-
+$isim = mysql_result($islem,$i,”ad”);
+$soyisim = mysql_result($islem,$i,”soyad”);
+$posta = mysql_result($islem,$i,”eposta”);
 echo”ad: $isim <br> soyad: $soyisim<br> eposta: $posta<br><br><br>”;
-
 $i++;
-
 endwhile;
-
 ?>
+```
 
 **MySQL’de hata kontrolü**
 
 Kullanıcının MySQL'de oluşabilecek hataları PHP içinde fark edebilmesi için, PHP'de özel komutlar vardır. Bu komutlar sayesinde veritabanı sorgulamasında oluşan sonuçlar hata numarasıyla birlikte fark edilebilir. Hata gösterge komutları kullanılmadan PHP, MySQL'e dair hiçbir hata mesajı vermeden işleme devam eder.
 
-if (mysql\_error())
-
+```php
+if (mysql_error())
 {
-
 echo ("MySQL hatası oluştu. Hata: ");
-echo mysql\_error() ;
+echo mysql_error() ;
 }
+```
 
-Yukarıdaki PHP satırları mysql\_error() komutunu kullanarak herhangi bir MySQL hatası oluştuğunda ekrana MySQL hatasının yazılmasını ve PHP yazılımcısının uyarılmasını sağlar.
+Yukarıdaki PHP satırları mysql_error() komutunu kullanarak herhangi bir MySQL hatası oluştuğunda ekrana MySQL hatasının yazılmasını ve PHP yazılımcısının uyarılmasını sağlar.
 
 Örnek Uygulama:
 
 Web sitelerinde sık sık gördüğünüz şifreli giriş sayfalarından biri. Önce bir database oluşturmamız gerekiyor. Pma yardımıyla giris adlı bir veritabanı oluşturalım. Bundan sonra karşımıza gelen pencerede “run sql query” yazı kutusuna aşağıdaki sql’i paste edin.
 
-CREATE TABLE \`kisi\` (
-
-\`kullanici\` varchar(8) NOT NULL default '',
-
-\`sifre\` varchar(8) NOT NULL default '',
-
-\`adi\` varchar(20) NOT NULL default '',
-
-\`soyadi\` varchar(15) NOT NULL default '',
-
-\`email\` varchar(40) NOT NULL default '',
-
-\`cinsiyet\` enum('e','k') NOT NULL default 'e',
-
-\`songiris\` timestamp(14) NOT NULL,
-
-\`suan\` enum('0','1') NOT NULL default '0'
-
+```sql
+CREATE TABLE `kisi` (
+`kullanici` varchar(8) NOT NULL default '',
+`sifre` varchar(8) NOT NULL default '',
+`adi` varchar(20) NOT NULL default '',
+`soyadi` varchar(15) NOT NULL default '',
+`email` varchar(40) NOT NULL default '',
+`cinsiyet` enum('e','k') NOT NULL default 'e',
+`songiris` timestamp(14) NOT NULL,
+`suan` enum('0','1') NOT NULL default '0'
 ) TYPE=MyISAM;
+```
 
 daha sonra dosyalarımızı sırasıyla dosyalarımız oluşturalım. İlk önce sabitlerin saklandığı sabit sayfası:
 
 **sabit.php**
 
+```php
 <?
 $server ="localhost";
 $user ="root";
 $pass ="";
 $database ="giris";
 ?>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **index.php**
 
+```php
 <?
 include "kontrol.php";
 if($kontrol==1):
@@ -475,13 +507,15 @@ Adı</font></td>
 </html>
 <?
 endif;
-mysql\_close()
+mysql_close()
 ?>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **kaydet.php**
 
+```html
 <html>
 <head>
 <title>Kullanıcı Kayıt Sayfası</title>
@@ -568,22 +602,24 @@ Kız </font></font></td>
 </center>
 </body>
 </html>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **kayit.php**
 
+```php
 <?
 include"sabit.php";
 
 if (($sifre1==$sifre2) && ($kullanici) && ($adi) && ($soyadi) && ($email) && ($cinsiyet)):
-mysql\_connect($server,$user,$pass);
-mysql\_select\_db($database);
+mysql_connect($server,$user,$pass);
+mysql_select_db($database);
 $sorgu="SELECT kullanici from kisi";
-$ids=mysql\_query($sorgu);
+$ids=mysql_query($sorgu);
 $i=0;
-while($i<mysql\_numrows($ids)):
-$id = mysql\_result($ids,$i,"kullanici");
+while($i<mysql_numrows($ids)):
+$id = mysql_result($ids,$i,"kullanici");
 $i++;
 if($kullanici==$id):
 echo"<center>Kullanici adı mevcut</center>";
@@ -592,8 +628,8 @@ die();
 endif;
 endwhile;
 $sorgu = "INSERT INTO kisi values ('$kullanici','$sifre1','$adi','$soyadi','$email','$cinsiyet','','0')";
-mysql\_query($sorgu);
-mysql\_close();
+mysql_query($sorgu);
+mysql_close();
 echo "<center>Kullanıcı Kaydı Tamamlandı</center><br>";
 include "index.php";
 else:
@@ -602,40 +638,42 @@ include "kaydet.php";
 endif;
 
 ?>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **gir.php**
 
+```php
 <?
 if( $kullanici && $sifre ):
 include "sabit.php";
 
-mysql\_connect($server,$user,$pass);
-mysql\_select\_db($database);
+mysql_connect($server,$user,$pass);
+mysql_select_db($database);
 
-$sorgu="select \* from kisi where kullanici='$kullanici'";
-$bul=mysql\_query($sorgu);
-$sayi=mysql\_numrows($bul);
+$sorgu="select * from kisi where kullanici='$kullanici'";
+$bul=mysql_query($sorgu);
+$sayi=mysql_numrows($bul);
 if ( $sayi == 0 ):
 $hata=2;
-mysql\_close();
+mysql_close();
 include "hata.php";
 die();
 endif;
 if ($sayi == 1 ):
-$el=mysql\_result($bul,0,sifre);
+$el=mysql_result($bul,0,sifre);
 if ( $el != $sifre ):
 $hata=1;
-mysql\_close();
+mysql_close();
 include "hata.php";
 die();
 endif;
 if ( $el == $sifre ):
 setcookie("kim","$kullanici");
 $sorgu1="update kisi set suan='1' where kullanici='$kullanici'";
-mysql\_query($sorgu1);
-mysql\_close();
+mysql_query($sorgu1);
+mysql_close();
 @header ("Location: sayfa.php");
 endif;
 endif;
@@ -643,40 +681,42 @@ else:
 @header("Location: sayfa.php");
 endif;
 ?>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **logout.php**
 
+```php
 <?
 if( $kullanici && $sifre ):
 include "sabit.php";
 
-mysql\_connect($server,$user,$pass);
-mysql\_select\_db($database);
+mysql_connect($server,$user,$pass);
+mysql_select_db($database);
 
-$sorgu="select \* from kisi where kullanici='$kullanici'";
-$bul=mysql\_query($sorgu);
-$sayi=mysql\_numrows($bul);
+$sorgu="select * from kisi where kullanici='$kullanici'";
+$bul=mysql_query($sorgu);
+$sayi=mysql_numrows($bul);
 if ( $sayi == 0 ):
 $hata=2;
-mysql\_close();
+mysql_close();
 include "hata.php";
 die();
 endif;
 if ($sayi == 1 ):
-$el=mysql\_result($bul,0,sifre);
+$el=mysql_result($bul,0,sifre);
 if ( $el != $sifre ):
 $hata=1;
-mysql\_close();
+mysql_close();
 include "hata.php";
 die();
 endif;
 if ( $el == $sifre ):
 setcookie("kim","$kullanici");
 $sorgu1="update kisi set suan='1' where kullanici='$kullanici'";
-mysql\_query($sorgu1);
-mysql\_close();
+mysql_query($sorgu1);
+mysql_close();
 @header ("Location: sayfa.php");
 endif;
 endif;
@@ -684,11 +724,13 @@ else:
 @header("Location: sayfa.php");
 endif;
 ?>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **sayfa.php**
 
+```php
 <?
 include "kontrol.php";
 if ( $kontrol == 1 ):
@@ -698,54 +740,60 @@ echo "<br><a href=sil.php><center>sil</center></a>";
 else:
 include "hata.php";
 endif;
-mysql\_close()
+mysql_close()
 ?>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **sil.php**
 
+```php
 <?
 include "kontrol.php";
 if ( $kontrol == 1 ):
 echo $ok;
 $sorgu="delete from kisi where kullanici='$ok'";
-$islem=mysql\_query($sorgu);
+$islem=mysql_query($sorgu);
 echo "<center>İşlem Tamamlandı</center>";
 echo "<br><br><center><a href=index.php>Ana Sayfa</a></center>";
 else:
 include "hata.php";
 endif;
-mysql\_close()
+mysql_close()
 ?>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **kontrol.php**
 
+```php
 <?
 include"sabit.php";
 
-$ok = $HTTP\_COOKIE\_VARS\["kim"\];
+$ok = $HTTP_COOKIE_VARS["kim"];
 $hata = 3;
 
-mysql\_connect($server,$user,$pass);
-mysql\_select\_db($database);
+mysql_connect($server,$user,$pass);
+mysql_select_db($database);
 
-$sorgu = "select \* from kisi where kullanici='$ok' and suan='1'";
-$bul = mysql\_query($sorgu);
-$dogru = mysql\_numrows($bul);
+$sorgu = "select * from kisi where kullanici='$ok' and suan='1'";
+$bul = mysql_query($sorgu);
+$dogru = mysql_numrows($bul);
 if ($dogru == 1):
 $kontrol = 1;
 else:
 $kontrol = 0;
 endif;
 ?>
+```
 
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+/*****************************************************************/
 
 **hata.php**
 
+```php
 <?
 if($hata==1):
 echo"<Center><Font Face=Verdana Size=1 Color=Red><b>Hatalı Şifre...</b></font></center><br><br>";
@@ -768,6 +816,7 @@ include "index.php";
 exit ;
 endif ;
 ?>
+```
 
 ---
 *Kaynak: `MY SQL/MY SQL.doc` — Murat Yüce — 2004*

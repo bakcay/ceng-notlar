@@ -380,7 +380,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-exec sp\_dboption N'izinTakipDBOrg', N'ANSI warnings', N'false'
+```sql
+exec sp_dboption N'izinTakipDBOrg', N'ANSI warnings', N'false'
+```
 
 DocumentSummaryInformation
 
@@ -392,7 +394,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-if exists (select \* from dbo.sysobjects where id = object\_id(N'
+```sql
+if exists (select * from dbo.sysobjects where id = object_id(N'
+```
 
 DocumentSummaryInformation
 
@@ -404,7 +408,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-if exists (select \* from dbo.sysobjects where id = object\_id(N'
+```sql
+if exists (select * from dbo.sysobjects where id = object_id(N'
+```
 
 DocumentSummaryInformation
 
@@ -416,7 +422,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-CREATE TABLE \[dbo\].\[PROJE\_DEVREDILEN\_IZINLER\] ( \[PERS\_NO\] \[int
+```sql
+CREATE TABLE [dbo].[PROJE_DEVREDILEN_IZINLER] ( [PERS_NO] [int
+```
 
 DocumentSummaryInformation
 
@@ -428,7 +436,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-ALTER TABLE \[dbo\].\[PROJE\_PERSONEL\] WITH NOCHECK ADD CONSTRAIN
+```sql
+ALTER TABLE [dbo].[PROJE_PERSONEL] WITH NOCHECK ADD CONSTRAIN
+```
 
 DocumentSummaryInformation
 
@@ -440,7 +450,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-ALTER TABLE \[dbo\].\[PROJE\_DEVREDILEN\_IZINLER\] ADD CONSTRAINT \[
+```sql
+ALTER TABLE [dbo].[PROJE_DEVREDILEN_IZINLER] ADD CONSTRAINT [
+```
 
 DocumentSummaryInformation
 
@@ -452,7 +464,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-/\*\*\*\*\*\* Object: View dbo.myfirstview Script Date: 6/25/03 6
+```sql
+/****** Object: View dbo.myfirstview Script Date: 6/25/03 6
+```
 
 DocumentSummaryInformation
 
@@ -464,17 +478,14 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
+```sql
 GO
-
-SET QUOTED\_IDENTIFIER OFF
-
+SET QUOTED_IDENTIFIER OFF
 GO
-
-SET ANSI\_NULLS ON
-
+SET ANSI_NULLS ON
 GO
-
 SET QUO
+```
 
 DocumentSummaryInformation
 
@@ -486,7 +497,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-/\* PROCEDURE: PROJE\_KALAN\_IZINLERDelProc \*/ CREATE
+```sql
+/* PROCEDURE: PROJE_KALAN_IZINLERDelProc */ CREATE
+```
 
 DocumentSummaryInformation
 
@@ -498,17 +511,14 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
+```sql
 GO
-
-SET QUOTED\_IDENTIFIER OFF
-
+SET QUOTED_IDENTIFIER OFF
 GO
-
-SET ANSI\_NULLS ON
-
+SET ANSI_NULLS ON
 GO
-
 SET QUOT
+```
 
 DocumentSummaryInformation
 
@@ -520,7 +530,9 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
-CREATE PROCEDURE PROJE\_KULLANILAN\_IZINLERDelProc ( @PERS\_NO
+```sql
+CREATE PROCEDURE PROJE_KULLANILAN_IZINLERDelProc ( @PERS_NO
+```
 
 DocumentSummaryInformation
 
@@ -532,17 +544,14 @@ BÖLÜM : PROJE UYGULAMA ve GELİŞTİRME -QUANTRA
 
 YAPILAN İŞ : PROJEDE KULLANILACAK VERİTABANI TASARIMI VE SQL SCRİPTLERİ
 
+```sql
 GO
-
-SET QUOTED\_IDENTIFIER OFF
-
+SET QUOTED_IDENTIFIER OFF
 GO
-
-SET ANSI\_NULLS ON
-
+SET ANSI_NULLS ON
 GO
-
 SET QUOT
+```
 
 DocumentSummaryInformation
 
@@ -630,7 +639,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 <!-- Begin function right(e) { var msg = "Sorry, you don't have permission to right-click."; if (navigator.appName == 'Netscape'
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -646,7 +657,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 listB.addOptions("SATIS ve PAZARLAMA","Genel Müdür Yrd.","Genel Müdür Yrd.", "Musteri Iliskileri Müdürü","Musteri Iliskileri Müdü
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -662,9 +675,10 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 listC.addOptions(" QUANTIS
-
 Is Analisti","Ferihan Tokatli","Ferihan Tokatli", "Dilek Utkan","Dilek Utkan","Aydin Zorlu","Aydin Zor
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -680,11 +694,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 listC.addOptions("INSAN KAYNAKLARI
-
 Müdür","Ersin Taç","Ersin Taç"); listC.setDefaultOption("INSAN KAYNAKLARI
-
 Müdür","Ersin Taç");
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -700,7 +714,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```html
 <TD> <SELECT NAME="A" onChange="listB.populate();listC.populate();"> <OPTION VALUE="INTERTECH">INTERTECH <OPTION VALUE="PRO
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -730,11 +746,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
-for (var i=1; i<arguments.length; i++) { this.dependencies\[this.dependencies.length\] = arguments\[i\];
-
+```javascript
+for (var i=1; i<arguments.length; i++) { this.dependencies[this.dependencies.length] = arguments[i];
 }
-
 this.form = null; this
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -750,7 +766,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
-// listeyi dinamik olarak göster function DynamicOptionList\_populate() { var theform = this.form; var i,j,obj,obj2; this.depende
+```javascript
+// listeyi dinamik olarak göster function DynamicOptionList_populate() { var theform = this.form; var i,j,obj,obj2; this.depende
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -766,7 +784,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
-targetSel.selectedIndex=-1; for (i=0; i<targetSel.options.length; i++) { if (targetSelected\[targetSel.options\[i\].value\] != null
+```javascript
+targetSel.selectedIndex=-1; for (i=0; i<targetSel.options.length; i++) { if (targetSelected[targetSel.options[i].value] != null
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -782,7 +802,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
-ie=(document.all); Face=Face.split(' '); n=Face.length; a=size\*10; ymouse=0;xmouse=0; scrll=0; props="<font face="+font+" size="+si
+```javascript
+ie=(document.all); Face=Face.split(' '); n=Face.length; a=size*10; ymouse=0;xmouse=0; scrll=0; props="<font face="+font+" size="+si
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -798,7 +820,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 document.write('</div></div>') document.write('<div id="Os" style="position:absolute;top:0px;left:0px"><div style="position:relativ
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -814,7 +838,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```html
 <LINK REL=STYLESHEET HREF='hariciIcerik.css' TYPE='text/css'> <script language='JavaScript'>javascript:window.history.forward(1); <
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -830,7 +856,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
-String personel\_no; String adi; String soyadi; String bolum; String gorev; String super\_ust\_yoneticisi\_pers\_no; per
+```java
+String personel_no; String adi; String soyadi; String bolum; String gorev; String super_ust_yoneticisi_pers_no; per
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -864,11 +892,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 if( ( !isBlank( document.MForm.mydate3.value ) ) && ( !isBlank( document.MForm.mydate4.value) ) )
-
 {
-
 if ( !IsDateValid( document.M
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -890,7 +918,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 if( dogruMu == true ){ ServleteYolla(); } return dogruMu; } //kullanici mevcut izinlerle ayni tarih araligind
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -906,7 +936,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 function IsDateValid( dateBas,dateBitis ){ var basGun,bitisGun; var currentDate = new Date(); basAy = dateBas.substring(3,
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -926,7 +958,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ
 
+```javascript
 for( i = 0; i < uzunluk;i++ ){ //eger bu alana bos veri girilmisse server'a length=0 olan veri gonderiyoz if( isBlank( document.M
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -974,11 +1008,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 try
-
 {
-
 Context init = new InitialContext(); Context ctx = ( Context )init.lookup("java:comp/env
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1002,7 +1036,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("</table>"); out.println("<table align='center'>"); out.println("<tr><td width='730'>Izin Baslangic Tar
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1022,7 +1058,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```html
 <td width="400"><input size="4" type="text" name="GirilenIzinler" autocomplete="off" value="" maxlength="4"></td></tr> <tr>
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1044,7 +1082,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```html
 <tr> <td width="400">  <input type="text" size="10" readonly name="mydate9" value="" style="background-colo
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1064,7 +1104,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 finally{ try{ con.close(); } catch( Exception ex){} }%> <form name="ServleteGonder" method="post" action="/
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1084,11 +1126,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 <% } else if( fromWhichPage.equalsIgnoreCase("UstYoneticiDetay") )
-
 {
-
 %> <!-- ust yonetici geldiyse burad
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1116,7 +1158,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```javascript
 function chkVar(pvarname) { if (eval(pvarname) && eval(pvarname) != "") return true; else return false;
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1138,9 +1182,10 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-var v\_Resizable, v\_Width, v\_Height, v\_SelectAfter, v\_NSHierarchy; var v\_SelectBefore, v\_CallFunction, v\_PopupX, v\_PopupY; va
-
-ById) ? true : false; Calendar.Months = \["Ocak", "Subat", "Mart", "Nisan", "Mayis", "Haziran","Temmuz", "Agustos", "Eylül", "Ekim", "Kasım", "Aralik"\]; Calendar.SMonths = \["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu","Eyl", "Eki", "Kas", "Ara"\]; Calendar.EMonths = \["Ocak", "Subat", "Mart", "Nisan", "Mayis", "Haziran","Temmuz", "Agustos", "Eylül", "Ekim", "Kasım", "Aralik"\]; Calendar.DOMonth = \[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31\]; Calendar.lDOMonth = \[31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31\];//Artık yılda gün sayıları Calendar.DOW = \["Pazar", "Pzt", "Sali", "Carsamba", "Persembe", "Cuma", "Cmt"\]; Calendar.count = 0; Calendar.gInitText = "Mustafa Calisir Takvim"; function Calendar(p\_item, p\_WinCal, p\_month, p\_year, p\_format, p\_t
+```javascript
+var v_Resizable, v_Width, v_Height, v_SelectAfter, v_NSHierarchy; var v_SelectBefore, v_CallFunction, v_PopupX, v_PopupY; va
+ById) ? true : false; Calendar.Months = ["Ocak", "Subat", "Mart", "Nisan", "Mayis", "Haziran","Temmuz", "Agustos", "Eylül", "Ekim", "Kasım", "Aralik"]; Calendar.SMonths = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu","Eyl", "Eki", "Kas", "Ara"]; Calendar.EMonths = ["Ocak", "Subat", "Mart", "Nisan", "Mayis", "Haziran","Temmuz", "Agustos", "Eylül", "Ekim", "Kasım", "Aralik"]; Calendar.DOMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; Calendar.lDOMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];//Artık yılda gün sayıları Calendar.DOW = ["Pazar", "Pzt", "Sali", "Carsamba", "Persembe", "Cuma", "Cmt"]; Calendar.count = 0; Calendar.gInitText = "Mustafa Calisir Takvim"; function Calendar(p_item, p_WinCal, p_month, p_year, p_format, p_t
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1160,7 +1205,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-Calendar.get\_month = Calendar\_get\_month; Calendar.readDate = Calendar\_readDate; Calendar.get\_daysofmonth = Calenda
+```javascript
+Calendar.get_month = Calendar_get_month; Calendar.readDate = Calendar_readDate; Calendar.get_daysofmonth = Calenda
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1180,7 +1227,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-var ree = new RegExp("(Today)((\[
+```javascript
+var ree = new RegExp("(Today)(([
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1196,7 +1245,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-function Calendar\_Close(pType, pINLINE) { if (pType == "POPUP") ggWinCal.close(); if (pType == "INLINE") Calendar.Lwwr
+```javascript
+function Calendar_Close(pType, pINLINE) { if (pType == "POPUP") ggWinCal.close(); if (pType == "INLINE") Calendar.Lwwr
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1212,7 +1263,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```javascript
 Calendar.prototype.show = function() { var vCode = ""; if (this.gType == "POPUP") this.gWinCal.document.open(); this.wwr
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1232,9 +1285,10 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-this.wwrite("<FONT COLOR=black FACE='" + fontface + "' SIZE=2>" + "\[<A HREF=
-
+```javascript
+this.wwrite("<FONT COLOR=black FACE='" + fontface + "' SIZE=2>" + "[<A HREF=
 "javascript:window.print();
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1254,7 +1308,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```javascript
 // tuşlari göster var prevYYYY = parseInt(this.gYear, 10) - 1; var nextYYYY = parseInt(this.gYear, 10) + 1; this.wwrite(
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1292,7 +1348,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```javascript
 else { linkText = "<A HREF='javascript:" + ((this.CallFunction != "") ? (this.WHO + this.CallFunction + "();")
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1312,7 +1370,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-Calendar.prototype.format\_day = function(vday) { var highDate; if (this.gCurrentDate != "NONE") highDate = this.gCurrent
+```javascript
+Calendar.prototype.format_day = function(vday) { var highDate; if (this.gCurrentDate != "NONE") highDate = this.gCurrent
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1332,7 +1392,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İzin Takip Sistemi
 
-function Calendar\_CreateCalendarLayer(pLeft, pTop, pInitText) { if (pInitText == null) pInitText = Calendar.gInitText;
+```javascript
+function Calendar_CreateCalendarLayer(pLeft, pTop, pInitText) { if (pInitText == null) pInitText = Calendar.gInitText;
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1354,7 +1416,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```javascript
 function handleMove(e) { currX = (isIE) ? (event.x + document.body.scrollLeft) : e.pageX; currY = (isIE) ? (event.y + docu
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1392,7 +1456,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-else if (isNav) vHeight = chkVar("v\_Height") ? v\_Height : 250;//250 if (v\_SmartNav == "Yes") vHeight += 30; v\_PopupX =
+```javascript
+else if (isNav) vHeight = chkVar("v_Height") ? v_Height : 250;//250 if (v_SmartNav == "Yes") vHeight += 30; v_PopupX =
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1430,7 +1496,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-<% String personel\_no; String adi; String soyadi; String bolum; String gorev; String super\_ust\_yoneticisi\_pers\_no;
+```java
+<% String personel_no; String adi; String soyadi; String bolum; String gorev; String super_ust_yoneticisi_pers_no;
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1450,7 +1518,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```html
 <table ALIGN="CENTER" VALIGN="MIDDLE"> <pre><center><font size="3">Asagidaki personel icin yillik izin g
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1488,7 +1558,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 String temp = null; while( tokens.hasMoreTokens()){ temp = tokens.nextToken(); //Bu kisimda kullanici bu sayfaya hangi li
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1544,7 +1616,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```html
 <table align="middle" width="75%" border="0" cellpadding="1" cellspacing="0"> <tr><td colspan="5" class=secondaryBar><b>
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1564,11 +1638,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 <SELECT NAME="gorevAdi" onChange="return showSelected2();"> <%
-
 pstmt = con.prepareStatement(Sorgu2);
-
 Resul
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1590,7 +1664,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 while( tokens.hasMoreTokens()){ temp = tokens.nextToken(); //Bu kisimda kullanici bu sayfaya
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1610,7 +1686,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-<SCRIPT LANGUAGE="JavaScript"> function status\_sabit() { window.status=" INTERTECH .:. IZIN TAKIP SISTEMI ";setTimeout
+```html
+<SCRIPT LANGUAGE="JavaScript"> function status_sabit() { window.status=" INTERTECH .:. IZIN TAKIP SISTEMI ";setTimeout
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1632,7 +1710,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-//bölüm bazinda sorgu yapiyoruz String Sorgu4 ="SELECT PERS\_NO,ADI,SOYADI,CONVERT(CHAR(10),ISE\_BAS\_TAR,103)ISE\_BAS\_TAR FRO
+```java
+//bölüm bazinda sorgu yapiyoruz String Sorgu4 ="SELECT PERS_NO,ADI,SOYADI,CONVERT(CHAR(10),ISE_BAS_TAR,103)ISE_BAS_TAR FRO
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1652,11 +1732,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 PreparedStatement pstmt; PreparedStatement pstmtIn;
-
 pstmt = con.prepareStatement(Sorgu1);
-
 ResultSet results1 = pstmt
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1694,7 +1774,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```html
 <td width="100"><font color="#8A0000"><%=results1.getString("KULLANILAN")%></font></TD> <td width="90"><font color="blue"><%
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1714,7 +1796,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-pstmtIn = con.prepareStatement(Sorgu3); pstmtIn.setString(1,pers\_no); pstmtIn.setString(2,donem\_bas\_tar); pstmtIn.setStri
+```java
+pstmtIn = con.prepareStatement(Sorgu3); pstmtIn.setString(1,pers_no); pstmtIn.setString(2,donem_bas_tar); pstmtIn.setStri
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1738,11 +1822,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 //kisi bazinda raporlama yap else{
-
 pstmt = con.prepareStatement(Sorgu6);
-
 pstmt.setString(1,kisiAdi); ResultSe
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1762,7 +1846,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-<td width="90"><font color="blue"><%=results1.getString("DEVREDEN\_IZIN")%></font></TD> <td width="180"><font color="blue"><%=
+```html
+<td width="90"><font color="blue"><%=results1.getString("DEVREDEN_IZIN")%></font></TD> <td width="180"><font color="blue"><%=
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1782,7 +1868,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-while( results.next() ){ pers\_no = results.getString("PERS\_NO"); adi = results.getString("ADI"); soyadi = results.getS
+```java
+while( results.next() ){ pers_no = results.getString("PERS_NO"); adi = results.getString("ADI"); soyadi = results.getS
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1802,7 +1890,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```html
 <td width="90"><B><font color="blue">DEVREDEN</font></B></td> <td width="180"><B><font color="blue">DEVIRDEN KULLANILAN</fo
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1824,7 +1914,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```html
 <td width="60"><B><font color="green">KALAN</font></B></td> <td width="60"><B><font color="red">YANAN</font></B></td> <td
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1844,7 +1936,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-<td width="150"><%=results1.getString("IZIN\_BITIS\_TAR")%></TD> <td width="60"><font color="green"><%=results1.getString("
+```html
+<td width="150"><%=results1.getString("IZIN_BITIS_TAR")%></TD> <td width="60"><font color="green"><%=results1.getString("
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1864,9 +1958,10 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-while( results1.next() ){ %> <TR><td width="150"><%=results1.getString("IZIN\_BASLANGIC\_TAR")%></TD> <td width="150"><%=
-
-<td width="130"><font color="blue"><%=results1.getString("DEVIRDENKALAN")%></font></TD> </TR><% }%></table><br><% } else{ // izin başlangıç dönemi -> (bu\_yıl - 4) ten itibaren ekrana getir.. int i = (Integer.parseInt(bu\_yil) - 4);%>
+```java
+while( results1.next() ){ %> <TR><td width="150"><%=results1.getString("IZIN_BASLANGIC_TAR")%></TD> <td width="150"><%=
+<td width="130"><font color="blue"><%=results1.getString("DEVIRDENKALAN")%></font></TD> </TR><% }%></table><br><% } else{ // izin başlangıç dönemi -> (bu_yıl - 4) ten itibaren ekrana getir.. int i = (Integer.parseInt(bu_yil) - 4);%>
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1886,7 +1981,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-finally{ try{ con.close(); } catch( Exception ex){ } }%> <input type="hidden" name="superUstYoneticisi\_pers\_
+```java
+finally{ try{ con.close(); } catch( Exception ex){ } }%> <input type="hidden" name="superUstYoneticisi_pers_
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1902,19 +1999,15 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-/\* CHECKSERVLET.JAVA \*/ import java.sql.SQLException; import javax.naming.Context;
-
+```java
+/* CHECKSERVLET.JAVA */ import java.sql.SQLException; import javax.naming.Context;
 Kullanıcının username&password kontrolünü gerçekleştirir,eğer dogruysa session’a user özelliği
-
 - personel no olarak atanır ve sisteme giriş sağlanır.
-
-\*/
-
+*/
 public class CheckServlet extends HttpServlet{
-
 private DataSource dataSource;
-
 public void init( Ser
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1926,7 +2019,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 //burasini cache olayini kontrol etmek icin ekledim response.setHeader("Expires","0"); response.setHeader("Expires",
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1938,11 +2033,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 finally
-
 {
-
-try{ con.close(); pers\_no = null; yoneticisinin\_pers\_no = null; girilenSifre = null;
+try{ con.close(); pers_no = null; yoneticisinin_pers_no = null; girilenSifre = null;
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1954,13 +2049,12 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 public class LoginServlet extends HttpServlet
-
 {
-
 private DataSource dataSource;
-
 public void init( ServletConfig config)
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1972,7 +2066,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-pers\_no = request.getParameter("pers\_no"); //burasini cache olayini kontrol etmek icin ekledim response.setHead
+```java
+pers_no = request.getParameter("pers_no"); //burasini cache olayini kontrol etmek icin ekledim response.setHead
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -1984,13 +2080,12 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("</td>"); out.println("</center>"); out.println("</tr>");
-
 try
-
 {
-
 synchronized( dataSource ){
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2002,7 +2097,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-pers\_ust\_grup\_adi = "     -"; pers\_alt\_grup\_adi = "
+```java
+pers_ust_grup_adi = "     -"; pers_alt_grup_adi = "
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2014,13 +2111,12 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 else if( (yoneticimi.equals("H") )
-
 (yoneticimi.equals("h") ) ){
-
 out.println("<table align='center'>");
-
 out.
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2032,22 +2128,18 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-/\* LOGOUTSERVLET.JAVA \*/
-
-/\*
-
+```java
+/* LOGOUTSERVLET.JAVA */
+/*
 - Created on Jul 11, 2003
 - @author Mustafa Calisir
 - Bu sınıf sistemden çıkış işlemini gerçekler ve
 - eğer varsa session'a bağlı degişkenleri yokeder.
-
-\*/
-
+*/
 package izinTakipPack;
-
 import java.io.IOException;
-
 import javax.servlet.ServletException; import javax.servlet.http.HttpServlet; import javax.servle
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2069,7 +2161,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-public void doPost( HttpServletRequest request,HttpServletResponse response,String pers\_no,String yoneticisinin\_pers\_no,Stri
+```java
+public void doPost( HttpServletRequest request,HttpServletResponse response,String pers_no,String yoneticisinin_pers_no,Stri
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2081,7 +2175,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("<html><head>" +"<script language='JavaScript'>javascript:window.history.forward(1);"); out.println("function
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2093,7 +2189,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("<tr>"); while( results.next() ){ out.println("<table cellpadding='1'><td><tr>"); out.println("<td width
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2105,9 +2203,10 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 while( results.next()){
-
-izin\_baslangic\_tar = results.getDate("IZIN\_BASLANGIC\_TAR"); iz
+izin_baslangic_tar = results.getDate("IZIN_BASLANGIC_TAR"); iz
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2119,7 +2218,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("<tr>td width='160' style='font-size:11px'><u><b>DEV
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2131,7 +2232,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 else if( temp.equalsIgnoreCase("izinTakipPack.UstYoneticiDetay") ){ out.println("<br><table><tr style='font-size:16px'>"
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2163,11 +2266,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 public void doPost( HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException
-
 {
-
 S
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2179,7 +2282,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println(" <LINK REL=STYLESHEET HREF='hariciIcerik.css' TYPE='text/css'>"); out.println("</head><body b
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2191,7 +2296,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-if (results.next()){ personel\_no = results.getString("PERS\_NO"); pers\_direk\_ust\_grup\_no = results.getString("PERS\_D
+```java
+if (results.next()){ personel_no = results.getString("PERS_NO"); pers_direk_ust_grup_no = results.getString("PERS_D
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2203,7 +2310,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-else{ out.println("<td><ahref='/servlet/izinTakipPack.DetayServlet?personel\_no="+personel\_no+"&yoneticisinin\_pers\_n
+```java
+else{ out.println("<td><ahref='/servlet/izinTakipPack.DetayServlet?personel_no="+personel_no+"&yoneticisinin_pers_n
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2215,11 +2324,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 else{ out.println("<br>");
-
 out.println("<table align='center'>");
-
 out.println("<br><center><tr><td><pre><a
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2241,7 +2350,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-String Sorgu2 ="UPDATE PROJE\_DEVREDILEN\_IZINLER SET KALAN\_DEVIR\_ISGUNU\_SAYISI = KALAN\_DEVIR\_ISGUNU\_SAYISI - ?, KULLANILAN\_D
+```java
+String Sorgu2 ="UPDATE PROJE_DEVREDILEN_IZINLER SET KALAN_DEVIR_ISGUNU_SAYISI = KALAN_DEVIR_ISGUNU_SAYISI - ?, KULLANILAN_D
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2253,11 +2364,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 izinAciklama.trim(); izinHesaplamaTuru.trim(); if(izinAciklama.length() == 0){ izinAciklama = " ";
-
 }
-
 i
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2269,7 +2380,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-for( i = 0; i < Integer.parseInt(D\_uzunluk);i = i + 5){ if( devirliDonemler\[i+4\].length() != 0 ){//devredilen izinler tab
+```java
+for( i = 0; i < Integer.parseInt(D_uzunluk);i = i + 5){ if( devirliDonemler[i+4].length() != 0 ){//devredilen izinler tab
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2281,7 +2394,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 }//end try catch (Exception ex) { updateSuccessful = false; out.println("<center><h3>Veritabanina baglantida bir problem o
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2293,19 +2408,15 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İzin Takip Sistemine giriş kontrolünün gerçeklenmesi
 
-/\* GECMISIZINEKLE.JAVA \*/
-
-/\*
-
-- Created on 15.Jul.2003 \*@author Mustafa Calisir \*Bu sınıf başka ortamda saklanan izinlerin izin Takip Sistemine aktarılmasını sağlar
-
-\*/
-
+```java
+/* GECMISIZINEKLE.JAVA */
+/*
+- Created on 15.Jul.2003 *@author Mustafa Calisir *Bu sınıf başka ortamda saklanan izinlerin izin Takip Sistemine aktarılmasını sağlar
+*/
 package izinTakipPack;
-
 import java.io.IOException;
-
 import java.io.PrintWriter; import java.sql.Connec
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2327,7 +2438,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 catch (Exception ex) { izinEkleSuccessful = false; out.println("<br><center><h3>Veritabanina baglantida
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2359,7 +2472,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-String Sorgu1 = "INSERT INTO PROJE\_KALAN\_IZINLER(PERS\_NO,IZIN\_BASLANGIC\_TAR,IZIN\_BITIS\_TAR, " + " KALAN\_IZIN\_ISGUNU\_SAYISI,Y
+```java
+String Sorgu1 = "INSERT INTO PROJE_KALAN_IZINLER(PERS_NO,IZIN_BASLANGIC_TAR,IZIN_BITIS_TAR, " + " KALAN_IZIN_ISGUNU_SAYISI,Y
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2375,9 +2490,10 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 ax.servlet.http.HttpServletResponse; import javax.servlet.http.HttpSession; import javax.sql.DataSource; //bu sayfaya yönetici direk olarak Izin Durumu bağlantısına tikladiginda ulasacak
-
 public class izinGuncelle extends HttpServlet{ private DataSource d
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2389,7 +2505,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-Sorgu2 = "UPDATE PROJE\_KALAN\_IZINLER SET KALAN\_IZIN\_ISGUNU\_SAYISI = KALAN\_IZIN\_ISGUNU\_SAYISI - ? WHERE (IZIN\_BITIS\_TAR=? and
+```java
+Sorgu2 = "UPDATE PROJE_KALAN_IZINLER SET KALAN_IZIN_ISGUNU_SAYISI = KALAN_IZIN_ISGUNU_SAYISI - ? WHERE (IZIN_BITIS_TAR=? and
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2401,7 +2519,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 PreparedStatement pstmt = con.prepareStatement(Sorgu1); //kullanilan izinler tablosunu update et pstmt.setString(1, gunc
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2417,26 +2537,19 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 finally { try { con.close(); System.gc();
-
 }
-
-catch (Exception ex) {} if( ust\_yonetici\_pers\_no.length() ==
-
-İZİNPLANİZNİSİL.JAVA \*/
-
-/\*
-
+catch (Exception ex) {} if( ust_yonetici_pers_no.length() ==
+İZİNPLANİZNİSİL.JAVA */
+/*
 - Created on 16.Jul.2003
 - @author MUSTAFA CALISIR
-
-\*/
-
+*/
 package izinTakipPack;
-
 import java.io.IOException;
-
 import java.io.PrintWriter; import javax.naming.Co
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2448,11 +2561,11 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 public class IzinPlaniIzniSil extends HttpServlet{
-
 private DataSource dataSource;
-
 public void init( ServletConfig config)
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2484,7 +2597,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-boolean izinEkleSuccessful = false; final int diziBoyutu = 6; String Sorgu1 ="INSERT INTO PROJE\_IZIN\_PLANI(PERS\_NO,IZIN
+```java
+boolean izinEkleSuccessful = false; final int diziBoyutu = 6; String Sorgu1 ="INSERT INTO PROJE_IZIN_PLANI(PERS_NO,IZIN
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2506,7 +2621,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 import javax.servlet.ServletException; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest;
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2518,7 +2635,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("<html><head><title>Kayit Ekleme Sonuc Ekrani</title><META HTTP-EQUIV='Pragma' CONTENT='no-cache'>" +"<META H
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2530,7 +2649,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İzin Takip Sistemine giriş kontrolünün gerçeklenmesi
 
+```java
 try { synchronized (dataSource) {con = dataSource.getConnection();} PreparedStatement pstm
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2542,9 +2663,10 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 pstmt = con.prepareStatement(Sorgu6);
-
 pstmt.setInt(1,Integer.parseInt(bolum)); ResultSet results5 = pstmt.executeQue
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2566,7 +2688,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-String Sorgu1 ="INSERT INTO PROJE\_DEVREDILEN\_IZINLER(PERS\_NO,DEVIR\_ISTEK\_TARIHI, DEVIR\_DONEMI\_BAS\_TAR,"+" DEVIR\_DONEMI\_BITI
+```java
+String Sorgu1 ="INSERT INTO PROJE_DEVREDILEN_IZINLER(PERS_NO,DEVIR_ISTEK_TARIHI, DEVIR_DONEMI_BAS_TAR,"+" DEVIR_DONEMI_BITI
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2598,7 +2722,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-guncellenecek\_pers\_no = request.getParameter("personel\_no"); yoneticisinin\_pers\_no = request.getParameter("yoneticisini
+```java
+guncellenecek_pers_no = request.getParameter("personel_no"); yoneticisinin_pers_no = request.getParameter("yoneticisini
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2620,7 +2746,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İzin Takip Sistemine giriş kontrolünün gerçeklenmesi
 
-PrintWriter out = response.getWriter(); pers\_no = request.getParameter("pers\_no"); super\_ust
+```java
+PrintWriter out = response.getWriter(); pers_no = request.getParameter("pers_no"); super_ust
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2646,7 +2774,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 public void doPost(HttpServletRequest request, HttpServletResponse response), throws IOException{ String
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2658,7 +2788,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-for(int i = 0;i < Integer.parseInt(G\_uzunluk); i = i + 3){ if( girilenDonemler\[i+2\].length() != 0 ){ pstmt = co
+```java
+for(int i = 0;i < Integer.parseInt(G_uzunluk); i = i + 3){ if( girilenDonemler[i+2].length() != 0 ){ pstmt = co
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2680,7 +2812,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-String yoneticisinin\_pers\_no = "",ustYoneticimi = "H"; String keepSessionId = ""; String superUstYoneticisi\_pers\_no =
+```java
+String yoneticisinin_pers_no = "",ustYoneticimi = "H"; String keepSessionId = ""; String superUstYoneticisi_pers_no =
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2696,7 +2830,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("<html><head><title>Personel Bilgileri</title>" +"<script language='JavaScript'>javascript:window.history.forwa
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2708,9 +2844,10 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 pstmt = con.prepareStatement(Sorgu7);
-
-results = pstmt.executeQuery(); while( results.next()){ current\_y
+results = pstmt.executeQuery(); while( results.next()){ current_y
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2722,7 +2859,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 //kisinin ust grubunu sorgula PreparedStatement pstmt6 = con.prepareStatement(Sorgu3); pstmt6.setString(1,
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2734,7 +2873,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-out.println("<tr>"); //kisi kendini yonetici ekraninda bir daha gormesin if( !yoneticisinin\_pers\_no.equalsIgnoreCase(pe
+```java
+out.println("<tr>"); //kisi kendini yonetici ekraninda bir daha gormesin if( !yoneticisinin_pers_no.equalsIgnoreCase(pe
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2746,7 +2887,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-//insan kaynaklari her zaman izin plani olusturabilsin else if( (superUstYoneticisi\_pers\_no.length() != 0) ){ if(( Inte
+```java
+//insan kaynaklari her zaman izin plani olusturabilsin else if( (superUstYoneticisi_pers_no.length() != 0) ){ if(( Inte
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2758,7 +2901,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
-if( (superUstYoneticisi\_pers\_no.length() != 0) ){ if( ( Integer.parseInt(superUstYoneticisi\_pers\_no) != 1) && ( (
+```java
+if( (superUstYoneticisi_pers_no.length() != 0) ){ if( ( Integer.parseInt(superUstYoneticisi_pers_no) != 1) && ( (
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2770,26 +2915,20 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("<table align='center'>");
-
 out.println(" <tr>"); out.println(" <br><pre><a href='/servlet/izinTaki
-
 sonu
-
 }
-
-/\* NORMALYONETICIDETAY.JAVA \*/
-
-/\*
-
+/* NORMALYONETICIDETAY.JAVA */
+/*
 - Created on Agu 7, 2003
 - @author MUSTAFA CALISIR
 - bu sınıf sistemde üzerinde yönetici olmayan yöneticilere
 - alt grupları hakkında bilgi verir.
-
-\*/
-
+*/
 packag
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2801,13 +2940,12 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 public class NormalYoneticiDetay extends HttpServlet
-
 {
-
 private DataSource dataSource;
-
 public void init( ServletConfig con
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2819,7 +2957,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 response.setHeader("Cache-Control", "no-store"); response.setHeader("Cache-Control", "no-cache"); response.setHeader("Cac
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2831,13 +2971,12 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 try
-
 { synchronized( dataSource ){ con = dataSource.getConnection();
-
 }
-
 PreparedStatement pstmt; Result
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2849,7 +2988,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İZİN TAKİP SİSTEMİ PROJESİ
 
+```java
 out.println("<td>"+title+"</td><td>"+altGrup+"</td>"+"<td>"+ustGrup+"</td></tr>"); out.println("<table><br><br></table>");
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2873,17 +3014,14 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İzin Takip Sistemine giriş kontrolünün gerçeklenmesi
 
-/\* .CLASSPATH dosyası \*/
-
+```xml
+/* .CLASSPATH dosyası */
 <!— Bu dosya Eclipse tarafından otomatik olarak oluşturulur ve yapılcak web projesinin gerekli kaynakları( resources ) nerden,hanig path degişkeninden okuyacağını bildirir.Manual olarak da değiştirilebilir. -->
-
 <?xml version="1.0" en
-
-calResinServer.resinconf \*/
-
+calResinServer.resinconf */
 <!-- bu dosya Resin Application Server’a aittir.Bu dosyada gerekli veritabanı bağlantıları,connection pooling,jndi isimleri belirtilir ve deployment yapılmak istenirse <web-app id> tagları arasına yazılarak server da belirtilir.Tüm bu işlemler Eclipse tarafından otomatik olarak yapılır ve bu da performans ve maintanence olayını artırır. --> <?xml version="1.0" encoding="UTF-8"?> <!--
-
 - The Resin configuration file.
+```
 
 J Varsayılan Paragraf Yazı Tipi
 
@@ -2903,7 +3041,9 @@ BÖLÜM : PROJE UYGULAMA VE GELİŞTİRME-QUANTRA
 
 YAPILAN İŞ : İzin Takip Sistemine giriş kontrolünün gerçeklenmesi
 
+```xml
 <!--<resource-ref> <res-ref-name>jdbc/test</res-ref-name> <res-type>javax.sql.DataSource</re
+```
 
 J Varsayılan Paragraf Yazı Tipi
 

@@ -134,7 +134,9 @@ Form; temelde, diğer kontroller için bir **konteyner(kap)** gibi davranır, fa
 
 Eski derslerden hatırlayın, kontrol isimlerinin, olay prosedürlerinde kullanıldığını öğrendik. Bunlar, form’lar için doğru değildir. Bütün form olay prosedürleri aşağıdaki format’a sahiptir:
 
-## **Form\_EventName**
+```vbnet
+Form_EventName
+```
 
 Anlamı ise, form’a hangi **Name** özelliği verirseniz verin, olay prosedürleri **Form **kelimesi altında listelenirler. Böylelikle, kod penceresinde form olay prosedürlerine baktığınızda, **Object** **List**’esini **Form**’u bulana kadar, kaydırma çubuğu ile kaydırarak arayın. Şunu da belirtmek gerekir, eğer biz form’a **frmFirstCode** ismi verirsek, kod penceresi aşağıdaki şekilde görünecektir :
 
@@ -236,7 +238,9 @@ Bu olay prosedürleri BASIC kullanılarak yazılır. Yani Visual Basic’ i bilm
 
 Biliyorsunuz, bu olay prosedürleri, şimdiye kadar Visual Basic Kod Penceresi’nde görünebiliyordu. Her olay prosedürü aynı genel yapıya sahiptir. İlkin, form’un bir **header(Başlık) **satırı vardır:
 
-## **Private Sub ControlName\_EventName()******
+```vbnet
+Private Sub ControlName_EventName()
+```
 
 Bu, **Private(Özel)** (yalnızca form’umuzdan ulaşılabilir), **Sub**routine’nin (bir olay prosedürü için başka bir isim) , **ControlName **kontrolü için, **EventName** olayı olduğunda yerine getirildiğini gösterir. Anlamlı, değil mi ?
 
@@ -246,7 +250,9 @@ Olay prosedürü kodu, basit bir anlatımla bilgisayara ona ne yapması gerekti�
 
 satır-satır verilen talimatlar serisidir. Bilgisayar, ilk satırı işler, daha sonra ikincisini ve daha sonra bunları takip eden diğer satırları... Bilgisayar, olay prosedürünün **footer(taban) **satırına ulaşana kadar bu işlemleri yapar.** Footer(taban) **satırı:
 
-## **End Sub******
+```vbnet
+End Sub
+```
 
 Olay prosedürü kod’u, BASIC dili ile yazılır. BASIC, bilgisayara belirli birtakım şeyleri yapmasını sağlayan anahtar kelime ve semboller set’inden oluşur. BASIC’in içeriği çok geniş ve zengindir ve bu kurs’ta bunlardan yapabildiğimiz kadarını inceleyeceğiz. Hemen bu noktada bir uyarı ! Daha önce söyledik, ama bir kere daha söyleyelim.
 
@@ -258,7 +264,9 @@ Klavyeden daha iyi yazım tecrübesi, Visual Basic uygulamalarınızı yapıland
 
 BASIC’te en basit ve en fazla kullanılan **assignment statement (atama bildiri)**’ leridir. Aşağıdaki şekle sahiptir:
 
-## **LeftSide = RightSide**
+```vbnet
+LeftSide = RightSide
+```
 
 ‘ **=** ‘ sembolü **assignment** **operator(atama operatör)’**ü olarak adlandırılır.
 
@@ -276,7 +284,9 @@ Hatırlayın, bir özellik, bir kontrol hakkında birşeyi açıklar**: boyutlar
 
 Design(dizayn) mod’unda bir değer vermek için özellikler penceresini kullanırsak, Visual Basic otomatik olarak uygun olan tipi sağlayacaktır. BASIC atama bildirisi kullanarak, bir olay prosedüründe, eğer bir özelliği değiştirmek istiyorsak, özellik tipini bilmek zorundayız, zira ona uygun ve hatasız tipte bir değer girebilelim. Hatırlayın**; ‘dot notation’ (nokta notasyon)** adı verdiğimiz bir atama tipini, run mod’unda değiştirebilmemiz için kullanıyorduk :
 
-## **ControlName.PropertyName = PropertyValue******
+```vbnet
+ControlName.PropertyName = PropertyValue
+```
 
 ControlName , kontrole atanmış **Name(İsim)** özelliğidir. PropertyName özelliğin ismidir ve PropertyValue, PropertyName’ e atadığımız yeni bir değerdir.
 
@@ -284,7 +294,9 @@ Burada dört tipte özellik ile ilgileneceğiz:
 
 Birinci özellik tipi, **integer(tamsayı)** tipidir. Bunlar tam, küsüratlı biçimde ifade edilmeyen, sayılardır. **Top**, **Left**, **Height**, ve **Width** gibi özellikler integer tipindedir. Yani, eğer integer tipte bir özelliğe bir değer atayacaksak, tamsayı kullanacağız. Bir örnek olarak, frmExample adını verdiğimiz bir form’un width özelliğini 4,000 twip’e ayarlayacaksak, BASIC’te şunları yazmalıyız:
 
-## **frmExample.Width = 4000******
+```vbnet
+frmExample.Width = 4000
+```
 
 Bu, geçerli form’un Width(genişliğini) yeni bir değer olan 4000 olarak atayacağımızı belirtmektedir. Dikkat edin, BASIC’te 4000 yerine, içinde virgül bulunan 4,000 şeklinde yazamayız.
 
@@ -310,7 +322,9 @@ Renkler için bazı sembolik sabitler aşağıdaki gibidir:
 
 Bu sabitlerin herbirisi, kendisine karşılık gelen, temsil ettiği renge ait long integer değerini **depolar(store).** Bizim örneğimizdeki formun BackColor özelliğini maviye çevirmek için, şu atama bildirisini kullanmalısınız:
 
-## **frmExample.BackColor = vbBlue**
+```vbnet
+frmExample.BackColor = vbBlue
+```
 
 İfade şu anlama gelir: Form’un **BackColor(artalan renk)**’i, **vbBlue** olarak adlandırılan sembolik sabit’in temsil ettiği long integer değeri ile değiştirirlir.
 
@@ -318,11 +332,15 @@ Bir diğer özellik(property) tipi ise **Boolean** tipidir. İsmini meşhur mate
 
 ** **Daha evvel gördüğümüz gibi, komut butonu’nun Enabled ve Visible özellikleri Boolean değerlerine sahip olabilirler. Böylece, Boolean tipinde özelliklerle çalışırken, yalnızca** True **veya **False** değeri verdiğimizden emin olmalıyız. Örneğimizin formunu gözden kaybettirmek için (bunu yapmak iyi bir şey değil !), aşağıdaki atama bildirisini kullanmalıyız:
 
-## ** frmExample.Visible = False******
+```vbnet
+frmExample.Visible = False
+```
 
 Bu ifade, form’un geçerli Visible özelliğinin, Boolean değeri olan False ile değiştirileceğini söylemektedir. Tekrar eski haline döndürmek için:
 
-## ** frmExample.Visible = True**
+```vbnet
+frmExample.Visible = True
+```
 
 Belirtmemiz gereken son özellik tipi **string(dizilim)** tipidir. Bu tipte özellikler, basitçe, adının ifade ettiği gibidir - karakterlerin dizilimi. **Bir**** string;** **bir isim, bir sayı dizisi, bir cümle, bir paragraf veya herhangibir tipte karakterler dizisi** olabilir.
 
@@ -332,7 +350,9 @@ String tipte özellikler atarken, tek bir sırrı(inceliği) vardır; bu da stri
 
 Örneğimizde **form caption(başlık)**’ı için şunu kullanabiliriz:
 
-## **frmExample.Caption = “Bu tirnak içinde bir basliktir”******
+```vbnet
+frmExample.Caption = “Bu tirnak içinde bir basliktir”
+```
 
 Bu atama bildirisi, form’un Caption özelliğinin, ifadenin sağ tarafındaki yazı ile değiştirilmesi bildirisini vermektedir. Şimdi, atama bildirilerinin nasıl olduğu hakkında fikir sahibi olmalısınız.
 
@@ -344,13 +364,16 @@ Bu **comments(yorumlamalar), **kod’unuzu** **anlamak için yardımcı olacakt�
 
 Kod’unuzun içerisine bir yorumlama koymak için, bir kesme işareti (‘) koymanız gerekmektedir. Bu işaret 1 tuşunun sağ tarafında bulunan tuş **değil**, Ş tuşunun altında bulunup (AltGr) tuşu ile yazılır. Bu işaretten sonra yazılan her şey bilgisayar tarafından ihmal edilir. Komple bir BASIC kod satırını açıklayan, böyle bir yorum satırı, aşağıdaki gibidir:
 
-## **‘Form’u maviye çevir**
-
-## **frmExample.BackColor = vbBlue**
+```vbnet
+‘Form’u maviye çevir
+frmExample.BackColor = vbBlue
+```
 
 Veya, yorumunuzu aynı satırda atama bildirisinden sonra aşağıdaki gibi yazabilirsiniz:
 
-## **frmExample.BackColor = vbBlue ‘Formu mavi yapar**
+```vbnet
+frmExample.BackColor = vbBlue ‘Formu mavi yapar
+```
 
 Programcı olarak siz, kod’unuzu ne kadar yorumlayacağınıza karar vermelisiniz. Bu kursta size sunulan projelerde yeteri kadar yorumlama sağlayacağız. Şimdi ilk önce böyle bir projeye bakalım:
 
@@ -458,23 +481,21 @@ Her olay prosedürü için kod penceresini kullanacaksınız. Nesne listesinden 
 
 İlk olarak, **cmdShrink\_Click** olay prosedürünü yazalım. Bu prosedürde , form yüksekliğini 100 ve form genişliğini de 100 twip azaltacağız :
 
-## **Private Sub cmdShrink\_Click()**
-
-## **'Formu ufalt.**
-
-## **'Formun yüksekligini 100 twip azalt.**
-
-## **frmFormFun.Height = frmFormFun.Height - 100**
-
-## **'Formun genisligini 100 twip azalt.**
-
-## **frmFormFun.Width = frmFormFun.Width - 100**
-
-## **End Sub**
+```vbnet
+Private Sub cmdShrink_Click()
+'Formu ufalt.
+'Formun yüksekligini 100 twip azalt.
+frmFormFun.Height = frmFormFun.Height - 100
+'Formun genisligini 100 twip azalt.
+frmFormFun.Width = frmFormFun.Width - 100
+End Sub
+```
 
 Diğer olay prosedürlerine geçmeden, bu noktaya biraz daha yakından bakalım. Çünkü üzerinde iyice durmadığımız birkaç fikir kullanılmaktadır. Üzerinde **Shrink** **Form **yazılı olan butonu tıkladığımızda, yerine getirilen olay prosedürü budur. Bu yorum bildirilerinin kolaylıkla farkına varacaksınız. Yorum olmayan bildiriler form yüksekliğini ve genişliğini değiştirir. Height(yükseklik) değerini değiştiren aşağıdaki bildiriye bakın:
 
-## **frmFormFun.Height = frmFormFun.Height - 100**
+```vbnet
+frmFormFun.Height = frmFormFun.Height - 100
+```
 
 Hatırlayın, atama operatörü nasıl çalışıyor (=) . Sağ taraf önce değerlendirilir. Daha sonra 100 ( - işareti kullanılarak) halihazır form yüksekliğinden çıkarılır. Bu değer ifadenin sol tarafına atanır ( frmFormFun.Height). Sonuç, form Height özelliği, Height değeri eksi 100 twip’dir. Bu kod satırından sonra, Height özelliği 100 azaltılır ve form ekranda daha ufak görünür.
 
@@ -484,99 +505,75 @@ Fakat, bu bir eşitlik olmamasına rağmen, doğru olmadığını bile bile, pro
 
 Şimdi, diğer olay prosedürlerine bakalım. **cmdGrow\_Click** prosedürü, form yüksekliğini 100 ve form genişliğini 100 twip arttırır:
 
-## **Private Sub cmdGrow\_Click()**
-
-## **'Formu büyüt**
-
-## **'Form yüksekligini100 twip arttir**
-
-## **frmFormFun.Height = frmFormFun.Height + 100**
-
-## **'Form genisligini 100 twip arttir**
-
-## **frmFormFun.Width = frmFormFun.Width + 100**
-
-## **End Sub**
+```vbnet
+Private Sub cmdGrow_Click()
+'Formu büyüt
+'Form yüksekligini100 twip arttir
+frmFormFun.Height = frmFormFun.Height + 100
+'Form genisligini 100 twip arttir
+frmFormFun.Width = frmFormFun.Width + 100
+End Sub
+```
 
 **cmdRed\_Click** olay prosedürü form background rengini kırmızıya çevirir:
 
-## **Private Sub cmdRed\_Click()**
-
-## ** 'Formu kirmizi yap **
-
-## **frmFormFun.BackColor = vbRed**
-
-## **End Sub******
+```vbnet
+Private Sub cmdRed_Click()
+ 'Formu kirmizi yap 
+frmFormFun.BackColor = vbRed
+End Sub
+```
 
 **cmdBlue\_Click** olay prosedürü form background rengini maviye çevirir:
 
-## **Private Sub cmdBlue\_Click()**
-
-## **'Formu mavi yap**
-
-## **frmFormFun.BackColor = vbBlue**
-
-## **End Sub**
+```vbnet
+Private Sub cmdBlue_Click()
+'Formu mavi yap
+frmFormFun.BackColor = vbBlue
+End Sub
+```
 
 **cmdHide\_Click** olay prosedürü, bütün komut butonlarını gizlemek için kullanılır (**Visible** özelliğini **False **olarak verin) – **cmdShow **istisnadır ve **Visible **olarak ayarlanır:
 
-## **Private Sub cmdHide\_Click()**
-
-## **'cmdShow haricinde butonlari gizle**
-
-## **cmdGrow.Visible = False**
-
-## **cmdShrink.Visible = False**
-
-## **cmdHide.Visible = False**
-
-## **cmdRed.Visible = False**
-
-## **cmdBlue.Visible = False**
-
-## **'cmdShow butonunu göster**
-
-## **cmdShow.Visible = True**
-
-## **End Sub**
+```vbnet
+Private Sub cmdHide_Click()
+'cmdShow haricinde butonlari gizle
+cmdGrow.Visible = False
+cmdShrink.Visible = False
+cmdHide.Visible = False
+cmdRed.Visible = False
+cmdBlue.Visible = False
+'cmdShow butonunu göster
+cmdShow.Visible = True
+End Sub
+```
 
 ve **cmdShow\_Click** olayı, bu etkileri tersine çevirmek için kullanılır:
 
-## **Private Sub cmdShow\_Click()**
-
-## **'cmdShow butonu hariç butonlari göster**
-
-## **cmdGrow.Visible = True**
-
-## **cmdShrink.Visible = True**
-
-## **cmdHide.Visible = True**
-
-## **cmdRed.Visible = True**
-
-## **cmdBlue.Visible = True**
-
-## **'cmdShow butonunu gizle**
-
-## **cmdShow.Visible = False**
-
-## **End Sub**
+```vbnet
+Private Sub cmdShow_Click()
+'cmdShow butonu hariç butonlari göster
+cmdGrow.Visible = True
+cmdShrink.Visible = True
+cmdHide.Visible = True
+cmdRed.Visible = True
+cmdBlue.Visible = True
+'cmdShow butonunu gizle
+cmdShow.Visible = False
+End Sub
+```
 
 Son olarak, **Form\_Click** olay prosedürü de aynı zamanda form’u **‘grow’ (büyütmek)** için kullanılır ve bu yüzden **cmdGrow\_Click **ile aynı koda sahiptir:
 
-## **Private Sub Form\_Click()**
-
-## **'formu büyüt**
-
-## **'form yüksekligini 100 twip arttir**
-
-## **frmFormFun.Height = frmFormFun.Height + 100**
-
-## **'Form genisligini 100 twip arttir**
-
-## **frmFormFun.Width = frmFormFun.Width + 100**
-
-## **End Sub**
+```vbnet
+Private Sub Form_Click()
+'formu büyüt
+'form yüksekligini 100 twip arttir
+frmFormFun.Height = frmFormFun.Height + 100
+'Form genisligini 100 twip arttir
+frmFormFun.Width = frmFormFun.Width + 100
+End Sub
+```
 
 Buradaki prosedürün doğru bir prosedür olduğundan emin olun. **Form** kontrolünü seçtiğinizde, görünecek prosedür **Load **olacaktır. Prosedür listesini kullanarak, **Click** olay prosedürüne bakınız. Yeni bir projeyi **saklamak(kaydetmek)** için daha önce anlatılan teknikleri gözden geçirin. Projenizi kaydedin.
 

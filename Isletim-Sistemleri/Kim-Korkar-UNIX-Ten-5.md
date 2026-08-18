@@ -52,13 +52,19 @@ UNIX’deki dosya-dizin yapılarını ters duran bir ağaca benzetirsek, mount m
 
 Şimdi isterseniz, kullandığınız bilgisayarda kaç disk ve/veya disk parçası olduğuna ve bunların hangi dizinlere mount mount mount mount edildiğine bir bakalım. Bu iş için lütfen terminalinizden şu komutu veriniz :
 
+```bash
 % mount mount mount mount
+```
 
 Tipik olarak şöyle bir liste almalısınız
 
+```bash
 % mount mount mount mount
 
-/dev/sd0a on / rw 4.2 /dev/sd0g on /usr rw 4.2 /dev/sd0h on /home rw 4.2 % (Bu örnek, SUNOS 4.1 .3 UNIX i şletim sistemiyle çalı şan bir i ş istasyonundan alınmı ştır. Sizin kullandı ğ ınız bilgisayarda alacağ ınız liste bununla aynı olmayabilir).
+/dev/sd0a on / rw 4.2 /dev/sd0g on /usr rw 4.2 /dev/sd0h on /home rw 4.2 %
+```
+
+(Bu örnek, SUNOS 4.1 .3 UNIX i şletim sistemiyle çalı şan bir i ş istasyonundan alınmı ştır. Sizin kullandı ğ ınız bilgisayarda alacağ ınız liste bununla aynı olmayabilir).
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 96
 
@@ -88,12 +94,17 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 98
 
 Herhangi bir anda, bilgisayarda çalışan süreçlerin neler olduğunu görmek isterseniz kullanacağınız komut
 
-% ps -axl % ps -axl % ps -axl % ps -axl % ps -efl % ps -efl % ps -efl % ps -efl Berkeley UNIX için process status
+```bash
+% ps -axl % ps -axl % ps -axl % ps -axl % ps -efl % ps -efl % ps -efl % ps -efl
+```
+
+Berkeley UNIX için process status
 
 SVR4 UNIX içinprocess status olacaktır. Aslında, bu komutun gerek BSD (Berkeley), gerekse SVR4 UNIX için daha bir çok parametresi olabilmektedir. Bu parametreleri merak eden kullanıcılar, man man man man komutu yardımıyla kullandıkları UNIX’in ps ps ps ps komutunun detaylarını öğrenebilirler.
 
 Komutu parametresiz kullanırsanız, yanlızca kendinize ait süreçlerin bir listesini alırsınız. (Alacağınız bu liste BSD veya SVR4 UNIX’ler için biraz farklı olacaktır, fakat içerdikleri bilgi açısından eşdeğer sayılabilirler; bu nedenle sadece BSD UNIX’den örnekler vereceğim).
 
+```bash
 % ps ps ps ps
 
 PID TT STAT TIME COMMAND
@@ -102,7 +113,10 @@ PID TT STAT TIME COMMAND
 
 . . .
 
-% Bu listedeki önemli bilgiler şunlardır:
+%
+```
+
+Bu listedeki önemli bilgiler şunlardır:
 
 PID TT STAT TIME (Process ID) UNIX’de, her sürecin birer tanıtım numarası vardır. Aynı numaraya sahip iki süreç olamaz.
 
@@ -118,19 +132,25 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 99
 
 Süreçler hakkında daha detaylı bilgi isterseniz :
 
+```bash
 % ps -l % ps -l % ps -l % ps -l (process status -long list)
+```
 
 Sistemdeki tüm süreçler hakkında bilgi isterseniz :
 
+```bash
 % ps -ax % ps -ax % ps -ax % ps -ax (process status -all, extended)
 
 % ps -ef % ps -ef % ps -ef % ps -ef
+```
 
 Sistemdeki tüm süreçler hakkında detaylı bilgi isterseniz :
 
+```bash
 % ps -axl % ps -axl % ps -axl % ps -axl (process status -all, extended, long)
 
 % ps -efl % ps -efl % ps -efl % ps -efl
+```
 
 ps ps ps ps komutu, sistem yöneticileri için (sysad sysad sysad sysad, sysadmin sysadmin sysadmin sysadmin : system administrator) için çok önemlidir. Sistemde neler olup bittiğini, kullanıcıların ne gibi programlar kullanmakta olduklarını, sisteme kullanıcıların nerelerden eriştiğini, hep bu komut yardımı ile gözlerler. Ayrıca, sistemin çalışmasında bir gariplik olduğu zaman hemen bu komutla bilgisayarda çalışmakta olan süreçlerin bir listesini alırlar. ps ps ps ps komutu, zaman zaman normal kullanıcılar için de çok önemli olur. İşte size hemen bir senaryo...
 
@@ -159,16 +179,21 @@ Böyle bir durumda, eğer yapabiliyorsanız, ekranınızdaki başka bir pencered
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 100
 
+```bash
 % kill nnn % kill nnn % kill nnn % kill nnn (process kill)
+```
 
 (Burada nnn nnn nnn nnn, öldürülmek istenen sürecin numarasıdır).
 
 - Eğer sorun yaratan süreci bu komutla öldüremezseniz
 
+```bash
 % kill -9 nnn % kill -9 nnn % kill -9 nnn % kill -9 nnn
+```
 
 komutunu deneyiniz. (-9 seçeneği ‘koşulsuz öldürme’ isteğinizi belirtir.)
 
+```bash
 % ps % ps % ps % ps
 
 PID TT STAT TIME COMMAND
@@ -178,6 +203,7 @@ PID TT STAT TIME COMMAND
 % kill 1266 % kill 1266 % kill 1266 % kill 1266 olmazsa
 
 % kill -9 1266 % kill -9 1266 % kill -9 1266 % kill -9 1266
+```
 
 Süreci hala öldüremiyorsanız, kabuk programınızı öldürmeyi deneyiniz.
 
@@ -219,11 +245,15 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 101
 
 Mistik ln ln ln ln kavramını kullanarak bu işi UNIX’in şanına yaraşır bir yöntemle çözebilirsiniz. Disklerin birinde; örneğin /home /home /home /home dizininin bulunduğu disk bölümünde (partition), yeni yükleyeceğiniz program için bir dizin yaratınız :
 
-\# mkdir /home/matlab # mkdir /home/matlab # mkdir /home/matlab # mkdir /home/matlab
+```bash
+# mkdir /home/matlab # mkdir /home/matlab # mkdir /home/matlab # mkdir /home/matlab
+```
 
 Sonra, bu dizini, /usr/local /usr/local /usr/local /usr/local altında yer alıyormuş gibi gösterebilmek için
 
-\# ln -s /home/matlab /usr/ # ln -s /home/matlab /usr/ # ln -s /home/matlab /usr/ # ln -s /home/matlab /usr/local/matlab local/matlab local/matlab local/matlab
+```bash
+# ln -s /home/matlab /usr/ # ln -s /home/matlab /usr/ # ln -s /home/matlab /usr/ # ln -s /home/matlab /usr/local/matlab local/matlab local/matlab local/matlab
+```
 
 komutunu veriniz.
 
@@ -249,7 +279,9 @@ mhsb1995
 
 mhsb1995 olarak tutup, kendi analiz çalışmalarınız için acct95 acct95 acct95 acct95 adlı bir kopyasını çıkardığınızda ve siz bu kopya üzerinde çalıştığınızda problem kısmen çözülüyor ama çok kullanıcılı ortamda siz analizler üzerinde çalışırken öte taraftan muhasebe personeli yeni kayıtlar girip sizin analizlerinizin eskimiş kayıtlar üzerinde yapılmasına neden oluyorlar. İşte böyle bir durumda link link link link kullanımı sizi kurtaracaktır.
 
-\# ln ./mhsb1995 ./acct95 # ln ./mhsb1995 ./acct95 # ln ./mhsb1995 ./acct95 # ln ./mhsb1995 ./acct95
+```bash
+# ln ./mhsb1995 ./acct95 # ln ./mhsb1995 ./acct95 # ln ./mhsb1995 ./acct95 # ln ./mhsb1995 ./acct95
+```
 
 Bu komutla mhsb1995
 
@@ -293,41 +325,30 @@ Bir dosyanın gerçekten var olan bir dosya mı, yoksa sadece bir bağlantı mı
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 103
 
+```bash
 /home/ayfer % cd / cd / cd / cd / / % ls -l ls -l ls -l ls -l total 3166
 
 lrwxrwxrwx 1 root 7 Jan 12 12:09 bin -> /usr/bin
-
 -r--r--r-- 1 root 110912 Jan 12 12:11 boot
-
 drwxr-sr-x 2 bin 7680 Jan 12 12:23 dev
-
 drwxr-sr-x 7 bin 1536 Jan 15 08:45 etc
-
 drwxr-sr-x 4 root 512 Feb 1 11:56 export
-
 drwxr-xr-x 5 root 512 Mar 23 09:03 home
-
 -rwxr-xr-x 1 root 239783 Feb 09 13:34 kadb
-
 lrwxrwxrwx 1 root 7 Mar 01 18:23 lib -> /usr/lib
-
 drwxr-xr-x 2 root 8192 Jun 15 23:09 lost+found
-
 drwxr-sr-x 2 bin 512 Mar 01 20:09 mnt
-
 drwxr-sr-x 2 bin 512 Mar 09 08:59 sbin
-
 lrwxrwxrwx 1 root 13 Jan 24 07:45 sys -> /usr/kvm/sys
-
 drwxrwsrwt 2 bin 512 Feb 24 09:56 tmp
-
 drwxr-xr-x 20 root 512 Nov 23 16:08 usr
-
 drwxr-xr-x 11 root 512 Nov 23 16:11 var
-
 -rwxr-xr-x 1 root 1101191 Jan 11 09:35 vmunix
 
-/ % Bu örnek listeye göre, aslında /bin /bin /bin /bin diye bir dizin bulunmamakta, bu isimde bir bağlantının /usr/bin /usr/bin /usr/bin /usr/bin dizinine yapılmış olduğu anlaşılmaktadır.
+/ %
+```
+
+Bu örnek listeye göre, aslında /bin /bin /bin /bin diye bir dizin bulunmamakta, bu isimde bir bağlantının /usr/bin /usr/bin /usr/bin /usr/bin dizinine yapılmış olduğu anlaşılmaktadır.
 
 Dikkat ederseniz, ls -l ls -l ls -l ls -l komutunun verdiği listede, gerçek bir dosya (dizin) değil de, bağlantı olan dosyalara (dizinlere) ait satırların başında bir l l l l harfi bulunmaktadır.
 
@@ -431,7 +452,9 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 107
 
 -type d -type d -type d -type d Dizinler Bu arama kriterlerini bir arada kullanabilirsiniz; örneğin, sahibi hakman hakman hakman hakman adlı kullanıcı olan ve son 40 gündür kullanılmamış dosyaları bulmak isterseniz, kullanmanız gereken find find find find komutu
 
+```bash
 % find /home -user hakman -atime +40 -print find /home -user hakman -atime +40 -print find /home -user hakman -atime +40 -print find /home -user hakman -atime +40 -print
+```
 
 olmalıdır.
 
@@ -439,11 +462,15 @@ Komutun sonundaki -print -print -print -print parametresini kullanmayı unutursa
 
 Şimdi, sık kullanılan find find find find formları için bir kaç örnek vereyim :
 
+```bash
 % find /home/ayfer -name onemli.dosya -print find /home/ayfer -name onemli.dosya -print find /home/ayfer -name onemli.dosya -print find /home/ayfer -name onemli.dosya -print
+```
 
 /home/ayfer dizininden başlayarak bu dizinde ve alt dizinlerinde onemli.dosya onemli.dosya onemli.dosya onemli.dosya isimli dosyaları arar ve bulduklarının adını standart çıktıya (ekrana) listeler.
 
+```bash
 % find / -name core -exec /bin/rm {} ";" find / -name core -exec /bin/rm {} ";" find / -name core -exec /bin/rm {} ";" find / -name core -exec /bin/rm {} ";"
+```
 
 / / / / dizininden başlayarak tüm disklerde core core core core isimli dosyaları arar ve bulduklarını siler. find find find find komutunu -exec -exec -exec -exec parametresiyle birlikte kullanırken sondaki ";" ";" ";" ";" parametresini UNUTMAMALISINIZ. Bu ";" ";" ";" ";" karakter dizisinin gerekliliği tamamen find find find find programının yazılışından kaynaklanmaktadır.
 
@@ -453,29 +480,39 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 108
 
 olmadığından, genellikle bu dosyalar içeriklerine bakılmaksızın silinebilirler. Zaman içinde biriken core core core core dosyaları diskte oldukça önemli yer harcadıklarından, rastladıkça bu dosyaları silmenizi öneririm.
 
+```bash
 % find /home -user hasan -exec /bin/rm {} ";" find /home -user hasan -exec /bin/rm {} ";" find /home -user hasan -exec /bin/rm {} ";" find /home -user hasan -exec /bin/rm {} ";"
+```
 
 /home /home /home /home dizininden başlayarak hasan hasan hasan hasan isimli kullanıcıya ait dosyaları arar ve bulduklarını siler.
 
 Sisteme erişim hakları iptal edilen kullanıcılara ait dosyaları tek harekette silmek için kullanılabilir.
 
-% find /home -name "\*.tmp" -exec /bin/rm {} ";" find /home -name "\*.tmp" -exec /bin/rm {} ";" find /home -name "\*.tmp" -exec /bin/rm {} ";" find /home -name "\*.tmp" -exec /bin/rm {} ";"
+```bash
+% find /home -name "*.tmp" -exec /bin/rm {} ";" find /home -name "*.tmp" -exec /bin/rm {} ";" find /home -name "*.tmp" -exec /bin/rm {} ";" find /home -name "*.tmp" -exec /bin/rm {} ";"
+```
 
 /home /home /home /home dizininden başlayarak adı \*.tmp \*.tmp \*.tmp \*.tmp kalıbına uyan dosyaları arar ve bulduklarını siler.
 
-% find /home -type d -name \[tmp, temp\] -print find /home -type d -name \[tmp, temp\] -print find /home -type d -name \[tmp, temp\] -print find /home -type d -name \[tmp, temp\] -print
+```bash
+% find /home -type d -name [tmp, temp] -print find /home -type d -name [tmp, temp] -print find /home -type d -name [tmp, temp] -print find /home -type d -name [tmp, temp] -print
+```
 
 /home /home /home /home dizininden başlayarak adı tmp tmp tmp tmp veya temp temp temp temp olan dizinleri bulur ve listeler. find find find find komutuyla birlikte kullanılan kriterleri çeşitli mantık operatörleriyle birleştirebilirsiniz. Bunlar -a : -a : -a : -a : "ve ve ve ve" -o : -o : -o : -o : "veya veya veya veya" \\! : \\! : \\! : \\! :"de il de il de il de il" operatörleridir.
 
 Örnekler :
 
-% find /home -name "\*.tmp" -a -size +100 -print find /home -name "\*.tmp" -a -size +100 -print find /home -name "\*.tmp" -a -size +100 -print find /home -name "\*.tmp" -a -size +100 -print
+```bash
+% find /home -name "*.tmp" -a -size +100 -print find /home -name "*.tmp" -a -size +100 -print find /home -name "*.tmp" -a -size +100 -print find /home -name "*.tmp" -a -size +100 -print
+```
 
 adı \*.tmp \*.tmp \*.tmp \*.tmp kalıbına uyan ve ve ve ve büyüklüğü 100 bloktan fazla olan dosyaları bulur. (1 blok = 512 byte)
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 109
 
-% find /home/ayfer \\! -user ayfer -print find /home/ayfer \\! -user ayfer -print find /home/ayfer \\! -user ayfer -print find /home/ayfer \\! -user ayfer -print
+```bash
+% find /home/ayfer \! -user ayfer -print find /home/ayfer \! -user ayfer -print find /home/ayfer \! -user ayfer -print find /home/ayfer \! -user ayfer -print
+```
 
 ayfer ayfer ayfer ayfer isimli kullanıcının home dizininde yer alan ama ayfer ayfer ayfer ayfer’e ait olmayan olmayan olmayan olmayan dosyaları bulur.
 
@@ -483,13 +520,21 @@ Bu örnekteki "değil değil" anlamında kullanılan \\! \\! \\! \\! operatörü
 
 Hatırlarsanız, daha önceki bölümlerden birinde, UNIX işletim sisteminde kendi komutlarınızı yaratabileceğinizden bahsetmiştim. Sanırım bu uygulamaya bir örnek vermek için uygun bir noktadayız. find find find find komutu oldukça yetenekli ve seçenekli bir komut; ama bunun karşılığında da yazması oldukça uzun. Dosyaları sadece adlarıyla arayan daha kısa bir UNIX komutu yaratmaya ne dersiniz?
 
-Önce vi vi vi vi editörünü kullanarak home dizininizde ff ff ff ff isimli ve içinde aşağıdaki satırlar bulunan bir dosya yaratınız. (% vi ~/ff) (% vi ~/ff) (% vi ~/ff) (% vi ~/ff) #!/bin/sh #!/bin/sh #!/bin/sh #!/bin/sh case $# in case $# in case $# in case $# in 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; \*) echo "Error... Usage : ff \[path\] name" \*) echo "Error... Usage : ff \[path\] name" \*) echo "Error... Usage : ff \[path\] name" \*) echo "Error... Usage : ff \[path\] name" echo " ff \[path\] \\"name\*\\"" echo " ff \[path\] \\"name\*\\"" echo " ff \[path\] \\"name\*\\"" echo " ff \[path\] \\"name\*\\"" echo " ff \[path\] \\"\*name\\"" echo " ff \[path\] \\"\*name\\"" echo " ff \[path\] \\"\*name\\"" echo " ff \[path\] \\"\*name\\"" esac esac esac esac ff program dosyasını oluşturan bu satırların anlamları üzerinde şimdilik durmayınız.
+Önce vi vi vi vi editörünü kullanarak home dizininizde ff ff ff ff isimli ve içinde aşağıdaki satırlar bulunan bir dosya yaratınız. (% vi ~/ff) (% vi ~/ff) (% vi ~/ff) (% vi ~/ff)
+
+```bash
+#!/bin/sh #!/bin/sh #!/bin/sh #!/bin/sh case $# in case $# in case $# in case $# in 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; *) echo "Error... Usage : ff [path] name" *) echo "Error... Usage : ff [path] name" *) echo "Error... Usage : ff [path] name" *) echo "Error... Usage : ff [path] name" echo " ff [path] \"name*\"" echo " ff [path] \"name*\"" echo " ff [path] \"name*\"" echo " ff [path] \"name*\"" echo " ff [path] \"*name\"" echo " ff [path] \"*name\"" echo " ff [path] \"*name\"" echo " ff [path] \"*name\"" esac esac esac esac
+```
+
+ff program dosyasını oluşturan bu satırların anlamları üzerinde şimdilik durmayınız.
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 110
 
 Daha sonra,
 
+```bash
 % chmod a+x ~/ff chmod a+x ~/ff chmod a+x ~/ff chmod a+x ~/ff
+```
 
 komutuyla, bu dosyanın erişim yetki kalıbını, tüm kullanıcılar tarafından çalıştırılabilen bir komut dosyası olacak şekilde değiştiriniz.
 
@@ -497,15 +542,13 @@ Bu komut, aksi belirtilmedikçe, aramalara bulunduğunuz dizinden başlar. Eğer
 
 Örnekler :
 
+```bash
 % ff aranan.veri.dosyasi ff aranan.veri.dosyasi ff aranan.veri.dosyasi ff aranan.veri.dosyasi
-
 % ff /home/ugur prog.c ff /home/ugur prog.c ff /home/ugur prog.c ff /home/ugur prog.c
-
 % ff ~ file001.dat ff ~ file001.dat ff ~ file001.dat ff ~ file001.dat
-
-% ff "\*dat" ff "\*dat" ff "\*dat" ff "\*dat"
-
-% ff /cdrom "openwin\*" ff /cdrom "openwin\*" ff /cdrom "openwin\*" ff /cdrom "openwin\*"
+% ff "*dat" ff "*dat" ff "*dat" ff "*dat"
+% ff /cdrom "openwin*" ff /cdrom "openwin*" ff /cdrom "openwin*" ff /cdrom "openwin*"
+```
 
 Yeni yarattığınız ff ff ff ff komutunu verdiğinizde, komut programının bulunamadığına ilişkin bir mesaj alıyorsanız, path path path path değişkeninizde home home home home dizininiz olmayabilir. Çalıştırmak istediğiniz programı oluşturan dosyanın çalışma dizininizde bulunması yetmez. Bir programın çalıştırılabilmesi için i) ya yeri tam olarak komutta belirtilmelidir (~/ff ~/ff ~/ff ~/ff gibi) ii) ya da program dosyasının bulunduğu dizin, path path path path değişkeninde tanımlanmış olmalıdır. path path path path ile ilgili bir sorun olmamasına rağman ‘komut bulunamadı’ ( ff : Command not found.) mesajını alıyorsanız; chmod chmod chmod chmod komutuyla, ff ff ff ff programının “çalıştırılabilir” (executable) bir dosya olduğunu belirtmeyi unutmuş olabilirsiniz.
 
@@ -521,29 +564,43 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 111
 
 Arama - Tarama Arama - Tarama Arama - Tarama Arama - Tarama find find find find komutuyla; dosyaları, adları ve sahipleri gibi özelliklerine göre taramayı öğrendiniz. Peki.... Dosyaların içinde kayıtlı verilere göre aramaları nasıl yapcaksınız? Örneğin, içerdiği kayıtlar arasında ayfer ayfer ayfer ayfer sözcüğü geçen dosyaları bulmak istediğinizde hangi komutu kullanmalısınız?
 
-% grep \[-ilnc\] patern dosya(lar) % grep \[-ilnc\] patern dosya(lar) % grep \[-ilnc\] patern dosya(lar) % grep \[-ilnc\] patern dosya(lar) general purpose regular
+```bash
+% grep [-ilnc] patern dosya(lar) % grep [-ilnc] patern dosya(lar) % grep [-ilnc] patern dosya(lar) % grep [-ilnc] patern dosya(lar)
+```
+
+general purpose regular
 
 expression search program Hemen bir kaç örnek...
 
 İçinde yaklaşık 20,000 satır bulunan /etc/termcap /etc/termcap /etc/termcap /etc/termcap dosyasında (terminal karakteristikleri tanıtım dosyası) “wyse50 marka terminallerle ilgili bir tanım var mı?” diye merak ettiğinizde
 
+```bash
 % grep wyse50 /etc/termcap grep wyse50 /etc/termcap grep wyse50 /etc/termcap grep wyse50 /etc/termcap
+```
 
 komutunu kullanabilirsiniz. Eğer bu dosyanın içinde wyse50 wyse50 wyse50 wyse50 sözcüğü geçiyorsa, bu satırlar standart çıktı birimine (ekrana) listelenecektir. wyse50 wyse50 wyse50 wyse50 sözcüğünün büyük harflerle yazılmış olma olasılığı varsa
 
+```bash
 % grep -i wyse50 /etc/termcap grep -i wyse50 /etc/termcap grep -i wyse50 /etc/termcap grep -i wyse50 /etc/termcap
+```
 
 formunu denemelisiniz. ( -i -i -i -i : ignore case; büyük-küçük harf ayrımı yapılmasın) Bulunan satırların satır numaralarını da görmek isterseniz
 
+```bash
 % grep -ni wyse50 /etc/termcap grep -ni wyse50 /etc/termcap grep -ni wyse50 /etc/termcap grep -ni wyse50 /etc/termcap
+```
 
 formunu kullanabilirsiniz. ( -n : numbered) Bulunduğunuz dizinde, adı mektup mektup mektup mektup ile başlayan dosyalar arasında bir veya birkaç tanesinin içinde ayfer ayfer ayfer ayfer sözcüğünün bulunduğunu biliyorsunuz ama hangileri olduğunu hatırlayamıyorsunuz! İşte çözüm :
 
+```bash
 % grep ayfer mektup1 mektup2 mektup3 ... grep ayfer mektup1 mektup2 mektup3 ... grep ayfer mektup1 mektup2 mektup3 ... grep ayfer mektup1 mektup2 mektup3 ...
+```
 
 veya
 
-% grep ayfer mektup\* grep ayfer mektup\* grep ayfer mektup\* grep ayfer mektup\*
+```bash
+% grep ayfer mektup* grep ayfer mektup* grep ayfer mektup* grep ayfer mektup*
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 112
 
@@ -551,13 +608,17 @@ grep grep grep grep komutu, arama işini birden fazla dosya üzerinde yaptığı
 
 Eğer, bulunan satırlar için yalnızca dosya adlarını görmek istiyorsanız,
 
-% grep -l ayfer mektup\* grep -l ayfer mektup\* grep -l ayfer mektup\* grep -l ayfer mektup\*
+```bash
+% grep -l ayfer mektup* grep -l ayfer mektup* grep -l ayfer mektup* grep -l ayfer mektup*
+```
 
 formunu kullanmalısınız.
 
 Adı mektup mektup mektup mektup’la başlayan dosyalarda ayfer ayfer ayfer ayfer sözcüğünün kaç defa geçtiğini öğrenmek isterseniz
 
-% grep -c ayfer mektup\* grep -c ayfer mektup\* grep -c ayfer mektup\* grep -c ayfer mektup\*
+```bash
+% grep -c ayfer mektup* grep -c ayfer mektup* grep -c ayfer mektup* grep -c ayfer mektup*
+```
 
 komutunu kullanılabilirsiniz. grep grep grep grep komutu ( ve onun biraz geliştirilmişleri olan egrep egrep egrep egrep ve fgrep fgrep fgrep fgrep), UNIX işletim sisteminin en çok kullanılan komutlarındandır. Bu komutun daha yararlı kullanımlarına ilişkin örneklere devam etmeden önce çok önemli bir UNIX kavramından daha söz etmek istiyorum: PIPE PIPE PIPE PIPE. pipe pipe pipe pipe kavramını anlatırken kullanacağım örnekler arasında grep grep grep grep komutuyla ilgili olanları dikkatle incelerseniz yukarıda verilen örneklerden daha yararlı kullanımlarını öğrenmiş olacaksınız.
 
@@ -581,7 +642,9 @@ Pipe kurmak için, aynı komut satırında en az iki program birden başlatmalı
 
 Şimdi grep grep grep grep komutu ve pipe pipe pipe pipe kavramının birlikte kullanımına bir kaç örnek vereyim :
 
-% grep ayfer mektup\* | more grep ayfer mektup\* | more grep ayfer mektup\* | more grep ayfer mektup\* | more
+```bash
+% grep ayfer mektup* | more grep ayfer mektup* | more grep ayfer mektup* | more grep ayfer mektup* | more
+```
 
 Bu komut, daha doğrusu komut ikilisinin anlamı şu : grep grep grep grep ve more more more more programlarını aynı anda başlat.
 
@@ -589,13 +652,17 @@ Adı ‘mektup mektup mektup mektup’la başlayan dosyalar içinde ayfer ayfer 
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 115
 
+```bash
 % ps -ax | grep in.named ps -ax | grep in.named ps -ax | grep in.named ps -ax | grep in.named
+```
 
 ps ps ps ps ve grep grep grep grep programlarını aynı anda başlat.. ps ps ps ps programının oldukça uzun olabilecek çıktısını grep grep grep grep programına girdi olarak gönder. grep grep grep grep kendisine gönderilen satırlar arasında, içinde in.named n.named n.named n.named sözcüğü geçenleri bulsun ve sadece ilgilendiğimiz bu satırları listelesin. Böylece grep grep grep grep programı bir filtre gibi kullanılmış olacaktır. sıkı sıkı Şimdide sıkı sıkı bir pipe örneği...
 
   tuşunun solundaki tırnak işareti...
 
-% echo Sistemde \`who | wc -l\` kullan c  var echo Sistemde \`who | wc -l\` kullan c  var echo Sistemde \`who | wc -l\` kullan c  var echo Sistemde \`who | wc -l\` kullan c  var
+```bash
+% echo Sistemde `who | wc -l` kullan c  var echo Sistemde `who | wc -l` kullan c  var echo Sistemde `who | wc -l` kullan c  var echo Sistemde `who | wc -l` kullan c  var
+```
 
 Bu komut satırında bir kaç kademeli bir işlem istenmektedir.
 
@@ -635,7 +702,9 @@ BSD UNIX’de Yazıcı Kullanımı
 
 Herhangi bir dosyayı yazıcıya göndermek istediğinizde kullanabile-ceğiniz en basit komut formu şudur :
 
-% lpr dosya\_adi % lpr dosya\_adi % lpr dosya\_adi % lpr dosya\_adi (line printer)
+```bash
+% lpr dosya_adi % lpr dosya_adi % lpr dosya_adi % lpr dosya_adi (line printer)
+```
 
 Bu komutu verdiğinizde, dosya\_adı dosya\_adı isimli dosya, adı lp lp lp lp olan yazıcının (veya
 
@@ -647,27 +716,39 @@ PRINTER PRINTER PRINTER PRINTER isimli kabuk değişkeninde belirtilmiş olan is
 
 Eğer, dosyanızı, özel bir yazıcıya göndermeniz söz konusuysa kullanacağınız komut
 
-% lpr -Pyaz % lpr -Pyaz % lpr -Pyaz % lpr -Pyazici\_adi dosya\_adi ici\_adi dosya\_adi ici\_adi dosya\_adi ici\_adi dosya\_adi
+```bash
+% lpr -Pyaz % lpr -Pyaz % lpr -Pyaz % lpr -Pyazici_adi dosya_adi ici_adi dosya_adi ici_adi dosya_adi ici_adi dosya_adi
+```
 
 Bu komutta P P P P harfinin büyük P olduğuna ve yazıcı adının bu P P P P harfine bitişik olarak yazıldığına dikkatinizi çekerim. (Bazı UNIX’ler P P P P harfiyle yazıcı adı arasında boşluk kullanılmasına izin verir.)
 
-% lpq \[-Pyazici\_adi\] % lpq \[-Pyazici\_adi\] % lpq \[-Pyazici\_adi\] % lpq \[-Pyazici\_adi\] (line printer queue)
+```bash
+% lpq [-Pyazici_adi] % lpq [-Pyazici_adi] % lpq [-Pyazici_adi] % lpq [-Pyazici_adi] (line printer queue)
+```
 
 Yazıcı için sıra bekleyen işler hakkında bilgi verir. Sıra bekleyen her dökümün bir tanıtma numarası vardır.
 
-% lprm \[ nnn \[mmm ...\] \] % lprm \[ nnn \[mmm ...\] \] % lprm \[ nnn \[mmm ...\] \] % lprm \[ nnn \[mmm ...\] \] (line printer remove)
+```bash
+% lprm [ nnn [mmm ...] ] % lprm [ nnn [mmm ...] ] % lprm [ nnn [mmm ...] ] % lprm [ nnn [mmm ...] ] (line printer remove)
+```
 
 Sıra bekleyen dökümler arasında tanıtma numarası nnn nnn nnn nnn (ve mmm mmm mmm mmm vs) olan işleri iptal eder. nnn nnn nnn nnn verilmezse, komutu veren kullanıcıya ait olan ve o sırada dökülmekte olan ya da sıradaki ilk işi iptal edilir.
 
-% lprm kullanici\_adi % lprm kullanici\_adi % lprm kullanici\_adi % lprm kullanici\_adi (line printer remove)
+```bash
+% lprm kullanici_adi % lprm kullanici_adi % lprm kullanici_adi % lprm kullanici_adi (line printer remove)
+```
 
 Sıra bekleyen işler arasında sahibi kullanici\_adi kullanici\_adi kullanici\_adi kullanici\_adi olan dökümleri iptal eder. nnn nnn nnn nnn (ve mmm mmm mmm mmm vs)
 
-% lpstat \[-Pyazici\_adi\] % lpstat \[-Pyazici\_adi\] % lpstat \[-Pyazici\_adi\] % lpstat \[-Pyazici\_adi\] (line printer status)
+```bash
+% lpstat [-Pyazici_adi] % lpstat [-Pyazici_adi] % lpstat [-Pyazici_adi] % lpstat [-Pyazici_adi] (line printer status)
+```
 
 Yazıcının durumunu gösterir. (Hazır olup olmadığını vs.)
 
-% lpr -#n % lpr -#n % lpr -#n % lpr -#n -Plazer dosya\_adi -Plazer dosya\_adi -Plazer dosya\_adi -Plazer dosya\_adi
+```bash
+% lpr -#n % lpr -#n % lpr -#n % lpr -#n -Plazer dosya_adi -Plazer dosya_adi -Plazer dosya_adi -Plazer dosya_adi
+```
 
 dosya\_adı isimli dosyanın, lazer lazer lazer lazer isimli yazıcıdan n n n n kopyasının basılmasını
 
@@ -681,27 +762,37 @@ sağlar.
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 118
 
+```bash
 % lpr - % lpr - % lpr - % lpr -m m m m onemli onemli onemli onemli
+```
 
 onemli onemli onemli onemli isimli dosyanın, basılmak üzere lp lp lp lp isimli yazıcıya gönderilmesini ve basım tamamlandığında, komutu veren kullanıcıya bir mesaj (mail) gönderilmesini sağlar.
 
+```bash
 % lpr -r % lpr -r % lpr -r % lpr -r onemsiz onemsiz onemsiz onemsiz
+```
 
 onemsiz onemsiz onemsiz onemsiz isimli dosyanın, basılmak üzere lp lp lp lp isimli yazıcıya gönderilmesini ve dosyanın, ilgili yazıcının sırasına alınmasından hemen sonra diskten silinmesini
 
 sağlar.
 
+```bash
 % lpr dosya1 dosya2 ... % lpr dosya1 dosya2 ... % lpr dosya1 dosya2 ... % lpr dosya1 dosya2 ...
+```
 
 Birden fazla dosyanın tek komutla yazıcı sırasına gönderilmesini sağlar.
 
+```bash
 % sort < sirasiz | lpr % sort < sirasiz | lpr % sort < sirasiz | lpr % sort < sirasiz | lpr
+```
 
 lpr lpr lpr lpr komutu ve pipe pipe pipe pipe kavramının birlikte kullanılışına bir örnek... Bu örnekte, sirasiz sirasiz sirasiz sirasiz isimli dosya sort sort sort sort programıyla sıraya dizilmekte ve sıralanmış hali doğrudan yazıcıya gönderilmektedir.
 
 Örneklerini verdiğim çeşitli lpr lpr lpr lpr seçeneklerini birleştirebileceğinizi ayrıca belirtmeme sanırım gerek yok. Örneğin;
 
+```bash
 % lpr -rmPepson onemsiz % lpr -rmPepson onemsiz % lpr -rmPepson onemsiz % lpr -rmPepson onemsiz
+```
 
 Kullanıcısı olduğunuz bilgisayar sistemine bağlı olan yazıcıların özelliklerini ve isimlerini sistem yöneticisinden öğrenebilirsiniz.
 
@@ -715,7 +806,9 @@ SVR4 UNIX’de Yazıcı Kullanımı
 
 Herhangi bir dosyayı yazıcıya göndermek istediğinizde kullanabileceğiniz en basit komut formu şudur :
 
-% lp dosya\_adi % lp dosya\_adi % lp dosya\_adi % lp dosya\_adi (line printer)
+```bash
+% lp dosya_adi % lp dosya_adi % lp dosya_adi % lp dosya_adi (line printer)
+```
 
 Bu komutu verdiğinizde, dosya\_adı dosya\_adı isimli dosya, adı lp lp lp lp olan yazıcının (veya
 
@@ -729,23 +822,33 @@ Eğer, dosyanızı, özel bir yazıcıya göndermeniz söz konusuysa kullanacağ
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 119
 
-% lp -dyazici\_adi dosya\_adi % lp -dyazici\_adi dosya\_adi % lp -dyazici\_adi dosya\_adi % lp -dyazici\_adi dosya\_adi
+```bash
+% lp -dyazici_adi dosya_adi % lp -dyazici_adi dosya_adi % lp -dyazici_adi dosya_adi % lp -dyazici_adi dosya_adi
+```
 
 Bu komutta d d d d harfinin küçük d olduğuna ve yazıcı adının bu d d d d harfine bitişik olarak yazıldığına dikkatinizi çekerim.
 
-% lpstat \[-a\] % lpstat \[-a\] % lpstat \[-a\] % lpstat \[-a\] line printer status
+```bash
+% lpstat [-a] % lpstat [-a] % lpstat [-a] % lpstat [-a] line printer status
+```
 
 Yazıcının durumunu gösterir. (Hazır olup olmadığını vs.) -a -a -a -a seçeneği tüm yazıcıların durumunu gösterir. Durum raporlarında, yazıcılar için sıra bekleyen işler ve tanıtım numaraları da listelenir.
 
-% cancel nnn \[mmm ...\] % cancel nnn \[mmm ...\] % cancel nnn \[mmm ...\] % cancel nnn \[mmm ...\]
+```bash
+% cancel nnn [mmm ...] % cancel nnn [mmm ...] % cancel nnn [mmm ...] % cancel nnn [mmm ...]
+```
 
 Sıra bekleyen dökümler arasında tanıtma numarası nnn nnn nnn nnn (ve mmm mmm mmm mmm vs) olan işleri iptal eder.
 
+```bash
 % cancel -u ugur % cancel -u ugur % cancel -u ugur % cancel -u ugur
+```
 
 Sıra bekleyen dökümler arasında ugur ugur ugur ugur isimli kullanıcıya ait olan döküm işlerini iptal eder.
 
-% lp -nk -dlazer dosya\_adi % lp -nk -dlazer dosya\_adi % lp -nk -dlazer dosya\_adi % lp -nk -dlazer dosya\_adi
+```bash
+% lp -nk -dlazer dosya_adi % lp -nk -dlazer dosya_adi % lp -nk -dlazer dosya_adi % lp -nk -dlazer dosya_adi
+```
 
 dosya\_adı isimli dosyanın, lazer lazer lazer lazer isimli yazıcıdan k k k k kopyasının basılmasını
 
@@ -757,15 +860,21 @@ dosya\_adı
 
 sağlar.
 
+```bash
 % lp -m % lp -m % lp -m % lp -m onemli onemli onemli onemli
+```
 
 onemli onemli onemli onemli isimli dosyanın, basılmak üzere lp lp lp lp isimli yazıcıya gönderilmesini ve basım tamamlandığında, komutu veren kullanıcıya bir mesaj (mail) gönderilmesini sağlar.
 
+```bash
 % lp dosya1 dosya2 ... % lp dosya1 dosya2 ... % lp dosya1 dosya2 ... % lp dosya1 dosya2 ...
+```
 
 Birden fazla dosyanın tek komutla yazıcı sırasına gönderilmesini sağlar.
 
+```bash
 % sort < sirasiz | lp % sort < sirasiz | lp % sort < sirasiz | lp % sort < sirasiz | lp
+```
 
 lp lp lp lp komutu ve pipe pipe pipe pipe kavramının birlikte kullanılışına bir örnek... Bu örnekte, sirasiz sirasiz sirasiz sirasiz isimli dosya sort sort sort sort programıyla sıraya dizilmekte ve sıralanmış hali doğrudan yazıcıya gönderilmektedir.
 
@@ -773,7 +882,9 @@ lp lp lp lp komutu ve pipe pipe pipe pipe kavramının birlikte kullanılışın
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 120
 
+```bash
 % lp -mdepson onemsiz % lp -mdepson onemsiz % lp -mdepson onemsiz % lp -mdepson onemsiz
+```
 
 Kullanıcısı olduğunuz bilgisayar sistemine bağlı olan yazıcıların özelliklerini ve isimlerini sistem yöneticisinden öğrenebilirsiniz.
 
@@ -915,17 +1026,21 @@ sıfırıncı parametrelerinin
 
 de bulunduğunu söylemeden geçemeyeceğim. Bir program çalıştırıldığında, sıfırıncı parametresi, programın kendi adıdır. Böylece, her program, hangi isimle kullanıldığını bilebilmektedir. Bu özelliğe tipik örnek compress compress compress compress ve uncompress uncompress uncompress uncompress komutlarıdır. Bu iki komut aslında tek bir program dosyasıdır. compress compress compress compress isimli dosya gerçekten bu isimle diskte yer alırken, uncompress uncompress uncompress uncompress sadece bu dosyaya bir bağlantıdır (link).
 
+```bash
 % which compress which compress which compress which compress
 
 /usr/ucb/compress
 
 % ls -lF /usr/ucb/compress /usr/ucb/uncompress ls -lF /usr/ucb/compress /usr/ucb/uncompress ls -lF /usr/ucb/compress /usr/ucb/uncompress ls -lF /usr/ucb/compress /usr/ucb/uncompress
 
--rwxr-xr-x 1 root 23783 ... compress\*
+-rwxr-xr-x 1 root 23783 ... compress*
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 125
 
+```bash
 lrwxr-xr-x 1 root 23783 ... uncompress --> ./compress
+```
 
 which which which which komutu da nereden çıktı diyorsunuz... Çok önemli bir komut değil... Parametresi olarak belirtilen komut verilmiş olsaydı, hangi dosyanın çalıştırılacağını bildirir. Bir diğer deyişle, parametresi olan komutu PATH PATH PATH PATH ve/veya path path path path değişkenlerine göre disk(ler)de arar ve ilk bulduğunun (bulursa) yerini bildirir.
 
@@ -971,7 +1086,9 @@ PATH=/bin:/usr/local/bin:. PATH=/bin:/usr/local/bin:. PATH=/bin:/usr/local/bin:.
 
 Herhangi bir anda, tanımlı olan kabuk değişkenlerini ve/veya değerlerinin ne olduğunu merak ederseniz
 
+```bash
 % set % set % set % set % env % env % env % env % setenv % setenv % setenv % setenv sh ve csh için
+```
 
 sh için csh için komutlarını kullanabilirsiniz Kabuk değişkenleri, standart isimli bir takım değişkenlerle sınırlı değildir.
 
@@ -989,7 +1106,9 @@ Hatalı Komutları Düzeltme
 
 Diyelimki uzun bir UNIX komutunu yanlış yazdınız.... cp /home/hakman/.Xdesksetdefualts /home/ayfer cp /home/hakman/.Xdesksetdefualts /home/ayfer cp /home/hakman/.Xdesksetdefualts /home/ayfer cp /home/hakman/.Xdesksetdefualts /home/ayfer (.Xdesksetdef .Xdesksetdef .Xdesksetdef .Xdesksetdefau au au aults lts lts lts olmalı ydı...) ve doğal olarak .Xsetdefualts .Xsetdefualts .Xsetdefualts .Xsetdefualts diye bir dosya bulunamadığına dair bir hata mesajı aldınız. Eğer csh csh csh csh kullanıyorsanız, bu karışık satırı baştan bir kez daha yazmak yerine
 
+```bash
 % ^fual^faul^ % ^fual^faul^ % ^fual^faul^ % ^fual^faul^
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 128
 
@@ -997,29 +1116,39 @@ yazıp ENTER tuşuna basmanız yeterli olacaktır. (“Bir önceki komuttaki fua
 
 Son Komutu Tekrarlama Son Komutu Tekrarlama Son Komutu Tekrarlama Son Komutu Tekrarlama Diyelimki MS-DOS işletim sisteminden alışkanlıkla
 
+```bash
 % cp /home/hakman/.Xdesksetdefaults % cp /home/hakman/.Xdesksetdefaults % cp /home/hakman/.Xdesksetdefaults % cp /home/hakman/.Xdesksetdefaults
+```
 
 yazdınız. UNIX kurallarına göre kopyalamanın nereye yapılacağını da belirtmiş olmanız gerekirdi. csh csh csh csh kullanıyorsanız, böyle bir durumda, tüm komutu tekrarlamak yerine
 
+```bash
 % !! /home/ayfer % !! /home/ayfer % !! /home/ayfer % !! /home/ayfer
+```
 
 yazmanız yeterli olacaktır. Böylece; bir önceki komutunuz aynen tekrarlanacaktır; ancak sonuna /home/ayfer /home/ayfer /home/ayfer /home/ayfer eklenmiş olarak...
 
 Eski Bir Komutu Tekrarlama Eski Bir Komutu Tekrarlama Eski Bir Komutu Tekrarlama Eski Bir Komutu Tekrarlama Eğer history history history history isimli kabuk değişkeniniz tanımlıysa, bu değişkenin değeri kadar sayıda UNIX komutu kabuk tarafından bir ara bellekte saklanacaktır. Her hangi bir anda, eski komutlarınızı
 
+```bash
 % history % history % history % history
+```
 
 komutuyla listeyebilirsiniz.
 
+```bash
 % history history history history
 
 .....
 
 7 23:12 ls -l 8 23:13 cat /etc/printcap 9 23:13 cp /usr/bin/.... .....
+```
 
 Bu eski komutlardan birini tekrar çalıştırmak isterseniz, bir ünlem işaretinin ardından o komutun listedeki sıra numarasını girmeniz yeterli olacaktır.
 
+```bash
 % !8 % !8 % !8 % !8 8 numaralı komutu tekrarlama
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 129
 
@@ -1033,43 +1162,53 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 129
 
 Her hangi bir anda, ilk harfini (ya da birkaç harfini) hatırladığınız eski bir komutu tekrarlamak isterseniz
 
+```bash
 % !c % !c % !c % !c % !ca % !ca % !ca % !ca c c c c harfiyle başlayan son komutu tekrarla
+```
 
 ca ca ca ca harfleriyle başlayan son komutu tekrarla Kendi Gereksinimlerinize Göre Özel Komut Yaratma Kendi Gereksinimlerinize Göre Özel Komut Yaratma Kendi Gereksinimlerinize Göre Özel Komut Yaratma Kendi Gereksinimlerinize Göre Özel Komut Yaratma UNIX kullanıcılarının çok sık tekrarladıkları bazı uzun komutları, daha kısa ve kolay yazılan komutlarla değiştirmeleri mümkündür. Bu iş csh csh csh csh’in alias alias alias alias komutu ile yapılır.
 
 Örneğin, history history history history komutunu her seferinde uzun uzun yazmaktansa,
 
+```bash
 % alias h history % alias h history % alias h history % alias h history artık history history history history yerine h h h h
+```
 
 kullanabilirsiniz ls ls ls ls listelerinde isimlerin çalıştırılabilir program olup olmadığını \* \* \* \* işaretiyle, dizinlerinse / / / / işaretiyle belirlenmesi için kullanılan -F -F -F -F seçeneğinin standart hale getirilmesi için :
 
+```bash
 % alias ls "ls -F" % alias ls "ls -F" % alias ls "ls -F" % alias ls "ls -F" yeni tanımda birden fazla sözcük
+```
 
 olduğ u için tırnak kullanmak gerekir Eğer more more more more komutunu sık sık hatalı yazıyorsanız :
 
+```bash
 % alias mroe more % alias mroe more % alias mroe more % alias mroe more
+```
 
 MS-DOS alışkanlıklarınızdan vaz geçemiyorsanız :
 
+```bash
 % alias dir "ls -F" % alias dir "ls -F" % alias dir "ls -F" % alias dir "ls -F"
-
 % alias copy "cp -i" % alias copy "cp -i" % alias copy "cp -i" % alias copy "cp -i"
-
 % alias del "rm -i" % alias del "rm -i" % alias del "rm -i" % alias del "rm -i"
-
 % alias ren mv % alias ren mv % alias ren mv % alias ren mv
-
 % alia % alia % alia % alias edit vi s edit vi s edit vi s edit vi
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 130
 
 Herhangi bir anda geçerli olan alias alias alias alias’ları listelemek için
 
+```bash
 % alias % alias % alias % alias
+```
 
 Hazır işaretinizin her zaman çalışma dizininizi göstermesi için
 
-% alias cd ‘cd \\!\*;set prompt="\`hostname\`:$cwd> "‘ % alias cd ‘cd \\!\*;set prompt="\`hostname\`:$cwd> "‘ % alias cd ‘cd \\!\*;set prompt="\`hostname\`:$cwd> "‘ % alias cd ‘cd \\!\*;set prompt="\`hostname\`:$cwd> "‘
+```bash
+% alias cd ‘cd \!*;set prompt="`hostname`:$cwd> "‘ % alias cd ‘cd \!*;set prompt="`hostname`:$cwd> "‘ % alias cd ‘cd \!*;set prompt="`hostname`:$cwd> "‘ % alias cd ‘cd \!*;set prompt="`hostname`:$cwd> "‘
+```
 
 biraz çetrefilli ama çalı şır... Bana güvenin..
 
@@ -1083,7 +1222,9 @@ Programları Arka Planda Çalı ştırma
 
 Diyelim ki, çok büyük bir disk dosyasındaki (söz gelimi 42 Mbyte) müşteri kayıtlarını alfabetik sıraya dizmek istiyorsunuz. Bu iş için kullandığınız bilgisayar sisteminde yarım saat süreceğini varsayalım. Eğer tek iş düzeninde çalışan bir işletim sistemi kullanıyor olsaydınız (MS-DOS gibi), sıralama komutunu verdikten sonra ( sort sort sort sort ) yemeğe çıkabilir veya köpeğinizi dolaştırmaya götürebilirdiniz; çünkü sıralama bitinceye kadar bilgisayarınızdan bir başka amaçla yararlanmanız söz konusu olamazdı. Oysa, UNIX işletim sisteminde, sıralamayı arka planda arka planda arka planda arka planda bir iş olarak başlattıktan sonra, ön planda başka işler yapmanız mümkündür. Bunu yapabilmek için tek yapmanız gereken, arka planda yapılmasını istediğiniz işi başlatan komutun sonuna bir & & & & işareti eklemekten ibarettir.
 
+```bash
 % sort musteri-dosyasi & % sort musteri-dosyasi & % sort musteri-dosyasi & % sort musteri-dosyasi & &, &, &, &, i şi arka planda
+```
 
 yürütmek istediğ inizi belirtiyor Elbetteki her iş bu şekilde arka planda çalıştırılmaya uygun değildir. Örneğin, bir muhasebe fiş giriş programı gibi; kullanıcının sürekli olarak klavyeden bilgi girmesini gerektiren programlar arka planda çalıştırılsa bile, sürekli ilgi istedikleri için bu tip bir çalışma rahat olmaz. Oysa, yukarıdaki sıralama örneğimizde, sıralama süresince kullanıcıdan herhangi bir bilgi istenmeyecektir. Sıralama programı arka planda sessizce çalışıp işini bitirecektir.
 
@@ -1091,7 +1232,9 @@ Bazı programlar, kulanıcıdan bir bilgi istememekle birlikte, sürekli olarak 
 
 Örneğin, genellikle teybe yedekleme yapmak için kullanılan tar tar tar tar komutunu
 
+```bash
 % tar -cvf /dev/rst1 /home/ayfer & tar -cvf /dev/rst1 /home/ayfer & tar -cvf /dev/rst1 /home/ayfer & tar -cvf /dev/rst1 /home/ayfer &
+```
 
 şeklinde verirseniz (bu komutla ilgili detaylı bilgiyi daha ileride vereceğim; şimdilik komutun ne yaptığı ve parametrelerinin ne olduğu üzerinde durmayınız), program arka planda teybe yedekleme yapacaktır, ama bir
 
@@ -1101,7 +1244,9 @@ yandan da kopyalamayı tamamladığı bütün dosyaların isimlerini ekrana list
 
 Ancak aynı komutu
 
+```bash
 % tar -cvf /dev/rst1 /home/ayfer > tarmesajlari & % tar -cvf /dev/rst1 /home/ayfer > tarmesajlari & % tar -cvf /dev/rst1 /home/ayfer > tarmesajlari & % tar -cvf /dev/rst1 /home/ayfer > tarmesajlari &
+```
 
 şeklinde verirseniz ekrana gelmesi gereken tüm mesajlar, çalışma dizininizde tarmesajlari tarmesajlari tarmesajlari tarmesajlari isimli bir dosyaya yönlendirilmiş olur. İş bittikten sonra tarmesajlari tarmesajlari tarmesajlari tarmesajlari dosyasına bakarak teybe kopyalama işinin başarıyla bitip bitmediğini ve kopyalanan dosyaların listesini görebilirsiniz.
 
@@ -1127,7 +1272,9 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 132
 
 Bu noktada
 
+```bash
 % bg % bg % bg % bg Background
+```
 
 komutu verirseniz işniz arka planda çalışmaya devam edecektir. Ancak, o anda ekranda bir de \[1\] cp ... & \[1\] cp ... & \[1\] cp ... & \[1\] cp ... & mesajı görünecektir. Bu mesajın kısaca anlamı şudur :
 
@@ -1137,7 +1284,9 @@ Bu şekilde arka plana atılan i şler arasında sıra numarası 1 oldu.
 
 Bu işi tekrar ön plana almak isterseniz
 
+```bash
 % fg %1 % fg %1 % fg %1 % fg %1 Foreground
+```
 
 komutunu verebilirsiniz. (Eğer birden fazla arka plana atılmış işiniz varsa, % % % % işaretinden sonra o işin numarasını yazmayı unutmamalısınız.)
 
@@ -1145,13 +1294,17 @@ Arka planda çalışmak üzere başlatılacak; ya da sonradan arka plana atılac
 
 Bazan, arka planda başlattığınız ya da sonradan arka plana attığınız işlerin hesabını şaşırabilirsiniz. Böyle bir durumda
 
+```bash
 % jobs % jobs % jobs % jobs
+```
 
 komutunu verirseniz, arka plana atılmış işlerin bir listesini alırsınız.
 
 Benzeri bir listeyi
 
+```bash
 % ps % ps % ps % ps process status
+```
 
 komutuyla da alırsınız. Ancak ps ps ps ps komutunun görevleri biraz daha farklı olabilmektedir. ps ps ps ps komutu, parametresiz olarak verildiğinde, kullanıcı olarak sizinle ilgili olarak başlatılmış olan işlerin listesini verir. UNIX işletim sisteminde, siz tek bir iş yaparken (hatta hiç program çalıştırmazken bile) sizinle ilgili birkaç iş, UNIX kabuk kabuk kabuk kabuk programı tarafından çalıştırılmaktadır (bu arada kabuk programının kendisi de çalışmaya devam etmektedir.) Hele X Windows, Motif, OpenWindows gibi grafik kullanıcı arabirimleri (GUI :
 
@@ -1261,6 +1414,7 @@ BSD UNIX’de ps komutu kullanımına bir kaç örnek....
 
 BSD UNIX’de ps komutu kullanımına bir kaç örnek....
 
+```bash
 abc:/home/ayfer> ps abc:/home/ayfer> ps abc:/home/ayfer> ps abc:/home/ayfer> ps
 
 PID TT STAT TIME COMMAND
@@ -1269,15 +1423,18 @@ PID TT STAT TIME COMMAND
 
 PID TT STAT TIME COMMAND
 
-28731 a S 0:00 -tcsh (tcsh) 29010 a R 0:00 ps -x abc:/home/ayfer> ps -axl abc:/home/ayfer> ps -axl abc:/home/ayfer> ps -axl abc:/home/ayfer> ps -axl F UID PID PPID CP PRI NI SZ RSS WCHAN STAT TT TIME COMMAND 80003 0 0 0 0 -25 0 0 0 runout D ? 1:20 swapper 20088000 0 1 0 0 5 0 52 0 child IW ? 0:08 /sbin/init - 80003 0 2 0 0 -24 0 0 0 child D ? 0:04 pagedaemon 88000 0 58 1 0 1 0 68 0 select IW ? 0:58 portmap 88000 0 63 1 0 1 0 224 0 select IW ? 14:39 ypserv 88000 3 65 1 0 1 0 36 0 select IW ? 0:01 ypbind 88000 0 67 1 1 1 0 40 0 select IW ? 0:00 rpc.ypupdate 88000 0 69 1 0 1 0 40 0 select IW ? 0:00 keyserv 88001 0 114 1 0 1 0 40 64 select I ? 1:09 in.routed 88000 0 117 1 0 1 0 324 0 select IW ? 2:02 in.named 88001 0 120 1 0 1 0 16 0 nfs\_dnlc I ? 0:00 (biod) 88000 0 134 1 0 1 0 60 0 select IW ? 0:16 syslogd 88000 0 148 1 0 1 0 108 0 select IW ? 1:09 rpc.mountd - 88000 0 153 1 1 1 0 52 0 select IW ? 0:00 rpc.statd 88001 0 154 149 0 1 0 28 0 socket I ? 23:57 (nfsd) 88000 0 161 1 0 1 0 84 0 select IW ? 0:00 rpc.lockd 88000 0 167 1 0 1 0 80 0 select IW ? 0:06 /usr/etc/rpc 80201 0 182 1 0 15 0 12 4 kernelma S ? 109:22 update 488000 0 185 1 0 1 0 56 0 Heapbase IW ? 0:00 cron 88000 0 191 1 0 1 0 48 0 select IW ? 0:47 inetd 88000 0 194 1 0 1 0 52 0 select IW ? 0:00 /usr/lib/lpd 20488020 560 4969 1 0 1 0 132 0 socket IW ? 0:04 ncftp ramiga 88401 0 24725 167 0 25 0 0 0 Z ? 0:00 <defunct> 20088000 0 27454 1 0 3 0 40 0 Heapbase IW co 0:00 - cons8 cons 204882018700 28731 1 0 15 0 216 700 kernelma S a 0:00 -tcsh (tcsh) 200000018700 29007 28731 24 31 0 216 468 R a 0:00 ps -axl abc:/home/ayfer>
+28731 a S 0:00 -tcsh (tcsh) 29010 a R 0:00 ps -x abc:/home/ayfer> ps -axl abc:/home/ayfer> ps -axl abc:/home/ayfer> ps -axl abc:/home/ayfer> ps -axl F UID PID PPID CP PRI NI SZ RSS WCHAN STAT TT TIME COMMAND 80003 0 0 0 0 -25 0 0 0 runout D ? 1:20 swapper 20088000 0 1 0 0 5 0 52 0 child IW ? 0:08 /sbin/init - 80003 0 2 0 0 -24 0 0 0 child D ? 0:04 pagedaemon 88000 0 58 1 0 1 0 68 0 select IW ? 0:58 portmap 88000 0 63 1 0 1 0 224 0 select IW ? 14:39 ypserv 88000 3 65 1 0 1 0 36 0 select IW ? 0:01 ypbind 88000 0 67 1 1 1 0 40 0 select IW ? 0:00 rpc.ypupdate 88000 0 69 1 0 1 0 40 0 select IW ? 0:00 keyserv 88001 0 114 1 0 1 0 40 64 select I ? 1:09 in.routed 88000 0 117 1 0 1 0 324 0 select IW ? 2:02 in.named 88001 0 120 1 0 1 0 16 0 nfs_dnlc I ? 0:00 (biod) 88000 0 134 1 0 1 0 60 0 select IW ? 0:16 syslogd 88000 0 148 1 0 1 0 108 0 select IW ? 1:09 rpc.mountd - 88000 0 153 1 1 1 0 52 0 select IW ? 0:00 rpc.statd 88001 0 154 149 0 1 0 28 0 socket I ? 23:57 (nfsd) 88000 0 161 1 0 1 0 84 0 select IW ? 0:00 rpc.lockd 88000 0 167 1 0 1 0 80 0 select IW ? 0:06 /usr/etc/rpc 80201 0 182 1 0 15 0 12 4 kernelma S ? 109:22 update 488000 0 185 1 0 1 0 56 0 Heapbase IW ? 0:00 cron 88000 0 191 1 0 1 0 48 0 select IW ? 0:47 inetd 88000 0 194 1 0 1 0 52 0 select IW ? 0:00 /usr/lib/lpd 20488020 560 4969 1 0 1 0 132 0 socket IW ? 0:04 ncftp ramiga 88401 0 24725 167 0 25 0 0 0 Z ? 0:00 <defunct> 20088000 0 27454 1 0 3 0 40 0 Heapbase IW co 0:00 - cons8 cons 204882018700 28731 1 0 15 0 216 700 kernelma S a 0:00 -tcsh (tcsh) 200000018700 29007 28731 24 31 0 216 468 R a 0:00 ps -axl abc:/home/ayfer>
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 136
 
+```bash
 abc:/home/ayfer> ps -ax abc:/home/ayfer> ps -ax abc:/home/ayfer> ps -ax abc:/home/ayfer> ps -ax
 
 PID TT STAT TIME COMMAND
 
 0 ? D 1:20 swapper 1 ? IW 0:08 /sbin/init - 2 ? D 0:04 pagedaemon 58 ? IW 0:58 portmap 63 ? IW 14:39 ypserv 67 ? IW 0:00 rpc.ypupdated 69 ? IW 0:00 keyserv 114 ? I 1:09 in.routed 117 ? IW 2:02 in.named 120 ? I 0:00 (biod) 134 ? IW 0:16 syslogd 142 ? IW 0:05 /usr/lib/sendmail -bd -q1h 148 ? IW 1:09 rpc.mountd -n 149 ? I 24:20 (nfsd) ...
+```
 
 Meraklı olan okuyucular için yukarıdaki örneklerde adı geçen bazı süreçlerin açıklamalarını yapmak istiyorum. Ancak bunların sadece birer örnek olduğunu, gerçek süreç listelerinin daha uzun ve/veya daha farklı olacağını unutmamalısınız.
 
@@ -1309,13 +1466,17 @@ Eğer bir süreç (ya da program) çakılıp kaldıysa; ya da sizin istediğiniz
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 138
 
+```bash
 % kill nnn % kill nnn % kill nnn % kill nnn (kill process )
+```
 
 Bu komut, tanıtım numarası (PID PID PID PID) olan süreci öldürmek için kullanılır. Tek bir komutla birden fazla süreci beraber öldürebilirsiniz. kill 154 185 117 kill 154 185 117 kill 154 185 117 kill 154 185 117 gibi...
 
 Eğer öldürmek istediğiniz süreç ölmemek için direniyorsa,
 
+```bash
 % kill -9 nnn % kill -9 nnn % kill -9 nnn % kill -9 nnn şartsız öldürme
+```
 
 formunu deneyiniz. Eğer süreç gene ölmezse daha fazla uğraşmayınız. Bazı süreçler ölemezler. Bu tip süreçlere zombie zombie zombie zombie adı verilir. (Hoş... Değil mi ?)
 
@@ -1380,7 +1541,9 @@ hazırlıklı olmalısınız.
 
 hazırlıklı olmalısınız.
 
+```bash
 % nohup % nohup % nohup % nohup no hangup
+```
 
 Bir UNIX bilgisayarına ulaşmak için kullandığınız terminali ya da terminal gibi davranan bir PC’yi (Terminal Emulation yazılımı çalışan bir PC) kapatırsanız veya logout logout logout logout komutu ile sistem bağlantınızı keserseniz, o terminal bağlantısıyla ilgili tüm süreçler (hem ön, hem arka plandaki süreçler) UNIX tarafından öldürülür.
 
@@ -1390,11 +1553,15 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 140
 
 İşte böyle durumlarda nohup nohup nohup nohup komutu kullanılır. logout logout logout logout ettiğinizde kesilmesini istemediğiniz bir programı başlatırken kullanmanız gereken komut satırı
 
-% nohup komut \[varsa parametreleri\] & % nohup komut \[varsa parametreleri\] & % nohup komut \[varsa parametreleri\] & % nohup komut \[varsa parametreleri\] &
+```bash
+% nohup komut [varsa parametreleri] & % nohup komut [varsa parametreleri] & % nohup komut [varsa parametreleri] & % nohup komut [varsa parametreleri] &
+```
 
 olmalıdır.
 
+```bash
 % tcsh % tcsh % tcsh % tcsh t c-shell
+```
 
 tcsh tcsh tcsh tcsh, csh csh csh csh’e göre oldukça üstün özelllikleri olan bir kabuk programıdır; ancak, şimdilik hiç bir UNIX uyarlamasında standart olarak bulunmamaktadır. Sistem yöneticinize bir danışınız; eğer sisteminizde varsa, sizin için login login login login kabuğu olarak tcsh tcsh tcsh tcsh çalıştırılmasını sağlamasını isteyiniz. (Sistem yöneticileri; kola, kahve, piza gibi rüşvetleri kabul ederler. Para falan teklif etmeyiniz. Paranın ne olduğunu bilseler, UNIX sistem yöneticisi olmazlardı...) tcsh tcsh tcsh tcsh’in belki de en iyi iki özelliği, aynı MS-DOS’daki DOSKEY yardımıyla olduğu gibi, yukarı aşağı tuşlarla eski komutlar arasında dolaşmanızı sağlaması ve dosya adlarının tamamını yazmadan komut yazmanıza olanak sağlamasıdır. tcsh tcsh tcsh tcsh hakkında daha fazla reklama gerek yok. Sisteminizde varsa nasıl olsa öğrenirsiniz; yoksa, zaten özelliklerini öğrenip gıpta etmenin bir anlamı yok.
 

@@ -24,11 +24,15 @@ VB'de API'ler iki şekilde tanımlanabilir. Fonksiyon veya altprogram olarak. Fo
 
 Alt program olarak API tanımı:
 
-Private/Public Declare Sub isim Lib "libname" \[(\[parametreler\])\]
+```vbnet
+Private/Public Declare Sub isim Lib "libname" [([parametreler])]
+```
 
 Fonksiyon program olarak API tanımı:
 
-Private/Public Declare Function isim Lib libname \[(\[parametreler\])\] \[As tip\]
+```vbnet
+Private/Public Declare Function isim Lib libname [([parametreler])] [As tip]
+```
 
 Burada isim fonksiyonun ismidir ve programda API bu isimle çağrılır. Libname kullanılan kütüphanenin ismi, parametreler; fonksiyona giren parametreler, As tip; fonksiyondan dönen değerin tipidir.
 
@@ -36,7 +40,9 @@ API'nin tanımlanacağı yer formun veya modülün General-Declerations kısmıd
 
 API'yi doğru olarak tanımladığınız halde VB, ilgili dosyada böyle bir API bulunmadığını söylüyorsa veya API ile aynı isme sahip bir VB komutu var ise bu durumda Alias isimleri kullanmanız gerekir.
 
-Private/Public Declare Function/Sub isim Lib libname Alias "isim" \[(\[parametreler\])\] \[As tip\]
+```vbnet
+Private/Public Declare Function/Sub isim Lib libname Alias "isim" [([parametreler])] [As tip]
+```
 
 API'yi doğru olarak tanımladığınız halde VB, ilgili dosyada böyle bir API bulunmadığını söylüyorsa API isminin sonuna A ekleyerek Alias ismi olarak vermeniz gerekir. Bunun sebebi Windows işletim sisitemi farklı dilleri desteklemektedir. ANSI karakter setini destekleyen ülkler için sonuna A harfi, UniCode veya iki karekter genişliğini kullanan ülke seti için ise sonuna W harfi eklemeniz gerekir.
 

@@ -136,47 +136,38 @@ Dinamik programlama
 
 Statik programlamada veriler programların başlangıcında sayıları ve boyutları genelde önceden belli olan unsurlardır örneğin:
 
-*VAR*
-
-* x: integer*
-
-* y: real*
-
-*Begin*
-
-* X := 3;*
-
-* Y := 3.141 ;*
-
-*End.*
+```pascal
+VAR
+ x: integer
+ y: real
+Begin
+ X := 3;
+ Y := 3.141 ;
+End.
+```
 
 Şeklinde tanımladığımız iki veri için Pascal derleyicisi programın başlangıcından sonuna kadar tutulmak kaydı ile bilgisayar belleğinden sözkonusu verilerin boyutlarına uygun bellek yeri ayırır. Bu bellek yerleri programın yürütülmesi esnasında küçük program örneğinde de görüldüğü gibi her seferinde x ve y değerlerinde yapılacak olan değişiklikleri kaydederek içinde tutar. Bu bellek yerleri program boyunca statik’tir. Başka bir deyişle programın sonuna kadar bu iki veri için tahsis edilmişlerdir ve başka bir işlem için kullanılamazlar.
 
 Dinamik programlama esas olarak yukarıdaki çalışma mekanizmasından oldukça farklı bir durum arz eder. Yine Pascal programlama dilinden bir örnek verecek olursak:
 
-*VAR*
-
-* IntPointer : ^ Integer ;*
-
-* StringPointer : ^String ;*
-
-*Begin*
-
-* New(IntPointer) ;*
-
-* New(StringPointer) ;*
-
-* .*
-
-* .*
-
-*end.*
+```pascal
+VAR
+ IntPointer : ^ Integer ;
+ StringPointer : ^String ;
+Begin
+ New(IntPointer) ;
+ New(StringPointer) ;
+ .
+ .
+end.
+```
 
 Yukarıdaki küçük programda tanımlanan *IntPointer ve StringPointer* işaretçi değişkenleri için New procedure‘ü çağrıldığı zaman *IntPointer* için 2 Byte’lık ve *StringPointer * için 256 byte ‘lık bir bellek alanını Heap adını verdiğimiz bir nevi serbest kullanılabilir ve programların dinamik kullanımı için tahsis edilmiş olan bellek alanından ayırır. Programdan da anlaşılabileceği üzere bu değişkenler için başlangıçta herhangi bir bellek yeri ayrılması söz konusu değildir. Bu komutlar bir öngü içerisine yerleştirildiği zaman her seferinde söz konusu alan kadar bir bellek alanını heap’den alırlar. Dolayısıyla bir programın heap alanından başlangıçta ne kadar bellek isteminde bulunacağı belli değildir. Dolayısı ile programın yürütülmesi esnasında bellekten yer alınması ve geri iade edilmesi söz konusu olduğundan buradaki işlemler dinamik yer ayrılması olarak adlandırılır. Kullanılması sona eren bellek yerleri ise:
 
-* Dispose(IntPointer) ;*
-
-* Dispose(StringPointer) ;*
+```pascal
+ Dispose(IntPointer) ;
+ Dispose(StringPointer) ;
+```
 
 Komutları ile iade edilir. Söz konusu değişkenler ile işimiz bittiği zaman mutlaka Dispose procedure’ü ile bunları Heap alanına geri iade etmemiz gerekir. Çünkü belli bir süre sonunda sınırlı heap bellek alanının tükenmesi ile, program *“out of memory” *veya* “out of heap”* türünden bir hata verebilir.
 
@@ -222,31 +213,21 @@ Diyelim ki A, B, C, D gibi bir bloğa ihtiyacımız oldu. Pascal’da uygun komu
 
 ***Unit Node\_uz***
 
-Unit Node\_uz;
-
+```pascal
+Unit Node_uz;
 Interface
-
 Const
-
 Memory = 10;
-
 Nil = 0;
-
 Var
-
 Avail: integer;
-
-Node: array\[1..memory\] of record
-
+Node: array[1..memory] of record
 Data: real;
-
 Link: integer;
-
 End;
-
 Implementation
-
 End.
+```
 
 Bu altyordamda 10 adet node alanı ayırıyoruz. Avail node uzayında boş kullanılabilir alanları gösterir. Unit Node\_uz unitinde avail’i integer, node’u ise record tipli dizi değişken olarak tanımlıyoruz. Node uzayımız 10 adet hafıza alanından oluştuğundan dolayı sabit tanımlama bloğunda memory’yi 10 eşitledik. Eğer daha büyük hafıza alanı gerekirse sabit tanımlama bloğunda memory’nin değerini arttırabiliriz. Link dediğimiz kısım, bir sonraki node’u gösteren pointer’dır. Integer tipi olması yeterlidir. Data kısmını ise real tipinde bilgi saklayacağımızdan dolayı real olarak tanımladık.
 
@@ -256,51 +237,31 @@ Bu tanımlamalardan sonra Şekil’deki gibi bir Node Uzayı’na sahip oluruz.
 
 ***Unit AltYor0***
 
+```pascal
 Unit AltYor0;
-
-interface (\*\*)
-
+interface (**)
 procedure dumpmem;
-
 procedure nodeinit;
-
-implementation (\*\*)
-
-uses Node\_uz;
-
+implementation (**)
+uses Node_uz;
 procedure dumpmem;
-
 var
-
 i:integer;
-
 begin
-
 for i:=1 to memory do
-
-writeln ('Node\[',i:3,'\]=',node\[i\].data,',',node\[i\].link);
-
+writeln ('Node[',i:3,']=',node[i].data,',',node[i].link);
 end;
-
 procedure nodeinit;
-
 var
-
 i:integer;
-
 begin
-
 Avail:=1;
-
 for i:=1 to memory-1 do
-
-node\[i\].link:=i+1;
-
-node\[memory\].link:=nill;
-
+node[i].link:=i+1;
+node[memory].link:=nill;
 end;
-
 end.
+```
 
 Fonksiyonlardaki değişkenlerin ömrü fonksiyon sonuna kadar geçerlidir. Fonksiyon bitince hafızada yer kaplamaz. Avail; kullanılmayan node’ları gösterir. Fonksiyon başına VAR yazılmazsa program boyunca yapılan değişiklikler List dizisini etkilemez. Dinamik değişkenler de yer sadece gerektiğinde istenir.
 
@@ -324,97 +285,54 @@ Bu procedure çalıştıktan sonra node uzayımız aşağıdaki şekil gibi olur
 
 Aşağıda yazılan unit ve ilk tanımlanan fonksiyon olan newnode fonksiyonu ile kullanılmak üzere node uzayından bir node koparılır, koparılan bu node avail olarak tanımlıdır kullanılmak için hazır beklemektedir, koparılan bu yeni node’dan sonra node uzayındaki avail diğer hazır bekleyen node’a eşitlenir.
 
+```pascal
 unit AltYor1;
-
-interface(\*\*)
-
+interface(**)
 function newnode:integer;
-
 function cuthead(var list:integer):integer;
-
 function last(list:integer):integer;
-
 procedure concatenate (var L1:integer; L2:integer);
-
 procedure free(list:integer);
-
-implementation(\*\*)
-
-uses node\_uz, altyor0;
-
+implementation(**)
+uses node_uz, altyor0;
 function newnode :integer ;
-
 var
-
 new:integer;
-
 begin
-
 new:=cuthead(avail);
-
 if new=nill
-
 then begin
-
 writeln('nodespace full...') ;
-
 halt;
-
 end;
-
 {else}
-
 newnode:=new;
-
 end;
-
 function cuthead(var list:integer):integer;
-
 begin
-
 cuthead:=list;
-
 if list< >nill then
-
-list:=node\[list\].link;
-
+list:=node[list].link;
 end;
-
-function last({the value of}list:integer):integer;(\*\*\*\*)
-
+function last({the value of}list:integer):integer;(****)
 begin
-
 if list< >nill then
-
-while node\[list\].link< >nill do
-
-list:=node\[list\].link;
-
+while node[list].link< >nill do
+list:=node[list].link;
 last:=list;
-
 end;
-
 procedure concatenate(var L1:integer;L2:integer);
-
 begin
-
 if L1=nill then L1:=L2
-
-else node\[Last(L1)\].Link:=L2;
-
+else node[Last(L1)].Link:=L2;
 end;
-
 procedure free(list:integer);
-
 begin
-
 concatenate(list,Avail);
-
 Avail:=list;
-
 end;
-
 end.
+```
 
 ***function newnode :*** Bellekten gerekli yeri (belli bir değişken için ) almak için kullanılır. Bu fonksiyonla node uzayından kullanılmak üzere bir tane node koparılır. Koparılan bu node, node uzayında kullanılmak üzere hazır bekleyen node’dur. Yani avail’dir. Kullanılmak için kullanılan bu yeni node ‘dan sonra node uzayındaki avail diğer hazır bekleyen node’ye eşitlenir.
 
@@ -442,95 +360,53 @@ Concatenate fonksiyonu ile işi biten list dizisini avail dizisinin başına ekl
 
 ***Unit AltYor2*********
 
+```pascal
 Unit AltYor2;
-
-interface(\*\*)
-
-procedure addhead(node\_:integer; var list:integer);
-
-function cons(data\_:real;link\_:integer):integer;
-
+interface(**)
+procedure addhead(node_:integer; var list:integer);
+function cons(data_:real;link_:integer):integer;
 function copy(list:integer):integer;
-
-function locate(data\_,list:integer):integer;
-
-implementation (\*\*)
-
-uses node\_uz,altyor0,altyor1;
-
-procedure addhead(node\_:integer; var list:integer);
-
+function locate(data_,list:integer):integer;
+implementation (**)
+uses node_uz,altyor0,altyor1;
+procedure addhead(node_:integer; var list:integer);
 begin
-
-node\[node\_\].link:=list;
-
-list:=node\_;
-
+node[node_].link:=list;
+list:=node_;
 end;
-
-function cons (data\_: real; link\_: integer): integer;
-
+function cons (data_: real; link_: integer): integer;
 var
-
-cons\_:integer;
-
+cons_:integer;
 begin
-
-cons\_:newnode;
-
-cons:=cons\_;
-
-node\[cons\_\].data:=data\_;
-
-node\[cons\_\].link:=link\_;
-
+cons_:newnode;
+cons:=cons_;
+node[cons_].data:=data_;
+node[cons_].link:=link_;
 end;
-
 function copy(list:integer):integer;
-
 var
-
 suret:integer;
-
 begin
-
 suret :=nill;
-
 if list< >nill
-
 then repeat
-
-concatenate(suret,cons(node\[list\].data,nill));
-
-list:=node\[list\].link;
-
+concatenate(suret,cons(node[list].data,nill));
+list:=node[list].link;
 until list=nill;
-
 copy:=suret;
-
 end;
-
-function locate(data\_:real;list:integer):integer;
-
+function locate(data_:real;list:integer):integer;
 begin
-
 locate:=nill;
-
 while list<>nill do
-
-if node\[list\].data<>data\_
-
-then list:=node\[list\].link
-
+if node[list].data<>data_
+then list:=node[list].link
 else begin
-
 locate:=list; exit;
-
 end
-
 end
-
 end.
+```
 
 ***procedure addhead****** :***** **Herhangi bir dizinin başına bir node ekler. List dizisi işlem sonunda değişeceğinden var olarak tanımlanmıştır.
 
@@ -548,101 +424,56 @@ Data\_’u datalarla karşılaştırıp aynı olanı ararız. En başta “locat
 
 ***Unit AltYor3*********
 
+```pascal
 unit altyor3;
-
-interface(\*\*)
-
-function member(node\_,list:integer):boolean;
-
+interface(**)
+function member(node_,list:integer):boolean;
 function advance(var point:integer):boolean;
-
-function delete(node\_:integer; var list:integer):boolean;
-
-implementation(\*\*)
-
-uses node\_uz,altyor0,altyor1,altyor2;
-
-function member(node\_,list:integer):boolean;
-
+function delete(node_:integer; var list:integer):boolean;
+implementation(**)
+uses node_uz,altyor0,altyor1,altyor2;
+function member(node_,list:integer):boolean;
 begin
-
-while (list <> nill) and (list<>node\_) do
-
-list:=node\[list\].link;
-
-member:=(node\_=list);
-
+while (list <> nill) and (list<>node_) do
+list:=node[list].link;
+member:=(node_=list);
 end;
-
 function advance(var point:integer):boolean;
-
 begin
-
 advance:=false;
-
 if point<>nill
-
-then if node\[point\].link<>nill
-
+then if node[point].link<>nill
 then
-
 begin
-
-point:=node\[point\].link
-
+point:=node[point].link
 advance:
-
 end;
-
 end;
-
-function delete(node\_:integer;var list:integer):boolean;
-
+function delete(node_:integer;var list:integer):boolean;
 var
-
 point:integer;
-
 begin
-
 delete:=false;
-
 if list=nill then exit;
-
-if list=node\_
-
+if list=node_
 then begin
-
 addhead(cuthead(list),avail);
-
 delete:=true;
-
 end;
-
 else begin
-
 point:=list;
-
 repeat
-
-if node\[point\].link=node\_ then
-
+if node[point].link=node_ then
 begin
-
-addhead(cuthead(node\[point\].link),avail);
-
+addhead(cuthead(node[point].link),avail);
 delete:=true;
-
 exit;
-
 end;
-
 until not advance(point);
-
 end;
-
 end;
-
 end.
+```
 
 ***function member : ***Verilen node bu listede var mı yok mu? Kontrol eden function’dır. list dizinin başını gösteren elemandır.
 
@@ -674,35 +505,23 @@ Eğer eleman dizinin herhangi bir yerindeyse, önce arama işlemini yapıyoruz. 
 
 Yukarıda tanımlanan tüm procedure ve function’lar aşağıdaki gibi bir programda kullanılabilir. Programun uses kısmına daha önceden yazdığımız procedure ve function’ların bulunduğu unit isimlerini ekliyoruz.
 
+```pascal
 program nodeini;
-
 uses
-
-node\_uz,altyor0,altyor1,altyor2,altyor3;
-
+node_uz,altyor0,altyor1,altyor2,altyor3;
 var
-
 i,new:integer;
-
 begin
-
 nodeinit; i:=5;
-
 writeln('delete:',delete(i,avail));
-
 writeln('av=',avail);
-
 writeln('lastav',last(avail));
-
 writeln('cuth=',cuthead(avail));
-
 new:=newnode;
-
 writeln('new=',new,'cut..',cuthead(avail),'ava=',avail);
-
 dumpmem;
-
 end.
+```
 
 Yukarıdaki program çalıştırılırsa aşağıdaki çıktı elde edilir.
 
@@ -746,483 +565,313 @@ Tek bağlı dairesel listelerde nodeinit, cuthead, last, concatenate, free, addh
 
 Bu procedure burada bir bağlı dairesel listelerin node’larını başlangıç durumuna getirir.
 
+```pascal
 Procedure nodeinit;
-
 var
-
 i:integer;
-
 begin
-
 Avail:=1;
-
 for i:=1 to memory do
-
-node\[i\].link:=i+1;
-
-node\[memory\].link:=avail;
-
+node[i].link:=i+1;
+node[memory].link:=avail;
 end;
+```
 
 ***Function cuthead***
 
 Tek bağlı dairesel listelerde node uzayından ilk node’u koparma.
 
+```pascal
 Function cuthead(var list:integer):integer;
-
 var
-
 Pointx:integer;
-
 Begin
-
 Cuthead:=list;
-
 if list<>nill then
-
-if node\[list\].link=list
-
+if node[list].link=list
 then list:=nill
-
 else begin
-
-pointx:=node\[list\].link
-
-node\[last(list)\].link:=pointx;
-
+pointx:=node[list].link
+node[last(list)].link:=pointx;
 list:=pointx;
-
 end;
-
 end;
+```
 
 ***Function last***
 
 Tek bağlı dairesel listelerde son node’u bulma.
 
+```pascal
 Function last(list: integer): integer;
-
 Var
-
 Point:integer;
-
 Begin
-
 Point:=list;
-
 If point<> nill then
-
-While node\[list\].link<>list do
-
-Point:= node\[point\].link;
-
+While node[list].link<>list do
+Point:= node[point].link;
 Last:=point;
-
 End;
+```
 
 ***Procedure concatenate***
 
 Tek bağlı dairesel listelerde iki diziyi birleştirme. Bu Procedure’ün kullanımında önemli olan doğru işlem sırasını takip etmektir eğer öncelikli yapılması gereken bağlantılar sonraya bırakılırsa son node’un bulunmasında sorunlar çıkacaktır.
 
+```pascal
 Procedure concatenate(var L1:integer;L2:integer);
-
 Begin
-
 if L1=nill then L1:=L2
-
 else
-
 begin
-
-node \[last(L1)\].Link:=L2;
-
-node \[last(L2)\].Link:=L1;
-
+node [last(L1)].Link:=L2;
+node [last(L2)].Link:=L1;
 End;
-
 End;
+```
 
 ***Procedure addhead***
 
 Tek bağlı dairesel listelerde node ekleme.
 
-Procedure addhead(node\_: integer; var list: integer);
-
+```pascal
+Procedure addhead(node_: integer; var list: integer);
 Begin
-
 If list<>nill Then
-
 Begin
-
-Node\[node\_\].link:= list;
-
-List:=node\_;
-
-Node\[last(list)\].link:=node\_;
-
+Node[node_].link:= list;
+List:=node_;
+Node[last(list)].link:=node_;
 End;
-
 Else
-
 Begin
-
-List:=node\_;
-
-Node\[node\_\].link:=list;
-
+List:=node_;
+Node[node_].link:=list;
 End;
-
 End;
+```
 
 ***Function copy*********
 
 Tek bağlı dairesel listelerde bir dizinin kopyasını elde etme. Copy procedure’ünde cons fonksiyonu yardımıyla avail dizisinden yeni node’lar koparılarak eldeki dizinin node değerleri bu yeni node’lara eşitlenir ve eldeki dizinin kopyası çıkarılmış olur.
 
+```pascal
 Function copy(list: integer): integer;
-
 Var
-
 Suret,point,x: integer;
-
 Begin
-
 Suret:= nill; point:=list;
-
 if list<>nill Then
-
 Repeat
-
-X:=cons(node\[point\].data,node\[point\].link);
-
-Node\[x\].link:=x;
-
+X:=cons(node[point].data,node[point].link);
+Node[x].link:=x;
 Concatenate(suret,x);
-
-Point:=node\[point\].link;
-
+Point:=node[point].link;
 Until List= nill;
-
 Copy:= suret;
-
 End;
+```
 
 ***Function Locate***
 
 Tek bağlı dairesel listelerde bir node’un yerini bulma. Bu function ile bir node’un yeri bulunup data’sına bakılır.
 
-Function locate(data\_:real, list\_: integer): integer;
-
+```pascal
+Function locate(data_:real, list_: integer): integer;
 Var
-
 Point:integer;
-
 Begin
-
 Locate:= nill;
-
-Point:=list\_;
-
+Point:=list_;
 If point<>nill Then
-
 Repeat
-
-If node\[point\].data<>data\_ Then
-
-Point:=node\[point\].link;
-
+If node[point].data<>data_ Then
+Point:=node[point].link;
 Else
-
 Begin
-
 Locate:=Locate+1;
-
 End;
-
 Until point=list;
-
 End;
+```
 
 ***Function member***
 
 Tek bağlı dairesel listelerde bir node’u arama.
 
-Function member(node\_, list: integer): boolean;
-
+```pascal
+Function member(node_, list: integer): boolean;
 Var
-
 Point:integer;
-
 Begin
-
 Point:=list;
-
 If point<> nill Then
-
 Repeat
-
-If point<>node\_ Then
-
-Point:= node\[point\].link;
-
+If point<>node_ Then
+Point:= node[point].link;
 Until point=list;
-
-Member:= node\_=list;
-
+Member:= node_=list;
 End;
+```
 
 ***Function Advance***
 
 Tek bağlı dairesel listelerde bir node kadar ilerleme.
 
+```pascal
 Function advance(var point: integer,list:integer): boolean;
-
 Begin
-
 Advance:= false;
-
 If point <> nill Then
-
-If node\[point\].link <> nill Then
-
+If node[point].link <> nill Then
 Begin
-
-Point:= node\[point\].link;
-
+Point:= node[point].link;
 Advance:= true;
-
 End;
-
 End;
+```
 
 ***Function delete***
 
 Tek bağlı dairesel listelerde bir node’un silinmesi.
 
-Function delete(node\_: integer; var list: integer): boolean;
-
+```pascal
+Function delete(node_: integer; var list: integer): boolean;
 Var
-
 Point: integer;
-
 Begin
-
 Delete:= false;
-
 If list= nill Then exit;
-
-If list= node\_ Then
-
+If list= node_ Then
 Begin
-
 Addhead(cuthead(list), avail);
-
 Delete:= true;
-
 End;
-
 Else
-
 Begin
-
 Point:= list;
-
 Repeat
-
-If node\[point\].link= node\_ Then
-
+If node[point].link= node_ Then
 Begin
-
-Addhead(cuthead(node\[point\].link), avail);
-
+Addhead(cuthead(node[point].link), avail);
 Delete:= true;
-
 Exit;
-
 End;
-
 Until not advance(point,list);
-
 End;
-
 End;
+```
 
 Else’den itibaren yazılabilecek alternatif program.
 
+```pascal
 Else
-
 Begin
-
 Point:= list;
-
-While node\[point\].link<>list do
-
+While node[point].link<>list do
 Begin
-
-If node\[point\].link= node\_ Then
-
+If node[point].link= node_ Then
 Begin
-
-Addhead(cuthead(node\[point\].link), avail);
-
+Addhead(cuthead(node[point].link), avail);
 Delete:= true;
-
 Exit;
-
 End;
-
-Else point:=node\[point\].link
-
+Else point:=node[point].link
 End;
-
 End;
+```
 
 ## **ALIŞTIRMA SORULARI**
 
 **Soru-1:** Bir bağlı doğrusal listeler de function locate (data\_: real; list, n: integer):integer; şeklinde yeniden öyle yazınız ki locate’in değeri “data\_”nın n. rastladığı node olsun. Eğer verideğeri data\_ n. defada bulunamazsa değeri nill olsun.
 
-Function locate(data\_:real;list,node):integer;
-
+```pascal
+Function locate(data_:real;list,node):integer;
 Var
-
 a:integer;
-
 Begin
-
 a:=0;
-
 locate:=nill;
-
 while list<>nill do
-
-if node\[list\].data<>data\_
-
-then list:=node\[list\].link
-
+if node[list].data<>data_
+then list:=node[list].link
 else begin
-
 a:=a+1;
-
 if a=node then begin
-
 locate:=list;
-
 exit;
-
 end;
-
-list:=node\[list\].link;
-
+list:=node[list].link;
 end;
-
 end;
+```
 
 **Soru-2:** Soru1’i iki bağlı listeler için tekrar çözünüz.
 
-Function locate(data\_real;list,node:integer):integer;
-
+```pascal
+Function locate(data_real;list,node:integer):integer;
 Var
-
-a,point\_:integer;
-
+a,point_:integer;
 Begin
-
 a:=0;
-
 locate:=nill;
-
-point\_:=list;
-
-if point\_<>nill then
-
+point_:=list;
+if point_<>nill then
 repeat
-
-if node\[point\_\].data<>data\_
-
+if node[point_].data<>data_
 then
-
-point\_:=node\[point\_\].link
-
+point_:=node[point_].link
 else begin
-
 a:=a+1;
-
 if a=n then begin
-
-locate :=point\_;
-
+locate :=point_;
 exit;
-
 end;
-
-until point\_=list;
-
+until point_=list;
 end;
+```
 
 **Soru-3:** Bir bağlı doğrusal dizide n kadar hücrenin kopyalanmasını sağlayınız.
 
+```pascal
 Function copy(list,n:integer):integer;
-
 Var
-
 Pointy,suret,addhead:integer;
-
 Begin
-
 a:=0;
-
 suret:=nill;
-
 if list<>nill then
-
 repeat
-
 a:=a+1;
-
 if a<=n then
-
-concetanete(suret,cons(node\[list\].data,nill));
-
-list:=node\[list\].link;
-
+concetanete(suret,cons(node[list].data,nill));
+list:=node[list].link;
 until list=nill;
-
 copy:=suret;
-
 end;
+```
 
 **Soru-4: **Soru3’ü bir bağlı dairesel için tekrar çözünüz.
 
+```pascal
 Function copy(list,node:integer):integer;
-
 Var
-
 Pointy,suret,a:integer;
-
 Begin
-
 a:=0;
-
 suret:=nill;
-
 pointy:=list;
-
 if pointy<>nill then
-
 repeat
-
 a:=a+1;
-
 if a<=node then
-
-concatenate(suret,cons(node\[pointy\].data,node\[pointy\].link));
-
-pointy:=node\[pointy\].link;
-
+concatenate(suret,cons(node[pointy].data,node[pointy].link));
+pointy:=node[pointy].link;
 until pointy=list;
-
 copy:=suret;
-
 end;
+```
 
 ## **2.3 İKİ BAĞLI DOĞRUSAL LİSTELER**
 
@@ -1236,157 +885,109 @@ blink bir önceki node’u gösterir (backward link).
 
 Burada aynı tek bağlı listelerde kullandığımız node\_uz unitine benzer şekilde bir unit kullanıyoruz. Fakat burada bir tane sonraki node’u gösterecek, bir tane de önceki node’u gösterecek linkleri tanımlıyoruz. Bunların integer tipinde olması yeterlidir. Çünkü node uzayımız yine 10 adet node’dan oluşmaktadır.
 
-Unıt node\_uz;
-
-Interface (\*\*)
-
+```pascal
+Unıt node_uz;
+Interface (**)
 Cons
-
 Memory=10;
-
 Nill=0;
-
 Var
-
 Avail: integer;
-
-Node: array\[1...memory\] of record
-
+Node: array[1...memory] of record
 Data:real;
-
 Blink:integer;
-
 Flink:integer;
-
 End;
-
-Implementation (\*\*)
-
+Implementation (**)
 End.
+```
 
 ***Procedure dumpmem *********
 
 Node uzayımızın tüm data ve link’lerini ekrana basarak node uzayında ne olduğunu gösterir
 
+```pascal
 Procedure dumpmem;
-
 Var
-
 i: integer;
-
 Begin
-
 For i:= 1 to memory do
-
-Writeln(‘node\[‘,1:3,’\]=’,node\[i\].data ’ , ’ node\[i\].flink’, ’ node\[i\].blink’);
-
+Writeln(‘node[‘,1:3,’]=’,node[i].data ’ , ’ node[i].flink’, ’ node[i].blink’);
 End;
+```
 
 ***Procedure nodeinit***
 
 Bu procedure linklerin birbirine bağlanmasını Şekil 1.5’deki gibi bir node uzayının oluşmasını sağlar. Burada her flink bir sonraki node’u gösterecek şekilde tanımlanıyor (node\[i\].flink :=i+1). Ayrıca her blink bir önceki node’u göstereceğinden node\[i\].blink :=i-1 şeklinde bir tanımlama getiriliyor. İki bağlı doğrusal dizi kullanacağımızdan dolayı en son node’un linkini nill’e eşitledik (node.\[memory\].flink :=nill). Ayrıca node\[avail\].blink :=nill diyerek
 
+```pascal
 Procedure nodeinit;
-
 Var
-
 i: integer;
-
 Begin
-
 Avail:= 1;
-
 For i:= 1 to memory-1 do
-
-Node\[i\]. flink:= i+1;
-
-Node\[memory\]. flink:=nill;
-
-Node\[1\].blink:=nill;
-
+Node[i]. flink:= i+1;
+Node[memory]. flink:=nill;
+Node[1].blink:=nill;
 For i:=memory down to 2 do
-
-Node\[i\].blink:=i-1;
-
+Node[i].blink:=i-1;
 End;
+```
 
 ***Function newnode***
 
 Newnode fonksiyonunda linklerle ilgili bir işlem yapmadığımızdan dolayı tek bağlı listelerdeki fonksiyondan farklı olarak bir şey yapmıyoruz.
 
+```pascal
 Function newnode: integer;
-
 Var
-
 New: integer;
-
 Begin
-
 New:= cuthead(avail);
-
 If new= Nill Then
-
 Begin
-
 Writeln(‘nodeSpace Full...’);
-
 Halt;
-
 End;
-
 {Else}
-
 Newnode:= new;
-
 End;
+```
 
 ***Function cuthead***
 
 Listenin ilk node’unu koparıyor.
 
+```pascal
 Function cuthead(var list: integer): integer;
-
 Begin
-
 Cuthead:= list;
-
 If list <> nill then
-
-If node\[list\]. flink<>nill Then
-
+If node[list]. flink<>nill Then
 Begin
-
-Node\[node\[list\].flink\].blink:=nill;
-
-List:= node\[list\].link;
-
+Node[node[list].flink].blink:=nill;
+List:= node[list].link;
 End;
-
 End;
+```
 
 ***Function last***
 
 last fonksiyonu bize listemizdeki en son node’u veriyordu. O halde bu fonksiyonumuzda bir değişiklik yapmamız gerekecek. Link yerlerine flink yazarak bu değişikliği gerçekleştiriyoruz. En sonda da last :=list diyerek fonksiyonumuzun dönüşte bize list’i göndermesini sağlıyoruz.
 
+```pascal
 Function last (list: integer): integer;
-
 Begin
-
 If list<> nill Then
-
-If node\[list\]. flink<>nill Then
-
-While node\[list\].flink<>nill do
-
+If node[list]. flink<>nill Then
+While node[list].flink<>nill do
 Begin
-
-List:= node\[list\].flink;
-
+List:= node[list].flink;
 End;
-
 Last:=list;
-
 End;
+```
 
 ***Procedure concatenate***
 
@@ -1394,769 +995,517 @@ Diyelim ki elimizde iki bağlı L1 ve L2 listeleri var. Bunları birleştirmek i
 
 Örneğin L2’yi L1’in arkasına ekliyoruz, eğer L1 boşsa. L1 dolu ise, L1’in en son node’unu buluyoruz. Daha sonra L1’in last’ı L2 olsun diyoruz. Tek bağlı diziden farklı olarak node\[L2\].blink :=list(L1) diyerek
 
+```pascal
 Procedure concatenate(var L1: integer; L2: integer);
-
 Begin
-
 If L2<>nill Then
-
 If L1=nill Then L1:=L2;
-
 Else
-
 Begin
-
-Node\[L2\]. Blink:=last\[L1\];
-
-Node\[last(L1)\]. Flink:=L2;
-
+Node[L2]. Blink:=last[L1];
+Node[last(L1)]. Flink:=L2;
 End;
-
 End;
+```
 
 ***Procedure free***
 
 Free fonksiyonunu kullanmadığımız diziyi avail dizisine eklemek için kullanıyoruz. Bu fonksiyon tek bağlı dizi yapısındaki free procedure’ü ile aynı yapıdadır.
 
+```pascal
 Procedure free(list: integer);
-
 Begin
-
 Concatenate(list,avail);
-
 Avail:= list;
-
 End;
+```
 
 ***Procedure addhead***
 
 İki bağlı doğrusal listelerde diziye istenen node’un eklenmesini sağlayan program.
 
-Procedure addhead(node\_: integer; var list: integer);
-
+```pascal
+Procedure addhead(node_: integer; var list: integer);
 Begin
-
 If list=nill Then
-
 Begin
-
-Node\[node\_\].flink:= nill;
-
-Node\[node\_\].blink:=nill;
-
+Node[node_].flink:= nill;
+Node[node_].blink:=nill;
 End;
-
 Else
-
 Begin
-
-Node\[list\].blink:=node\_;
-
-Node\[node\_\].flink:=list;
-
-Node\[node\_\].blink:=nill;
-
+Node[list].blink:=node_;
+Node[node_].flink:=list;
+Node[node_].blink:=nill;
 End;
-
-List:=node\_;
-
+List:=node_;
 End;
+```
 
 ***Function cons***
 
 Newnode ile yeni bir node alınıp cons’a gönderilen data ve link değerleri bu node’a aktarılıyor.
 
-Function cons (data\_:real; flink\_.blink\_:integer):integer;
-
+```pascal
+Function cons (data_:real; flink_.blink_:integer):integer;
 Var
-
-Cons\_: integer;
-
+Cons_: integer;
 Begin
-
-Cons\_:newnode;
-
-Cons: cons\_;
-Node\[cons\_\].data:=data\_;
-
-Node\[cons\_\].flink:=flink\_;
-
-Node\[cons\_\].blink:=blink\_;
-
+Cons_:newnode;
+Cons: cons_;
+Node[cons_].data:=data_;
+Node[cons_].flink:=flink_;
+Node[cons_].blink:=blink_;
 End;
+```
 
 ***Function copy***
 
 İki bağlı doğrusal listelerde bir dizinin kopyasını elde etmeyi sağlayan program.
 
+```pascal
 Function copy(list: integer): integer;
-
 Var
-
 Suret,point: integer;
-
 Begin
-
 Suret:= nill;
-
 Point:=list;
-
 If list<>nill Then
-
 Repeat
-
-Concatenate(suret, cons(node\[point\].data, nill));
-
-point:= node\[point\].flink;
-
+Concatenate(suret, cons(node[point].data, nill));
+point:= node[point].flink;
 Until point= nill;
-
 Copy:= suret;
-
 End;
+```
 
 ***Function locate***
 
 İki bağlı doğrusal listelerde aranan node’un yerini bildiren program.
 
-Function locate(data\_, list: integer): integer;
-
+```pascal
+Function locate(data_, list: integer): integer;
 Begin
-
 Locate:= nill;
-
 While list <> nill do
-
-If node\[list\].data <> data\_ Then list:= node\[list\].flink;
-
+If node[list].data <> data_ Then list:= node[list].flink;
 Else
-
 Begin
-
 Locate:= list;
-
 Exit;
-
 End;
-
 End;
+```
 
 ***Function member***
 
 İki bağlı doğrusal listelerde istenilen node’un var olup olmadığını bildiren program.
 
-Function member(node\_, list: integer): boolean;
-
+```pascal
+Function member(node_, list: integer): boolean;
 Begin
-
-While (list <> nill) and (list <> node\_) do
-
-List:= node\[list\].flink;
-
-Member:= list=node\_;
-
+While (list <> nill) and (list <> node_) do
+List:= node[list].flink;
+Member:= list=node_;
 End;
+```
 
 ***Function advance***
 
 İki bağlı doğrusal listelerde bir node ileri gitmeyi sağlayan program.
 
+```pascal
 Function advance(var point: integer): boolean;
-
 Begin
-
 Advance:= false;
-
 If list <> nill Then
-
-If node\[point\].flink <> nill Then
-
+If node[point].flink <> nill Then
 Begin
-
-Point:= node\[point\].flink;
-
+Point:= node[point].flink;
 Advance:= true;
-
 End;
-
 End;
+```
 
 ***Function delete***
 
 İki bağlı doğrusal listelerde istenilen node’u silen program.
 
-Function delete(node\_: integer; var list: integer): boolean;
-
+```pascal
+Function delete(node_: integer; var list: integer): boolean;
 Var
-
 Point: integer;
-
 Begin
-
 Delete:= false;
-
 If list= nill Then exit;
-
-If list= node\_ Then
-
+If list= node_ Then
 Begin
-
 Addhead (cuthead(list), avail);
-
 Delete:= true;
-
 End;
-
 Else
-
 Begin
-
 Point:= list;
-
-While node\[point\] .flink <> nill do
-
+While node[point] .flink <> nill do
 Begin
-
-If node\[point\].flink= node\_ then
-
+If node[point].flink= node_ then
 Begin
-
-Addhead (cuthead (node\[point\].flink), avail);
-
+Addhead (cuthead (node[point].flink), avail);
 Delete:= true;
-
 Exit;
-
 End;
-
-Else point:= node\[point\] .flink;
-
+Else point:= node[point] .flink;
 End;
-
 End;
-
 End ;
+```
 
 ## **2.4 İKİ BAĞLI DAİRESEL LİSTELER**
 
 ***Unit node\_uz***
 
-Unıt node\_uz;
-
-Interface (\*\*)
-
+```pascal
+Unıt node_uz;
+Interface (**)
 Cons
-
 Memory=10;
-
 Nill=0;
-
 Var
-
 Avail: integer;
-
-Node: array\[1...memory\] of record
-
+Node: array[1...memory] of record
 Data:real;
-
 Blink:integer;
-
 Flink:integer;
-
 End;
-
-Implementation (\*\*)
-
+Implementation (**)
 End.
+```
 
 ***Procedure dumpmem***
 
+```pascal
 Procedure dumpmem;
-
 Var
-
 i: integer;
-
 Begin
-
 For i:= 1 to memory do
-
-Writeln(‘node\[‘,1:3,’\]=’,node\[i\].data ’ , ’ node\[i\].flink’, ’ node\[i\].blink’);
-
+Writeln(‘node[‘,1:3,’]=’,node[i].data ’ , ’ node[i].flink’, ’ node[i].blink’);
 End;
+```
 
 ***Procedure nodeinit***
 
 İki bağlı dairesel listelerde node’ları birbirlerine bağlama.
 
+```pascal
 Procedure nodeinit;
-
 Var
-
 i: integer;
-
 Begin
-
 Avail:= 1;
-
 For i:= 1 to memory-1 do
-
-Node\[i\]. flink:= i+1;
-
-Node\[memory\]. flink:=1;
-
-Node\[1\].blink:=memory;
-
+Node[i]. flink:= i+1;
+Node[memory]. flink:=1;
+Node[1].blink:=memory;
 For i:=memory down to 2 do
-
-Node\[i\].blink:=i-1;
-
+Node[i].blink:=i-1;
 End;
+```
 
 ***Function newnode***
 
 İki bağlı dairesel listelerde listeye yeni bir node eklemeye yarayan program.
 
+```pascal
 Function newnode: integer;
-
 Var
-
 New: integer;
-
 Begin
-
 New:= cuthead(avail);
-
 If new= Nill Then
-
 Begin
-
 Writeln(‘nodeSpace Full...’);
-
 Halt;
-
 End;
-
 {Else}
-
 Newnode:= new;
-
 End;
+```
 
 ***Function cuthead***
 
 İki bağlı dairesel listelerde dizinin ilk node’unu silen program.
 
+```pascal
 Function cuthead(var list: integer): integer;
-
 Begin
-
 Cuthead:= list;
-
 If list <> nill Then
-
-If node\[list\]. flink=list then list:=nill
-
+If node[list]. flink=list then list:=nill
 Else if list<> nill Then
-
 Begin
-
-Node\[node\[list\]flink\].blink:= node\[list\]. blink;
-
-Node\[node\[list\]blink\].flink:= node\[lisy\]. flink; List:=node\[list\]. flink;
-
+Node[node[list]flink].blink:= node[list]. blink;
+Node[node[list]blink].flink:= node[lisy]. flink; List:=node[list]. flink;
 End;
-
 End;
+```
 
 ***Function last***
 
 İki bağlı dairesel listelerde dizinin son node’unu bulan program.
 
+```pascal
 Function last (list: integer): integer;
-
 Begin
-
 Last:=list;
-
 If list<> nill Then
-
-If node\[list\]. flink<>list Then
-
-Last:=node\[list\]. blink;
-
+If node[list]. flink<>list Then
+Last:=node[list]. blink;
 End;
+```
 
 ***Procedure concatenate***
 
 İki bağlı dairesel listelerde iki diziyi birleştiren program.
 
+```pascal
 Procedure concatenate (var L1:integer; L2:integer);
-
 Var
-
 Point:integer;
-
 Begin
-
 If (L2<>nill) and (L1=nill) Then L1:=L2;
-
 Else
-
-\* Begin
-
+* Begin
 Point:=last(L1);
-
-Node\[last(L1)\].flink:=L2;
-
-Node\[last(L2)\].flink:=L1;
-
-Node\[L1\].blink:=last(L2);
-
-Node\[L2\].blink:=point;
-
+Node[last(L1)].flink:=L2;
+Node[last(L2)].flink:=L1;
+Node[L1].blink:=last(L2);
+Node[L2].blink:=point;
 End;
-
 End;
+```
 
 \*’dan itibaren alternatif program.
 
+```pascal
 Begin
-
-Point:= Node\[L1\].blink;
-
-Node\[node\[L1\].blink\].flink:=L2;
-
-Node\[node\[L1\].blink\].flink:=L1;
-
-Node\[L1\].blink:= node\[L2\].blink;
-
-Node\[L2\].blink:=point;
-
+Point:= Node[L1].blink;
+Node[node[L1].blink].flink:=L2;
+Node[node[L1].blink].flink:=L1;
+Node[L1].blink:= node[L2].blink;
+Node[L2].blink:=point;
 End;
-
 End;
+```
 
 ***Procedure free***
 
+```pascal
 Procedure free(list: integer);
-
 Begin
-
 Concatenate(list,avail);
-
 Avail:= list;
-
 End;
+```
 
 ***Procedure addhead***
 
 İki bağlı dairesel listelerde diziye yeni bir node ekleyen program.
 
-Procedure addhead(node\_: integer; var list: integer);
-
+```pascal
+Procedure addhead(node_: integer; var list: integer);
 Begin
-
 If list:=nill Then
-
 Begin
-
-Node\[node\_\].flink:= nill;
-
-Node\[node\_\].blink:=nill;
-
+Node[node_].flink:= nill;
+Node[node_].blink:=nill;
 End;
-
 Else
-
 Begin
-
-Node\[node\[list\].blink\].flink:=node\_;
-
-Node\[node\_\].flink:=list;
-
-Node\[node\_\].blink:=node\[list\].blink;
-
-Node\[list\].blink:=node\_;
-
+Node[node[list].blink].flink:=node_;
+Node[node_].flink:=list;
+Node[node_].blink:=node[list].blink;
+Node[list].blink:=node_;
 End;
-
-List:=node\_;
-
+List:=node_;
 End;
+```
 
 ***Function cons***
 
 İki bağlı dairesel listelerde dizinin içeriğini tanımlayan program.
 
-Function cons (data\_:real; flink\_.blink\_:integer):integer;
-
+```pascal
+Function cons (data_:real; flink_.blink_:integer):integer;
 var
-
-Cons\_: integer;
-
+Cons_: integer;
 Begin
-
-Cons\_:=newnode;
-
-Cons:=cons\_;
-Node\[cons\_\].data:=data\_;
-
-Node\[cons\_\].flink:=flink\_;
-
-Node\[cons\_\].blink:=blink\_;
-
+Cons_:=newnode;
+Cons:=cons_;
+Node[cons_].data:=data_;
+Node[cons_].flink:=flink_;
+Node[cons_].blink:=blink_;
 End;
+```
 
 ***Function copy***
 
 İki bağlı dairesel listelerde elimizdeki listenin kopyasını çıkarmamızı sağlaya program.
 
+```pascal
 Function copy(list: integer): integer;
-
 Var
-
 Suret,point: integer;
-
 Begin
-
 Suret:= nill;
-
 Point:=list;
-
 If list<>nill Then
-
 Repeat
-
-Concatenate(suret,cons(node \[list\].data, nill, nill));
-
-Point:=node\[point\].flink;
-
+Concatenate(suret,cons(node [list].data, nill, nill));
+Point:=node[point].flink;
 Until point:=list;
-
 Copy :=suret;
-
 End;
+```
 
 ***Function locate***
 
 İki bağlı dairesel listelerde bir node yerini bulmamızı sağlayan program.
 
-Function locate (data\_: real; list: integer): integer;
-
+```pascal
+Function locate (data_: real; list: integer): integer;
 Var
-
 Point:integer;
-
 Begin
-
 Locate:=nill; point:=list;
-
 If list<>nill Then
-
 Repeat
-
-If node\[point\].data<>data\_ Then
-
-point:=node\[point\].flink;
-
+If node[point].data<>data_ Then
+point:=node[point].flink;
 Else
-
 Begin
-
 Locate:=point;
-
 Exıt;
-
 End;
-
 Until point:=list;
-
 End;
+```
 
 ***Function member***
 
-Function member(node\_, list: integer): boolean;
-
+```pascal
+Function member(node_, list: integer): boolean;
 Var
-
 Point:integer;
-
 Begin
-
 Point:=list;
-
 If list<>nill Then
-
 Repeat
-
-If point<>node\_ Then point:=node\[point\].flink;
-
-Until (point=list) or (point=node\_);
-
-Member:= point=node\_;
-
+If point<>node_ Then point:=node[point].flink;
+Until (point=list) or (point=node_);
+Member:= point=node_;
 End;
+```
 
 **Soru 5 :** Locate fonksiyonunu öyle şekilde yazınız ki, fonkfiyona aktarılan data\_ değerinin node\_’de bulunması durumunda (node\_ değişkeni de fonksiyona aktarılmaktadır.) mantıksal pozitif, aksi takdirde ise mantıksal negatif bir değer döndürsün?
 
 ## **Cevap:**
 
-Function locate(data\_:real;node\_:integer;list:integer):boolean;
-
+```pascal
+Function locate(data_:real;node_:integer;list:integer):boolean;
 Var
-
 Pointx, node:integer
-
 Begin
-
 Pointx:=list;
-
 Locate:=false;
-
 If list<>nill then
-
 Repeat
-
-If (node\[pointx\].data=data\_) and (pointx=node\_) then
-
+If (node[pointx].data=data_) and (pointx=node_) then
 begin
-
 Locate:=true;
-
 Exit;
-
 End;
-
-Else pointx:=node\[pointx\].flink;
-
+Else pointx:=node[pointx].flink;
 Until pointx:=list;
-
 End;
+```
 
 ***Function advance***
 
 İki bağlı dairesel listelerde bir sonraki node’a ilerlemeyi sağlayan program. Nill değilse ve kendisinden sonraki node kendisi değilse ilerler.
 
+```pascal
 Function advance(var point: integer): boolean;
-
 Begin
-
 Advance:= false;
-
 If point <> nill Then
-
-If node\[point\].flink <> point Then
-
+If node[point].flink <> point Then
 Begin
-
-Point:= node\[point\].flink;
-
+Point:= node[point].flink;
 Advance:= true;
-
 End;
-
 End;
+```
 
 ***Function delete***
 
 İki bağlı dairesel listelerde istenilen node’un silinmesini sağlayan program.
 
-Function delete(node\_: integer; var list: integer): boolean;
-
+```pascal
+Function delete(node_: integer; var list: integer): boolean;
 Var
-
 Point: integer;
-
 Begin
-
 Delete:= false;
-
 If list= nill Then exit;
-
-If list= node\_ Then
-
+If list= node_ Then
 Begin
-
 Addhead (cuthead(list), avail);
-
 Delete:= true;
-
 End
-
 Else
-
 Begin
-
 Point:= list;
-
-While node\[point\] .flink <> list do
-
+While node[point] .flink <> list do
 Begin
-
-If node\[point\].flink= node\_ Then
-
+If node[point].flink= node_ Then
 Begin
-
-Addhead (cuthead (node\[point\].flink), avail);
-
+Addhead (cuthead (node[point].flink), avail);
 Delete:= true;
-
 Exit;
-
 End;
-
-Else point:= node\[point\] .flink;
-
+Else point:= node[point] .flink;
 End;
-
 End;
-
 End.
+```
 
 **Soru-6**: İki bağlı bir dizide node\_’u n,n+1’inci node’lar arasına ekleyecek bir boolean fonksiyon yazınız?
 
 ## **Cevap:**
 
-Function insert(var list:integer; n, node\_:integer):boolean;
-
+```pascal
+Function insert(var list:integer; n, node_:integer):boolean;
 Var
-
 Pt:integer;
-
 Begin
-
 insert:=false; Pt:=list;
-
 İ:=1;
-
 İf list<>nill then
-
 Repeat
-
 i :=i+1;
-
 İf i:=n then do begin
-
-Node\[node\_\].flink:=node;
-
-\[Pt\].flink;
-
-node\[node\_\].blink:=Pt;
-
-if node(Pt\].flink<>nill then
-
-node\[node\[pt\].flink\].blink:=node\_;
-
-node\[Pt\].flink:=node\_; insert:=true;
-
+Node[node_].flink:=node;
+[Pt].flink;
+node[node_].blink:=Pt;
+if node(Pt].flink<>nill then
+node[node[pt].flink].blink:=node_;
+node[Pt].flink:=node_; insert:=true;
 break;
-
 end;
-
 until (not (advance (Pt,List)));
-
 end.
+```
 
 ## **3. ****AĞAÇLAR**
 
@@ -2184,23 +1533,17 @@ Ağaçta nodeların eksik kısımları nill olarak adlandırılır.
 
 ***Printree ****Procedure’ü***
 
+```pascal
 Procedure Printree (t:integer);
-
 Begin
-
 İf T<>nill then
-
 Begin
-
-İf node\[T\].llink<>nill Printree(node\[T\].llink);
-
-Writeln (node\[T\].data);
-
-İf node \[T\].Rlink<>nill Printtree(node\[T\].Rlink);
-
+İf node[T].llink<>nill Printree(node[T].llink);
+Writeln (node[T].data);
+İf node [T].Rlink<>nill Printtree(node[T].Rlink);
 End;
-
 End;
+```
 
 **RECURSION (Özyineleme):** Herhangi bir program kendi kendini çağırıyorsa bu alt yordama “Recursion Subrotines” denir.
 
@@ -2210,31 +1553,21 @@ Burada ilk olarak X değeri aranmalıdır. Bulunduktan sonra 2 node geriye gidil
 
 **CEVAP: **
 
-Function find\_data(Data: real; list: integer): integer;
-
+```pascal
+Function find_data(Data: real; list: integer): integer;
 Var
-
 Pointer: integer;
-
 Begin
-
 Pointer:nill;
-
 İf list<>nill Then
-
-If node \[list\].flink <> nill
-
+If node [list].flink <> nill
 Then begin
-
 End;
-
-İf (node\[list\].data<>data\_) then Pointer=nill;
-
+İf (node[list].data<>data_) then Pointer=nill;
 End;
-
-Find\_data:=pointer;
-
+Find_data:=pointer;
 End;
+```
 
 Bir ağaçtaki sıralama şekilleri:
 
@@ -2248,103 +1581,69 @@ Bir ağaçtaki sıralama şekilleri:
 
 **IN ORDER**
 
+```pascal
 Procedure Printtree(t:integer);
-
 Begin
-
 If t<>nill Then
-
 Begin
-
-If node\[t\].link <> printtree(node\[t\].link);
-
-Writeln (node\[t\].data);
-
-If node\[t\].rlink <> nill printtree(node\[t\].rlink);
-
+If node[t].link <> printtree(node[t].link);
+Writeln (node[t].data);
+If node[t].rlink <> nill printtree(node[t].rlink);
 End;
-
 End;
+```
 
 **PRE ORDER**
 
+```pascal
 Procedure Printtree(t:integer);
-
 Begin
-
 If t<>nill Then
-
 Begin
-
-Writeln (node\[t\].data);
-
-If node\[t\].link <> printtree(node\[t\].link);
-
-If node\[t\].rlink <> nill printtree(node\[t\].rlink);
-
+Writeln (node[t].data);
+If node[t].link <> printtree(node[t].link);
+If node[t].rlink <> nill printtree(node[t].rlink);
 End;
-
 End;
+```
 
 **POST ORDER**
 
+```pascal
 Procedure Printtree(t:integer);
-
 Begin
-
 If t<>nill Then
-
 Begin
-
-If node\[t\].link <> printtree(node\[t\].link);
-
-If node\[t\].rlink <> nill printtree(node\[t\].rlink);
-
-Writeln (node\[t\].data);
-
+If node[t].link <> printtree(node[t].link);
+If node[t].rlink <> nill printtree(node[t].rlink);
+Writeln (node[t].data);
 End;
-
 End;
+```
 
 ***Bir Ağacın derinliğinin bulunmasını sağlayan Program:***
 
-Int Count (Mytree \*T)
-
+```c
+Int Count (Mytree *T)
 {
-
 Static int depth =1 ; //Bu procedure her çağrıldığında bir
-
 Static int count =1 ; //önceki değeri kaybetmemesi için
-
-If (T.Llink) // **static **komutu kullanılır.
-
+If (T.Llink) // static komutu kullanılır.
 {
-
 Counter++;
-
 Count (T.Llink);
-
 }
-
 if (T.Rlink)
-
 {
-
 Counter++;
-
 Count (T.Rlink);
-
 }
-
 If ( counter > depth )
-
 Depth = counter;
-
 Counter - -;
-
 Return;
-
 }
+```
 
 Static olarak tanımlana değerler; Program çağırılıp bittikten sonra tekrar çağırıldıklarında önceki tanımlamalarını korurlar. \*T pointer’ı ağacın Root’u dur.
 
@@ -2352,35 +1651,23 @@ Sonra counter eksiltilerek geriye dönülüyor, önceki node’ların left ve ri
 
 *Sağ ve Sol Ağacın En derin yerini bulan program:*
 
-Int double count (mytree \*T)
-
+```c
+Int double count (mytree *T)
 {
-
 static int leftdepth, rightdepth ;
-
 int counter =1 ;
-
 If (T.Llink)
-
 {
-
 leftdepth =count (T.Llink);
-
 Leftdepth ++;
-
 }
-
 If (T.Rlink)
-
 {
-
 Rightdepth = count (T.Rlink) ;
-
 Rightdepth ++;
-
 }
-
 }
+```
 
 ## **4. GRAPHS \[ÇİZGE KURAMI\]**
 
@@ -2404,49 +1691,30 @@ LINKED LIST REPRESENTATION OF GRAPHS
 
 **Cevap:**
 
+```c
 Struct tree
-
 {
-
 int data;
-
-struct tree \*dlink;
-
-struct tree \* rlink;
-
+struct tree *dlink;
+struct tree * rlink;
 }
-
-int func (struct tree \*lP)
-
+int func (struct tree *lP)
 {
-
 int count=0;
-
-struct tree \*head = \*ahead= lp;
-
+struct tree *head = *ahead= lp;
 while(head!=nill)
-
 {
-
 while (ahead rlink !nill)
-
 {
-
 count++;
-
 ahead=ahead rlink;
-
 }
-
 head = head dlink;
-
 ahead =head;
-
 }
-
 return count;
-
 }
+```
 
 A directed weighted graph
 
@@ -2462,97 +1730,54 @@ Bakır plakalardaki iletken yolların belirlenmesinde, kısayol algoritması kul
 
 **Çözüm:**
 
-program node\_sayisi\_bul
-
+```pascal
+program node_sayisi_bul
 uses crt;
-
 const
-
 memory = 11; nill = 0;
-
 var
-
 head, ahead, count : integer;
-
-node : array \[1 .. memory\] of record
-
+node : array [1 .. memory] of record
 data : real;
-
 rlink : integer;
-
 dlink : integer;
-
 end;
-
 procedure agac;
-
 begin
-
-node\[1\].rlink : = 2; node\[1\].dlink : = 4;
-
-node\[2\].rlink : = 3; node\[2\].dlink : = 4;
-
-node\[3\].rlink : = nill; node\[3\].dlink : = 7;
-
-node\[4\].rlink : = 5; node\[4\].dlink : = 7;
-
-node\[5\].rlink : = 6; node\[5\].dlink : = 7;
-
-node\[6\].rlink : = nill; node\[6\].dlink : = 8;
-
-node\[7\].rlink : = nill; node\[7\].dlink : = 8;
-
-node\[8\].rlink : = 9; node\[8\].dlink : = nill;
-
-node\[9\].rlink : = 10; node\[9\].dlink : = 1;
-
-node\[10\].rlink : = 11; node\[10\].dlink : = 4;
-
-node\[11\].rlink : = nill; node\[11\].dlink : = 7;
-
-procedure node\_sayisi ( N : integer );
-
+node[1].rlink : = 2; node[1].dlink : = 4;
+node[2].rlink : = 3; node[2].dlink : = 4;
+node[3].rlink : = nill; node[3].dlink : = 7;
+node[4].rlink : = 5; node[4].dlink : = 7;
+node[5].rlink : = 6; node[5].dlink : = 7;
+node[6].rlink : = nill; node[6].dlink : = 8;
+node[7].rlink : = nill; node[7].dlink : = 8;
+node[8].rlink : = 9; node[8].dlink : = nill;
+node[9].rlink : = 10; node[9].dlink : = 1;
+node[10].rlink : = 11; node[10].dlink : = 4;
+node[11].rlink : = nill; node[11].dlink : = 7;
+procedure node_sayisi ( N : integer );
 begin
-
 count :=0;
-
 head:=N;
-
 ahead:=N;
-
 While ( head <> nill )
-
 begin
-
-While( node\[ahead\].rlink <> nill )
-
+While( node[ahead].rlink <> nill )
 begin
-
 Count := count+1;
-
-Ahead := node\[ahead\].rlink;
-
+Ahead := node[ahead].rlink;
 end;
-
-Head := node\[head\].dlink; Ahead := head;
-
+Head := node[head].dlink; Ahead := head;
 end;
-
 Writeln ( ‘Birbirine komşu olan nodeların sayısı=’,count );
-
 end;
-
 begin
-
 clrscr;
-
 agac;
-
-node\_sayisi ( 1 );
-
+node_sayisi ( 1 );
 readln();
-
 end;
+```
 
 PAGE
 
@@ -2883,6 +2108,8 @@ pointy
 pointy
 
 L1
+
+Suret
 
 Suret
 

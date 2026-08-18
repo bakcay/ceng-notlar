@@ -12,7 +12,9 @@ Sıralı Erişimli Dosyalar
 
 12.1. **Dosya Açmak **
 
-Open “Dosya Adı” \[For AçmaModu\] \[Access ErişimModu\] As \[#\] dosya no\[Len=Kayıtuzunluğu\]
+```basic
+Open “Dosya Adı” [For AçmaModu] [Access ErişimModu] As [#] dosya no[Len=Kayıtuzunluğu]
+```
 
 **Dosya Adı :** Açılacak veya oluşturulacak dosyanın adı.
 
@@ -62,9 +64,10 @@ Random ve Binary modu ile açılan dosyalara kayıtlar Put komutu ile yazılır 
 
 **Yazılım:**
 
-** **Put \[#\] dosyano, \[kayıtno\], değişken
-
-Get \[#\] dosyano, \[kayıtno\], değişken
+```basic
+Put [#] dosyano, [kayıtno], değişken
+Get [#] dosyano, [kayıtno], değişken
+```
 
 **Değişken:** İçeriği yazılacak değişken** .**
 
@@ -80,7 +83,9 @@ Output ve Append modu ile açılan dosyalara Write veya Print komutu ile yazma y
 
 **Yazılım :******
 
-Write # dosyano \[, değişkenler\]
+```basic
+Write # dosyano [, değişkenler]
+```
 
 **Dosyano:** Yazılacak dosyanın numarasıdır. Bu komut Open komutu ile belirlenen dosya numarasıdır.
 
@@ -88,25 +93,23 @@ Write # dosyano \[, değişkenler\]
 
 **Örnek 12.1 :**
 
+```basic
 Dim adi, tel, adres
-
 Open “deneme” For Output As # 1
-
 adi = “Bahadır Işleyen”
-
 tel = “3456432”
-
 adres = “Elektronik-Bilgisayar Bölümü”
-
 Write #1, adi, tel, adres
-
 Close #1
+```
 
 **Print: **
 
 **Yazılım:**
 
-Print # dosyano \[, değişken formatı\]
+```basic
+Print # dosyano [, değişken formatı]
+```
 
 **Dosyan : **Yazılacak dosyanın numarasıdır. ** **
 
@@ -114,25 +117,23 @@ Print # dosyano \[, değişken formatı\]
 
 **Örnek 12.2 :**
 
+```basic
 Dim adi, tel, adres
-
 Open “deneme” For Output As # 1
-
 adi = “Bahadır Işleyen”
-
 tel = “3456432”
-
 adres = “Elektronik-Bilgisayar Bölümü”
-
 Print #1, adi, tel, adres
-
 Close #1
+```
 
 **Input:**
 
 **Yazılım:******
 
+```basic
 Input # dosyano, değişkenlistesi
+```
 
 **Dosyano:** Okunacak dosyanın numarasıdır.
 
@@ -140,25 +141,23 @@ Input # dosyano, değişkenlistesi
 
 **Örnek 12.3 :**
 
-** **Dim adi, tel, adres
-
+```basic
+Dim adi, tel, adres
 Open “deneme” For Output As # 1
-
 Input #1, adi, tel, adres
-
 Print “ad=”; adi
-
 Print “telefon=”; tel
-
 Print “adres=”; adres
-
 Close #1
+```
 
 **Line Input:**
 
 **Yazılım:**
 
+```basic
 Line Input #dosyano, değişken
+```
 
 **Dosyano:** Okunacak dosyanın numarası
 
@@ -166,23 +165,17 @@ Line Input #dosyano, değişken
 
 **Örnek 12.4:******
 
-** **Dim adi, tel, adres
-
+```basic
+Dim adi, tel, adres
 Open “deneme” For Output As # 1
-
 Line Input #1, adi
-
 Line Input #1, tel
-
 Line Input #1, adres
-
 Print “ad=”; adi
-
 Print “telefon=”; tel
-
 Print “adres=”; adres
-
 Close #1
+```
 
 12.4. **Dosyaları Kapatmak **
 
@@ -190,7 +183,9 @@ Hangi modda açılırsa açılsın dosya Close komutu ile numarası verilerek ka
 
 **Yazılım:**
 
+```basic
 Close # dosyano
+```
 
 **Not :** Açılacak bütün dosyaları kapatmak için Reset komutu kullanılabilir.
 
@@ -200,7 +195,9 @@ Numarası verilen dosyanın sonuna gelinip gelinmediğini kontrol eder.
 
 **Yazılım******
 
+```basic
 EOF (dosyano)
+```
 
 12.6. **Dosya Boyu Kontrolü (LOF) ******
 
@@ -208,7 +205,9 @@ Numarası verilen dosyanın byte olarak uzunluğunu verir.
 
 **Yazılım**
 
+```basic
 LOF(dosyano)
+```
 
 12.7. Aktif Kaydı Değiştirmek (Seek)
 
@@ -218,7 +217,9 @@ Dosya Random modla açılmışsa bu gösterici kayıt numarasıdır, diğer modl
 
 **Yazılım **
 
+```basic
 Seek (doyano)
+```
 
 Dosya numarası ile verilen dosyadaki göstericinin konumu öğrenilebilir.
 

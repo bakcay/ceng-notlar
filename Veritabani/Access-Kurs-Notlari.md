@@ -988,7 +988,13 @@ I. SORGULAR TASARLAMAK Veritabanında tablolar verileri içerir. Sorgular ise sp
 
 Verilen iki tarih arasında siparişlerin adet ve tutarları?
 
-Tarih alanına: BETWEEN 10/03/2001 AND 20/03/2001 Yukarıdaki ifade Acces'te sorgu tasarımında Criteria (Ölçüt) alanına yazılır ve sorgu çalıştırılır. Sonuç olarak verilen iki tarih arasındaki bilgileri listelenir.
+Tarih alanına:
+
+```sql
+BETWEEN 10/03/2001 AND 20/03/2001
+```
+
+Yukarıdaki ifade Acces'te sorgu tasarımında Criteria (Ölçüt) alanına yazılır ve sorgu çalıştırılır. Sonuç olarak verilen iki tarih arasındaki bilgileri listelenir.
 
 Sorgulama sürecinde bilgiler genellikle bir ya da daha çok tablodan gelir. Bu nedenler iyi sorgular yaratmak için tabloların da iyi bir şekilde tasarlanmış olması gerekir.
 
@@ -1048,17 +1054,33 @@ Operatör İşlevi
 
 A ile başlayan müşteriler:
 
-Like "a\*" İPUCU: Criteria (Ölçüt) alanına a\* da yazsanız, Access aynı kalıbı üretecektir.
+```sql
+Like "a*"
+```
+
+İPUCU: Criteria (Ölçüt) alanına a* da yazsanız, Access aynı kalıbı üretecektir.
 
 Adının ilk harfi A-D arasında olan müşteriler?
 
-LIKE “\[A-D\]\*” Verilen iki tarih arasında, belli bir müşteri, belli bir mal ve siparişi alan eleman olarak
+```sql
+LIKE “[A-D]*”
+```
+
+Verilen iki tarih arasında, belli bir müşteri, belli bir mal ve siparişi alan eleman olarak
 
 siparişlerin adet ve tutarları?
 
-BETWEEN 10/03/2001 AND 20/03/2001 İli “İzmir” ya da “Manisa” olan müşterilerin il içinde alfabetik sırada listesi.
+```sql
+BETWEEN 10/03/2001 AND 20/03/2001
+```
 
-İli İzmir OR Manisa Sadece belli gruptan olan stokların birim fiyatlarına %10 zam.
+İli “İzmir” ya da “Manisa” olan müşterilerin il içinde alfabetik sırada listesi.
+
+```sql
+İli İzmir OR Manisa
+```
+
+Sadece belli gruptan olan stokların birim fiyatlarına %10 zam.
 
 Bu işlem ise bir Update (Güncelleme) sorgu ile yapılır. Bunun için Query türünün değiştirilmesi gerekir.
 
@@ -1132,7 +1154,12 @@ Formlar verilerin alan olarak alt alta (sütunlu) ya da yatay (sekmeli) bir şek
 
 Formlar sayısal sütunların alt toplamlarını gösterebilir. Bu işlem için formların tasarım görünümünde formun Form Footer bölümü genişletilir ve form üzerinde listelenen (genellikle tabular-sekmeli) alanın adı sum ya da istenen bir diğer formülle toplanır:
 
-=sum(\[tutar\]) =topla(\[tutar\]) Yukarıdaki ifade formun Footer (Alt başlık) kısmına araç kutundan eklenen bir TextBox içine yazılır ve bu şekilde genellikle tabular olarak görüntülenen form üzerinde alt toplam alır.
+```vbnet
+=sum([tutar])
+=topla([tutar])
+```
+
+Yukarıdaki ifade formun Footer (Alt başlık) kısmına araç kutundan eklenen bir TextBox içine yazılır ve bu şekilde genellikle tabular olarak görüntülenen form üzerinde alt toplam alır.
 
 A. BİR FORM YARATMAK Bir form yaratmak için veritabanı penceresi kullanılır. Buradan Forms tabına tıklanarak mevcut formlar görülür ya da yeni bir form yaratılır. Burada New (Yeni) düğmesine tıklanarak istenilen şekilde form yaratılır:
 
@@ -1536,7 +1563,13 @@ I. MAKROLAR Veritabanı yöneticisi, form üzerindeki bir alan için, boş geçi
 
 Yazılan makronun makro penceresindeki görünümü:
 
-Condition Action Len (\[kodu\]) > 6 MsgBox ... CancelEvent Yukarıdaki makro şu şekilde kullanılır:
+```vbnet
+Condition               Action
+Len ([kodu]) > 6        MsgBox ...
+                        CancelEvent
+```
+
+Yukarıdaki makro şu şekilde kullanılır:
 
 Formun tasarım görünümünde kodu alanının üzerinde sağ tıklayarak Build Event menüsünden Macro Builder seçilerek Macro penceresi açılır. Buradaki sütunlara yukarıdaki makro girilir.
 
@@ -1652,7 +1685,13 @@ Form üzerinde bir alanın boş geçilmesini ekleyen bir makro yazın Form üzer
 
 Şöyle bir makro yazın:
 
-Condition Action \[kodu\] IsNull MsgBox ... CancelEvent Yukarıdaki makro şu şekilde kullanılır:
+```vbnet
+Condition          Action
+[kodu] IsNull      MsgBox ...
+                   CancelEvent
+```
+
+Yukarıdaki makro şu şekilde kullanılır:
 
 Formun tasarım görünümünde kodu ya da adı alanının üzerinde sağ tıklayarak Build Event (Olay Oluştur) menüsünden Macro Builder (Makro Oluştur) seçilerek Macro penceresi açılır.
 
@@ -1862,7 +1901,7 @@ Microsoft Excel’den veri alın (import)
 
 1.File (Dosya) menüsünden Get External Data (Dış Veri Al) seçilir.
 
-2. Import iletişim kutusunda kendisinden veri alınacak olan çalışma tablosu seçilir. Örneğin Excel 7.0 ya da Excel 2000 gibi. Ardından dosya seçilir: Örneğin: C:\\data\\ucret.xls 3. Ardından Import Spreadsheet Wizard devreye girer ve verilerin transferini sağlar.
+2. Import iletişim kutusunda kendisinden veri alınacak olan çalışma tablosu seçilir. Örneğin Excel 7.0 ya da Excel 2000 gibi. Ardından dosya seçilir: Örneğin: `C:\data\ucret.xls` 3. Ardından Import Spreadsheet Wizard devreye girer ve verilerin transferini sağlar.
 
 4. Firt Row Contains Column Headings seçeneği ile çalışma tablosundaki kolon başlıkları Access tablosundaki alan adlarına karşılık gelir. Bunun dışında New Table seçeneği ile yeni bir tablo olarak ya da Existing Table seçeneği ile mevcut bir tablolaya eklenebilir.
 
@@ -1938,7 +1977,7 @@ Microsoft Access, tablo, sorgu ya da formları File, Export komutuyla ASP olarak
 
 B. ASP SAYFALARINI ÇALIŞTIRMAK ASP dosyaları bir öndeki konuda adı geçen ortamlarda hazırlandıktan sonra herhangi bir derleme işlemi olmadan doğrudan çalıştırılırlar. Eğer hata varsa bu çalıştırma sürecinde ortaya çıkar. ASP dosyasını adı Internet Explorer ya da diğer bir tarayıcı program aracılığıyla yazılır ve dosyaya erişim sağlanır.
 
-Örnek çağırmalar: http://localhost/test.asp ASP dosyası bir alt dizinde olabilir: http://localhost/altdizin/test.asp Hazırlanan ASP dosyalarının uzantısı .asp dir. Bu dosyayı çalıştırmak için Web sunucusu üzerinde wwwroot dizinine konması gerekir. Bunun dışında Internet Information Server’ın WWW hizmetinin çalışması ya da PWS hizmetinin çalışması gerekir. Asp dosyalarını çalıştırmak için önce dosya wwwroot dizinine kopyalanır ardından Internet Explorer adres çubuğunda http://localhost/kitapornek3.asp şeklinde yazılarak çalıştırılır.
+Örnek çağırmalar: `http://localhost/test.asp` ASP dosyası bir alt dizinde olabilir: `http://localhost/altdizin/test.asp` Hazırlanan ASP dosyalarının uzantısı .asp dir. Bu dosyayı çalıştırmak için Web sunucusu üzerinde wwwroot dizinine konması gerekir. Bunun dışında Internet Information Server’ın WWW hizmetinin çalışması ya da PWS hizmetinin çalışması gerekir. Asp dosyalarını çalıştırmak için önce dosya wwwroot dizinine kopyalanır ardından Internet Explorer adres çubuğunda `http://localhost/kitapornek3.asp` şeklinde yazılarak çalıştırılır.
 
 Durağan HTML:
 
@@ -1980,7 +2019,7 @@ Bir Microsoft Access Data Page sayfasını bir Web sunucusuna kaydetmek:
 
 7. Kaydet'i tıklayın.
 
-Varsayılan yayın klasörleri: c:\\inetpub\\wwwroot II. UYGULAMA Bir Data Page (Sayfalar) Oluşturun:
+Varsayılan yayın klasörleri: `c:\inetpub\wwwroot` II. UYGULAMA Bir Data Page (Sayfalar) Oluşturun:
 
 1. Veritabanı penceresinde Data Pages (Sayfalar) bölümü seçilir.
 
@@ -2305,7 +2344,16 @@ D) Foreign Key alanına göre yapılan alt toplam alma işlemidir.
 
 13 - Bir alanın boş olduğunu kontrol eden makro kodu hangisidir? (Makro penceresi görünümünde).
 
-A) \[kodu\] IsNull MsgBox CancelEvent B) If \[kodu\] IsNull MsgBox CancelEvent C) \[kodu\] = " "l MsgBox CancelEvent D) \[kodu\] IsEmpty MsgBox CancelEvent 14 - Verilen VBA kodunun görevi nedir? Private Sub Command14\_Click() altalan= Mid(Forms!\[musteri\]!\[musterikodu\], InStr(Forms!\[musteri\]!\[musterikodu\], "/") + 1, 10) Forms!\[musteri\]!Text15 = altalan End Sub A) Form üzerinde Tex15 diye bir metin kutusu yaratmak.
+A) \[kodu\] IsNull MsgBox CancelEvent B) If \[kodu\] IsNull MsgBox CancelEvent C) \[kodu\] = " "l MsgBox CancelEvent D) \[kodu\] IsEmpty MsgBox CancelEvent 14 - Verilen VBA kodunun görevi nedir?
+
+```vbnet
+Private Sub Command14_Click()
+altalan= Mid(Forms![musteri]![musterikodu], InStr(Forms![musteri]![musterikodu], "/") + 1, 10)
+Forms![musteri]!Text15 = altalan
+End Sub
+```
+
+A) Form üzerinde Tex15 diye bir metin kutusu yaratmak.
 
 B) musterikodu alanın içinde / karakterinden sonraki on karakteri alıp Text15 alanına yazar.
 

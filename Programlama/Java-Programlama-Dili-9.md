@@ -1,15 +1,16 @@
 # Java Programlama Dili
 
+```java
 import java.net.URL;
-import java.sql.\*;
-import java.io.\*;
+import java.sql.*;
+import java.io.*;
 
 class select
 {
 
-//\*\*\* main kısmı başlangıcı\*\*\*//
+//*** main kısmı başlangıcı***//
 
-public static void main (String args\[\]) throws IOException
+public static void main (String args[]) throws IOException
 {
 // veri alma kısmı
 InputStreamReader reader=new InputStreamReader(System.in);
@@ -19,7 +20,7 @@ String name=input.readLine();
 System.out.println("Merhaba "+name);
 //veri alma bitiş
 String url = "jdbc:odbc:deneme";
-String query = "SELECT \* FROM BOLGE where BOLGE\_NO="+name;
+String query = "SELECT * FROM BOLGE where BOLGE_NO="+name;
 try
 {
 Class.forName ("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -36,7 +37,7 @@ con.close();
 }
 catch (SQLException ex)
 {
-System.out.println ("\\n\*\*\* SQLException caught \*\*\*\\n");
+System.out.println ("\n*** SQLException caught ***\n");
 while (ex != null)
 {
 System.out.println ("SQLState: " +ex.getSQLState ());
@@ -50,9 +51,9 @@ ex.printStackTrace ();
 
 }
 
-//\*\*\* main kısmının sonu \*\*\*//
+//*** main kısmının sonu ***//
 
-//\*\*\*dispResultSet başlangıcı \*\*\*//
+//***dispResultSet başlangıcı ***//
 private static void dispResultSet (ResultSet rs)
 throws SQLException
 {
@@ -68,8 +69,9 @@ more = rs.next ();
 }
 }
 }
-//\*\*\* dispResultSet sonu \*\*\*//
-//\*\*\*program sonu \*\*\*//
+//*** dispResultSet sonu ***//
+//***program sonu ***//
+```
 
 ---
 *Kaynak: `JAVA PROGRAMLAMA DİLİ/ekitap-H_Takci-Java_Programlama_Dili/cselect.htm`*

@@ -388,25 +388,18 @@ C Diline Giriş**
 
 İlk örnek programımız (Örnek 1), ekrana Merhaba dünya! yazar. Bu örnekte bir C programının temel özellikleri ve ekrana nasıl yazı çıkartılacağı konuları işlenecektir.
 
-/\* İlk C programım. \*
-
-\* \*
-
-\* Bu program ekrana "Merhaba dünya!" iletisini yazar. \*/
-
+```cpp
+/* İlk C programım. *
+* *
+* Bu program ekrana "Merhaba dünya!" iletisini yazar. */
 #include <iostream.h> // cout için
-
-#include <stdlib.h> // EXIT\_SUCCESS için
-
+#include <stdlib.h> // EXIT_SUCCESS için
 int main(void)
-
 {
-
 cout << "Merhaba dünya!" << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 Ekrana bir satırlık ileti çıkaran program.
 
@@ -432,7 +425,9 @@ Bu yapıda birinci /\* ile açıklama başlar. Açıklamanın içinde görülen 
 
 Yapısal programlamadaki yordamlar C dilinde fonksiyonlar ile gerçekleştirilir. Ana işi yapan fonksiyonun adı main olarak verilmelidir. Programın yürütülmesine ana işten başlanacağı için her programın bir ve yalnız bir main fonksiyonu bulunması zorunludur. Fonksiyonlarla ilgili bilgiler Bölüm 6'de verilecektir. Şimdilik main fonksiyonunun
 
+```cpp
 int main(void)
+```
 
 şeklinde başlayacağını bilmek yeterlidir.
 
@@ -440,11 +435,15 @@ int main(void)
 
 C dili yapısal programlamadaki blok kavramı üzerine kuruludur (bkz. 1.1). Sıra, seçim ve yineleme yapılarının bloklarının yanısıra bir fonksiyonun içerdiği komutlar da bir blok olarak değerlendirilir. Bloklar aç-süslü-parantez ile başlar ve kapa-süslü-parantez ile sona erer. Bizim başlangıçtaki örneklerimizde main fonksiyonunun bloğu
 
-return EXIT\_SUCCESS;
+```cpp
+return EXIT_SUCCESS;
+```
 
 komutuyla sona erecektir. Bu komut programın başarıyla sonlandığını belirtir. Başarısızlık durumunda
 
-return EXIT\_FAILURE;
+```cpp
+return EXIT_FAILURE;
+```
 
 komutu kullanılır.
 
@@ -452,21 +451,28 @@ komutu kullanılır.
 
 C dilinde komutlar noktalı virgül ile sona erer. Birden fazla boşluk derleyici tarafından bir tek boşluk olarak değerlendirilir; dolayısıyla bir komutun bir satır içinde başlayıp sona ermesi gibi bir zorunluluk yoktur. Yani
 
-cout < < \`\`Merhaba dünya!'' < < endl;
+```cpp
+cout < < ``Merhaba dünya!'' < < endl;
+```
 
 komutu
 
+```cpp
 cout < <
-
-\`\`Merhaba dünya!'' < < endl;
+``Merhaba dünya!'' < < endl;
+```
 
 biçiminde ya da
 
+```cpp
 cout < <
+```
 
 \`\`Merhaba dünya!''
 
+```cpp
 < < endl;
+```
 
 biçiminde yazılabilirdi.
 
@@ -482,7 +488,9 @@ yazılır. Sonda yer alan endl sözcüğü, ileti yazıldıktan sonra yeni satı
 
 Katarlar çift tırnak içinde yazılırlar. Katar içinde yazılan her boşluğun önemi vardır, yani sözgelimi peşpeşe 5 boşluk bırakıldığında bu 1 boşluk olarak değil, 5 boşluk olarak değerlendirilir. Örneğin
 
-cout < < \`\`Merhaba dünya!'' < < endl;
+```cpp
+cout < < ``Merhaba dünya!'' < < endl;
+```
 
 komutunda ekrandaki çıktıda Merhaba sözcüğü ile dünya! sözcüğü arasında 5 boşluk bulunacaktır. İngilizce harfler dışında harf kullanamama kısıtlaması da katarlar içinde geçerli değildir.
 
@@ -490,7 +498,9 @@ komutunda ekrandaki çıktıda Merhaba sözcüğü ile dünya! sözcüğü aras�
 
 Kitaplıklarda tanımlanmış olan fonksiyonlar, araçlar ya da büyüklükler kullanıldığı zaman derleyiciye bunlarla ilgili bilgileri nerede bulabileceğini söylemek gerekir. Bu bilgilerin yer aldığı başlık dosyaları (header files) program başında #include komutuyla belirtilir. Örneğin cout birimi iostream.h başlık dosyasında bulunduğundan örnek programda
 
+```cpp
 #include <iostream.h>
+```
 
 komutu yer almaktadır. Benzer şekilde, EXIT\_SUCCESS sözcüğünün kullanılabilmesi için stdlib.h dosyası içerilmelidir.
 
@@ -502,37 +512,24 @@ C dilinde komutların noktalı virgül ile sona ermesi ve fazla boşluklar ile s
 
 Bu bölümde kullanılacak program (Örnek 2) yarıçapını kullanıcıdan aldığı bir dairenin alanını hesaplayarak sonucu ekrana yazar. Bu örnek, geleneksel yöntemle çalışan (grafik bir arayüzü bulunmayan) programlara tipik bir örnektir. Programın işleyişi, kullanıcıdan verilerin alınması, işlenmesi ve sonuçların bildirilmesi şeklindedir.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 #define PI 3.14
-
-#define sqr(x) ((x) \* (x))
-
+#define sqr(x) ((x) * (x))
 int main(void)
-
 {
-
 float radius;
-
 float circum, area;
-
 cout << "Yarıçap: ";
-
 cin >> radius;
-
-circum = 2 \* PI \* radius;
-
-area = PI \* sqr(radius);
-
+circum = 2 * PI * radius;
+area = PI * sqr(radius);
 cout << "Çevre: " << circum << endl;
-
 cout << "Alan: " << area << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 Bir dairenin çevresini ve alanını hesaplayan program.
 
@@ -566,31 +563,39 @@ Bir değişkene bir değer vermeden ya da değerini bir hesapta kullanmadan önc
 
 Tanımlama, değişkenin tipinin ve adının belirtilmesinden oluşur. Örnekte
 
+```cpp
 float radius;
+```
 
 tanımı derleyiciye radius adında bir değişken olduğunu ve bunun bir gerçel sayı olduğunu belirtmeye yarar.
 
 Aynı tipten olan değişkenler aynı tanımın içinde yer alabilirler. Örnekteki
 
+```cpp
 float circum, area;
+```
 
 tanımı derleyiciye her ikisi de birer gerçel sayı olan, circum ve area adında iki değişken kullanacağımız anlamına gelir. Örnekteki tanımlar istenirse
 
+```cpp
 float radius;
-
 float circum;
-
 float area;
+```
 
 şeklinde ayrılarak ya da
 
+```cpp
 float radius, circum, area;
+```
 
 şeklinde birleştirilerek de yapılabilirdi.
 
 Tanım sırasında istenirse değişkene başlangıç değeri de verilebilir.
 
+```cpp
 float radius, circum = 0.0, area = 0.0;
+```
 
 Bu durumda tanım sırasında circum ve area değişkenlerinin her ikisine de 0.0 değeri verilir, radius değişkenine bir başlangıç değeri verilmez.
 
@@ -614,11 +619,11 @@ Bir değişkenin tanımlanacağı veri tipi, o değişkenin alabileceği değer 
 
 Bir veri tipinin boyu sizeof işlemi yardımıyla belirlenebilir. Her değişken bellekte bu boy kadar yer kaplar (sekizli cinsinden). Aşağıdaki komutlar çalıştığınız sistemde tamsayı tabanlı veri tiplerinin öğrenilmesi için kullanılabilir:
 
-cout < < \`\`int tipinin boyu: '' < < sizeof(int) < < endl;
-
-cout < < \`\`short int tipinin boyu: '' < < sizeof(short int) < < endl;
-
-cout < < \`\`long int tipinin boyu: '' < < sizeof(long int) < < endl;
+```cpp
+cout < < ``int tipinin boyu: '' < < sizeof(int) < < endl;
+cout < < ``short int tipinin boyu: '' < < sizeof(short int) < < endl;
+cout < < ``long int tipinin boyu: '' < < sizeof(long int) < < endl;
+```
 
 Kısa tamsayı veri tipinin boyunun 2 sekizli yani 16 bit olduğunu varsayalım. Bu değer hem işaretli hem de işaretsiz kısa tamsayılar için geçerlidir. Bu durumda işaretsiz kısa tamsayı cinsinden tanımlanan bir değişkenin alabileceği en küçük değer 0 , en büyük değer ise 216−1 olacaktır.
 
@@ -626,21 +631,26 @@ Kısa tamsayı veri tipinin boyunun 2 sekizli yani 16 bit olduğunu varsayalım.
 
 İlk örnek programda kullanıcı, programın işleyişi üzerinde herhangi bir etki yaratamıyordu; bu örnekteyse toplanacak sayıları kendisi belirleyebiliyor. Bunun yapılabilmesi için kullanıcının yazdığı sayıların ilgili değişkenlere aktarılması gerekir. cout biriminin çıkış için kullanımının çok benzerini cin birimi giriş için sağlar. Örnekteki
 
+```cpp
 cin > > radius;
+```
 
 komutu sonucunda radius değişkeni kullanıcının yazdığı sayının değerini alır.
 
 Birden fazla değişken birlikte okunmak isteniyorsa bunlar birbiri ardına > > işaretleriyle belirtilebilirler. Sözgelimi, iki tane yarıçap değeri okunacak ve radius1 değişkeni kullanıcının yazdığı birinci sayının, radius2 değişkeni de kullanıcının yazdığı ikinci sayının değerini alacaksa:
 
-cout < < \`\`Yarıçapları yazın: \`\`;
-
+```cpp
+cout < < ``Yarıçapları yazın: ``;
 cin > > radius1 > > radius2;
+```
 
 Bu örnekte kullanıcının sayıları yazarken aralarında bir boşluk bırakması gerekir.
 
 Yine ilk örnekte çıkış da hep aynı katarın ekrana aktarılmasına dayanıyordu. İkinci örneğimizde ise çıkış programın her çalışmasında farklı olacaktır. cout birimine aktarım yapılırken çift tırnak içine yazılmayan bölümler değişken değerleri olarak yorumlanır. Örnekteki
 
-cout < < \`\`Çevre: \`\` < < circum < < endl;
+```cpp
+cout < < ``Çevre: `` < < circum < < endl;
+```
 
 komutu ekrana önce \`\`Çevre'' katarını yazar, daha sonra circum değişkeninin değerini yazar ve yeni satıra geçer.
 
@@ -666,19 +676,25 @@ Gerçel sayıların olağan gösterilimi noktalı gösterilimdir, ancak istenirs
 
 Örnekteki
 
-circum = 2 \* PI \* radius;
+```cpp
+circum = 2 * PI * radius;
+```
 
 komutu bir atama komutudur. Atama, bir değişkene bir değer verilmesi işlemidir (simgesel olarak circum← 2\*PI\*radius şeklinde de gösterilir). Atama işlemi eşit işaretiyle yapılır ve işaretin sol tarafına bir değişken adı, sağ tarafına ise bir deyim yazılır. Sağ tarafta yer alan deyim hesaplanarak sonucu sol tarafta belirtilen değişkene atanır.7
 
 Atama işlemi bir matematiksel eşitlik *DEĞİLDİR*. Öyle olsaydı
 
-2 \* PI \* radius = circum;
+```cpp
+2 * PI * radius = circum;
+```
 
 şeklinde bir komut geçerli olurdu. Oysa bu komut C dilinde hatalı bir komuttur, çünkü eşit işaretinin sol tarafına bir deyim yazılamaz. İşlem sonucunun sol tarafa yazılan değişkene atanacağı gözönüne alınırsa bu yazımın neden yanlış olduğu da görülebilir; sol tarafta sonucun atanabileceği bir varlık yer almamaktadır.
 
 Atama işleminin bir matematiksel eşitlik olmadığına ilişkin diğer bir örnek de şu komuttur:
 
+```cpp
 a = a + 17;
+```
 
 Matematiksel açıdan bakıldığında bu yazılan yanlıştır ( 0=17 ). Oysa bu komutun anlamı \`\`a değişkeninin değeri ile 17 sayısını topla ve sonucu yeniden a değişkenine yaz'' cümlesiyle açıklanabilir.
 
@@ -712,23 +728,25 @@ gibi yazılışlarla sağlanabilir.
 
 Bir bölme işlemine giren iki değişkenin ikisinin de tamsayı tipinden olması durumunda sonuç yine tamsayı olacaktır. Örneğin
 
+```cpp
 int num1 = 14, num2 = 4;
-
 float quotient;
-
 quotient = num1 / num2;
+```
 
 işlemleri sonucu quotient değişkeni 3.0 değerini alır. Son bölme deyiminde hiçbir sayı yer almadığı için bunların noktalı şekilde yazılmalarına da olanak yoktur. İşlemin doğru olarak yapılmasını sağlamak için num1 ve num2 değişkenlerinden en az birinin gerçel sayı tipine çevrilmesi gerekir. Bu işleme *tip zorlama* (type casting) adı verilir. Tip zorlama, bir deyimin başına parantez içinde deyimin sonucunun alması istenen tipin adının yazılmasıyla yapılır. Yukarıdaki örneğin doğru çalışması için
 
+```cpp
 quotient = (float) num1 / num2;
-
 quotient = num1 / (float) num2;
-
 quotient = (float) num1 / (float) num2;
+```
 
 komutlarından herhangi biri kullanılabilir.
 
+```cpp
 quotient = (float) (num1 / num2);
+```
 
 komutu ise önce bölmeyi sonra tip zorlamasını yapacağından yine quotient değişkenine 3.0 değerini atayacaktır.
 
@@ -738,43 +756,45 @@ Genel olarak, bir işleme giren sayılar farklı tiptense, bunların ortak bir t
 
 Atamanın sağ tarafındaki deyim, atamanın sol tarafındaki değişken ile bir deyimi içeren bir işlemse, yani
 
+```cpp
 değişken = değişken ° deyim;
+```
 
 ( ° herhangi bir işlem simgesi olabilir) şeklindeyse bu komut
 
+```cpp
 değişken °= deyim;
+```
 
 şeklinde kısaltılabilir. Örnekler:
 
+```cpp
 a += 5; // a = a + 5;
-
 a -= b; // a = a - b;
-
-a \*= c + d; // a = a \* (c + d);
-
+a *= c + d; // a = a * (c + d);
 a /= 2; // a = a / 2;
-
 a %= 4; // a = a % 4;
+```
 
 ## **2.8.3 Artırma / Azaltma**
 
 Bir değişkenin değeri
 
+```cpp
 a = a + 1;
-
 a += 1;
+```
 
 gibi komutlarla artırılabilir. Azaltma için de benzer komutlar düşünülebilir. Ancak artırma ve azaltma işlemleri programlarda sıkça gereksinim duyulan işlemlerden olduklarından C'de bunlar için özel işleçler tanımlanmıştır. ++ işleci, önüne ya da arkasına yazıldığı değişkenin değerini 1 artırır; - işleciyse önüne ya da arkasına yazıldığı işlecin değerini 1 azaltır. Her iki işleç de yalnızca tamsayı veri tipleri ile çalışırlar.
 
 Örnekler:
 
+```cpp
 a++;
-
 a--;
-
 ++a;
-
 --a;
+```
 
 Basit kullanımlarında işleçlerin değişkenin önüne mi arkasına mı yazıldıklarının önemi yoktur.8
 
@@ -832,19 +852,23 @@ Değişmezler iki şekilde tanımlanabilirler:
 
 Bu bildirim yönteminde değişmezlerin tipleri ayrıca belirtilmez. Tamsayı değişmezler int tipine sığmıyorlarsa long int varsayılırlar. Değerlerinin sonuna l ya da L harfleri eklenirse long, u ya da U eklenirse unsigned niteleyicileri seçilmiş olur.
 
+```cpp
 #define MAXSHORT 0x7FFF
-
 #define MAXUSHORT 65535U
+```
 
 Gerçel değişmezlerin değerlerinin sonuna f ya da F eklenmemişse double tipinden oldukları varsayılır. l ya da L eklenirse long double tipinden olurlar.
 
+```cpp
 #define EULER 2.81782F
-
 #define PERCENT 1E-2
+```
 
 Değişken bildirimine benzer şekilde ancak bildirim sırasında veri tipinin önüne const niteleyicisi koyarak tanımlama. Böylece değeri değiştirilemeyen bir değişken tanımlanmış olur. Bu şekilde tanımlanan değişmezlere büyük harflerden oluşan adlar verilmez. Örnekteki PI değişmezinin bu yöntemle tanımı şöyle olurdu:
 
+```cpp
 const float pi = 3.14;
+```
 
 Her iki tanımda da değişmez olarak bildirilmiş bir büyüklüğe değer atanmaya çalışırsa derleyici hata verir9.
 
@@ -852,17 +876,23 @@ Her iki tanımda da değişmez olarak bildirilmiş bir büyüklüğe değer atan
 
 Programın içinde sıkça yinelenmesi gerekebilecek küçük kod parçaları makrolar yardımıyla gerçeklenebilir. Örnekte kare alma işlemini yapmak üzere bir makro yazılmıştır. Makrolar da değişmez tanımlarına benzer şekilde #define sözcüğüyle yapılırlar. İşleyişleri de yine değişmez tanımlarına benzer şekilde olur, yani makronun adının geçtiği yere açılımı konur. Örnekteki
 
-area = PI \* sqr(radius);
+```cpp
+area = PI * sqr(radius);
+```
 
 komutu görülünce makro tanımında x yerine radius sözcüğü konarak kod
 
-area = PI \* ((radius) \* (radius));
+```cpp
+area = PI * ((radius) * (radius));
+```
 
 şekline getirilir (programcı kendisi bu şekilde yazmış gibi).
 
 Bu işlem bir sözcük ya da sözcük grubunun yerine başka bir sözcük ya da sözcük grubunun yerleştirilmesi şeklinde yürüdüğünden kullanımına dikkat etmek gerekir. Örnekteki makro
 
-#define sqr(x) x \* x
+```cpp
+#define sqr(x) x * x
+```
 
 şeklinde tanımlansa ve programda
 
@@ -890,7 +920,9 @@ Aşağıdaki aritmetik deyimleri gerçekleyen C deyimlerini yazın:
 
 Aşağıdaki C deyimlerinin gerçeklediği aritmetik deyimleri yazın:
 
-a + 3 \* b - (c + d) / 2 \* y;
+```cpp
+a + 3 * b - (c + d) / 2 * y;
+```
 
 Kullanıcının Fahrenheit biriminde verdiği bir sıcaklık değerini aşağıdaki formüle göre Celcius birimine çevirerek, bu sıcaklıkta suyun halini (0'dan küçük ise katı, 100'den büyük ise gaz, diğer durumlarda sıvı) ekrana çıkartan bir program yazın.
 
@@ -923,65 +955,38 @@ Akış Denetimi**
 
 Bu bölümde üzerinde çalışılacak program, kullanıcının verdiği sayı kadar yazı tura atarak yazı ve turaların kaçar kere geldiğini sayar ve sonuçları ekrana çıkartır. Bu programa ilişkin akış çizeneği Şekil 3.1'de, kod Örnek 3'de verilmiştir.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS,srand,rand,RAND\_MAX
-
+#include <stdlib.h> // EXIT_SUCCESS,srand,rand,RAND_MAX
 #include <time.h> // time
-
 int main(void)
-
 {
-
 int count, i;
-
 float number;
-
 int heads = 0, tails = 0;
-
 cout << "Kaç kez atılacak? "; cin >> count;
-
 srand(time(NULL));
-
 for (i = 1; i <= count; i++)
-
 {
-
-number = (float) rand() / RAND\_MAX;
-
+number = (float) rand() / RAND_MAX;
 if (number < 0.5)
-
 {
-
 cout << "Yazı" << endl;
-
 tails++;
-
 }
-
 else
-
 {
-
 cout << "Tura" << endl;
-
 heads++;
-
 }
-
 }
-
 cout << " Yazı sayısı: " << tails
-
-<< ", Yüzdesi: %" << 100.0 \* tails / count << endl;
-
+<< ", Yüzdesi: %" << 100.0 * tails / count << endl;
 cout << " Tura sayısı: " << heads
-
-<< ", Yüzdesi: %" << 100.0 \* heads / count << endl;
-
-return EXIT\_SUCCESS;
-
+<< ", Yüzdesi: %" << 100.0 * heads / count << endl;
+return EXIT_SUCCESS;
 }
+```
 
 #1 Yinelemeli yazı-tura atışı simülasyonu yapan program.
 
@@ -1113,73 +1118,56 @@ biçiminde de yazılabilirdi.
 
 if/else yapısı, bir koşulun sağlanıp sağlanmamasına göre iki bloktan hangisinin yürütüleceğine karar verir. Örnekteki
 
+```cpp
 if (number < 0.5)
-
 {
-
-cout < < \`\`Yazı'' < < endl;
-
+cout < < ``Yazı'' < < endl;
 tails++;
-
 }
-
 else
-
 {
-
-cout < < \`\`Tura'' < < endl;
-
+cout < < ``Tura'' < < endl;
 heads++;
-
 }
+```
 
 yapısında number değişkeninin değeri 0.5'den küçükse yazı geldiğine karar verilir ve tails değişkeninin, 0.5'e eşit ya da daha büyükse tura geldiğine karar verilir heads değişkeninin değeri 1 artırılacaktır.
 
 Bir blok tek bir komuttan oluşuyorsa bloğun süslü parantezler ile sınırlanması zorunlu değildir11. Örnekte yazı mı tura mı geldiğinin her seferinde bildirilmesi istenmiyor ve yalnızca sayılarının bulunması isteniyor olsaydı if / else yapısı şöyle olurdu:
 
+```cpp
 if (number < 0.5)
-
 {
-
 tails++;
-
 }
-
 else
-
 {
-
 heads++;
-
 }
+```
 
 Bu yapı, süslü parantezler kullanılmayarak şu şekilde de yazılabilirdi:
 
+```cpp
 if (number < 0.5)
-
 tails++;
-
 else
-
 heads++;
+```
 
 Gelenek olarak tek komutlu bloklarda süslü parantezler kullanılmaz, yani yukarıdaki örneklerin ikinci yazılış şekline uyulur.
 
 Her if yapısında bir else bloğu bulunması zorunlu değildir. Bu şekliyle kullanımda if, bir koşulun sağlanıp sağlanmamasına göre bir bloğun yürütülüp yürütülmeyeceğine karar verir. Yine her atışın sonucunun tek tek bildirilmediği durum gözönüne alınırsa yazı ve turaları ayrı ayrı saymaya gerek olmayacağı, birini saymanın yeteceği görülebilir. O halde program şu şekilde değiştirilebilir:
 
+```cpp
 for (i = 1; i <= count; i++)
-
 {
-
-number = (float) rand() / RAND\_MAX;
-
+number = (float) rand() / RAND_MAX;
 if (number < 0.5)
-
 tails++;
-
 }
-
 heads = count - tails;
+```
 
 Döngü içindeki if yapısında koşul sağlanıyorsa tails değişkeninin değeri artırılır, sağlanmıyorsa hiçbir şey yapılmaz.
 
@@ -1195,7 +1183,9 @@ Kaçar kaçar sayılacağı: Örnekte sayacın birer birer artırılacağı beli
 
 for yapısı bu üç belirtimin aynı anda yapılmasına olanak sağlar. Parantez içinde önce başlangıç değeri ataması, ikinci olarak hangi koşul sağlandığı sürece devam edileceği ve son olarak da sayacın nasıl artırılacağı belirtilir.
 
+```cpp
 for (i = 1; i <= count; i++)
+```
 
 komutu şöyle okunabilir:
 
@@ -1209,17 +1199,23 @@ Artırma işlemi döngü gövdesi yürütüldükten sonra yapılır. Örnekte d�
 
 Verilen başlangıç değeri döngü koşulunu sağlamıyorsa döngünün gövdesi hiç yürütülmez. Örneğin
 
+```cpp
 for (i = 1; i == 10; i++)
+```
 
 döngüsünde başlangıç değeri sürme koşulunu sağlamadığından (1 == 10 olmadığından) döngüye hiç girilmez.
 
 Artım miktarı için artırma işleci kullanılması zorunlu değildir, herhangi bir C deyimi kullanılabilir.
 
+```cpp
 for (i = 1; i < count; i += 3)
+```
 
 döngüsü 1, 4, 7, 10, 13, ... şeklinde sayarken
 
-for (i = 1; i < count; i \*= 2)
+```cpp
+for (i = 1; i < count; i *= 2)
+```
 
 döngüsü 1, 2, 4, 8, 16, ... şeklinde sayar.
 
@@ -1227,57 +1223,34 @@ döngüsü 1, 2, 4, 8, 16, ... şeklinde sayar.
 
 Bu bölümde üzerinde çalışılacak program (Örnek 4), operandlarını ve operatörünü kullanıcının belirttiği işlemi yaparak sonucu ekrana yazar.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS,exit
-
+#include <stdlib.h> // EXIT_SUCCESS,exit
 int main(void)
-
 {
-
 int num1, num2, result;
-
 char op;
-
 cout << "İşlemi yazın: "; cin >> num1 >> op >> num2;
-
 switch (op)
-
 {
-
 case '+': result = num1 + num2;
-
 break;
-
 case '-': result = num1 - num2;
-
 break;
-
-case '\*': result = num1 \* num2;
-
+case '*': result = num1 * num2;
 break;
-
 case '/': result = num1 / num2;
-
 break;
-
 case '%': result = num1 % num2;
-
 break;
-
 default: cout << "Böyle bir işlem yok." << endl;
-
-exit(EXIT\_FAILURE);
-
+exit(EXIT_FAILURE);
 }
-
 cout << num1 << op << num2
-
 << " işleminin sonucu: " << result << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 Kullanıcının belirttiği işlemi yapan program.
 
@@ -1285,23 +1258,25 @@ return EXIT\_SUCCESS;
 
 Bir deyimin çok sayıda değer içinden hangisini almış olduğunu sınamak istiyorsak yazacağımız if kodu uzun ve çirkin bir görünüm alacaktır. Örneğimizde yapılacak işlemin hangisi olduğunu anlamak için yazılacak if kodu şu tip bir şey olurdu:
 
+```cpp
 if (op == '+')
+```
 
 ...
 
+```cpp
 else
-
 {
-
 if (op == '-')
+```
 
 ...
 
+```cpp
 else
-
 {
-
-if (op == '\*')
+if (op == '*')
+```
 
 ...
 
@@ -1325,43 +1300,27 @@ C programlarında sıkça yapılan hatalardan biri bloklardaki break komutların
 
 Bu bölümde iki sayının en büyük ortak bölenini Euclid algoritmasını kullanarak bulan bir program yazılacaktır. Bu algoritmaya ilişkin akış çizeneği Şekil 3.4'de, bu akış çizeneğini gerçekleyen program Örnek 5'de verilmiştir.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 int main(void)
-
 {
-
 int num1, num2, tmp;
-
 cout << "Sayıları yazın: "; cin >> num1 >> num2;
-
 while (num1 > 0)
-
 {
-
 if (num1 < num2)
-
 {
-
 tmp = num1;
-
 num1 = num2;
-
 num2 = tmp;
-
 }
-
 num1 = num1 - num2;
-
 }
-
 cout << "En büyük ortak bölen: " << num2 << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 İki sayının en büyük ortak bölenini bulan program.
 
@@ -1374,29 +1333,24 @@ return EXIT\_SUCCESS;
 
 Örnekte programda döngünün kaç kere yineleneceği belli değildir; bir koşul sağlandığı sürece yinelenmesi istenmektedir. Böyle durumlarda while yapısı kullanılır. Örnekteki while bloğu num1 değişkeninin değeri pozitif olduğu sürece yinelenecek, sıfıra eşit ya da negatif olduğu zaman sona erecektir.
 
+```cpp
 for döngüleri while döngüleri şeklinde de yazılabilirler:
-
 for (başlangıç ataması; sürme koşulu; artırma komutu)
-
 {
-
 blok;
-
 }
+```
 
 döngüsü
 
+```cpp
 başlangıç ataması;
-
 while (sürme koşulu)
-
 {
-
 blok;
-
 artırma komutu;
-
 }
+```
 
 döngüsüne eşdeğerlidir. Yine de sayaç denetiminde yinelemeler için for, koşul denetiminde yinelemeler için while kullanmak anlaşılırlık açısından daha iyidir.
 
@@ -1404,39 +1358,25 @@ döngüsüne eşdeğerlidir. Yine de sayaç denetiminde yinelemeler için for, k
 
 Bu bölümdeki programda (Örnek 6), giriş bölümünde anlatılan ikinci algoritma kullanılarak iki sayının en küçük ortak katı bulunacaktır.
 
+```cpp
 #include <iostream.h> // oout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 int main(void)
-
 {
-
 int number1, number2;
-
 int max, min, i;
-
 long int lcm;
-
 cout << "1. Sayı: "; cin >> number1;
-
 cout << "2. Sayı: "; cin >> number2;
-
 max = number1 > number2 ? number1 : number2;
-
 min = number1 < number2 ? number1 : number2;
-
-for (i = 1; (max \* i) % min != 0; i++)
-
+for (i = 1; (max * i) % min != 0; i++)
 ;
-
-lcm = max \* i;
-
+lcm = max * i;
 cout << "En küçük ortak kat: " << lcm << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 İki sayının en küçük ortak katını bulan program.
 
@@ -1448,36 +1388,39 @@ Koşullu işleç, bir koşulun gerçekleşip gerçekleşmemesine göre iki deyim
 
 Burada öncelikle deyim1 değerlendirilir. Sonuç doğruysa deyim2, yanlışsa deyim3 seçilir. Örnekteki
 
+```cpp
 max = (number1 > number2) ? number1 : number2;
+```
 
 komutu şu şekilde yorumlanabilir:
 
+```cpp
 if (number1 > number2)
-
 max = number1;
-
 else
-
 max = number2;
+```
 
 ## **3.8 Boş Döngüler**
 
 Bazı durumlarda bir döngünün bloğu boş olabilir, yani herhangi bir komut içermeyebilir. Örnekte, en küçük ortak katı bulunacak iki sayıdan büyük olanın katları taranarak bunların herhangi birinin küçük olan sayıya da bölünüp bölünmediğini sınayan for döngüsünün bloğu boştur çünkü bu döngüde döngü sayacını artırmaktan başka yapılacak işlem yoktur. Aynı döngü while ile şu şekilde yazılabilirdi:
 
+```cpp
 i = 1;
-
-while ((max \* i) % min != 0)
-
+while ((max * i) % min != 0)
 i++;
+```
 
 ## **Örnek**
 
 Bu bölümdeki programda (Örnek 7), ex fonksiyonun hesaplanması için aşağıdaki seri toplamından yararlanılacaktır:
 
+```cpp
 PRIVATEf(x)=∞
 ∑
 i=0
 xi
+```
 
 i!
 =1+x+x2
@@ -1491,53 +1434,32 @@ i!
 4!
 +…Bu programda içiçe iki döngü bulunacak ve bu döngülerden biri uygun koşul sağlandığında çıkılan bir sonsuz döngü şeklinde gerçeklenecektir. Dış döngünün her yinelenişinde serinin o anki terimi hesaplanarak toplama eklenecektir. Hesaplanan terim kullanıcının belirttiği hatadan küçük olduğunda değerin istenen duyarlılıkta hesaplandığına karar verilerek sonuç ekrana çıkartılacaktır.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 #include <math.h> // pow
-
 int main(void)
-
 {
-
 float x, error, term, result = 1.0;
-
 int i = 1, f;
-
 float fact;
-
 cout << "x: "; cin >> x;
-
 cout << "Hata: "; cin >> error;
-
 while (true)
-
 {
-
 fact = 1.0;
-
 for (f = 2; f <= i; f++)
-
-fact \*= f;
-
+fact *= f;
 term = pow(x, i) / fact;
-
 result += term;
-
 if (term < error)
-
 break;
-
 i++;
-
 }
-
 cout << "Sonuç: " << result << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 ex\\protect deyimini genel terimden giderek hesaplayan program.
 
@@ -1545,7 +1467,9 @@ return EXIT\_SUCCESS;
 
 Örnekte görüldüğü gibi, dış döngü
 
+```cpp
 while (true)
+```
 
 şeklinde başlamaktadır. Bu yapıda koşul doğru olduğu sürece blok yineleneceğinden ve koşul her zaman doğru olduğundan bu bir sonsuz döngüdür, yani blok içinde önlem alınmazsa döngü sonlanmaz.
 
@@ -1557,10 +1481,12 @@ Döngünün sonlanması için blok içinde bloktan çıkılması için gerekli k
 
 Aşağıdaki seri toplamı hesaplanmak isteniyor:
 
+```cpp
 PRIVATEn
 ∑
 i=0
 (−1)ixi
+```
 
 (2i)!
 =x0
@@ -1600,57 +1526,34 @@ Bu bölümde üzerinde çalışılacak program (Örnek 8), kullanıcıdan aldı�
 
 Yalnızca ortalama hesaplanacak olsaydı tek bir döngü kullanmak yeterli olurdu. Döngünün her bir yinelenişinde kullanıcıdan sıradaki öğrencinin notu alınır ve o ana kadarki toplama eklenirdi. Döngü sona erdiğinde bulunan toplam, eleman sayısına bölünerek ortalama elde edilirdi. Ancak varyansın hesaplanabilmesi için her bir notun ortalamayla farkına gereksinim vardır. Ortalama ise ancak birinci döngünün sonunda elde edilebildiğinden varyansı hesaplamak için ikinci bir döngü gerekir. Ayrıca bu ikinci döngüde yine öğrenci notlarına gereksinim olduğundan kullanıcının girmiş olduğu notlar da unutulmamalıdır.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 #include <math.h> // sqrt
-
 #define MAXSTUDENTS 100
-
-#define sqr(x) ((x) \* (x))
-
+#define sqr(x) ((x) * (x))
 int main(void)
-
 {
-
-int grades\[MAXSTUDENTS\];
-
+int grades[MAXSTUDENTS];
 int nstudents, i;
-
 float mean, variance = 0.0, deviation;
-
 int total = 0;
-
 cout << "Öğrenci sayısı: "; cin >> nstudents;
-
 for (i = 0; i < nstudents; i++)
-
 {
-
-cout << i + 1 << ". öğrencinin notu: "; cin >> grades\[i\];
-
-total += grades\[i\];
-
+cout << i + 1 << ". öğrencinin notu: "; cin >> grades[i];
+total += grades[i];
 }
-
 mean = (float) total / nstudents;
-
 for (i = 0; i < nstudents; i++)
-
-variance += sqr(grades\[i\] - mean);
-
+variance += sqr(grades[i] - mean);
 deviation = sqrt(variance / (nstudents - 1));
-
 cout << "Ortalama: " << mean << endl;
-
 cout << "Varyans: " << variance << endl;
-
 cout << "Standart Sapma: " << deviation << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 Ortalama, varyans ve standart sapma hesaplayan program.
 
@@ -1660,27 +1563,37 @@ Aynı tipten ve birbirleriyle ilişkili değerler bir dizi altında birleştiril
 
 Diğer değişkenlerde olduğu gibi, dizilerin de kullanılmadan önce tanımlanmaları gerekir. Dizi tanımında dizinin eleman tipi, adı ve boyu belirtilir. Örnekte
 
-int grades\[MAXSTUDENTS\];
+```cpp
+int grades[MAXSTUDENTS];
+```
 
 tanımı, her biri tamsayı tipinden MAXSTUDENTS elemanlı ve grades adında bir dizi tanımlar. Bu dizi için bellekte MAXSTUDENTS \* sizeof(int) kadar yer ayrılır.
 
 Yine diğer değişkenlerde olduğu gibi, dizilere de tanım sırasında başlangıç değeri verilebilir. Örneğin:
 
-int grades\[4\] = { 85, 73, 91, 66 };
+```cpp
+int grades[4] = { 85, 73, 91, 66 };
+```
 
 tanımı 4 elemanlı bir dizi tanımlar ve elemanlara sırasıyla 85, 73, 91 ve 66 değerlerini verir. Özel bir durum olarak, bütün diziye 0 başlangıç değeri verilmek isteniyorsa şu komut kullanılabilir:
 
-int grades\[50\] = { 0 };
+```cpp
+int grades[50] = { 0 };
+```
 
 Diziye başlangıç değeri verilirse eleman sayısını belirtmek zorunluluğu yoktur, yani
 
-int grades\[\] = { 85, 73, 91, 66 };
+```cpp
+int grades[] = { 85, 73, 91, 66 };
+```
 
 tanımı da yukarıdakiyle aynı işi yapar. Bu durumda derleyici başlangıç değeri olarak verilen dizideki eleman sayısını sayarak boyu kendisi belirler.
 
 Derleyicinin dizi için bellekte ne kadar yer ayrılacağını bilmesi gerektiğinden dizi tanımında boy olarak sabit bir değer vermek zorunludur. Örnekte sınıftaki öğrenci sayısı nstudents değişkeniyle gösterilmektedir, yani dizinin nstudents elemanı olması gerekli ve yeterlidir. Ancak nstudents değişkeninin değerinin ne olacağını programın çalışması sırasında kullanıcı belirlediğinden derleyici bu değeri dizi boyu olarak kullanamaz, yani
 
-int grades\[nstudents\];
+```cpp
+int grades[nstudents];
+```
 
 şeklinde bir dizi tanımı yapamaz. Başka bir deyişle, dizi boyu için yazılacak deyimde yalnızca sayılar ve değişmezler yer alabilir, değişkenler yer alamaz. Bu durumda, dizinin kaç elemanı olacağı baştan bilinmiyorsa gerekebilecek en büyük eleman sayısı boy olarak belirtilmelidir. Örnekteki MAXSTUDENTS değişmezi bu işlevi görmektedir. Burada belirtilen sayı, bir yandan gereksiz bellek kullanımına yol açabilir, diğer yandan da programın bir kısıtlaması haline gelir. Örnek programın yaptığı işin açıklamasını şu şekilde düzeltmek gerekir:
 
@@ -1688,7 +1601,9 @@ Bu program, en fazla 100 öğrencili bir sınıfta, öğrenci notlarının ortal
 
 Dizi her ne kadar bir elemanlar topluluğu olsa da işlem yapılacağı zaman dizinin bir elemanına erişmek gerekecektir. Bir dizinin bir elemanı üzerinde işlem yapmak için o elemanın kaçıncı eleman olduğunu belirtmek gerekir. C dilinde dizilerin ilk elemanının sıra numarası 0 olarak belirlenir; yani ilk elemanın sıra numarası 0, ikinci elemanın sıra numarası 1 şeklinde ilerler. Bu durumda n elemanlı bir dizinin son elemanının sıra numarası n−1 olur. Bu özellik nedeniyle n elemanlı bir dizi üzerinde işlem yapacak tipik bir C döngüsü
 
+```cpp
 for (i = 0; i < n; i++)
+```
 
 şeklinde başlar. İlk elemanın sıra numarası 0 olduğundan for bloğuna ilk girişte dizinin ilk elemanı ile işlem yapılır. Son işlem de n−1 sıra numaralı elemanla yapılacak, döngü sayacı n değerini alır almaz döngüden çıkılacaktır.
 
@@ -1698,85 +1613,48 @@ Derleyici dizilerin elemanlarına erişimde dizi sınırlarının denetimini yap
 
 Bu bölümde üzerinde çalışılacak program (Örnek 9), boyutları ve elemanları kullanıcıdan alınan iki matrisi çarparak sonucu ekrana çıkartır. Bu örnekte, çok boyutlu diziler üzerinde nasıl işlem yapılacağı üzerinde durulacaktır.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 int main(void)
-
 {
-
-int m1\[30\]\[20\];
-
-int m2\[20\]\[30\];
-
-int pr\[30\]\[30\] = { 0 };
-
+int m1[30][20];
+int m2[20][30];
+int pr[30][30] = { 0 };
 int r1, c1, c2;
-
 int &r2 = c1;
-
 int i, j, k;
-
 cout << "Sol matrisin satır sayısı: "; cin >> r1;
-
 cout << "Sol matrisin sütun sayısı: "; cin >> c1;
-
 cout << "Sağ matrisin sütun sayısı: "; cin >> c2;
-
 cout << "Sol matris: " << endl;
-
 for (i = 0; i < r1; i++)
-
 for (j = 0; j < c1; j++)
-
 {
-
-cout << " \[" << i + 1 << "," << j + 1<< "\]: ";
-
-cin >> m1\[i\]\[j\];
-
+cout << " [" << i + 1 << "," << j + 1<< "]: ";
+cin >> m1[i][j];
 }
-
 cout << "Sağ matris: " << endl;
-
 for (j = 0; j < r2; j++)
-
 for (k = 0; k < c2; k++)
-
 {
-
-cout << " \[" << j + 1 << "," << k + 1 << "\]: ";
-
-cin >> m2\[j\]\[k\];
-
+cout << " [" << j + 1 << "," << k + 1 << "]: ";
+cin >> m2[j][k];
 }
-
 for (i = 0; i < r1; i++)
-
 for (j = 0; j < c2; j++)
-
 for (k = 0; k < c1; k++)
-
-pr\[i\]\[j\] += m1\[i\]\[k\] \* m2\[k\]\[j\];
-
+pr[i][j] += m1[i][k] * m2[k][j];
 cout << "Sonuç:" << endl;
-
 for (i = 0; i < r1; i++)
-
 {
-
 for (k = 0; k < c2; k++)
-
-cout << " " << pr\[i\]\[k\] << " ";
-
+cout << " " << pr[i][k] << " ";
 cout << endl;
-
 }
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 İki matrisi çarpan program.
 
@@ -1784,17 +1662,23 @@ return EXIT\_SUCCESS;
 
 Çok boyutlu bir dizi tanımlanmasında her boyut ayrı bir köşeli parantez çifti içinde belirtilir. Örnekteki
 
-int m1\[30\]\[20\];
+```cpp
+int m1[30][20];
+```
 
 komutu, 30 satırlı ve 20 sütunlu bir matris tanımlar. Bu matrisin, her biri birer tamsayı olan, 30\*20=600 elemanı olacaktır, yani bellekte 600 tamsayı tutacak kadar yer ayrılmasına neden olur. Daha çok boyutu olan bir dizi tanımlanmak istenseydi boyutlar yanyana sürdürülebilirdi:
 
-int n\[30\]\[20\]\[7\]\[12\];
+```cpp
+int n[30][20][7][12];
+```
 
 Bu işlem sonucunda da bellekte 30\*20\*7\*12=50400 tamsayı tutacak kadar yer ayrılır.
 
 Tek boyutlu dizilerde olduğu gibi, çok boyutlu dizilerde de başlangıç değeri verilebilir. Bunun için her bir boyutun kendi içinde süslü parantezler içine alınması gerekir:
 
-int p\[2\]\[3\] = { { 1, 2, 1 }, { 3, 5, 1 } };
+```cpp
+int p[2][3] = { { 1, 2, 1 }, { 3, 5, 1 } };
+```
 
 tanımı
 
@@ -1821,57 +1705,44 @@ Katarlar**
 
 Bu bölümde üzerinde çalışılacak program (Örnek 10), kullanıcının girdiği sözcüğü tersine çevirerek ekrana yazar. Bu programın yeniliği sayılar üzerinde değil sözcükler üzerinde işlem yapmasıdır.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 #include <string.h> // strlen
-
 int main(void)
-
 {
-
-char word\[30\];
-
+char word[30];
 int len, i;
-
 char tmp;
-
 cout << "Sözcük: "; cin >> word;
-
 len = strlen(word);
-
 for (i = 0; i < len / 2; i++)
-
 {
-
-tmp = word\[i\];
-
-word\[i\] = word\[len - 1 - i\];
-
-word\[len - 1 - i\] = tmp;
-
+tmp = word[i];
+word[i] = word[len - 1 - i];
+word[len - 1 - i] = tmp;
 }
-
 cout << "Tersi: " << word << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 Sözcüğü tersine çeviren program.
 
 Programlamada üzerinde işlem yapılan temel veri tiplerinden biri de katarlardır. Katarlar, sözcük, tümce, ileti gibi bilgi tiplerini temsil ederler. Örnek programda kullanıcının girdiği sözcük bir katar olacaktır. Çoğu programlama dilinin katarlar için özel bir veri tipi olmasına karşın C'de böyle bir özel tip tanımlanmamıştır. Katarlar bir simge dizisi olarak değerlendirilirler. Diğer dizilerden tek farkları eleman sayısının (katarın içerdiği simge sayısının) tutacak bir değişkene gereksinim duyulmamasıdır. Katarlar sonlarına konan '0' simgesiyle sonlandırılırlar. Bu nedenle katar için bellekte ayrılması gereken yer, katarın içerdiği simge sayısının bir fazlasıdır. Örnekteki
 
-char word\[30\];
+```cpp
+char word[30];
+```
 
 tanımı, her biri simge tipinden, 30 elemanlı, word adında bir katar oluşturur. Bu elemanlardan biri '0' simgesi için kullanılacağından kullanıcının gireceği sözcük en fazla 29 simge uzunluğunda olabilir.
 
 Katar tipinden bir değişkenin tanımlanması sırasında başlangıç değeri çift tırnak içinde belirtilebilir. Tanımlanan boyun katar için gerektiği kadar yeri ayırmasına dikkat edilmelidir. İstenirse boyut belirtilmeyebilir; bu durumda derleyici gerekli yeri kendisi ayırır. Aşağıdaki iki tanım aynı işi görürler:
 
-char word\[7\] = \`\`Sözcük'';
-
-char word\[\] = \`\`Sözcük'';
+```cpp
+char word[7] = ``Sözcük'';
+char word[] = ``Sözcük'';
+```
 
 Tam gerektiği kadar yer ayırmak riskli bir davranıştır. Programın içinde katarın uzaması sözkonusu olabilecekse gerekebilecek maksimum alan gözönüne alınmalı ve tanım sırasında bu boy belirtilmelidir.
 
@@ -1890,89 +1761,50 @@ Fonksiyonlar**
 
 Bu bölümde üzerinde çalışılacak program (Örnek 11), kullanıcının girdiği bir sayının asal çarpanlarını ekrana dökecektir. Bu programda bir sayının asal olup olmadığının sınanmasına ve asal sayıların bulunmasına gerek duyulacaktır. Soyutlama ilkesine göre bu işlemler fonksiyonlarla gerçekleştirilecek, ana fonksiyon asal sayıları bulan fonksiyondan sırayla aldığı asal sayıların kullanıcının verdiği sayıyı bölüp bölmediklerini sınayacaktır. Örnekte is\_prime fonksiyonu kendisine gönderilen bir sayının asal olup olmadığını belirleyerek geriye asalsa doğru, değilse yanlış mantıksal değerini yollar. next\_prime fonksiyonu ise kendisine gönderilen asal sayıdan bir sonraki asal sayıyı bularak kendisini çağıran fonksiyona geri yollar.
 
+```cpp
 #include <iostream.h> // oout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 #include <math.h> // sqrt
-
-int next\_prime(int prime);
-
+int next_prime(int prime);
 int main(void)
-
 {
-
 int number, factor;
-
 cout << "Sayı: "; cin >> number;
-
 factor = 2;
-
 while (number > 1)
-
 {
-
 while (number % factor == 0)
-
 {
-
 cout << factor << " ";
-
 number /= factor;
-
 }
-
-factor = next\_prime(factor);
-
+factor = next_prime(factor);
 }
-
 cout << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
-
-bool is\_prime(int cand)
-
+bool is_prime(int cand)
 {
-
 int count;
-
 if (cand == 2)
-
 return true;
-
 if (cand % 2 == 0)
-
 return false;
-
 for (count = 3; count <= sqrt(cand); count += 2)
-
 {
-
 if (cand % count == 0)
-
 return false;
-
 }
-
 return true;
-
 }
-
-int next\_prime(int prime)
-
+int next_prime(int prime)
 {
-
 int cand = (prime % 2 == 0) ? prime + 1 : prime + 2;
-
-while (!is\_prime(cand))
-
+while (!is_prime(cand))
 cand += 2;
-
 return cand;
-
 }
+```
 
 #1 Bir sayıyı asal çarpanlarına ayıran program.
 
@@ -1996,7 +1828,9 @@ Bir fonksiyonun diğer bir fonksiyon tarafından çağırılabilmesi için ya bi
 
 Bir parametre aktarımı sırasında çağıran fonksiyondaki değer, çağırılan fonksiyonun ilgili değişkenine atanır. Örnekteki birinci fonksiyon çağrısında:
 
-factor = next\_prime(factor);
+```cpp
+factor = next_prime(factor);
+```
 
 main fonksiyonundaki factor değişkeninin değeri next\_prime fonksiyonunun giriş parametresi olan prime değişkenine atanır. Dönüşte de next\_prime fonksiyonunun return komutuyla geri yolladığı cand değişkeninin değeri main fonksiyonundaki factor değişkenine atanır. Fonksiyonun bir döngü içinde çağrıldığı gözönüne alınarak, parametre olarak ilk çağrıda 2, ikinci çağrıda 3, ileriki çağrılarda 5, 7, 11, ... değerlerinin aktarılacağı görülebilir.
 
@@ -2016,27 +1850,34 @@ is\_prime(cand + 1)
 
 Benzer şekilde, geri döndürülen değer de uyumlu tipten bir deyim olabilir:
 
+```cpp
 return (cand + 2);
+```
 
 Çağrılan fonksiyonun geri yolladığı değer değişik şekillerde kullanılabilir:
 
 Değişkene atama: Örnekteki
 
-factor = next\_prime(factor);
+```cpp
+factor = next_prime(factor);
+```
 
 çağrısında olduğu gibi dönen değer çağıran fonksiyondaki bir değişkene atanabilir.
 
 Deyimde kullanma: Örnekteki
 
-while (!is\_prime(cand))
+```cpp
+while (!is_prime(cand))
+```
 
 çağrısında olduğu gibi uygun tipten bir deyimde yer alabilir.
 
 Başka bir fonksiyona aktarma: Dönen değer başka bir fonksiyona giriş parametresi olarak yollanabilir:
 
-if (!is\_prime(next\_prime(factor))
-
-cout < < \`\`next\_prime düzgün çalışmıyor.'' < < endl;
+```cpp
+if (!is_prime(next_prime(factor))
+cout < < ``next_prime düzgün çalışmıyor.'' < < endl;
+```
 
 Bu çağrının başarılı olmasının nedeni, next\_prime fonksiyonunun döndürdüğü değerin tipi ile is\_prime fonksiyonunun giriş parametresinin tipinin uyumlu olmalarıdır.
 
@@ -2048,11 +1889,11 @@ Değişkenlere tanım bölgeleri dışında erişilemez. Yani sözgelimi main fo
 
 ...
 
+```cpp
 #include <math.h>
-
 int xyz;
-
-int next\_prime(int prime);
+int next_prime(int prime);
+```
 
 ...
 
@@ -2064,83 +1905,47 @@ Genel değişkenler parametre aktarımı yerine kullanılabilecek bir yöntem ol
 
 Bu bölümde üzerinde çalışılacak program (Örnek 12), kullanıcıdan aldığı sayı kadar öğrencisi olan bir sınıfta kullanıcının girdiği öğrenci notlarının ortadeğerini bulur. Bir dizinin ortadeğeri, dizi sıralandığında dizinin ortasında yer alan değerdir. Çift sayıda elemanı olan dizilerde dizinin ortasında bir eleman olmadığından ortadaki iki elemanın ortalaması ortadeğer kabul edilir.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 #define MAXSTUDENTS 50
-
-void selsort(int arr\[\], int size);
-
+void selsort(int arr[], int size);
 void swap(int &x, int &y);
-
 int main(void)
-
 {
-
-int grades\[MAXSTUDENTS\];
-
+int grades[MAXSTUDENTS];
 int nstudents, i;
-
 float median;
-
 cout << "Öğrenci sayısı (en fazla 50 olabilir: "; cin >> nstudents;
-
 for (i = 0; i < nstudents; i++)
-
 {
-
-cout << i + 1 << ". öğrencinin notu: "; cin >> grades\[i\];
-
+cout << i + 1 << ". öğrencinin notu: "; cin >> grades[i];
 }
-
 selsort(grades, nstudents);
-
-median = (nstudents % 2 == 1) ? grades\[nstudents/2\] :
-
-(grades\[nstudents/2\] + grades\[nstudents/2-1\]) / 2.0;
-
+median = (nstudents % 2 == 1) ? grades[nstudents/2] :
+(grades[nstudents/2] + grades[nstudents/2-1]) / 2.0;
 cout << "Ortadeğer: " << median << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
-
-void selsort(int arr\[\], int size)
-
+void selsort(int arr[], int size)
 {
-
 int round, max, i;
-
 for (round = 0; round < size - 1; round++)
-
 {
-
 max = 0;
-
 for (i = 1; i < size - round; i++)
-
-if (arr\[max\] < arr\[i\])
-
+if (arr[max] < arr[i])
 max = i;
-
-swap(arr\[max\], arr\[size-1-round\]);
-
+swap(arr[max], arr[size-1-round]);
 }
-
 }
-
 void swap(int &x, int &y)
-
 {
-
 int tmp = x;
-
 x = y;
-
 y = tmp;
-
 }
+```
 
 #1 Öğrenci notlarının ortadeğerini bulan program.
 
@@ -2175,55 +1980,33 @@ maincirc 2.4
 
 gibi bir komutla çağırılmalıdır. Program çalıştırılırken bir yarıçap değeri belirtilmezse ya da birden fazla komut satırı parametresi belirtilirse program hata verecektir. Bu örneğin bir yeni tarafı da hata mesajlarını normal çıktıdan ayırması ve hata birimine yollamasıdır.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS,atof
-
+#include <stdlib.h> // EXIT_SUCCESS,atof
 #define PI 3.14
-
-#define sqr(x) ((x) \* (x))
-
-int main(int argc, char \*argv\[\])
-
+#define sqr(x) ((x) * (x))
+int main(int argc, char *argv[])
 {
-
 float radius;
-
 float circum, area;
-
 if (argc == 1)
-
 {
-
 cerr << "Komut satırında bir yarıçap belirtmelisiniz." << endl;
-
-return EXIT\_FAILURE;
-
+return EXIT_FAILURE;
 }
-
 else if (argc > 2)
-
 {
-
 cerr << "Komut satırında fazla parametre var." << endl;
-
-return EXIT\_FAILURE;
-
+return EXIT_FAILURE;
 }
-
-radius = atof(argv\[1\]);
-
-circum = 2 \* PI \* radius;
-
-area = PI \* sqr(radius);
-
+radius = atof(argv[1]);
+circum = 2 * PI * radius;
+area = PI * sqr(radius);
 cout << "Çevre: " << circum << endl;
-
 cout << "Alan: " << area << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 Yarıçapı komut satırından belirtilen dairenin çevre ve alanını hesaplayan program.
 
@@ -2237,11 +2020,15 @@ Program çalışması sırasında kullanıcıyla giriş - çıkış işlemlerini
 
 Çıkış parametresi, programın çalışması sonucu oluşan durumun işletim sistemine bildirilmesi anlamını taşır. Örnekteki
 
-return EXIT\_SUCCESS;
+```cpp
+return EXIT_SUCCESS;
+```
 
 komutu, işletim sistemine programın başarıyla sonlandığını belirtir. Benzer şekilde,
 
-return EXIT\_FAILURE;
+```cpp
+return EXIT_FAILURE;
+```
 
 komutu bir hata durumu olduğunu belirtir. İşletim sistemlerinde bu bilgiler genellikle kabuk programlama (shell scripting) uygulamalarında kullanılır.
 
@@ -2261,7 +2048,9 @@ Program çalıştırılırken bu üç birim başka yerlere *yönlendirilebilir*.
 
 Ana fonksiyonun giriş parametreleri kullanıcının programı çalıştırırken belirttiği parametrelerdir. Bunlara *komut satırı* (command line) parametreleri de denir. Giriş parametrelerinin okunabilmesi için ana fonksiyonun giriş parametresi listesi
 
-int argc, char \*argv\[\]
+```cpp
+int argc, char *argv[]
+```
 
 şeklinde belirtilir. Burada argc parametre sayısını (argument count), argv ise parametre değerlerini (argument vector) gösterir.
 
@@ -2328,11 +2117,15 @@ C dili de programcıya kendi veri tiplerini yaratmak için bazı olanaklar sağl
 
 C dilinin programcıya kendi veri tiplerini tanımlayabilmesi için sunduğu temel olanak var olan veri tiplerine yeni isimler verilebilmesidir. Sözgelimi bir sınavdaki öğrenci notları için bir dizi tanımlanmak isteniyor olsun. Öğrenci notlarının 0 ile 100 arasında birer tamsayı olacağı varsayımıyla öğrenci notu tipinden bilgileri temsil etmek üzere bir veri tipi tanımlanabilir:
 
-typedef int grade\_t;
+```cpp
+typedef int grade_t;
+```
 
 Burada typedef saklı sözcüğünden sonra yazılan ilk veri tipi asıl tipin ismi, ikincisi de bu asıl tipe verilen yeni isimdir. Yani örnekte int veri tipine grade\_t diye yeni bir isim verilmiştir. Daha sonra bu tipten bir dizi tanımlamak için
 
-grade\_t grades\[MAXSTUDENTS\];
+```cpp
+grade_t grades[MAXSTUDENTS];
+```
 
 komutu yazılabilir.
 
@@ -2342,7 +2135,9 @@ Anlaşılırlık artar: Programın kodunu okuyan kişi bu veri tipinin temsil et
 
 Değiştirmek kolay olur: Program geliştirmenin ileri aşamalarında öğrenci notlarının kesirli olabileceği durumu ortaya çıkarsa yalnızca veri tipine isim verme komutunun
 
-typedef float grade\_t;
+```cpp
+typedef float grade_t;
+```
 
 biçiminde değiştirilmesi yeterli olur. Veri tipi tanımı yoksa bütün kodun taranarak öğrenci notuna karşılık gelen int veri tiplerini bulup değiştirmek gerekir. Bu da bazı int sözcüklerinin değişmesi, bazılarının değişmemesi anlamına gelir ve programın boyutlarına göre büyük zorluklar çıkarabilir.
 
@@ -2350,55 +2145,37 @@ biçiminde değiştirilmesi yeterli olur. Veri tipi tanımı yoksa bütün kodun
 
 Bu bölümde üzerinde çalışılacak program (Örnek 14), kullanıcıdan aldığı iki karmaşık sayıyı toplayarak sonucu ekrana çıkartır. Bu programda, programcının var olan veri tiplerini birleştirerek kendisinin bir veri tipi oluşturması incelenecektir.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
-struct complex\_s
-
+#include <stdlib.h> // EXIT_SUCCESS
+struct complex_s
 {
-
 float re;
-
 float im;
-
 };
-
-typedef struct complex\_s complex\_t;
-
-complex\_t add\_complex(complex\_t c1, complex\_t c2);
-
+typedef struct complex_s complex_t;
+complex_t add_complex(complex_t c1, complex_t c2);
 int main(void)
-
 {
-
-complex\_t n1, n2, n3;
-
+complex_t n1, n2, n3;
 cout << "Birinci sayıyı yazın: "; cin >> n1.re >> n1.im;
-
 cout << "İkinci sayıyı yazın: "; cin >> n2.re >> n2.im;
-
-n3 = add\_complex(n1, n2);
-
+n3 = add_complex(n1, n2);
 cout << "Toplam: " << n3.re << " + " << n3.im << "i" << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 complex\_t add\_complex(complex\_t c1, complex\_t c2)
 
+```cpp
 {
-
-complex\_t c3;
-
+complex_t c3;
 c3.re = c1.re + c2.re;
-
 c3.im = c1.im + c2.im;
-
 return c3;
-
 }
+```
 
 #1 Karmaşık sayılar üzerinde işlem yapan program.
 
@@ -2408,15 +2185,18 @@ return c3;
 
 Yapı tanımının sonucunda yeni bir veri tipi oluşur. Örnekteki tip tanımı sonucunda artık
 
-struct complex\_s
+```cpp
+struct complex_s
+```
 
 adında bir veri tipi oluşmuştur. Programcının yeni veri tipi için belirttiği sözcük (örnekte complex\_s) yeni veri tipinin *künyesi* olarak adlandırılır. Örnek programda kullanım kolaylığı açısından bu veri tipine typedef komutuyla yeni bir isim verilmiştir13.
 
 Tip tanımı bir değişken tanımı olmadığı için bellekte yer ayrılmasına neden *OLMAZ*. Bir yapının kullanılması için bu yapının tipinden değişken tanımlamak gerekir. Bu tanımlama da, diğer veri tiplerinde olduğu gibi yapılır. Burada yapının tipi olarak istenirse asıl verilen isim, istenirse typedef ile verilen yeni isim kullanılabilir:
 
-complex\_t n1, n2, n3;
-
-struct complex\_s n1, n2, n3;
+```cpp
+complex_t n1, n2, n3;
+struct complex_s n1, n2, n3;
+```
 
 Her iki komut da aynı işi yaparlar, yani n1, n2 ve n3 isimlerinde, birer karmaşık sayı yapısında olan üç adet değişken tanımlarlar (Şekil 7.1).
 
@@ -2431,31 +2211,29 @@ Aynı yapı tipinden değişkenler arasında atama işlemi yapılması, birinin 
 
 Yapının bir alanının bir dizi olması durumunda atama işlemlerinde dikkatli olmak gerekir:
 
-struct person\_s
-
+```cpp
+struct person_s
 {
-
-char name\[50\];
-
-int birth\_year;
-
+char name[50];
+int birth_year;
 };
-
-struct person\_s person1, person2;
+struct person_s person1, person2;
+```
 
 tanımları yapıldıysa
 
-person1.name = \`\`Dennis M. Ritchie'';
-
-person1.birth\_year = 1941;
-
+```cpp
+person1.name = ``Dennis M. Ritchie'';
+person1.birth_year = 1941;
 person2 = person1;
+```
 
 işlemleri sonucunda Şekil 7.2'deki durum oluşur. Şekilden görülebileceği gibi, person1 değişkeninin name alanında yer alan katar işaretçisi değeri, person2 değişkeninin name alanına atanacağından iki değişkenin name alanları aynı katarı işaret eder hale geleceklerdir; yani katarın bir kopyası çıkarılmayacak, olan tek katar iki değişken tarafından paylaşılacaktır. Çoğu zaman istenen bu değildir ve bu örnekte kopyalamanın doğru yapılması için aşağıdaki komutlar kullanılmalıdır:
 
+```cpp
 strcpy(person2.name, person1.name);
-
-person2.birth\_year = person1.birth\_year;
+person2.birth_year = person1.birth_year;
+```
 
 | PRIVATE | PRIVATEPRIVATE "TYPE=PICT;ALT=struct2.png" |  |
 | --- | --- | --- |
@@ -2464,31 +2242,25 @@ person2.birth\_year = person1.birth\_year;
 
 Bir yapının bir alanı başka bir yapı tipinden olabilir.
 
-struct date\_s
-
+```cpp
+struct date_s
 {
-
 int day, month, year;
-
 };
-
-struct person\_s
-
+struct person_s
 {
-
-char name\[50\];
-
-struct date\_s birth\_date;
-
+char name[50];
+struct date_s birth_date;
 };
+```
 
 tanımları Şekil 7.3'de görülen yapıyı oluşturur. Alanlara erişim yine noktalı gösterilimle sağlanır:
 
-struct person\_s person\[30\];
-
-person\[5\].name = \`\`Dennis M. Ritchie'';
-
-person\[5\].birth\_date.year = 1941;
+```cpp
+struct person_s person[30];
+person[5].name = ``Dennis M. Ritchie'';
+person[5].birth_date.year = 1941;
+```
 
 | PRIVATE | PRIVATEPRIVATE "TYPE=PICT;ALT=struct3.png" |  |
 | --- | --- | --- |
@@ -2516,7 +2288,9 @@ Bu sorunları çözmek için tasarlanan *işaretçiler*, bellekte kaplanacak yer
 
 İşaretçi tipinden bir değişken tanımlamak için yıldız (\*) simgesi kullanılır. Bütün işaretçiler birer adres olmakla (dolayısıyla boyları aynı olmakla) birlikte, tanımlarında ne türden bir değişkene işaret ettikleri belirtilmelidir. Örnek:
 
-int \*i;
+```cpp
+int *i;
+```
 
 Yukarıdaki tanımın anlamı i değişkeninin bir tamsayı işaretçisi olduğudur. Yani, i'nin gösterdiği bellek gözünde yer alan bilgi bir tamsayı olarak yorumlanacak demektir.
 
@@ -2526,11 +2300,15 @@ Alınacak yerin boyu çalışma sırasında belirlenebilir, yani alınacak yerin
 
 Boş işaretçi NULL saklı sözcüğüyle belirtilir. İşaretçilere çoğu zaman başlangıç değeri olarak NULL atanır.
 
-int \*a = NULL;
+```cpp
+int *a = NULL;
+```
 
 İşaretçi Operatörü (\*): Bir işaretçinin işaret ettiği bellek gözünün içeriğini öğrenmekte kullanılır. Yukarıdaki örnekteki atamadan sonra
 
-\*b = a
+```cpp
+*b = a
+```
 
 olur.
 
@@ -2542,37 +2320,41 @@ new delete
 
 C'de statik tanımlanmış diziler ile işaretçiler yardımıyla oluşturulan diziler tamamen aynı şekilde değerlendirilirler.
 
-int dizi\[4\];
-
+```cpp
+int dizi[4];
 int i;
-
-i = dizi\[3\];
+i = dizi[3];
+```
 
 program parçası ile
 
-int \*dizi;
-
+```c
+int *dizi;
 int i;
-
-dizi = (int \*) malloc(4 \* sizeof(int));
-
-i = dizi\[3\];
+dizi = (int *) malloc(4 * sizeof(int));
+i = dizi[3];
+```
 
 program parçası aynı işi görürler. Bu işlev, iki kural sayesinde geçerli olur:
 
 İşaretçi, dizinin ilk elemanının adresini tutar.
 
-int \*p;
-
-int dizi\[10\];
+```cpp
+int *p;
+int dizi[10];
+```
 
 tanımları yapıldıysa
 
-p = &dizi\[0\];
+```cpp
+p = &dizi[0];
+```
 
 ile
 
+```cpp
 p = dizi;
+```
 
 aynı anlama gelir.
 
@@ -2590,11 +2372,15 @@ p\[n\] deyimi derleyici tarafından \*(p + n) şeklinde değerlendirilir. p + n,
 
 İşaretçilerle işlem yaparken, işaretçinin kendisiyle mi, yoksa işaret ettiği alanla mı işlem yapıldığına dikkat edilmelidir. Örneğin, p bir işaretçi ise
 
+```cpp
 p++;
+```
 
 komutu yürütüldükten sonra p işaretçisi değer değiştirir. Oysa p'nin işaret ettiği alandaki verinin artması isteniyorsa
 
-(\*p)++;
+```cpp
+(*p)++;
+```
 
 komutu yürütülmelidir.
 
@@ -2604,21 +2390,20 @@ komutu yürütülmelidir.
 
 Adres işleci (&), başına eklendiği değişkenin adresinin elde edilmesini sağlar. Buna göre, örnekteki swap fonksiyonu şu şekilde de yazılabilirdi:
 
-void swap(int \*x, int \*y)
-
+```cpp
+void swap(int *x, int *y)
 {
-
-int tmp = \*x;
-
-\*x = \*y;
-
-\*y = tmp;
-
+int tmp = *x;
+*x = *y;
+*y = tmp;
 }
+```
 
 Bu swap fonksiyonunu kullanan selsort fnnksiyonunda çağrının yapılışı şu şekilde olurdu:
 
-swap(&arr\[max\], &arr\[size-1-round\]);
+```cpp
+swap(&arr[max], &arr[size-1-round]);
+```
 
 Bu örnekte x değişkeni tamsayıya işaretçi (yani adres) tipinden bir değişken olurdu ve değeri arr\[max\] değişkeninin adresi olurdu. Yani x işaretçisinin gösterdiği yere yazılan değer arr\[max\] değişkenine yazılmış olurdu.
 
@@ -2644,15 +2429,13 @@ C dilinde cout ve cin birimleri yoktur. Çıkış işlemleri printf, giriş işl
 
 C++ dilinde bildirimler komutlar başladıktan sonra da yapılabilir. Örnek 14, şu şekilde de yazılabilirdi:
 
+```cpp
 float radius;
-
-cout < < \`\`Yarıçap: \`\`;
-
+cout < < ``Yarıçap: ``;
 cin > > radius;
-
-float circum = 2 \* PI \* radius;
-
-float area = PI \* sqr(radius);
+float circum = 2 * PI * radius;
+float area = PI * sqr(radius);
+```
 
 C dilindeyse komutlar başladıktan sonra artık değişken bildirimi yapılmasına izin verilmez, yani yukarıdaki örnek C dilinde derlenmez.
 
@@ -2662,31 +2445,35 @@ C dilinde mantıksal verileri temsil edecek bir veri tipi yoktur, bu yöntem C++
 
 Doğru ve yanlış büyüklükleri programlarda sıkça gereksinim duyulan değerler olduklarından genellikle bunlar genellikle programın başında değişmez olarak tanımlanırlar.
 
+```cpp
 #define TRUE 1
-
 #define FALSE 0
+```
 
 Daha sık kullanılan bir yöntemse bunları bir numaralandırma içinde tanımlayarak oluşacak veri tipine yeni bir isim vermektir.
 
+```cpp
 typedef enum { FALSE, TRUE } bool;
+```
 
 Böylelikle C++ dilinde olduğu gibi mantıksal bir veri tipi tanımlanmış olur ve bu tipten değişkenler kullanılabilir.
 
 C dilinde 0 değerine sahip deyimlerin yanlış, diğerlerinin doğru kabul edilmesi eşitlik karşılaştırmalarında hataya yol açabilir. En sık yapılan C hatalarından biri bir eşitlik karşılaştırmasında == yerine = işareti kullanılmasıdır.
 
+```cpp
 age = 12;
+```
 
 ...
 
 ...
 
+```cpp
 if (age = 18)
-
 block1;
-
 else
-
 block2;
+```
 
 Yukarıdaki programda koşulun sınanması sırasında eşitlik işlemi değil atama işlemi belirtildiğinden age değişkenine 18 atanır, deyimin değeri 18 olarak bulunur ve 0'dan farklı olduğu için doğru sayılarak block1 yürütülür. Oysa == simgesi kullanılsaydı age değişkeninin değeri değişmeyecek ve block2 yürütülecekti.
 
@@ -2700,27 +2487,31 @@ C dili const ile tanımlanmış değişmezlerin değerlerinin değiştirilebilme
 
 C standardında çalışma anında yer ayırmak ve geri vermek için üç fonksiyon tanımlanmıştır.
 
-void \*malloc(size\_t size);
+```c
+void *malloc(size_t size);
+```
 
 Bu fonksiyon bellekte birbirini izleyecek şekilde size boyunda yer ayırır ve ayırdığı yerin başlangıç adresini geri döndürür. Alan boyu sekizli cinsinden belirtilir. Geri gönderdiği bilgi herhangi bir tipe işaret etmeyen bir adres bilgisidir, programcının bunu istediği tipe zorlaması gerekir. Bu fonksiyon çağrısı, başlangıç değeri ifadesinde de yer alabilir. Yer alma girişimi başarısızlıkla sonuçlanırsa, örneğin bellekte yer kalmadıysa, geriye NULL döndürür.
 
-int \*a = NULL, \*b = NULL;
-
-float \*c = (float \*) malloc(20 \* sizeof (float));
-
-a = (int \*) malloc(sizeof(int));
-
-b = (int \*) malloc(10 \* sizeof(int));
+```c
+int *a = NULL, *b = NULL;
+float *c = (float *) malloc(20 * sizeof (float));
+a = (int *) malloc(sizeof(int));
+b = (int *) malloc(10 * sizeof(int));
+```
 
 Örnekte b, malloc işleminden sonra 10 elemanlı bir tamsayı dizisinin ilk elemanının adresini içerir.
 
-void \*calloc(size\_t nitems, size\_t size);
+```c
+void *calloc(size_t nitems, size_t size);
+```
 
 Bu fonksiyon bellekte her biri size uzunluğunda olmak üzere nitems adet byte yer ayırır ve ayırdığı alanı 0 ile doldurur.
 
-b = (int \*) calloc(10,sizeof (int));
-
-void free(void \*block);
+```c
+b = (int *) calloc(10,sizeof (int));
+void free(void *block);
+```
 
 Bu fonksiyon block işaretçisinin kapladığı alanı geri verir. çağırılmasından sonra artık işaretçinin gösterdiği alana erişilemez.
 
@@ -2731,37 +2522,45 @@ Ayrıntı**
 
 C dilinde aynı anda birden çok değişkene birden aynı değer atanabilir. Örneğin
 
+```cpp
 a = b = c = 24;
+```
 
 komutu a, b ve c değişkenlerinin üçüne de 24 değerini atar. Bu işlem sağdan sola doğru gerçekleştirilen peşpeşe atamalar şeklinde düşünülebilir:
 
+```cpp
 c = 24;
-
 b = c;
-
 a = b;
+```
 
 **İşlemli Artırma/Azaltma ******
 
 Artırma ve azaltma işlemleri başka işlemlerle birlikte kullanılabilir. Sözgelimi bir artırma işlemiyle bir atama işlemi aynı komut içerisinde yapılabilir. Böyle durumlarda artırma/azaltma işlecinin değişken adının önüne ya da arkasına yazılması önem kazanır. Önüne yazıldığında önce artırma, sonra atama yapılacaktır. Arkasına yazıldığındaysa önce atama, sonra artırma yapılır. Yani
 
+```cpp
 y = ++x;
+```
 
 komutu
 
+```cpp
 x++;
-
 y = x;
+```
 
 koduna karşı düşerken
 
+```cpp
 y = x++;
+```
 
 komutu
 
+```cpp
 y = x;
-
 x++;
+```
 
 koduna karşı düşer.
 
@@ -2771,53 +2570,53 @@ Bu tip kısaltmalar kodun anlaşılırlığını azalttıklarından kullanımlar
 
 Seçim ya da yineleme yapıları bir bütün olarak tek bir komut olarak görülürler:
 
+```cpp
 if (ph > 7)
-
-cout < < \`\`Asit'' < < endl;
-
+cout < < ``Asit'' < < endl;
 else
-
 if (ph < 7)
-
-cout < < \`\`Baz'' < < endl;
-
+cout < < ``Baz'' < < endl;
 else
-
-cout < < \`\`Nötr'' < < endl;
+cout < < ``Nötr'' < < endl;
+```
 
 Süslü parantezler kullanılmadığında if / else yapılarında belirsizlikler oluşabilir. Örneğin
 
+```cpp
 if (x > 5)
-
 if (x < 8)
-
-/\* a bölgesi \*/
-
+/* a bölgesi */
 else
-
-/\* b bölgesi \*/
+/* b bölgesi */
+```
 
 kodunda a bölgesine gelmek için x değişkeninin değerinin 5'den büyük 8'den küçük olması gerektiği açıktır ancak b bölgesine gelmek için ne olması gerektiği açık değildir. else kısmı üstteki if ile ilişkilendirilirse x değişkeninin değeri 5'den büyük değilse bu bölgeye gelinir, yani girintileme ile gösterilirse şu şekilde yorumlanır:
 
+```cpp
 if (x > 5)
-
 if (x < 8)
+```
 
 a bölgesi
 
+```cpp
 else
+```
 
 b bölgesi
 
 Alttakiyle ilişkilendirilirse x 5'den büyükse ve 8'den küçük değilse b bölgesine gelinir, yani girintileme ile gösterilirse şu şekilde yorumlanır.
 
+```cpp
 if (x > 5)
-
 if (x < 8)
+```
 
 a bölgesi
 
+```cpp
 else
+```
 
 b bölgesi
 
@@ -2835,13 +2634,12 @@ Bildirimi yapılmadan kullanılan fonksiyonların değişken sayıda parametre a
 
 Tipin tanımlanması ve yeni isim verilmesi işlemleri istenirse tek komutta birleştirilebilir:
 
-typedef struct complex\_s
-
+```cpp
+typedef struct complex_s
 {
-
 float re, im;
-
-} complex\_t;
+} complex_t;
+```
 
 Birleştirilmiş tanımlamada istenirse tipin künyesi de belirtilmeyebilir, yani yukarıdaki örnekte complex\_s sözcüğü yazılmasa da olurdu. Yine de çoğunlukla önerilen yöntem, belirtilmeleri zorunlu olmasa da künyeleri yazmaktır.
 
@@ -2875,99 +2673,55 @@ Attığı zarların toplamı 7 olursa oyuncu kaybeder.
 
 Örnek 15 bu oyunu simüle eden bir programdır. Bu örneğin ilginç bir yönü switch yapısının bazı durumlarında kasıtlı olarak break kullanılmamasıdır (fall-through case). Böylelikle durumlar gruplanarak her bir grup için yapılacak işlemlerin bir kere belirtilmesi sağlanmıştır.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS,srand,rand,RAND\_MAX
-
+#include <stdlib.h> // EXIT_SUCCESS,srand,rand,RAND_MAX
 #include <time.h> // time
-
 int main(void)
-
 {
-
-int game\_status, point;
-
+int game_status, point;
 int die1, die2, sum;
-
 srand(time(NULL));
-
 die1 = 1 + rand() % 6;
-
 die2 = 1 + rand() % 6;
-
 sum = die1 + die2;
-
 cout << "Gelen: " << die1 << " + " << die2 << " = " << sum << endl;
-
 switch (sum)
-
 {
-
 case 7:
-
 case 11:
-
-game\_status = 1; break;
-
+game_status = 1; break;
 case 2:
-
 case 3:
-
 case 12:
-
-game\_status = 2; break;
-
+game_status = 2; break;
 default:
-
-game\_status = 0;
-
+game_status = 0;
 point = sum;
-
 cout << "Sayı: " << sum << endl;
-
 break;
-
 }
-
-while (game\_status == 0)
-
+while (game_status == 0)
 {
-
 die1 = 1 + rand() % 6;
-
 die2 = 1 + rand() % 6;
-
 sum = die1 + die2;
-
 cout << "Gelen: " << die1 << " + " << die2 << " = " << sum << endl;
-
 if (sum == point)
-
-game\_status = 1;
-
+game_status = 1;
 else
-
 {
-
 if (sum == 7)
-
-game\_status = 2;
-
+game_status = 2;
 }
-
 }
-
-if (game\_status == 1)
-
+if (game_status == 1)
 cout << "Oyuncu kazanır." << endl;
-
 else
-
 cout << "Oyuncu kaybeder." << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 Barbut oyununu simüle eden program.
 
@@ -2985,45 +2739,28 @@ olduğu gözönüne alındığında dizide bir elemanın kendisinden önceki ele
 
 olarak hesaplanabilir. Yani her terim, kendisinden önceki terimin x ile çarpılıp i 'ye bölünmesiyle bulunabilir. Böylece her adımda üs alma ve faktöryel hesaplama işlemlerine gerek kalmayacak ve seri toplamı çok daha hızlı bulunabilecektir.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 int main(void)
-
 {
-
 float x, error, term, result = 1.0;
-
 int i = 2;
-
 cout << "x: "; cin >> x;
-
 cout << "Hata: "; cin >> error;
-
 term = x;
-
 while (true)
-
 {
-
 result += term;
-
-term = term \* x / i;
-
+term = term * x / i;
 if (term < error)
-
 break;
-
 i++;
-
 }
-
 cout << "Sonuç: " << result << endl;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1 ex\\protect deyimini bir önceki terimden giderek hesaplayan program.
 
@@ -3096,1088 +2833,623 @@ Benzer bir hesap da p′(xi) değerinin bulunmasında kullanılabilir.
 
 Bu yöntemi kullanarak katsayılarını kullanıcının girdiği bir polinomun köklerini hesaplayan program Örnek 17'de verilmiştir.
 
+```cpp
 #include <iostream.h> // cout,cin
-
-#include <stdlib.h> // EXIT\_SUCCESS
-
+#include <stdlib.h> // EXIT_SUCCESS
 #include <math.h> // fabs
-
-float newton\_raphson(float x, const float a\[\], int n);
-
+float newton_raphson(float x, const float a[], int n);
 int main(void)
-
 {
-
-float \*a;
-
+float *a;
 int n, i;
-
 float xi, xj, error;
-
 cout << "Polinomun derecesi: "; cin >> n;
-
-a = new(float\[n+1\]);
-
+a = new(float[n+1]);
 for (i = n; i >= 0; i--)
-
 {
-
 cout << "a" << i << ": ";
-
-cin >> a\[i\];
-
+cin >> a[i];
 }
-
 cout << "Hata: "; cin >> error;
-
 cout << "x0: "; cin >> xi;
-
 while (true)
-
 {
-
-xj = newton\_raphson(xi, a, n);
-
+xj = newton_raphson(xi, a, n);
 if (fabs(xj - xi) < error)
-
 break;
-
 xi = xj;
-
 }
-
 cout << "Kök: " << xj << endl;
-
 delete a;
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
-
-float newton\_raphson(float x, const float a\[\], int n)
-
+float newton_raphson(float x, const float a[], int n)
 {
-
-float \*b, \*c;
-
+float *b, *c;
 float xn;
-
 int i;
-
-b = new(float\[n+1\]);
-
-c = new(float\[n+1\]);
-
-b\[n\] = a\[n\];
-
-c\[n\] = b\[n\];
-
+b = new(float[n+1]);
+c = new(float[n+1]);
+b[n] = a[n];
+c[n] = b[n];
 for (i = n - 1; i > 0; i--)
-
 {
-
-b\[i\] = b\[i+1\] \* x + a\[i\];
-
-c\[i\] = c\[i+1\] \* x + b\[i\];
-
+b[i] = b[i+1] * x + a[i];
+c[i] = c[i+1] * x + b[i];
 }
-
-b\[0\] = b\[1\] \* x + a\[0\];
-
-xn = x - b\[0\] / c\[1\];
-
+b[0] = b[1] * x + a[0];
+xn = x - b[0] / c[1];
 delete b;
-
 delete c;
-
 return xn;
-
 }
+```
 
 #1 Polinom kökü hesaplayan fonksiyon.
 
 **Appendix E
 Örnek Programların C Dili Karşılıkları**
 
-/\* İlk C programım. \*
-
-\* \*
-
-\* Bu program ekrana "Merhaba dünya!" iletisini yazar. \*/
-
-#include <stdio.h> /\* printf için \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
+```c
+/* İlk C programım. *
+* *
+* Bu program ekrana "Merhaba dünya!" iletisini yazar. */
+#include <stdio.h> /* printf için */
+#include <stdlib.h> /* EXIT_SUCCESS */
 int main(void)
-
 {
-
-printf("Merhaba dünya!\\n");
-
-return EXIT\_SUCCESS;
-
+printf("Merhaba dünya!\n");
+return EXIT_SUCCESS;
 }
+```
 
 #1Ekrana bir satırlık ileti çıkaran program (Örnek 1).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS */
 #define PI 3.14
-
-#define sqr(x) ((x) \* (x))
-
+#define sqr(x) ((x) * (x))
 int main(void)
-
 {
-
 float radius;
-
 float circum, area;
-
 printf("Dairenin yarıçapını yazın: ");
-
 scanf("%f", &radius);
-
-circum = 2 \* PI \* radius;
-
-area = PI \* sqr(radius);
-
-printf("Çevre: %f\\n", circum);
-
-printf("Alan: %f\\n", area);
-
-return EXIT\_SUCCESS;
-
+circum = 2 * PI * radius;
+area = PI * sqr(radius);
+printf("Çevre: %f\n", circum);
+printf("Alan: %f\n", area);
+return EXIT_SUCCESS;
 }
+```
 
 #1Bir dairenin çevresini ve alanını hesaplayan program (Örnek 2).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS,srand,rand,RAND\_MAX \*/
-
-#include <time.h> /\* time \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS,srand,rand,RAND_MAX */
+#include <time.h> /* time */
 int main(void)
-
 {
-
 int count, i;
-
 float number;
-
 int heads = 0, tails = 0;
-
 printf("Kaç kez atılacak? "); scanf("%d", &count);
-
 srand(time(NULL));
-
 for (i = 1; i <= count; i++)
-
 {
-
-number = (float) rand() / RAND\_MAX;
-
+number = (float) rand() / RAND_MAX;
 if (number < 0.5)
-
 {
-
 heads++;
-
 }
-
 else
-
 {
-
 tails++;
-
 }
-
 }
-
-printf("Yazı sayısı: %d\\n", tails);
-
-printf("Tura sayısı: %d\\n", heads);
-
-return EXIT\_SUCCESS;
-
+printf("Yazı sayısı: %d\n", tails);
+printf("Tura sayısı: %d\n", heads);
+return EXIT_SUCCESS;
 }
+```
 
 #1Yinelemeli yazı-tura atışı simülasyonu yapan program (Örnek 3).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS,exit \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS,exit */
 int main(void)
-
 {
-
 int num1, num2, result;
-
 char op;
-
 printf("İşlemi yazın: "); scanf("%d %c %d", &num1, &op, &num2);
-
 switch (op)
-
 {
-
 case '+': result = num1 + num2;
-
 break;
-
 case '-': result = num1 - num2;
-
 break;
-
-case '\*': result = num1 \* num2;
-
+case '*': result = num1 * num2;
 break;
-
 case '/': result = num1 / num2;
-
 break;
-
 case '%': result = num1 % num2;
-
 break;
-
-default: printf("Böyle bir işlem yok.\\n");
-
-exit(EXIT\_FAILURE);
-
+default: printf("Böyle bir işlem yok.\n");
+exit(EXIT_FAILURE);
 }
-
-printf("%d %c %d işleminin sonucu: %d\\n", num1, op, num2, result);
-
-return EXIT\_SUCCESS;
-
+printf("%d %c %d işleminin sonucu: %d\n", num1, op, num2, result);
+return EXIT_SUCCESS;
 }
+```
 
 #1Kullanıcının belirttiği işlemi yapan program (Örnek 4).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS */
 int main(void)
-
 {
-
 int num1, num2, tmp;
-
 printf("Sayıları yazın: "); scanf("%d %d", &num1, &num2);
-
 while (num1 > 0)
-
 {
-
 if (num1 < num2)
-
 {
-
 tmp = num1;
-
 num1 = num2;
-
 num2 = tmp;
-
 }
-
 num1 = num1 - num2;
-
 }
-
-printf("En büyük ortak bölen: %d\\n", num2);
-
-return EXIT\_SUCCESS;
-
+printf("En büyük ortak bölen: %d\n", num2);
+return EXIT_SUCCESS;
 }
+```
 
 #1İki sayının en büyük ortak bölenini bulan program (Örnek 5).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS */
 int main(void)
-
 {
-
 int number1, number2;
-
 int max, min, i;
-
 long int lcm;
-
 printf("1. Sayı: "); scanf("%d", &number1);
-
 printf("2. Sayı: "); scanf("%d", &number2);
-
 max = number1 > number2 ? number1 : number2;
-
 min = number1 < number2 ? number1 : number2;
-
-for (i = 1; (max \* i) % min != 0; i++)
-
+for (i = 1; (max * i) % min != 0; i++)
 ;
-
-lcm = max \* i;
-
-printf("En küçük ortak kat: %ld\\n", lcm);
-
-return EXIT\_SUCCESS;
-
+lcm = max * i;
+printf("En küçük ortak kat: %ld\n", lcm);
+return EXIT_SUCCESS;
 }
+```
 
 #1İki sayının en küçük ortak katını bulan program (Örnek 6).
 
-#include <stdio.h> /\* cout,cin \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
-#include <math.h> /\* pow \*/
-
+```cpp
+#include <stdio.h> /* cout,cin */
+#include <stdlib.h> /* EXIT_SUCCESS */
+#include <math.h> /* pow */
 #define TRUE 1
-
 int main(void)
-
 {
-
 float x, error, term, result = 1.0;
-
 int i = 1, f;
-
 float fact;
-
 printf("x: "); scanf("%f", &x);
-
 printf("Hata: "); scanf("%f", &error);
-
 while (TRUE)
-
 {
-
 fact = 1.0;
-
 for (f = 2; f <= i; f++)
-
-fact \*= f;
-
+fact *= f;
 term = pow(x, i) / fact;
-
 result += term;
-
 if (term < error)
-
 break;
-
 i++;
-
 }
-
-printf("Sonuç: %f\\n", result);
-
-return EXIT\_SUCCESS;
-
+printf("Sonuç: %f\n", result);
+return EXIT_SUCCESS;
 }
+```
 
 #1 ex\\protect deyimini genel terimden giderek hesaplayan program (Örnek 7).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
-#include <math.h> /\* sqrt \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS */
+#include <math.h> /* sqrt */
 #define MAXSTUDENTS 100
-
-#define sqr(x) ((x) \* (x))
-
+#define sqr(x) ((x) * (x))
 int main(void)
-
 {
-
-int grades\[MAXSTUDENTS\];
-
+int grades[MAXSTUDENTS];
 int nstudents, i;
-
 float mean, variance = 0.0, deviation;
-
 int total = 0;
-
 printf("Öğrenci sayısı: "); scanf("%d", &nstudents);
-
 for (i = 0; i < nstudents; i++)
-
 {
-
-printf("%d. öğrencinin notu: ", i + 1); scanf("%d", grades\[i\]);
-
-total += grades\[i\];
-
+printf("%d. öğrencinin notu: ", i + 1); scanf("%d", grades[i]);
+total += grades[i];
 }
-
 mean = (float) total / nstudents;
-
 for (i = 0; i < nstudents; i++)
-
-variance += sqr(grades\[i\] - mean);
-
+variance += sqr(grades[i] - mean);
 deviation = sqrt(variance / (nstudents - 1));
-
-printf("Ortalama: %f\\n", mean);
-
-printf("Varyans: %f\\n", variance);
-
-printf("Standart Sapma: %f\\n", deviation);
-
-return EXIT\_SUCCESS;
-
+printf("Ortalama: %f\n", mean);
+printf("Varyans: %f\n", variance);
+printf("Standart Sapma: %f\n", deviation);
+return EXIT_SUCCESS;
 }
+```
 
 #1Ortalama, varyans ve standart sapma hesaplayan program (Örnek 8).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
-#include <string.h> /\* strlen \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS */
+#include <string.h> /* strlen */
 int main(void)
-
 {
-
-char word\[30\];
-
+char word[30];
 int len, i;
-
 char tmp;
-
 printf("Sözcük: "); scanf("%s", word);
-
 len = strlen(word);
-
 for (i = 0; i < len / 2; i++)
-
 {
-
-tmp = word\[i\];
-
-word\[i\] = word\[len - 1 - i\];
-
-word\[len - 1 - i\] = tmp;
-
+tmp = word[i];
+word[i] = word[len - 1 - i];
+word[len - 1 - i] = tmp;
 }
-
-printf("Tersi: %s\\n", word);
-
-return EXIT\_SUCCESS;
-
+printf("Tersi: %s\n", word);
+return EXIT_SUCCESS;
 }
+```
 
 #1Sözcüğü tersine çeviren program (Örnek 10).
 
-#include <stdio.h> /\* cout,cin \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
+```cpp
+#include <stdio.h> /* cout,cin */
+#include <stdlib.h> /* EXIT_SUCCESS */
 int main(void)
-
 {
-
-int m1\[30\]\[20\];
-
-int m2\[20\]\[30\];
-
-int pr\[30\]\[30\] = { 0 };
-
+int m1[30][20];
+int m2[20][30];
+int pr[30][30] = { 0 };
 int r1, c1, r2, c2;
-
 int i, j, k;
-
 printf("Sol matrisin satır sayısı: "); scanf("%d", &r1);
-
 printf("Sol matrisin sütun sayısı: "); scanf("%d", &c1);
-
 printf("Sağ matrisin sütun sayısı: "); scanf("%d", &c2);
-
 r2 = c1;
-
-printf("Sol matris:\\n");
-
+printf("Sol matris:\n");
 for (i = 0; i < r1; i++)
-
 for (j = 0; j < c1; j++)
-
 {
-
-printf(" \[%d,%d\]: ", i + 1, j + 1);
-
-scanf("%d", &m1\[i\]\[j\]);
-
+printf(" [%d,%d]: ", i + 1, j + 1);
+scanf("%d", &m1[i][j]);
 }
-
-printf("Sağ matris:\\n");
-
+printf("Sağ matris:\n");
 for (j = 0; j < r2; j++)
-
 for (k = 0; k < c2; k++)
-
 {
-
-printf(" \[%d,%d\]: ", j + 1, k + 1);
-
-scanf("%d", &m2\[j\]\[k\]);
-
+printf(" [%d,%d]: ", j + 1, k + 1);
+scanf("%d", &m2[j][k]);
 }
-
 for (i = 0; i < r1; i++)
-
 for (j = 0; j < c2; j++)
-
 for (k = 0; k < c1; k++)
-
-pr\[i\]\[j\] += m1\[i\]\[k\] \* m2\[k\]\[j\];
-
-printf("Sonuç:\\n");
-
+pr[i][j] += m1[i][k] * m2[k][j];
+printf("Sonuç:\n");
 for (i = 0; i < r1; i++)
-
 {
-
 for (k = 0; k < c2; k++)
-
-printf(" %d ", pr\[i\]\[k\]);
-
-printf("\\n");
-
+printf(" %d ", pr[i][k]);
+printf("\n");
 }
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
+```
 
 #1İki matrisi çarpan program (Örnek 9).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
-#include <math.h> /\* sqrt \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS */
+#include <math.h> /* sqrt */
 typedef enum { FALSE, TRUE } bool;
-
-int next\_prime(int prime);
-
+int next_prime(int prime);
 int main(void)
-
 {
-
 int number, factor;
-
 printf("Sayı: "); scanf("%d", &number);
-
 factor = 2;
-
 while (number > 1)
-
 {
-
 while (number % factor == 0)
-
 {
-
 printf("%d ", factor);
-
 number /= factor;
-
 }
-
-factor = next\_prime(factor);
-
+factor = next_prime(factor);
 }
-
-printf("\\n");
-
-return EXIT\_SUCCESS;
-
+printf("\n");
+return EXIT_SUCCESS;
 }
-
-bool is\_prime(int cand)
-
+bool is_prime(int cand)
 {
-
 int count;
-
 if (cand == 2)
-
 return TRUE;
-
 if (cand % 2 == 0)
-
 return FALSE;
-
 for (count = 3; count <= sqrt(cand); count += 2)
-
 {
-
 if (cand % count == 0)
-
 return FALSE;
-
 }
-
 return TRUE;
-
 }
-
-int next\_prime(int prime)
-
+int next_prime(int prime)
 {
-
 int cand = (prime % 2 == 0) ? prime + 1 : prime + 2;
-
-while (!is\_prime(cand))
-
+while (!is_prime(cand))
 cand += 2;
-
 return cand;
-
 }
+```
 
 #1Bir sayıyı asal çarpanlarına ayıran program (Örnek 11).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS,malloc,free \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS,malloc,free */
 #define MAXSTUDENTS 50
-
-void selsort(int arr\[\], int size);
-
-void swap(int \*x, int \*y);
-
+void selsort(int arr[], int size);
+void swap(int *x, int *y);
 int main(void)
-
 {
-
-int grades\[MAXSTUDENTS\];
-
+int grades[MAXSTUDENTS];
 int nstudents, i;
-
 float median;
-
 printf("Öğrenci sayısı: "); scanf("%d", &nstudents);
-
 for (i = 0; i < nstudents; i++)
-
 {
-
-printf("%d. öğrencinin notu: ", i + 1); scanf("%d", &grades\[i\]);
-
+printf("%d. öğrencinin notu: ", i + 1); scanf("%d", &grades[i]);
 }
-
 selsort(grades, nstudents);
-
 median = (nstudents % 2 == 1) ?
+```
 
 grades\[nstudents/2\] :
 
-(grades\[nstudents/2\] + grades\[nstudents/2-1\]) / 2.0;
-
-printf("Ortadeğer: %f\\n", median);
-
+```c
+(grades[nstudents/2] + grades[nstudents/2-1]) / 2.0;
+printf("Ortadeğer: %f\n", median);
 free(grades);
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
-
-void selsort(int arr\[\], int size)
-
+void selsort(int arr[], int size)
 {
-
 int round, max, i;
-
 for (round = 0; round < size - 1; round++)
-
 {
-
 max = 0;
-
 for (i = 1; i < size - round; i++)
-
-if (arr\[max\] < arr\[i\])
-
+if (arr[max] < arr[i])
 max = i;
-
-swap(&arr\[max\], &arr\[size-1-round\]);
-
+swap(&arr[max], &arr[size-1-round]);
 }
-
 }
-
-void swap(int \*x, int \*y)
-
+void swap(int *x, int *y)
 {
-
-int tmp = \*x;
-
-\*x = \*y;
-
-\*y = tmp;
-
+int tmp = *x;
+*x = *y;
+*y = tmp;
 }
+```
 
 #1Öğrenci notlarının ortadeğerini bulan program (Örnek 12).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS,atof \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS,atof */
 #define PI 3.14
-
-#define sqr(x) ((x) \* (x))
-
-int main(int argc, char \*argv\[\])
-
+#define sqr(x) ((x) * (x))
+int main(int argc, char *argv[])
 {
-
 float radius;
-
 float circum, area;
-
 if (argc == 1)
-
 {
-
-fprintf(stderr, "Komut satırında bir yarıçap belirtmelisiniz.\\n");
-
-return EXIT\_FAILURE;
-
+fprintf(stderr, "Komut satırında bir yarıçap belirtmelisiniz.\n");
+return EXIT_FAILURE;
 }
-
 else if (argc > 2)
-
 {
-
-fprintf(stderr, "Komut satırında fazla parametre var.\\n");
-
-return EXIT\_FAILURE;
-
+fprintf(stderr, "Komut satırında fazla parametre var.\n");
+return EXIT_FAILURE;
 }
-
-radius = atof(argv\[1\]);
-
-circum = 2 \* PI \* radius;
-
-area = PI \* sqr(radius);
-
-printf("Çevre: %f\\n", circum);
-
-printf("Alan: %f\\n", area);
-
-return EXIT\_SUCCESS;
-
+radius = atof(argv[1]);
+circum = 2 * PI * radius;
+area = PI * sqr(radius);
+printf("Çevre: %f\n", circum);
+printf("Alan: %f\n", area);
+return EXIT_SUCCESS;
 }
+```
 
 #1Öğrenci notlarının ortadeğerini bulan program (Örnek 13).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*/
-
-struct complex\_s
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS */
+struct complex_s
 {
-
 float re;
-
 float im;
-
 };
-
-typedef struct complex\_s complex\_t;
-
-complex\_t add\_complex(complex\_t c1, complex\_t c2);
-
+typedef struct complex_s complex_t;
+complex_t add_complex(complex_t c1, complex_t c2);
 int main(void)
-
 {
-
-complex\_t n1, n2, n3;
-
+complex_t n1, n2, n3;
 printf("Birinci sayıyı yazın: "); scanf("%f %f", &n1.re, &n1.im);
-
 printf("İkinci sayıyı yazın: "); scanf("%f %f", &n2.re, &n2.im);
-
-n3 = add\_complex(n1, n2);
-
-printf("Toplam: %f + %fi\\n", n3.re, n3.im);
-
-return EXIT\_SUCCESS;
-
+n3 = add_complex(n1, n2);
+printf("Toplam: %f + %fi\n", n3.re, n3.im);
+return EXIT_SUCCESS;
 }
-
-struct complex\_s add\_complex(struct complex\_s c1, struct complex\_s c2)
-
+struct complex_s add_complex(struct complex_s c1, struct complex_s c2)
 {
-
-complex\_t c3;
-
+complex_t c3;
 c3.re = c1.re + c2.re;
-
 c3.im = c1.im + c2.im;
-
 return c3;
-
 }
+```
 
 #1Karmaşık sayılar üzerinde işlem yapan program (Örnek 14).
 
-#include <stdio.h> /\* cout,cin \*
-
-#include <stdlib.h> /\* EXIT\_SUCCESS \*
-
+```cpp
+#include <stdio.h> /* cout,cin *
+#include <stdlib.h> /* EXIT_SUCCESS *
 #define TRUE 1
-
 int main(void)
-
 {
-
 float x, error, term, result = 1.0;
-
 int i = 2;
-
 printf("x: "); scanf("%f", &x);
-
 printf("Hata: "); scanf("%f", &error);
-
 term = x;
-
 while (TRUE)
-
 {
-
 result += term;
-
-term = term \* x / i;
-
+term = term * x / i;
 if (term < error)
-
 break;
-
 i++;
-
 }
-
-printf("Sonuç: %f\\n", result);
-
-return EXIT\_SUCCESS;
-
+printf("Sonuç: %f\n", result);
+return EXIT_SUCCESS;
 }
+```
 
 #1 ex\\protect deyimini bir önceki terimden giderek hesaplayan program (Örnek 16).
 
-#include <stdio.h> /\* cout,cin \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS,srand,rand,RAND\_MAX \*/
-
-#include <time.h> /\* time \*/
-
+```cpp
+#include <stdio.h> /* cout,cin */
+#include <stdlib.h> /* EXIT_SUCCESS,srand,rand,RAND_MAX */
+#include <time.h> /* time */
 int main(void)
-
 {
-
-int game\_status, point;
-
+int game_status, point;
 int die1, die2, sum;
-
 srand(time(NULL));
-
 die1 = 1 + rand() % 6;
-
 die2 = 1 + rand() % 6;
-
 sum = die1 + die2;
-
-printf("Gelen: %d + %d = %d\\n", die1, die2, sum);
-
+printf("Gelen: %d + %d = %d\n", die1, die2, sum);
 switch (sum)
-
 {
-
 case 7:
-
 case 11:
-
-game\_status = 1; break;
-
+game_status = 1; break;
 case 2:
-
 case 3:
-
 case 12:
-
-game\_status = 2; break;
-
+game_status = 2; break;
 default:
-
-game\_status = 0;
-
+game_status = 0;
 point = sum;
-
-printf("Sayı: %d\\n", sum);
-
+printf("Sayı: %d\n", sum);
 break;
-
 }
-
-while (game\_status == 0)
-
+while (game_status == 0)
 {
-
 die1 = 1 + rand() % 6;
-
 die2 = 1 + rand() % 6;
-
 sum = die1 + die2;
-
-printf("Gelen: %d + %d = %d\\n", die1, die2, sum);
-
+printf("Gelen: %d + %d = %d\n", die1, die2, sum);
 if (sum == point)
-
-game\_status = 1;
-
+game_status = 1;
 else
-
 {
-
 if (sum == 7)
-
-game\_status = 2;
-
+game_status = 2;
 }
-
 }
-
-if (game\_status == 1)
-
-printf("Oyuncu kazanır.\\n");
-
+if (game_status == 1)
+printf("Oyuncu kazanır.\n");
 else
-
-printf("Oyuncu kaybeder.\\n");
-
-return EXIT\_SUCCESS;
-
+printf("Oyuncu kaybeder.\n");
+return EXIT_SUCCESS;
 }
+```
 
 #1Barbut oyununu simüle eden program (Örnek 15).
 
-#include <stdio.h> /\* printf,scanf \*/
-
-#include <stdlib.h> /\* EXIT\_SUCCESS,malloc,free \*/
-
-#include <math.h> /\* fabs \*/
-
+```c
+#include <stdio.h> /* printf,scanf */
+#include <stdlib.h> /* EXIT_SUCCESS,malloc,free */
+#include <math.h> /* fabs */
 #define TRUE 1
-
-float newton\_raphson(float x, const float a\[\], int n);
-
+float newton_raphson(float x, const float a[], int n);
 int main(void)
-
 {
-
-float \*a;
-
+float *a;
 int n, i;
-
 float xi, xj, error;
-
 printf("Polinomun derecesi: "); scanf("%d", &n);
-
-a = (float \*) malloc((n+1) \* sizeof(float));
-
+a = (float *) malloc((n+1) * sizeof(float));
 for (i = n; i >= 0; i--)
-
 {
-
-printf("a%d: ", i); scanf("%f", &a\[i\]);
-
+printf("a%d: ", i); scanf("%f", &a[i]);
 }
-
 printf("Hata: "); scanf("%f", &error);
-
 printf("x0: "); scanf("%f", &xi);
-
 while (TRUE)
-
 {
-
-xj = newton\_raphson(xi, a, n);
-
+xj = newton_raphson(xi, a, n);
 if (fabs(xj - xi) < error)
-
 break;
-
 xi = xj;
-
 }
-
-printf("Kök: %f\\n", xj);
-
+printf("Kök: %f\n", xj);
 free(a);
-
-return EXIT\_SUCCESS;
-
+return EXIT_SUCCESS;
 }
-
-float newton\_raphson(float x, const float a\[\], int n)
-
+float newton_raphson(float x, const float a[], int n)
 {
-
-float \*b, \*c;
-
+float *b, *c;
 float xn;
-
 int i;
-
-b = (float \*) malloc((n+1) \* sizeof(float));
-
-c = (float \*) malloc((n+1) \* sizeof(float));
-
-b\[n\] = a\[n\];
-
-c\[n\] = b\[n\];
-
+b = (float *) malloc((n+1) * sizeof(float));
+c = (float *) malloc((n+1) * sizeof(float));
+b[n] = a[n];
+c[n] = b[n];
 for (i = n - 1; i > 0; i--)
-
 {
-
-b\[i\] = b\[i+1\] \* x + a\[i\];
-
-c\[i\] = c\[i+1\] \* x + b\[i\];
-
+b[i] = b[i+1] * x + a[i];
+c[i] = c[i+1] * x + b[i];
 }
-
-b\[0\] = b\[1\] \* x + a\[0\];
-
-xn = x - b\[0\] / c\[1\];
-
+b[0] = b[1] * x + a[0];
+xn = x - b[0] / c[1];
 free(b);
-
 free(c);
-
 return xn;
-
 }
+```
 
 #1Polinom kökü hesaplayan fonksiyon (Örnek 17).
 

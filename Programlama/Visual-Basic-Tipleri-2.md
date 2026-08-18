@@ -84,35 +84,48 @@ MSFlexGrid control kullanın
 **Form close butonu nasıl çalistirilir?**
 dim bClose as Boolean
 Form'un QueryUnload event'ine ekle:
+
+```vbnet
 If bClose = false then cancel = true
+```
 
 **Text dosyasina çift tirnak isaretleri olmadan nasıl string girisi yapılır?**
 Write # statement yerine Print # statement kullan
 Print # statement stringlerin etrafina çift tirnak koymaz
 
 **Bir combo'nun içini diger bir combo'dan aldiklarinizla nasıl doldurursunuz?**
-Sub comboA\_click()
+
+```vbnet
+Sub comboA_click()
 comboB.text = comboA.text
 End sub
+```
 
 Eger ComboA'daki seçili degerlerin ComboB'ye aktarilmasini istiyorsaniz
-Sub comboA\_click()
+
+```vbnet
+Sub comboA_click()
 comboB.AddItem comboA.text
 end sub
+```
 
 **Birden fazla sütun içeren combolar nasıl yapılır?**
 Projenize Microsoft Forms 2.0 control ekleyin, oradaki
 combo multi-column destekler.
 
+```vbnet
 Combo1.Clear
 Combo1.ColumnCount = 2
 Combo1.ListWidth = "6 cm" 'Total genislik
 Combo1.ColumnWidths = "2 cm;4 cm" 'sütun genisligi
 Combo1.AddItem "Ivir zivir"
 Combo1.List(0, 1) = "Ivir zivir"
+```
 
 **Dikine uzanan label nasıl yapılır?**
-Private Sub Form\_Activate()
+
+```vbnet
+Private Sub Form_Activate()
 Dim s As String
 Label1.Caption = "Visual Basic 2000"
 For i = 1 To Len(Label1)
@@ -120,22 +133,33 @@ s = s & Mid$(Label1, i, 1) & vbCrLf
 Next
 Label1 = s
 End Sub
+```
+
 dikkat: Label'i dikine çekmelisiniz
 
 **Joker karakterler kullanarak string nasıl aranir?**
+
+```vbnet
 Dim Mystr As String
 Mystr = "Hakan"
-If Mystr Like "H\*" Then
+If Mystr Like "H*" Then
 MsgBox "Bulundu"
 Else
 MsgBox "Bulunamadi"
 End If
+```
 
 **Her dile uyumlu tarih nasıl formatlanir?**
+
+```vbnet
 Command1.Caption = Format$(Date, "Short Date")
+```
 
 **Uyari isareti olan (X) mesaj kutusu nasıl yapılır?**
+
+```vbnet
 MsgBox "Mesaj Buraya!!", vbCritical, "Önemli"
+```
 
 **Sadece \*\*\*\* gösteren text kutusu nasıl yapılır?**
 Textbox'un PasswordChar property'sini "\*" karakterine esleyin.
@@ -150,65 +174,78 @@ bir asagiya esitleyin.
 **Text1 içerigi Text2 içine nasıl kopyalanir?**
 VB6.0 kullaniyorsaniz Replace Function ise yarar:
 
+```vbnet
 Text2 = Replace(Text1, vbCrLf, "" & vbCrLf)
+```
 
 Diger VB'lerde vbCrLf'leri bulmak için asagidaki kod kullanilir:
 
+```vbnet
 Dim sString As String
 Dim sNewString As String
 sString = Text1
 While Instr(sString, vbCrLf)
-sNewString = sNewString & Left(sString, \_
+sNewString = sNewString & Left(sString, _
 Instr(sString, vbCrLf) - 1) & "" & vbCrLf
 sString = Mid(sString, Instr(sString, vbCrLf) + 2)
 Wend
 Text2 = sNewString
+```
 
 **Command butondan popup menü nasıl yapılır?**
 
 Öncelikle menü editör ile bir menü yaratin.
 Asagidaki gibi:
 
+```vbnet
 Button Menu (Menu name: mnuBtn, Visible: False - Unchecked)
 ....SubMenu Item 1 (Menu name: mnuSub, Index: 0)
 ....SubMenu Item 2 (Menu name: mnuSub, Index: 1)
 ....SubMenu Item 3 (Menu name: mnuSub, Index: 2)
 ....SubMenu Item 4 (Menu name: mnuSub, Index: 3)
+```
 
 ve bir tane de command button hazirlayin ve kodu yerlestirin:
 
-Private Sub mnuSub\_Click(Index As Integer)
+```vbnet
+Private Sub mnuSub_Click(Index As Integer)
 
 Call MsgBox("Kliklenen menü: " & Index + 1, vbExclamation)
 
 End Sub
 
-Private Sub Command1\_Click()
+Private Sub Command1_Click()
 Call PopupMenu(mnuBtn)
 End Sub
+```
 
 Not: Isterseniz daha güzel etki için "Call PopupMenu(mnuBtn)" çagrisi yerine
 
-Call PopupMenu(Menu:=mnuBtn, X:=Command1.Left, Y:=Command1.Top + \_
+```vbnet
+Call PopupMenu(Menu:=mnuBtn, X:=Command1.Left, Y:=Command1.Top + _
 Command1.Height)
+```
 
 çagrisini yada;
 
-Call PopupMenu(mnuBtn, vbPopupMenuCenterAlign, Command1.Left + \_
+```vbnet
+Call PopupMenu(mnuBtn, vbPopupMenuCenterAlign, Command1.Left + _
 (Command1.Width / 2), Command1.Top + Command1.Height)
+```
 
 çagrisini kullanin.
 
 **Text kutusunda olan degisiklik nasıl farkedilir?**
 
+```vbnet
 'Amaç kullaniciyi yaptigi degisiklikler konusunda programi kapatmadan uyarmaktir.
 
 Public Degisti As Boolean 'Bu degisken textbox'ta herhangi bir degisiklik olup olmadigini tutar.
-Private Sub Text1\_Change()
+Private Sub Text1_Change()
 Degisti= True
 End SubPrivate
 
-Sub Form\_Unload(Cancel As Boolean)
+Sub Form_Unload(Cancel As Boolean)
 If Degisti Then
 If Msgbox("Degisiklikler kaydedilsin mi?", vbYesNo, "Kayit'") = vbYes Then
 'Buraya kaydetme ile ilgili kodlar gelecek
@@ -218,14 +255,20 @@ Degisti = False
 End If
 End If
 End Sub
+```
 
 **Çalisma aninda Statusbar içerigi nasıl degistirilir?**
+
+```vbnet
 Statusbar1.Panels(1).Text = "Ivir zivir"
+```
 
 **Listbox'a bir text dosyasi içerigi nasıl yüklenir?**
-Private Sub Command1\_Click()
+
+```vbnet
+Private Sub Command1_Click()
 Dim BulunanKelimeler As String
-Open "C:\\test.txt" For Input As #1
+Open "C:\test.txt" For Input As #1
 List1.Clear
 While Not EOF(1)
 Input #1, StringHold
@@ -233,22 +276,31 @@ List1.AddItem BulunanKelimeler
 Wend
 Close #1
 End Sub
+```
 
 **Textbox ve Combobox için Undo (geri al) fonksiyonu nasıl kullanilir?**
 'Bir Windows API undo islemi yapar
 
 'asagidaki deklerasyonlari yaz
-Declare Function SendMessage Lib "User" (ByVal hWnd As \_
-Integer, ByVal wMsg As Integer, ByVal wParam As \_
+
+```vbnet
+Declare Function SendMessage Lib "User" (ByVal hWnd As _
+Integer, ByVal wMsg As Integer, ByVal wParam As _
 Integer, lParam As Any) As Long
+```
 
 'asagidaki degismezleri yaz
 
-Global Const WM\_USER = &h400
-Global Const EM\_UNDO = WM\_USER + 23
+```vbnet
+Global Const WM_USER = &h400
+Global Const EM_UNDO = WM_USER + 23
+```
 
 ' Undo Sub 'lara asagidaki kodu yaz
-UndoResult = SendMessage(myControl.hWnd, EM\_UNDO, 0, 0)
+
+```vbnet
+UndoResult = SendMessage(myControl.hWnd, EM_UNDO, 0, 0)
+```
 
 'UndoResult = -1 olursa hata var demektir
 'UndoResult sadece bir rakamdir ve hiç bir önemi yoktur. Sadece yer tutmasi için yazilir.
@@ -257,28 +309,36 @@ UndoResult = SendMessage(myControl.hWnd, EM\_UNDO, 0, 0)
 **Clipboard'dan text nasıl kopyalanir?**
 'Textbox'ta texti isaretle ve isaretlenen yeri clipboard'dan kopyaladiginla degistir:
 
+```vbnet
 txtBox.SelText = Clipboard.GetText
+```
 
 'Yada tüm text'i clipboarddan aldiginla degistir.
 
+```vbnet
 txtBox.Text = Clipboard.GetText
+```
 
 Clipboard'a text nasıl kopyalanir?
+
+```vbnet
 'Önce clipboard'u temizle
 Clipboard.Clear
 
 'Sonra kopyalanacak alani seç ve clipboard'a kopyala
 Clipboard.SetText txtBox.Text, vbCFText
+```
 
 **Toolbar'in click olayi nasıl kodlanir?**
 
-Private Sub Toolbar1\_ButtonClick(ByVal Button As Button)
+```vbnet
+Private Sub Toolbar1_ButtonClick(ByVal Button As Button)
 
 'button clicklerini saptamak için:
 
 Select Case Button.Key
 Case Is = "Exit"
-If MsgBox("Çikmak istiyor musunuz??", vbQuestion + vbYesNo + \_
+If MsgBox("Çikmak istiyor musunuz??", vbQuestion + vbYesNo + _
 vbDefaultButton2, "Programdan çikiyorsunuz!") = vbNo Then Exit Sub
 Call ExitProgram
 Case Is = "Repair"
@@ -295,8 +355,11 @@ Case Is = "Help"
 Call ShowHelpContents
 End Select
 End Sub
+```
 
 **Cdbl ile Val fonksiyonlari arasindaki fark nedir?**
+
+```vbnet
 print Val("12345")
 12345
 
@@ -308,19 +371,23 @@ print CDbl("12,345")
 
 print CDbl("12345")
 12345
+```
 
 **Dogum gününden kişinin yaşı nasıl hesaplanır?**
 'Text'i Date data türüne çevir
 
+```vbnet
 Dim Birth as Date
 Birth = DateValue(txtDOB)
 
 'Yasi hesapla
 Dim Age as Integer
 Age = Int(DateDiff("D", Birth, Now) / 365.25)
+```
 
 **4 rakamlı tarih nasıl kontrol edilir?**
 
+```vbnet
 Public Function ValidDate(MDate)
 
 'Amaç: 4 digitli "yyyy" formatindaki tarihi kontrol etmek; hata var ise kullaniciyi uyarmaktir.
@@ -343,15 +410,18 @@ Dim EndDate As String
 EndDate = Right(MDate, 4)
 StartDate = Left(MDate, 4)
 
-If ValidChar(EndDate, "0123456789") = False And \_
+If ValidChar(EndDate, "0123456789") = False And _
 
 ValidChar(StartDate, "0123456789") = False Then Exit Function
 
 'Tüm bu testlerden geçilirse True yükle
 ValidDate = True
 End Function
+```
 
 **Hata kontrol blokları nasıl denetlenir?**
+
+```vbnet
 'error kodunu baslat
 On Error GoTo HataKontrol
 
@@ -365,8 +435,11 @@ Dim strErr As String
 'Kullaniciya olusan hata ve tanimini ver
 strErr = "Hata olustu: " & Err.Number & " " & Err.Description
 MsgBox strErr, vbCritical + vbOK, "Hata!"
+```
 
 **Web adresleri nasıl açılır?**
+
+```vbnet
 'Asagidaki kodu bir kontrolun click event'ine yaz
 Dim iRet As Long
 Dim Cevap As Integer
@@ -379,11 +452,13 @@ iRet = Shell("start.exe http://www.hakanersoz.com", vbNormal)
 Case vbNo
 Exit Sub
 End Select
+```
 
 **10, 100, 1000 gibi rakamlara en yakın sayı nasıl yuvarlanır?**
 
+```vbnet
 'Örnek 100' yuvarla:
-Round(RatioBolus \* Val(txtDW), 100)
+Round(RatioBolus * Val(txtDW), 100)
 
 'BAS module'ü içine yaz
 Public Function Round(Dose, Factor)
@@ -393,8 +468,9 @@ Public Function Round(Dose, Factor)
 
 Dim Temp As Single
 Temp = Int(Dose / Factor)
-Round = Temp \* Factor
+Round = Temp * Factor
 End Function
+```
 
 **Menüye 13x13 bitmaplar nasıl eklenir?**
 
@@ -405,36 +481,42 @@ End Function
 'Asagidaki deklerasyonlari bir Bas modulune ekle:
 'Bu örnek VB4 içindir
 
+```vbnet
 Private Declare Function VarPtr Lib "VB40032.DLL" (variable As Any) As Long
 Private Declare Function GetMenu Lib "user32" (ByVal hwnd As Long) As Long
 Private Declare Function GetSubMenu Lib "user32" (ByVal hMenu As Long, ByVal nPos As Long) As Long
 Private Declare Function SetMenuItemBitmaps Lib "user32" (ByVal hMenu As Long, ByVal nPosition As Long, ByVal wFlags As Long, ByVal hBitmapUnchecked As Long, ByVal hBitmapChecked As Long) As Long
 
-Const MF\_BYPOSITION = &H400&
+Const MF_BYPOSITION = &H400&
 'form load event içine asagidaki kodu yerlestir
 
 Dim mHandle As Long, lRet As Long, sHandle As Long, sHandle2 As Long
 mHandle = GetMenu(hwnd)
 sHandle = GetSubMenu(mHandle, 0)
-lRet = SetMenuItemBitmaps(sHandle, 0, MF\_BYPOSITION, imOpen.Picture, imOpen.Picture)
-lRet = SetMenuItemBitmaps(sHandle, 1, MF\_BYPOSITION, imSave.Picture, imSave.Picture)
-lRet = SetMenuItemBitmaps(sHandle, 3, MF\_BYPOSITION, imPrint.Picture, imPrint.Picture)
-lRet = SetMenuItemBitmaps(sHandle, 4, MF\_BYPOSITION, imPrintSetup.Picture, imPrintSetup.Picture)
+lRet = SetMenuItemBitmaps(sHandle, 0, MF_BYPOSITION, imOpen.Picture, imOpen.Picture)
+lRet = SetMenuItemBitmaps(sHandle, 1, MF_BYPOSITION, imSave.Picture, imSave.Picture)
+lRet = SetMenuItemBitmaps(sHandle, 3, MF_BYPOSITION, imPrint.Picture, imPrint.Picture)
+lRet = SetMenuItemBitmaps(sHandle, 4, MF_BYPOSITION, imPrintSetup.Picture, imPrintSetup.Picture)
 sHandle = GetSubMenu(mHandle, 1)
 sHandle2 = GetSubMenu(sHandle, 0)
-lRet = SetMenuItemBitmaps(sHandle2, 0, MF\_BYPOSITION, imCopy.Picture, imCopy.Picture)
+lRet = SetMenuItemBitmaps(sHandle2, 0, MF_BYPOSITION, imCopy.Picture, imCopy.Picture)
+```
 
 **Çalisma aninda menü nasıl olusturulur?**
 
+```vbnet
 Dim index As Integer
 index = mnuHook.Count
 Load mnuHook(index)
 mnuHook(index).Caption = "New Menu Entry"
 mnuHook(index).Visible = True
+```
 
 'Yeni girdiler mnuHook 'dan sonra olusur. Ancak unutmayin mnuHook halihazirda varolan bir menü elemanidir.
 
 **Text nasıl sifrelenir?**
+
+```vbnet
 'encryption function :
 
 Public Function Encrypt(ByVal Plain As String)
@@ -455,9 +537,11 @@ End Sub
 
 Print Encrypt("This is just an example")
 Print Decrypt("Uijt!jt!kvtu!bo!fybnqmf")
+```
 
 **Form nasıl yavas yavas karartilir? (Fade to black)**
 
+```vbnet
 Sub FormFade(frm As Form)
 ' Formu yavas yavas karartir
 
@@ -466,9 +550,11 @@ DoEvents
 frm.BackColor = RGB(icolVal%, icolVal%, icolVal%)
 Next icolVal%
 End Sub
+```
 
 **Formun caption'una nasıl kayan yazı yazılır?**
 
+```vbnet
 Sub KayanYazi(frm As Form)
 Dim X As Integer
 Dim current As Variant
@@ -493,13 +579,15 @@ Loop
 bitti:
 Next X
 End Sub
+```
 
 **Verilen kredi karti numarasinin geçerli olup olmadigi nasıl anlasilir?**
 'Asagidaki fonksiyonu bir BAS modulu içine kopyala
 'Not: Tüm kredi kartlari belli bir algoritma ile üretilir. Rastgele sayilar bu algoritmaya uymaz. Bu fonksiyon bu hesaplamalari yapar
 'Asagidaki Sub bir command butonuna ait olabilir. Kliklendiginde verilen kart numarasini kontrol eder.
 
-Sub KartKontrolu\_Click ( )
+```vbnet
+Sub KartKontrolu_Click ( )
 'KartGecerli degiskeni True olur eger fonksiyon dogru deger çevirirse
 Dim KartGecerli as Boolean
 KartGecerli = GecerliKartNumarasimi("4552012301230123")
@@ -518,7 +606,7 @@ Dim tChar As String
 
 For CharPos = Len(pCardNumber) To 2 Step -2
 CheckSum = CheckSum + CInt(Mid(pCardNumber, CharPos, 1))
-tChar = CStr((Mid(pCardNumber, CharPos - 1, 1)) \* 2)
+tChar = CStr((Mid(pCardNumber, CharPos - 1, 1)) * 2)
 CheckSum = CheckSum + CInt(Left(tChar, 1))
 If Len(tChar) > 1 Then CheckSum = CheckSum + CInt(Right(tChar, 1))
 Next
@@ -532,18 +620,22 @@ IsValidCreditCardNumber = False
 End If
 
 End Function
+```
 
 **Ayin son günü nasıl bulunur?**
+
+```vbnet
 Public Function AyinSonGunu(ByVal GecerliTarih As Date) As Byte
 Dim SonGun As Byte
-SonGun = DatePart("d", DateAdd("d", -1, DateAdd("m", 1, \_
+SonGun = DatePart("d", DateAdd("d", -1, DateAdd("m", 1, _
 DateAdd("d", -DatePart("d", GecerliTarih) + 1, Date))))
 AyinSonGunu = SonGun
 End Function
 
-Private Sub Command1\_Click()
+Private Sub Command1_Click()
 MsgBox Date & " tarihine ait ayin son günü : " & AyinSonGunu(Date)
 End Sub
+```
 
 **VB6 projeleri VB5'te nasıl açilir?**
 Notepad yada baska bir editör ile VB 6.vbp dosyasini açin ve bu dosyadaki
@@ -554,12 +646,14 @@ Artik VB6 projelerini VB5'te açabilirsiniz.
 Default deger olarak Access string alanlari NULL deger tasir (Çift tirnak yani bos string girilmedikçe)
 Null deger tasiyan bir alani recordset araciligiyla bir string içine kopyalamak istediginizde (sanirim birçogunuz bunu görmüstür) runtime type-mismatch hatasi olusur. Bundan kurtulmanin en kolay yolu & karakteri kullanarak her alan basina çift tirnak (yani bos string) eklemektir. Asagidaki örnek gibi:
 
+```vbnet
 Dim DB As Database
 Dim RS As Recordset
 Dim sAd As String
 Set DB = OpenDatabase("Test.mdb")
 Set RS = DB.OpenRecordset("Ad")
-sAd = "" & RS!\[Adi Soyadi\] ' Adi Soyadi alani içine "" ekleniyor, böylece null deger yokediliyor.
+sAd = "" & RS![Adi Soyadi] ' Adi Soyadi alani içine "" ekleniyor, böylece null deger yokediliyor.
+```
 
 **Ekran çözünürlügü nasıl bulunur?**
 Genelde ekran çözünürlügüne göre programlarinizdaki nesneleri resize etmek oldukça kullanisli bir yoldur.
@@ -567,34 +661,42 @@ Genelde ekran çözünürlügüne göre programlarinizdaki nesneleri resize etme
 Ekran çözünürlügünü söyle bulursunuz:
 Asagidaki kodu form\_load'a yazarsanız her açılışta ekran çözünürlüğünü kontrol eder.
 
-Genislik = Screen.Width \\ Screen.TwipsPerPixelX
-Yukseklik = Screen.Height \\ Screen.TwipsPerPixelY
+```vbnet
+Genislik = Screen.Width \ Screen.TwipsPerPixelX
+Yukseklik = Screen.Height \ Screen.TwipsPerPixelY
 
-Ekran\_Cozunurlugu = Genislik & "x" & Yukseklik
+Ekran_Cozunurlugu = Genislik & "x" & Yukseklik
+```
 
 Sonuç asagidaki gibi olur:
 
+```vbnet
 800x600
+```
 
 **Veritabanina nasıl daha hizli ulasilir?**
 
 Bir recordset içinde daha hızlı döngü çalıstırmak için bir yol var. Genelde bir çok programcı aşagidaki kodu kullanır:
 
+```vbnet
 Do While Not Records.EOF 'Dosya sonuna kadar döngü baslat
-Combo1.AddItem Records!\[Firma Adi\] 'Combo'ya Records recordset'inin \[Firma Adi\] adli alanini ekle
+Combo1.AddItem Records![Firma Adi] 'Combo'ya Records recordset'inin [Firma Adi] adli alanini ekle
 Records.Movenext 'Bir sonraki kayda git
 Loop
+```
 
 Buradaki problem her defasinda veritabaninin bir sonraki kayda gitmek için dosya sonuna ulasip ulasmadigini kontrol etmek zorunda olmasidir. Bu zorunluluk özellikle çok büyük veritabanlarinda büyük performans kayiplarina neden olur. Çözüm ise önce kayit adedini RecordCount ile bulmak ve For ---- Next döngüsü ile kayit okumaktir :
 
+```vbnet
 Records.MoveLast ' Recordset'in sonuna giderek kaç adet kayit oldugunu bulmalisiniz. Bu islemin bir kez yapilmasi yeterlidir.
 KayitSayisi=Records.RecordCount 'Kayıt sayısı bir long değişken içine alındı
 Records.MoveFirst 'Ilk kayda gel
 
 For i =1 To KayitSayisi 'Şimdi kayıtları EOF telaşı olmadan birer birer okuyalim
-Combo1.AddItem Records!\[Firma Adi\]
+Combo1.AddItem Records![Firma Adi]
 Records.MoveNext
 Next
+```
 
 İşte size garantili %33'lük performans artışı
 
@@ -603,7 +705,8 @@ Next
 1. Standart EXE projesi baslat
 2. Asagidaki kodu Form'un Paint proc'una yaz:
 
-Sub Form\_Paint()
+```vbnet
+Sub Form_Paint()
 Dim I As Integer, X As Integer, Y As Integer
 Dim C As String
 Cls
@@ -611,13 +714,14 @@ For I = 0 To 91
 X = CurrentX
 Y = CurrentY
 C = Chr(I)
-Line -(X + TextWidth(C), Y = TextHeight(C)), QBColor(Rnd \* 16), BF
+Line -(X + TextWidth(C), Y = TextHeight(C)), QBColor(Rnd * 16), BF
 CurrentX = X
 CurrentY = Y
-ForeColor = RGB(Rnd \* 256, Rnd \* 256, Rnd \* 256)
+ForeColor = RGB(Rnd * 256, Rnd * 256, Rnd * 256)
 Print "Merhaba Basic Programciligi"
 Next
 End Sub
+```
 
 3. Projeyi çalistirirsaniz formun degisik renklerde yaziyla kaplandigini görürsünüz.
 and watch the form fill with lots of multi-coloured text
@@ -626,16 +730,19 @@ and watch the form fill with lots of multi-coloured text
 Kullanicilarin text kutusuna bosluk karakteri girmelerini engellemek için :
 Textbox 'un KeyPress olayina asagidaki kodu yaz:
 
-Private Sub Text1\_KeyPress(KeyAscii As Integer)
+```vbnet
+Private Sub Text1_KeyPress(KeyAscii As Integer)
 If KeyAscii = 32 Then
 KeyAscii = 0
 End If
 End Sub
+```
 
 **Tek harekette text dosyasi nasıl yüklenir?**
 FileText fonksiyonunu kullanarak istediginiz dosyayi açar ve textbox içine yerlestirirsiniz.
 Fonksiyonu Bas modulu içine yaz
 
+```vbnet
 Function FileText (filename$) As String
 Dim dosya As Integer
 dosya = FreeFile
@@ -644,34 +751,38 @@ FileText = Input$(LOF( dosya), dosya)
 Close # dosya
 End Function
 
-Text1.Text = FileText("c:\\autoexec.bat") 'Text1 textbox'una tek hamlede autoexec.bat içerigi yüklenir.
+Text1.Text = FileText("c:\autoexec.bat") 'Text1 textbox'una tek hamlede autoexec.bat içerigi yüklenir.
+```
 
-**Windows Control Panel (Denetim masasi) uzantilari VB ile nasıl açilir?****
-**
+**Windows Control Panel (Denetim masasi) uzantilari VB ile nasıl açilir?**
+
+```vbnet
 Option Explicit
 Private strPanelAdi As String
-Private Sub Command1\_Click()
+Private Sub Command1_Click()
 
 strPanelAdi = File1.filename
 If strPanelAdi = "" Then
-MsgBox "Bir .CPL dosyasi seçilmedi." & vbCrLf & \_
+MsgBox "Bir .CPL dosyasi seçilmedi." & vbCrLf & _
 "Windows Control Panel açiliyor.",vbInformation
 End If
-Shell "rundll32.exe shell32.dll,Control\_RunDLL " & \_
+Shell "rundll32.exe shell32.dll,Control_RunDLL " & _
 strPanelAdi, vbNormalFocus
 End Sub
 
-Private Sub Form\_Load()
+Private Sub Form_Load()
 With File1
 'Sadece Control Panel uzantili dosyalari göster
-.Pattern = "\*.CPL"
+.Pattern = "*.CPL"
 'FileListBox yalnizca System yada System32 dizinini hedef alsin:
-.Filename = "C:\\Windows\\System"
+.Filename = "C:\Windows\System"
 End With
 End Sub
+```
 
 **Bellegi bosaltmak için tüm formlar nasıl unload edilir?**
 
+```vbnet
 Public Sub UnloadAllForms()
 Dim Form As Form
 For Each Form In Forms
@@ -679,33 +790,37 @@ Unload Form
 Set Form = Nothing
 Next Form
 End Sub
+```
 
 Bu prosedürü çalistirmak için en uygun yer ana formun unload event'idir
 
-**Kontroller nasıl taşınabilir? (**Drag&Drop)
+**Kontroller nasıl taşınabilir? (Drag&Drop)**
 
 Burada bir picturebox form üzerinde drag&drop ile tasinmaktadir.
 
+```vbnet
 Option Explicit
 Public globalX As Integer
 Public globalY As Integer
 
-Private Sub Form\_DragDrop(Source As Control, X As Single, Y As Single)
+Private Sub Form_DragDrop(Source As Control, X As Single, Y As Single)
 Picture1.Move X - globalX, Y - globalY
 End Sub
 
-Private Sub Picture1\_MouseDown(Button As Integer, \_
+Private Sub Picture1_MouseDown(Button As Integer, _
 Shift As Integer, X As Single, Y As Single)
 Picture1.Drag vbBeginDrag
 globalX = X
 globalY = Y
 End Sub
+```
 
 **Kendi Popup menünüz bir textbox içinde nasıl gösterilir?**
 
 Bu ipucu ile standart Windows pop up menüsünü bastirir kendi popup menünüzü çalistirirsinz.
 
-Private Sub Text1\_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+```vbnet
+Private Sub Text1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 
 If Button = 2 Then
 With Text1
@@ -716,9 +831,11 @@ PopupMenu {KendiMenunuz}
 End With
 End If
 End Sub
+```
 
 **Mesaj kutusunun ileri özellikleri nasıl kullanilir?**
 
+```vbnet
 Dim Msg, Style, Title, Help, Ctxt, Cevap, MyString
 Msg = "Devam edelim mi ?" ' Mesaji tanimla
 Style = vbYesNo + vbCritical + vbDefaultButton2 'Butonlari tanimla
@@ -732,45 +849,59 @@ MsgBox "Kabul ettiniz" ' Karsilik ver
 Else ' Tersi durumda kullanici hayir'i seçmis demektir
 MsgBox "Kabul etmediniz" ' Karsilik ver
 End If
+```
 
 **Menülerde seperatör (ayraç) nasıl yapılır?**
 
+```vbnet
 mnu.Caption="-"
+```
 
 **Bir textboxta tüm harfler nasıl küçükharfe çevirilir?**
 
+```vbnet
 Eskiposizyon = Text1.SelStart
 Text1.Text = LCase(Text1.Text) 'Üst karakter için UCase kullanilir
 Text1.SelStart = Eskiposizyon
+```
 
 **Listbox'taki tüm elemanlar nasıl seçilir?**
 
-'Asagidaki kodu cmdYeniEkle\_Click() yordamina yaz
+```vbnet
+'Asagidaki kodu cmdYeniEkle_Click() yordamina yaz
 
 List1.AddItem Text1.Text ' Yeni bir item ekle
 
-'Asagidaki kodu cmdTumunuSec\_Click() yordamina yaz
+'Asagidaki kodu cmdTumunuSec_Click() yordamina yaz
 
 For x = 0 To List1.ListCount - 1
 List1.Selected(x) = True ' item(x) seç
 Next x
+```
 
 **Listview'deki satirlarin kaç tane oldugu nasıl sayilir?**
 
+```vbnet
 lItemCount = lstCount.ListItems.Count
 
 Msgbox lItemCount
+```
 
 P**icturebox'a çalisma aninda nasıl resim eklenir?**
 
-Picture1.Picture = LoadPicture("c:\\xxxxxx.bmp")
+```vbnet
+Picture1.Picture = LoadPicture("c:\xxxxxx.bmp")
+```
 
 **Picturebox'tan çalisma aninda nasıl resim silinir?**
 
+```vbnet
 Picture1.Picture = LoadPicture("")
+```
 
 **Form konfetti ile nasıl doldurulur?**
 
+```vbnet
 DrawWidth = 5 ' noktaciklarin genisligi
 Dim x As Long
 Dim y As Long
@@ -780,103 +911,134 @@ Dim b As Integer
 
 Randomize
 Do
-x = Val(Screen.Width) \* Rnd
-y = Val(Screen.Height) \* Rnd
+x = Val(Screen.Width) * Rnd
+y = Val(Screen.Height) * Rnd
 bir sonraki noktacigin rengi rastgele seçilir
-r = 255 \* Rnd
-g = 255 \* Rnd
-b = 255 \* Rnd
+r = 255 * Rnd
+g = 255 * Rnd
+b = 255 * Rnd
 Form1.PSet (x, y), RGB(r, g, b)
 Loop
+```
 
 **Form üzerindeki Picturebox nasıl ortalanir?**
 
+```vbnet
 Picture1.Left = (Form1.Width - Picture1.Width) / 2
+```
 
 **Clipboard kullanarak bir Picturebox içerigi resim diger bir picturebox'a nasıl kopyalanir?**
 
-Command1\_Click()
+```vbnet
+Command1_Click()
 Clipboard.Clear 'Clipboard'i mutlaka sil
 Clipboard.SetData Picture1.Picture
 
-Command2\_Click()
+Command2_Click()
 Picture2.Picture = Clipboard.GetData ' Clipboard içerigini Picture2 içine yapistir.
+```
 
 **Bir string'in uzunlugu nasıl tespit edilir?**
 
+```vbnet
 Dim i As Long
 i = Len(sSizinStringiniz)
+```
 
 **Mouse pointer nasıl saklanir?**
 Bu is için ShowCursor API'si kullanilir. Asagidaki kodu bir module içine yaz:
 
+```vbnet
 Declare Function ShowCursor Lib "user32" (ByVal bShow
 As Long) As Long
+```
 
 Bu kod mouse imlecini saklar:
+
+```vbnet
 FareImleci = ShowCursor(False)
+```
 
 Bu kod mouse imlecini görünür hale getirir:
-FareImleci = ShowCursor(True)
 
-**Programiniz disinda keypress nasıl saptanir?****
-**
+```vbnet
+FareImleci = ShowCursor(True)
+```
+
+**Programiniz disinda keypress nasıl saptanir?**
+
 GetAsyncKeyState API'si kullanilir. Asagidaki kodu module içine yazin
 
+```vbnet
 Declare Function GetAsyncKeyState Lib "user32"
 (ByVal vKey As Long) As Integer
 
 ' Asagidaki constant TAB tusu için. Diger tuslar için
 ' API Text Viewer'i kullanin
 
-Public Const VK\_TAB = &H9
+Public Const VK_TAB = &H9
 
-'Timer1\_Timer() içine asagidaki kodu ekleyin
+'Timer1_Timer() içine asagidaki kodu ekleyin
 
-If GetAsyncKeyState(VK\_TAB) Then
+If GetAsyncKeyState(VK_TAB) Then
 Beep ' TAB'a basilirsa beep
 End If
+```
 
 **Yazdirma islemi nasıl iptal edilir?**
+
+```vbnet
 'Bu örnekte ayrica birden fazla sayfanin nasıl yazilacagi da gösteriliyor
 
 Printer.Print "Page 1"
 Printer.Newpage
 Printer.Print "Page 2"
 Printer.KillDoc
+```
 
 **Resim nasıl yazdırılır?**
 
+```vbnet
 Printer.PaintPicture Picture1.Picture
 Printer.EndDoc
+```
 
 **Windows'un Belgeler içerigi nasıl silinir?**
 
 Bir module asagidaki API deklerasyonunu ekle:
 
+```vbnet
 Declare Sub SHAddToRecentDocs Lib "shell32.dll" (ByVal uFlags As Long,
 ByVal pv As String)
+```
 
 Herhangi bir click içine de asagidaki kodu ekle:
 
+```vbnet
 SHAddToRecentDocs(2,vbNullString)
+```
 
 **Windows'un Belgeler içine nasıl ekleme yapılır?**
 
 Bir module asagidaki API deklerasyonunu ekle:
 
+```vbnet
 Declare Sub SHAddToRecentDocs Lib "shell32.dll" (ByVal uFlags As Long,
 ByVal pv As String)
+```
 
 Herhangi bir click içine de asagidaki kodu ekle:
 
+```vbnet
 Dim ekleme as String
-ekleme="c:\\falan dizin\\filan dosya.txt"
+ekleme="c:\falan dizin\filan dosya.txt"
 
 SHAddToRecentDocs(2,ekleme)
+```
 
 **Alan adina göre bir Recordset içindeki kayitlar nasıl siraya konur?**
 
+```vbnet
 'Bu kod tüm kayitlari Z-A (geriye dogru) siraya dizer
 
 ' A-Z (ileri dogru) sirasi isterseniz ,DESC yerine ASC kullanin.
@@ -884,18 +1046,20 @@ SHAddToRecentDocs(2,ekleme)
 Dim DB as Database
 Dim Kayitlar as Recordset
 
-Set Kayitlar = DB.OpenRecordset("SELECT \* FROM \_
+Set Kayitlar = DB.OpenRecordset("SELECT * FROM _
 Personel " & "ORDER BY Personel.Adi DESC;")
+```
 
 Personel tablosundan tüm kayitlari Adi (personel adi) field degerine göre azalan (Z-A ) sekilde siraya dizer
 
 **Listbox'u Access (mdb) veritabanina nasıl baglarsiniz?**
 
-On Error GoTo Hata\_Kontrol
+```vbnet
+On Error GoTo Hata_Kontrol
 
 Dim DB as Database
 Dim Kayitlar as Recordset
-Dim X as Long, record\_count as Long
+Dim X as Long, record_count as Long
 
 'Veritabanini açalim
 
@@ -919,26 +1083,30 @@ Y = Y + 1
 Kayitlar.MoveNext
 Loop Until Y = X ' X = Recordcount, yani son kayit
 
-Hata\_Kontrol:
+Hata_Kontrol:
 Select Case (Err)
 Case 3021 ' Kayit yok
-record\_count = 0 'Kayit yoksa degeri 0 a esitleyelim.
+record_count = 0 'Kayit yoksa degeri 0 a esitleyelim.
 Exit Sub
 List1.Refresh
 End Select
+```
 
 **Iki integer degisken nasıl swap (degistokus) edilir?**
 
 Asagidaki algoritma kullanilarak iki integer'in degerleri birbirine aktarilir
 
+```vbnet
 a = a Xor b
 
 b = a Xor b
 
 a = a Xor b
+```
 
 **Bir form nasıl asagi ve yukari katlanir? (açilista splash screen olarak kullanmak üzere..)**
 
+```vbnet
 Sub FormuYukariKatla(frm As Form, yukari As Integer)
 
 ' Formunuzun Scalemode property'sine dikkat edin. Eger degeri pixel ise
@@ -975,18 +1143,21 @@ Loop Until frm.Height >= NereyeKadar
 End Sub
 
 'Asagidaki sub yordamimiz çagirir
-Private Sub Command1\_Click()
+Private Sub Command1_Click()
 Call FormuAsagiKatla(Form1, 100)
 End Sub
+```
 
 **isEven fonksiyonu nasıl kullanilir?**
 
+```vbnet
 'Bu fonksiyon tek sayilarda TRUE döndürür
 
 Function isEven(n As Integer) As Boolean
 isEven = True
 If n And 1 Then isEven = False
 End Function
+```
 
 **Dosya boyutu nasıl ögrenilir?**
 
@@ -996,7 +1167,8 @@ Bir form üzerine bir dirlistbox (lstDizin) ve bir filelistbox (lstDosya) ve
 bir Label (lblDosyaBoyutu) yerlestirin.
 Kullanici istedigi dizine gidebilir ve dosya seçebilir. Bu program kullanicinin seçtigi dosyalarin boyutunu gösterecek:
 
-Private Sub cmdDosyaBoyutunuGoster\_Click()
+```vbnet
+Private Sub cmdDosyaBoyutunuGoster_Click()
 
 Dim strDosyaTemp As String
 Dim strBoyutTemp As String
@@ -1009,82 +1181,96 @@ strDosya = lstDosya.File
 
 ' Yukaridan alinan degerlerle ulasilan path degerini geçici dosya degiskenine yükleyip
 ' o degiskenin dosya boyutunu hesaplatiyoruz.:
-strDosyaTemp = strDizin & "\\" & strDosya
+strDosyaTemp = strDizin & "\" & strDosya
 strBoyutTemp = FileLen(strDosyaTemp)
 
-lblDosyaBoyutu.Caption = strDosyaTemp & " adli dosya " & \_
+lblDosyaBoyutu.Caption = strDosyaTemp & " adli dosya " & _
 Format(strBoyutTemp, "#,##0") & " byte boyutundadir."
 
 End Sub
+```
 
 **Title bar nasıl yanıp söner?**
 
 Yeni bir EXE projesi aç ve bir modul içine asagidaki WinApi'yi yaz:
 
-Public Declare Function FlashWindow Lib "user32" (ByVal hwnd As Long, \_
+```vbnet
+Public Declare Function FlashWindow Lib "user32" (ByVal hwnd As Long, _
 ByVal bInvert As Long) As Long
+```
 
 Bir Form üzerine bir timer ve 2 commandbutton yerlestir (özellikleri sagida) :
 
+```vbnet
 command1.caption="Baslat"
 command2.caption="Durdur"
 timer1.interval=500 'yarim saniyede bir yanpi sönecek
 timer1.enabled=false
 
-Private Sub Timer1\_Timer()
+Private Sub Timer1_Timer()
 a& = FlashWindow(Me.hwnd, 1)
 End Sub
 
-Private Sub Command1\_Click() 'Programi çalistirir ve form caption'u yanip söner
+Private Sub Command1_Click() 'Programi çalistirir ve form caption'u yanip söner
 Timer1.Enabled = True
 End Sub
 
-Private Sub Command2\_Click() 'Yanip sönme isini kapatir
+Private Sub Command2_Click() 'Yanip sönme isini kapatir
 Timer1.Enabled = False
 End Sub
+```
 
 **Ctrl-Alt-Delete ve Ctrl-Esc tus kombinasyonlarinin çalismasi nasıl iptal edilir?**
 
 Asagidaki kodu projenizin declarations kismina yazin:
 
-Private Declare Function SystemParametersInfo Lib \_
-"user32" Alias "SystemParametersInfoA" (ByVal uAction \_
-As Long, ByVal uParam As Long, ByVal lpvParam As Any, \_
+```vbnet
+Private Declare Function SystemParametersInfo Lib _
+"user32" Alias "SystemParametersInfoA" (ByVal uAction _
+As Long, ByVal uParam As Long, ByVal lpvParam As Any, _
 ByVal fuWinIni As Long) As Long
 
 Sub CtrlAltDeleteKapat(Kapali As Boolean)
 Dim X As Long
 X = SystemParametersInfo(97, Kapali, CStr(1), 0)
 End Sub
+```
 
 Ctrl-Alt-Delete kombinasyonunu kapatmak için:
 
+```vbnet
 Call CtrlAltDeleteKapat(True)
+```
 
 Ctrl-Alt-Delete kombinasyonunu açmak için:
 
+```vbnet
 Call CtrlAltDeleteKapat(False)
+```
 
-**Sistemin bir ses kartina sahip olup olmadigi nasıl bulunur?****
-**
+**Sistemin bir ses kartina sahip olup olmadigi nasıl bulunur?**
+
 Asagidaki kodu projenizin declarations kismina yazin:
 
-Declare Function waveOutGetNumDevs Lib "winmm.dll" \_
+```vbnet
+Declare Function waveOutGetNumDevs Lib "winmm.dll" _
 Alias "waveOutGetNumDevs" () As Long
 
 Dim i As Integer
 
 i = waveOutGetNumDevs()
 If i > 0 Then
-MsgBox "Sisteminiz ses dosyalarini çalabilir.", \_
+MsgBox "Sisteminiz ses dosyalarini çalabilir.", _
 vbInformation, "Sound Card Test"
 Else
-MsgBox "Sisteminiz ses dosyalarini çalamaz.", \_
+MsgBox "Sisteminiz ses dosyalarini çalamaz.", _
 vbInformation, "Sound Card Test"
 End If
+```
 
-**Hangi kullanicinin login yaptigi nasıl anlasilir?****
-**
+**Hangi kullanicinin login yaptigi nasıl anlasilir?**
+
+```vbnet
 Dim s As String
 Dim cnt As Long
 Dim dl As Long
@@ -1095,21 +1281,25 @@ s = String$(200, 0)
 dl = GetUserName(s, cnt)
 
 If dl <> 0 Then AktifKullanici = Left$(s, cnt) Else AktifKullanici = ""
+```
 
 Asagidaki API fonksiyonunu ya formun decleration kismina yada bir modul içine yazacaksinz:
 
-Declare Function GetUserName Lib "advapi32.dll" Alias \_
-"GetUserNameA" (ByVal lpBuffer As String, nSize As Long) \_
+```vbnet
+Declare Function GetUserName Lib "advapi32.dll" Alias _
+"GetUserNameA" (ByVal lpBuffer As String, nSize As Long) _
 As Long
+```
 
-**Bos disk alanı nasıl saptanır?****
-**
+**Bos disk alanı nasıl saptanır?**
+
 GetDiskFreeSpace API fonksiyonunu kullanmalisiniz. Bu fonksiyonun declarasyonu söyledir:
 
-Declare Function GetDiskFreeSpace Lib "kernel32" Alias \_
-"GetDiskFreeSpaceA" (ByVal lpRootPathName As String, \_
-lpSectorsPerCluster As Long, lpBytesPerSector As Long, \_
-lpNumberOfFreeClusters As Long, lpTotalNumberOfClusters \_
+```vbnet
+Declare Function GetDiskFreeSpace Lib "kernel32" Alias _
+"GetDiskFreeSpaceA" (ByVal lpRootPathName As String, _
+lpSectorsPerCluster As Long, lpBytesPerSector As Long, _
+lpNumberOfFreeClusters As Long, lpTotalNumberOfClusters _
 As Long) As Long
 
 Dim SectorsPerCluster&
@@ -1118,20 +1308,22 @@ Dim NumberOfFreeClusters&
 Dim TotalNumberOfClusters&
 Dim BosAlan&
 
-temp& = GetDiskFreeSpace("c:\\", SectorsPerCluster, \_
+temp& = GetDiskFreeSpace("c:\", SectorsPerCluster, _
 BytesPerSector, NumberOfFreeClusters, TotalNumberOfClusters)
 
 ' BosAlan degiskeni toplam bos byte degerini tutar:
 
-BosAlan = NumberOfFreeClusters \* SectorsPerCluster \* \_
+BosAlan = NumberOfFreeClusters * SectorsPerCluster * _
 BytesPerSector
+```
 
-**Bir form altina nasıl gölge eklenir ve form yukarida hissi verilir?****
-**
+**Bir form altina nasıl gölge eklenir ve form yukarida hissi verilir?**
+
 Formlarin altinda bulunan gölgeleri merak etmissinizdir. Formu sanki birkaç santimetre havada duruyormus hissi veren bu isleme "Dithering" denir:
 
 Asagidaki kodu bir forma ekleyin.
 
+```vbnet
 Sub Dither(vForm As Form)
 
 Dim intLoop As Integer
@@ -1144,51 +1336,54 @@ vForm.ScaleHeight = 256
 
 For intLoop = 0 To 255
 
-vForm.Line (0, intLoop)-(Screen.Width, intLoop - 1), \_
+vForm.Line (0, intLoop)-(Screen.Width, intLoop - 1), _
 RGB(0, 0,255 -intLoop), B
 
 Next intLoop
 
 End Sub
+```
 
 Kodu çalistirmak için formun Activate olayina ise asagidaki kodu ekleyin:
 
-Form\_Activate ()
+```vbnet
+Form_Activate ()
 Dither Me
+```
 
-**Kontroller nasıl gölgelendirilir?****
+**Kontroller nasıl gölgelendirilir?**
 
-**
 Yeni bir proje baslatip form üzerine bir textbox yerlestirin
 
 Asagidakini bir module yerlestirin:
 
-Global Const GFM\_BACKSHADOW = 1
-Global Const GFM\_DROPSHADOW = 2
+```vbnet
+Global Const GFM_BACKSHADOW = 1
+Global Const GFM_DROPSHADOW = 2
 
-Public Sub ControlShadow(f As Form, C As Control, shadow\_effect \_
-As Integer, shadow\_width As Integer, shadow\_color As Long)
+Public Sub ControlShadow(f As Form, C As Control, shadow_effect _
+As Integer, shadow_width As Integer, shadow_color As Long)
 
 Dim shColor As Long
 Dim shWidth As Integer
 Dim oldWidth As Integer
 Dim oldScale As Integer
-shWidth = shadow\_width
-shColor = shadow\_color
+shWidth = shadow_width
+shColor = shadow_color
 oldWidth = f.DrawWidth
 oldScale = f.ScaleMode
 
 f.ScaleMode = 3
 f.DrawWidth = 1
 
-Select Case shadow\_effect
+Select Case shadow_effect
 
-Case GFM\_DROPSHADOW
-f.Line (C.Left + shWidth, C.Top + shWidth)-Step(C.Width - 1, \_
+Case GFM_DROPSHADOW
+f.Line (C.Left + shWidth, C.Top + shWidth)-Step(C.Width - 1, _
 C.Height - 1), shColor, BF
 
-Case GFM\_BACKSHADOW
-f.Line (C.Left - shWidth, C.Top - shWidth)-Step(C.Width - 1, \_
+Case GFM_BACKSHADOW
+f.Line (C.Left - shWidth, C.Top - shWidth)-Step(C.Width - 1, _
 C.Height - 1), shColor, BF
 
 End Select
@@ -1197,15 +1392,18 @@ f.DrawWidth = oldWidth
 f.ScaleMode = oldScale
 
 End Sub
+```
 
 Form'un Load procedurüne asagidaki kodu ekleyin:
 
-Private Sub Form\_Load()
+```vbnet
+Private Sub Form_Load()
 
 Dim r
 r = ControlShadow(me,text1,1,2,black)
 
 End Sub
+```
 
 **Title bar'ın rengi nasıl değiştirilir?**
 
@@ -1217,37 +1415,43 @@ Bu fonksiyon 3 parametre alir :
 
 API:
 
-Declare Function SetSysColors Lib "user32" Alias \_
-"SetSysColors" (ByVal nChanges As Long, lpSysColor As \_
+```vbnet
+Declare Function SetSysColors Lib "user32" Alias _
+"SetSysColors" (ByVal nChanges As Long, lpSysColor As _
 Long, lpColorValues As Long) As Long
+```
 
 Degismezler:
 
-Public Const COLOR\_SCROLLBAR = 0 'Scrollbar rengi
-Public Const COLOR\_BACKGROUND = 1 'Duvarkagidi yokken masaüstü arkaplan rengi
-Public Const COLOR\_ACTIVECAPTION = 2 'Aktif pencere adi rengi
-Public Const COLOR\_INACTIVECAPTION = 3 'Aktif olmayan pencere adinin rengi
-Public Const COLOR\_MENU = 4 'Menu
-Public Const COLOR\_WINDOW = 5 'Windows arkaplan
-Public Const COLOR\_WINDOWFRAME = 6 'Pencere çerçevesi
-Public Const COLOR\_MENUTEXT = 7 'Pencere Texti
-Public Const COLOR\_WINDOWTEXT = 8 '3D koyu gölge (Win95)
-Public Const COLOR\_CAPTIONTEXT = 9 'Pencere caption text rengi
-Public Const COLOR\_ACTIVEBORDER = 10 'Aktif pencere sinirlari rengi
-Public Const COLOR\_INACTIVEBORDER = 11 'Inaktif pencere sinirlari rengi
-Public Const COLOR\_APPWORKSPACE = 12 'MDI desktop arkaplan rengi
-Public Const COLOR\_HIGHLIGHT = 13 ' seçili alan arkaplan rengi
-Public Const COLOR\_HIGHLIGHTTEXT = 14 'Seçili menü rengi
-Public Const COLOR\_BTNFACE = 15 'Button
-Public Const COLOR\_BTNSHADOW = 16 '3D buton gölgeleme
-Public Const COLOR\_GRAYTEXT = 17 'Gri text
-Public Const COLOR\_BTNTEXT = 18 'Button text
-Public Const COLOR\_INACTIVECAPTIONTEXT = 19 'Inactive pencere rengi
-Public Const COLOR\_BTNHIGHLIGHT = 20 'Butonun 3D isaretlenmesi rengi
+```vbnet
+Public Const COLOR_SCROLLBAR = 0 'Scrollbar rengi
+Public Const COLOR_BACKGROUND = 1 'Duvarkagidi yokken masaüstü arkaplan rengi
+Public Const COLOR_ACTIVECAPTION = 2 'Aktif pencere adi rengi
+Public Const COLOR_INACTIVECAPTION = 3 'Aktif olmayan pencere adinin rengi
+Public Const COLOR_MENU = 4 'Menu
+Public Const COLOR_WINDOW = 5 'Windows arkaplan
+Public Const COLOR_WINDOWFRAME = 6 'Pencere çerçevesi
+Public Const COLOR_MENUTEXT = 7 'Pencere Texti
+Public Const COLOR_WINDOWTEXT = 8 '3D koyu gölge (Win95)
+Public Const COLOR_CAPTIONTEXT = 9 'Pencere caption text rengi
+Public Const COLOR_ACTIVEBORDER = 10 'Aktif pencere sinirlari rengi
+Public Const COLOR_INACTIVEBORDER = 11 'Inaktif pencere sinirlari rengi
+Public Const COLOR_APPWORKSPACE = 12 'MDI desktop arkaplan rengi
+Public Const COLOR_HIGHLIGHT = 13 ' seçili alan arkaplan rengi
+Public Const COLOR_HIGHLIGHTTEXT = 14 'Seçili menü rengi
+Public Const COLOR_BTNFACE = 15 'Button
+Public Const COLOR_BTNSHADOW = 16 '3D buton gölgeleme
+Public Const COLOR_GRAYTEXT = 17 'Gri text
+Public Const COLOR_BTNTEXT = 18 'Button text
+Public Const COLOR_INACTIVECAPTIONTEXT = 19 'Inactive pencere rengi
+Public Const COLOR_BTNHIGHLIGHT = 20 'Butonun 3D isaretlenmesi rengi
+```
 
 Aktif pencere title bar rengini degistirmek için :
 
-t& = SetSysColors(1, COLOR\_ACTIVECAPTION, RGB(255,0,0))
+```vbnet
+t& = SetSysColors(1, COLOR_ACTIVECAPTION, RGB(255,0,0))
+```
 
 Bu örnek kirmiziya çevirir.
 

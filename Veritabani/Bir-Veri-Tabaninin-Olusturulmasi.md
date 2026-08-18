@@ -8,7 +8,9 @@
 
 SQL ile gerçekleştirilecek işlemlerde, üzerinde işlem yapılacak olan veri** **tabanı kütükleri ya da tablolar, bir veri tabanı içinde oluşturulur.Bu veri tabanını oluşturmak için,
 
+```sql
 CREATE DATABASE isim;
+```
 
 şeklindeki SQL komutunu kullanmak gerekir.Bu komut belirtilen isim’deki veri tabanını oluşturur.(Burada veri tabanı, içinde çok sayıda veri tabanı kütüğü ya da SQL terimleri ile tablo bulunan bir çevre bellek bölgesidir ya da bir alt dizin (subdirectory) adıdır.)
 
@@ -28,7 +30,9 @@ Yer Tablosu:
 | Bölüm No | Bulunduğu Yer |
 | --- | --- |
 
+```sql
 Proje Tablosu:
+```
 
 | Proje Adı | Proje No | Yer | Bölüm No |
 | --- | --- | --- | --- |
@@ -64,25 +68,23 @@ Bu tabloların her sütunu, tabloda saklanan verilerle ilişkili bir özelliği 
 
 SQL ile giriş bölümünde verilen tabloların yaratılması için, CREATE TABLE komutunu uygun şekli ile kullanmak gerekir. Aşağıdaki, bu tabloları yaratacak SQL komutları verilmiştir.
 
+```sql
 CREATE TABLE tabloadı;
+```
 
 komutu ile tablolar oluşturulur.Bu komutu kullanırken SQL’in uygun veri tipleri kullanılır.
 
-**ÖRNEK:** CREATE TABLE Personel
-
+**ÖRNEK:**
+```sql
+CREATE TABLE Personel
 (sicil INTEGER NOT NULL,
-
-sosy\_g\_no CHAR(8) NOT NULL
-
+sosy_g_no CHAR(8) NOT NULL
 ad CHAR(10) NOT NULL,
-
 soyad CHAR(10) NOT NULL,
-
-dog\_tar DATE, adres CHAR(50),
-
+dog_tar DATE, adres CHAR(50),
 cinsiyet LOGICAL, maas NUMERIC(13,2),
-
-bol\_no SMALLINT, yon\_s\_g\_n CHAR(8));
+bol_no SMALLINT, yon_s_g_n CHAR(8));
+```
 
 Yukarıdaki örnekte Giriş kısmında verilen Personel Tablosunun nasıl oluşturulduğu verilmiştir. Diğer tablolarda aynı şekilde gerekli SQL veri tipleri kullanılarak yaratılır.
 
@@ -133,13 +135,17 @@ SQL’de kabul edilen, zaman ve tarih formatları Tablo 1.2 ve Tablo 1.3’te ve
 
 Bir tabloya veri girişi (veri yüklemesi) işlemi için;
 
+```sql
 INSERT INTO Tabloadı VALUES
+```
 
 komutu kullanılır.
 
-**ÖRNEK:** INSERT INTO Kimlik
-
+**ÖRNEK:**
+```sql
+INSERT INTO Kimlik
 VALUES (‘Ahmet’,’Yılmaz’,’25.12.1975’,’Trabzon’);
+```
 
 **1.5 Tablodaki Sutün İsimleri ve Tablo İsimleri İle İlişkili Kurallar**
 
@@ -161,25 +167,31 @@ Bu bölümde öncelikle tek tablo ile ilişkili sorgulamalar ve gerekli SQL komu
 
 Tek tablodan gerekli bilgileri elde etmek için sorgulama yapabilecek SQL komutu olan SELECT’in en basit şekli aşağıdaki gibidir.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Tabloadı;
+```
 
 Bu komut Tabloadı kısmında adı yazılı tablo içindeki bütün bilgileri koşulsuz olarak listeleyecektir. SELECT sözcüğünü izleyen kısımda \* sembolünün bulunması, ilgili tablodaki bütün sütun (kolon) isimlerinin ve ilgili bilgilerin listelenmesini sağlayacaktır. Burda istersek \* sembolü yerine bütün alanların adını veya işlem yapacağımız alan ya da alanların adını yazarız.
 
-**ÖRNEK:** SELECT \*
-
+**ÖRNEK:**
+```sql
+SELECT *
 FROM Kimlik;
+```
 
-**ÖRNEK:** SELECT ad,soyad,dogumtar,dogumyer
-
+**ÖRNEK:**
+```sql
+SELECT ad,soyad,dogumtar,dogumyer
 FROM Kimlik;
+```
 
 Yukarıdaki iki örnekte Kimlik isimli tablodaki bütün alanları listeler. Eğer sadece ad alanının listelenmesini istersek;
 
+```sql
 SELECT ad
-
 FROM Kimlik;
+```
 
 yazarız.
 
@@ -189,9 +201,10 @@ SQL dilindeki tablo yapısı, formal olarak tanımlanan ilişkisel veri tabanı 
 
 Birbirinin aynı olan satırların, listeleme esnasında, bir kez yazılması için, SELECT komutuna DISTINCT sözcüğü eklenir.
 
-SELECT DISTINCT Sat\_no
-
-FROM Par\_sat;
+```sql
+SELECT DISTINCT Sat_no
+FROM Par_sat;
+```
 
 Bu komut ile Par\_sat adlı tablodan Sat\_no‘lar tekrarsız olarak listelenecektir. Örneğin;
 
@@ -208,7 +221,9 @@ Par\_sat
 
 şeklinde bilgi içeriyorsa, komutun icrası sonucu
 
-Sat\_no
+```sql
+Sat_no
+```
 
 | S1 |
 | --- |
@@ -231,11 +246,11 @@ Tablodan listelenecek bilgilerin, belirli bir sütun adına göre (ad’a göre 
 | ... | ... | ... | ... |
 | ... | ... | ... | ... |
 
+```sql
 SELECT sicil,ad,soyad,maas
-
 FROM Personel
-
 ORDER BY maas ASC;
+```
 
 **SONUÇ:**
 
@@ -254,11 +269,11 @@ ASC sözcüğü ascending** **(artan) anlamındadır. Veriler azalan sırada (b�
 
 Bir tablo içinde verilerin aynı anda birden çok sütun (alana) göre sıralamakta mümkündür. Örneğin Personel tablosunu ad ve maas alanlarına göre sıralamak isteyelim.
 
+```sql
 SELECT sicil,ad,soyad,maas
-
 FROM Personel
-
 ORDER BY ad,brüt;
+```
 
 Burada tablo öncelikle ad’a göre artan sırada (A’dan Z’ye doğru) sıralanacak, sadece aynı ad’a sahip olanlar kendi aralarında maas’a göre küçükten büyüğe (artan) sıralanacaktır.
 
@@ -276,19 +291,19 @@ Burada tablo öncelikle ad’a göre artan sırada (A’dan Z’ye doğru) sıra
 
 Burada, çok sayıda alana göre sıralama, farklı sıralama kriterlerine göre gerçekleştirilebilir. Örneğin aşağıdaki SELECT komutu ile ad** **alanına göre artan, soyad alanına göre azalan, maas alanına göre artan sıralanmış tablo elde edilmektedir.
 
+```sql
 SELECT sicil,ad,soyad,maas
-
 FROM Personel
-
 ORDER BY ad ASC,soyad DESC,maas ASC;
+```
 
 veya aynı komut için alternatif yazılış:
 
+```sql
 SELECT sicil,ad,soyad,maas
-
 FROM Personel
-
 ORDER BY ad,soyad DESC,maas;
+```
 
 şeklinde olacaktır. Örnek çıktı aşağıdaki gibidir.
 
@@ -307,11 +322,11 @@ ORDER BY ad,soyad DESC,maas;
 
 SELECT komutu ile bir tablonun satırları içinde sadece verilen bir koşulu sağlayanlar da listelenebilir. Örneğin, maaşı 5000000 ‘dan fazla olan personel listelenmek istenirse, SELECT komutu aşağıdaki gibi yazılmalıdır:
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE maas>5000000;
+```
 
 Burada WHERE sözcüğünü izleyen kısımda koşul belirtilmektedir. Koşul belirtilirken iki veri birbiri ile karşılaştırılmaktadır. SQL içinde, verileri çeşitli açılardan karşılaştırılmak için kullanılabilecek, karşılaştırma operatörleri Tablo 2.4’te verilmiştir.
 
@@ -338,11 +353,11 @@ Nümerik (sayıda) veri tipi, SMALLINT, INTEGER, DECIMAL, NUMERIC ya da FLOAT ti
 
 **ÖRNEK:** Maaşı 8000000’dan fazla olmayan personeli listelemek.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE maas<=8000000;
+```
 
 **Karakter (char) veri tipi**
 
@@ -350,19 +365,19 @@ Karakter türündeki veriler, çift tırnak (“ “) veya tek tırnak (‘ ‘)
 
 **ÖRNEK:** Adı Ali olmayan personele ait kayıtları listelemek.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE ad<>”Ali”;
+```
 
 Veya
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE ad !=”Ali”;
+```
 
 Bu komutlar sonucu aşağıdaki kayıtlar listelenebilir;
 
@@ -381,11 +396,11 @@ Tarih tipi veriler, {} sembolleri içinde yazılmalıdır.
 
 **ÖRNEK: **Hangi personelin, doğum tarihi 1960 yılından daha öncedir?
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
-WHERE dog\_tar <={12/31/59};
+WHERE dog_tar <={12/31/59};
+```
 
 Burada kullanılan SQL versiyonunda, tarih tipi verinin aa/gg/yy (ay/gün/yıl) formatında temsil edildiği varsayılmıştır.
 
@@ -402,19 +417,19 @@ Mantıksal veriler için mümkün olabilen sadece iki değer sözkonusudur.doğr
 
 Personel tablosunda, personelin cinsiyetini belirleyen bir alanımız olsun. Cinsiyet adlı bu alanda cinsiyeti erkek olanlar true (.T.), kadın olanlar false(.F.) ile kodladığımızı kabul edersek, işletmede çalışan personel içinden erkek olanları listelemek için aşağıdaki gibi bir SQL kodu yazmak gerekecektir.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE cinsiyet=.T.;
+```
 
 Bu komut aşağıdaki şekilde de kullanılabilir;
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE cinsiyet;
+```
 
 Bu durumda cinsiyet alanı .T. olanlar (erkek olanlar) listelenir.
 
@@ -432,11 +447,11 @@ Her iki koşulunda aynı anda gerçekleşmesi istendiği için, VE (AND) sözcü
 
 Bu işlemi gerçekleştiren SQL komutu aşağıdaki gibidir.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE maas>5000000 AND cinsiyet=.T.;
+```
 
 NOT, AND ve OR operatörlerinin etkileri aşağıdaki tablolarda (Tablo 2.5, 2.6, 2.7) verilmiştir.
 
@@ -469,49 +484,44 @@ Aşağıdaki örnek sorularla, mantıksal işlem operatörlerinin kullanımı ko
 
 **SORU:** Doğum tarihi 1960’tan önce olan, maaşı 6000000 – 10000000 arasında olan bayan personel kimlerdir.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
-WHERE dog\_tar<{01/01/60} AND
-
+WHERE dog_tar<{01/01/60} AND
 Maas>=6000000 AND maas<=10000000
-
 AND cinsiyet=.F.;
+```
 
 **SORU:** Satış bölümü ile muhasebe bölümündekiler kimlerdir?
 
 Satış bölümünün bölüm no’sunun (bol\_no) 1 ve muhasebe bölümünün bol no ‘sunun 2 olduğunu varsayalım.
 
-SELECT \*
-
+```sql
+SELECT *
 FORM Personel
-
-WHERE bol\_no=1 OR bol\_no=2;
+WHERE bol_no=1 OR bol_no=2;
+```
 
 şeklinde listeleme gerçekleştirilebilir.
 
 **SORU:** Doğum tarihi 1960’tan önce olmayan, cinsiyeti erkek olan veya dağum tarihi 1965’ten önce olmayan ve cinsiyeti kadın olan personeli listeleyiniz.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
-WHERE dog\_tar>={01/01/60} AND
-
-cinsiyet=.T. OR dog\_tar>={01/01/65}
-
+WHERE dog_tar>={01/01/60} AND
+cinsiyet=.T. OR dog_tar>={01/01/65}
 AND cinsiyet=.F.;
+```
 
 **SORU:** Bölümü satış veya muhasebe olan kadın personeli listeleyiniz.
 
-SELECT \*
-
+```sql
+SELECT *
 FORM Personel
-
-WHERE bol\_no=1 OR bol\_no=2
-
+WHERE bol_no=1 OR bol_no=2
 AND cinsiyet=.F.;
+```
 
 şeklindeki SELECT komutu doğru görünüyorsa da, dikkatle düşünüldüğünde istenileni vermeyeceği anlaşılabilir. AND ; OR ‘a göre öncelikli olduğu için, değerlendirme:
 
@@ -525,33 +535,30 @@ Doğru cevap ()’ler ile öncelikleri değiştirerek aşağıdaki ifade ile eld
 
 **NOT:** AND operatörü OR operatörüne göre daha önceliklidir.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
-WHERE (bol\_no=1 OR bol\_no=2) AND cinsiyet=.F.;
+WHERE (bol_no=1 OR bol_no=2) AND cinsiyet=.F.;
+```
 
 **SORU: **Bölümü satış ya da muhasebe olmayan, 1960’tan sonra doğmuş, bayan personeli listelemek.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
-WHERE NOT (bol\_no=1 OR bol\_no=2)
-
-AND dog\_tar>={01/01/60}
-
+WHERE NOT (bol_no=1 OR bol_no=2)
+AND dog_tar>={01/01/60}
 AND cinsiyet=.F.;
+```
 
 Eşdeğer cevap:
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
-WHERE bol\_no<>1 AND bol\_no<>2
-
-AND dog\_tar>={01/01/60} AND cinsiyet=.F.;
+WHERE bol_no<>1 AND bol_no<>2
+AND dog_tar>={01/01/60} AND cinsiyet=.F.;
+```
 
 **2.9 Bir Veri Kümesi İçinde Arama (In Operatörü)**
 
@@ -559,19 +566,19 @@ Aşağıdaki örnek sorunun cevabını, şu ana kadar öğrendiğimiz SQL komutl
 
 **SORU:** bol\_no’su 1,2 ya da 3 olan personeli listeleyiniz.
 
-1-) SELECT \*
-
+```sql
+1-) SELECT *
 FROM Personel
-
-WHERE bol\_no=1 OR bol\_no=2 OR bol\_no=3;
+WHERE bol_no=1 OR bol_no=2 OR bol_no=3;
+```
 
 Fakat SQL’de bu işlemi gerçekleştirmenin daha kısa ve daha şık bir yolu vardır; IN sözcüğünü kullanarak bu işlemi yaparız.
 
-2-) SELECT \*
-
+```sql
+2-) SELECT *
 FROM Personel
-
-WHERE bol\_no IN(1,2,3);
+WHERE bol_no IN(1,2,3);
+```
 
 Bu komut, OR ile düzenlenen 1. SELECT komut grubuna denktir. Fakat belirtildiği gibi daha kısa ve anlaşılır bir ifade oluşmaktadır.
 
@@ -579,49 +586,48 @@ IN operatörü NOT ile birlikte de kullanılabilir.Örneğin aşağıdaki soru i
 
 **SORU:** Bölüm 1,2 ve 3 olmayan personel kimlerden oluşmaktadır.
 
-**CEVAP 1:** SELECT \*
-
+**CEVAP 1:**
+```sql
+SELECT *
 FROM Personel
+WHERE NOT(bol_no=1) AND
+NOT(bol_no=2) AND NOT(bol_no=3);
+```
 
-WHERE NOT(bol\_no=1) AND
-
-NOT(bol\_no=2) AND NOT(bol\_no=3);
-
-**CEVAP 2:** SELECT \*
-
+**CEVAP 2:**
+```sql
+SELECT *
 FORM Personel
+WHERE bol_no<>1 AND
+bol_no<>2 AND bol_no=3;
+```
 
-WHERE bol\_no<>1 AND
-
-bol\_no<>2 AND bol\_no=3;
-
-**CEVAP 3:** SELECT \*
-
+**CEVAP 3:**
+```sql
+SELECT *
 FORM Personel
-
-WHERE bol\_no NOT IN(1,2,3);
+WHERE bol_no NOT IN(1,2,3);
+```
 
 **2.10 Aralık Sorgulaması (Between Sözcüğü)**
 
 **ÖRNEK:** Maaşı 5000000 – 10000000 arasında olan personel kimlerdir.
 
-SELECT \*
-
+```sql
+SELECT *
 FORM Personel
-
 WHERE maas>=5000000 AND
-
 Maas<=10000000;
+```
 
 şeklindeki bir SELECT komutu ile bu işlem gerçekleştirilebilir. Aynı soruya daha kısa ve daha etkin cevap verebilecek bir SQL komutu ise BETWEEN sözcüğü ile aşağıdaki gibi düzenlenebilir.
 
-SELECT \*
-
+```sql
+SELECT *
 FORM Personel
-
 WHERE maas BETWEEN 5000000
-
 AND 10000000;
+```
 
 **2.11 Karakter Türü Bilgi İçinde Arama Yapma (Like Sözcüğü)**
 
@@ -631,11 +637,11 @@ Cumhuriyet Cad. 46/9 Taksim/İSTANBUL
 
 Burada, adres içinde, semtinde belirtildiğini ve bunun ayrı bir sütun (alan) olmadığına dikkat çekelim. Şimdi belirli bir semtte ikamet eden personeli listelemek istersek, semt adını, adres alanı içinde aramak gerekecektir. Bu işlemi gerçekleştirmek için SQL’de LIKE sözcüğü kullanılır. Aşağıdaki SELECT komutunu inceleyelim:
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE adres LIKE ‘%Taksim%’;
+```
 
 Bu komut ile “Taksim” semtinde ikamet eden personel listelenmek istenmektedir. Bu komut gerçektende “Taksim” de oturan kişileri listeleyecektir. Ama bu arada
 
@@ -643,7 +649,9 @@ Bu komut ile “Taksim” semtinde ikamet eden personel listelenmek istenmektedi
 
 şeklindeki adresleri de listeleyecektir.
 
+```sql
 adres LIKE ‘%Taksim%’
+```
 
 ifadesi, adres içinde Taksim’i arayacaktır. Adres içinde, herhangi bir yerde, bulduğu takdirde, bu satırı (bu kayıt, personeli) listeleyecektir.
 
@@ -651,11 +659,12 @@ ifadesi, adres içinde Taksim’i arayacaktır. Adres içinde, herhangi bir yerd
 
 LIKE sözcüğünü, alt çizgi (-) sembolü ile birlikte kullanmak da mümkündür.
 
-**ÖRNEK:** SELECT \*
-
+**ÖRNEK:**
+```sql
+SELECT *
 FROM Personel
-
 WHERE ad LIKE ‘Mehmet----’;
+```
 
 şeklindeki komut ile ad alanı “Mehmet” ile başlayan ve ad alanı uzunluğu 10 karakter olan isimlere sahip personeli listeleyecektir. ”Mehmet Ali”, “Mehmet Can”, “Mehmetcik” gibi isimler listelenecektir. Anlaşılacağı gibi - sembolü, tek karakterlik bir bilgiyi temsil etmektedir.
 
@@ -669,9 +678,10 @@ WHERE ad LIKE ‘Mehmet----’;
 
 Aşağıdaki SELECT komutu ile, personelin şu anda geçerli olan maaşı ile, bu maaşın %32 zamlı şekli listelenmektedir.
 
-SELECT ad,soyad,maas,maas\*1.32
-
+```sql
+SELECT ad,soyad,maas,maas*1.32
 FORM Personel;
+```
 
 Hesaplanmış alanları elde etmek için oluşturulacak aritmetiksel ifadelerde, Tablo 3.1’de belirtilen semboller kullanılabilir.
 
@@ -699,17 +709,20 @@ Fonksiyonun argümanı olarak belirtilen sütun ile ilişkiliolarak toplama işl
 
 **SORU: **İşletmedeki personelin maaşlar toplamı ne kadardır?
 
-**ÇÖZÜM:** SELECT SUM(maas)
-
+**ÇÖZÜM:**
+```sql
+SELECT SUM(maas)
 FROM Personel;
+```
 
 **SORU:** Bilgi işlem bölümündekilerin maaşları toplamı ne kadardır?
 
-**ÇÖZÜM:** SELECT SUM(maas)
-
+**ÇÖZÜM:**
+```sql
+SELECT SUM(maas)
 FROM Personel
-
-WHERE bol\_no=5;
+WHERE bol_no=5;
+```
 
 ifadesi ile sonuç elde edilebilir. Sonuç, sadece bilgi işlem bölümdekilerin maaşları toplamı şeklinde olacaktır.
 
@@ -717,23 +730,22 @@ ifadesi ile sonuç elde edilebilir. Sonuç, sadece bilgi işlem bölümdekilerin
 
 **ÇÖZÜM:** Satış bölümü için bol\_no 1, muhasebe için 2 ve bilgi işlem için bol\_no 5 olarak alınırsa
 
+```sql
 SELECT SUM(maas)
-
 FROM Personel
-
-WHERE bol\_no IN(1,2,5);
+WHERE bol_no IN(1,2,5);
+```
 
 **SORU:** Maaşları 5000000 TL’nin altında olan bayan personelin maaşları toplamı nedir?
 
 **ÇÖZÜM:** Bayan personeli, daha önceden cinsiyet alanına .F. yerleştirerek kodlamış isek
 
+```sql
 SELECT SUM(maas)
-
 FROM Personel
-
 WHERE cinsiyet=.F. AND
-
 maas<5000000;
+```
 
 ifadesi istenilen çözümü verecektir.
 
@@ -741,9 +753,10 @@ ifadesi istenilen çözümü verecektir.
 
 Aritmetiksel ortalama (avarage) hesaplamak için kullanılır.
 
+```sql
 SELECT AVG(maas)
-
 FROM Personel;
+```
 
 Komutu, işletmedeki ortalama maaşı hesaplayarak görüntüleyecektir. Bu fonksiyon ile de, koşula bağlı olarak hesaplatma yaptırılabilir.
 
@@ -751,11 +764,11 @@ Komutu, işletmedeki ortalama maaşı hesaplayarak görüntüleyecektir. Bu fonk
 
 **ÇÖZÜM:** Bilgi işlem bölümünün bol\_no’su 5 ise
 
+```sql
 SELECT AVG(maas)
-
 FORM Personel
-
-WHERE bol\_no=5;
+WHERE bol_no=5;
+```
 
 ifadesi istenilen çözümü verecektir.
 
@@ -765,27 +778,30 @@ Tablo içinde, belirlenen sütun (alan) içindeki en büyük değeri bulur.
 
 **SORU:** İşletme içindeki en yüksek maaş ne kadardaır?
 
-**ÇÖZÜM:** SELECT MAX(maas)
-
+**ÇÖZÜM:**
+```sql
+SELECT MAX(maas)
 FORM Personel;
+```
 
 **SORU:** Bilgi işlem bölümündeki en yüksek maaş ne kadardır?
 
 **ÇÖZÜM:** Bilgi işlem bölümünün 5 ile kodlandığı varsayımı ile
 
+```sql
 SELECT MAX(maas)
-
 FROM Personel
-
-WHERE bol\_no=5;
+WHERE bol_no=5;
+```
 
 **SORU:** Bayan personel içinde en yüksek maaş ne kadardır?
 
-**ÇÖZÜM:** SELECT MAX(maas)
-
+**ÇÖZÜM:**
+```sql
+SELECT MAX(maas)
 FROM Personel
-
 WHERE cinsiyet=.F.;
+```
 
 **3.2.4 MIN fonksiyonu**
 
@@ -793,11 +809,12 @@ Tablo içinde, belirlenen sütun (alan) içindeki en küçük değeri bulur.
 
 **SORU:** İşletme içinde 4 Mayıs 1970’den önce doğanlar için, asgari ücret nedir?
 
-**ÇÖZÜM:** SELECT MIN(maas)
-
+**ÇÖZÜM:**
+```sql
+SELECT MIN(maas)
 FROM Personel
-
-WHERE dog\_tar>{05/04/70};
+WHERE dog_tar>{05/04/70};
+```
 
 **3.2.5 COUNT fonksiyonu**
 
@@ -805,23 +822,27 @@ WHERE dog\_tar>{05/04/70};
 
 **SORU:** Personel tablosunda kaç satır vardır? (Bu, her satırda farklı bir personel bulunduğu düşünülürse, personel sayısı anlamına gelmektedir.)
 
-**ÇÖZÜM:** SELECT COUNT(\*)
-
+**ÇÖZÜM:**
+```sql
+SELECT COUNT(*)
 FROM Personel;
+```
 
 **SORU:** Maaşı 6000000’dan fazla olan personel sayısı nedir?
 
-**ÇÖZÜM:** SELECT COUNT(\*)
-
+**ÇÖZÜM:**
+```sql
+SELECT COUNT(*)
 FROM Personel
-
 WHERE maas>6000000;
+```
 
 COUNT fonksiyonu, DISTINCT sözcüğü ile de kullanılabilir. Örneğin, personel tablosunda mevcut personelin, işletme içinde kaç tane farklı bölümde çalıştığı bulunmak istenirse aşağıdaki SELECT komutu kullanılabilir.
 
-SELECT COUNT(DISTINCT bol\_no)
-
+```sql
+SELECT COUNT(DISTINCT bol_no)
 FROM Personel;
+```
 
 COUNT komutunda, \* argümanının kullanılması, bütün sütunların (alanların) işleme sokulması, alan adının belirtilmesi ise (COUNT(bol\_no) gibi), sadece, belirtilen sütunun işleme sokulmasını sağlar.
 
@@ -833,15 +854,17 @@ SUM, AVG, MAX, MIN, COUNT fonksiyonları, tablodaki bilgileri, bazı özellikler
 
 Burada istene, bölümler bazında ortalama maaş olduğuna göre, personel tablosundaki satırlar, bölüm numaralarına göre (bol\_no) gruplandırarak, her bir grubun maaş ortalaması ayrı ayrı hesaplanarak listelenebilir. Aşağıdaki SELECT komutu bu işlemi gerçekleştirmektedir.
 
-SELECT bol\_no,AVG(maas)
-
+```sql
+SELECT bol_no,AVG(maas)
 FROM Personel
-
-GROUP BY bol\_no;
+GROUP BY bol_no;
+```
 
 SONUÇ:
 
-bol\_no AVG(maas)
+```sql
+bol_no AVG(maas)
+```
 
 −−−−−−−−−−−−− −−−−−−−−−−−−−−−
 
@@ -857,11 +880,11 @@ Her bölümdeki en yüksek maaşı alan kişiler listelenmek istenirse, aşağı
 
 komut kullanılabilir:
 
-SELECT bol\_no,MAX(maas),ad,soyad
-
+```sql
+SELECT bol_no,MAX(maas),ad,soyad
 FROM Personel
-
-GROUP BY bol\_no;
+GROUP BY bol_no;
+```
 
 Personel tablosundaki bilgiler
 
@@ -885,13 +908,13 @@ Gruplandırarak, kümeleme fonksiyonlarını uygularken, koşul da verilebilir. 
 
 **SORU:** En yüksek maaşın, 9000000’dan fazla olduğu bölümlerdeki personele ait ortalama maaşları listeleyiniz.
 
-**ÇÖZÜM:** SELECT bol\_no,AVG(maas)
-
+**ÇÖZÜM:**
+```sql
+SELECT bol_no,AVG(maas)
 FROM Personel
-
-GROUP BY bol\_no
-
+GROUP BY bol_no
 HAVING AVG(maas)>9000000;
+```
 
 Personel tablosunda aşağıdaki veri mevcut olsun:
 
@@ -923,15 +946,14 @@ Bazı durumlarda, HAVING ve WHERE sözcükleri birlikte, SELECT komutu içinde k
 
 **SORU:** Personel tablosu içinde, her bölümde, erkek personele ait maaşlar için, ortalamanın 9000000’den fazla olduğu bölümleri listeleyiniz.
 
-**ÇÖZÜM:** SELECT bol\_no,AVG(maas)
-
+**ÇÖZÜM:**
+```sql
+SELECT bol_no,AVG(maas)
 FROM Personel
-
 WHERE cinsiyet=.T.
-
-GROUP BY bol\_no
-
+GROUP BY bol_no
 HAVING AVG(maas)>9000000;
+```
 
 Personel tablosunda aşağıdaki bilgiler olsun:
 
@@ -988,21 +1010,25 @@ Müşterek alana göre, personel ve bölüm tablolarının birleştirilmesi (JOI
 
 Birleştirme (JOIN) işlemi ile listeleme aşağıdaki SQL komutu ile gerçekleştirilebilir.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel,bölüm
-
-WHERE Personel.bol\_no=bölüm.bölüm\_no;
+WHERE Personel.bol_no=bölüm.bölüm_no;
+```
 
 ilişkilendirme, kolayca görüleceği gibi
 
+```sql
 WHERE Tabloadı.Kolonadı=Tabloadı.Kolonadı;
+```
 
 ifadesi ile sağlanmaktadır. Aşağıdaki örnek veri için bu JOIN işlemi sonucu Tablo 4.1’de görülmektedir. Örnek veri:
 
 Personel
 
-sicilsos\_g\_noadsoyaddog\_taradrescinsiyetmaasbol\_noyon\_s\_g\_n11227641AliCan01/06/60Fatih.T.800000010371651753777654AyşeŞen04/07/65Kadıköy.F.70000001037165217176241AkınÖncel11/07/64Üsküdar.T.6000000227714351727615CanÖner05/08/65Fatih.T.4000000227714361857253BerilMeral08/07/62Pendik.F.37500002277143154044721AyşeCansu07/08/63Beşiktaş.F.48000003577211
+```sql
+sicilsos_g_noadsoyaddog_taradrescinsiyetmaasbol_noyon_s_g_n11227641AliCan01/06/60Fatih.T.800000010371651753777654AyşeŞen04/07/65Kadıköy.F.70000001037165217176241AkınÖncel11/07/64Üsküdar.T.6000000227714351727615CanÖner05/08/65Fatih.T.4000000227714361857253BerilMeral08/07/62Pendik.F.37500002277143154044721AyşeCansu07/08/63Beşiktaş.F.48000003577211
+```
 
 Bölüm
 
@@ -1016,7 +1042,9 @@ Bölüm
 
 **Tablo 4.1 **Personel ve Bölüm Tablolarının, Müşterek Alan Olan Bölüm Numarası Üzerinde JOIN (Birleştirme) İşlemine Tabi Tutulması Sonucu Elde Edilen Bilgi.
 
-sicilsos\_g\_noadsoyaddog\_taradrescinsiyetmaasbol\_noyon\_s\_g\_nbölüm\_adbölüm\_ noy\_sos\_g\_noy\_is\_b\_tar11227641AliCan01/05/60Fatih.T.80000001037165Satış103716501/07/8917537654AyşeŞen04/07/65Kadıköy.F.70000001037165Satış103716501/07/89217176241AkınÖncel11/07/64Üsküdar.T.60000002277143Muhasebe227714302/08/9151727615CanÖner05/08/65Fatih.T.40000002277143Muhasebe227714302/08/9161857253BerilMeral08/07/62Pendik.F.37500002277143Muhasebe227714302/08/91154044721AyşeCansu07/08/63Beşiktaş.F.48000003577211Üretim357721104/06/92
+```sql
+sicilsos_g_noadsoyaddog_taradrescinsiyetmaasbol_noyon_s_g_nbölüm_adbölüm_ noy_sos_g_noy_is_b_tar11227641AliCan01/05/60Fatih.T.80000001037165Satış103716501/07/8917537654AyşeŞen04/07/65Kadıköy.F.70000001037165Satış103716501/07/89217176241AkınÖncel11/07/64Üsküdar.T.60000002277143Muhasebe227714302/08/9151727615CanÖner05/08/65Fatih.T.40000002277143Muhasebe227714302/08/9161857253BerilMeral08/07/62Pendik.F.37500002277143Muhasebe227714302/08/91154044721AyşeCansu07/08/63Beşiktaş.F.48000003577211Üretim357721104/06/92
+```
 
 Tablo 4.1’de görüleceği üzere, Personel ve bölüm tablolarında sadece her iki tabloda da aynı olan bölüm numaralarına ait satırlar alınarak birleştirilmiş ve listelenmiştir.
 
@@ -1024,11 +1052,11 @@ Listelenen birleştirilmiş tabloda, her iki tablodan da alındığı için tekr
 
 Örneğin aşağıdaki SELECT komutu ile aşağıdaki tablodaki sonuçlar üretilecektir:
 
-SELECT sicil,ad,soyad,bol\_no,yon\_s\_g\_no
-
+```sql
+SELECT sicil,ad,soyad,bol_no,yon_s_g_no
 FROM Personel,bölüm
-
-WHERE Personel.bol\_no=bölüm.bölüm\_no;
+WHERE Personel.bol_no=bölüm.bölüm_no;
+```
 
 **Tablo 4.2** Join İşleminde, Sadece Arzu Edilen Alanların Listelenmesi Sonucu Üretilen Bilgi.
 
@@ -1043,9 +1071,10 @@ WHERE Personel.bol\_no=bölüm.bölüm\_no;
 
 Personel ve bölüm tablolarından yararlanılarak aşağıdaki şekilde yazılacak bir SELECT komutu ise, ilgili sütun elemanları ile ilişkili kartezyen çarpımı işlemini gerçekleştirecektir.
 
-SELECT sos\_g\_no,bölüm\_ad
-
+```sql
+SELECT sos_g_no,bölüm_ad
 FROM Personel,bölüm;
+```
 
 **Tablo 4.3** Personel ve Bölüm Tabloları Üzerinde Kartezyen Çarpımı İşlemi.
 
@@ -1085,13 +1114,12 @@ Daha önceden tanımlanmış bir tablonun, farklı isimli, bir eşdeğerini olu�
 
 Her personel için, personel sicil numarası, ad ve soyadı ile bu personelin yöneticisinin ad, soyad ve doğum tarihini listeleyiniz: Bu isteğe cevap teşkil edebilecek SQL ifadelerinden bir tanesi, aşağıdaki gibi düzenlenebilir.
 
+```sql
 SELECT A.sicil,A.ad,A.soyad,B.ad,
-
-B.soyad,B.dog\_tar
-
+B.soyad,B.dog_tar
 FROM Personel A B
-
-WHERE A.yon\_s\_g\_n=B.sosy\_g\_no ;
+WHERE A.yon_s_g_n=B.sosy_g_no ;
+```
 
 Personel tablosu aşağıdaki gibi olsun:
 
@@ -1118,11 +1146,11 @@ Yukarıdaki SELECT komutunun çıktısı aşağıdaki tabloda verilmiştir.
 
 Bu SELECT komutu ile, personel tablosunun A ve B isimli birer kopyası oluşturulur. Bu kopyalara personel kütüğünün eşdeğerleri ya da takma adlıları (aliases) adı verilir. SELECT komutu, personel tablosunun eşdeğeri olan ve yönetilenleri temsil eden B tablosundaki sosyal güvenlik numarasına eşit olan satırları kontrol ederek her personelin sicil no, ad, soyad bilgilerini ve bu personelin yöneticisinin ad, soyad ve doğum tarihini listeler (yukarıdaki tabloda verilmiştir). Buradaki yöntem ile bir tablonun kendisi ile birleştirilmesi işlemi kendi üzerinde birleştirme (self-join) adını almaktadır. Bazı SQL gerçekleştirimlerinde, bu SELECT komutunun,
 
-SELECT A.sicil,A.ad,A.soyad,B.ad,B.soyad,B.dog\_tar
-
+```sql
+SELECT A.sicil,A.ad,A.soyad,B.ad,B.soyad,B.dog_tar
 FROM Personel A,Personel B
-
-WHERE A.yon\_s\_g\_n=B.sosy\_g\_no;
+WHERE A.yon_s_g_n=B.sosy_g_no;
+```
 
 şeklinde yazılması gerekir.
 
@@ -1130,13 +1158,13 @@ Aşağıdaki örnek soru için, eşdeğer tablo oluşturma özelliğinden yararl
 
 **SORU:** Satış bölümünde çalışan tüm personelin ad, soyad ve adreslerini listeleyiniz.
 
-**ÇÖZÜM: **SELECT a.ad,a.soyad,a.adres
-
+**ÇÖZÜM: **
+```sql
+SELECT a.ad,a.soyad,a.adres
 FROM Personel a,Personel b
-
-WHERE b.bölüm\_ad=”Satış” AND
-
-a.bol\_no=b.bölüm\_no;
+WHERE b.bölüm_ad=”Satış” AND
+a.bol_no=b.bölüm_no;
+```
 
 şeklinde olacak ve tablo aşağıdaki gibi olacaktır.
 
@@ -1186,7 +1214,9 @@ Parça
 | 87 | Conta | 2 | 7000 | 5000 |
 | 112 | Pim | 5 | 6000 | 70 |
 
+```sql
 Proje
+```
 
 | proje\_ad | proj\_no | yer | bl\_no |
 | --- | --- | --- | --- |
@@ -1218,19 +1248,15 @@ Personel
 
 Bu tablolardan yararlanarak aşağıdaki SELECT komutları ile arzu edilen işlem gerçekleştirilebilir:
 
-SELECT \*
-
+```sql
+SELECT *
 FORM Personel
-
-WHERE sosy\_g\_no
-
-IN (SELECT Per\_s\_g\_no
-
+WHERE sosy_g_no
+IN (SELECT Per_s_g_no
 FROM Parça,Proje,Çalışma
-
-WHERE pr\_no=proj\_no AND
-
-proj\_no=proje\_no AND parça\_no=24);
+WHERE pr_no=proj_no AND
+proj_no=proje_no AND parça_no=24);
+```
 
 Buradaki içteki SELECT komutu parça, proje ve çalışma tablolarını proje numaraları üzerinde (proje numaraları bu tablolarda sıra ile pr\_no, proj\_no ve proje\_no adı ile yer almaktadır) birleştirerek elde edilen genişletilmiş tablodan sadece parça no’su 24 olan satırdaki personel sosyal güvenlik numaralarını (pers\_s\_g\_no) çıkarmakta ve sonuçta yukarıdaki örnek data için
 
@@ -1252,17 +1278,15 @@ Benzer şekilde aşağıdaki sorunun çözümü de iç içe SELECT komutları il
 
 **SORU:** Fatih’te oturan personelin çalıştığı projelerin adları ve yerlerini listeleyiniz.
 
-**ÇÖZÜM:** SELECT proje\_ad,yer
-
+**ÇÖZÜM:**
+```sql
+SELECT proje_ad,yer
 FROM Proje
-
-WHERE proj\_no IN(SELECT proje\_no
-
+WHERE proj_no IN(SELECT proje_no
 FROM Personel,Çalışma
-
-WHERE sosy\_g\_no=Per\_s\_g\_no
-
+WHERE sosy_g_no=Per_s_g_no
 AND adres LIKE ‘%Fatih%’);
+```
 
 SONUÇ:
 
@@ -1279,29 +1303,30 @@ UNION sözcüğü küme birleşimi işlemi görür. İki ayrı SELECT komutunun 
 
 **SORU:** Adı Ahmet ve soyadı Caner olan kişi ya da kişileri, işletmenin yürüttüğü projelerde çalışan bir kişi (sıradan bir personel ya da bölüm yöneticisi) olarak bulunduran projelerin isimlerini ve projelerin yürütüldüğü yerleri listeleyiniz.
 
-**ÇÖZÜM:** (SELECT proj\_no,yer
-
+**ÇÖZÜM:**
+```sql
+(SELECT proj_no,yer
 FROM Proje,bölüm,Personel
-
-WHERE bl\_no=böülm\_no AND
-
-y\_sos\_g\_no=sosy\_g\_no AND
+WHERE bl_no=böülm_no AND
+y_sos_g_no=sosy_g_no AND
+```
 
 ad=”Ahmet” AND soyad=”Caner”)
 
-UNION (SELECT proj\_ad,yer
-
+```sql
+UNION (SELECT proj_ad,yer
 FROM Proje,Çalışma,Personel
-
-WHERE proj\_no=proje\_no AND
-
-per\_s\_g\_no=sosy\_g\_no AND ad=”Ahmet” AND soyad=”Caner”);
+WHERE proj_no=proje_no AND
+per_s_g_no=sosy_g_no AND ad=”Ahmet” AND soyad=”Caner”);
+```
 
 UNION sözcüğü ile, iki ya da daha çok SELECT ‘in sonucu olan tabloların küme birleşimi işlemine tabi tutulması için iki koşul gereklidir.,
 
 1-) SELECT komutları sonucunda elde edilecek tablolar aynı sayıda kolon içermelidirler.
 
+```sql
 1. SELECT 2. SELECT
+```
 
 Sonuç Tablosu Sonuç Tablosu
 
@@ -1315,31 +1340,26 @@ Sonuç Tablosu Sonuç Tablosu
 
 **SORU:** Satış bölümünde çalışan personelin her hangi birinden daha düşük maaş alan ve mühendislik bölümünde çalışan kişileri listeleyiniz.
 
-**ÇÖZÜM: **SELECT \*
-
+**ÇÖZÜM: **
+```sql
+SELECT *
 FROM Personel
-
 WHERE maas<ANY
-
 ( SELECT maas
-
 FROM Personel
-
-WHERE bol\_no=2 ) AND
-
-bol\_no=1;
+WHERE bol_no=2 ) AND
+bol_no=1;
+```
 
 Bu çözümün eşdeğeri olan ifade ise şöyledir.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE maas<(SELECT MAX (maas)
-
 FROM Personel
-
-WHERE bol\_no=2) AND bol\_no=1;
+WHERE bol_no=2) AND bol_no=1;
+```
 
 Burada satış bölümü kodu 2 ve mühendislik bölümü kodu ise 1 olarak kabul edilmiştir. İkinci çözüm ifadesinden de kolayca anlaşılacağı gibi, iç içe SELECT ifadesinde, içteki SELECT sorgulaması sonucu, ikinci bölümde (Satış) çalışan personelin içinde en yüksek maaş alan kişinin maaşı bulunmakta, dıştaki SELECT ise, mühendislik bölümünde, bu maaştan düşük olan maaşa sahip kişileri listelemektedir.
 
@@ -1380,19 +1400,15 @@ ANY (her hangi bir) sözcüğü yerine, tamamen eşdeğeri olan SOME sözcüğü
 
 **ÇÖZÜM:**
 
+```sql
 1. Alternatif 2. Alternatif
-
-SELECT \* SELECT \*
-
+SELECT * SELECT *
 FROM Personel FROM Personel
-
 WHERE maas>ALL(SELECT maas WHERE maas>(SELECT MAX(maas)
-
 FORM Personel FROM Personel
-
-WHERE bol\_no=1) WHERE bol\_no=1)
-
-AND bol\_no=2; AND bol\_no=2;
+WHERE bol_no=1) WHERE bol_no=1)
+AND bol_no=2; AND bol_no=2;
+```
 
 Personel tablosu aşağıdaki verileri içeriyorsa
 
@@ -1439,15 +1455,14 @@ Satıcı Par\_sat
 |  |  |  |  | 4 | 15 | 800 |
 |  |  |  |  | 5 | 18 | 900 |
 
-**ÇÖZÜM:** SELECT \*
-
+**ÇÖZÜM:**
+```sql
+SELECT *
 FROM Satıcı
-
-WHERE EXISTS (SELECT \*
-
-FROM Par\_sat
-
-WHERE sat\_no=satıcı\_n AND parca\_n=27);
+WHERE EXISTS (SELECT *
+FROM Par_sat
+WHERE sat_no=satıcı_n AND parca_n=27);
+```
 
 Aşağıdaki sonuç elde edilir:
 
@@ -1466,17 +1481,15 @@ NOT EXISTS şeklinde kullanılması, EXISTS’te açıklanan yapının tamamen t
 
 **SORU:** Numarası 27 olan parçayı satmayan satıcılar kimlerdir? (EXISTS operatöründe kullanılan Satıcı ve Par\_sat tablolarındaki verilerin aynen geçerli olduğunu varsayalım)
 
-**ÇÖZÜM:** SELECT \*
-
+**ÇÖZÜM:**
+```sql
+SELECT *
 FROM Satıcı
-
-WHERE NOT EXISTS (SELECT \*
-
-FROM Par\_sat
-
-WHERE sat\_no=satıcı\_n
-
-AND parca\_n=27);
+WHERE NOT EXISTS (SELECT *
+FROM Par_sat
+WHERE sat_no=satıcı_n
+AND parca_n=27);
+```
 
 SONUÇ:
 
@@ -1490,25 +1503,19 @@ NOT EXISTS ifadesinin kullanımı ile ilişkili olarak diğer bir örnek de aşa
 
 **SORU:** İşeltmenin yönettiği projelerde kullanılan parçalardan, tümünü de bulunduran ve İstanbul’da faaliyet gösteren satıcılarla ilişkili bütün bilgileri listeleyiniz.
 
-**ÇÖZÜM:** SELECT \*
-
+**ÇÖZÜM:**
+```sql
+SELECT *
 FROM Satıcı
-
-WHERE NOT EXISTS (SELECT \*
-
+WHERE NOT EXISTS (SELECT *
 FROM Parça
-
 WHERE NOT EXISTS
-
-(SELECT \*
-
-FROM Par\_sat
-
-WHERE sat\_no=satıcı\_n AND
-
-parca\_n=par\_no ))
-
+(SELECT *
+FROM Par_sat
+WHERE sat_no=satıcı_n AND
+parca_n=par_no ))
 AND ADRES LIKE ‘%İstanbul%’;
+```
 
 Bu ifade şu şekilde yorumlanabilir.
 
@@ -1527,7 +1534,9 @@ Tablo 1 Tablo 2
 | c |  | c |
 | d |  |  |
 
+```sql
 Tablo 1 EXCEPT
+```
 
 Tablo 2
 
@@ -1535,7 +1544,9 @@ Tablo 1 ile Tablo 2’de yukarıdaki işleme göre (Tablo 1 EXCEPT,Tablo2) işle
 
 Tablo 1 EXCEPT Tablo 2 şeklinde ifade edilir ve sonuçta elde edilen fark tablosu aşağıdadır:
 
+```sql
 Tablo 1 EXCEPT Tablo 2
+```
 
 | Sütun 1 |
 | --- |
@@ -1547,17 +1558,15 @@ Aşağıdaki soru ve çözümü bu sözcüğün kullanımı konusunda daha iyi f
 
 (Satış için bol\_no 1, mühendislik için bol\_no 2 olduğunu varsayalım.)
 
-**ÇÖZÜM:** SELECT \* FROM
-
+**ÇÖZÜM:**
+```sql
+SELECT * FROM
 (SELECT ad FROM Personel
-
-WHERE bol\_no=1
-
+WHERE bol_no=1
 EXCEPT
-
 SELECT ad FROM Personel
-
-WHERE bol\_no=2);
+WHERE bol_no=2);
+```
 
 **4.11 Select Komutu İçinde Intersect Sözcüğü**
 
@@ -1574,7 +1583,9 @@ Tablo 1 Tablo 2
 
 şeklinde ise;
 
+```sql
 TABLO 1 INTERSECT TABLO 2 işlemi sonucunda
+```
 
 | Sütun 1 |
 | --- |
@@ -1585,17 +1596,15 @@ tablosu elde edilecektir. (Küme kesişimi işleminde, her iki kümede mevcut ol
 
 **SORU:** Hem Ankara’daki hem de İstanbul’daki projelerde görev alan bölümleri listeleyiniz.
 
-**ÇÖZÜM:** SELECT \* FROM
-
-(SELECT bl\_no FROM Proje
-
+**ÇÖZÜM:**
+```sql
+SELECT * FROM
+(SELECT bl_no FROM Proje
 WHERE yer LIKE ‘%Ankara%’
-
 INTERSECT
-
-SELECT bl\_no FROM Proje
-
+SELECT bl_no FROM Proje
 WHERE yer LIKE ‘%İstanbul%’);
+```
 
 Proje tablosundaki bilgi aşağıdaki gibi olsun:
 
@@ -1632,33 +1641,33 @@ Bir SELECT komutunun sonucu olarak elde edilecek bilgileri, geçici bir tablo ol
 
 **SORU:** Bayan personeli Bayan adlı bir tablo içinde saklayınız.
 
-**ÇÖZÜM:** SELECT \*
-
+**ÇÖZÜM:**
+```sql
+SELECT *
 FROM Personel
-
 WHERE cinsiyet=.F. SAVE TO TEMP Bayan;
+```
 
 cinsiyeti belirleyen cinsiyet alanında .F. simgesinin bayanları temsil ettiği varsayımı ile, personel adlı tablodaki bayan personel bayan adlı tabloya geçici olarak saklanacaktır.
 
 Bayan adlı tabloya, SELECT komutu, bütün şekilleri ile uygulanabilir. Örneğin, bayanlar içinde maaşı 10000000 TL’den fazla olanlar listelenmek istenirse
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Bayan
-
 WHERE maas>10000000;
+```
 
 ifadesi kullanılır.
 
 Burada üretilen tablonun geçici değil kalıcı olması istenirse KEEP sözcüğü eklenmelidir:
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
 WHERE cinsiyet=.F.
-
 SAVE TO TEMP Bayan KEEP;
+```
 
 **BÖLÜM 5**
 
@@ -1692,31 +1701,31 @@ View oluşturmanın, veri tabanı ortamında aşağıda belirtilen faydaları va
 
 Örneğin, personelin maaşlarının herkes tarafından listelenebilir olması mahsurlu olabilir. Bu durumda, Personel adlı temel (base) tablodan, persview adlı bir view oluşturulabilir.
 
+```sql
 CREATE VIEW persview
-
-AS SELECT sicil,sos\_g\_no,ad,soyad,dog\_tar,adres,cinsiyet,bol\_no,yon\_s\_g\_n
-
+AS SELECT sicil,sos_g_no,ad,soyad,dog_tar,adres,cinsiyet,bol_no,yon_s_g_n
 FROM Personel;
+```
 
 persview adlı view, herkesin kullanımına açık, Personel adlı temel (base) tablo ise, yetkili kişiler dışındakilere, erişilemez hale getirilirse, maaşların herkes tarafından erişilebilir bilgi olması önlenmiş olur.
 
 Bir view’den bilgi listelenmesi temel tablodan bilgi listelenmesinden farklı değildir.
 
-SELECT \*
-
+```sql
+SELECT *
 FROM persview;
+```
 
 persview’den maaşlar hariç, tüm personel bilgileri listelenecektir.
 
 Bir temel tablodan bir view oluşturulurken, temel tablodaki aynı sütun (alan) isimlerini kullanmak zorunda değildir. Örneğin, Parça adlı ve par\_no, par\_ad, pr\_no, fiyat ve ağırlık adlı sütun (alan) isimlerini içeren tablo kullanılarak oluşturulan parview içinde, par\_no yerine parc\_no, fiyat yerine fiy ve ağırlık yerine ağır isimleri kullanılmıştır:
 
+```sql
 CREATE VIEW
-
-Parview(parc\_no,fiy,ağır)
-
-AS SELECT par\_no,fiyat,ağırlık
-
+Parview(parc_no,fiy,ağır)
+AS SELECT par_no,fiyat,ağırlık
 FROM Parça;
+```
 
 **5.2.2 Sorgulamanın daha basit hale gelmesi**
 
@@ -1726,41 +1735,36 @@ Karmaşık sorgulamalar, VIEW özelliği kullanılarak daha basit hale getirileb
 
 **SORU:** Satış bölümünde çalışan personelin herhangi birinden daha düşük maaş alan ve mühendislik bölümünde çalışan kişileri listeleyiniz.
 
-**ÇÖZÜM:** SELECT \*
-
+**ÇÖZÜM:**
+```sql
+SELECT *
 FROM Personel
-
 WHERE maas<ANY(SELECT maas
-
 FROM Personel
-
-WHERE bol\_no=2) AND
-
-bol\_no=1;
+WHERE bol_no=2) AND
+bol_no=1;
+```
 
 (Satış bölümü kodu 2 ve mühendislik bölümü kodu ise 1 kabul ediliyor.)
 
 Şimdi bu sorunun cevabı olan tablo bir view olarak saklanırsa:
 
+```sql
 CREATE VIEW S1view
-
-AS SELECT \*
-
+AS SELECT *
 FROM Personel
-
 WHERE maas<ANY(SELECT maas
-
 FROM Personel
-
-WHERE bol\_no=2) AND
-
-bol\_no=1;
+WHERE bol_no=2) AND
+bol_no=1;
+```
 
 bundan sonra aynı tip sorgulama için sadece
 
-SELECT \*
-
+```sql
+SELECT *
 FROM S1view;
+```
 
 yazmak yeterli olcaktır.
 
@@ -1774,23 +1778,21 @@ Aşağıdaki soru ve bunun çözümü olan SQL ifadeleri bu konuda bir fikir ver
 
 **ÇÖZÜM:** Bu sorunun cevaplandırılması için önce her bölümdeki ortalama maaşların bulunması gereklidir.
 
-CREATE VIEW BOL\_OR\_VIEW(bol\_no,ort,maas)
-
-AS SELECT bol\_no,AVG(maas)
-
+```sql
+CREATE VIEW BOL_OR_VIEW(bol_no,ort,maas)
+AS SELECT bol_no,AVG(maas)
 FROM Personel
-
-GROUP BY bol\_no;
+GROUP BY bol_no;
+```
 
 Daha sonra, yaratılan BOL\_OR\_VIEW yardımı ile (bu view, bölüm no’ları ve bölüm ortalama maaşlarını saklamaktadır) sorulan sorunun cevabı elde edilebilir:
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel
-
-WHERE bol\_no=BOL\_OR\_VIEW.bol\_no
-
-. AND.maas>ort\_maas;
+WHERE bol_no=BOL_OR_VIEW.bol_no
+. AND.maas>ort_maas;
+```
 
 (Bu sorunun cevabını, şu ana kadar anlatılan diğer bilgilerle bulmaya çalışınız.)
 
@@ -1800,27 +1802,27 @@ View oluşturma esnasında CHECK sözcüğünün kullanılması ile, o view’i 
 
 Örneğin aşağıdaki gibi bir VIEW oluşturulsun:
 
-CREATE VIEW UST\_PER\_VIEW
-
+```sql
+CREATE VIEW UST_PER_VIEW
 AS SELECT FROM Personel
-
 WHERE maas>25000000,
-
 WITH CHECK OPTION;
+```
 
 Burada,maaşı 25000000’un üstünde olan personelden oluşan bir UST\_PEVIEW adlı view oluşturulmuştur. Daha sonra bu view içine
 
-INSERT INTO UST\_PER\_VIEW
-
+```sql
+INSERT INTO UST_PER_VIEW
 VALUES(27521,’27865427’,’Ayşe’
-
 ‘Okan’,{01/05/62},’Cumh. Cad. 46-Taksim’,
-
 .F.,13000000,1,’27651112’);
+```
 
 komutu ile maaşı 13000000 olan bir personel eklenmek istendiği zaman şu hata mesajı alınacaktır.
 
+```sql
 Error: not enough non-null values
+```
 
 Eğer CHECK opsiyonu kullanılmasaydı hata mesajı alınmadan bu veri view içine yüklenecekti. Bir tablo ya da view üzerinde veri ekleme, güncelleme ve silme işlemleri bir sonraki bölümde incelenecektir.
 
@@ -1834,19 +1836,19 @@ SQL’de, mevcut bir tabloya veri eklemek için kullanılacak olan komut INSERT 
 
 Standart SQL’de, oluşturulan bir tabloya veri yüklemek için tek imkan INSERT komutudur. INSERT komutu ile, tabloya, belli bir anda, tek bir satır eklemek imkanı vardır. INSERT komutunun yazılış biçimi aşağıdaki gibidir.
 
+```sql
 INSERT INTO Tabloadı
-
 (Sütunadı1,Sütunadı2,........,Sütunadı n)
-
 VALUES (değer1,değer2,....,değer n);
+```
 
 Örneğin, Personel tablosuna, sicil no’su 275 olan personel ile ilişkili bilgiler aşağıdaki gibi bir INSERT komutu ile yüklenebilir:
 
-INSERT INTO Personel(sicil,sosy\_g\_no,ad,soyad,
-
-dog\_tar,adres,cins,maas,bol\_no,yon\_s\_g\_n)
-
+```sql
+INSERT INTO Personel(sicil,sosy_g_no,ad,soyad,
+dog_tar,adres,cins,maas,bol_no,yon_s_g_n)
 VALUES (‘275’,’27652418’,’Ali’,’Caner’,{01/05/62},’Fatih-İstanbul’,.T.,27000000,2,’876215342’);
+```
 
 Karakter türü verilerin ‘ ‘ sembolleri arasında yüklendiğine diğer veriler içinse buna gerek olmadığına dikkat ediniz. Burada, tabloya tüm kolonlarla ilgili veri yüklendiği için, istenirse kolon isimleri ihmal edilebilir.
 
@@ -1860,31 +1862,36 @@ SQL’de ekrandan interactive bilgi girişi ve ekran tasarımı sağlayacak komu
 
 Bir tablonun satırlarını silmek için gerekli komut DELETE komutudur. Satır silme koşullu ya da koşulsuz olarak gerçekleştirilebilir.
 
+```sql
 DELETE FROM Tabloadı;
+```
 
-**ÖRNEK:** DELETE FROM Personel;
-
+**ÖRNEK:**
+```sql
+DELETE FROM Personel;
 25 Rows Deleted
+```
 
 Bu komut ile Personel tablosundaki tüm satırlar silinecektir. 25 Rows Deleted mesajı ile, o anda tabloda bulunan 25 satırın silindiği bildirilmektedir.
 
 Koşula bağlı olarak satır silmeyi gerçekleştirmek için, DELETE komutuna WHERE sözcüğü eklenmeli ve bunu izleyen ifade koşulu göstermelidir.
 
-**ÖRNEK:** DELETED FROM Personel
-
-WHERE bol\_no=2;
-
+**ÖRNEK:**
+```sql
+DELETED FROM Personel
+WHERE bol_no=2;
 5 Rows Deleted
+```
 
 Bu komut ile, 2 numaralı bölümdeki personelin tümü tablodan silinecektir. 5 Rows** **Deleted mesajı ile de, o anda 2 numaralı bölümde çalışan 5 personele ait satırların silindiğini belirtmektedir.
 
 Aşağıdaki örnekte ise maaş alanı boş olmayan tüm personel silinecektir.
 
+```sql
 DELETE FROM Personel
-
 WHERE maas IS NOT NULL;
-
 25 Rows Deleted
+```
 
 **6.3 Tablo Satırlarındaki Verilerde Değişiklik Yapma-Güncelleme İşlemi**
 
@@ -1892,53 +1899,53 @@ Tablo satırlarında güncelleme yapmak için SQL’de UPDATE komutu kullanılı
 
 Koşulsuz ise,
 
+```sql
 UPDATE Tabloadı
-
 SET Kolonadı1=değer1,Kolonadı2=değer2,.....,Kolonadı n=değer n;
-
 Koşullu olduğu takdirde,
-
 UPDATE Tabloadı
-
 SET Kolonadı1=değer1,Kolonadı2=değer2,.....,Kolonadı n=değer n
-
 WHERE Koşul;
+```
 
 Aşağıdaki UPDATE komutunun kullanılışı ile ilgili örnekler verilmiştir.
 
 **SORU:** Tüm personelin maaşlarına %12 zam yapma işlemini gerçekleştiriniz.
 
-**ÇÖZÜM:** UPDATE Personel
-
-SET maas=maas\*1.12;
+**ÇÖZÜM:**
+```sql
+UPDATE Personel
+SET maas=maas*1.12;
+```
 
 **SORU: **5 inci bölümde çalışan kişilerin maaşlarına %35 zam yapan UPDATE komutunu yazınız.
 
-**ÇÖZÜM:** UPDATE Personel
-
-SET maas?maas\*1.35
-
-WHERE bol\_no=5;
+**ÇÖZÜM:**
+```sql
+UPDATE Personel
+SET maas?maas*1.35
+WHERE bol_no=5;
+```
 
 **SORU:** 2 inci bölümün yürüttüğü projelerde kullanılan tüm parçaların fiyatlarına %7 zam yapan UPDATE komutunu yazınız.
 
-**ÇÖZÜM:** UPDATE Parça
-
-SET fiyat=fiyat\*1.07
-
-WHERE pr\_no IN (SELECT proj\_no
-
+**ÇÖZÜM:**
+```sql
+UPDATE Parça
+SET fiyat=fiyat*1.07
+WHERE pr_no IN (SELECT proj_no
 FROM Proje
-
-WHERE bl\_no=2);
+WHERE bl_no=2);
+```
 
 **SORU:** Sicil numarası 27265421 olan personelin bölüm numarasını 5 olarak değiştiren ve maaşına %14 zam yapan UPDATE komutunu yazınız.
 
-**ÇÖZÜM:** UPDATE Personel
-
-SET bol\_no=5,maas=maas\*1.14
-
+**ÇÖZÜM:**
+```sql
+UPDATE Personel
+SET bol_no=5,maas=maas*1.14
 WHERE sicil=’27265421’;
+```
 
 **6.4 Tablonun Yapısında Değişiklik Yapma (Alter Table Komutu)**
 
@@ -1954,9 +1961,11 @@ Mevcut bir tabloya, yeni bir kolon eklenirken, o kolon içindeki verinin türü,
 
 **SORU:** Personel tablosuna, işe başlama tarihini belirten yeni bir kolon ekleyiniz.
 
-**ÇÖZÜM:** ALTER TABLE Personel
-
-ADD is\_bas\_tar DATE;
+**ÇÖZÜM:**
+```sql
+ALTER TABLE Personel
+ADD is_bas_tar DATE;
+```
 
 Yeni eklediğimiz is\_bas\_tar alanı içinde veri yüklü olmayacağı için boş olacak yani NULL değerler taşıyacaktır. Eğer ADD is\_bas\_tar DATE NOT NULL; şeklini kullansaydık, bu kolon satırları gene boş olacaktı; fakat bu kolon ile ilişkili yeni boş değerler eklenmek istendiğinde, buna müsaade etmeyecekti (INSERT komutu ile). ADD sözcüğü ile aynı anda birden çok kolon eklenebilir.
 
@@ -1970,9 +1979,11 @@ Bu işlem için MODIFY sözcüğü ALTER TABLE komutu içinde kullanılır.
 
 **SORU:** Daha önce Proje adlı tabloda VARCHAR(15) olarak tanımlanmış olan yer adlı alanı, 25 olarak genişleten SQL komutunu yazınız.
 
-**ÇÖZÜM:** ALTER TABLE Proje
-
+**ÇÖZÜM:**
+```sql
+ALTER TABLE Proje
 MODIFY yer VARCHAR(25);
+```
 
 Aynı anda birden çok kolon üzerinde değişiklik yapılabilir. Yukarıda belirtildiği gibi, tabloda daha önce tanımlanmış bir tür (type) başka bir türe çevrilmez. Örneğin DATE’i MODIFY komutu ile CHAR, ya da INT olan bir alanı VARCHAR şekline dönüştürmek mümkün değildir.
 
@@ -1980,17 +1991,19 @@ Aynı anda birden çok kolon üzerinde değişiklik yapılabilir. Yukarıda beli
 
 Mevcut bir tablodan, bir kolon silmek için, ALTER TABLE komutu içine DROP sözcüğü eklemek gerekecektir. Örneğin, Personel tablosundan, is\_bas\_tar kolonunu silmek için
 
+```sql
 ALTER TABLE Personel
-
-DROP is\_bas\_tar;
+DROP is_bas_tar;
+```
 
 komutunu kullanmak gerekir.
 
 Aynı anda birden çok kolon silinebilir. Bu durumda, DROP komutu içinde bunları virgüllerle ayırmak gerekir.
 
+```sql
 ALTER TABLE Personel
-
-DROP is\_bas\_tar,yon\_s\_g\_n;
+DROP is_bas_tar,yon_s_g_n;
+```
 
 Personel tablosundan işe başlama tarihi ve yönetici sosyal güvenlik numarası alanları silinmiştir.
 
@@ -2000,9 +2013,10 @@ Bir tablodan bir kolon silindiği takdirde, bu tablo kullanılarak üretilmiş V
 
 Mevcut bir tablonun adını değiştirmek için, ALTER TABLE komutu içinde RENAME TABLE ifadesi kullanılmalıdır. Örneğin Personel tablosunun adını elemanlar olarak değiştirmek istersek aşağıdaki komutu kullanmak gerekecektir.
 
+```sql
 ALTER TABLE Personel
-
 RENAME TABLE elemanlar;
+```
 
 **6.6 Mevcut Bir Tablonun Bir Kolonunun Adını Değiştirme **−** Rename Komutu**
 
@@ -2010,15 +2024,18 @@ Mevcut bir tablonun, bir kolonunun adını değiştirmek için, ALTER TABLE
 
 komutu içinde RENAME sözcüğü kullanılmalıdır. Örneğin, Personel tablosunda maas alanını, br\_maas olarak değiştirmek için aşağıdaki komutu kullanmak gerekir.
 
+```sql
 ALTER TABLE Personel
-
-RENAME maas br\_maas;
+RENAME maas br_maas;
+```
 
 **6.7 Mevcut Bir Tablonun Tümüyle Silinmesi **−** Drop Table Komutu**
 
 Bir tablonun tümünü silmek için DROP TABLE komutu kullanılmalıdır. Örneğin, Proje adlı tablonun silinmesi için aşağıdaki komut gereklidir:
 
+```sql
 DROP TABLE Proje;
+```
 
 Veri tabanından bir tablo, DROP TABLE komutu ile silindiği takdirde, bu tablodan üretilmiş bütün VIEW’ler, bu tablodan üretilmiş eş tablolar, tablo üzerindeki indeksler ve tablo için konulmuş bütün öncelikler de sistemden silinir.
 
@@ -2026,13 +2043,17 @@ Veri tabanından bir tablo, DROP TABLE komutu ile silindiği takdirde, bu tablod
 
 ROLLBACK komutu ile, veri tabanında, kullanıcının veri tabanında çalışmaya başlamasından itibaren yaptığı tüm değişiklikleri ya da en son kullanılan COMMIT komutundan sonra yapılan tüm değişiklikleri iptal etmek mümkündür.
 
+```sql
 ROLLBACK;
+```
 
 Komutu girildikten sonra, tablodan kolon silme, kolon güncelleme, tablonun tümünü silme, view silme gibi değişiklik işlemlerinin tümü iptal edilerek önceki duruma dönülecektir.
 
 COMMIT komutu ise, kullanıcının veri tabanına bağlandığı andan itibaren ya da kullanılan en son COMMIT komutundan sonraki yukarıda bahsedilen türde bütün değişikliklerin kalıcı olarak veri tabanına aksettirilmesini ve saklanmasını sağlar.
 
+```sql
 COMMIT;
+```
 
 komutu ile o ana kadar gerçekleştirilen bütün değişiklikler sistemde kalıcı olarak yerleşecektir. Bu konuda ayrıntılı bilgi için hareket yönetimi bölümüne bakınız.
 
@@ -2050,35 +2071,33 @@ Bu koşulları sağlamayan view’ler sadece okunabilir (Readonly) özellikteki 
 
 Daha önceden oluşturulmuş Px adlı view, ad, soyad ve maas alanlarını içermiş olsun. Bu view, güncellenebilir nitelikte ise, aşağıdaki INSERT komutu ile, aynen tablolarda olduğu gibi kendisine bir satır eklemek mümkün olacaktır:
 
+```sql
 INSERT INTO Px
-
 VALUES (‘Ali’,’Çakır’,12000000);
+```
 
 Daha önceden, VIEW oluşturulurken, CHECK OPTION alternatifi kullanılmışsa, bu takdirde, ekleme esnasında, VIEW’i oluşturan koşul ihlal ediliyorsa, sistem eklemeye müsaade etmeyecek ve hata mesajı verecektir.
 
 **SORU:** Personel adlı tablodan, maaşı 20000000 TL’yi aşan personeli alarak, UST\_PER\_VIEW adlı bir view oluşturunuz.
 
-**ÇÖZÜM:** CREATE VIEW UST\_PER\_VIEW
-
+**ÇÖZÜM:**
+```sql
+CREATE VIEW UST_PER_VIEW
 AS SELECT FROM Personel
-
 WHERE maas>20000000
-
 WITH CHECK OPTION;
-
-Şimdi UST\_PER\_VIEW içine
-
-INSERT INTO UST\_PER\_VIEW
-
+Şimdi UST_PER_VIEW içine
+INSERT INTO UST_PER_VIEW
 VALUES (37261,’34268152’,’Beril’,
-
 ’Caner’,{01/04/64},’Kadıköy’,.F.,
-
 14000000,2,’37624158’);
+```
 
 komutu ile maaşı 14000000 olan bir kişi eklenmek istendiğinde, bu komut kabul edilmeyecek ve aşağıdaki hata mesajı alınacaktır:
 
+```sql
 Error:Not enough non-null values
+```
 
 Eğer CHECK opsiyonu kullanılmasaydı, hata mesajı verilmeksizin bu satır, view içine eklenecekti.
 
@@ -2086,9 +2105,10 @@ Eğer CHECK opsiyonu kullanılmasaydı, hata mesajı verilmeksizin bu satır, vi
 
 Güncellenebilir bir view içinde satır silme işlemi, tablolardan satır silme işlemi ile aynı şekilde gerçekleştirilir. Örneğin 6.9.2’de oluşturulan UST\_PER\_VIEW içinden, maaşı 2500000’den az olan kişiler silinmek istenirse
 
-DELETE FROM UST\_PER\_VIEW
-
+```sql
+DELETE FROM UST_PER_VIEW
 WHERE maas<2500000;
+```
 
 komutunu kullanmak yeterli olacaktır.
 
@@ -2096,11 +2116,11 @@ komutunu kullanmak yeterli olacaktır.
 
 Güncellenebilir view’lerde güncelleme işlemi tablolardakinin aynıdır. Örneğin UST\_PER\_VIEW adlı view’de sicili 27251 olan kişinin maaşının 37000000 olarak değiştirmek için
 
-UPDATE UST\_PER\_VIEW
-
+```sql
+UPDATE UST_PER_VIEW
 SET maas=37000000
-
 WHERE sicil=27251;
+```
 
 komutunu kullanmak uygun olacaktır.
 
@@ -2108,7 +2128,9 @@ komutunu kullanmak uygun olacaktır.
 
 Tabloların silinmesine benzer şekilde, sistemde oluşturulan bir view, DROP VIEW komutu ile silinebilir.
 
-DROP VIEW UST\_PER\_VIEW;
+```sql
+DROP VIEW UST_PER_VIEW;
+```
 
 Bir view’in silinmesi ile, o view’e bağlı olarak oluşturulmuş diğer bütün view’ler ve bu view ile ilişkili önceliklerin de tümü silinmiş olacaktır.
 
@@ -2126,9 +2148,10 @@ Bir tablo, indekslenmiş ise, bu tablo içinde gerçekleştirilecek bir arama (s
 
 ** **SQL’de bir tablo ile ilşkili olarak indeks yaratmak için gerekli komut CREATE INDEX komutudur. Komutun yazılış biçimi aşağıdaki gibidir:
 
+```sql
 CREATE INDEX indeks adı
-
 ON tabloadı (kolonadı 1,kolonadı 2,....,kolonadı n );
+```
 
 İndeksleme artan (ascending) ya da azalan (decending) şeklinde olabilir. Artan, alfabetik olarak A’dan Z’ye nümerik olarak küçükten büyüğe şeklindedir. Azalan ise bunun tersidir. Hiçbir özel sözcük kullanılmazsa indeksleme artan sayılır ya da alan adının yanında bir boşluktan sonra ASC sözcüğü kullanılırsa bu alana göre artan sıralama yapılacak demektir.
 
@@ -2138,17 +2161,18 @@ Herhangi bir alanın adının yanında DESC sözcüğünün kullanılması ise i
 
 İşletmede çalışan personeli maaşlarına göre artan sırada listelemek istersek, maas alanına göre bir indeks oluşturmalıyız.
 
-CREATE INDEX pers\_maas
-
+```sql
+CREATE INDEX pers_maas
 ON Personel (maas);
-
 Index created 127 Rows
+```
 
 127 satırlık personel tablosu ile ilişkili olarak maas alanına indeks anahtarı olarak kullanılan pers\_maas adlı indeks oluşturulmuştur. Bu durumda
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel;
+```
 
 şeklindeki listeleme komutu sonucunda, personel tablosundaki tüm personel, maaşlarına göre sıralı olarak listelenecektir.
 
@@ -2156,23 +2180,26 @@ FROM Personel;
 
 İşletmede çalışan personeli maaşlarına göre azalan sırada (yüksek maaştan düşük maaşa doğru) listelemek istersek, maas alanına göre aşağıdaki şekilde oluşturmak gerekir.
 
-CREATE INDEX pers\_maas
-
+```sql
+CREATE INDEX pers_maas
 ON Personel (maas DESC);
+```
 
 **7.2.3 Birden fazla alana göre indeksleme**
 
 İşletmedeki personelin öncelikle adlarına göre, aynı ad da olanların soyadlarına göre, hem adı hem soyadı aynı olanların maaşlarına göre sıralanmış olarak listelenmesi istenirse aşağıdaki komut kullanılmalıdır:
 
-CREATE INDEX p\_ad\_soy\_m
-
+```sql
+CREATE INDEX p_ad_soy_m
 ON Personel (ad,soyad,maas);
+```
 
 Bu durumda
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel;
+```
 
 komutu sonucunda, aşağıdaki şekilde sıralanmış tablo görüntülenecektir.
 
@@ -2200,9 +2227,10 @@ Burada, kolayca görüleceği gibi personel öncelikle adı alanına göre sıra
 
 İndeks komutu
 
-CREATE INDEX p\_ad\_soy\_m
-
+```sql
+CREATE INDEX p_ad_soy_m
 ON Personel (ad,soyad,maas DESC);
+```
 
 şeklinde yazılsa idi, tablodaki değerler
 
@@ -2232,19 +2260,20 @@ sicil ad soyad maas
 
 Bir tablo, seçilen bir sütuna (alana) göre indekslenirken, indeksleme alanı olarak seçilen sütundaki verilerin tekrarlanmasına müsaade edilmesi isteniyorsa, indeksleme yapılırken, CREATE INDEX komutu içinde UNIQUE sözcüğü kullanılmalıdır:
 
-CREATE UNIQUE INDEX pers\_sicil
-
+```sql
+CREATE UNIQUE INDEX pers_sicil
 ON Personel (sicil);
+```
 
 UNIQUE sözcüğünün etkisi, bu komuttan sonra, tabloda, aynı sicilden birden fazla tekrar olmasını engellemesidir.
 
 Personel tablosunu
 
+```sql
 INSERT INTO Personel
-
 VALUES(53768,’27241685’,’Ayşe’,’Şen’,{01/04/63},’Kadıköy’,
-
 .F.,27000000,2,’34261578’);
+```
 
 komutu ile sicil 53768 olan kişi eklenmek istendiği zaman, bu sicilden daha önce o tabloda mevcutsa, ekleme kabul edilmeyecek ve
 
@@ -2260,13 +2289,16 @@ Bir tablo üzerinde tanımlanmış herhangi bir indeks, o tablonun veri tabanın
 
 Tablo silinmeksizin, o tablo üzerinde oluşturulan indeksin silinmesi içinse, DROP INDEX komutu kullanılmalıdır.
 
-DROP INDEX pers\_in;
+```sql
+DROP INDEX pers_in;
+```
 
 komutu ile
 
+```sql
 INDEX DROPPED
-
 (İndeks Silindi)
+```
 
 mesajı alınacaktır. Böylece, Personel tablosu üzerinde oluşturulmuş pers\_in adlı indeks, personel tablosu veri tabanında kaldığı halde silinecektir.
 
@@ -2334,9 +2366,10 @@ Bir kürsörün kapatıldıktan sonra yeniden açılması gerektiğinde, yeniden
 
 Bir kürsör ismini, SELECT komutu ile ilişkili hale getirir.
 
+```sql
 DECLARE Kürsöradı CURSOR
-
-FOR SELECT−Komut \[FOR READ\[ONLY\] \]
+FOR SELECT−Komut [FOR READ[ONLY] ]
+```
 
 şeklindedir. Burada kürsör adı, SQL isim verme kurallarına uygun olarak verilmiş isimlerdir.
 
@@ -2346,13 +2379,13 @@ FOR READ ONLY parçası ile kullanılırsa, seçilen satırlar sadece okunabilir
 
 DECLARE CURSOR komutu, kürsör açılmadan ya da kürsöre herhangi bir yerde referans verilmeden, icra edilmelidir. Kürsör, bir yordam içinde birçok kez kapanıp açılsa da, DECLARE CURSOR komutu sadece bir kez görünmelidir.
 
-**ÖRNEK:** DECLARE kürsör1 CURSOR FOR
-
+**ÖRNEK:**
+```sql
+DECLARE kürsör1 CURSOR FOR
 SELECT sicil,ad,soyad,maas
-
 FROM Personel
-
-WHERE bol\_no=2;
+WHERE bol_no=2;
+```
 
 SELECT komutu, WHERE cümleciği içinde, SQL’in içinde kullanıldığı dile ya da yazılıma ait (C, Pascal, Foxpro v.b.) bir değişkene referans verebilir. Kullanılan dile ait değişken, kürsör açıldığı zaman işleme sokulur.
 
@@ -2360,17 +2393,14 @@ Aşağıdaki örnek SQL’in içinde kullanıldığı dil değişkenine nasıl r
 
 **ÖRNEK: **DEFINE VARIABLE ysg\_n
 
+```sql
 AS CHARACTER INITIAL “25724711”;
-
 DECLARE kürsör2 CURSOR FOR
-
-SELECT ad,soyad,y\_sos\_g\_n
-
+SELECT ad,soyad,y_sos_g_n
 FROM Personel
-
-WHERE y\_sos\_g\_n=ysg\_n
-
+WHERE y_sos_g_n=ysg_n
 ORDER BY ad,soyad;
+```
 
 Burada ysg\_n adlı, SQL’in içinde kullanıldığı dile ait değişken DEFINE VARIABLE komutu ile tanımlanmış ve bu değişkene 25724711 başlangıç değeri atanmıştır.
 
@@ -2378,13 +2408,17 @@ Burada ysg\_n adlı, SQL’in içinde kullanıldığı dile ait değişken DEFIN
 
 Yazılış biçimi:
 
+```sql
 OPEN kürsöradı
+```
 
 şeklindedir.
 
 OPEN komutu, DECLARE CURSOR komutundaki SELECT deyiminin icra edilmesi ile elde edilen tablo satırları kümesi içinden erişim yapılabilmesi işlemini başlatır. OPEN komutu sonucunda, kürsör, SELECT ile elde edilecek tablo satırları kümesinden oluşan erişim satinin ilk satırına konumlanacaktır.
 
+```sql
 OPEN kürsör1
+```
 
 komutu ile kürsör1 adlı kürsör açılmaktadır. Bir kürsör, tanımlandıktan sonra çeşitli kereler açılır ve kapatılabilir. Kürsörün her açılışı esnasında, SELECT komutu yeniden icra edilir. O nedenle kürsörü, bir kez bildirel yeterlidir. Her yeni icra sonucu erişim seti farklı olabilir.
 
@@ -2394,21 +2428,26 @@ Bu komut yardımı ile, açılan erişim seti içindeki tablo sütunlarındaki v
 
 Kullanış biçimi:
 
+```sql
 FETCH kürsöradı INTO değişken listesi
+```
 
 şeklindedir.
 
 FETCH komutuna ait değişken listesinde bulunan değişkenler, DECLARE CURSOR komutu içindeki SELECT komutu içinde bulunan tablo sütun adları ile sayı, sıra ve tür bakımından uyuşmalıdır.
 
-**ÖRNEK:** DECLARE kürsör3 CURSOR
-
-FOR SELECT ad,soyad,y\_sos\_g\_n,maas
-
+**ÖRNEK:**
+```sql
+DECLARE kürsör3 CURSOR
+FOR SELECT ad,soyad,y_sos_g_n,maas
 FROM Personel;
+```
 
 Şeklinde tanımlanmış kürsör3 ile erişilebilecek veri kümesi, ad, soyad, y\_sos\_g\_n ve maas adlı tablo sütunları ile saklanan verilerden oluşmaktadır. Bununla ilişkili olarak
 
-FETCH kürsör3 INTO a,s,ysgn,b\_maas
+```sql
+FETCH kürsör3 INTO a,s,ysgn,b_maas
+```
 
 şeklindeki komut ile, erişim setinde o esnada aktif olan tablo satırındaki verilerden
 
@@ -2416,9 +2455,10 @@ ad ⎯→ a
 
 soyad ⎯→ s
 
-y\_sos\_g\_n ⎯→ ysgn
-
-maas ⎯→ b\_maas
+```sql
+y_sos_g_n ⎯→ ysgn
+maas ⎯→ b_maas
+```
 
 adlı değişkenlere aktarılacaktır.
 
@@ -2430,11 +2470,11 @@ Güncelleme işlemini gerçekleştiren UPDATE komutunun, o esnada kürsörün i�
 
 Konumlandırılmış UPDATE komutunun yazılış biçimi aşağıdaki gibidir:
 
+```sql
 UPDATE Tabloadı
-
 SET sütun(kolon)adı=ifade
-
 WHERE CURRENT OF kürsör
+```
 
 Burada kullanılacak tablo adı, DECLARE CURSOR komutundaki tablo adının aynısı olmalıdır.
 
@@ -2442,31 +2482,29 @@ Burada kullanılacak tablo adı, DECLARE CURSOR komutundaki tablo adının aynı
 
 Konumlandırılmış güncelleme ile ilişkili aşağıdaki örneği inceleyiniz:
 
+```sql
 DEFINE VARIABLE bmaas LIKE
+```
 
 Personel.maas
 
+```sql
 DECLARE kürsör4 CURSOR FOR
-
 SELECT maas
-
 FROM Personel
-
 OPEN kürsör4
+```
 
 REPEAT:
 
+```sql
 FETCH kürsör4 INTO bmaas
-
 UPDATE Personel
-
 SET maas=bmaas+2500000
-
 WHERE CURRENT OF kürsör4
-
 END
-
 CLOSE kürsör4
+```
 
 Bu örnekte, DECLARE CURSOR komutu ile personel tablosundaki maas brüt maaşlar kümesi elde edilmiş ve OPEN komutu ile bu kümenin ilk satırı erişilebilir hale getirilmiştir.
 
@@ -2486,9 +2524,11 @@ UPDATE komutu ile ilk satıra ait maaş, bmaas+2500000 ifadesi ile 2500000 TL ar
 
 Konumlandırılmış UPDATE komutuna benzer şekilde çalışır. Açık bulunan kürsörün o esnada işaret ettiği satırı siler. Satır silindikten sonra, kürsör bir sonraki satırın başına gelir.
 
-**ÖRNEK:** DELETE FROM Personel
-
+**ÖRNEK:**
+```sql
+DELETE FROM Personel
 WHERE CURRENT OF kürsör4
+```
 
 Bu komut ile, kürsör4’ün o esnada işaret ettiği tablo satırı, Personel tablosundan silinecektir.
 
@@ -2496,7 +2536,9 @@ Bu komut ile, kürsör4’ün o esnada işaret ettiği tablo satırı, Personel 
 
 Bir kürsör ile oluşturulan erişim kümesi ile bağlantıyı kesmek başka bir deyişle erişim kümesini erişilemez hale getirmek için CLOSE komutu kullanılır. Komut,
 
+```sql
 CLOSE kürsöradı
+```
 
 şeklinde kullanılır. CLOSE komutundan sonra OPEN ile yeniden açılmadıkça, kürsörün oluşturduğu erişim kümesine yeniden erişmek mümkün değildir.
 
@@ -2506,15 +2548,14 @@ SELECT INTO komutu, tablo içinden sadece tek bir satıra erişir. Amaç, tablo 
 
 SELECT INTO komutu, WHERE kısmında belirtilen koşulun sadece bir satır üreteceği varsayımı ile çalışır. Aksi durumda hata mesajı alınacaktır.
 
-**ÖRNEK:** DEFINE scl LIKE Personel.sicil
-
+**ÖRNEK:**
+```sql
+DEFINE scl LIKE Personel.sicil
 DEFINE bmaas LIKE Personel.maas
-
 SELECT sicil,maas INTO scl,bmaas
-
 FROM Personel
-
 WHERE sicil=’2715213’;
+```
 
 **8.5 SQL’in Destek Sağladığı Diller**
 
@@ -2554,75 +2595,56 @@ Bir COBOL programı içinde, SQL kullanımı için aşağıdaki işlemlerin ger�
 
 Üst dil (COBOL) içinde SQL ile bağlantılı olarak kullanılacak değişkenler tanımlanın (WORKING STORAGE SECTION’da) SQL ile haberleşmeyi sağlayacak olan SQLCA sisteme ilave edilir. (SQLCA →SQL Communication Area anlamındadır.) Bunun için COBOL içinde
 
+```cobol
 EXEC SQL INCLUDE SQLCA
-
 END−EXEC
+```
 
 komutu, COBOL’un WORKING−STORAGE SECTION kesimine yerleştirilir. PROCEDURE DIVISION’da, gerekli SQL komutları, COBOL’un
 
+```sql
 EXEC SQL
+```
 
 SQL Komutları
 
+```sql
 END−EXEC
+```
 
 ayraçları içine yazılır.
 
 **ÖRNEK:** Sicil’i 27562 olan kişi ile ilişkili ad, soyad, maas ve bölüm bilgilerini görüntüleyen programı yazınız.
 
+```cobol
 INDENTIFICATION DIVISION.
-
 ENVIRONMENT DIVISION.
-
 DATA DIVISION.
-
 WORKING−STORAGE SECTION
-
 EXEC SQL BEGIN DECLARE SECION END−EXEC.
-
 01 USICIL PIC 9 (5).
-
 01 UAD PIC A (10)
-
 01 USOYAD PIC A (10)
-
 01 UMAAS PIC 9 (13) V 9 (2).
-
 EXEC SQL END DECLARE SECTION END−EXEC.
-
 01 B-MAAS PIC 9 (13). 9 (2).
-
 EXEC SQL INCULEDE SQLCA
-
 END−EXEC.
-
 PROCEDURE DIVISION.
-
 EXEC SQL SELECT sicil,ad,soyad,maas
-
 INTO :USICIL,: UAD,: USOYAD,: UMAAS
-
 FROM Personel
-
 WHERE sicil=27562
-
 END−EXEC.
-
 DISPLAY “Sicili 27562 Olan kişi”
-
 DISPLAY “Ad Soyad Maaş”
-
 IF SQLCODE=O
-
 MOVE UMAAS TO B-MAAS
-
 DISPLAY UAD,” ”,USOYAD,” ”,B-MAAS
-
 ELSE
-
 DISPLAY “Hata kodu ........”, SQLCODE
-
 STOP RUN.
+```
 
 Yukarıdaki programda iki noktanın açıklığa kavuşturulması gerekmektedir.
 
@@ -2632,93 +2654,56 @@ Birincisi, SQL komutları içinde üst dile ait değişkenler: sembolü ile baş
 
 FETCH işelemi başarılmış ise, yani SELECT komutu tablo değerleri üst dilin değişkenlerine başarı ile aktarılmış ise, SQLCODE değişkeninin değeri ∅’dir. Tablodan erişilecek satır yoksa ya da tablonun sonuna gelinmiş ise SQLCODE’un değeri 100’dür. Herhangi bir hatadan dolayı FETCH işlemi başarılamamışsa, SQLCODE’un değeri negatiftir. (Bazı gerçekleştirimlerde –1’dir.)
 
+```cobol
 INDENTIFICATION DIVISION.
-
 EVIRONMENT DIVISION.
-
 DATA DIVISION.
-
 WORKING−STORAGE SECTION
-
 01 TO-MAAS PIC 9 (15). 9 (2).
-
 01 T-MAAS PIC 9 (15) V 9 (2).
-
 01 O-MAAS PIC 9 (13) V 9 (2).
-
 01 OO-MAAS PIC 9 (13). 9 (2).
-
 01 SAY PIC 9 (4).
-
 EXEC SQL BEGIN DECLARE
-
 SECTION END−EXEC
-
 01 UMAAS PIC 9 (13) V 9 (2).
-
 EXEC SQL END DECLARE SECTION
-
 END−EXEC.
-
 EXEC SQL INCULEDE SQLCA END−EXEC.
-
 PROCEDURE DIVISION.
-
 EXEC SQL WHENEVER SQLWARNING
-
 CONTINUE END−EXEC.
-
 PERFROM P1.
-
 PERFROM P2 UNTIL SQLCODE IS
+```
 
 NOT EQUALS TO ZERO.
 
+```cobol
 PERFROM P3.
-
 STOP RUN.
-
 P1.EXEC SQL DECLARE kürsör1
-
 FOR SELECT maas
-
 FROM Personel END−EXEC.
-
 MOVE ∅ TO T-MAAS.
-
 MOVE ∅ TO O-MAAS
-
 MOVE ∅ TO SAY.
-
 EXEC SQL OPEN kürsör1 END−EXEC.
-
 P2.EXEC SQL FETCH kürsör1
-
 INTO:UMAAS END−EXEC
-
 IF SQLCODE THEN
-
 MOVE UMAAS TO T-MAAS
-
 ADD 1 TO SAY
-
 P3.IF SQLCODE=100
-
 COMPUTE O-MAAS=T-MAAS / SAY
-
 MOVE T-MAAS TO TO-MAAS
-
 MOVE O-MAAS TO OO-MAAS
-
 DISPLAY “Maaş Toplamı....”,TO-MAAS
-
 DISPLAY “Ortalama maaş...”,OO-MAAS
-
 ELSE
-
 DISPLAY “Hata Kodu.....”,SQLCODE.
-
 EXEC SQL CLOSE kürsör1 END−EXEC.
+```
 
 **8.7 Whenever Komutu ve SQLState Parametresi**
 
@@ -2730,29 +2715,37 @@ NOT FOUND
 
 SQLERROR
 
+```sql
 SQLWARNING
+```
 
 Bu sonuçlardan her biri, SQLCA içinde tanımlanan değişkenlere ait belirli bir değeri yansıtmaktadır. SQL komutu sonucu, kontrol edilen koşulu sağlayan hiçbir tablo satırı elde edilmemişse, NOT FOUND sonucu oluşur. SQL komutu sonucu, bir hata oluşmuşsa, SQLERROR değeri elde edilir.SQL komutunun icrası sırasında bir uyarı durumu oluşursa da SQLWARNING sonucu elde edilecektir.
 
 Aşağıdaki program parçasında, erişilecek tablo satırı bulunmadığı zaman ne yapılacağı belirtilmektedir:
 
+```sql
 EXEC SQL
-
 WHENEVER NOT FOUND
+```
 
 GO TO P1
 
+```sql
 END−EXEC.
+```
 
 Aşağıdaki program parçasında ise, bir uyarı durumu oluşursa, programın icrasına devam edilmesi gereği belirtilmektedir.
 
+```sql
 EXEC SQL
-
 WHENEVER SQLWARNING
+```
 
 CONTINUE
 
+```sql
 END−EXEC.
+```
 
 SQL içinde kullanılan SQLCODE parametresi, SQL standardında halen mevcut ve kullanılabilir durumda olmasına rağmen, standart komitesince “eskimiş özellik” listesine konulmuştur. Bunun anlamı bir sonraki standart düzenlemesinde SQL standardından çıkarılacağıdır.
 
@@ -2762,7 +2755,9 @@ SQLSTATE 5 karakter uzunluğunda ve iki kısımdan oluşan bir değişkendir. İ
 
 Bazı önemli SQLSTATE değerleri aşağıdaki tabloda verilmiştir:
 
+```sql
 **Tablo 8.2** SQLSTATE Parametre Değerleri.
+```
 
 | Sınf | Alt Sınıf | Anlamı |
 | --- | --- | --- |
@@ -2780,75 +2775,71 @@ Bazı önemli SQLSTATE değerleri aşağıdaki tabloda verilmiştir:
 
 ** .**
 
+```sql
 ** **EXEC SQL
+```
 
 -
 
 -
 
+```sql
 IF SQLSTATE =’∅∅1∅∅’ GO TO P1.
+```
 
 -
 
 -
 
+```sql
 IF SQLSTATE=’ ∅∅1∅∅’ GO TO SON.
+```
 
 -
 
 -
 
+```sql
 END−EXEC.
+```
 
 **8.8 C Dili İçinde SQL Kullanımı**
 
 ** **C dili içinde SQL kullanımı esas itibarı ile COBOL içindeki kullanımdan farklı değildir. Sadece, SQL ayraçları olarak
 
+```sql
 EXEC SQL BEGIN DECLARE SECTION;
+```
 
 ve
 
+```sql
 EXEC SQL END DECLARE SECTION;
+```
 
 yapısı kullanılır.
 
+```c
 EXEC SQL BEGIN DECLARE SECTION;
-
-Char Parcano\[15\];
-
+Char Parcano[15];
 Sqlind Parcanolnd;
-
-Char Parcano3\[15\];
-
-Char Parcano5\[15\];
-
-Char Parcano7\[15\];
-
-Char Parcano9\[15\];
-
-Char Ustkomp\[15\];
-
+Char Parcano3[15];
+Char Parcano5[15];
+Char Parcano7[15];
+Char Parcano9[15];
+Char Ustkomp[15];
 Sqlind Partnolnd;
-
-Char Partname\[31\];
-
+Char Partname[31];
 Sqlind Partnamelnd;
-
-Char Partname\[31\];
-
+Char Partname[31];
 Sqlind Partname5lnd;
-
-Char Parcaadi\[31\];
-
+Char Parcaadi[31];
 Sqlind Parcaadilnd;
-
-Char Parcaadi5\[31\];
-
+Char Parcaadi5[31];
 Sqlind Parcaadi5lnd;
-
-Char resimno4\[16\];
-
+Char resimno4[16];
 EXEC SQL END DECLARE SECTION;
+```
 
 **8.9 dBase IV İçinde SQL Kullanımı**
 
@@ -2866,7 +2857,9 @@ Ayrıca, SQL’den bağımsız olarak, SQL ile oluşturulmuş veri tabanı tablo
 
 DBASE IV içinde SQL’in iki şekilde kullanılması mümkündür. Etkileşimli modda (SQL . modu) komut kütüğü içerisinde dBASE IV’te nokta modunda iken
 
+```sql
 SET SQL ON ↵
+```
 
 komutu girilirse SQL’in nokta moduna geçilir ve
 
@@ -2888,205 +2881,112 @@ Aşağıdaki verilen tabloda program listesi bu konuda faydalı bir fikir verece
 
 \*Bir Program−PROG.PRS
 
+```dbase
 SET TALK OFF
-
 SET ECHO OFF
-
 START DATABASE ISLETME;
-
 DO WHILE .T.
-
 CLEAR
-
 @ 5, 10 SAY ‘Personel Bilgi Sistemi’
-
 @ 6, 10 SAY ‘S−Sorgulama’
-
 @ 7, 10 SAY ‘G−Güncelleme’
-
 @ 8, 10 SAY ‘D−Silme’
-
 @ 9, 10 SAY ‘C−Programdan Çıkış’
-
 ?
-
 ?
-
 WAIT “Seçiminiz........” TO SEC
-
 DO CASE
-
 CASE UPPER(SEC)=”S”
-
 DO SOR
-
 CASE UPPER(SEC)=”G”
-
 DO GUNCEL
-
 CASE UPPER(SEC)=”D”
-
 DO SIL
-
 CASE UPPER(SEC)=”C”
-
 RETURN
-
 OTHERWISE
+```
 
 ? “Hatalı Seçim”
 
+```dbase
 END CASE
-
 WAIT “Devam için Return” TO XX
-
 END DO
-
 RETURN
-
 PROCEDURE SOR
-
 CLEAR
-
-SELECT \* FROM Personel
-
+SELECT * FROM Personel
 ORDER BY sicil;
-
 WAIT “Devam için Return” TO XX
-
 RETURN
-
 PROCEDURE GUNCEL
-
 CLEAR
-
-@ 10, 10 SAY “Bölüm No......” GET b\_no
-
+@ 10, 10 SAY “Bölüm No......” GET b_no
 READ
-
 DECLARE kürsör CURSOR
-
 FOR SELECT ad,soyad,adres,maas
-
-WHERE bol\_no=b\_no;
-
+WHERE bol_no=b_no;
 FOR UPDATE OF ad,soyad,adres,maas;
-
 OPEN kürsör;
-
 IF SQLCNT=0
-
 WAIT “Bu bölümde kayıtlı personel yok, Devam etmek için Return”
-
 CLOSE kürsör;
-
 RETURN
-
 END IF
-
 DO WHILE .T.
-
 FETCH kürsör
-
 INTO xad,xsoyad,xadres,xmaas;
-
 INTO SQLCODE<>∅
-
 WAIT “Devam için Return”
-
 RETURN
-
 ELSE
-
 CLEAR
-
 @ 10, 10 SAY “ad........” GET xad
-
 @ 11, 10 SAY “soyad........” GET xsoyad
-
 @ 12, 10 SAY “adres........” GET xadres
-
 @ 13, 10 SAY “maas........” GET xmaas
-
 UPDATE Personel
-
 SET ad=xad,soyad=xsoyad,adres=xadres,maas=xmaas
-
 WHERE CURRENT OF kürsör;
-
 END IF
-
 END DO
-
 CLOSE kürsör;
-
 RETURN
-
 PROCEDURE SIL
-
 CLEAR
-
-@ 10, 10 SAY “Bölüm No........” GET b\_no
-
+@ 10, 10 SAY “Bölüm No........” GET b_no
 READ
-
 DECLARE kürsör CURSOR
-
 FOR SELECT ad,soyad;
-
-WHERE bol\_no=b\_no
-
+WHERE bol_no=b_no
 FOR UPDATE OF ad,soyad;
-
 OPEN kürsör;
-
 IF SQLCNT=0
-
 WAIT “Bölümde kayıtlı personel yok, Devam için Return”
-
 CLOSE kürsör;
-
 RETURN
-
 END IF
-
 DO WHILE .T.
-
 FETCH kürsör
-
 INTO xad,xsoyad;
-
 IF SQLCNT<>0
-
 WAIT “Devam için Return”
-
 RETURN
-
 ELSE
-
 CLEAR
-
 @ 10, 10 SAY “ad........” GET xad
-
 @ 10, 10 SAY “soyad........” GET xsoyad
-
 WAIT “Bu personel silinsinmi E/H” TO T
-
 IF UPPER(T)=”E”
-
 DELETE FROM Personel
-
 WHERE CURRENT OF kürsör;
-
 END IF
-
 END IF
-
 END DO
-
 CLOSE kürsör
-
 RETURN
+```
 
 Yukarıdaki programla ilişkili olarak aşağıdaki noktaların açıklanması gerekir:
 
@@ -3094,7 +2994,9 @@ SQLCNT, SQLCA (SQL Communication Area − SQL haberleşme ve alanı) içinde yer
 
 Önemli diğer bir nokta ise;
 
+```sql
 SART DATABASE ISLETME;
+```
 
 komutudur.
 
@@ -3106,23 +3008,33 @@ Bu anlamda START DATABASE ISLETME; komutu, ISLETME adlı veri tabanını kullanm
 
 Bu anlamda, programda kullanılan tüm tabloların (Personel v.b.) bu veri tabanı (alt dizin) içinde mevcut olduğu varsayılmaktadır. Bir SQL veri tabanını (DOS içinde bir alt dizin olarak) oluşturmak için SQL’de
 
+```sql
 CREATE DATABASE veritabanı adı;
+```
 
 komutunu kullanmak gerekir. Mevcut bir SQL veri tabanını silmek içinse
 
+```sql
 DROP DATABASE veritabanı adı;
+```
 
 şeklinde SQL komutu kullanmak gerekir. Sistemde mevcut olan veri tabanlarının adını görmek içinse
 
+```sql
 SHOW DATABASE;
+```
 
 SQL komutu kullanılır. Aktif bir veri tabanını iptal etmek içinse
 
+```sql
 STOP DATABASE;
+```
 
 SQL komutunu kullanmak gerekecektir. Bir veri tabanı içinde bir tabloyu, SQL komutu olan CREATE TABLE yerine XBASE komutu olan CREATE ile oluşturduğunuz takdirde, SQL’in bu \*.DBF’i bir SQL tablosu olarak algılaması için
 
+```sql
 DBDEFINE dbf adı;
+```
 
 şeklinde SQL komutu kullanmalısınız.
 
@@ -3150,9 +3062,10 @@ FOXPRO’nun etkileşimli modu olan ve dBASE IV’ün . moduna karşı gelen Com
 
 Command
 
+```sql
 USE Personel
-
-SELECT \* FROM Personel;
+SELECT * FROM Personel;
+```
 
 SONUÇ:
 
@@ -3176,11 +3089,11 @@ SQL
 
 SQL−Text:
 
-SELECT \* ↑
-
+```sql
+SELECT * ↑
 FROM Personel
-
-WHERE bol\_no=2;
+WHERE bol_no=2;
+```
 
 ↓
 
@@ -3192,25 +3105,18 @@ WHERE bol\_no=2;
 
 ALL LEFT
 
+```sql
 DELETE OPTION
-
 DISTINCT ORDER BY
-
 DISTINCTROW OWNERACCESS
-
 FROM PARAMETERS
-
 GROUP BY PROCEDURE
-
 HAVING RIGTH
-
 IN SELECT
-
 INNER TRANSFORM
-
 INSERT UPDATE
-
 INTO WHERE
+```
 
 JOIN WITH
 
@@ -3220,9 +3126,11 @@ Bu listede, daha önce incelenmiş olan sözcükler dışındakiler hakkındaki 
 
 SELECT komutu ile elde edilecek çıkışta, tekrar eden hiçbir satır bulunması istenmiyorsa bu sözcük kullanılır.
 
-**ÖRNEK:** SELECT DISTINCTROW \*
-
+**ÖRNEK:**
+```sql
+SELECT DISTINCTROW *
 FROM Proje;
+```
 
 Euroway 2 ist 2
 
@@ -3246,13 +3154,16 @@ Euroway 2 ist 2
 
 şeklinde ise
 
-SELECT \*
-
+```sql
+SELECT *
 FROM Personel,Bölüm
+```
 
 Personel INNER JOIN Bölüm
 
-ON Personel.bol\_no=Bölüm.bölüm\_no;
+```sql
+ON Personel.bol_no=Bölüm.bölüm_no;
+```
 
 ifadesi sonucu aşağıdaki sonuç elde edilecektir:
 
@@ -3268,23 +3179,31 @@ ifadesi sonucu aşağıdaki sonuç elde edilecektir:
 
 Birleştirme (JOIN) işleminde LEFT sözcüğü kullanılırsa, soldaki tabloda bütün satırlar, sağdaki tabloda müşterek alanla ilişkili hiçbir veri bulunmasa dahi, birleşim tablosuna katılır. RIGHT sözcüğü kullanıldığı takdirde ise, aynı işlem sağdaki tablo için söz konusu olacaktır.
 
-**ÖRNEK:** SELECT \*
-
+**ÖRNEK:**
+```sql
+SELECT *
 FROM Personel,Bölüm
+```
 
 Personel LEFT JOIN Bölüm ON
 
-Personel.bol\_no=Bölüm.bölüm\_no;
+```sql
+Personel.bol_no=Bölüm.bölüm_no;
+```
 
 **SONUÇ:** INNER JOIN’deki tablonun aynısıdır
 
-**ÖRNEK:** SELECT \*
-
+**ÖRNEK:**
+```sql
+SELECT *
 FROM Personel,Bölüm
+```
 
 Personel RIGHT JOIN Bölüm
 
-ON Personel.bol\_no=Bölüm.bölüm\_no;
+```sql
+ON Personel.bol_no=Bölüm.bölüm_no;
+```
 
 **SONUÇ:**
 
@@ -3301,13 +3220,13 @@ ON Personel.bol\_no=Bölüm.bölüm\_no;
 
 Güvenli bir çok kullanıcılı sistemde, WITH OWNERACCESS OPTION sözcükleri, kullanıcıya belirli tablolara erişmek için izin verilmemiş olsa dahi, o tablolardan sorgulama yaparak bilgi edinme imkanı sağlar.
 
-**ÖRNEK:** SELECT ad,soyad,maas
-
+**ÖRNEK:**
+```sql
+SELECT ad,soyad,maas
 FROM Personel
-
 ORDER BY soyad
-
 WITH OWNERACCESS OPTION;
+```
 
 Kullanıcıya Personel’e erişim yasaklanmış olsa bile, bu seçenek ile personele ait maaş bilgilerine erişebilir.
 
@@ -3317,17 +3236,20 @@ SQL içinde, tablo satırları (ya da veri tabanı kayıtları) üretmeyen SQL k
 
 Yazılış Biçimi
 
+```sql
 Satırlar = Veritabanı.Execute (SQL deyimi)
+```
 
 Satırlar, sayısal bir veri tipi olupdeğeri SQL komutunun etkilediği tablo satırları sayısıdır. Veri tabanı, Visual Basic’te bir veri kontrolünün veri tabanı özelliğidir. Komutlar etkilenecek veri tabanını belirler.
 
 SQL deyimi, veri tabanı üzerinde icra edilecek SQL komutudur.
 
-**ÖRNEK: ** Dim db as Database
-
+**ÖRNEK: **
+```vbnet
+Dim db as Database
 Set db=OpenDatabase (“isletme.mdb”)
-
-db.Execute (‘Select \* From Personel’)
+db.Execute (‘Select * From Personel’)
+```
 
 Yukarıdaki örnekte db database olarak tanımlanmış değişkendir. Set ile database’i açma ve db değişkenine database adını atama işlemi yapılır. Execute içersinde yazılan SQL deyimi bu satıra gelindiğinde icra edilir (çalıştırılır).
 
@@ -3335,13 +3257,12 @@ Yukarıdaki örnekte db database olarak tanımlanmış değişkendir. Set ile da
 
 Visual Basic profesyonel yazılımda, DIM ve SET deyimleri kullanılarak herhangi bir nesne türü için, nesne değişkenleri yaratılabilir. Örneğin aşağıdaki program parçası Database, Dynaset ve Field adlı Visual Basic nesneleri için nesne değişkenleri yaratmaktadır. Bu kod içinde SQL’in kullanılışına dikkat ediniz:
 
+```vbnet
 Dim VT As Database, Dina As Dynaset, Ala As Field
-
 SET VT=OpenDatabase(“kitap.mdb”)
-
-SET Dina=VT.CreateDynaset(“SELECT \* FROM kitaplar”)
-
-SET Ala=Dina.Fields(“Yaz\_ID”)
+SET Dina=VT.CreateDynaset(“SELECT * FROM kitaplar”)
+SET Ala=Dina.Fields(“Yaz_ID”)
+```
 
 **8.12.7 Visual Basic’te Recordset Nesnesi**
 
@@ -3351,35 +3272,29 @@ Visual Basic’te form üzerine data nesnesi yerleştirilmesi durumunda database
 
 İsletme.mdb veri tabanı dosyası Microsoft Access’te hazırlanmış olduğunu varsalım.
 
+```vbnet
 Dim db as Database
-
 Dim rs as Recordset
-
-Private Sub Command1\_Click()
-
+Private Sub Command1_Click()
 Set db=OpenDatabase(“isletme.mdb”)
-
-Set rs=db.OpenRecordset(“Select \* From Personel Where bol\_no=2;”)
-
+Set rs=db.OpenRecordset(“Select * From Personel Where bol_no=2;”)
 Text1.text=rs.Fields(“ad”)
-
 Text2.text=rs.Fields(“soyad”)
-
-Text3.text=rs.Fields (“bol\_no”)
-
+Text3.text=rs.Fields (“bol_no”)
 End sub
+```
 
 Yukarıdaki örnektede görüldüğü gibi rs değişkeni db (database) değişkeninin OpenRecordset (kayıt setini aç) özelliğinden yararlanılarak açılır. Bu deyimden sonra gelen SQL sorgusuna eşit olan bütün kayıtlar bu kayıt setine atılır ve bu kayıtların kontrolü burdan yapılır. Text alanlarına ad, soyad ve bol\_no yazılır. Fakat birden çok kayıtın bulunduğu takdirde en son kayıt görüntülenir. Bunu engellemek için recordset nesnesinin MoveNext, MoveLast, MovePrevious, MoveFirst gibi bir çok nesnesinden yararlanarak bu kayıtlar görüntülenir. Recordset nesnesinin bir çok özelliği ve SQL sorgulamaları ile veri tabanı işlemleri çok basite indirgenmiş olur.
 
 Eğer veri tabanındaki tablomuzda herhangi bir alana veri yüklemek içinde recordset nesnesi kullanılabilir.
 
-**ÖRNEK:** Set rs=db.OpenRecordset (“Select \* From Personel”)
-
+**ÖRNEK:**
+```vbnet
+Set rs=db.OpenRecordset (“Select * From Personel”)
 rs.Fields (“ad”)=text1.text
-
 rs.Fields (“soyad”)=text2.text
-
-rs.Fields (“bol\_no”)=Val(text3.text)
+rs.Fields (“bol_no”)=Val(text3.text)
+```
 
 Yukarıdaki örnekte ad, soyad ve bol\_no alanlarına text alanlarındaki bilgiler aktarılır. Val komutu Visual Basic’e ait bir fonksiyondur.
 
@@ -3421,17 +3336,14 @@ Sadece CONNECT ayrıcalığına sahip olan kullanıcılar, sadece mevcut tablola
 
 ORACLE ilk yüklendiği (install) zaman SYSTEM/MANAGER statülü kullanıcı otomatik olarak yaratılır. İlk olarak, sistem kullanıcısı default parolayı değiştirmelidir. Daha sonra sistem kullanıcısı tarafından diğer kullanıcılara ayrıcalıkları ve kullanıcı tipleri aşağıdaki komutlarla verilir:
 
+```sql
 GRANT DBA to Mert
-
 GRANT DBA to Mitat
-
 GRANT RESOURCE, CONNECT to Beril
-
 GRANT CONNECT to Mehmet
-
 GRANT CONNECT to Ali
-
 GRANT CONNECT to Cem
+```
 
 Mert ve Mitat adlı kullanıcılar veri tabanı yöneticisi, Beril adlı kullanıcı CONNECT ve RESOURCE ayrıcalıklı, Mehmet, Ali ve Cem ise CONNECT ayrıcalıklı olarak tanımlanmaktadır.
 
@@ -3441,29 +3353,28 @@ REVOKE CONNECT to Ali komutu ile Ali’ye daha önceden verilen veri tabanına b
 
 Bir tabloyu yaratan kişi o tablonun sahibi (owner) olarak kabul edilir. Eğer tablonun sahibi tarafından yetki verilmemişse, tabloya başka hiç kimse erişemez. Tablo sahibi tarafından, tabloya erişim, tabloda değişiklik yapma gibi değişik ayrıcalıklar, GRANT komutu ile diğer kullanıcılara verilebilir. Örneğin aşağıdaki komut, bütün kullanıcılara personel adlı tabloya erişip bilgi dökme (SELECT), satır ekleme (INSERT), tabloda değişiklik yapma (UPDATE), satır silme (DELETE), tablonun yapısında değişiklik yapma (ALTER), indeksleme (INDEX) ve kümeleme (CLUSTER) yetkilerini vermektedir.
 
+```sql
 GRANT SELECT, INSERT, UPDATE
-
 DELETE, ALTER, INDEX, CLUSTER
-
 ON Personel
-
 TO PUBLIC;
+```
 
 Bu komutu daha kısa şekilde aşağıdaki gibi yazmak mümkündür:
 
+```sql
 GRANT ALL
-
 ON Personel
-
 TO PUBLIC;
+```
 
 Ahmet isimli kullanıcıya personel ve proje tabloları üzerinde sadece SELECT yetkisi verilmek istenirse, aşağıdaki GRANT komutunu yazmak gerekecektir:
 
+```sql
 GRANT SELECT
-
 ON Personel, Proje
-
 TO Ahmet;
+```
 
 **9.4 View’lerle İlişkili Güvenlik İşlemleri**
 
@@ -3473,21 +3384,20 @@ TO Ahmet;
 
 Bu durumda en uygun yol, personelle ilişkili, maaşlar hariç tüm bilgilerin bulunduğu bir View oluşturmak ve bunun bütün kullanıcıların erişimine açmaktır. Aşağıdaki komutlarla bu işlem yapılmaktadır:
 
+```sql
 CREATE VIEW genpers
-
 AS
-
-SELECT sicil,sosy\_g\_no,ad,soyad,
+SELECT sicil,sosy_g_no,ad,soyad,
+```
 
 dogum\_tar,adres,cinsiyet,bol\_no,yon\_s\_g\_n
 
+```sql
 FROM Personel;
-
 GRANT SELECT
-
 ON genpers
-
 TO PUBLIC;
+```
 
 Böylece, genpers adlı VIEW herkesin erişimine açılarak, personel tablosu ise sadece belirli kişilerin kullanımına açık tutularak, fiilen, personel tablosunun maas alanı üzerinde bir işlem yasağı oluşturulmuştur.
 
@@ -3495,39 +3405,30 @@ Pratikte bir işletmede, her bölümün yöneticisine, sadece o bölümdeki maa�
 
 Bunun sağlanması için, personel tablosundan her bölümle ilişkili olarak bir view oluşturmak ve bu viewler üzerinde yöneticiye inceleme yapmak ve maaş üzerinde değişiklik yapmak yetkisinin verilmesi uygun bir çözüm olacaktır. Örneğin, mühendislik bölüm numarası 2 ise
 
+```sql
 CREATE VIEW mühendis
-
 AS
-
-SELECT \*
-
+SELECT *
 FORM Personel
-
-WHERE bol\_no=2;
-
+WHERE bol_no=2;
 GRANT SELECT, UPDATE (maas)
-
 ON mühendis
-
-TO müh\_yönet;
+TO müh_yönet;
+```
 
 Mühendislik bölümü yöneticisinin sistemdeki kullanıcı adı (user\_id) müh\_yönet ise, bu yöneticiye, mühendis adlı, sadece mühendislik bölümündeki personeli içeren view üzerinde, inceleme yapma ve maas alanında değişiklik yapma imkanı verilmektedir.
 
 Her kullanıcıya, sadece kendi bilgilerini inceleyip diğerlerini inceleyememesi şeklinde bir kısıt konulmak istenirse aşağıdaki yol izlenebilir:
 
+```sql
 CREATE VIEW özel
-
 AS
-
 SELECT Personel
-
 WHERE sicil=USER;
-
 GRANT SELECT
-
 ON özel
-
 TO PUBLIC;
+```
 
 Burada, o andaki kullanıcının kullanıcı isminin sicil ile belirlendiği varsayılıyor. USER bir ORACLE sistem değişkenidir; o esnada sistemde bulunan (logon yapmış) kullanıcının, user\_id’sini (kullanıcı belirleyicisi) saklamaktadır.
 
@@ -3537,19 +3438,19 @@ ORACLE veri tabanı yönetim yazılımı, diğer pekçok benzer yazılım gibi, 
 
 Örneğin veri tabanı yöneticisinin personel tablosu üzerinde tablodaki verileri ya da tablonun yapısını değiştirmekle ilgili teşebbüsleri incelemek istediğini düşünelim. Bunu gerçekleştirmek için AUDIT komutunu aşağıdaki gibi kullanmak durumundadır:
 
+```sql
 AUDIT INSERT, UPDATE, DELETE, ALTER
-
 ON Personel
-
 BY ACCESS;
+```
 
 izleme işlemini sona erdirmek içinse NOAUDIT komutu kullanılır:
 
+```sql
 NOAUDIT INSERT, UPDATE, DELETE, ALTER
-
 ON Personel
-
 BY ACCESS;
+```
 
 ORACLE, veri tabanı yöneticilerine, denetim imkanlarını genişletmek için aşağıdaki yetkileride vermiştir:
 
@@ -3561,17 +3462,19 @@ NOT EXISTS Tablolara erişim esnasında does not exists (mevcut değil) hata mes
 
 RESOURCE CREATE/DROP TABLE, VIEW, SPACE, SYNONIM deyimlerini, CREATE/ALTER/DROP CLUSTER deyimlerini izleme imkanı sağlar.
 
-**ÖRNEK:** AUDIT DBA
-
+**ÖRNEK:**
+```sql
+AUDIT DBA
 ON DEFAULT
-
 BY ACCESS;
+```
 
-**ÖRNEK:** AUDIT NOT EXISTS
-
+**ÖRNEK:**
+```sql
+AUDIT NOT EXISTS
 ON Personel
-
 BY ACCESS;
+```
 
 **BÖLÜM 10**
 
@@ -3621,47 +3524,53 @@ Bu yöntemde, hareketi oluşturan işlemlerle ilişkili komutlar BEGIN ve END
 
 TRANSACTION komutları arasına alınır.
 
+```sql
 BEGIN TRANSACTION;
-
 komut 1;
-
 komut 2;
+```
 
 - Hareketi oluşturan komutlar
 
 -
 
+```sql
 komut n;
-
 END TRANSACTION;
+```
 
 ANSI standardı
 
 Buna göre aşağıdaki yapı kullanılacaktır:
 
+```sql
 komut 1;
-
 komut 2;
+```
 
 - Hareketi oluşturan komutlar
 
 -
 
+```sql
 komut n;
-
 COMMIT
+```
 
 Standart metod kullanıldığına göre, bir hareket, ilk rastlanılan SQL komutu
 
 ile başlar ve aşağıdaki komut ya da olaylardan biri ile karşılaşınca sona erer:
 
+```sql
 COMMIT
-
 ROLLBACK
+```
 
 Herhangi bir veri tanımlama dili
 
+```sql
 (Data Definition Language-DDL)
+```
 
 komutu
 
@@ -3679,19 +3588,20 @@ Bir hareketi oluşturan komutların sonunda COMMIT komutu kullanılmışsa, bu h
 
 Hareketi oluşturan komutlar sonunda ROLLBACK komutu kullanılmışsa, gerçekleştirilen değişikliklerin tümü iptal edilecek ve veri tabanı, hareketten önceki durumuna dönecektir.
 
-**ÖRNEK:** UPDATE Personel
-
+**ÖRNEK:**
+```sql
+UPDATE Personel
 SET maas=27000000
-
 WHERE sicil=27115;
-
-INSERT INTO Bölüm (bölüm\_ad,
+INSERT INTO Bölüm (bölüm_ad,
+```
 
 bölüm\_no,y\_sos\_g\_n,y\_is\_b\_tar)
 
+```sql
 VALUES (‘halkla ilişkiler’,7,’27141527’,{01/05/93});
-
 COMMIT
+```
 
 Bu örnekte, personel tablosunda sicili 27115 olan kişinin maaşı 27000000 yapılmakta ve bölüm adlı tabloya ise, halkla ilişkiler adlı yeni bir bölüm, bölüm numarası, yöneticinin sosyal güvenlik numarası ve yöneticisinin işe başlama tarihi yeni bir satır olarak yüklenmektedir.
 
@@ -3705,7 +3615,9 @@ Farklı veri tabanı yönetim sistemleri dolayısıyla bunlar içindeki SQL ger�
 
 LOCK TABLE tablo ya da view adı IN
 
+```sql
 SHARE | EXCLUSIVE MODE
+```
 
 SHARE MODE seçeneği kullanılırsa, diğer kullanıcılar tablo ya da view üzerinde sadece okuma işlemi (SELECT) yapabilirler; silme ya da güncelleme yapamazlar.
 
@@ -3719,9 +3631,10 @@ Mode’da kullanıcılar
 
 kilitleyen kullanıcı
 
+```sql
 Güncelleme (Update)
-
 Silme (Delete) yapabilir.
+```
 
 **Şekil 10.3** LOCK TABLE (Tablo Kilitleme) Komutunun SHARE MODE (paylaşımlı mod) da Kullanımı.
 
@@ -3729,15 +3642,18 @@ LOCK TABLE komutu, EXCLUSIVE MODE’da kullanılırsa, diğer kullanıcılar gen
 
 Sadece okuma yapabilen diğer
 
+```sql
 Tabloyu EXCLUSIVE kullanıcılar.
+```
 
 MODE’da Bunlar tablo
 
 kilitleyen kullanıcı üzerinde kilitleme - Güncelleme (Update) işlemine de teşeb-
 
+```sql
 - Silme (Delete) yapabilir. büs edemezler.
-
 **Şekil 10.4** LOCK TABLE (Tablo Kilitleme) Komutunun EXCLUSIVE MODE
+```
 
 (Özel Mod) da kullanımı.
 
@@ -3759,7 +3675,9 @@ A kullanıcısı X tablosunu EXCLUSIVE olarak kilitlemiştir. Bir sonraki işlem
 
 A, X’i B, Y’yi
 
+```sql
 EXCLUSIVE EXCLUSIVE
+```
 
 olarak olarak
 
@@ -3781,11 +3699,15 @@ Bazı veri tabanı yönetim sistemleri, tablonun değişimine sebebiyet verecek 
 
 **ÖRNEKLER:**
 
+```sql
 LOCK TABLE X IN SHARE MODE;
+```
 
 X tablosu SHARE MODE’da kilitleniyor. Diğer kullanıcılar sadece okuma yapabilir.
 
+```sql
 LOCK TABLE Y IN EXCLUSIVE MODE;
+```
 
 Y tablosu EXCLUSIVE MODE’da kilitleniyor. Diğer kullanıcılar sadece okuma yapabilir ve Y tablosu üzerinde kilitleme yapamazlar.
 
@@ -3795,7 +3717,9 @@ SQL, The Standart Handbook, Stephan Cannon, Gerard Otten, Mc Graw Hill Book Comp
 
 Introduction to Oracle, M. Bronzite, Mc Graw Hill Book Comp., 1993
 
+```sql
 An Introduction to Database System, Volume I, C. J. Date, 1990
+```
 
 Visual Basic für DOS, Peter Manodjemi, Addison-Weley, 1993
 
@@ -3835,9 +3759,10 @@ t+∆t anı
 
 Hareket Başarılı
 
+```sql
 Tablo veya view
-
 Tablo veya view
+```
 
 X
 
@@ -3851,9 +3776,10 @@ Tablosu
 
 2. Kullanıcı
 
+```sql
 View X
-
 View Y
+```
 
 Temel Tablo
 
@@ -3861,7 +3787,9 @@ Personel
 
 Temel Tablo
 
+```sql
 Proje
+```
 
 Temel Tablo
 

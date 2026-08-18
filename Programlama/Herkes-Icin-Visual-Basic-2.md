@@ -218,7 +218,9 @@ VB5, VB6:
 
 (ufak daireli olan) ve onun yanında **Blue** kelimesi yer almaktadır (seçenek butonunun yanınadaki kelime onun **Caption(Başlık) **özelliğidir). Yani, bu olay prosedürü, biz ne zaman Blue seçenek buttonunu tıklarsak çalışır. Prosedür, yalnızca bir satırdan oluşan bir talimata sahiptir (ilk ve son satırları şimdilik bir kenara bırakın) :
 
-## **frmSample.BackColor = vbBlue******
+```vbnet
+frmSample.BackColor = vbBlue
+```
 
 Bu BASIC kod’u satırı,** frmSample **adı verilen kontrolün **BackColor** **property (özellik)**’inin mavi renge ayarlanmasını söylemektedir (**vbBlue** kelimesi ile temsil edilen).
 

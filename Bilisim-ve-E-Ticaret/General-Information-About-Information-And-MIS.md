@@ -448,7 +448,9 @@ One of the most important functions of any operating system is to provide a user
 
 Early computer systems offered only command-based user interfaces, which require users to enter text commands to direct the computer to perform basic activities. For example, the MS-DOS command ERASE FILE1 would cause the computer system to erase a file called FILE1 from a particular disk. More complicated tasks require longer, more involved commands. For example, this command
 
-COPY C:\\DOCUMENTS\\MINUTES.JUN A:
+```bash
+COPY C:\DOCUMENTS\MINUTES.JUN A:
+```
 
 would locate a file named MINUTES.JUN within a subdirectory called DOCUMENTS on Drive C: and duplicate it on a diskette in Drive A:. Omission or misplacement of a single backslash, space, colon, or period would leave the operating system completely unable to interpret the command. The user must learn and conform to the often-confusing demands of a command-based user interface.
 
@@ -966,7 +968,9 @@ program as input. On the departmental UNIX system this is accomplished by means 
 
 the command
 
+```bash
 % f77 myfile.f
+```
 
 This will translate your FORTRAN commands into machine code and generate an
 
@@ -986,7 +990,9 @@ has the default name a.out. The executable consists of a sequence of instruction
 
 in machine code. Typing
 
+```bash
 % a.out
+```
 
 will cause the machine to execute these instructions.
 
@@ -1022,7 +1028,9 @@ compiler specific and are listed in the compiler manuals and, on UNIX systems, i
 
 man pages. Type
 
+```bash
 % man f77
+```
 
 In addition to the FORTRAN compiler there are a large number of tools and
 

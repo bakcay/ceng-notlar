@@ -40,11 +40,15 @@ O anda seçilmiş olan elaman ait özelliklerin görüntülendiği pencereye Pro
 
 **Caption:**** **Nesnenin üzerindeki yazı bu özellikle belirlenir.
 
-Label1.Caption= “Öğrencinin Adı” ** **
+```vbnet
+Label1.Caption= “Öğrencinin Adı”
+```
 
 ** **Caption özelliğinde & karakterinin kullanılması bu karakterden sonraki karakteri kısa yol tuşu yapar.
 
+```vbnet
 Label1.Caption= “Öğrencinin &Adı :”
+```
 
 Yukarıdaki satır A harfini kısa yol tuşu yapar. Alt+A tuşlarına basılması durumunda klavye kontrolü Tab indexi bir büyük olan elamana bırakır.
 
@@ -66,9 +70,11 @@ Kontrol düğmesini seçtikten sonra çalışılan form üzerinde mouse ile yeri
 
 **Text :** Text kutusuna girilen metin nesnenin text parametresine atanır. Bu kullanılarak kullanıcının girdiği metin üzerinde işlem yapılır. Text kutusuna text verilmeden sadece ismi kullanılırsa text özelliği kullanılmış olur.
 
+```vbnet
 Text.Text= “Elektronik-Bilgisayar Bölümü”
 
 Text1= “Elektronik-Bilgisayar Bölümü”
+```
 
 **MultiLine:** True ise text kutusuna birden fazla satır girilebileceğini gösterir. False ise tek satır girilebilir.
 
@@ -84,17 +90,14 @@ Text1= “Elektronik-Bilgisayar Bölümü”
 
 Örnek olarak bir şifre programı yazalım.
 
-Private Sub Form\_Load()
-
+```vbnet
+Private Sub Form_Load()
 If InputBox(“Şifreyi Giriniz”)<>”bahadır” Then
-
 MsgBox(“Bilemediniz”)
-
 Text1.Locked=True
-
 End If
-
 End Sub
+```
 
 **10.3. Command Button (Komut Düğmesi)******
 
@@ -110,7 +113,9 @@ Toolbox penceresinde bu düğme işaretlendikten sonra, çalışılan form üzer
 
 **Caption :** Komut düğmesi üzerinde yazılacak mesajı içerir.
 
+```vbnet
 Command1.Caption= “Çıkış”
+```
 
 **Style:** Bu özellik komut düğmesinin yazılımının resimli olacağını belirtir. 0 ise komut düğmesi üzerinde Caption özelliği ile belirtilen yazı bulunur. 1 ise picture özelliği ile belirtilen resim bulunur.
 
@@ -198,11 +203,11 @@ Daha sonra çalışılan form üzerinde istenilen alan işaretlenerek nesne ekle
 
 **Örnek 10.1 :**
 
-Private Sub Timer1\_Timer()
-
+```vbnet
+Private Sub Timer1_Timer()
 Form1.Caption= “Saat:” +Time
-
 End Sub
+```
 
 **10.8. Frame Control (Çerçeve)******
 
@@ -280,21 +285,28 @@ Nesneye bu özellik kullanarak resim yüklenmesi;
 
 LoadPicture ile dosyadan
 
-Picture1.Picture=LoadPicture(“\\resimler\\park.jpg”)
+```vbnet
+Picture1.Picture=LoadPicture(“\resimler\park.jpg”)
+```
 
 Başka bir nesnenin picture özelliğinden
 
+```vbnet
 Picture1.Picture=Picture2.Picture
+```
 
 Clipboard dan yapılabilir
 
+```vbnet
 Picture1.Picture=Clipboard.Getdata()
+```
 
 **Image:** Bu özellik sadece okunabilir bir özelliktir. Picture kontrolü içine methods’lar kullanılarak yapılan yazım ve çizimleri temsil eder.
 
+```vbnet
 Picture1.Circle(0,0),150
-
 Picture2.Picture=Picture1.Image
+```
 
 Yukarıdaki satırlarla, Picture1 ile bir daire çizilmiş ve picture2 ile nesne üzerinde gösterilmesi sağlanmıştır.
 
@@ -324,19 +336,15 @@ Formun üzerinde istenilen alan mouse ile işaretlenerek kontrol yerleştirilir.
 
 İlk önce ToolBox penceresinde kontrolü işaretleyip formun üzerine ComboBox nesnesini yerleştirelim. Daha sonra ComboBox nesnesinin üzerini mouse ile çift tıklayarak komut penceresine aşağıdaki satırları yazalım.
 
-Private Sub Combo1\_Change()
-
+```vbnet
+Private Sub Combo1_Change()
 Combo1.AddItem "Bahadır"
-
 Combo1.AddItem "Metin"
-
 Combo1.AddItem "Musa"
-
 Combo1.AddItem "Dinçer"
-
 Combo1.AddItem "Ümit"
-
 End Sub
+```
 
 Programın çalıştırdığımızda çıktısı aşağıdaki gibi olur.
 
@@ -358,13 +366,12 @@ Formda istenilen yer işaretlenerek kontrol eklenir.
 
 **Change(**)**: **Kontrolden bir sürücü seçilmişse bu olay meydana gelir.
 
-Sub Drive1\_Change()
-
+```vbnet
+Sub Drive1_Change()
 Dir1.Path=Drive1.Drive
-
 ChDrive Drive1.Drive
-
 End Sub
+```
 
 **10.16. Directory List Box (Dizin Listeleme Kutusu)**
 
@@ -386,13 +393,12 @@ Dizini seçme işlemi aktif dizinin değişmesine sebep olmaz. Bu işi ChDir gib
 
 **Change():** Listeden bir dizin seçilmesiyle bu olay meydana gelir. Dizin seçimi yapıldığında yazılması gereken kod buraya yazılmalıdır.
 
-Sub Dir\_Change()
-
+```vbnet
+Sub Dir_Change()
 File1.Path=Dir1.Path
-
 ChDir Dir1.Path
-
 End Sub
+```
 
 **10.17. FileList Box (Dizin Listeleme)**
 
@@ -410,9 +416,11 @@ Herhangi bir dizindeki dosyaları listelemeye yarayan kontrol elamanıdır. Bu k
 
 **Archive,Hidden,Normal,ReadOnly,System:** Bu özellik kullanılarak dosya listeleme kutusundaki Arşiv, Saklı, Sadece Okunu, Normal ve system özelliklerine sahip dosyaların görüntülenmesini sağlar. Bu özelliklerden herhangi birine True değeri o özelliğe sahip dosyalar listelenir.
 
-**Pattern:** Bu özellikle listelenmek istenen dosyalar filtrelenir. Bu işlem (\*,?) gibi joker karakterlerle yapılır.
+**Pattern:** Bu özellikle listelenmek istenen dosyalar filtrelenir. Bu işlem (*,?) gibi joker karakterlerle yapılır.
 
-File1.Patern=”\*.EXE”
+```vbnet
+File1.Patern=”*.EXE”
+```
 
 **10.17.2. Events ()**
 
@@ -438,57 +446,79 @@ Form üzerinde kontrolleri istediğim büyüklükte ayarlayabiliyorduk. Bu kontr
 
 1: Aç
 
+```vbnet
 CommonDialog1.Action=1
+```
 
 veya
 
+```vbnet
 CommonDialog1.ShowOpen
 
-Private Sub Form\_Click()
-
+Private Sub Form_Click()
 CommonDialog1.ShowOpen
-
 End Sub
+```
 
 2: Yeni Adla Kaydet
 
+```vbnet
 CommonDialog1.Action=2
+```
 
 veya
 
+```vbnet
 CommonDialog1.ShowSave
+```
 
 3: Renk
 
+```vbnet
 CommonDialog1.Action=3
+```
 
 veya
 
+```vbnet
 CommonDialog1.ShowColor
+```
 
 4: Font
 
+```vbnet
 CommonDialog1.Action=4
+```
 
 veya
 
-** **CommonDialog1.ShowFont
+```vbnet
+CommonDialog1.ShowFont
+```
 
 5: Yazdır
 
+```vbnet
 CommonDialog1.Action=5
+```
 
 veya
 
-** **CommonDialog1.ShowPrint
+```vbnet
+CommonDialog1.ShowPrint
+```
 
 6:Windows Help programını çalıştır.
 
+```vbnet
 CommonDialog1.Action=6
+```
 
 veya
 
-** **CommonDialog1.ShowHelp
+```vbnet
+CommonDialog1.ShowHelp
+```
 
 **CancelError:** Diyalog pencerelerinde “İptal” düğmesinin seçilmesi halinde yakalanabilir bir hata oluşturup oluşturmayacağı bu özellikle belirlenir. Değer True ise “İptal” düğmesi seçildiğinde hata oluşturur, False ise oluşturmaz.
 
@@ -534,11 +564,11 @@ Multimedia nesnesinden hangi amaçla yararlanılacağı MultiMedia nesnesine ait
 
 Forma eklediğimiz Multimedia nesnesinden müzik CD’lerini çalmak için Command özelliğinden de yararlanmak gerekir. Command özelliğine o işlemle ilgili komutu aktarmamız gerekir. Command özelliğine Open komutunu aktaracak olursak forma eklemiş olduğumuz Muldimedia nesnesi aktive edilir.
 
-Private Sub Form\_Load()
-
+```vbnet
+Private Sub Form_Load()
 MMControl1.Command= “Open”
-
 End Sub
+```
 
 Bu satırı ekledikten sonra programı çalıştıralım.
 
@@ -554,25 +584,22 @@ Forma Anlat isminde iki tane Command Butonu atayalım. Bu buton bir bizim ses do
 
 Forma yerleştirdiğimiz MultiMedia DeviceType özelliğine WaveAudio bilgisini aktarmak ve Formdaki düğmeye (Anlat) tıklama yapıldığında seslendirilecek WaV uzantılı ses dosyasının adını FileName özelliğini aktarmak aşağıdaki progman satırlarını yazalım.
 
-Private Sub Command1\_Click()
-
+```vbnet
+Private Sub Command1_Click()
 MMControl1.DeviceType = “WaveAudio”
-
-MMControl1.filename= “c:\\Windows\\media\\ctmelody.Wav”
-
+MMControl1.filename= “c:\Windows\media\ctmelody.Wav”
 MMControl1.Command = “Open”
-
 MMControl1.Command = “Play”
-
 End Sub
+```
 
 İkinci (Durdur) kontrolüne de aşağıdaki satırı yazalım
 
-Private Sub Command2\_Click()
-
+```vbnet
+Private Sub Command2_Click()
 MMControl1.Command = “close”
-
 End Sub
+```
 
 Artık Programımızı çalıştırabiliriz.
 
@@ -652,7 +679,9 @@ formlar için)
 
 Örneğin ESC tuşuna basıldığında programın kapanmasını istiyorsak bu özelliği True yapıp Formun Keypress olayına aşağıdaki komut satırını yazmamız gerekir.
 
+```vbnet
 if KeyAcii=27 Then End
+```
 
 **Count:** Formun içindeki menüler dahil kontrol sayısını verir.
 
@@ -660,15 +689,23 @@ if KeyAcii=27 Then End
 
 **Örnek 10.1: **
 
-form1.ActiveControl.Left=0 satırı form üzerindeki aktif kontrolü sağlar.
+```vbnet
+form1.ActiveControl.Left=0
+```
+
+satırı form üzerindeki aktif kontrolü sağlar.
 
 Burada aktif kontrol TexBox ise bu satır;
 
+```vbnet
 form1.TextBox.Left=0
+```
 
 ListBox ise;
 
+```vbnet
 Form1.ListBox.Left=0
+```
 
 **Picture:** Form üzerinde gösterilecek resmi belirler. Formun properties penceresinde Picture seçeneği işaretlendiğinde, bu seçeneğin karşısında üç nokta çıkar.
 
@@ -690,27 +727,19 @@ Bu pencerede istenilen resim dosyası işaretlenerek “Aç” düğmesi mouse i
 
 **Örnek** **10.2**:
 
-Pirvate Sub Form\_Load()
-
+```vbnet
+Pirvate Sub Form_Load()
 Show
-
 Dim a,b
-
 a= “Elektronik-Bilgisayar Bölümü”
-
 FontName= “Arial”
-
 For b=1 To 10
-
-Fonsize=b\*3
-
+Fonsize=b*3
 CurrentX=(ScaleWidth-TextWidth(a)/2
-
 Print a
-
 Next
-
 End Sub
+```
 
 Programın çıktısı.
 
@@ -726,7 +755,9 @@ O anda bellekte olmayan formla ilgili bir koda rastlandığında o form belleğe
 
 **Örnek 10.3:**
 
+```vbnet
 Form2.Text1.Text= “12”
+```
 
 Yukarıdaki satırla Form2’nin yüklenmesini, dolayısıyla Form2’nin Load olayının çalışmasını ve Text1 kontrolüne “12” atamasının yapılaması sağlanacaktır.
 
@@ -770,39 +801,55 @@ Formun boyutlarının değişmesi halinde bu olay meydana gelir. Formun genişli
 
 **Line:**Bu komutla çizgi veya dikdörtgen çizilebilir.
 
-Line (x1,yl)-(x2,y2),\[renk\]
+```vbnet
+Line (x1,yl)-(x2,y2),[renk]
+```
 
 x 1,y1 koordinatlarında x2,y2 koordinatlarına verilen renk ile bir çizgi çizer.
 
+```vbnet
 Liııe -(x2,y2),(renk~
+```
 
 şeklinde kullanılarak en son kalınan noktadan x2,y2 noktasına çizim yapılabilir.
 
-Line (xl,y1)-(x2,y2),\[renk\],B
+```vbnet
+Line (xl,y1)-(x2,y2),[renk],B
+```
 
 şeklinde kullanılırsa xl,yl köşesinden x2,y2 köşesine bir dikdörtgen çizer.
 
-Line (xl,y1)-(x2,y2),\[renk\],BF
+```vbnet
+Line (xl,y1)-(x2,y2),[renk],BF
+```
 
 F parametresi ile kullanıldığında ise dikdörtgenin içi renk parametresi ile belirlenen renkle boyanır. F parametresi olmaksızın kullanıldığında ise dikdörtgenin için FilIColor ve FillStyle özellikleri ile belirlenen modda boyanır.
 
 **Circle:** Çember, Elips ve yay çizmek için kullanılır.
 
+```vbnet
 Circle (mx,my),r,renk
+```
 
 mx,my merkezli r yarıçaplı çemberi verilen renkte çizer.
 
+```vbnet
 Circle (mx,my),r,renk,a,b
+```
 
 mx, my merkezli r yarıçaplı yayı a açısından b açısına verilen renkte çizer.
 
 **Pset:** Verilen koordinatlar arasına nokta koyarak şekil çizer.
 
+```vbnet
 Pset 8x,y),renk
+```
 
 **Point:** Verilen koordinatların rengini belirler.
 
+```vbnet
 Renk=Point (x,y)
+```
 
 **Print: **Form üzerine kontrolden bağımsız olarak yazı yazmak için kullanılır.
 
@@ -824,15 +871,13 @@ Print metodunda birden fazla değişken araya noktalı virgül koyularak yan yan
 
 **Örnek 10.4:**
 
+```vbnet
 Dim x,y,z
-
 Show
-
 x=5 :y=10: z=20
-
 Print x,y,z
-
 Print x;y;z
+```
 
 **Cls:** Form üzerine yukarıdaki yöntemlerle yazılmış yazı ve çizimleri siler. Forn üzerindeki kontrollerde bir değişiklik olmaz.
 
@@ -846,7 +891,9 @@ Bu özellikleri, özellikle yazıcıda tablo gibi aynı hizada bulunması gereke
 
 Örneğin formun ortasını orijin, sol üst köşeyi -10,10 ve sağ alt köşeyi de 10,10 kabul edecek yeni bir koordinat sistemi oluşturmak için
 
+```vbnet
 Form1.Scale (-10,10,10,-10)
+```
 
 şeklinde kullanılabilir. Bu işlemden sonra uygulayacağınız yazım ve çizim metodları bu koordinat sistemi referans alınarak yapılacaktır.
 

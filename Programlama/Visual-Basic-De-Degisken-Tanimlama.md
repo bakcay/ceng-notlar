@@ -12,17 +12,23 @@ Bir değişken tanımlanırken aşağıdaki kuralları göz önünde bulundurulm
 
 Değişken ismi bir harf ile başlamalıdır.
 
+```basic
 Ad1, Ad2
+```
 
 Değişken isminde boşluk bulunmaz. Bunun yerine alt çizgi karakteri kullanılabilir.
 
 Değişken isminde sadece harfler, rakamlar ve alt çizgi karakterleri bulunabilir.
 
-Adı\_Soyadı, No1
+```basic
+Adı_Soyadı, No1
+```
 
 Değişkene verilecek isim VB komutlarından oluşmamalıdır.
 
+```basic
 Not, Dim, Val ......vs
+```
 
 Değişken ismi 255 karakterden fazla olmamalıdır.
 
@@ -30,7 +36,9 @@ Değişken ismi 255 karakterden fazla olmamalıdır.
 
 VB’de değişken tipleri Dim değimi ile tanımlanır. Bu değimin yazılımı;
 
-Dim deg\_adı \[(Dizi boyutu)\] As tipi
+```basic
+Dim deg_adı [(Dizi boyutu)] As tipi
+```
 
 **deg \_adı :** Tanımlanacak değişkenin ismidir.
 
@@ -64,21 +72,20 @@ olan bir dizi tanımlanmıştır.
 
 **Boolean : **2 Baytlık bir veri tipidir. Sadece True ve False değerleri alabilir.
 
-** **Dim ogrenci As Boolen
-
+```basic
+Dim ogrenci As Boolen
 Ogrenci=True
-
 Ogernci=1 Bu atamaların hepsi aynı işi
-
 Ogernci=100 görür.
+```
 
 **String : **Karakter sınırı verilmezse 2 milyar karaktere kadar atama yapılabilen sayısal veri tipidir. +10 bayt yer kaplar. Karakter sayısını sınırlamak için ;
 
-Dim a As String \* sınır yazılır.
-
+```basic
+Dim a As String * sınır yazılır.
 Dim a String İstenildiği kadar karakter ataması yapılabilir.
-
-Dim b String \* 3 3 tane karakter ataması yapılabilir.
+Dim b String * 3 3 tane karakter ataması yapılabilir.
+```
 
 **Variant : **VB’de değişken tanımlanırken tip ismi verilmemişse bu tip Variant olarak ele alınır ve değişkenin tipi atanacak değere göre değişir. Variant tipler yukarıdaki tiplerden herhangi biri gibi işleme girebilir ve programın çalışması esnasında değişebilir.
 
@@ -88,95 +95,87 @@ Dim b String \* 3 3 tane karakter ataması yapılabilir.
 
 **5.2. Kullanıcı Tarafından Yeni Tip Tanımlanması******
 
-Type tip\_adı
-
-Deg\_adı As tipi
-
-Deg\_adı As tipi
-
+```basic
+Type tip_adı
+Deg_adı As tipi
+Deg_adı As tipi
 .........................
-
 .........................
-
 .........................
-
 End Type
+```
 
 Bu sekil de tanımlanan tipte bir değişken tanımlamak için de;
 
-Dim deg\_adı As tip\_ismi olarak tanımlanabilir.
+```basic
+Dim deg_adı As tip_ismi olarak tanımlanabilir.
+```
 
 Tip tanımı bir form içerisinde ancak Private olarak tanımlanabilir. Yani tanımlanan tip sadece o formda kullanılır. Genel yani Public bir tip ise ancak bir modül içerisinde kullanılabilir.
 
 Bir formda tip;
 
+```basic
 Private Type Ad
-
 ..............
-
 End Type şeklinde tanımlanır.
+```
 
 **Örnek 5.1:**
 
+```basic
 Type Rehber
-
 Ad As String
-
 Soyadı As String
-
 Tel As Integer
-
 Adres As String
-
 End Type
+```
 
 Burada Rehber değişkenini değil Rehber tipini tanımladık. Artık Rehber yapısındaki değişkenleri tanımlayabiliriz.
 
+```basic
 Dim adı As Rehber şeklinde tanımlayabiliriz.
+```
 
 Bu değişkene değer atamak için “.” operatörünü kullanalım ;
 
+```basic
 Adı.Ad = “Bahadır”
+```
 
 **5.2.1. Enum**
 
+```basic
 Enum Tip İsmi
-
 Elemen1=Sayı1
-
 Eleman2=Sayı2
-
 ........................
-
 Eleman3=SayıN
-
 End Enum
+```
 
 Bu tip her bölüme bir numara verir. VB bu bölümü bir sayı olarak kullanmasına rağmen bunu bir string gibi kullanma imkanı verir.
 
 **Örnek 5.2:**
 
+```basic
 Enum bolum
-
 Bilgisayar=1
-
 Elektronik=2
-
 Makine=3
-
 Metal=4
-
 Yapı=5
-
 YapıRes=6
-
 End Enum
+```
 
 Tanımını yaptıktan sonra bolum tipinde değişkenler tanımlayarak bu değişkenlere değer atamak mümkündür.
 
+```basic
 Dim eğitim As bolum
-
 Bolum=Bilgisayar
+```
 
 Satırı ile bolum değişkenine Bilgisayar atamaktayız. Bu işlem eğitim=1 satırı ile aynı işi yapmasına karşın anlaşılması daha kolaydır.
 
@@ -184,7 +183,9 @@ Satırı ile bolum değişkenine Bilgisayar atamaktayız. Bu işlem eğitim=1 sa
 
 ** **Programda tanımlanacak dizinin boyutu her zaman belli olmayabilir. Bu durumda diziyi dinamik olarak tanımlamamız gerekir. Diziyi dinamik olarak tanımlayabilmek için ReDim değimi kullanılır. Diziyi dinamik olarak tanımlamak demek dizinin boyunun ihtiyaç olduğunda artırılması veya azaltılması demektir. Üstelik dizinin eski halini koruyarak.
 
-ReDim \[Preserve\] deg\_adı (dizi boyutu\] As tipi
+```basic
+ReDim [Preserve] deg_adı (dizi boyutu] As tipi
+```
 
 ReDim ile dizin ilk defa tanımlanacağı gibi yine ReDim’le tanımlanmış dizinin boyutunu değiştirmek için de kullanılabilir. Burada Dim’den farklı olarak Preserve parametresi vardır.
 
@@ -192,27 +193,24 @@ Preserve, dizinin yeniden boyutlandırılması durumunda dizide bulunan elaman i
 
 Tanımlanacak dizi local bir dizi olmayacaksa dizi öncelikle Dim veya Global değimiyle aşağıdaki gibi tanımlanmalıdır.
 
-Dim deg\_adı () As tipi
+```basic
+Dim deg_adı () As tipi
+```
 
 Görüldüğü dizi tanımlanırken parantez içerisinde dizi boyutu verilmemiştir. Bu VB’ye dizinin dinamik olarak tanımlanacağını belirtecektir. Daha sonra dizinin elaman sayısı ReDim değimi kullanılarak belirlenir.
 
+```basic
 Private Type takip
-
-Ad As String \* 25
-
-Soyad As String \* 25
-
-Sınıfı As String \* 2
-
-No As String \*6
-
+Ad As String * 25
+Soyad As String * 25
+Sınıfı As String * 2
+No As String *6
 End Type
 
 Dim Ogr () As takip “Diziyi dinamik olarak tanımla
-
-Dim dizi\_boyu As Integer ‘En son tanımlanan dizinin boyutu
-
-Dim eleman\_say As Integer ‘Dizideki son eleman indeksi
+Dim dizi_boyu As Integer ‘En son tanımlanan dizinin boyutu
+Dim eleman_say As Integer ‘Dizideki son eleman indeksi
+```
 
 **5.4. Global ve Local Değişkenler **
 
@@ -226,11 +224,15 @@ Bir fonksiyon veya alt programda tanımlanmışsa Local’dır. Sadece o prosed�
 
 Bir formun General Declarations kısmında Public değimi ile tanımlanmışsa diğer modüller ve formlarda bu değişkeni kullanabilirler. Ancak değişkenin isminden önce modülün/formun ismini vermesi gerekir.
 
+```basic
 Form1 . x = 4
+```
 
 Bir değişkeni programın her tarafında kullanılacak şekilde tam olarak global tanımlamak için o değişkeni bir modülün General-Declaration kısmında Public değimi ile tanımlamak gerekir.
 
+```basic
 Public x
+```
 
 Local değişkenlerin önemli bir avantajı bellekte fazladan yer işgal
 
@@ -242,17 +244,23 @@ Local olarak tanımlanan bir değişken tanımlandığı alt program veya fonksi
 
 Local olarak tanımlanan bir değişkenin değerinin tanımlandığı alt program veya fonksiyonun çalışması bittikten sonra da değerinin korunması isteniyorsa Dim yerne Static değimiyle tanımlama yapılır. Static değimi bir alt program veya fonksiyon altında tanımlanabilir:
 
-Static deg\_adı \[(dizi boyutu)\] As tipi
+```basic
+Static deg_adı [(dizi boyutu)] As tipi
+```
 
 **5.6. Sabit Tanımlama******
 
 Programda değerlerinin değişmesi istenmeyen değerler sabit olarak tanımlanır. VB sabit tanımlama;
 
+```basic
 Cost Sabit ismi=Değeri
+```
 
 **Örnek 5.3:**
 
+```basic
 Cost PI=3.1415
+```
 
 **5.7. Değişkenlere İlk Değer Ataması**
 
@@ -260,41 +268,49 @@ Local değişkenlere ilk değer ataması şu şekildedir.
 
 Dim değimiyle ile tip ismi kullanılmadan yapılan tanımlamalarda ilk değer ataması direk olarak tanımın yapıldığı satırda yapılabilir.
 
+```basic
 Dim x=5, y=10
+```
 
 Tip ismi kullanılarak yapılan tanımlamalarda ise ikinci bir satırda ilk değer ataması yapılır.
 
+```basic
 Dim x As Integer
-
 x=5
+```
 
 Global olarak tanımlanan değişkene ilk değer ataması Declarations kısmında yapılır ve burası bir alt program değildir. Dolayısıyla Global olarak tanımladığımız değişkenlerimize ilk değer atamasını Form\_Load veya projenin çalışmaya başladığı alt program altında yapmalıyız.
 
 Static değişkenlere de ilk değer ataması IsEmpty () fonksiyonu ile yapılır. Bu fonksiyon bir değişkene değer atanıp atanmadığını kontrol eder. Verilen değişkene değer ataması yapılmamışsa fonksiyondan geri dönen değer TRUE’dir. Fonksiyonun bu özelliğinden yararlanarak static olarak tanımlanan değişkene daha önce değer atanıp atanmadığını yani ilk defamı kullanıldığını öğrenebiliriz.
 
+```basic
 Static i;
-
 If IsEmpty(i) then i=5
+```
 
 Böylece alt program ilk defa çalıştığında i’ye her hangi bir değer ataması olmadığı için şartımız çalışacak ve ilk değer atanacaktır. Alt programın sonraki seferlerde çalışması durumunda ise i’nin static olmasından dolayı atanmış bir değer olacak ve şartımız çalışmayacaktır. Böylece sadece alt program ilk defa çalıştığında ilk değerimizi atamış olacağız.
 
 VB’de bir diziye değer ataması da değişkeni Variant olarak tanımladıktan sonra Array fonksiyonu ile o değişkenin bir dizi olduğunu belirtmek ve ilk değer atamak mümkündür.
 
-Dim Dizi \[As Variant\]
-
+```basic
+Dim Dizi [As Variant]
 Dizi=Arrray(eleman)
+```
 
 **Örnek5.4:**
 
+```basic
 Dim gün
-
 Gün= Array(“Pazar”, “Pazartesi”, “Salı”, “Çarşamba”, “Perşembe”, “Cuma”, “Cumartesi”)
+```
 
 **5.8.Kullanılan Değişkenlerin Tipini Belirlemek**
 
 Tipi belirtilmeyen Variant tipi değişkenlere programın işletimi sırasında istenen tipteki bilgi aktarılabilir. VarType fonksiyonu ile Variant bir değişkenin hangi tipte bilgi içerdiği öğrenilebilir.
 
+```basic
 VarType (Variant Değişken Adı)
+```
 
 Yazılımında da görüldüğü gibi bu fonksiyon dışarıdan içerdiği bilginin tipi öğrenilmek istenen değişkenin adını almaktadır. Geriye ise değişkenin içerdiği bilginin tipini temsil eden sayısal bir değeri döndürmektedir. Eğer Variant değişken karaktersel bilgi içeriyorsa VarType() fonksiyonu geriye 8 sayısal değerini döndürür. VarType fonksiyonu ile döndürülecek sayısal değer ve bu değerlerin temsil ettikleri veri tipleri aşağıdaki tabloda verilmiştir.
 
@@ -345,51 +361,65 @@ Tablo-5.1. Veri Tipleri
 
 ** **Değişkenin içeriği geçerli bir tarih ise geri dönen tarih True, değilse False’dir kabul edilen tarih formatı Windows’da tanımlanan formattır.
 
+```basic
 IsDate (değişken)
+```
 
 **Örnek 5.4:**
 
-** **Dim a
-
+```basic
+Dim a
 a=IsDate(“30/02/1999”) ‘ Verilen tarih geçerli değildir. A=True (Şubat ayı 29 gündür.
-
 a=IsDate(“13bfg”) ‘Verilen tarih geçerli değildir. A=False
+```
 
 **5.10.2. IsNumeric **
 
 ** **Verilen değişkenin içeriğinin bir sayı olup olmadığını kontrol eder. Değişkenin içeriği sayı ise geri dönen değer True değilse False’dir.
 
+```basic
 IsNumeric(değişken)
+```
 
 **5.10.3. IsArray**
 
 ** **Girilen değişken bir dizi ise True değilse falese üretir. Yani bir değişkenin dizi olup olamadığını öğrenmek için kullanılır.
 
+```basic
 IsArray(değişken)
+```
 
 **5.10.4. IsEmpty**
 
 Tanımlanmış bir değişkene henüz bir değer atanmamışsa o değişken Empty’dir. Bir değişkene değer atanıp atanmadığını öğrenmek için kullanılır. Dönen değer False ise değişkene bir atama yapılmıştır.
 
+```basic
 IsEmpty (Değişken)
+```
 
 **5.10.5. IsMissing **
 
 ** **VB’de fonksiyon veya alt programlara giriş parametresi olarak Optional değimi kullanılırsa o parametre kullanılmadan da o fonksiyon çağrılabilir. IsMissing fonksiyonu bu tip parametrelerin verilip verilmediğini kontrol etmek için kullanılır.
 
+```basic
 IsMissing (Değişken)
+```
 
 **5.10.6. IsObject **
 
 ** **Verilen değişkenin tipi Object tipinde ise fonksiyondan geriye True değeri döner.
 
+```basic
 IsObject (Değişken)
+```
 
 **5.10.7. Erase **
 
 İsmi verilen diziyi siler.
 
+```basic
 Erase Diziismi
+```
 
 PAGE 10
 

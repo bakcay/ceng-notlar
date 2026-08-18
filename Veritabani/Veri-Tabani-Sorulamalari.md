@@ -100,54 +100,81 @@
 
 **1. TEK TABLODAN SORGULAMALAR:
 **
-**SELECT \* FROM** tablo
+
+```sql
+SELECT * FROM tablo
+```
 
 **ÖRNEK:** Bütün bilgileri personel tablosundan koşulsuz olarak listele.
-**SELECT \* FROM personel **
+
+```sql
+SELECT * FROM personel
+```
 
 **ÖRNEK**: Personel tablosundan SEÇ komutuyla istenen sütun adlarını belirt.
-**SELECT sicil, sosy\_g\_no, ad, soyad, dog\_tar, sicil,sosy\_g\_no,ad,soyad,dog\_tar, adres, cins, brüt, böl\_no, yön\_s\_g\_n FROM personel; **
+
+```sql
+SELECT sicil, sosy_g_no, ad, soyad, dog_tar, sicil,sosy_g_no,ad,soyad,dog_tar, adres, cins, brüt, böl_no, yön_s_g_n FROM personel;
+```
 
 **ÖRNEK**: Personel tablosundan istenen sütün başlıklarını listele.
-**SELECT sicil, ad, soyad, brüt FROM personel;
-**
+
+```sql
+SELECT sicil, ad, soyad, brüt FROM personel;
+```
+
 **DISTINCT (Tekrarsız)**
 
 **TANIM**: SQL’de tablo içinde birbirinin aynı datalar bulunabilir. Aynı satırların listeleme esnasında bir kez yazılması için Distinct sözcüğünü kullan.
 
 **ÖRNEK**: Par \_sat dosyasından sat\_no’lar tekrarsız olarak listelenecektir.
-**SELECT DISTINCT sat\_no FROM par\_sat; ****
-**
+
+```sql
+SELECT DISTINCT sat_no FROM par_sat;
+```
+
 **2. TABLO BİLGİLERİNİN SIRALANMIŞ OLARAK LİSTELENMESİ:**
 
 **ORDER BY **(Sırasıyla)
 **TANIM**: Tablodaki sütunlardan ,belirli bir sütuna göre listelemek için SELECT komutuna , ORDER BY eklenir.
 **ÖRNEK**: Personel dosyasından, sicil, ad, soyad, brüt sütunlarını seç ve brüt (maaşa) göre büyükten küçüğe sırala.
 
-**SELECT sicil, ad, soyad, brüt FROM personel ORDER BY brüt ASC;
-**
+```sql
+SELECT sicil, ad, soyad, brüt FROM personel ORDER BY brüt ASC;
+```
+
 **DESC** : Küçükten büyüğe sırala (A-Z) **ASC **: Büyükten küçüğe sırala (Z-A)
 DESC yazılmazsa ASC direct kabul edilir (DEFAULT)
 
 **3. BİRDEN ÇOK ALANA GÖRE SIRALAMA:****
 **
+
 **TANIM**: Bir tablo içinde ,birden fazla sütundan aynı anda sıralamak için kullanılır.
 **ÖRNEK**: Personel dosyasından seçilen sütunlarını aynı anda hem ad, hem de otomatik olarak sıralar.
 
-**SELECT sicil, ad, soyad, brut FROM personel ORDER BY ad, brut;
-**
+```sql
+SELECT sicil, ad, soyad, brut FROM personel ORDER BY ad, brut;
+```
+
 **ÖRNEK **Personel tablosundan seçili sütunları öncelik adda olmak üzere (Z-A) adı bozmadan soyadı (A-Z) sıralı listeler.
 
-**SELECT sicil, ad, soyad, brut FROM personel ORDER BY ad ASC, soyad DESC, brut ASC; **
+```sql
+SELECT sicil, ad, soyad, brut FROM personel ORDER BY ad ASC, soyad DESC, brut ASC;
+```
+
 veya;
-**SELECT sicil, ad, soyad, brut FROM personel ORDER BY ad, soyad DESC, brut;
-**
+
+```sql
+SELECT sicil, ad, soyad, brut FROM personel ORDER BY ad, soyad DESC, brut;
+```
 
 **KOŞULA BAGLI OLARAK LISTELEME:**
 **WHERE ****
 TANIM**: verilen koşulu sağlayanlar listelenir. İki veri birbiriyle karşılaştırılmaktadır. Karşılaştırılan verilerin türü aynı olmalıdır.
 
-**SELECT \* FROM personel WHERE brüt > 5000000;
+```sql
+SELECT * FROM personel WHERE brüt > 5000000;
+```
 
 ****KARŞILAŞTIRMA OPERATÖRLERI:****
 
@@ -162,94 +189,135 @@ TANIM**: verilen koşulu sağlayanlar listelenir. İki veri birbiriyle karşıla
 
 **ÖRNEK**: Maaşı 8000000TL’den fazla olmayan personeli listele.
 
-**SELECT \* FROM personel WHERE brüt <= 8000000; **
+```sql
+SELECT * FROM personel WHERE brüt <= 8000000;
+```
 
 **2. KARAKTER VERİ TİPLERİ (CHAR):**
 Karakter çift veya tek tırnak ile gösterilir.
 
 **ÖRNEK**: Adı Ali olmayan personele ait kayıtları listele.
-**SELECT \* FROM personel WHERE ad <> “Ali”;
-**
+
+```sql
+SELECT * FROM personel WHERE ad <> “Ali”;
+```
+
 **3. TARİH VERİ TİPİ:**
 Tarih VERİ TİPLERİ { } sembolleri içinde yazılır.
 **ÖRNEK**: Hangi personelin doğum tarihi 1960 yılından daha öncedir?
 
-**SELECT \* FROM personel WHERE dog\_tar <={12/31/59};
-**
+```sql
+SELECT * FROM personel WHERE dog_tar <={12/31/59};
+```
+
 **4. MANTIKSAL (LOJİK) VERİ TİPİ:**
 
 Mantıksal veriler için mümkün olabilen sadece iki değer söz konusudur. DOĞRU D (TRUE T), YANLIŞ Y (FALSE F) ile simgelenir.
 
 **ÖRNEK:** Personel tablosunda personelin cinsiyetini belirten cins adlı alan mantıksal (logical) olarak tanımlanmıştır. Cinsiyeti erkek olanları D, kadın olanları y ile tanımlarsak erkek olanları listele.
 
-**SELECT \* FROM personel WHERE cins = .T.; ****
-**
+```sql
+SELECT * FROM personel WHERE cins = .T.;
+```
+
 **4. BİRDEN ÇOK KOŞULA DAYALI SORGULAMALAR: (NOT, AND, OR)**
 **TANIM**: Mantıksal operatörlerin yardımı ile birden çok koşulun gerçekleştirmesine bağlı olarak ifade edilebilecek (karmaşık yada birleşik koşullu listelemeleri gerçekleştirilmektedir.)
 
 **AND (VE)**
 **ÖRNEK**: Maaşı 5000000’dan fazla olan ve cinsiyeti erkek olan personelin listelenmesi istenir yani iki koşul verilmektedir ve ikisinin de olması istenir.
 
-**SELECT \* FROM personel WHERE brüt >5000000 AND cins =.T.;
-**
+```sql
+SELECT * FROM personel WHERE brüt >5000000 AND cins =.T.;
+```
+
 **NOT (DEĞİL)
 OR (VEYA**)
 
 **ÖRNEKLER:**
 1. Doğum tarihi 1960’dan önce olan maaşı 6000000 - 10000000 arasındaki bayan personelin listele.
 
-**SELECT \* FROM dog\_tar < {01/01/60} AND brüt > = 6000000 AND brüt < =10000000
-AND cins = .F.; **
+```sql
+SELECT * FROM dog_tar < {01/01/60} AND brüt > = 6000000 AND brüt < =10000000
+AND cins = .F.;
+```
 
 2. Satış bölümüyle muhasebe bölümündekiler kimlerdir?
 (Satış bölümünün böl\_no’sunun 1 ve muhasebe bölümünün böl\_no’sunun 2 olduğu varsayılmaktadır.)
 
-**SELECT \* FROM personel WHERE bol\_no =1 OR bol\_no = 2;
-**3. Bölümü Satış yada Muhasebe olamayan 1960’dan sonra doğmuş bayan personeli listele.
+```sql
+SELECT * FROM personel WHERE bol_no =1 OR bol_no = 2;
+```
 
-**1.YAZILIM:
-****SELECT \* FROM personel WHERE NOT (böl\_no =1 OR böl\_no =2) AND dog\_tar > ={01/01/60}
-AND cins =.F.; **
-**2.YAZILIM:
-****SELECT \* FROM personel WHERE böl\_no <> 1 AND böl\_no <> 2 AND dog\_tar > ={01/01/60}
+3. Bölümü Satış yada Muhasebe olamayan 1960’dan sonra doğmuş bayan personeli listele.
+
+**1.YAZILIM:**
+
+```sql
+SELECT * FROM personel WHERE NOT (böl_no =1 OR böl_no =2) AND dog_tar > ={01/01/60}
 AND cins =.F.;
-**
+```
+
+**2.YAZILIM:**
+
+```sql
+SELECT * FROM personel WHERE böl_no <> 1 AND böl_no <> 2 AND dog_tar > ={01/01/60}
+AND cins =.F.;
+```
+
 **BİR VERİ KÜMESİNDE ARAMA -IN OPERATÖRÜ
 **
+
 **IN (içinde**)
 “IN” operatörü NOT ile kullanılabilir.
 
 **ÖRNEK:** Bölümü 1,2,3 olmayan personel kimlerden oluşmaktadır?
-**SELECT \* FROM personel WHERE bol\_no NOT IN (1,2,3); **
+
+```sql
+SELECT * FROM personel WHERE bol_no NOT IN (1,2,3);
+```
 
 **ÖRNEK:** Böl\_no’su 1, 2 yada 3 olan personeli listele.
-**SELECT \* FROM personel WHERE böl\_no = 1 OR böl\_no= 2 OR böl\_no = 3; **
+
+```sql
+SELECT * FROM personel WHERE böl_no = 1 OR böl_no= 2 OR böl_no = 3;
+```
 
 Bu örneğin IN ile yapılmış şekli daha kısadır.
 
-**SELECT \* FROM personel WHERE NOT böl\_no IN (1,2,3); **
+```sql
+SELECT * FROM personel WHERE NOT böl_no IN (1,2,3);
+```
 
 **BETWEEN SORGULAMA SÖZCÜĞÜ:****
 **
+
 **BETWEEN (ARASINDA**)
 **ÖRNEK**: Maaşı 5 - 10 milyon arasında olan personel kimlerdir?
 
-**SELECT \* FROM personel WHERE brüt > =5000000 AND brüt < = 10000000; **
+```sql
+SELECT * FROM personel WHERE brüt > =5000000 AND brüt < = 10000000;
+```
 
 BETWEEN (ARASINDA) komutu ile daha kısa olacaktır.
 
-**SELECT \* FROM personel WHERE brüt BETWEEN 5000000 AND 10000000; **
+```sql
+SELECT * FROM personel WHERE brüt BETWEEN 5000000 AND 10000000;
+```
 
 **KARAKTER TÜRÜ BİLGİ içinde ARAMA LIKE SÖZCÜĞÜ:**
 
 **TANIM ÖRNEĞİ**: Adres sütunu içerisinde semt bölümüne ait ayrıca bir sütun olmadığını varsayarak semt adı adres sütunu içerisinde yer alır ve buradan da LIKE (BULUNAN) komutuyla adres sütunu içerisinde Taksim semtinde oturan personeli listele.
 
-**SELECT \* FROM personel WHERE adres LIKE ‘% TAKSİM %’ ; **
+```sql
+SELECT * FROM personel WHERE adres LIKE ‘% TAKSİM %’ ;
+```
 
 Adres LIKE ‘%TAKSİM%’ ifadesi adres içinde her hangi bir yerde TAKSİM yazan yerde oturan personeli listeleyecektir.
 LIKE sözcüğünü, alt çizgi (-) sembolü ile birlikte kullanmakta mümkündür.
 
-**SELECT \* FROM personel WHERE ad LIKE ‘Mehmet -----‘; **
+```sql
+SELECT * FROM personel WHERE ad LIKE ‘Mehmet -----‘;
+```
 
 Şekildeki komut ile ad alanı “Mehmet “ ile başlayan ve ad alanı uzunluğu 10 karakter olan isimlere sahip personeli listeleyecektir.”Mehmet Ali”,”Mehmet Can”- “Mehmetcik” gibi isimler listeleyecektir. Anlaşılacağı gibi - sembolü, tek karakterlik bir bilgiyi temsil etmektedir.
 
@@ -261,48 +329,71 @@ SUM FONKSİYONU:
 **Fonksiyonun argümanı olarak belirtilen sütun ile ilişkili olana toplama işlemini gerçekleştirir.
 
 **ÖRNEK**: İşletmedeki personelin brüt maaşlar toplamı ne kadardır?
-**SELECT SUM (brüt) FROM personel;
-****AVG FONKSİYONU:
+
+```sql
+SELECT SUM (brüt) FROM personel;
+```
+
+**AVG FONKSİYONU:
 ****AVG (ORTALA**)
 Aritmetiksel ortalama (average) hesaplamak için kullanılır.
-**SELECT AVG(brüt) FROM personel; **
+
+```sql
+SELECT AVG(brüt) FROM personel;
+```
 
 **MAX FONKSİYONU:
 ****MAX (EN ÜST)
 **Tablo içinde ,belirtilen sütun (alan)içindeki en büyük değeri bulur.
 **ÖRNEK**: İşletme içindeki en yüksek maaş ne kadardır?
-**SELECT MAX (brüt) FROM personel;
-**
+
+```sql
+SELECT MAX (brüt) FROM personel;
+```
+
 **MIN FONKSİYONU:
 ****MIN (EN ALT**)
 Tablo içinde, belirlenen sütun alan içindeki en küçük değeri bulur.
 **ÖRNEK**: İşletme içinde 4 Mayıs 1970’den önce doğanlar için, asgari ücret nedir?
-**SELECT MIN(brüt) FROM personel WHERE dog\_tar < {05/04/70};
-**
+
+```sql
+SELECT MIN(brüt) FROM personel WHERE dog_tar < {05/04/70};
+```
+
 **COUNT FONKSİYONU:
 ****COUNT (SAY)**
 Tablo içinde, her hangi bir sayma işlemi gerçekleştirmek için kullanılır.
 **ÖRNEK**: Ücreti 6000000’dan olan personel sayısı nedir?
-**SELECT COUNT (\*) FROM personel WHERE brüt > 6000000;
-**
+
+```sql
+SELECT COUNT (*) FROM personel WHERE brüt > 6000000;
+```
 
 COUNT (SAY) fonksiyonu DISTINCT (TEKRARSIZ) sözcüğü ile de kullanılır.
 **ÖRNEK: **Personel tablosunda mevcut personelin işletme içinde kaç tane farklı bölümde çalıştığını bul.
-**SELECT COUNT(DISTINCT böl\_no) FROM personel;
-COUNT (böl\_no) **
+
+```sql
+SELECT COUNT(DISTINCT böl_no) FROM personel;
+COUNT (böl_no)
+```
 
 **6. GRUPLANDIRARAK İŞLEM YAPMA:**
 
 **GROUP BY (GRUPLA**)
 **ÖRNEK**: Her bölümdeki ortalama maaş nedir?
-**SELECT bol\_no, AVG (brut) FROM personel GOUP BY bol\_no;
-**
+
+```sql
+SELECT bol_no, AVG (brut) FROM personel GOUP BY bol_no;
+```
+
 ** HAVING (SAHİP)**
 
 Gruplandırarak kümeleme fonksiyonunu uygularken koşulda verilebilir.Bu durumda grup üzerindeki hesaplamalarla ilgili koşul belirtilirken **HAVING** (SAHİP) sözcüğü kullanılır.
 **ÖRNEK**: En yüksek maaşın 9000000’dan fazla olduğu bölümlerdeki personele ait ortalama maaşları listele.
 
-**SELECT böl\_no,AVG (brüt) FROM personel GROUP BY böl\_no HAVING AVG(brüt)> 9000000; **
+```sql
+SELECT böl_no,AVG (brüt) FROM personel GROUP BY böl_no HAVING AVG(brüt)> 9000000;
+```
 
 HAVING sözcüğü SELECT konusunda GROUP BY bulunmadığı zaman geçersizdir. HAVING sözcüğünü izleyen ifade içinde SUM , COUNT(\*) ,AVG, MAX yada MIN fonksiyonlarından en az biri bulunmalıdır. HAVING sözcüğü sadece gruplanmış veriler üzerindeki işlemlerde geçerlidir. WHERE sözcüğü bir tablonun tek tek satırları üzerinde işlem yapan koşullar içinde geçerlidir.
 
@@ -310,43 +401,60 @@ Bazı durumlarda HAVING ve WHERE sözcükleri ile birlikte SELECT komutu içinde
 
 **ÖRNEK**: Personel tablosu içinde her bölümde erkek personele ait maaşlar için ortalamanın 9000000’dan fazla olduğu bölümleri listele.
 
-**SELECT bol\_no, AVG (brut) FROM personel WHERE cins= .T. GROUP BY bol\_no HAVING AVG (brut) > 9000000; **
+```sql
+SELECT bol_no, AVG (brut) FROM personel WHERE cins= .T. GROUP BY bol_no HAVING AVG (brut) > 9000000;
+```
 
 **BİRDEN FAZLA TABLOYU İLİŞKİLENDİRMEK:**
 
 **JOIN (İLİŞKİLENDİR)**
 **ÖRNEK:** Personel ve bölüm adlı 2 tablo bulunmaktadır.
 Çalışan her personel ve personelin yöneticisi ile ilişkili bilgiler nelerdir?
-**SELECT \* FROM personel,bölüm WHERE personel .böl\_no=bölüm.bölüm\_no ; ******
+
+```sql
+SELECT * FROM personel,bölüm WHERE personel .böl_no=bölüm.bölüm_no ;
+```
 
 **ÖRNEK**: JOIN (İLİŞKİLENDİR) işleminde arzu edilen (sicil, ad, soyad, böl\_no, yön\_s\_g\_n) alanların listele.
-**SELECT sicil,ad,soyad,bol\_no,yon\_s\_g\_n FROM personel, bolum WHERE personel .bol\_no = bolum .bolum\_no;
-**
+
+```sql
+SELECT sicil,ad,soyad,bol_no,yon_s_g_n FROM personel, bolum WHERE personel .bol_no = bolum .bolum_no;
+```
+
 **SELF-JOIN: KENDİSİYLE -İLİŞKİLENDİR:
 TANIM**: Bir tablonun kendisi ile birleştirilmesine “KENDISIYLE-İLİŞKİLENDİR” denir.(SELF-JOIN)
 
-**SELECT A. sicil , A.ad , A.soyad, B .ad , B.soyad , B.dog\_tar FROM personel A , personel B
-WHERE A. yon\_sos\_g\_n =B .sosy\_g\_no;
-**
+```sql
+SELECT A. sicil , A.ad , A.soyad, B .ad , B.soyad , B.dog_tar FROM personel A , personel B
+WHERE A. yon_sos_g_n =B .sosy_g_no;
+```
 
 **NESTED SELECTS:**
 **İÇİÇE SEÇİMLER**
 
 **TANIM**: İç içe geçmiş SELECT komutlarından oluşur. İçteki Select komutunun bulduğu sonucu dış takı komutumuz işlevini yerine getirmesi için kullanılır.
 **ÖRNEK: **Parça numarası 24 olan parçayı, projelerde kullanan çalışan personeli listele.
-**SELECT \* FROM personel WHERE sosy\_g\_no IN(SELECT per\_s\_g\_no FROM parca, proje, calisma WHERE pr\_no = proj\_no AND proj\_no =proj\_no AND par\_no =24);
-**
+
+```sql
+SELECT * FROM personel WHERE sosy_g_no IN(SELECT per_s_g_no FROM parca, proje, calisma WHERE pr_no = proj_no AND proj_no =proj_no AND par_no =24);
+```
+
 **ÖRNEK**: Fatih’te oturan personelin çalıştığı projelerin adlarını ve yerlerini listele.
-**SELECT proj\_ad, yer FROM proje WHERE proj\_no IN (SELECT proje\_no FROM personel, calisma WHERE sosy\_g\_no = per\_s\_g\_no AND adres LIKE “% fatih %”); **
+
+```sql
+SELECT proj_ad, yer FROM proje WHERE proj_no IN (SELECT proje_no FROM personel, calisma WHERE sosy_g_no = per_s_g_no AND adres LIKE “% fatih %”);
+```
 
 ** UNION (BİRLEŞİM**)
 **TANIM:** İki ayrı SEÇ komutunun sonucunda elde edilen tabloların birleşimi işlemini gerçekleştirir.
 
 **ÖRNEK**: Adı Ahmet ve Soyadı Caner olan kişi yada kişileri işletmenin yürüttüğü projelerde çalışan bir kişi (sıradan bir personel yada bölüm yöneticisi)olarak bulunduran projelerin isimlerini ve projelerin yürütüldüğü yerleri listele.
 
-**(SELECT proj\_ad,yer FROM proj,bölüm,personel WHERE bl\_no=bolum\_no AND
-y\_sos gno = sosy\_g\_no AND ad =”Ahmet”AND soyad =”Caner”) UNION (SELECT proj\_ad,yer
-FROM proje,çalışma,personel WHERE proj\_no = proje\_no AND Per\_s\_g\_no = sosy\_g\_no AND ad =”Ahmet” AND soyad =”Caner”) ******
+```sql
+(SELECT proj_ad,yer FROM proj,bölüm,personel WHERE bl_no=bolum_no AND
+y_sos gno = sosy_g_no AND ad =”Ahmet”AND soyad =”Caner”) UNION (SELECT proj_ad,yer
+FROM proje,çalışma,personel WHERE proj_no = proje_no AND Per_s_g_no = sosy_g_no AND ad =”Ahmet” AND soyad =”Caner”)
+```
 
 **KOŞULLAR:
 **UNION (BİRLEŞİM) sözcüğü ile, iki yada daha çok kişi SELECT ’in sonucu olan tabloların küme birleşimi işlemine tabi tutulması için 2 koşul gereklidir.
@@ -357,57 +465,83 @@ FROM proje,çalışma,personel WHERE proj\_no = proje\_no AND Per\_s\_g\_no = so
 
 **ÖRNEK**: Satış bölümünde çalışan personelin her hangi birinden daha düşük maaş alan ve mühendislik bölümündeki kişileri listele.
 
-**SELECT \* FROM personel WHERE brüt < ANY (SELECT brut FROM personel WHERE bol\_no = 2) AND bol\_no =1;
-**
+```sql
+SELECT * FROM personel WHERE brüt < ANY (SELECT brut FROM personel WHERE bol_no = 2) AND bol_no =1;
+```
+
 Aynı ifade aşağıdaki gibi yazılabilir:
-**SELECT \* FROM personel WHERE brut < (SELECT MAX (brut ) FROM personel
-WHERE bol\_no = 2) AND bol\_no =1; **
+
+```sql
+SELECT * FROM personel WHERE brut < (SELECT MAX (brut ) FROM personel
+WHERE bol_no = 2) AND bol_no =1;
+```
 
 **ALL (HEPSİ**)
 **ÖRNEK**: Satış bölümünde çalışan ve mühendislik bölümündeki personelin hepsinden daha fazla maaş alan personeli listele.Bu örnekte satış bölümü kodu = 2 ve mühendislik bölümü kodu = 1 alınmıştır.
 **YAPILIŞ YOLU:**
-1) **SELECT \* FROM personel WHERE brut > ALL (SELECT brut FROM personel WHERE bol\_no = 1 AND bol\_no = 2;
-**
+1)
 
-2) **SELECT \* FROM personel WHERE brut > (SELECT MAX (brut) FROM personel
-WHERE bol\_no = 1) AND bol\_no =2; **
+```sql
+SELECT * FROM personel WHERE brut > ALL (SELECT brut FROM personel WHERE bol_no = 1 AND bol_no = 2;
+```
+
+2)
+
+```sql
+SELECT * FROM personel WHERE brut > (SELECT MAX (brut) FROM personel
+WHERE bol_no = 1) AND bol_no =2;
+```
 
 **EXISTS (MEVCUT)
 **VE, VEYA, DEĞİL operatörleri ile kullanılabilir.
 **ÖRNEK**: 27 no’lu parçayı satan satıcılarla ilişkili tüm bilgileri listele.
 
-**SELECT \* FROM satıcı WHERE EXISTS (SELECT \* FROM par\_sat WHERE sat\_no = satici\_n
-AND parça\_n =27); **
+```sql
+SELECT * FROM satıcı WHERE EXISTS (SELECT * FROM par_sat WHERE sat_no = satici_n
+AND parça_n =27);
+```
 
 **NOT EXISTS (MEVCUT DEĞİL)
 **VE, VEYA, DEĞİL operatörleri ile kullanılabilir.
 **ÖRNEK**: 27 no’lu parçayı satmayan satıcılar kimlerdir?
 
-**SELECT \* FROM satıcı WHERE NOT EXISTS (SELECT \* FROM par\_sat WHERE sat\_no = satıcı\_n AND parça\_n =27);
-**
+```sql
+SELECT * FROM satıcı WHERE NOT EXISTS (SELECT * FROM par_sat WHERE sat_no = satıcı_n AND parça_n =27);
+```
+
 **EXCEPT (FARKLI)**
 Tablo-1 - Tablo-2 işlemi sonuç (iki kümenin farkı) elde edilecek tabloda,Tablo-1’de bulunup, Tablo-2’de bulunmayan veriler mevcut olacaktır.
 **ÖRNEK**: Satış bölümündeki personel adlarından,mühendislik bölümünde bulunmayanları listele.
 
-**SELECT \* FROM (SELECT ad FROM personel WHERE bol\_no=1 EXCEPT SELECT ad FROM personel WHERE bol\_no =2); **
+```sql
+SELECT * FROM (SELECT ad FROM personel WHERE bol_no=1 EXCEPT SELECT ad FROM personel WHERE bol_no =2);
+```
 
 **INTERSECT (KESİŞİM)
 ****ÖRNEK**: Hem Ankara’da,hem de İstanbul’daki projelerde görev alan bölümleri listele.
 
-**SELECT \* FROM (SELECT bl\_no FROM proje WHERE yer LIKE “%Ankara%” INTERSECT
-SELECT bl\_no FROM proje WHERE yer LIKE “%İstanbul%”);
-**
+```sql
+SELECT * FROM (SELECT bl_no FROM proje WHERE yer LIKE “%Ankara%” INTERSECT
+SELECT bl_no FROM proje WHERE yer LIKE “%İstanbul%”);
+```
+
 **SAVE TO TEMP (SAKLA)
 ****ÖRNEK**: Bayan personeli,bayan adlı bir tablo içinde sakla.
-**SAVE TO TEMP (SAKLA)
-****SELECT \* FROM personel WHERE cins =.F. SAVE TO TEMP bayan;
-**
+
+```sql
+SAVE TO TEMP (SAKLA)
+SELECT * FROM personel WHERE cins =.F. SAVE TO TEMP bayan;
+```
+
 **KEEP:**
 **KEEP (KALICI**)
 
 **ÖRNEK**:
-**SELECT \* FROM personel WHERE cins = .F. SAVE TO TEMP bayan KEEP;
-**
+
+```sql
+SELECT * FROM personel WHERE cins = .F. SAVE TO TEMP bayan KEEP;
+```
+
 **7. TABLOLARDA DEĞİŞİKLİK YAPMAK:**
 
 **INSERT (EKLE)
@@ -416,41 +550,60 @@ VALUES (DEĞERLER**)
 
 **ÖRNEK**: Bir personel tablosuna sicil\_no’su 275 olan personel ile ilişkili bilgileri ekle.
 
-**INSERT INTO personel(sicil, sosy\_g\_no,ad,soyad,doğ\_tar adres,cins,brüt,böl\_no,yön\_s\_g\_no
+```sql
+INSERT INTO personel(sicil, sosy_g_no,ad,soyad,doğ_tar adres,cins,brüt,böl_no,yön_s_g_no
 VALUES(‘275’,’27652418’,’Ali’,’Caner’, {10/05/1962},’Merkez caddesi 46 -Fatih-İstanbul’,
 .T.,27000000,2,’876215342’);
-**
+```
+
 **DELETE (SİL)
 ****ÖRNEK**: 2 no’lu bölümdeki personelin tümü tablodan sil.
 
-**DELETE FROM personel WHERE böl\_no = 2; **
+```sql
+DELETE FROM personel WHERE böl_no = 2;
+```
 
 5 ROWS DELETED 5 SATIR SİLİNDİ
 **ÖRNEK**:Brüt maaş alanı boş olmayan tüm personeli sil.
 
-**DELETE FROM personel WHERE brüt IS NOT NULL;
-**25 ROWS DELETED 25 SATIR SİLİNDİ
+```sql
+DELETE FROM personel WHERE brüt IS NOT NULL;
+```
+
+25 ROWS DELETED 25 SATIR SİLİNDİ
 
 **UPDATE (GÜNCELLE)
 SET (YAP**)
 
 **ÖRNEK:**2’inci bölümün yürüttüğü projelerde kullanılan tüm parçaların fiyatlarını % 7 zam yap.
 
-**UPDATE parça SET fiyat = fiyat \*1,07 WHERE pr\_no IN (SELECT proj\_no
-FROM proje WHERE bl\_no = 2; **
+```sql
+UPDATE parça SET fiyat = fiyat *1,07 WHERE pr_no IN (SELECT proj_no
+FROM proje WHERE bl_no = 2;
+```
 
 **CREATE INDEX (INDEKS YARAT **)
 **ON (Hangi Tablo İçin)
 **
-**CREATE INDEX ındeks adı ON tablo adı(kolon adı 1,kolon adı 2,.,.kolon adı n); ******
+
+```sql
+CREATE INDEX ındeks adı ON tablo adı(kolon adı 1,kolon adı 2,.,.kolon adı n);
+```
 
 **TEK BİR ALANA GÖRE ARTAN SIRADA İNDEKSLEME :**
 
 **ÖRNEK**:İşletmede çalışan personeli brüt maaşlarına göre artan sırada listele.(Brüt alana göre bir indeks oluşturmalıyız)
-**CREATE INDEX pers\_maas ON personel(brüt);
-**INDEX CREATED 127 ROWS İNDEKS YARATILDI 127 SATIR
+
+```sql
+CREATE INDEX pers_maas ON personel(brüt);
+```
+
+INDEX CREATED 127 ROWS İNDEKS YARATILDI 127 SATIR
 127 satırlık personel tablosu ile ilişkili olarak brüt kolonu indeks anahtarı olarak kullanan pers\_maas adlı indeks oluşturulmuştur. Bu durumda;
-**SELECT \* FROM personel;**
+
+```sql
+SELECT * FROM personel;
+```
 
 Şeklinde listeleme komutu sonucunda personel tablosundaki tüm personel, brüt maaşlarina göre sirali olarak listelenecektir.
 
@@ -459,57 +612,80 @@ FROM proje WHERE bl\_no = 2; **
 
 **ÖRNEK**: İşletmede çalışan personeli brüt maaşlarına göre azalan sırada (yüksek maaştan düşük maaşa doğru) listelemek istersek, brüt alanına göre aşağıdaki şekilde oluşturmak gerekir.
 
-**CREATE INDEX ****
-****ON personel (brüt DESC); **
+```sql
+CREATE INDEX
+ON personel (brüt DESC);
+```
+
 **BİRDEN FAZLA ALANA GÖRE İNDEKSLEME :****
 ****ÖRNEK**:İşletmedeki personelin öncelikle adlarına göre,aynı adda olanların soyadlarına göre, hem adı hemde soyadı aynı olanların maaşlarına göre sıralanmış olarak listele.
 
-**CREATE INDEX p\_ad\_soy\_m ON personel (ad,soyad,brüt); **
+```sql
+CREATE INDEX p_ad_soy_m ON personel (ad,soyad,brüt);
+```
 
 Bu durumda;
 
-**SELECT \* FROM personel;
-**
+```sql
+SELECT * FROM personel;
+```
 
 **UNIQUE (TEK****)**
 
 Bir tablo, seçilen bir sütuna (alana) göre indekslenirken, indeksleme alanı olarak seçilen sütundaki verilerin tekrarlanmasına müsaade edilmesi istenmiyorsa, indeksleme yapılırken, CREATE, INDEX komutu içinde UNIQUE sözcüğü kullanılmalıdır.
 
-**CREATE UNIQUE INDEX pers\_sicil ON personel (sicil); **
+```sql
+CREATE UNIQUE INDEX pers_sicil ON personel (sicil);
+```
 
 EKLEME için:
 
-**Personel tablosuna INSERT INTO Personel VALUES(53768 ,’27241685’,’ayşe’,
-‘şen’{01/04/63},’Merkez cad. 82 - Kadıköy’.F. ,27000000 ,2, ‘34261578’); **
+```sql
+Personel tablosuna INSERT INTO Personel VALUES(53768 ,’27241685’,’ayşe’,
+‘şen’{01/04/63},’Merkez cad. 82 - Kadıköy’.F. ,27000000 ,2, ‘34261578’);
+```
 
 **MEVCUT BİR İNDEKSİN SİLİNMESİ:
 DROP IPTAL**
 
-**DROP INDEX pers\_in; **
+```sql
+DROP INDEX pers_in;
+```
+
 Komutu ile
 INDEX DROPPED (İNDEKS SİLİNDİ)
 
 **TABLONUN YAPISINDA DEĞİŞİKLİK YAPMAK:
 ****ALTER TABLE (TABLO DEĞİŞTİR)
 **
+
 **MEVCUT BİR TABLOYA KOLON EKLEMEK:
 ****ADD (EKLE**)
 ALTER TABLE (TABLO DEĞİŞTİR) komutu içinde ADD (EKLE) ile satır ekle.
 
 **ÖRNEK: **Personel tablosuna ,işe başlama tarihini belirten bir kolon ekle
-**ALTER TABLE personel ADD iş\_baş\_tar DATE; **
+
+```sql
+ALTER TABLE personel ADD iş_baş_tar DATE;
+```
 
 ADD (EKLE) iş\_baş\_tar DATE NOT NULL (TARIH DEĞERSIZ) bu şekilde kullanılsaydı bu kolon satırı gene boş kalırdı; fakat bu kolon ile ilişkili yeni boş değerler eklemek istendiğinde buna müsaade edilmeyecekti.
 
 **MEVCUT BİR TABLONUN ALANLARINDA DEĞİŞİKLİK YAPMAK :
 ****MODIFY (DEĞİŞTİR)
 **
+
 **MEVCUT BİR TABLODAN BİR KOLON SİLMEK: **
 ** DROP (İPTAL)
 **
+
 **ÖRNEK**: Personel tablosundan iş\_baş\_tar kolonunu sil.
-**ALTER TABLE personel DROP iş\_baş\_tar ;
-**Birden fazla kolonda silinebilir. Birden fazla kolon silmek için virgülle ayrılarak silinir.
+
+```sql
+ALTER TABLE personel DROP iş_baş_tar ;
+```
+
+Birden fazla kolonda silinebilir. Birden fazla kolon silmek için virgülle ayrılarak silinir.
 
 **BİR TABLONUN ADINI DEĞİŞTİRMEK:**
 **RENAME (TABLO YENİ AD**)
@@ -517,43 +693,67 @@ ALTER TABLE personel Personel tablosunda değişiklik yap RENAME TABLE elemanlar
 
 **MEVCUT BİR TABLONUN BİR KOLONUNUN ADININ DEĞİŞTİRİLMESİ:**
 **RENAME YENİ AD
-****ALTER TABLE personel RENAME brut br-maas;**
+**
+
+```sql
+ALTER TABLE personel RENAME brut br-maas;
+```
 
 **MEVCUT BİR TABLONUN TÜMÜYLE SİLİNMESİ**
 **DROP TABLE (TABLO İPTAL**)
 **ÖRNEK**:Proje tablosunu sil.
-**DROP TABLE proje; **
+
+```sql
+DROP TABLE proje;
+```
 
 **VERİ GÜVENLİĞİ:
 CREATE VIEW GÖRÜŞ ALANI YARAT
 ÖRNEK**: Personel adlı temel tablodan persview adlı bir view oluştur.
-**CREATE VIEW perswiew AS SELECT sicil,sos\_g\_no, ad, soyad, dog\_tar, adres, cins, bol\_no, yon\_s\_g\_no FROM personel; **
+
+```sql
+CREATE VIEW perswiew AS SELECT sicil,sos_g_no, ad, soyad, dog_tar, adres, cins, bol_no, yon_s_g_no FROM personel;
+```
 
 **VERİ BÜTÜNLÜĞÜNÜN SAĞLANMASI:**
 **WITH CHECK OPTİON KONTROLLÜ
 **
-**CREATE VIEW UST\_PER\_ VIEW ****'Önce bir view oluşturulsun****
-AS SELECT FROM personel WHERE brut >25000000 WITH CHECK OPTION;**
+
+```sql
+CREATE VIEW UST_PER_ VIEW 'Önce bir view oluşturulsun
+AS SELECT FROM personel WHERE brut >25000000 WITH CHECK OPTION;
+```
 
 Burada, maaşı 25000000’ün üzerinde olan personelden oluşan bir UST\_PER\_VIEW adli view oluşturulmuştur.Bu view’a brüt maaşı 13000000 olan bir personel eklemek istediği zaman hata mesaji verecektir.
 
 CHECK opsiyonu kullanılmasaydı hata mesajı alınmadan bu veri VİEW içine yükleyecekti.
 
 **EKLEME **
-**INSERT INTO UST\_PER\_VIEW VALUES (27521 ,’27865427’,’ayşe’, ‘okan’ ,{01/05/1962}’Cumh. Cad. 46 - Taksim’, .F.,13000000 ,1 ,’27651112’);
-**
+
+```sql
+INSERT INTO UST_PER_VIEW VALUES (27521 ,’27865427’,’ayşe’, ‘okan’ ,{01/05/1962}’Cumh. Cad. 46 - Taksim’, .F.,13000000 ,1 ,’27651112’);
+```
+
 **VIEW İÇİNDE SATIR SİLME:
 ÖRNEK**:UST\_PER\_VIEW içinden, maaşı 2500000’den az olan kişileri sil.
 
-**DELETE FROM UST\_PER\_VIEW WHERE brut < 25000000; **
+```sql
+DELETE FROM UST_PER_VIEW WHERE brut < 25000000;
+```
+
 **VIEW SATIRLARI ÜZERİNDE GÜNCELLEME :
 ÖRNEK**: UST\_PER\_VIEW adlı view’de sicili 27251 olan kişinin maaşını 37000000 olarak değiştir.
 
-**UPDATE UST\_PER\_VIEW SET brüt = 37000000 WHERE sicil = 27251; **
+```sql
+UPDATE UST_PER_VIEW SET brüt = 37000000 WHERE sicil = 27251;
+```
 
 **BİR VIEW’U SİLMEK:
 ****DROP VIEW (GÖRÜŞ ALANI IPTALI**)
-**DROP VIEW UST\_PER\_VIEW; GÖRÜŞ ALANI IPTALI UST\_PER\_VIEW;**
+
+```sql
+DROP VIEW UST_PER_VIEW; GÖRÜŞ ALANI IPTALI UST_PER_VIEW;
+```
 
 **Açıklamalı Örnekler******
 

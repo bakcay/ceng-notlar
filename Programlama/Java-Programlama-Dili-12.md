@@ -16,11 +16,13 @@ Yükleme işlemi bittikten sonra;
 
 **Autoexec.bat** dosyasının ** PATH** satırı şu şekilde değiştirilmelidir.
 
-SET PATH=c:\\java\\bin;%path%
+```bash
+SET PATH=c:\java\bin;%path%
+```
 
 classpath satırıda uygun bir şekilde değiştirilebilir. Eğer classlar c:\\java\\deneme gibi bir adreste yer alıyorsa classpath satırı şu şekilde olacaktır.
 
-SET CLASSPATH=c:\\java\\deneme; olur.
+`SET CLASSPATH=c:\java\deneme;` olur.
 
 Daha sonra .java uzantılı program parçalarını yazabilir ve çalıştırabilirsiniz. Yazılacak java programları ikiye ayrılmaktadır. Bunlar konsol programları ve applet programlarıdır.
 
@@ -28,42 +30,64 @@ Konsol Programları
 
 Örnek bir java konsol programı aşağıdaki gibidir.
 
-| public class Hello { public static void main(String\[\] args) { System.out.println("Merhaba Dunya "); } } |
-| --- |
+```java
+public class Hello {
+public static void main(String[] args) {
+System.out.println("Merhaba Dunya ");
+}
+}
+```
 
 Hello.java programı
 
 Program yazıldıktan sonra javac.exe (Java Compiler) tarafından derlenir.
 
+```bash
 javac Hello.java
+```
 
 eğer hata yoksa aktif dizinde Hello.class dosyası oluşacaktır.Bu dosyayı çalıştırabilmek için ise
 
-java Hello komutu verilir. Komut çıktısı olarak ise ekrana 'Merhaba Dunya' metni çıkacaktır.
+`java Hello` komutu verilir. Komut çıktısı olarak ise ekrana 'Merhaba Dunya' metni çıkacaktır.
 
 Applet Programları
 
 Örnek bir applet programı ise şu şekilde olacaktır.
 
-| import java.awt.\*; import java.applet.\*; public class Applet1 extends Applet { public void paint(Graphics g) { g.drawString("Hello from Java!", 60, 75); } } |
-| --- |
+```java
+import java.awt.*;
+import java.applet.*;
+public class Applet1 extends Applet {
+public void paint(Graphics g) {
+g.drawString("Hello from Java!", 60, 75);
+}
+}
+```
 
 Applet1.java programı
 
 Bu program yazıldıktan sonra da yine derleme işlemi için javac kullanılır.
 
+```bash
 javac Applet1.java
+```
 
 yazılarak program derlenir. Derlenen programın sonucunu görmek için class, html uzantılı bir dosya içine gömülür.
 
 Classın gömüldüğü örnek html dosyası şu şekildedir.
 
-| <title>Applet Test Page</title> <h1>Applet Test Page</h1> <applet code="Applet1.class" width=200 height=150 name="Applet1"> </applet> |
-| --- |
+```html
+<title>Applet Test Page</title>
+<h1>Applet Test Page</h1>
+<applet code="Applet1.class" width=200 height=150 name="Applet1">
+</applet>
+```
 
 çalıştırmak için Appletviewer.exe kullanılır.
 
+```bash
 Appletviewer Applet1.html
+```
 
 yazıldıktan sonra ekrana aşağıdaki pencere gelecektir.
 

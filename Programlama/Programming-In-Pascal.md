@@ -134,23 +134,17 @@ load up your version of Pascal
 
 type in this program - use your own name instead of A Programmer!
 
-PROGRAM my\_first; {short demonstration program}
-
+```pascal
+PROGRAM my_first; {short demonstration program}
 VAR {by A Programmer}
-
 index : INTEGER;
-
 BEGIN
-
 FOR index := 1 TO 10 DO
-
 BEGIN
-
 WRITELN(index)
-
 END
-
 END.
+```
 
 save your program giving it the name **my\_prog.pas******
 
@@ -164,41 +158,59 @@ run the program and note what happens
 
 Now for some comments - read them carefully and don't be tempted to skip over this part because it will help you understand what's coming next. We'll look at each line in turn:
 
-PROGRAM my\_first; {short demonstration program}
+```pascal
+PROGRAM my_first; {short demonstration program}
+```
 
 All Pascal programs start with the keyword PROGRAM followed by a name and then a semicolon. The rest of this line is enclosed by curly brackets. Anything in curly brackets is ignored by the computer - the reason it is there, though, is to act as a *comment* and to help the reader see what each part of the program does. When you write your own programs you should always include such comments.
 
+```pascal
 VAR {by A Programmer}
+```
 
 VAR is short for *variable*. If your program uses any numbers - or variables - then this is where we say what they are called and what sort of variables they are. As before, the comment in curly brackets is ignored by the computer.
 
+```pascal
 index : INTEGER;
+```
 
 ...our program uses just one variable. It is called **index** and it is a whole number, or *integer*.
 
 Now we come to the start of the main program. It begins, surprisingly enough, with...
 
+```pascal
 BEGIN
+```
 
 Notice that the lines are now set in a little way from the left margin. This is called *indenting* and helps to make the program easier to read.
 
+```pascal
 FOR index := 1 TO 10 DO
+```
 
 This is the start of what is called a *loop*. A loop is an instruction (or set of instructions) which is carried out repeatedly - this is exactly what computers are good at!
 
+```pascal
 BEGIN
+```
 
 ...marks the start of the instruction(s) in the loop
 
+```pascal
 WRITELN(index)
+```
 
 ...is the only instruction in the loop. It prints out the value of the variable **index**. Notice, again, that it has been indented.
 
+```pascal
 END
+```
 
 ...marks the end of the loop and
 
+```pascal
 END.
+```
 
 ...marks the end of the program. Note that there is only ever one full stop in a Pascal program, right at the end.
 
@@ -206,17 +218,17 @@ Let's make one or two changes to the program:
 
 load **my\_prog.pas** if it isn't already
 
-change line 6 to read FOR index := 1 TO 20 DO
+change line 6 to read `FOR index := 1 TO 20 DO`
 
 compile the program
 
 run the program and note what happens
 
-change line 8 to read WRITELN('hello world')
+change line 8 to read `WRITELN('hello world')`
 
 compile and run this program
 
-change line 8 to read WRITELN(index, ' times 3 is ', index \* 3)
+change line 8 to read `WRITELN(index, ' times 3 is ', index * 3)`
 
 compile and run this program
 
@@ -228,31 +240,21 @@ Right now, you shouldn't worry too much if some of this seems a little strange. 
 
 choose **New** from the **File** menu and type in our next example:
 
+```pascal
 PROGRAM stamps; {calculates the cost of stamps}
-
 VAR {by A Programmer}
-
 cost : REAL;
-
 number : INTEGER;
-
 total : REAL;
-
 BEGIN
-
 cost := 0.65;
-
 WRITELN('enter the number of stamps');
-
 READLN(number);
-
-total := number \* cost;
-
+total := number * cost;
 WRITELN('you ordered ', number, ' stamps');
-
 WRITELN('the total cost is ', total)
-
 END.
+```
 
 save the program as **stamps.pas******
 
@@ -262,7 +264,9 @@ It should be obvious that the result is not what you might have expected. To exp
 
 change the second last line to this:
 
+```pascal
 WRITELN('the total cost is ', total :5:2);
+```
 
 This is just a bit of *formatting* so that, when the number **total** is printed, 5 spaces will be allowed for it and there will be 2 numbers after the decimal point. Easy, see...
 
@@ -370,35 +374,23 @@ The program needs to use three numbers - the number of miles, the rate per mile 
 
 Remember that whole numbers are INTEGERs. Numbers which might have a decimal part are called REAL numbers. So, now for the code...
 
-PROGRAM bus\_journey; {to calculate journey cost}
-
+```pascal
+PROGRAM bus_journey; {to calculate journey cost}
 VAR {by A Programmer}
-
 rate : REAL;
-
 miles : INTEGER;
-
 cost : REAL;
-
 BEGIN
-
 WRITELN('enter the rate per mile ');
-
 READLN(rate);
-
 WRITELN('enter the number of miles ');
-
 READLN(miles);
-
-cost := rate \* miles;
-
+cost := rate * miles;
 WRITELN('number of miles = ', miles);
-
 WRITELN('rate per mile = $', rate);
-
 WRITELN('cost of journey = $', cost)
-
 END.
+```
 
 Notice how closely the code corresponds to our design.
 
@@ -410,27 +402,34 @@ Again, you'll see that the results are not what you perhaps expected.
 
 edit the last but one and last but two lines to read:
 
+```pascal
 WRITELN('rate per mile = $', rate :5:2);
-
 WRITELN('cost of journey = $', cost :5:2);
+```
 
 compile and run the program
 
 explain why it was not necessary to edit the line
 
+```pascal
 WRITELN('number of miles = ', miles);
+```
 
 We're going to make one or two more changes now...
 
 edit line 7 to read
 
+```pascal
 WRITE('enter the rate per mile ');
+```
 
 (notice we're using WRITE instead of WRITELN)
 
 and edit line 9 to read
 
+```pascal
 WRITE('enter the number of miles ');
+```
 
 compile and run the program
 
@@ -646,7 +645,9 @@ show this to your teacher
 
 All the programs you've done so far have used *numeric* variables - ie numbers. Each variable is of a particular type - real or integer - and each has its own name. Variables can be used in calculations as, for example:
 
+```pascal
 average := total / 3;
+```
 
 In this case, **average** is calculated as having the value of **total** divided by 3. There are, however, other types of variables...
 
@@ -656,63 +657,46 @@ Variables used to represent text are often called *string* variables. An example
 
 type in the following program then compile and run it
 
+```pascal
 PROGRAM text; {using text variables}
-
 VAR {by A Programmer}
-
-name : STRING\[10\];
-
+name : STRING[10];
 age : INTEGER;
-
 BEGIN
-
 name := 'A Programmer'; {use your name here}
-
 age := 15;
-
 WRITELN('my name is ', name);
-
 WRITELN('my age is ', age)
-
 END.
+```
 
 The variable called **name** is defined as a string variable in line 3:
 
-name : STRING\[10\];
+```pascal
+name : STRING[10];
+```
 
 The number 10 in the square brackets means that the string can have up to 10 letters, or *characters*, in it. This program, of course, doesn't do a great deal. Apart from anything else, it prints the same thing every time you run it.
 
 edit the program to look like this:
 
+```pascal
 PROGRAM text; {using text variables}
-
 VAR
-
-name : STRING\[10\];
-
+name : STRING[10];
 age : INTEGER;
-
 days : INTEGER;
-
 BEGIN
-
 WRITE('enter your name : ');
-
 READLN(name);
-
 WRITE('enter your age : ');
-
 READLN(age);
-
-days := 365 \* age;
-
+days := 365 * age;
 WRITELN('hello ', name);
-
 WRITELN('you are ', age);
-
 WRITELN('you must be at least ', days, ' days old!')
-
 END.
+```
 
 save the program as **age.pas******
 
@@ -734,11 +718,11 @@ But what are the rules? When is a semicolon required and when does it not matter
 
 You need to be aware that semicolons are there because they *separate* one Pascal statement from the next so that the compiler knows where one statement ends and another begins. Here's an example from the program you've just done:
 
+```pascal
 WRITELN('you are ', age);
-
 WRITELN('you must be at least ', days, ' days old!')
-
 END.
+```
 
 The semicolon separates the two WRITELN statements but notice that we do **not** need a semicolon at the end of the second last line - END is a *keyword*, not a statement, so it doesn't need a semicolon to separate it from the statement on the previous line.
 
@@ -910,37 +894,24 @@ type in the program below
 
 save it as **voting.pas******
 
+```pascal
 PROGRAM voting; {to decide if you can vote or not}
-
 VAR
-
 age : INTEGER;
-
-name : STRING\[20\];
-
+name : STRING[20];
 BEGIN
-
 WRITE('enter your name ');
-
 READLN(name);
-
 WRITE('enter your age ');
-
 READLN(age);
-
 WRITELN('hello ', name);
-
 IF age < 18
-
 THEN
-
 WRITELN('you are too young to vote')
-
 ELSE
-
 WRITELN('vote for the purple party!')
-
 END.
+```
 
 run this program and check it using different input data
 
@@ -954,51 +925,31 @@ type in the program
 
 save it as **passfail.pas******
 
+```pascal
 PROGRAM exam; {pass or fail an exam}
-
 VAR
-
-name : STRING\[20\];
-
+name : STRING[20];
 mark : INTEGER;
-
 BEGIN
-
 WRITE('enter your name ');
-
 READLN(name);
-
 WRITE('enter your mark ');
-
 READLN(mark);
-
 IF mark > 50
-
 THEN
-
 BEGIN
-
 WRITELN('hi ', name);
-
 WRITELN('you scored ', mark);
-
 WRITELN('well done, you passed')
-
 END
-
 ELSE
-
 BEGIN
-
 WRITELN('sorry ', name);
-
 WRITELN('you scored ', mark);
-
 WRITELN('you failed, better luck next time')
-
 END
-
 END.
+```
 
 compile and run the program
 
@@ -1080,55 +1031,33 @@ type in the following program
 
 you should note that CLRSCR - the instruction to clear the screen - may be different on some machines; see your teacher if you're not sure
 
+```pascal
 PROGRAM quiz; {a quiz game}
-
 VAR
-
-country : STRING\[8\];
-
-capital : STRING\[8\];
-
-answer : STRING\[8\];
-
+country : STRING[8];
+capital : STRING[8];
+answer : STRING[8];
 BEGIN
-
 WRITE('enter name of country ');
-
 READLN(country);
-
 WRITE('enter name of capital ');
-
 READLN(capital);
-
 CLRSCR;
-
 WRITE('what is the capital of ', country, '?');
-
 READLN(answer);
-
 IF answer = capital
-
 THEN
-
 BEGIN
-
 WRITELN('the capital of ', country, ' is ', capital);
-
 WRITELN('well done, you got it right')
-
 END
-
 ELSE
-
 BEGIN
-
 WRITELN('sorry, you got it wrong');
-
 WRITELN('the correct answer is ', capital)
-
 END
-
 END.
+```
 
 save the program as **cities1.pas******
 
@@ -1214,15 +1143,17 @@ compile and run the program
 
 A loop is part of a program that gets repeated a number of times. The very first Pascal program you did had a loop in it. Loops can be *conditional* in which case they repeat until something happens - a *condition* is met - or they can be *unconditional*, in which case they are repeated for a fixed number of times. You've already seen an example of an unconditional loop - look back at the first program in this tutorial. The loop starts with...
 
+```pascal
 FOR index := 1 TO 10 DO
+```
 
 ... and the instruction(s) to be repeated go between a BEGIN and an END statement:
 
+```pascal
 BEGIN
-
 WRITELN(index)
-
 END
+```
 
 In this case the variable called **index** is a *counter* which controls the loop - it starts at 1 and goes up to 10
 
@@ -1286,39 +1217,25 @@ So the complete design looks like this:
 
 type in this program and save it as **average2.pas**
 
+```pascal
 PROGRAM unconditional;
-
 VAR
-
 mark : INTEGER;
-
 total : INTEGER;
-
 average : REAL;
-
 BEGIN
-
 total := 0;
-
 FOR counter = 1 TO 10 DO
-
 BEGIN
-
 WRITE ('type in the exam mark: ');
-
 READLN (mark);
-
 total := total + mark
-
 END;
-
 average := total / 10;
-
 WRITELN('the total is: ');
-
 WRITELN('the average is: ', average)
-
 END.
+```
 
 there are two mistakes in the program which means that it won't compile until you find them - can you see what they are?
 
@@ -1360,29 +1277,20 @@ Now for a conditional loop. This is where you don't know in advance how many tim
 
 type in this program
 
+```pascal
 PROGRAM conditional; {a conditional loop}
-
 VAR
-
 number : INTEGER;
-
 guess : INTEGER;
-
 BEGIN
-
 number := 5;
-
 REPEAT
-
 WRITE('enter a number between 0 and 10: ');
-
 READLN(guess);
-
 UNTIL guess = number;
-
 WRITELN('what took you so long?')
-
 END.
+```
 
 compile and run the program
 
@@ -1540,51 +1448,31 @@ As before, you should note that the whole point of designing the program is to m
 
 type in the program
 
+```pascal
 PROGRAM guessing; {a guessing game}
-
 VAR
-
 number : INTEGER;
-
 guess : INTEGER;
-
 total : INTEGER;
-
 BEGIN
-
 WRITE('enter the number to guess ');
-
 READLN(number);
-
 CLRSCR;
-
 REPEAT
-
 WRITE('enter your guess ');
-
 READLN(guess);
-
 IF guess > number
-
 THEN
-
 WRITELN('guess is too big');
-
 IF guess < number
-
 THEN
-
 WRITELN('guess is too small');
-
 total := total + 1;
-
 UNTIL guess = number;
-
 WRITELN('well done');
-
 WRITELN('you took ', total, ' guesses')
-
 END.
+```
 
 save the program as **guess2.pas******
 
@@ -1656,31 +1544,21 @@ The main program now consists of the three procedures.
 
 type in the code below
 
+```pascal
 PROGRAM chips; {to calculate chip sales}
-
 VAR
-
-flavor : STRING\[10\];
-
+flavor : STRING[10];
 friday : INTEGER;
-
 saturday : INTEGER;
-
 sunday : INTEGER;
-
 bags : INTEGER;
-
 sales : REAL;
-
 BEGIN {main program starts here}
-
-get\_info;
-
-calc\_sales;
-
+get_info;
+calc_sales;
 results
-
 END.
+```
 
 compile the program
 
@@ -1704,77 +1582,48 @@ The error message that you get isn't really surprising since Pascal knows nothin
 
 Our procedure will do just what is required for each of these steps. The code is shown below.
 
-PROCEDURE get\_info; {to get details from user}
-
+```pascal
+PROCEDURE get_info; {to get details from user}
 BEGIN
-
 WRITE('enter flavor of chips ');
-
 READLN(flavor);
-
 WRITE('enter number sold on Friday ');
-
 READLN(friday);
-
 WRITE('enter number sold on Saturday ');
-
 READLN(saturday);
-
 WRITE('enter number sold on Sunday ');
-
 READLN(sunday)
-
 END;
+```
 
 Notice again how closely the instructions follow the detailed design. The code for the procedure is slotted in before the start of the main program so that we now have:
 
+```pascal
 PROGRAM chips; {to calculate chip sales}
-
 VAR
-
-flavor : STRING\[10\];
-
+flavor : STRING[10];
 friday : INTEGER;
-
 saturday : INTEGER;
-
 sunday : INTEGER;
-
 bags : INTEGER;
-
 sales : REAL;
-
-PROCEDURE get\_info; {to get details from user}
-
+PROCEDURE get_info; {to get details from user}
 BEGIN
-
 WRITE('enter flavor of chips ');
-
 READLN(flavor);
-
 WRITE('enter number sold on Friday ');
-
 READLN(friday);
-
 WRITE('enter number sold on Saturday ');
-
 READLN(saturday);
-
 WRITE('enter number sold on Sunday ');
-
 READLN(sunday)
-
 END;
-
 BEGIN {main program starts here}
-
-get\_info;
-
-calc\_sales;
-
+get_info;
+calc_sales;
 results
-
 END.
+```
 
 type in the extra code and save it as **chips2.pas******
 
@@ -1788,75 +1637,47 @@ Again the error message should come as no surprise since we have only entered on
 
 ...and the code is...
 
-PROCEDURE calc\_sales; {to calculate the sales}
-
+```pascal
+PROCEDURE calc_sales; {to calculate the sales}
 BEGIN
-
 bags := friday + saturday + sunday;
-
-sales := 0.65 \* bags
-
+sales := 0.65 * bags
 END;
+```
 
 ...and it slots into the program like this...
 
+```pascal
 PROGRAM chips; {to calculate chip sales}
-
 VAR
-
-flavor : STRING\[10\];
-
+flavor : STRING[10];
 friday : INTEGER;
-
 saturday : INTEGER;
-
 sunday : INTEGER;
-
 bags : INTEGER;
-
 sales : REAL;
-
-PROCEDURE get\_info; {to get details from user}
-
+PROCEDURE get_info; {to get details from user}
 BEGIN
-
 WRITE('enter flavor of chips ');
-
 READLN(flavor);
-
 WRITE('enter number sold on Friday ');
-
 READLN(friday);
-
 WRITE('enter number sold on Saturday ');
-
 READLN(saturday);
-
 WRITE('enter number sold on Sunday ');
-
 READLN(sunday)
-
 END;
-
-PROCEDURE calc\_sales; {to calculate the sales}
-
+PROCEDURE calc_sales; {to calculate the sales}
 BEGIN
-
 bags := friday + saturday + sunday;
-
-sales := 0.65 \* bags
-
+sales := 0.65 * bags
 END;
-
 BEGIN {main program starts here}
-
-get\_info;
-
-calc\_sales;
-
+get_info;
+calc_sales;
 results
-
 END.
+```
 
 it's your turn now to write the code for the procedure **results** and put it into the program
 
@@ -1888,95 +1709,62 @@ step name
 
 So the program looks like this just now:
 
+```pascal
 PROGRAM quiz; {a quiz game}
-
 VAR
-
-country : STRING\[8\];
-
-capital : STRING\[8\];
-
-answer : STRING\[8\];
-
+country : STRING[8];
+capital : STRING[8];
+answer : STRING[8];
 BEGIN {main program starts here}
-
-get\_info;
-
-get\_answer;
-
+get_info;
+get_answer;
 message
-
 END.
+```
 
 As before, though, if you try to compile this you'll get error messages because there are three procedures - **get\_info, get\_answer** and **message** - which we haven't yet coded. We'll now put in the first two of these and you can complete the other one yourself:
 
+```pascal
 PROGRAM quiz; {a quiz game}
-
 VAR
-
-country : STRING\[8\];
-
-capital : STRING\[8\];
-
-answer : STRING\[8\];
-
-PROCEDURE get\_info; {to get information from player 1}
-
+country : STRING[8];
+capital : STRING[8];
+answer : STRING[8];
+PROCEDURE get_info; {to get information from player 1}
 BEGIN
-
 WRITE('enter name of country ');
-
 READLN(country);
-
 WRITE('enter name of capital ');
-
 READLN(capital);
-
 CLRSCR
-
 END;
-
-PROCEDURE get\_answer; {to get answer from player 2}
-
+PROCEDURE get_answer; {to get answer from player 2}
 BEGIN
-
 WRITE('what is the capital of ', country, '? ');
-
 READLN(answer)
-
 END;
-
 {the other procedure goes in here}
-
 BEGIN {main program starts here}
-
-get\_info;
-
-get\_answer;
-
+get_info;
+get_answer;
 message
-
 END.
+```
 
 enter the code above and save it as **cities2.pas******
 
 the procedure **message** below has been done for you, except that the lines have been jumbled up - you need to put them in the right order and put the procedure in the correct place in the program...
 
+```pascal
 PROCEDURE message; {to print an appropriate message}
-
 ELSE
-
 WRITELN('wrong - the answer is ', capital)
-
 IF answer = capital
-
 WRITELN('correct - well done!')
-
 THEN
-
 END;
-
 BEGIN
+```
 
 **Example 21**
 
@@ -2086,35 +1874,23 @@ The complete design, then, looks like this:
 
 So if we use **get\_value, calc\_total** and **invoice** for the procedure names, the outline of the program will look like this:
 
+```pascal
 PROGRAM orders; {to print out an invoice}
-
 VAR
-
 value : REAL;
-
 discount : REAL;
-
 subtotal : REAL;
-
-sales\_tax : REAL;
-
+sales_tax : REAL;
 total : REAL;
-
-{procedure get\_value goes here}
-
-{procedure calc\_total goes here}
-
+{procedure get_value goes here}
+{procedure calc_total goes here}
 {procedure invoice goes here}
-
 BEGIN {main program starts here}
-
-get\_value;
-
-calc\_total;
-
+get_value;
+calc_total;
 invoice
-
 END.
+```
 
 type in the outline of the program as above and save it as **invoice.pas******
 

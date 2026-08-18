@@ -1130,8 +1130,9 @@ Type bloğu içerisinde tanımlanan “sınırlı\_veri\_tipi\_ismi” yeni tan�
 
 **ÖRNEK:3 **Writeln komutu ile yapılan sitringlerin ekrana yazdırılması.
 
-| Uses crt; Begin Writeln(‘merhaba ‘); Writeln(‘dünya’) End. |
-| --- |
+```pascal
+Uses crt; Begin Writeln(‘merhaba ‘); Writeln(‘dünya’) End.
+```
 
 Program çıktısı
 
@@ -1144,8 +1145,9 @@ Program çıktısı
 
 **Örnek 4:**
 
-| Uses crt; Begin Write(‘ahmet’); Write(‘okula git’); Readln; End. |
-| --- |
+```pascal
+Uses crt; Begin Write(‘ahmet’); Write(‘okula git’); Readln; End.
+```
 
 Program çıktısı
 
@@ -1158,8 +1160,9 @@ Program çıktısı
 
 **ÖRNEK 5:**
 
-| Uses crt; Var Ad,soy,no:string; Begin Write(‘adınızı giriniz’ :);readln(ad); Write(‘soyadınızı giriniz’ :);readln(soy); Write(‘numaranızı giriniz :’);readln(no); Clrscr; Write(ad); Write(soyad); Write(no); Readln; End. |
-| --- |
+```pascal
+Uses crt; Var Ad,soy,no:string; Begin Write(‘adınızı giriniz’ :);readln(ad); Write(‘soyadınızı giriniz’ :);readln(soy); Write(‘numaranızı giriniz :’);readln(no); Clrscr; Write(ad); Write(soyad); Write(no); Readln; End.
+```
 
 Program çıktısı
 
@@ -1231,8 +1234,9 @@ TÜRKİYE
 
 Girildiğinde ‘’açık’’ mesajını veren program.
 
-| Uses crt; Var A:integer; Begin Write(‘sayı giriniz(1veya0) : ‘);readln(a); İf a:=1 then Writeln(‘kapalı’); İf a:=0 then Writeln(‘açık’); Readln; End. |
-| --- |
+```pascal
+Uses crt; Var A:integer; Begin Write(‘sayı giriniz(1veya0) : ‘);readln(a); İf a:=1 then Writeln(‘kapalı’); İf a:=0 then Writeln(‘açık’); Readln; End.
+```
 
 Program çıktısı
 
@@ -1245,8 +1249,9 @@ Program çıktısı
 
 **ÖRNEK 7:**
 
-| Uses crt; Var A,b:integer; Begin Clrscr; Writeln(‘1.sayıyı gir’);readln(a); Writeln(‘2.sayıyı gir’);readln(b); If a>b then Writeln(‘1.sayı >2.sayı’); Else Writeln(‘2.sayı >1.sayı’); Readln; End. |
-| --- |
+```pascal
+Uses crt; Var A,b:integer; Begin Clrscr; Writeln(‘1.sayıyı gir’);readln(a); Writeln(‘2.sayıyı gir’);readln(b); If a>b then Writeln(‘1.sayı >2.sayı’); Else Writeln(‘2.sayı >1.sayı’); Readln; End.
+```
 
 Program çıktısı
 
@@ -1259,8 +1264,9 @@ Program çıktısı
 
 **ÖRNEK 8:**
 
-| Uses crt; Var Harf:char; Begin Writeln(‘bir harf girin:’); readln(harf); Case harf of ‘A ‘............’Z’ :Writeln(‘büyük harf’); ‘A ‘............’Z’ :Writeln(‘küçük harf’); else Writeln(‘Bu harf değil’); Readln; End. |
-| --- |
+```pascal
+Uses crt; Var Harf:char; Begin Writeln(‘bir harf girin:’); readln(harf); Case harf of ‘A ‘............’Z’ :Writeln(‘büyük harf’); ‘A ‘............’Z’ :Writeln(‘küçük harf’); else Writeln(‘Bu harf değil’); Readln; End.
+```
 
 ## **DÖNGÜLER**
 
@@ -1272,8 +1278,9 @@ GOTO,FOR-DO,REPEAT-UNTIL
 
 **ÖRNEK 9: **1’den 5’e kadar olan sayıları ekrana yanyana yazdıran program.
 
-| Uses crt; Var Sayac:integer; Label Tekrar; Begin Clrscr; Sayac:=0; Tekrar : Sayac:=sayac+1; Write(sayac,’ ‘); İf sayac<5 then goto tekrar; End. |
-| --- |
+```pascal
+Uses crt; Var Sayac:integer; Label Tekrar; Begin Clrscr; Sayac:=0; Tekrar : Sayac:=sayac+1; Write(sayac,’ ‘); İf sayac<5 then goto tekrar; End.
+```
 
 ## **FOR- DO deyimi**
 
@@ -1281,8 +1288,9 @@ GOTO,FOR-DO,REPEAT-UNTIL
 
 **Örnek 10: **1’den 10’a kadar olan tam sayıları ekrana yan yana birer boşluk bırakarak yazdıran program.
 
-| Uses crt; Var İ :integer; begin Clrscr; For i:=1 to 10 do write (i,’ ‘); End. |
-| --- |
+```pascal
+Uses crt; Var İ :integer; begin Clrscr; For i:=1 to 10 do write (i,’ ‘); End.
+```
 
 Program çıktısı
 
@@ -1291,8 +1299,9 @@ Program çıktısı
 
 ** ÖRNEK 11**:Ekrana A’dan G’ye kadar olan harfleri,her defasında bir sonraki harfle birlikte yan yana yazdıran program.
 
-| Uses crt ; Var Harfyaz,sonharf: char; Begin Clrscr; For sonharf:=’A’ to ‘G’ do Begin For harfyaz:=’A’ to sonharf do Write(harfyaz); Writeln; End; End. |
-| --- |
+```pascal
+Uses crt ; Var Harfyaz,sonharf: char; Begin Clrscr; For sonharf:=’A’ to ‘G’ do Begin For harfyaz:=’A’ to sonharf do Write(harfyaz); Writeln; End; End.
+```
 
 Program çıktısı
 
@@ -1305,8 +1314,9 @@ Program çıktısı
 
 **ÖRNEK 12: **Klavyeden girilen cümle içerisinde kaç adet sesli harf olduğunu bulan program.
 
-| Uses crt; Ch:char; Say:integer; Begin Say:=0; Write(‘Bir cümle yazınız >’); While not eoln do Begin Read(ch); İf ch in \[‘A’,’a’,’E’,’e’,’İ’,’i’,’I’,’ı’,’O’,’o’,’ö’,’ö’,’U’,’u’,’ü’,’ü’\] then Begin Say:=say+1; End; Writeln(‘yazılan cümlede’,say,’tane sesli harf vardır.’) End. |
-| --- |
+```pascal
+Uses crt; Ch:char; Say:integer; Begin Say:=0; Write(‘Bir cümle yazınız >’); While not eoln do Begin Read(ch); İf ch in [‘A’,’a’,’E’,’e’,’İ’,’i’,’I’,’ı’,’O’,’o’,’ö’,’ö’,’U’,’u’,’ü’,’ü’] then Begin Say:=say+1; End; Writeln(‘yazılan cümlede’,say,’tane sesli harf vardır.’) End.
+```
 
 ## **REPEAT-UNTIL deyimi**
 
@@ -1314,8 +1324,9 @@ Program çıktısı
 
 **ÖRNEK 13: **Klavyeden girilen 10 sayıdan Tek ve Çift sayıların toplamını alt alta yazdıran program.
 
-| Uses crt ; Var A:array\[1..10\] of integer; E:integer; T:longint; Begin Clrscr; For E:= 1to 10 do Begin Write (E,’.sayıyı gir......:’);readln(A\[E\]); End; T:=0; E:=0; Repeat E:= E+1; İf A\[E\] dıv 2<>A\[E\] / 2 then Begin T:=T+A\[E\]; End; Until 1=10; Writeln(‘tek sayıların toplamı :’,T); T:=0; 1:=0; Repeat E:=E+1; İf A\[E} dıv 2= A\[E\] /2 then Begin T:=T+A\[E\]; End; Writeln(‘çift sayıların toplamı:’ ,T); Readln; end. |
-| --- |
+```pascal
+Uses crt ; Var A:array[1..10] of integer; E:integer; T:longint; Begin Clrscr; For E:= 1to 10 do Begin Write (E,’.sayıyı gir......:’);readln(A[E]); End; T:=0; E:=0; Repeat E:= E+1; İf A[E] dıv 2<>A[E] / 2 then Begin T:=T+A[E]; End; Until 1=10; Writeln(‘tek sayıların toplamı :’,T); T:=0; 1:=0; Repeat E:=E+1; İf A[E} dıv 2= A[E] /2 then Begin T:=T+A[E]; End; Writeln(‘çift sayıların toplamı:’ ,T); Readln; end.
+```
 
 Program çıktısı
 
@@ -1332,8 +1343,9 @@ Aynı tipte olan verileri sıralı biçimde bellekte tutmak amacıyla tanımlana
 
 **ÖRNEK 14: **Klavyeden girilen 5 sayının giriliş sırasının tersine yazdırılması.
 
-| Uses crt ; Type İntarray =array \[1..5\] of integer ; Const N= 5; Var Sayı :intarray ; İ,j:integer; Begin Clrscr; For i :=1 to 10 do Begin Write (i,’.sayıyı gir>’); readln (sayı \[i\] ); End; For j :=n down to 1 do Writeln (j,’. Sayi =’,sayi \[j\] ); End. |
-| --- |
+```pascal
+Uses crt ; Type İntarray =array [1..5] of integer ; Const N= 5; Var Sayı :intarray ; İ,j:integer; Begin Clrscr; For i :=1 to 10 do Begin Write (i,’.sayıyı gir>’); readln (sayı [i] ); End; For j :=n down to 1 do Writeln (j,’. Sayi =’,sayi [j] ); End.
+```
 
 Program çıktısı
 
@@ -1344,8 +1356,9 @@ Program çıktısı
 
 **ÖRNEK 15: **Klavyeden girilen 5 sayının sıralanıp ekrana yazdırılması (büyükten küçüğe).
 
-| Uses crt; Var A: array \[1..5\] of integer; I ,k ,m:integer; Begin Clrscr; For I :=1to 5 do Begin Writeln (I,’.sayıyı gir :’); readln (a\[I\] ); End; For I := 1 to 4 do For k := I +1 to 5 do İf A \[k\] >A \[I\] then Begin M := A \[ I \]; A : \[ I \] := A\[ k \]; A \[k\] :=m; End; For I := 1 to 500 Begin Writeln (A \[ I \]); End; Readln; End. |
-| --- |
+```pascal
+Uses crt; Var A: array [1..5] of integer; I ,k ,m:integer; Begin Clrscr; For I :=1to 5 do Begin Writeln (I,’.sayıyı gir :’); readln (a[I] ); End; For I := 1 to 4 do For k := I +1 to 5 do İf A [k] >A [I] then Begin M := A [ I ]; A : [ I ] := A[ k ]; A [k] :=m; End; For I := 1 to 500 Begin Writeln (A [ I ]); End; Readln; End.
+```
 
 Program çıktısı
 
@@ -1366,8 +1379,9 @@ Tek boyutlu diziler için kullanılan değişkenler ,aynı cinsten verileri bell
 
 **ÖRNEK 16 : **Aktif directory içerisine,klavyeden girilen bir string adıyla directory açan program.
 
-| Uses crt ; Var Di:string; Begin Write (‘açmak istediğiniz directory ismi >’); readln(di); Mkdir (di); Mkdir (‘lotus’); Mkdir (‘lotus\\müsteri’); End. |
-| --- |
+```pascal
+Uses crt ; Var Di:string; Begin Write (‘açmak istediğiniz directory ismi >’); readln(di); Mkdir (di); Mkdir (‘lotus’); Mkdir (‘lotus\müsteri’); End.
+```
 
 Program çıktısı
 
@@ -1380,8 +1394,9 @@ Program çıktısı
 
 **ÖRNEK 17: **Komut satırından paremetre girilip girilmediğini kontrol eden program.
 
-| Uses crt; Begin İf paramCount < 1 then Writeln(‘Komut satırında paremetre yoktur’) Else Writeln(ParamCount,’paremetre vardır’); End. |
-| --- |
+```pascal
+Uses crt; Begin İf paramCount < 1 then Writeln(‘Komut satırında paremetre yoktur’) Else Writeln(ParamCount,’paremetre vardır’); End.
+```
 
 Program çıktısı
 
@@ -1394,8 +1409,9 @@ Program çıktısı
 
 **ÖRNEK 18: **Komut satırından girilen paremetreleri okuyup ekrana yazdıran program.
 
-| Uses crt; Var I :word; Begin For I:=1 to ParamCount do Writeln(paramstr( I ) ); End. |
-| --- |
+```pascal
+Uses crt; Var I :word; Begin For I:=1 to ParamCount do Writeln(paramstr( I ) ); End.
+```
 
 ## **GETDIR prosedürü**
 
@@ -1403,8 +1419,9 @@ Program çıktısı
 
 **ÖRNEK 19:** Aktif sürücüdeki aktif directory ismini ekrana yazdıran program.
 
-| Uses crt; Var S:string; Begin Getdir(0,s); Writeln(‘ Aktif directory(‘,s,’) dır’); End. |
-| --- |
+```pascal
+Uses crt; Var S:string; Begin Getdir(0,s); Writeln(‘ Aktif directory(‘,s,’) dır’); End.
+```
 
 Program çıktısı
 
@@ -1417,8 +1434,9 @@ Program çıktısı
 
 ** ÖRNEK 20:** Önce aktif sürücüde PASCAL directory’si açıp daha sonra o directory içerisine girerek ekranda gösteren program.
 
-| Uses crt; Var S:string;** ** Begin Mkdır(‘PASCAL’; Chdır(‘PASCAL’); Getdır(0,S); Writeln(‘şu anda (‘,S,’) directory sine geçtiniz’); End. |
-| --- |
+```pascal
+Uses crt; Var S:string;** ** Begin Mkdır(‘PASCAL’; Chdır(‘PASCAL’); Getdır(0,S); Writeln(‘şu anda (‘,S,’) directory sine geçtiniz’); End.
+```
 
 Program çıktısı
 
@@ -1431,8 +1449,9 @@ Program çıktısı
 
 **ÖRNEK 21: **Klavyeden yanlışlıkla integer yerine karekter girildiğinde,programın akışını kesmeden hatayı kullanıcıya düzelttiren program.
 
-| Uses crt; Var Intsay : integer; Label Hata; Begin { $I-} hata: Write(‘bir sayı giriniz>’); readln(intsay); İf ioresult=106 then Begin Writeln(‘Tam sayı girişi yapmalısınız’); Goto hata; End; Writeln(‘Sayının karesi =’,intsay\*intsay); End. |
-| --- |
+```pascal
+Uses crt; Var Intsay : integer; Label Hata; Begin { $I-} hata: Write(‘bir sayı giriniz>’); readln(intsay); İf ioresult=106 then Begin Writeln(‘Tam sayı girişi yapmalısınız’); Goto hata; End; Writeln(‘Sayının karesi =’,intsay*intsay); End.
+```
 
 Program çıktısı
 
@@ -1445,8 +1464,9 @@ Program çıktısı
 
 **ÖRNEK 22: **Bir dos komutu gibi çalışan ve türkçe uyarı mesajı üreten directory silme programı.
 
-| Uses crt; Begin { $I- } RmDir (paramStr(1); İf Ioresult<> 0 then Writeln (‘directory silinemez ‘); Else Writeln (‘directory silindi’); End. |
-| --- |
+```pascal
+Uses crt; Begin { $I- } RmDir (paramStr(1); İf Ioresult<> 0 then Writeln (‘directory silinemez ‘); Else Writeln (‘directory silindi’); End.
+```
 
 ## **GETDATE prosedürü**
 
@@ -1454,8 +1474,9 @@ Program çıktısı
 
 **ÖRNEK 23 :** Sistemin tarihini gün,ay,yıl ve haftanın hangi günü olduğunu gösteren program.
 
-| Uses dos; Const Gunler:array \[0..6\] of String \[9\] = (‘Pazar’,’pazartesi’,’salı’,’çarşamba’, ’perşembe’,’cuma’,’cumartesi’); var y,a,g,hg:word; begin getdate (y,a,g,hg); Writeln(‘bugün ‘,g,’ / ‘,a,’ / ‘,y,’ ‘,günler \[hg\], ‘dir.’); End. |
-| --- |
+```pascal
+Uses dos; Const Gunler:array [0..6] of String [9] = (‘Pazar’,’pazartesi’,’salı’,’çarşamba’, ’perşembe’,’cuma’,’cumartesi’); var y,a,g,hg:word; begin getdate (y,a,g,hg); Writeln(‘bugün ‘,g,’ / ‘,a,’ / ‘,y,’ ‘,günler [hg], ‘dir.’); End.
+```
 
 Program çıktısı
 
@@ -1468,8 +1489,9 @@ Program çıktısı
 
 **ÖRNEK 23 :** Sistemin saatini ekranda gösteren program.
 
-| Uses dos; Var Sa,da,sn,sl:word; Begin Gettime(sa,da,sn,sl); Writeln(‘saat=’ ,’sa, ’:’ ,da, ‘:’ ,sn, ‘.’ ,sl); End. |
-| --- |
+```pascal
+Uses dos; Var Sa,da,sn,sl:word; Begin Gettime(sa,da,sn,sl); Writeln(‘saat=’ ,’sa, ’:’ ,da, ‘:’ ,sn, ‘.’ ,sl); End.
+```
 
 Program çıktısı
 
@@ -1482,8 +1504,9 @@ Program çıktısı
 
 **ÖRNEK 24: **Sistemin tarihini klavyeden girilen sayılara göre kuran program.
 
-| Uses dos; Var Yıl,ay,gun :word; Begin Write (‘yıl >’); readln(yıl); Write (‘ay >’); readln(ay); Write (‘gun >’); readln(gun); Setdate(yıl,ay,gun); End. |
-| --- |
+```pascal
+Uses dos; Var Yıl,ay,gun :word; Begin Write (‘yıl >’); readln(yıl); Write (‘ay >’); readln(ay); Write (‘gun >’); readln(gun); Setdate(yıl,ay,gun); End.
+```
 
 ## **SETTİME prosedürü**
 
@@ -1491,8 +1514,9 @@ Program çıktısı
 
 **ÖRNEK 25: **Sistemin saatini klavyeden girilen sayılara göre kuran program.
 
-| Uses dos; Var Sa,da,sn,sl:word; Begin Write (‘saat >’); readln(sa); Write (‘dakika >’); readln(da); Write (‘saniye >’); readln(sn); ** **Sl :=0; Settime (sa,da,sn,sl); End. |
-| --- |
+```pascal
+Uses dos; Var Sa,da,sn,sl:word; Begin Write (‘saat >’); readln(sa); Write (‘dakika >’); readln(da); Write (‘saniye >’); readln(sn); ** **Sl :=0; Settime (sa,da,sn,sl); End.
+```
 
 ## **CHR fonksiyonu**
 
@@ -1500,8 +1524,9 @@ Program çıktısı
 
 **ÖRNEK 26:** ASCII kod numarası 14-25 arasında olan sayıların karakter karşılığını yanlarına numaraları ile birlikte yan yana yazdıran program.
 
-| Uses crt; Var I :integer; Begin Clrscr; For I :=14 to 225 do Write (i :3,’=’,chr(I) ); Writeln; Writeln (‘ ‘’65’’ in ASCII karşılığı =’ ,#65,’ dir’); Writeln (#7); End. |
-| --- |
+```pascal
+Uses crt; Var I :integer; Begin Clrscr; For I :=14 to 225 do Write (i :3,’=’,chr(I) ); Writeln; Writeln (‘ ‘’65’’ in ASCII karşılığı =’ ,#65,’ dir’); Writeln (#7); End.
+```
 
 ## **ORD**** ****fonksiyonu**
 
@@ -1509,8 +1534,9 @@ Program çıktısı
 
 **ÖRNEK 27:** Bir elemanın tanımlı olduğu kümede kaçıncı sırada olduğunu ve ‘’A’’ harfinin ASCII kod numarasını bulan program.
 
-| Uses crt; Type Renkler =(kırmızı,mavi,yeşil,sarı,siyah); Begin Writeln(‘Yeşil in sıralı veri tipindeki sırası =’,Ord(yeşil) ); Writeln(‘ ‘’A’’ harfinin ASCII kodu ‘,Ord (‘A’),’ dır’); End. |
-| --- |
+```pascal
+Uses crt; Type Renkler =(kırmızı,mavi,yeşil,sarı,siyah); Begin Writeln(‘Yeşil in sıralı veri tipindeki sırası =’,Ord(yeşil) ); Writeln(‘ ‘’A’’ harfinin ASCII kodu ‘,Ord (‘A’),’ dır’); End.
+```
 
 Program çıktısı
 
@@ -1547,8 +1573,9 @@ Program çıktısı
 
 **ÖRNEK 28 : **Lowvideo prosedürü ile karakter renklerini matlaştırma.
 
-| Uses crt; Begin TextAttr :=White; Lowvideo; Writeln (‘Bu karakterler açık gridir’); TextAttr :=green; Lowvideo; Writeln (‘Bu karakterler mat yeşildir’); End. |
-| --- |
+```pascal
+Uses crt; Begin TextAttr :=White; Lowvideo; Writeln (‘Bu karakterler açık gridir’); TextAttr :=green; Lowvideo; Writeln (‘Bu karakterler mat yeşildir’); End.
+```
 
 ## **NORMVIDEO prosedürü**
 
@@ -1566,8 +1593,9 @@ Program çıktısı
 
 **ÖRNEK 29 : **Klavyeden bir tuşa basılıncaya kadar ekranı çeşitli karakterlerle dolduran program.
 
-| Uses crt; Begin Repeat Write (#176,#219,#178); Until Keypressed; End. |
-| --- |
+```pascal
+Uses crt; Begin Repeat Write (#176,#219,#178); Until Keypressed; End.
+```
 
 ## **GOTOXY prosedürü**
 
@@ -1587,8 +1615,9 @@ Program çıktısı
 
 **ÖRNEK 30 : **Bir string içerisinde istenilen bir bölümü ekrana yazdıran program.
 
-| Uses crt ; Var St1,st2:string; Begin St1 :=’BILGISAYAR’; St2 :=(copy(st1, 1,4) ); Writeln(st1);writeln(st2); End. |
-| --- |
+```pascal
+Uses crt ; Var St1,st2:string; Begin St1 :=’BILGISAYAR’; St2 :=(copy(st1, 1,4) ); Writeln(st1);writeln(st2); End.
+```
 
 Program çıktısı
 
@@ -1601,8 +1630,9 @@ Program çıktısı
 
 **ÖRNEK 31:**İki stringi ‘+’ ile birleştiren program.
 
-| Uses crt; Var St1,st2:string; Begin St1:=Concat(‘Balık’,’esir’); St2:=’Balık’+’esir’; Writeln(st1); Writeln(st2); End. |
-| --- |
+```pascal
+Uses crt; Var St1,st2:string; Begin St1:=Concat(‘Balık’,’esir’); St2:=’Balık’+’esir’; Writeln(st1); Writeln(st2); End.
+```
 
 Program çıktısı
 
@@ -1629,8 +1659,9 @@ Program çıktısı
 
 **ÖRNEK 32 :**Bir stringden bir bölümünü çıkardıktan sonra geriye kalanın karakterlerini birer birer silerek ekrana yazan program.
 
-| Uses crt ; Var St,st2:string; I :integer; Begin St :=’Uygulamalarla Temel Bilgisayar’; Delete (st); For I :=1 to length (st) do Begin Delete (st,length(st),1); Writeln(st);end; End. |
-| --- |
+```pascal
+Uses crt ; Var St,st2:string; I :integer; Begin St :=’Uygulamalarla Temel Bilgisayar’; Delete (st); For I :=1 to length (st) do Begin Delete (st,length(st),1); Writeln(st);end; End.
+```
 
 Program çıktısı
 
@@ -1643,8 +1674,9 @@ Program çıktısı
 
 **ÖRNEK 33 : **‘’Mustafa Atatürk’’ içerisine Kemal stringi yerleştiren program.
 
-| Uses crt; Var S:string; Begin S:=’Mustafa Atatürk’; Insert (‘Kemal ‘,S,9); Writeln(S); End. |
-| --- |
+```pascal
+Uses crt; Var S:string; Begin S:=’Mustafa Atatürk’; Insert (‘Kemal ‘,S,9); Writeln(S); End.
+```
 
 Program çıktısı
 
@@ -1811,8 +1843,9 @@ Programlama dillerinde ,ana program bloğunu parçalara ayırarak, ayrı program
 
 **ÖRNEK 34 : **Procedure komutu ile ses ver ve ses kes programı.** ******
 
-| Uses crt ; Var A,b :integer ; C:char; Procedure ses ver; Begin Repeat A := A+100; Sound (A); Delay (100); Until A=1500; End; Procedure ses kes; Begin Nosound; End; Begin Clrscr; Repeat Writeln (‘1. ses ver:’); Writeln (‘2. ses kes:’); Write (‘seciminiz:’)readln(B); A:=0; Case B of 1:ses ver ; 2:ses kes; else write (‘Hatalı giriş yaptınız’); write (‘Ana menüye dönmek için 3’e basınız. Cıkmak için (h/H) basınız);readln; end; Untıl (C=’h’) or (C=’H’); End. |
-| --- |
+```pascal
+Uses crt ; Var A,b :integer ; C:char; Procedure ses ver; Begin Repeat A := A+100; Sound (A); Delay (100); Until A=1500; End; Procedure ses kes; Begin Nosound; End; Begin Clrscr; Repeat Writeln (‘1. ses ver:’); Writeln (‘2. ses kes:’); Write (‘seciminiz:’)readln(B); A:=0; Case B of 1:ses ver ; 2:ses kes; else write (‘Hatalı giriş yaptınız’); write (‘Ana menüye dönmek için 3’e basınız. Cıkmak için (h/H) basınız);readln; end; Untıl (C=’h’) or (C=’H’); End.
+```
 
 ## **FONKSİYON ALT PROGRAMLARI**
 
@@ -1820,8 +1853,9 @@ Kullanıcı tarafından tanımlanan fonksiyonlar, standart fonksiyonlar gibi yal
 
 **ÖRNEK 34 : **2 sayının 0 ‘dan 8’e kadar üslerini alan bir ana programda, us(x,y)adında bir fonksiyon fonksiyonunu kullanma.** ******
 
-| Uses crt; Var J:integer; Function us (x: real ; n:integer) :real ; var Carpim:real; İ: integer; Begin Carpım:=1; For i:=1 to n do Carpım :=carpım \*x; Us:=carpım; End; Begin Clrscr; For J:=0 to 8 do Writeln(‘2 nin ‘,j,’ nin ci kuvveti’, us(2,j): 5:0); End. |
-| --- |
+```pascal
+Uses crt; Var J:integer; Function us (x: real ; n:integer) :real ; var Carpim:real; İ: integer; Begin Carpım:=1; For i:=1 to n do Carpım :=carpım *x; Us:=carpım; End; Begin Clrscr; For J:=0 to 8 do Writeln(‘2 nin ‘,j,’ nin ci kuvveti’, us(2,j): 5:0); End.
+```
 
 Program çıktısı
 
@@ -1870,8 +1904,9 @@ Global prosedür ve fonksiyonlar
 
 **ÖRNEK 35 : **Clrscr komutunu kullanarak ,türkçe isimli bir prosedürün tanımlandığı Unıt.
 
-| Unıt ekran; Interface Uses crt; Procedüre sil; Implementation Procedüre sil; Begin Clrscr; End; End. |
-| --- |
+```pascal
+Unıt ekran; Interface Uses crt; Procedüre sil; Implementation Procedüre sil; Begin Clrscr; End; End.
+```
 
 **9. Bölüm**
 
@@ -1913,141 +1948,76 @@ Eoln(d);
 
 **ÖRNEK 36: **Text dosyasının içinde ‘’10-A sınıfının listesini yazan program.
 
+```pascal
 Uses crt ;
-
 Var
-
-Ad : array \[1..27 \] of string;
-
-No :array \[1.. 27 \] of string;
-
+Ad : array [1..27 ] of string;
+No :array [1.. 27 ] of string;
 I,A:integer ;
-
 dd:text;
-
 C: char;
-
-Procedüre kayıt\_gir;
-
+Procedüre kayıt_gir;
 Begin
-
 Clrscr;
-
 Assing (dd,’m.m’);
-
 Rewrite(dd);
-
 Writeln(dd,’10-avSınıf listesi ‘);
-
 Writeln (dd,’numarası ‘,adı ve soyadı ‘);
-
 For i := 1 to 27 do
-
 Begin
-
-Write (I,’.öğrencinin numarasını giriniz:’); readln(no \[ I \] );
-
-Write (I,’. öğrencinin adını ve soyadını giriniz:’); readln(ad \[ I \] );
-
-Writeln (dd,no \[ I \],ad \[ ı \] );
-
+Write (I,’.öğrencinin numarasını giriniz:’); readln(no [ I ] );
+Write (I,’. öğrencinin adını ve soyadını giriniz:’); readln(ad [ I ] );
+Writeln (dd,no [ I ],ad [ ı ] );
 End;
-
 Close (dd);
-
 Readln;
-
 End;
-
-Procedüre kayıt\_ekle;
-
+Procedüre kayıt_ekle;
 Begin
-
 Clrscr;
-
 Assing (dd,’ m.m ‘);
-
 Append(dd);
-
 For I :=1 to 27 do
-
 Begin
-
-Write (I,’.öğrencinin numarasını giriniz:’); readln(no \[ I \] );
-
-Write (I,’. öğrencinin adını ve soyadını giriniz:’); readln(ad \[ I \] );
-
-Writeln (dd,no \[ I \],ad \[ ı \] );
-
+Write (I,’.öğrencinin numarasını giriniz:’); readln(no [ I ] );
+Write (I,’. öğrencinin adını ve soyadını giriniz:’); readln(ad [ I ] );
+Writeln (dd,no [ I ],ad [ ı ] );
 End;
-
 Close (dd);
-
 Readln;
-
 End;
-
-Procedüre kayıt\_oku;
-
+Procedüre kayıt_oku;
 Begin
-
 Clrscr;
-
 Assing (dd,’ m.m ‘);
-
 Reset (dd);
-
 Clrscr;
-
 While not eof (dd) do
-
 Begin
-
-Readln(dd,no \[ 20 \],ad \[ 20 \] );
-
-Writeln (no \[ 20 \],ad \[20 \] );
-
+Readln(dd,no [ 20 ],ad [ 20 ] );
+Writeln (no [ 20 ],ad [20 ] );
 End;
-
 Close (dd);
-
 Readln;
-
 End;
-
 Begin
-
 Repeat
-
 Clrscr;
-
 Writeln(‘1. kayıt girmek ‘);
-
 Writeln(‘2.kayıt ekleme2);
-
 Writeln(‘3.kayıt okuma’);
-
 Writeln(‘seçiminiz:’);readln (a);
-
 Case a of
-
-1: Kayıt\_gir;
-
-2: Kayıt\_ekle;
-
-3: kayıt\_oku;
-
+1: Kayıt_gir;
+2: Kayıt_ekle;
+3: kayıt_oku;
 Else
-
 Writeln (‘hatalı giriş yaptınız’);
-
 Writeln (‘çıkmak için ( H/ h) basınız’); readln©;
-
 End;
-
 Untıl (c= ‘h’) or (c=’H’);
-
 End.
+```
 
 ## **Dosyadan bilgi silmek,Dosyadan bilgi aramak ve dosyadaki bilgiyi listeleme.**
 
@@ -2055,175 +2025,93 @@ End.
 
 **ÖRNEK 37: **Text tipi dosyalarda, bilgi giriş ,arama,silme,listeleme ile ilgili program.
 
+```pascal
 Uses crt;
-
 Var
-
 Uz,x,i,no,not1,not2,not3 :integer;
-
 Ad,soy,ara :string;
-
 Y,ort :real;
-
 Dd:text;
-
 Dev,w,e :char;
-
 Bay :integer;
-
-Procedüre Bilgi\_gir;
-
+Procedüre Bilgi_gir;
 Begin
-
 { $I- }
-
 window (40,1,80,13 );textbackround(4);clrscr;
-
 assing (dd,’m.s’);
-
 append (dd);
-
 writeln(dd,’no adı soyadı 1.Not 2.Not 3.Not Ort );
-
 (Write (‘öğrencinin Numarasını giriniz :’); readln (no);
-
 (Write (‘öğrencinin adnı giriniz :’); readln (ad);
-
 (Write (‘öğrencinin soyadını giriniz :’); readln (soy);
-
 (Write (‘öğrencinin 1.Notunu giriniz :’); readln(1.not);
-
 (Write (‘öğrencinin 2.Notunu giriniz :’); readln (2.not);
-
 (Write (‘öğrencinin 3.Notunu giriniz :’); readln (3.not);
-
 if ioresult <> 0 then
-
 Write (‘tekrar giriniz’);
-
 Delay (500);
-
 i := not1+not2+not3;
-
 y:=i/3;
-
 Writeln (dd,no:1,ad:15,soy:12,not1:10,not2:10,not3:10, ‘ ‘,y:5:0);
-
 Close(dd);
-
 End;
-
 Procedüre arama;
-
 Begin
-
 Clrscr;
-
 Assing(dd,’m.s’);
-
 Repeat
-
 Reset(dd);
-
 Write (‘aradığınız öğrencinin adı....’);readln(ara);
-
 Uz:= lenght (ara);
-
 Bay:=0;
-
 Clrscr;
-
 Writeln(’No Adı Soyadı 1.Not 2.Not 3.Not Ort );
-
 While Not eof (dd) do
-
 Begin
-
 Readln (dd,ad,soyad);
-
 if ara =copy(dd,1,uz)then
-
 Begin
-
 Writeln (ad,soy,ort;9,2);bay:=1;
-
 End;
-
 End;
-
 if bay =0 then writeln (‘aradığınız öğrenci listede yok ! ‘);
-
 write (devam için <enter> son(h/H)....’);
-
 dev:=readkey;
-
 Writeln;
-
-Until dev in \[ ‘H’,’h’\];
-
+Until dev in [ ‘H’,’h’];
 Close(dd);
-
 Writeln;
-
 End;
-
 Procedüre liste;
-
 Assing(dd,ad,soy);
-
 Write(ad:17,soy:11);
-
 End;
-
 Close(dd);
-
 Readln;
-
 End;
-
 Begin
-
 Clrscr;
-
 Repeat
-
 Writeln(‘1.Bilgi Girişi’);
-
 Writeln(‘2.Bilgi Ekleme’);
-
 Writeln(‘3.Bilgi Arama’);
-
 Writeln(‘4.Bilgi Listeleme’);
-
 Writeln(‘5.Çıkış’);
-
 Write(‘seçiminiz’);readln(x);
-
 Case X of
-
-1: Bilgi\_gir;
-
-2: Bilgi\_ekle;
-
-3: Bilgi\_arama;
-
+1: Bilgi_gir;
+2: Bilgi_ekle;
+3: Bilgi_arama;
 4:Liste;
-
 5:EXIT;
-
 Else
-
 Writeln(‘Hatalı giriş yaptınız’);
-
 Writeln(‘Ana menüye dönmek için bir Tuşa basınız:’);
-
 Write(‘çıkmak için (H/h)basınız:’);readln(W);
-
 End;
-
-Until W in \[‘H’,’h’\];
-
+Until W in [‘H’,’h’];
 End.
+```
 
 ## **RECORD TİPİ DOSYALAR**
 
@@ -2233,8 +2121,9 @@ End.
 
 **ÖRNEK 38 : **Record Tipi dosyalar ile ilgili program.
 
-| Uses crt; Label Git; Type ** **Kayit=record; No:integer; Ad:string\[10\]; Soy\[10\]; End; Var A,sil: string; Sec,ara:integer; ögrenci:kayit; cev,dev:char; dosya:file of kayit; procedüre kayit\_ekle; begin assing(dosya,’nurdan.dat’); repeat rewrite(dosya); write(‘no ‘yu giriniz:’);readln(ögrenci.no); write(‘adı giriniz:’);readln(ögrenci.ad); write(‘soyadı giriniz:’);readln(ögrenci.soy); seek(ögrencino); Write(dosya,ögrenci); Writeln(‘devam etmek istiyormusunuz (‘E/H’); Cev :=readkey; Until cev in \[‘H’,’h’\]; Close (dosya); End, Procedüre liste; Begin Assing(dosya,’nurdan.dat’);reset(dosya); Writeln(‘No Ad Soyad’); Writeln(‘----------------------‘); Begin Seek (dosya,’ara’); Read(dosya,ögrenci); With ögrenci do Begin Writeln(No,ad:10,soy:10); End; End. |
-| --- |
+```pascal
+Uses crt; Label Git; Type ** **Kayit=record; No:integer; Ad:string[10]; Soy[10]; End; Var A,sil: string; Sec,ara:integer; ögrenci:kayit; cev,dev:char; dosya:file of kayit; procedüre kayit_ekle; begin assing(dosya,’nurdan.dat’); repeat rewrite(dosya); write(‘no ‘yu giriniz:’);readln(ögrenci.no); write(‘adı giriniz:’);readln(ögrenci.ad); write(‘soyadı giriniz:’);readln(ögrenci.soy); seek(ögrencino); Write(dosya,ögrenci); Writeln(‘devam etmek istiyormusunuz (‘E/H’); Cev :=readkey; Until cev in [‘H’,’h’]; Close (dosya); End, Procedüre liste; Begin Assing(dosya,’nurdan.dat’);reset(dosya); Writeln(‘No Ad Soyad’); Writeln(‘----------------------‘); Begin Seek (dosya,’ara’); Read(dosya,ögrenci); With ögrenci do Begin Writeln(No,ad:10,soy:10); End; End.
+```
 
 ## **10.Bölüm**
 
@@ -2368,13 +2257,15 @@ Yukarıdaki tablodan registere **5** sayısının gönderilmesi gerektiğini bul
 
 **Örnek 39 :7** segment displayın tüm **LED’**lerini belirli sürelerde yakıp söndüren program.
 
-| Program Port 1; Uses Dos,Crt; Var I : integer; Begin Repeat Port \[$378\]:=127; Delay (3000); Port \[$378\]:=0; Delay (3000); Until Keypressed; End. |
-| --- |
+```pascal
+Program Port 1; Uses Dos,Crt; Var I : integer; Begin Repeat Port [$378]:=127; Delay (3000); Port [$378]:=0; Delay (3000); Until Keypressed; End.
+```
 
 **Örnek 40 : 7** segment displayın **LED’**lerini a’dan g’ye doğru belirli aralıklara yakan ve herhangi bir tuşa basınca duran program.
 
-| Program Port 2; Uses Dos,Crt; Var I , J :integer; Begin Repeat For J:=0 to 7 do Begin Delay (4000); Port \[$378\]:=Trunc(Exp (J\*Ln (2))); I:=Port \[$378\]; Writeln( I ); End; Until Keypressed; End. |
-| --- |
+```pascal
+Program Port 2; Uses Dos,Crt; Var I , J :integer; Begin Repeat For J:=0 to 7 do Begin Delay (4000); Port [$378]:=Trunc(Exp (J*Ln (2))); I:=Port [$378]; Writeln( I ); End; Until Keypressed; End.
+```
 
 ** 7 **segment displayın **LED’**lerini sırayla yakmak için **378** adresine **1, 2, 4, 8, 16, 32, 64** sayılarını sırasıyla göndermek gerekir. **“Trunc (Exp (J\* Ln (2)))”** ifadesi bu sayıları üretmek için kullanılmıştır.
 
@@ -2382,18 +2273,21 @@ Yukarıdaki tablodan registere **5** sayısının gönderilmesi gerektiğini bul
 
 **Örnek 41 : 7** segmentli displayın **LED’**lerini önce a’dan f’ye daha sonra f’den a’ya doğru yakan, bu işleme herhangi bir tuşa basıncaya kadar devam eden program.
 
-| Program kara\_simsek; Uses Dos,Crt; Var I, J :integer; Begin Repeat For J:=0 to 5 do Begin Delay(4000); Port \[$378\]:=Trunc(Exp (J\*Ln(2))); I:=Port\[$378\]; Writeln( I ); End; For J:=5 downto 0 do Begin Delay(4000); Port \[$378\]:=Trunc(Exp (J\*Ln(2))); I:=Port\[$378\]; Writeln( I ); End; Until Keypressed; End; |
-| --- |
+```pascal
+Program kara_simsek; Uses Dos,Crt; Var I, J :integer; Begin Repeat For J:=0 to 5 do Begin Delay(4000); Port [$378]:=Trunc(Exp (J*Ln(2))); I:=Port[$378]; Writeln( I ); End; For J:=5 downto 0 do Begin Delay(4000); Port [$378]:=Trunc(Exp (J*Ln(2))); I:=Port[$378]; Writeln( I ); End; Until Keypressed; End;
+```
 
 **Örnek 42 : **Klavyeden girilen **0-9 **arasındaki sayıları **7 **segment displayda gösteriri program.
 
-| Uses Dos,Crt; Var I, J:integer; Begin Repeat Clrscr; Writeln(‘ 0-9 Arasında Bir Sayı Giriniz ’); Write(‘ 99 Sayısı Girince İşlem Sona Erer : ‘);Readln( J ); Case J of 1: Port \[$378\]:=6; 2: Port \[$378\]:=91; 3: Port \[$378\]:=79; 4: Port \[$378\]:=102; 5: Port \[$378\]:=109; 6: Port \[$378\]:=124; 7: Port \[$378\]:=7; 8: Port \[$378\]:=127; 9: Port \[$378\]:=103; 0: Port \[$378\]:=63; End; I:=Port\[$378\]; Writeln( I ); Until J=99; End. |
-| --- |
+```pascal
+Uses Dos,Crt; Var I, J:integer; Begin Repeat Clrscr; Writeln(‘ 0-9 Arasında Bir Sayı Giriniz ’); Write(‘ 99 Sayısı Girince İşlem Sona Erer : ‘);Readln( J ); Case J of 1: Port [$378]:=6; 2: Port [$378]:=91; 3: Port [$378]:=79; 4: Port [$378]:=102; 5: Port [$378]:=109; 6: Port [$378]:=124; 7: Port [$378]:=7; 8: Port [$378]:=127; 9: Port [$378]:=103; 0: Port [$378]:=63; End; I:=Port[$378]; Writeln( I ); Until J=99; End.
+```
 
 **Örnek 43 : 0-9 **arasındaki sayıları sıra ile **7** segment displayda gösteren program.”Delay” komutu ile verilen süreyi değiştirilerek bir kronometre gibi kullanılabilir.
 
-| Uses Dos,Crt; Var I, J:integer; Begin Repeat For J:= 0 to 9 do Begin Delay(4000); Case J of 1: Port \[$378\]:=6; 2: Port \[$378\]:=91; 3: Port \[$378\]:=79; 4: Port \[$378\]:=102; 5: Port \[$378\]:=109; 6: Port \[$378\]:=124; 7: Port \[$378\]:=7; 8: Port \[$378\]:=127; 9: Port \[$378\]:=103; 0: Port \[$378\]:=63; End; I:=Port\[$378\]; Writeln( I ); End; Until Keypressed; End. |
-| --- |
+```pascal
+Uses Dos,Crt; Var I, J:integer; Begin Repeat For J:= 0 to 9 do Begin Delay(4000); Case J of 1: Port [$378]:=6; 2: Port [$378]:=91; 3: Port [$378]:=79; 4: Port [$378]:=102; 5: Port [$378]:=109; 6: Port [$378]:=124; 7: Port [$378]:=7; 8: Port [$378]:=127; 9: Port [$378]:=103; 0: Port [$378]:=63; End; I:=Port[$378]; Writeln( I ); End; Until Keypressed; End.
+```
 
 **4. **ve **5. **Programlarda portlara gönderilecek verinin tespiti aşağıdaki gibi yapılmıştır.Örneğin **7** segment displayda **3** sayısının görülmesi için **a, b, c, d, g **segmentlerinin yanması gerektiği bu- lunur.Daha sonra bu segmentlerin yanması için porta gönderilmesi gereken desimal sayı hesap edilir.
 
@@ -2409,8 +2303,9 @@ Yukarıdaki tabloda göre basamak değerlerinin desimal karşılığı toplanaca
 
 **Örnek 44 :** 7 segment display’ın tüm LED’lerini belirli sürelerle yakıp söndüren program.
 
-| Uses Dos,Crt; Var I, J:integer; Begin Repeat Writeln(‘1.Fırını Çalıştır ‘); Writeln(‘2.Kapıyı Aç ‘); Writeln(‘3.Televizyonu Aç‘); Writeln(‘4.Müzik Setini Aç‘); Writeln(‘5.Salon Işığını Aç ‘); Writeln(‘6.Programdan Çıkış ‘); Write(‘Seçiminiz -------->‘);Readln( J ); Case J of 1:Port \[$378\]:=1; 2:Port \[$378\]:=2; 3:Port \[$378\]:=4; 4:Port \[$378\]:=8; 5:Port \[$378\]:=16; 6:Exit; End; I:=Port\[$378\]; Writeln ( I ); Until J = 99 ; End. |
-| --- |
+```pascal
+Uses Dos,Crt; Var I, J:integer; Begin Repeat Writeln(‘1.Fırını Çalıştır ‘); Writeln(‘2.Kapıyı Aç ‘); Writeln(‘3.Televizyonu Aç‘); Writeln(‘4.Müzik Setini Aç‘); Writeln(‘5.Salon Işığını Aç ‘); Writeln(‘6.Programdan Çıkış ‘); Write(‘Seçiminiz -------->‘);Readln( J ); Case J of 1:Port [$378]:=1; 2:Port [$378]:=2; 3:Port [$378]:=4; 4:Port [$378]:=8; 5:Port [$378]:=16; 6:Exit; End; I:=Port[$378]; Writeln ( I ); Until J = 99 ; End.
+```
 
 ** 1 13**
 
@@ -2552,8 +2447,9 @@ IBM8514Hi 1024x768
 
 **Örnek 45 : **Sistemin sürücü kod numarasını ve grafik modunu bulup ekrana yazdıran program.
 
-| Program Grsur\_GR\_mod\_Bul; Uses Graph ; Var Gs, Gm :Integer; Begin Detectgraph(Gs,Gm) ; Writeln (‘ Sisteminizin Grafik Sürücü Numarası =’,Gs) ; Writeln (‘ Sisteminizin Grafik Modu Numarası = ’,Gm); End. |
-| --- |
+```pascal
+Program Grsur_GR_mod_Bul; Uses Graph ; Var Gs, Gm :Integer; Begin Detectgraph(Gs,Gm) ; Writeln (‘ Sisteminizin Grafik Sürücü Numarası =’,Gs) ; Writeln (‘ Sisteminizin Grafik Modu Numarası = ’,Gm); End.
+```
 
 ***INITGRAPH Prosedürü***
 
@@ -2599,8 +2495,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 46 : **Ekranın sol-üst köşesindeki belirlenen bölgeye rasgele renkte ve boyutta çizgiler çizdiren program.
 
-| Program line\_ciz ; Uses Crt, Graph ; Var Gs, Gm:Integer ; Begin Detectgraph(Gs,Gm) ; Initgraph (Gs, Gm, ‘ ‘) ; If GraphResult <> 0 then Halt (1) ; Randomize ; Repeat Setcolor ( random (getmaxcolor+1)) ; Line (Random (200) , Random (200),Random (200), Random (200)) ; Delay (100) ; Until Keypressed ; Readln ; Closegraph ; End. |
-| --- |
+```pascal
+Program line_ciz ; Uses Crt, Graph ; Var Gs, Gm:Integer ; Begin Detectgraph(Gs,Gm) ; Initgraph (Gs, Gm, ‘ ‘) ; If GraphResult <> 0 then Halt (1) ; Randomize ; Repeat Setcolor ( random (getmaxcolor+1)) ; Line (Random (200) , Random (200),Random (200), Random (200)) ; Delay (100) ; Until Keypressed ; Readln ; Closegraph ; End.
+```
 
 ***GETMAXX ve GETMAXY Fonksiyonları***
 
@@ -2618,8 +2515,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 47 : **Ekranın kullanılabilecek alanını sınırlayan bir dikdörtgen çizen program.
 
-| Program rectangle\_ciz ; Uses Graph ; Var Gs, Gm :Integer ; Begin Detectgraph (Gs, Gm) ; Initgraph (Gs, Gm, ‘ ‘ ) ; If GraphResult <> 0 then Halt (1) ; Rectangle (0, 0, GetMaxX,GetMaxY) ; Readln ; CloseGraph ; End. |
-| --- |
+```pascal
+Program rectangle_ciz ; Uses Graph ; Var Gs, Gm :Integer ; Begin Detectgraph (Gs, Gm) ; Initgraph (Gs, Gm, ‘ ‘ ) ; If GraphResult <> 0 then Halt (1) ; Rectangle (0, 0, GetMaxX,GetMaxY) ; Readln ; CloseGraph ; End.
+```
 
 ***CIRCLE Prosedürü ( Daire Çizmek )***
 
@@ -2629,8 +2527,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 48 : **Ekrana değişik renklerde iç içe daireler çizdiren program.
 
-| Program circle\_ciz ; Uses Crt, Graph ; Var Gs, Gm : Integer ; Yaricap : Integer ; Ch : char ; Begin Gs :=Detect ; Initgraph (Gs, Gm, ‘ ’) ; if GraphResult <> 0 then Halt (1); Randomize ; Repeat For yaricap := 1 to 5 do Begin Setcolor (Random (GetMaxcolor+1 )) ; 0 Circle (100, 100, yaricap\*10) ; Delay (100) ; End ; Ch := Readkey ; Until ch = # 27 ; End. |
-| --- |
+```pascal
+Program circle_ciz ; Uses Crt, Graph ; Var Gs, Gm : Integer ; Yaricap : Integer ; Ch : char ; Begin Gs :=Detect ; Initgraph (Gs, Gm, ‘ ’) ; if GraphResult <> 0 then Halt (1); Randomize ; Repeat For yaricap := 1 to 5 do Begin Setcolor (Random (GetMaxcolor+1 )) ; 0 Circle (100, 100, yaricap*10) ; Delay (100) ; End ; Ch := Readkey ; Until ch = # 27 ; End.
+```
 
 ***ELLIPSE Prosedürü ***
 
@@ -2640,8 +2539,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 49 : **Ekranın** **belirlenen koordinatlarına bir tam, bir de yarım elips çizen program.
 
-| Program elips\_ciz ; Uses Graph ; Var Gs, Gm :Integer ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResult <> 0 then Halt (1) ; Ellipse (100, 100, 0, 360, 30, 50) ; Ellipse (100, 100, 0, 180, 50, 30) ; Readln ; CloseGraph ; End. |
-| --- |
+```pascal
+Program elips_ciz ; Uses Graph ; Var Gs, Gm :Integer ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResult <> 0 then Halt (1) ; Ellipse (100, 100, 0, 360, 30, 50) ; Ellipse (100, 100, 0, 180, 50, 30) ; Readln ; CloseGraph ; End.
+```
 
 ***PUTPIXEL Prosedürü (Nokta Koymak)***
 
@@ -2651,8 +2551,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 50 : **Ekranın sol-üst köşesinde belirlenen bir alana içerisindeki rasgele yerlere rasgele renklerde nokta çizen program.
 
-| Program put\_pixel\_ciz ; Uses Crt, Graph ; Var Gs, Gm :Integer ; Renk : Word ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Randomize ; Repeat Renk := Random (100) ,Random (100), Renk ) ; Delay (10) ; Until KeyPressed ; Readln ; CloseGraph; End. |
-| --- |
+```pascal
+Program put_pixel_ciz ; Uses Crt, Graph ; Var Gs, Gm :Integer ; Renk : Word ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Randomize ; Repeat Renk := Random (100) ,Random (100), Renk ) ; Delay (10) ; Until KeyPressed ; Readln ; CloseGraph; End.
+```
 
 *** ******SETLINESTYLE Prosedürü***
 
@@ -2662,8 +2563,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 51 : **Ekrana değişik çizgi stilinde ve kalınlıkta çizgi ve dikdörtgen çizen program.
 
-| Program ciz\_stili ; Uses Graph ; Var Gs, Gm : Integer ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Line (0, 0, 100, 0, ) ; SetLineStyle (DottedLn, 0, ThickWidth ) ; Line ( 0, 10, 100, 10 ) ; SetLineStyle (DashedLn, 0, NormWidth ) ; Rectangle (0, 20, 100,40 ) ; Readln ; CloseGraph ; End. |
-| --- |
+```pascal
+Program ciz_stili ; Uses Graph ; Var Gs, Gm : Integer ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Line (0, 0, 100, 0, ) ; SetLineStyle (DottedLn, 0, ThickWidth ) ; Line ( 0, 10, 100, 10 ) ; SetLineStyle (DashedLn, 0, NormWidth ) ; Rectangle (0, 20, 100,40 ) ; Readln ; CloseGraph ; End.
+```
 
 ***SETFILLSTYLE Prosedürü***
 
@@ -2679,8 +2581,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 52 : **Ekrana rasgele renklerde ve rasgele patternlerle doldurulmuş sütun grafikleri çizen program.
 
-| Program bar\_ciz ; Uses Crt, Graph ; Var Gd, Gm, I, Gen : Integer ; Ch :char ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Gen := 20 ; Randomize ; Repeat For I := 1 to 5 do Begin SetFillStyle (Random (12), Random (GetMaxcolor)) ; Bar ( I\* Gen, I\*10, Succ ( I ) \*Gen, 300 ) ; End ; Ch :Readkey ; Until ch = # 27 ; CloseGraph ; End. |
-| --- |
+```pascal
+Program bar_ciz ; Uses Crt, Graph ; Var Gd, Gm, I, Gen : Integer ; Ch :char ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Gen := 20 ; Randomize ; Repeat For I := 1 to 5 do Begin SetFillStyle (Random (12), Random (GetMaxcolor)) ; Bar ( I* Gen, I*10, Succ ( I ) *Gen, 300 ) ; End ; Ch :Readkey ; Until ch = # 27 ; CloseGraph ; End.
+```
 
 ***BAR3D Prosedürü ( 3 Boyutlu Sütun Grafiği Çizmek )***
 
@@ -2690,8 +2593,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 53 :** Ekrana değişik boy ve renkte 3 boyutlu sütun grafiği çizen program.
 
-| Program bar\_boy3 ;İ Uses Crt, Graph ; Var Gs, Gm, I, Width :Integer ; Ch : Char ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Width := 20 ; Randomize ; Repeat i := 5 ; While I < 20 do Begin SetFillStyle ( Random (12), Random (GetMaxcolor)) ; Bar3d (I\*Width, I\*10, Succ ( I )\*Width, 300, 20, true ) ; İ := i+3 ; End ; Ch := Readkey ; Until Ch = # 27 ; CloseGraph ; End. |
-| --- |
+```pascal
+Program bar_boy3 ;İ Uses Crt, Graph ; Var Gs, Gm, I, Width :Integer ; Ch : Char ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Width := 20 ; Randomize ; Repeat i := 5 ; While I < 20 do Begin SetFillStyle ( Random (12), Random (GetMaxcolor)) ; Bar3d (I*Width, I*10, Succ ( I )*Width, 300, 20, true ) ; İ := i+3 ; End ; Ch := Readkey ; Until Ch = # 27 ; CloseGraph ; End.
+```
 
 ***OUTTEXT ve OUTTEXTXY Prosedürleri***
 
@@ -2703,8 +2607,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 54 : **Grafik ortamında default karakter stilinde Yazı yazdıran program.
 
-| Program out\_text\_ciz ; Uses Graph ; Var Gs, Gm :Integer ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Outtext (‘ Outtext komutu ile yazılıdı ‘) ; Outtext (‘ Karakterler Default Stildedir. ‘) ; OuttextXY (‘ 100, 100, ‘OuttextXY Komutu İle Yazılmıştır. ‘) ; Readln; CloseGraph ; End. |
-| --- |
+```pascal
+Program out_text_ciz ; Uses Graph ; Var Gs, Gm :Integer ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; Outtext (‘ Outtext komutu ile yazılıdı ‘) ; Outtext (‘ Karakterler Default Stildedir. ‘) ; OuttextXY (‘ 100, 100, ‘OuttextXY Komutu İle Yazılmıştır. ‘) ; Readln; CloseGraph ; End.
+```
 
 ***SETTEXSTYLE Prosedürü***
 
@@ -2714,8 +2619,9 @@ Her grafik moduna geçtikten sonra, genellikle program sonunda kullanılır.Kull
 
 **Örnek 55 : **Grafik ortamında ekrana çeşitli font, doğrultu ve büyüklüklerde yazı yazdıran program.
 
-| Program Set\_text\_style ; Uses Graph ; Var Gs, Gm : Integer ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; SetTextStyle (TriplexFont, Horizdir, 1 ); OuttextXY (0, 1, ‘ Yatay TriplexFont ‘) ; SetTextStyle (GothicFont, Horizdir, 2 ); OuttextXY (0, 20, ‘ Yatay GothicFont ‘) ; SetTextStyle (3, Horizdir, 9 ); OuttextXY (0, 40, ‘ SansSerifFont ‘) ; SetTextStyle (3, VertDir, 4 ); OuttextXY (200, 100, ‘ Dikey SmallFont ‘) ; Readln ; CloseGraph; End. |
-| --- |
+```pascal
+Program Set_text_style ; Uses Graph ; Var Gs, Gm : Integer ; Begin Gs := Detect ; Initgraph (Gs, Gm, ‘ ‘) ; if GraphResulr <> 0 then Halt (1) ; SetTextStyle (TriplexFont, Horizdir, 1 ); OuttextXY (0, 1, ‘ Yatay TriplexFont ‘) ; SetTextStyle (GothicFont, Horizdir, 2 ); OuttextXY (0, 20, ‘ Yatay GothicFont ‘) ; SetTextStyle (3, Horizdir, 9 ); OuttextXY (0, 40, ‘ SansSerifFont ‘) ; SetTextStyle (3, VertDir, 4 ); OuttextXY (200, 100, ‘ Dikey SmallFont ‘) ; Readln ; CloseGraph; End.
+```
 
 ## **12.Bölüm**
 
@@ -3117,35 +3023,26 @@ sınırları dışında veri atanmaya
 
 PAGE 1
 
+```pascal
 Program Merhaba ;
-
 begin
-
 Writeln(‘Merhaba’)
-
 Writeln(‘Turbo Pascal Dünyasına Hoş geldiniz’);
-
 Writeln(‘Güle güle’);
-
 end.
+```
 
+```pascal
 Program merhaba;
-
 var
-
 isim : string ;
-
 begin
-
 Writeln(‘isminizi Yazıp Enter Tuşuna Basınız >’);
-
 Readln(isim);
-
 Writeln(‘merhaba ‘,isim,’.’);
-
 Writeln(‘Umarım Pascal öğrenmekten hoşlanırsın !’);
-
 End.
+```
 
 program
 
@@ -3175,27 +3072,19 @@ Tip
 
 **,******
 
-Program dolardan\_liraya;
-
+```pascal
+Program dolardan_liraya;
 Const
-
 Birdol=585800.25;
-
 Var
-
 dol; lira : real;
-
 begin
-
 Writeln(‘Kaç dolarınız var >’);
-
 Readln(dol);
-
-Lira:=birdol \* dol ;
-
+Lira:=birdol * dol ;
 Writeln(dol,‘ABD doları’,lira,’TL. eder.’);
-
 End.
+```
 
 Sonuç değişkeni
 

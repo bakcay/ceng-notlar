@@ -90,15 +90,13 @@ a=b+c de .. a sol taraf değeri b ise sağtaraf değerini oluşturur.
 
 ## MERHABA "C"
 
-## #include <stdio.h>
-
-## main()
-
-## {
-
-## printf("Merhaba C\\n")
-
-## }
+```c
+#include <stdio.h>
+main()
+{
+printf("Merhaba C\n")
+}
+```
 
 işte size basit bir c programı işlevi ekrana
 
@@ -454,15 +452,13 @@ Mantık
 
 a=!4; /\* 4 doğru bir değerdir.. o dışı bunun değili ise yalnış olarak yorumlanır.\*/
 
+```c
 a=10
-
 b=!++a > 10 !=5;
-
 b=0 > 10 !=5
-
 b= 0 !=5
-
 b=1
+```
 
 & Ve and operatörü ve işlevi;
 

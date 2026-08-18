@@ -273,71 +273,50 @@ Lineer hedef programlamanın çözümünde kullanılan simpleks yöntem, klasik 
 
 **Tablo 2.2. Reklamevi sonuç tablosu **
 
+```text
 Program: Goal Programming
-
 Problem Title : Reklamevi
 
-\*\*\*\*\* Input Data \*\*\*\*\*
+***** Input Data *****
 
 Min Z = 2P1d-3 + 1P1d+4
 
 Subject to
 
 çalışan 1X1 + 2X2 <= 10
-
 radyo 1X1 <= 6
-
 u. kişi 4X1 + 8X2 + d-3 - d+3 = 45
-
 bütçe 8X1 + 24X2 + d-4 - d+4 = 100
 
-\*\*\*\*\* Program Output \*\*\*\*\*
+***** Program Output *****
 
 Analysis of deviations
-
 ------------------------------------------------
-
 Constraint RHS Value d+ d-
-
 ------------------------------------------------
-
 çalışan 10.000 0.000 0.000
-
 radyo 6.000 0.000 1.000
-
 u. kişi 45.000 0.000 5.000
-
 bütçe 100.000 0.000 0.000
-
 -------------------------------------------------
 
 Analysis of decision variables
-
 ------------------------------------
-
 Variable Solution Value
-
 ------------------------------------
-
 X1 5.000
-
 X2 2.500
-
 ------------------------------------
 
 Analysis of the objective function
-
 ----------------------------------
-
 Priority Nonachievement
-
 ----------------------------------
-
 P1 10.000
-
 ----------------------------------
 
-\*\*\*\*\* End of Output \*\*\*\*\*
+***** End of Output *****
+```
 
 Simpleks yöntemle çözüm x1=5 ve x2=2.5 noktalarında gerçekleşmiştir. Bu çözüme göre ulaşılan kişi sayısı 40 milyondur. Hedeflenen değerden 5 milyon daha az kişiye ulaşılmıştır. Bütçe hedefinden ise sapma yoktur. Hedeflenen bütçenin tamamı kullanılmıştır.
 
@@ -467,93 +446,61 @@ Bu örnek 7 iterasyonda gerçekleştiğinden bilgisayar desteği alınmış, QM 
 
 **Tablo 2.3. Bilgisayar probleminin sonuç tablosu**
 
+```text
 Program: Goal Programming
-
 Problem Title : bilgisayar
 
-\*\*\*\*\* Input Data \*\*\*\*\*
+***** Input Data *****
 
 Min Z = 1P1d-5 + 1P2d-6 + 1P3d-7 + 1P4d+8
 
 Subject to
 
 kasa 1X1 + 1X2 <= 600
-
 harddisk 1X1 + 1X2 <= 500
-
 cd surucu 1X2 <= 500
-
 disket sur 1X1 + 1X2 <= 1000
-
 cp 486 1X1 + d-5 - d+5 = 200
-
 bilgisayar 1X1 + 1X2 + d-6 - d+6 = 500
-
 karlilik 200X1 + 500X2 + d-7 - d+7 = 250000
-
 isgucu 1X1 + 1.5X2 + d-8 - d+8 = 400
 
-\*\*\*\*\* Program Output \*\*\*\*\*
+***** Program Output *****
 
 Analysis of deviations
-
 ------------------------------------------------
-
 Constraint RHS Value d+ d-
-
 ------------------------------------------------
-
 kasa 600.000 0.000 100.000
-
 harddisk 500.000 0.000 0.000
-
 cd surucu 500.000 0.000 200.000
-
 disket sur 1000.000 0.000 500.000
-
 cp 486 200.000 0.000 0.000
-
 bilgisayar 500.000 0.000 0.000
-
 karlilik 250000.000 0.000 60000.000
-
 isgucu 400.000 250.000 0.000
-
 -------------------------------------------------
 
 Analysis of decision variables
-
 ------------------------------------
-
 Variable Solution Value
-
 ------------------------------------
-
 X1 200.000
-
 X2 300.000
-
 ------------------------------------
 
 Analysis of the objective function
-
 ----------------------------------
-
 Priority Nonachievement
-
 ----------------------------------
-
 P1 0.000
-
 P2 0.000
-
 P3 60000.000
-
 P4 250.000
-
 ----------------------------------
 
-\*\*\*\*\* End of Output\*\*\*\*\*
+***** End of Output *****
+```
 
 Analiz tablolarında da görüldüğü gibi darboğaz oluşturan kısıt harddisk kısıtıdır. Temin edilen harddiskin tamamı bilgisayar üretiminde kullanılmaktadır. Bu durumda, harddisk kısıtı artırılamıyorsa kasadan 500 adet, CD sürücüden 300 adet, disket sürücüden 500 adet temin edilmesi yeterlidir. Kasa, CD sürücü ve disket sürücünün daha fazla temin edilmesi üretim kapasitesini artırmayacak ve hedeflerin tutturulmasına katkıda bulunmayacaktır.
 
@@ -1071,199 +1018,114 @@ di-, di+≥0 (i=1,…,24)
 
 **Tablo 3.2. Birinci planlama dönemi sonuç tablosu**
 
+```text
 Program: Goal Programming
-
 Problem Title : birinci planlama dönemi
 
-\*\*\*\*\* Input Data \*\*\*\*\*
+***** Input Data *****
 
 Min Z = 1P1d-1 + 1P1d-2 + 1P1d-3 + 1P1d-4 + 1P1d-5
-
 + 1P1d-6 + 1P1d-7 + 1P1d-8 + 1P1d-9 + 1P1d-10
-
 + 1P1d-11 + 1P1d-12 + 1P1d-13 + 1P2d+14 + 1P2d+15
-
 + 1P2d+16 + 1P2d+17 + 1P2d+18 + 1P2d+19 + 1P2d+20
-
 + 1P2d+21 + 1P2d+22 + 1P4d+23 + 1P3d-23 + 1P5d-24
 
 Subject to
 
 talep1 1X1a + 1X1b + d-1 - d+1 = 18000
-
 talep2 1X2 + d-2 - d+2 = 5000
-
 talep3 1X3 + d-3 - d+3 = 5000
-
 talep4 1X4 + d-4 - d+4 = 2500
-
 talep5 1X5 + d-5 - d+5 = 3500
-
 talep6 1X6 + d-6 - d+6 = 500
-
 talep7 1X7 + d-7 - d+7 = 3000
-
 talep8 1X8 + d-8 - d+8 = 500
-
 talep9 1X9 + d-9 - d+9 = 600
-
 talep10 1X10 + d-10 - d+10 = 1000
-
 talep11 1X11 + d-11 - d+11 = 1750
-
 talep12 1X12 + d-12 - d+12 = 1000
-
 talep13 1X13 + d-13 - d+13 = 125
-
 m1 0.012X1a + d-14 - d+14 = 168
-
 m2 0.012X1b + 0.008X2 + 0.011X3 + d-15 - d+15 = 168
-
 m3 0.012X4 + d-16 - d+16 = 168
-
 m4 0.010X5 + 0.010X6 + d-17 - d+17 = 168
-
 m5 0.017X7 + 0.017X8 + 0.020X9 + 0.020X10 + d-18 - d+18 =
-
 168
-
 m6 0.020X11 + d-19 - d+19 = 168
-
 m7 0.033X12 + d-20 - d+20 = 168
-
 m8 0.017X13 + d-21 - d+21 = 168
-
 W 1X7 + d-22 - d+22 = 11400
-
 is 0.081X1a + 0.081X1b + 0.054X2 + 0.078X3 + 0.061X4 + 0.050X5
-
 + 0.050X6 + 0.083X7 + 0.083X8 + 0.100X9 + 0.100X10 + 0.100X11
-
 + 0.133X12 + 0.017X13 + d-23 - d+23 = 2856
-
 kar 1X1a + 1X1b + 1X2 + 1X3 + 1X4 + 1X5 + 1X6 + 1X7 + 1X8 + 1X9
-
 + 1X10 + 1X11 + 1X12 + 1X13 + d-24 - d+24 = 100000
 
-\*\*\*\*\* Program Output \*\*\*\*\*
+***** Program Output *****
 
 Analysis of deviations
-
 ------------------------------------------------
-
 Constraint RHS Value d+ d-
-
 ------------------------------------------------
-
 talep1 18000.000 0.000 0.000
-
 talep2 5000.000 0.000 0.000
-
 talep3 5000.000 0.000 0.000
-
 talep4 2500.000 0.000 0.000
-
 talep5 3500.000 0.000 0.000
-
 talep6 500.000 0.000 0.000
-
 talep7 3000.000 0.000 0.000
-
 talep8 500.000 0.000 0.000
-
 talep9 600.000 0.000 0.000
-
 talep10 1000.000 0.000 0.000
-
 talep11 1750.000 0.000 0.000
-
 talep12 1000.000 0.000 0.000
-
 talep13 125.000 0.000 0.000
-
 m1 168.000 0.000 0.000
-
 m2 168.000 0.000 25.000
-
 m3 168.000 0.000 138.000
-
 m4 168.000 0.000 128.000
-
 m5 168.000 0.000 76.500
-
 m6 168.000 0.000 133.000
-
 m7 168.000 0.000 135.000
-
 m8 168.000 0.000 165.875
-
 Wocox 11400.000 0.000 8400.000
-
 işçilik 2856.000 375.125 0.000
-
 kar 100000.000 0.000 57525.000
-
 -------------------------------------------------
 
 Analysis of decision variables
-
 ------------------------------------
-
 Variable Solution Value
-
 ------------------------------------
-
 X1a 14000.000
-
 X1b 4000.000
-
 X2 5000.000
-
 X3 5000.000
-
 X4 2500.000
-
 X5 3500.000
-
 X6 500.000
-
 X7 3000.000
-
 X8 500.000
-
 X9 600.000
-
 X10 1000.000
-
 X11 1750.000
-
 X12 1000.000
-
 X13 125.000
-
 ------------------------------------
 
 Analysis of the objective function
-
 ----------------------------------
-
 Priority Nonachievement
-
 ----------------------------------
-
 P1 0.000
-
 P2 0.000
-
 P3 0.000
-
 P4 375.125
-
 P5 57525.000
-
 ----------------------------------
 
-\*\*\*\*\* End of Output \*\*\*\*\*
+***** End of Output *****
+```
 
 QM çözümünde de görüldüğü gibi mutlak hedef olan talepler gerçekleştirilmiştir. 1 kg çamaşır suyu 1. ve 2. makinelerde doldurulabilmektedir. İşletme hazırlık sürelerini en aza indirmek için öncelikle makine 1’i bu ürün için programlamaktadır. Fakat bu makinede aylık 14000 koliden fazla üretilememektedir. Bu nedenle makine 2, 4000 koli 1 kg çamaşır suyu doldurulacak şekilde programlanacaktır. Böylelikle ürünün 18000 olan talebi gerçekleştirilmiştir.
 
@@ -1279,197 +1141,113 @@ Yukarda birinci planlama dönemine değinildi. İkinci planlama döneminde ürü
 
 **Tablo 3.3. İkinci planlama dönemi sonuç tabloları**
 
+```text
 Program: Goal Programming
-
 Problem Title : ikinci planlama dönemi
 
-\*\*\*\*\* Input Data \*\*\*\*\*
+***** Input Data *****
 
 Min Z = 1P1d-1 + 1P1d-2 + 1P1d-3 + 1P1d-4 + 1P1d-5
-
 + 1P1d-6 + 1P1d-7 + 1P1d-8 + 1P1d-9 + 1P1d-10
-
 + 1P1d-11 + 1P1d-12 + 1P1d-13 + 1P2d+14 + 1P2d+15
-
 + 1P2d+16 + 1P2d+17 + 1P2d+18 + 1P2d+19 + 1P2d+20
-
 + 1P2d+21 + 1P2d+22 + 1P4d+23 + 1P3d-23 + 1P5d-24
 
 Subject to
 
 talep1 1X1a + 1X1b + d-1 - d+1 = 19800
-
 talep2 1X2 + d-2 - d+2 = 6000
-
 talep3 1X3 + d-3 - d+3 = 6000
-
 talep4 1X4 + d-4 - d+4 = 5000
-
 talep5 1X5 + d-5 - d+5 = 4200
-
 talep6 1X6 + d-6 - d+6 = 600
-
 talep7 1X7 + d-7 - d+7 = 3600
-
 talep8 1X8 + d-8 - d+8 = 600
-
 talep9 1X9 + d-9 - d+9 = 720
-
 talep10 1X10 + d-10 - d+10 = 1400
-
 talep11 1X11 + d-11 - d+11 = 2100
-
 talep12 1X12 + d-12 - d+12 = 1200
-
 talep13 1X13 + d-13 - d+13 = 150
-
 m1 0.012X1a + d-14 - d+14 = 168
-
 m2 0.012X1b + 0.008X2 + 0.011X3 + d-15 - d+15 = 168
-
 m3 0.012X4 + d-16 - d+16 = 168
-
 m4 0.010X5 + 0.010X6 + d-17 - d+17 = 168
-
 m5 0.017X7 + 0.017X8 + 0.020X9 + 0.020X10 + d-18 - d+18 = 168
-
 m6 0.020X11 + d-19 - d+19 = 168
-
 m7 0.033X12 + d-20 - d+20 = 168
-
 m8 0.017X13 + d-21 - d+21 = 168
-
 W 1X7 + d-22 - d+22 = 11400
-
 is 0.081X1a + 0.081X1b + 0.054X2 + 0.078X3 + 0.061X4 + 0.050X5
-
 + 0.050X6 + 0.083X7 + 0.083X8 + 0.100X9 + 0.100X10 + 0.100X11
-
 + 0.133X12 + 0.017X13 + d-23 - d+23 = 2856
-
 kar 1X1a + 1X1b + 1X2 + 1X3 + 1X4 + 1X5 + 1X6 + 1X7 + 1X8 + 1X9
-
 + 1X10 + 1X11 + 1X12 + 1X13 + d-24 - d+24 = 100000
 
-\*\*\*\*\* Program Output \*\*\*\*\*
+***** Program Output *****
 
 Analysis of deviations
-
 ------------------------------------------------
-
 Constraint RHS Value d+ d-
-
 ------------------------------------------------
-
 talep1 19800.000 0.000 0.000
-
 talep2 6000.000 0.000 0.000
-
 talep3 6000.000 0.000 0.000
-
 talep4 5000.000 0.000 0.000
-
 talep5 4200.000 0.000 0.000
-
 talep6 600.000 0.000 0.000
-
 talep7 3600.000 0.000 0.000
-
 talep8 600.000 0.000 0.000
-
 talep9 720.000 0.000 0.000
-
 talep10 1400.000 0.000 0.000
-
 talep11 2100.000 0.000 0.000
-
 talep12 1200.000 0.000 0.000
-
 talep13 150.000 0.000 0.000
-
 m1 168.000 15.600 0.000
-
 m2 168.000 0.000 0.000
-
 m3 168.000 0.000 108.000
-
 m4 168.000 0.000 120.000
-
 m5 168.000 0.000 54.200
-
 m6 168.000 0.000 126.000
-
 m7 168.000 0.000 128.400
-
 m8 168.000 0.000 165.450
-
 W 11400.000 0.000 7800.000
-
 is 2856.000 1017.550 0.000
-
 kar 100000.000 0.000 48630.000
-
 -------------------------------------------------
 
 Analysis of decision variables
-
 ------------------------------------
-
 Variable Solution Value
-
 ------------------------------------
-
 X1a 15300.000
-
 X1b 4500.000
-
 X2 6000.000
-
 X3 6000.000
-
 X4 5000.000
-
 X5 4200.000
-
 X6 600.000
-
 X7 3600.000
-
 X8 600.000
-
 X9 720.000
-
 X10 1400.000
-
 X11 2100.000
-
 X12 1200.000
-
 X13 150.000
-
 ------------------------------------
 
 Analysis of the objective function
-
 ----------------------------------
-
 Priority Nonachievement
-
 ----------------------------------
-
 P1 0.000
-
 P2 15.600
-
 P3 0.000
-
 P4 1017.550
-
 P5 48630.000
-
 ----------------------------------
 
-\*\*\*\*\* End of Output \*\*\*\*\*
+***** End of Output *****
+```
 
 Birinci hedef gerçekleşmiş ikinci hedeften 15.6 makinesaat/ay pozitif sapma vardır. Bu sapma birinci makineden dolayı oluşmuştur. Yani işletme talepleri tam olarak karşılayabilmek için birinci makineyi ayda 16 saat daha çalıştırmalıdır. Bu da fazla mesai ile mümkündür.
 

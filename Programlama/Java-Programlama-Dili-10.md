@@ -1,5 +1,6 @@
 # Java Programlama Dili
 
+```java
 //----------------------------------------------------------------------------
 // Module: SimpleSelect.java
 // Description: Test program for ODBC API interface. This java application
@@ -9,12 +10,12 @@
 //----------------------------------------------------------------------------
 
 import java.net.URL;
-import java.sql.\*;
+import java.sql.*;
 
 class SimpleSelect {
-public static void main (String args\[\]) {
+public static void main (String args[]) {
 String url = "jdbc:odbc:deneme";
-String query = "SELECT \* FROM BOLGE";
+String query = "SELECT * FROM BOLGE";
 try {
 // jdbc-odbc köprü sürücüsünü yükle
 Class.forName ("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -25,7 +26,7 @@ Connection con = DriverManager.getConnection (url, "KUTPRJ", "is4356ht");
 checkForWarning (con.getWarnings ());
 DatabaseMetaData dma = con.getMetaData ();
 
-//System.out.println("\\nConnected to " + dma.getURL());
+//System.out.println("\nConnected to " + dma.getURL());
 //System.out.println("Driver " + dma.getDriverName());
 //System.out.println("Version " +dma.getDriverVersion());
 //System.out.println("");
@@ -39,7 +40,7 @@ stmt.close();
 con.close();
 }
 catch (SQLException ex) {
-System.out.println ("\\n\*\*\* SQLException caught \*\*\*\\n");
+System.out.println ("\n*** SQLException caught ***\n");
 while (ex != null) {
 System.out.println ("SQLState: " +ex.getSQLState ());
 System.out.println ("Message: " + ex.getMessage ());
@@ -56,7 +57,7 @@ private static boolean checkForWarning (SQLWarning warn) throws SQLException
 {
 boolean rc = false;
 if (warn != null) {
-System.out.println ("\\n \*\*\* Warning \*\*\*\\n");
+System.out.println ("\n *** Warning ***\n");
 rc = true;
 while (warn != null) {
 System.out.println ("SQLState: " +warn.getSQLState ());
@@ -91,6 +92,7 @@ more = rs.next ();
 }
 }
 }
+```
 
 ---
 *Kaynak: `JAVA PROGRAMLAMA DİLİ/ekitap-H_Takci-Java_Programlama_Dili/csimpleselect.htm`*

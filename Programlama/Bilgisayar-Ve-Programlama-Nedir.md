@@ -12,21 +12,16 @@ Bilgisayarın anladığı tek dil, Makine Dilidir. Bu 16’lık (Hexadecimal) si
 
 Makine dilinden sonra Assembler Dili gelir. Makine dilini kullanmanın zorluğu ve karmaşası üzerine geliştirilen Assembler, daha basit bir yapıdadır. Ama yine de C ile mukayese ederseniz çok daha zordur ve kullandığınız bilgisayarın donanımına dair hâlen bilgiye gereksinim duyarsınız. Assembler aşağıda ki gibi karmaşık bir yapıdadır.
 
+```asm
 SEGMENT COM WORD PUBLIC ‘CODE’
-
 ASSUME CS : COMDS : COM
-
 ORG 100H
-
 ENTRY: MOV DVX,OFFSET MSG
-
 MOV AH,g
-
 .
-
 .
-
 .
+```
 
 Şuan bunu anlamaya çalışıp, hiç zamanınızı harcamayın. Çünkü öğreneceğimiz dil C, işlerimizi ve dolayısıyla hayatımızı çok daha kolaylaştırmaktadır. C, orta seviye bir programlama dilidir. Bunun anlamı, hem yazması kolay, hemde üst seviye dillere göre daha çok erişim hakkınızın olduğudur. Üst seviye programlama dilleri ise BASIC, PASCAL, gibi dillerdir. Yazması göreceli olarak daha kolay olsa da C ile yapabileceklerimiz daha çoktur.
 
@@ -60,145 +55,109 @@ C ile ilgili olarak bu ve önümüzdeki yazılarda birçok komut/fonksiyon göre
 
 Bir örnekle görelim;
 
-*#include<stdio.h>***
-
-*main()***
-
-*{***
-
-* printf(“Hello World”);***
-
-*}***
+```c
+#include<stdio.h>
+main()
+{
+ printf(“Hello World”);
+}
+```
 
 Eğer bunu derleyicinizde yazıp derlerseniz, -Borland Turbo C++ için, Ctrl+F9 tuşları ile yazdığınız programınızı derleyebilirsiniz- ekrana Hello World yazılacaktır. #include<stdio.h> standart girdi/çıktı’yı destekle gibi bir anlama sahiptir. main() , ana fonksyiondur. Ondan sonra gelen ayraç standarttır. Çift tırnak işaretleri, printf ve parantez standarttır. Noktalı virgülse C dilinde her komutun sonuna konulur. Tırnakların içine istediğinizi yazıp bastırabilirsiniz. Programın sonunda ki ayraçta programın bittiğini gösterir.
 
 Şimdi yukarıda yazdığımız basit programı, biraz daha geliştirelim.
 
-*#include<stdio.h>***
+```c
+#include<stdio.h>
+#include<conio.h>
+main()
+{
+ clrscr();
+ printf(“Hello World\n”);
+ printf(“Merhaba Dünya”);
+ return 0;
+}
+```
 
-*#include<conio.h>***
-
-*main()***
-
-*{***
-
-* clrscr();***
-
-* printf(“Hello World\\n”);***
-
-* printf(“Merhaba Dünya”);***
-
-* return 0;***
-
-*}***
-
-Birkaç yeni satır ekledik. Sırayla ne olduklarını açıklayalım. #include<conio.h> başlık dosyaları (header files) ile ilgilidir. Onu şuan izah etmem için erken. Ama şu kadarını söyleyelim, clrscr(); fonksiyonunu kullanabilmek için bunu yazmamız gerekmektedir. clrscr(); fonksiyonuysa, ekranda önceden yazılan şeyleri temizler ve kullanacağımız ortamın sıfır olmasını sağlar. Az evvel yazdığımız Hello World yazısının sonuna “\\n” ekledik. “\\n” bir alt satıra geç anlamına geliyor. Eğer \\n yazmazsak, ekranda *Hello WorldMerhaba* Dünya şeklinde bir yazı çıkar. \\n kullandığımızdaysa, Hello World yazılacak onun ve sonra bir alt satırına geçilecek, oraya Merhaba Dünya yazılacaktır. En alt satırdaysa return 0; adında yeni bir komut görüyorsunuz. Bunu eklemeden de program çalışacaktır. Ancak uyarı verir. Bunu ekleyerek bu uyarıdan kurtulabilirsiniz. Detayına girmek için henüz erken, return konusuna ileride değineceğiz.
+Birkaç yeni satır ekledik. Sırayla ne olduklarını açıklayalım. #include<conio.h> başlık dosyaları (header files) ile ilgilidir. Onu şuan izah etmem için erken. Ama şu kadarını söyleyelim, clrscr(); fonksiyonunu kullanabilmek için bunu yazmamız gerekmektedir. clrscr(); fonksiyonuysa, ekranda önceden yazılan şeyleri temizler ve kullanacağımız ortamın sıfır olmasını sağlar. Az evvel yazdığımız Hello World yazısının sonuna “\n” ekledik. “\n” bir alt satıra geç anlamına geliyor. Eğer \n yazmazsak, ekranda *Hello WorldMerhaba* Dünya şeklinde bir yazı çıkar. \n kullandığımızdaysa, Hello World yazılacak onun ve sonra bir alt satırına geçilecek, oraya Merhaba Dünya yazılacaktır. En alt satırdaysa return 0; adında yeni bir komut görüyorsunuz. Bunu eklemeden de program çalışacaktır. Ancak uyarı verir. Bunu ekleyerek bu uyarıdan kurtulabilirsiniz. Detayına girmek için henüz erken, return konusuna ileride değineceğiz.
 
 Yukarıda ki programın aynısını şöyle de yazabilirdik;
 
-*#include<stdio.h>***
+```c
+#include<stdio.h>
+#include<conio.h>
+main()
+{
+ clrscr();
+ printf(“Hello World”);
+ printf(“\nMerhaba Dünya”);
+ return 0;
+}
+```
 
-*#include<conio.h>***
-
-*main()***
-
-*{***
-
-* clrscr();***
-
-* printf(“Hello World”);***
-
-* printf(“\\nMerhaba Dünya”);***
-
-* return 0;***
-
-*}***
-
-Bir önce ve şimdi yazdığımız programların ekran çıktısı aynıdır. Bu örnekle anlatmak istediğim, printf(); te çift tırnakların içerisinde nereye \\n koyarsak koyalım, ondan sonrası için cursor bir alt satıra geçer.
+Bir önce ve şimdi yazdığımız programların ekran çıktısı aynıdır. Bu örnekle anlatmak istediğim, printf(); te çift tırnakların içerisinde nereye \n koyarsak koyalım, ondan sonrası için cursor bir alt satıra geçer.
 
 printf(); daha birçok şekilde kullanılabilir. Diyelim ki yukarıdaki programı tek printf(); komutuyla yazmak istediniz. O zaman ne yaparsınız?
 
-*#include<stdio.h>***
-
-*#include<conio.h>***
-
-*main()***
-
-*{***
-
-* clrscr();***
-
-* printf(“Hello World\\nMerhaba Dünya”);***
-
-* return 0;***
-
-*}***
+```c
+#include<stdio.h>
+#include<conio.h>
+main()
+{
+ clrscr();
+ printf(“Hello World\nMerhaba Dünya”);
+ return 0;
+}
+```
 
 Gördüğünüz gibi tek bir printf(); kullanarak aynı işlemi yaptırdık.
 
 Varsayalım, ekrana çok uzun bir cümle yazmamız gerekti. Örneğin;
 
-*#include<stdio.h>***
-
-*#include<conio.h>***
-
-*main()***
-
-*{***
-
-* clrscr();***
-
-* printf(“Benim adım Çağatay ÇEBİ ve Kadir Has Üniversitesi’nde okuyorum.”);***
-
-* return 0;***
-
-*}***
+```c
+#include<stdio.h>
+#include<conio.h>
+main()
+{
+ clrscr();
+ printf(“Benim adım Çağatay ÇEBİ ve Kadir Has Üniversitesi’nde okuyorum.”);
+ return 0;
+}
+```
 
 Bu yazdığımız program hata vermez ama compiler’ın çalışma verimini düşürür. Bu düşüş önemsiz olsa bile bizim yazma verimimiz düşecektir. Çünkü ne yazdığını okumak için ok tuşlarını kullanarak bir sağa bir sola gidip gelmemiz gerekir.
 
 Bu programı aşağıda ki gibi yazmamız daha uygundur.
 
-*#include<stdio.h>***
+```c
+#include<stdio.h>
+#include<conio.h>
+main()
+{
+ clrscr();
+ printf(“Benim adım Çağatay ÇEBİ”
+ “ ve Kadir Has Üniversitesi’nde”
+ “ okuyorum.”);
+ return 0;
+}
+```
 
-*#include<conio.h>***
-
-*main()***
-
-*{***
-
-* clrscr();***
-
-* printf(“Benim adım Çağatay ÇEBİ”***
-
-* “ ve Kadir Has Üniversitesi’nde”***
-
-* “ okuyorum.”);***
-
-* return 0;***
-
-*}***
-
-Tek bir printf(); fonksiyonu kullanılmıştır. Ancak gördüğünüz gibi alt alta yazarak bütün cümleyi tek seferde görülebilir hâle getirdik. Ekrana bunu bastırırsanız, alt alta üç satır basmaz. Bu çok hata yapılan bir noktadır. Sadece tek satır basar ve yazılan bir önceki örnekle aynı olur. Alt alta yazmak için daha önce bahsettiğimiz gibi \\n eklememiz gerekir.
+Tek bir printf(); fonksiyonu kullanılmıştır. Ancak gördüğünüz gibi alt alta yazarak bütün cümleyi tek seferde görülebilir hâle getirdik. Ekrana bunu bastırırsanız, alt alta üç satır basmaz. Bu çok hata yapılan bir noktadır. Sadece tek satır basar ve yazılan bir önceki örnekle aynı olur. Alt alta yazmak için daha önce bahsettiğimiz gibi \n eklememiz gerekir.
 
 Ekrana, Ali: “Naber, nasılsın? diye sordu. şeklinde bir yazı yazdırmamız gerekiyor diyelim. Bu konuda ufak bir problem yaşayacağız. Çünkü printf(); fonksiyonu gördüğü ilk iki çift tırnak üzerinden işlem yapar. Böyle bir şeyi ekrana yazdırmak için aşağıda ki gibi bir program yazmamız gerekir.
 
-*#include<stdio.h>***
+```c
+#include<stdio.h>
+#include<conio.h>
+main()
+{
+ clrscr();
+ printf(“Ali: \“Naber, nasılsın?\” dedi.”);
+ return 0;
+}
+```
 
-*#include<conio.h>***
-
-*main()***
-
-*{***
-
-* clrscr();***
-
-* printf(“Ali: \\“Naber, nasılsın?\\” dedi.”);***
-
-* return 0;***
-
-*}***
-
-printf(); fonksiyonunu kullanmayı sanırım iyice anladınız. printf( yazıp, sonra çift tırnak açıyor, yazmak istediklerimizi yazıyor, çift tırnağı sonra da parantezi kapatıyor, sonuna noktalı virgül ekliyoruz. Alt satıra geçmek içinse, yazdıklarımızın sonuna \\n ekliyoruz. Çift tırnaklı bir şey kullanmak içinse \\“ ... \\” kullanıyoruz.
+printf(); fonksiyonunu kullanmayı sanırım iyice anladınız. printf( yazıp, sonra çift tırnak açıyor, yazmak istediklerimizi yazıyor, çift tırnağı sonra da parantezi kapatıyor, sonuna noktalı virgül ekliyoruz. Alt satıra geçmek içinse, yazdıklarımızın sonuna \n ekliyoruz. Çift tırnaklı bir şey kullanmak içinse \“ ... \” kullanıyoruz.
 
 scanf(); fonksiyonuna gelince, bu başında bahsettiğimiz gibi bizim giriş (Input) fonksiyonumuzdur. Ancak yazımı burada noktalıyorum. Çünkü değişkenler işin içine girmekte ve onları anlatmam uzun sürecek. Gelecek haftaki yazımda kaldığımız yerden devam edeceğiz. Yazdıklarımla ilgili öneri, eleştiri veya sorunuz varsa, bana ulaşabilirsiniz. Haftaya ya da en kötü ihtimalle öbür haftaya görüşürüz.
 

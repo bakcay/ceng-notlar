@@ -14,26 +14,27 @@
 
 **-----------------------------------------------------------------------------------------------------------------------------------------------------------******
 
-Dim Sonuc, yanlis, kalan, answer1, answer2**
-**Dim cevap(1 To 14)**
-**Dim secenek(1 To 14, 1 To 14)**
-**Dim soru\_no**
-**Dim user\_cevap(0 To 14)**
-**Dim cevap\_index**
+```vbnet
+Dim Sonuc, yanlis, kalan, answer1, answer2
+Dim cevap(1 To 14)
+Dim secenek(1 To 14, 1 To 14)
+Dim soru_no
+Dim user_cevap(0 To 14)
+Dim cevap_index
 
-**Sub Command1\_Click()**
-**If user\_cevap(soru\_no - 1) = "" Then**
-**If cevap\_index = "" Then cevap\_index = 0**
-**Select Case cevap\_index**
-**Case 0: answer2 = "A"**
-**Case 1: answer2 = "B"**
-**Case 2: answer2 = "C"**
-**Case 3: answer2 = "D"**
-**End Select**
+Sub Command1_Click()
+If user_cevap(soru_no - 1) = "" Then
+If cevap_index = "" Then cevap_index = 0
+Select Case cevap_index
+Case 0: answer2 = "A"
+Case 1: answer2 = "B"
+Case 2: answer2 = "C"
+Case 3: answer2 = "D"
+End Select
 
-user\_cevap(soru\_no - 1) = answer2
+user_cevap(soru_no - 1) = answer2
 
-If user\_cevap(soru\_no - 1) = cevap(soru\_no) Then
+If user_cevap(soru_no - 1) = cevap(soru_no) Then
 Sonuc = Sonuc + 1
 Label1.Caption = "Dogru Adet= " + Str(Sonuc)
 Else
@@ -43,7 +44,7 @@ End If
 kalan = (14 - Sonuc - yanlis)
 Label5.Caption = "Kalan Soru=" + Str(kalan)
 Else
-Select Case user\_cevap(soru\_no - 1)
+Select Case user_cevap(soru_no - 1)
 Case "A": answer1 = 0
 Case "B": answer1 = 1
 Case "C": answer1 = 2
@@ -54,14 +55,14 @@ Option1(answer1).Value = True
 End If
 End Sub
 
-Sub ****Command3****\_Click()
+Sub Command3_Click()
 End
 End Sub
 
-Sub ****Command3****D1\_Click()
-soru\_no = soru\_no - 1
-Label3.Caption = "Soru Nosu= " + Str(soru\_no)
-Select Case soru\_no
+Sub Command3D1_Click()
+soru_no = soru_no - 1
+Label3.Caption = "Soru Nosu= " + Str(soru_no)
+Select Case soru_no
 Case 1
 Command3d1.Enabled = False
 Command3d2.Enabled = True
@@ -79,10 +80,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Case 2
 Label4(0).Visible = False
 Label4(1).Visible = True
@@ -98,10 +99,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -120,10 +121,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -142,10 +143,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -164,10 +165,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = True
@@ -187,10 +188,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = True
@@ -210,10 +211,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = True
@@ -233,10 +234,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = False
@@ -256,10 +257,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = True
@@ -279,10 +280,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = True
@@ -302,10 +303,10 @@ Label4(10).Visible = True
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = True
@@ -325,10 +326,10 @@ Label4(10).Visible = False
 Label4(11).Visible = True
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = True
@@ -348,10 +349,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = True
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = True
@@ -371,26 +372,26 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = True
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 
 Command3d1.Enabled = True
 Command3d2.Enabled = False
-Case Else: soru\_no = 1
+Case Else: soru_no = 1
 End Select
 
-cevap\_index = user\_cevap(soru\_no - 1)
-Select Case cevap\_index
-Case "A": cevap\_index = 0
-Option1(cevap\_index).Value = False
-Case "B": cevap\_index = 1
-Option1(cevap\_index).Value = False
-Case "C": cevap\_index = 2
-Option1(cevap\_index).Value = False
-Case "D": cevap\_index = 3
-Option1(cevap\_index).Value = False
+cevap_index = user_cevap(soru_no - 1)
+Select Case cevap_index
+Case "A": cevap_index = 0
+Option1(cevap_index).Value = False
+Case "B": cevap_index = 1
+Option1(cevap_index).Value = False
+Case "C": cevap_index = 2
+Option1(cevap_index).Value = False
+Case "D": cevap_index = 3
+Option1(cevap_index).Value = False
 Case Else:
 Option1(0).Value = False
 Option1(1).Value = False
@@ -400,10 +401,10 @@ Option1(3).Value = False
 End Select
 End Sub
 
-Sub Command3D2\_Click()
-soru\_no = soru\_no + 1
-Label3.Caption = "Soru Nosu= " + Str(soru\_no)
-Select Case soru\_no
+Sub Command3D2_Click()
+soru_no = soru_no + 1
+Label3.Caption = "Soru Nosu= " + Str(soru_no)
+Select Case soru_no
 Case 1
 Command3d1.Enabled = False
 Command3d2.Enabled = True
@@ -421,10 +422,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Case 2
 Label4(0).Visible = False
 Label4(1).Visible = True
@@ -440,10 +441,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -462,10 +463,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -484,10 +485,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -506,10 +507,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -528,10 +529,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -550,10 +551,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -572,10 +573,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -594,10 +595,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -616,10 +617,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -638,10 +639,10 @@ Label4(10).Visible = True
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -660,10 +661,10 @@ Label4(10).Visible = False
 Label4(11).Visible = True
 Label4(12).Visible = False
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -682,10 +683,10 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = True
 Label4(13).Visible = False
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = True
 
@@ -704,26 +705,26 @@ Label4(10).Visible = False
 Label4(11).Visible = False
 Label4(12).Visible = False
 Label4(13).Visible = True
-Option1(0).Caption = secenek(soru\_no, 1)
-Option1(1).Caption = secenek(soru\_no, 2)
-Option1(2).Caption = secenek(soru\_no, 3)
-Option1(3).Caption = secenek(soru\_no, 4)
+Option1(0).Caption = secenek(soru_no, 1)
+Option1(1).Caption = secenek(soru_no, 2)
+Option1(2).Caption = secenek(soru_no, 3)
+Option1(3).Caption = secenek(soru_no, 4)
 Command3d1.Enabled = True
 Command3d2.Enabled = False
 
 Command3d2.Enabled = False
-Case Else: soru\_no = 14
+Case Else: soru_no = 14
 End Select
-cevap\_index = user\_cevap(soru\_no - 1)
-Select Case cevap\_index
-Case "A": cevap\_index = 0
-Option1(cevap\_index).Value = False
-Case "B": cevap\_index = 1
-Option1(cevap\_index).Value = False
-Case "C": cevap\_index = 2
-Option1(cevap\_index).Value = False
-Case "D": cevap\_index = 3
-Option1(cevap\_index).Value = False
+cevap_index = user_cevap(soru_no - 1)
+Select Case cevap_index
+Case "A": cevap_index = 0
+Option1(cevap_index).Value = False
+Case "B": cevap_index = 1
+Option1(cevap_index).Value = False
+Case "C": cevap_index = 2
+Option1(cevap_index).Value = False
+Case "D": cevap_index = 3
+Option1(cevap_index).Value = False
 Case Else:
 Option1(0).Value = False
 Option1(1).Value = False
@@ -733,7 +734,7 @@ Option1(3).Value = False
 End Select
 End Sub
 
-Sub Form\_Load()
+Sub Form_Load()
 Label1.Caption = "Dogru Adet= 0"
 Label2.Caption = "Yanlis Adet= 0"
 Label3.Caption = "Soru Nosu= 1"
@@ -842,18 +843,19 @@ cevap(11) = "C"
 cevap(12) = "D"
 cevap(13) = "A"
 cevap(14) = "B"
-soru\_no = 1
-user\_cevap(1) = ""
-user\_cevap(2) = ""
-user\_cevap(3) = ""
-user\_cevap(4) = ""
-user\_cevap(0) = ""
+soru_no = 1
+user_cevap(1) = ""
+user_cevap(2) = ""
+user_cevap(3) = ""
+user_cevap(4) = ""
+user_cevap(0) = ""
 
 End Sub
 
-Sub Option1\_Click(Index As Integer)
-cevap\_index = Index
-End Sub **
+Sub Option1_Click(Index As Integer)
+cevap_index = Index
+End Sub
+```
 
 ---
 *Kaynak: `BAZI İÇERİK KODLARI/KODLAR/Kodlar3.doc` — mine — 2002*

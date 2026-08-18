@@ -198,38 +198,61 @@
 
 **Heriki algoritmanın yaptıklarını yapan pascal programı aşağıdadır.**
 
-|  | **Program ısı;** **Var ** **D\[1..30,1..24\] of integer;** **Procedure ısıal;** **Begin** **For gun:=1 to 30 do** ** For saat:=1 to 24 do read(d(saat,gun));** **End;****** |
-| --- | --- |
-|  | **Procedure ısıdeğerlendir;** **Begin** **Orta:=0;** **For gun:=1 to 30 do Begin** ** Ortg:=0;** ** For saat:=1 to 24 do ** **ortg:=ortg+d\[saat,gun\];** ** Write(‘Günlük Ortalama ısı =’,ortg/24);** ** Orta:=orta+ortg; ** ** End;** **Write(‘Aylık Ortalama =’,orta/30);** **End;****** |
-|  | **Begin** **Isıal;** **Isıdeğerlendir;** **End.****** |
+```pascal
+Program ısı;
+Var
+D[1..30,1..24] of integer;
+Procedure ısıal;
+Begin
+For gun:=1 to 30 do
+ For saat:=1 to 24 do read(d(saat,gun));
+End;
+Procedure ısıdeğerlendir;
+Begin
+Orta:=0;
+For gun:=1 to 30 do Begin
+ Ortg:=0;
+ For saat:=1 to 24 do
+ortg:=ortg+d[saat,gun];
+ Write(‘Günlük Ortalama ısı =’,ortg/24);
+ Orta:=orta+ortg;
+ End;
+Write(‘Aylık Ortalama =’,orta/30);
+End;
+Begin
+Isıal;
+Isıdeğerlendir;
+End.
+```
 
-|  | **# include <iostream.h>** |
-| --- | --- |
-|  | **void ısıal(){** |
-|  | **int deger;** |
-|  | **for (** |
-|  | **int i=1;i<30;i++){** |
-|  | ** for (int j=1,j<24;i++){** |
-|  | ** cin>>deger;** |
-|  | ** D\[i\]\[j\]::deger;** |
-|  | ** }** |
-|  | ** }** |
-|  | **void ısıdegerlendir(){** |
-|  | **int orta(0);** |
-|  | **for (int gun=1;gun<30;gun++){** |
-|  | ** int ortg(0);** |
-|  | ** for (int saat=1;saat<24,saat++){** |
-|  | ** ortg=ortg+d\[saat,gun\];** |
-|  | ** cout<<”Günlük Ortalama ısı=”<<ortg/24;** |
-|  | ** orta=orta+ortg;** |
-|  | ** cout<<”Aylık Ortalama ısı=”<<orta/30;** |
-|  | ** }** |
-|  | ** }** |
-|  | **int main(){** |
-|  | ** ısıal();** |
-|  | **ısıdegerlendir();** |
-|  | **return 0;** |
-|  | **}** |
+```cpp
+# include <iostream.h>
+void ısıal(){
+int deger;
+for (
+int i=1;i<30;i++){
+ for (int j=1,j<24;i++){
+ cin>>deger;
+ D[i][j]::deger;
+ }
+ }
+void ısıdegerlendir(){
+int orta(0);
+for (int gun=1;gun<30;gun++){
+ int ortg(0);
+ for (int saat=1;saat<24,saat++){
+ ortg=ortg+d[saat,gun];
+ cout<<”Günlük Ortalama ısı=”<<ortg/24;
+ orta=orta+ortg;
+ cout<<”Aylık Ortalama ısı=”<<orta/30;
+ }
+ }
+int main(){
+ ısıal();
+ısıdegerlendir();
+return 0;
+}
+```
 
 ** DiziÖrnek\[1:m,1:n\]Dizi Tipi**
 

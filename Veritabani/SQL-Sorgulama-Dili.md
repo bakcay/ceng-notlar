@@ -20,13 +20,17 @@ Bu makale dizisinde vereceğim örneklerin daha iyi anlaşılabilmesi için önc
 
 vereceğim örneklerde tüm SQL örnekleri Courier New fontunda olacaktır. Ayrıca yerel SQL büyük küçük harf duyarlı olmasa da dil elemenlteri ile diğer elementleri kolayca ayırabilmeniz için tüm dil elementleri büyük harfle diğer elementler ise küçük harflae yazılmıştır.
 
-Örneklerde kullanılma imkanı bulunan fakat kullanmak zorunda olmadığınız dil elementleri köşeli parantez ( \[ ve \] ) arasına alınacaktır. Örneğin aşağıdaki örnekte DISTINCT anahtar kelimesi seçimliktir.
+Örneklerde kullanılma imkanı bulunan fakat kullanmak zorunda olmadığınız dil elementleri köşeli parantez ( [ ve ] ) arasına alınacaktır. Örneğin aşağıdaki örnekte DISTINCT anahtar kelimesi seçimliktir.
 
-SELECT \[DISTINCT\] \*
+```sql
+SELECT [DISTINCT] *
+```
 
 Örneklerde birden çok seçenekten birini seçmek söz konusu ise seçenekler dikey çubuk karakteri ayrılacaktır. Örneğin aşağıdaki gibi bir SQL ifadesinde bir saha referansı için ASC yada DESC ifadelerinden sadece biri kullanılabilir. Aynı zamanda bu ASC veDESC ifadeleri seçimliktir.
 
-ORDER BY saha\_referansi \[ASC | DESC\]
+```sql
+ORDER BY saha_referansi [ASC | DESC]
+```
 
 **Not:** Kesinlikle tek dikey çubuk karakterini SQL dilinde kullanılan çift çubuk karakterleri ile karıştırmayın.( **| |** )
 
@@ -34,51 +38,63 @@ Yerel SQL kullanılırken bazı kurallara uyulması gerekir örneğin SQL ifadel
 
 **Tablo İsimleri:******
 
-ANSI-standard SQL'de, tablo isimleri Türkçe karakterler içermeyen tek bir kelimeden yada aralarında boşluk yerine "\_" karakteri içeren birden çok kelimeden oluşabilir. Fakat Yerel SQL birden çok kelime içeren tablo isimlerine izin verir.
+ANSI-standard SQL'de, tablo isimleri Türkçe karakterler içermeyen tek bir kelimeden yada aralarında boşluk yerine "_" karakteri içeren birden çok kelimeden oluşabilir. Fakat Yerel SQL birden çok kelime içeren tablo isimlerine izin verir.
 
 Yerel SQL tam dosya adı ve yol tanımlamalarına izin verir. Tablo tek yada çift tırnak arasında bir dosya yolu yada dosya adı tanımlaması ile gösterilir.Örneğin:
 
-SELECT \*
+```sql
+SELECT *
 FROM 'parts.dbf'
 
-SELECT \*
-FROM "c:\\örnek\\parts.dbf"
+SELECT *
+FROM "c:\örnek\parts.dbf"
+```
 
 Yerel SQL BDE alias tablo referanslarını da destekler. Örneğin:
 
-SELECT \*
+```sql
+SELECT *
 FROM ":pdox:table1"
+```
 
 Eğer dosya uzantısını ihmal etmek istiyorsanız, tablonun tipi BDE'de varsayılan tablo tipi olmalıdır. Yada SQL ifadenizde alias kullandığınız taktirde tablonun uzantısını yoksayabiliriz.
 
 Son olarak eğer tablonuzun adı SQL ifadelerinden biri ise bunu tek yada çift tırnak arasına alarak kullanabiliriz. Örneğin:
 
+```sql
 SELECT passid
 FROM "password"
+```
 
 **Saha adları ve referansları:******
 
-ANSI-standard SQL'de, kolon isimleri ve referansları Türkçe karakterler içermeyen tek bir kelimeden yada aralarında boşluk yerine "\_" karakteri içeren birden çok kelimeden oluşabilir. Fakat Yerel SQL birden çok kelime içeren kolon isimlerine ve referanslarına izin verir.
+ANSI-standard SQL'de, kolon isimleri ve referansları Türkçe karakterler içermeyen tek bir kelimeden yada aralarında boşluk yerine "_" karakteri içeren birden çok kelimeden oluşabilir. Fakat Yerel SQL birden çok kelime içeren kolon isimlerine ve referanslarına izin verir.
 
 Yerel SQL Paradox'un çok kelimeden oluşan saha isimlerini ve referanslarını destekler.
 
 Eğer Paradox tablosunun bir sahası SQL ifadesiyle aynı adı taşıyorsa tek yada çift tırnakla çevrilerek kullanılır ve Önüne tablo adını yada tablo referansını alır.Tablo adı yada referansı saha adı yada referansından bir nokta ile ayrılır. Aşağıdaki örnekte saha adı iki kelimeden oluşmuştur:
 
+```sql
 SELECT E."Emp Id"
 FROM employee E
+```
 
 Bir sonraki örnek DATE SQL anahtar kelimesini içeren bir saha adını nı nasıl tanımlandığını gösterir:
 
+```sql
 SELECT datelog."date"
 FROM datelog
+```
 
 **Tarih Biçimleri:******
 
 Yerel SQL tarih tanımlarını Amerikan tarih biçimine göre ayarlar. Diğer tarih biçimlerini desteklemez. Amerikan tarih biçimi AA/GG/YY yada AA/GG/YYYY olarak iki çeşittir. Tarih kullanımımnda bir hataya mahal vermemek için tarih değerleri tek yada çift tırnak içine alınırlar. Eğer tarih değerini tırnak içine almazsak örneğin 17/7/2000 tarihini 17 bölü 7 bölü 2000 olarak algılayacaktır.Aşağıda tarih değerinin SQL ifadelerinde nasıl kullanılacağına dair bir örnek verilmiştir.
 
-SELECT \*
+```sql
+SELECT *
 FROM orders
 WHERE (saledate <= "1/23/1998")
+```
 
 Tek haneli günlerin yada ayların başlarına sıfır eklemek seçimliktir.
 
@@ -88,9 +104,11 @@ Eğer yüzyıl yıl içinde tanımlanmamışsa BDE ayarlarından FOURDIGITYEAR p
 
 Yerel SQL saat biçimlerinin ss:dd:nn AM/PM (ss saat, dd dakika, nn saniye) olarak ayarlanmasını ister. zaman değeri ile birlikte yeni bir kayıt eklerken AM/PM kullanımı seçimliktir ve büyük küçük harf ayrımı yapılmaz (yani AM yerine am yazabilirsiniz.)Tanımlama tırnak işaretleri arasında olmalıdır.
 
+```sql
 INSERT INTO WorkOrder
 (ID, StartTime)
 VALUES ("B00120","10:30:00 PM")
+```
 
 Eğer AM yada PM etiketlerinden herhangi biri kullanılmışsa bu yarım gün uygulamasının kullanılacağı anlamına gelir ve saat 12 ile karşılaştırılır. Eğer saat 12den küçükse AM büyükse PM olur Saat sahsı AM/PM tasarımını değiştirebilir. Örneğin "15:03:22 AM" "3:03:22 PM" değerine çevrilir.
 
@@ -98,9 +116,11 @@ Eğer AM yada PM etiketlerinden herhangi biri kullanılmışsa bu yarım gün uy
 
 Boolean ifadeler TRUE ve FALSE tırnak işaretleri ile çevrilerek yada çevrilmeden kullanılabilir.
 
-SELECT \*
+```sql
+SELECT *
 FROM transfers
 WHERE (paid = TRUE) AND NOT (incomplete = "FALSE")
+```
 
 **Tablo Referans Adları:******
 
@@ -108,48 +128,60 @@ tablo referans adları tablo ile bir kolonu ilişkilendirmek için kullanılır.
 
 Eğer tablo ismi tırnak işaretleri arasında değilse tablo adı varsayılan referans adı olarak kullanılır.
 
-SELECT \*
+```sql
+SELECT *
 FROM customer
 LEFT OUTER JOIN orders
 ON (customer.custno = orders.custno)
+```
 
 Eğer tablo ismi tırnak işaretli bir ifade ise aşağıdaki gibi tırnak işaretleri ile birlikte kullanabilirsiniz.
 
-SELECT \*
+```sql
+SELECT *
 FROM "customer.db"
 LEFT OUTER JOIN "orders.db"
 ON ("customer.db".custno = "orders.db".custno)
+```
 
 Eğer tırnak işaretinin arasındaki ifade çok uzunsa bu tanımlamayı FROM ifadesinden sonra başka bir ifadeye atayarak kullanabilirsiniz.
 
-SELECT \*
+```sql
+SELECT *
 FROM "customer.db" CUSTOMER
 LEFT OUTER JOIN "orders.db" ORDERS
 ON (CUSTOMER.custno = ORDERS.custno)
+```
 
 **Saha Refereansları:******
 
 Saha referansları bir sahayı,hesaplanan saha değer kümesini yada bir SQL ifadesini ad olarak barındıran sahayı farklı bir adla tanımlamaya yarar. Saha referansları kesinlikle çift tırnak arasına alınamaz. Bir saha referansı tanımlamak için saha referansı tanımlanacak olan tanımlamadan sonra AS anahtar kelimesini kullanıp saha referans adını AS anahtar kelimesinden sonra yazmalıyız.Aşağıdaki ifade de Sub ve Word tanımlamaları saha referansıdır.
 
+```sql
 SELECT SUBSTRING(company FROM 1 FOR 1) AS sub, "Text" AS word
 FROM customer
+```
 
 **Açıklama Tanımlamak:******
 
-Eğer SQL ifadenizin daha anlaşılır olmasını istiyorsanız içine açıklama yazabilirsiniz. Açıklamanız /\* ile başlayıp \*/ ile sona ermelidir. başlangıç ve sondaki işaretler açıklama ile aynı satırda olmak zorunda değildir.
+Eğer SQL ifadenizin daha anlaşılır olmasını istiyorsanız içine açıklama yazabilirsiniz. Açıklamanız /* ile başlayıp */ ile sona ermelidir. başlangıç ve sondaki işaretler açıklama ile aynı satırda olmak zorunda değildir.
 
-/\*
+```sql
+/*
 Merhaba Televole
-\*/
+*/
 SELECT SUBSTRING(company FROM 1 FOR 1) AS sub, "Text" AS word
 FROM customer
+```
 
 Açıklamalar aynı zamanda SQL ifadeleri de içerebilirler İfadeleriniz eğer Açıklama içinde ise yoksayılacaklardır.Açıklamalar özellikle SQL ifadelerinizi test etmek istediğinizde çok işe yarat.Her satırı ayrı ayrı açıklama içine alarak hatanın nerede olduğunu bulabilirsiniz.
 
+```sql
 SELECT company
 FROM customer
-/\* WHERE (state = "TX") \*/
+/* WHERE (state = "TX") */
 ORDER BY company
+```
 
 **SQL tanımlı kelimeler:******
 

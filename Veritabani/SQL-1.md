@@ -177,13 +177,15 @@ Veritabanından bir kayıt kümesi şeklinde bilgi döndürmek Microsoft Jet ver
 
 **Sözdizimi**
 
-**SELECT \[*****doğrulama*****\] { \* | *****tablo*****.\* | \[*****tablo*****.\]*****alan1***** \[AS *****diğerad1*****\] \[, \[*****tablo*****.\]*****alan2***** \[AS *****diğerad2*****\] \[, ...\]\]}
-FROM *****tabloifadesi***** \[, ...\] \[IN *****dışveritabanı*****\]
-\[WHERE... \]
-\[GROUP BY... \]
-\[HAVING... \]
-\[ORDER BY... \]
-\[WITH OWNERACCESS OPTION\]**
+```sql
+SELECT [doğrulama] { * | tablo.* | [tablo.]alan1 [AS diğerad1] [, [tablo.]alan2 [AS diğerad2] [, ...]]}
+FROM tabloifadesi [, ...] [IN dışveritabanı]
+[WHERE... ]
+[GROUP BY... ]
+[HAVING... ]
+[ORDER BY... ]
+[WITH OWNERACCESS OPTION]
+```
 
 SELECT deyiminin bölümleri şunlardır:
 
@@ -207,29 +209,37 @@ SELECT genellikle bir SQL deyiminin ilk sözcüğüdür. Çoğu SQL deyimi SELEC
 
 SELECT deyiminin en kısa sözdizimi şöyledir:
 
-**SELECT *****alanlar***** FROM *****tablo*********
+```sql
+SELECT alanlar FROM tablo
+```
 
 Tablodaki tüm dizinleri seçmek için bir yıldız (\*) simgesi de kullanabilirsiniz. Aşağıdaki örnek, Çalışanlar tablosundaki tüm alanları seçer.
 
-**SELECT \* FROM *****Çalışanlar;*********
+```sql
+SELECT * FROM Çalışanlar;
+```
 
 FROM yan tümcesinde bir alan adı birden fazla tabloda yer alıyorsa, alan adından önce tablo adını ve ardından **.** (nokta) işaretini yazın. Aşağıdaki örnekte, Bölüm alanı hem Çalışanlar hem de Denetçiler tablosunda bulunmaktadır. SQL deyimi, Çalışanlar tablosundan bölümleri ve Denetçiler tablosundan denetçi adlarını seçer:
 
-**SELECT Çalışanlar.Bölüm, Denetçiler.DenetçiAdı******
-
-**FROM Çalışanlar INNER JOIN Denetçiler******
-
-**WHERE Çalışanlar.Bölüm = Denetçiler.Bölüm;******
+```sql
+SELECT Çalışanlar.Bölüm, Denetçiler.DenetçiAdı
+FROM Çalışanlar INNER JOIN Denetçiler
+WHERE Çalışanlar.Bölüm = Denetçiler.Bölüm;
+```
 
 Bir **RecordSet** nesnesi oluşturulduğunda, Microsoft Jet veritabanı alt yapısı tablonun alan adını **recordset** nesnesi içinde **Field** nesnesi adı olarak kullanır. Farklı bir alan adı isterseniz veya alan oluşturmak üzere kullanılan ifadede bir ad belirtilmezse, **AS** saklı sözcüğünü kullanın. Aşağıdaki örnek, sonuç **recordset** nesnesinde döndürülen **field** nesnesini adlandırmak için Doğum başlığını kullanır:
 
-**SELECT DoğumTarihi******
+```sql
+SELECT DoğumTarihi
+```
 
 **AS Doğum FROM Çalışanlar;******
 
 Tanımsız veya yinelenen **Alan** nesne adları döndüren toplam işlevleri veya sorgular kullanırken, **Field** nesnesi için farklı bir ad sağlamak üzere AS yan tümcesini kullanmalısınız. Aşağıdaki örnek, sonuç **RecordSet** nesnesinde döndürülen **Field** nesnesini adlandırmak için Merkez başlığını kullanır:
 
-**SELECT COUNT(ÇalışanNo)******
+```sql
+SELECT COUNT(ÇalışanNo)
+```
 
 **AS Merkez FROM Çalışanlar;******
 
@@ -241,223 +251,129 @@ Aşağıdaki örneklerden bazıları, Çalışanlar tablosunda Maaş alanının 
 
 Bu örnek, Çalışanlar tablosundaki tüm kayıtların Adı ve Soyadı alanlarını seçen bir SQL deyimini temel alan bir **Recordset **devingen küme türü oluşturur. **Recordset** nesnesinin içeriklerini **Hata Ayıklama** penceresine yazdıran EnumFields yordamını çağırır.
 
+```vbnet
 Sub SelectX1()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satırı, bilgisayarınızdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanlar tablosundaki tüm kayıtların adı ve soyadı
-
 ' değerlerini seçer.
-
-Set rst = dbs.OpenRecordset("SELECT Soyadı, " \_
-
+Set rst = dbs.OpenRecordset("SELECT Soyadı, " _
 & "Adı FROM Çalışanlar;")
-
 ' Yeni kayıt kümesini başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdırmak üzere EnumFields
-
 ' yordamını çağırır.
-
 EnumFields rst,12
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, Posta Kodu alanında girilmiş değeri olan kayıt sayısını sayar ve geri döndürülen alanı Sayaç olarak adlandırır.
 
+```vbnet
 Sub SelectX2()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satırı, bilgisayarınızdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' PostaKodu değeri olan kayıt sayısını sayar ve
-
 ' sonucu Sayaç alanında verir.
-
-Set rst = dbs.OpenRecordset("SELECT Count " \_
-
+Set rst = dbs.OpenRecordset("SELECT Count " _
 & "(PostaKodu) AS Sayaç FROM Müşteriler;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdırmak üzere EnumFields
-
 ' yordamını çağırır. Alan genişliğini 12 yapar.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, çalışan sayısını ve maaşların ortalaması ile en yüksek değerini gösterir.
 
+```vbnet
 Sub SelectX3()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satırı, bilgisayarınızdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışan sayısını sayar, ortalama maaşı hesaplar
-
 ' ve en yüksek maaşı verir.
-
-Set rst = dbs.OpenRecordset("SELECT Count (\*) " \_
-
-& "AS ToplamÇalışan, Avg(Maaş) " \_
-
-& "AS OrtalamaMaaş, Max(Maaş) " \_
-
+Set rst = dbs.OpenRecordset("SELECT Count (*) " _
+& "AS ToplamÇalışan, Avg(Maaş) " _
+& "AS OrtalamaMaaş, Max(Maaş) " _
 & "AS EnYüksekMaaş FROM Çalışanlar;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdırmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 17
-
 dbs.Close
-
 End Sub
+```
 
 EnumFields **Sub** yordamı, çağıran yordamdan bir **Recordset** nesnesi aktarır. Daha sonra, **Recordset** alanlarını biçimlendirir ve **Hata Ayıklama** penceresine yazdırır. intFldLen değişkeni, istenen basılı alan genişliğidir. Bazı alanlar düzgün basılmadan kesilebilir.
 
+```vbnet
 Sub EnumFields(rst As Recordset, intFldLen As Integer)
-
 Dim lngRecords As Long, lngFields As Long
-
 Dim lngRecCount As Long, lngFldCount As Long
-
 Dim strTitle As String, strTemp As String
-
 ' lngRecords değişkenini Recordset içindeki
-
 ' kayıt sayısına eşitler.
-
 lngRecords = rst.RecordCount
-
 ' lngFields değişkenini Recordset içindeki
-
 ' alan sayısına eşitler.
-
 lngFields = rst.Fields.Count
-
-Debug.Print "Kayyt kümesinde " & lngRecords \_
-
-& " kayyt " & lngFields \_
-
+Debug.Print "Kayyt kümesinde " & lngRecords _
+& " kayyt " & lngFields _
 & " alan var."
-
 Debug.Print
-
 ' Sütun başlığını yazdırmak üzere bir dize oluşturur.
-
 strTitle = "Kayyt "
-
 For lngFldCount = 0 To lngFields - 1
-
-strTitle = strTitle \_
-
-& Left(rst.Fields(lngFldCount).Name \_
-
+strTitle = strTitle _
+& Left(rst.Fields(lngFldCount).Name _
 & Space(intFldLen), intFldLen)
-
 Next lngFldCount
-
 ' Sütun başlığını yazdırır.
-
 Debug.Print strTitle
-
 Debug.Print
-
 ' Recordset içinde dönerek kayyt sayysyny ve
-
 ' alan değerlerini yazdırır.
-
 rst.MoveFirst
-
 For lngRecCount = 0 To lngRecords - 1
-
-Debug.Print Right(Space(6) & \_
-
+Debug.Print Right(Space(6) & _
 Str(lngRecCount), 6) & " ";
-
 For lngFldCount = 0 To lngFields - 1
-
 ' Null değerleri denetler.
-
 If IsNull(rst.Fields(lngFldCount)) Then
-
 strTemp = "<null>"
-
 Else
-
 ' strTemp içeriğini alan içeriği olarak ayarlar.
-
-Select Case \_
-
+Select Case _
 rst.Fields(lngFldCount).Type
-
 Case 11
-
 strTemp = ""
-
 Case dbText, dbMemo
-
-strTemp = \_
-
+strTemp = _
 rst.Fields(lngFldCount)
-
 Case Else
-
-strTemp = \_
-
+strTemp = _
 str(rst.Fields(lngFldCount))
-
 End Select
-
 End If
-
-Debug.Print Left(strTemp \_
-
+Debug.Print Left(strTemp _
 & Space(intFldLen), intFldLen);
-
 Next lngFldCount
-
 Debug.Print
-
 rst.MoveNext
-
 Next lngRecCount
-
 End Sub
+```
 
 **DELETE Deyimi**
 
@@ -465,9 +381,11 @@ WHERE yan tümcesini sağlayan FROM yan tümcesinde listelenen tablolardan bir v
 
 **Sözdizimi**
 
-**DELETE \[*****tablo*****.\*\]
-FROM *****tablo*****
-WHERE *****ölçüt*********
+```sql
+DELETE [tablo.*]
+FROM tablo
+WHERE ölçüt
+```
 
 DELETE deyiminin bölümleri şunlardır:
 
@@ -499,25 +417,18 @@ Her zaman verilerinizin yedeklerini saklayın. Yanlış kayıtları silerseniz, 
 
 Bu örnek, ünvanı Eğitmen olan tüm çalışanların kayıtlarını siler. FROM yan tümcesi yalnızca bir tablo içeriyorsa, DELETE deyiminde tablo adını listelemeniz gerekmez.
 
+```vbnet
 Sub DeleteX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Ünvanı Eğitmen olan çalışanların kayıtlarını siler.
-
-dbs.Execute "DELETE \* FROM " \_
-
+dbs.Execute "DELETE * FROM " _
 & "Çalışanlar WHERE Ünvan = 'Eğitmen';"
-
 dbs.Close
-
 End Sub
+```
 
 **INSERT INTO Deyimi**
 
@@ -527,14 +438,18 @@ Bir tabloya bir veya daha çok sayıda kayıt ekler. Buna ekleme sorgusu da deni
 
 Çok sayıda kayıt ekleme sorgusu:
 
-**INSERT INTO *****hedef***** \[(*****alan1*****\[, *****alan2*****\[, ...\]\])\] \[IN *****dışveritabanı*****\]
-SELECT \[*****kaynak*****.\]*****alan1*****\[, *****alan2*****\[, ...\]
-FROM *****tabloifadesi*********
+```sql
+INSERT INTO hedef [(alan1[, alan2[, ...]])] [IN dışveritabanı]
+SELECT [kaynak.]alan1[, alan2[, ...]
+FROM tabloifadesi
+```
 
 Tek kayıt ekleme sorgusu:
 
-**INSERT INTO *****hedef***** \[(*****alan1*****\[, *****alan2*****\[, ...\]\])\]
-VALUES (*****değer1*****\[, *****değer2*****\[, ...\])**
+```sql
+INSERT INTO hedef [(alan1[, alan2[, ...]])]
+VALUES (değer1[, değer2[, ...])
+```
 
 INSERT INTO deyiminin bölümleri şunlardır:
 
@@ -579,57 +494,38 @@ Bir başka tablodan var olan kayıtları eklemek yerine, VALUES yan tümcesini k
 
 Bu örnek, bulunduğu varsayılan Yeni Müşteriler tablosundaki tüm müşterileri seçer ve bunları Müşteriler tablosuna ekler. Tek tek sütunlar belirtilmezse, SELECT tablosu sütun adları ile, INSERT INTO tablosundaki sütun adları tam olarak eşleşmelidir.
 
+```vbnet
 Sub InsertIntoX1()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Yeni Müşteriler tablosundaki tüm kayıtları seçer
-
 ' ve bunları Müşteriler tablosuna ekler.
-
-dbs.Execute " INSERT INTO Müşteriler " \_
-
-& "SELECT \* " \_
-
-& "FROM \[Yeni Müşteriler\];"
-
+dbs.Execute " INSERT INTO Müşteriler " _
+& "SELECT * " _
+& "FROM [Yeni Müşteriler];"
 dbs.Close
-
 End Sub
+```
 
 Bu örnek Çalışanlar tablosunda yeni bir kayıt oluşturur.
 
+```vbnet
 Sub InsertIntoX2()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanlar tablosunda yeni bir kayıt oluşturur. Yeni
-
 ' kaydyn ady Gamze, soyady Etikan ve
-
 ' iş ünvanı Eğitmen'dir.
-
-dbs.Execute " INSERT INTO Çalışanlar " \_
-
-& "(Ady,Soyady, Ünvan) VALUES " \_
-
+dbs.Execute " INSERT INTO Çalışanlar " _
+& "(Ady,Soyady, Ünvan) VALUES " _
 & "('Gamze', 'Etikan', 'Eğitmen');"
-
 dbs.Close
-
 End Sub
+```
 
 **SELECT...INTO Deyimi**
 
@@ -637,8 +533,10 @@ Bir tablo oluşturma sorgusu oluşturur.
 
 **Sözdizimi**
 
-**SELECT *****alan1*****\[, *****alan2*****\[, ...\]\] INTO *****yenitablo***** \[IN *****dışveritabanı*****\]
-FROM *****kaynak*********
+```sql
+SELECT alan1[, alan2[, ...]] INTO yenitablo [IN dışveritabanı]
+FROM kaynak
+```
 
 SELECT...INTO deyiminin bölümleri şunlardır:
 
@@ -669,33 +567,22 @@ Tablo oluşturma sorgusunu çalıştırmadan önce hangi kayıtların seçilece�
 
 Bu örnek, Çalışanlar tablosundaki tüm kayıtları seçer ve bunları Çalışanlar Yedeği adlı yeni bir tabloya ekler.
 
+```vbnet
 Sub SelectIntoX()
-
 Dim dbs As Database
-
 Dim qdf As QueryDef
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanlar tablosundaki tüm kayıtları seçer
-
 ' ve bunları yeni Çalışanlar Yedeği tablosuna kopyalar.
-
-dbs.Execute "SELECT Çalışanlar.\* INTO " \_
-
-& "\[Çalışanlar Yedeği\] FROM Çalışanlar;"
-
+dbs.Execute "SELECT Çalışanlar.* INTO " _
+& "[Çalışanlar Yedeği] FROM Çalışanlar;"
 ' Bu bir örnek olduğu için tabloyu siler.
-
-dbs.Execute "DROP TABLE \[Çalışanlar Yedeği\];"
-
+dbs.Execute "DROP TABLE [Çalışanlar Yedeği];"
 dbs.Close
-
 End Sub
+```
 
 **UPDATE Deyimi**
 
@@ -703,9 +590,11 @@ Belirtilen ölçütleri temel alan belirtilen tablodaki alanların değerlerini 
 
 **Sözdizimi**
 
-**UPDATE *****tablo*****
-SET *****yenideğer*****
-WHERE *****ölçüt;*********
+```sql
+UPDATE tablo
+SET yenideğer
+WHERE ölçüt;
+```
 
 UPDATE deyiminin bölümleri şunlardır:
 
@@ -723,13 +612,12 @@ UPDATE özellikle, çok sayıda kaydı değiştirmek istediğinizde veya değiş
 
 Aynı anda çok sayıda alanı değiştirebilirsiniz. Aşağıdaki örnek Sipariş Miktarı değerlerini yüzde 10 arttırır ve Navlun değerlerini İngiltere'deki taşımacılar için yüzde 3 arttırır:
 
+```sql
 UPDATE Siparişler
-
-SET SiparişMiktarı = SiparişMiktarı \* 1.1,
-
-Navlun = Navlun \* 1.03
-
+SET SiparişMiktarı = SiparişMiktarı * 1.1,
+Navlun = Navlun * 1.03
 WHERE Ülke = 'İngiltere';
+```
 
 **Önemli**
 
@@ -741,33 +629,22 @@ Her zaman verilerinizin yedeklerini saklayın. Yanlış kayıtları güncelleşt
 
 Bu örnek, Raporla alanının değeri 2 olan tüm çalışan kayıtlarının Raporla alanını 5 olarak değiştirir.
 
+```vbnet
 Sub UpdateX()
-
 Dim dbs As Database
-
 Dim qdf As QueryDef
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Raporla alanındaki değeri 2 olan tüm çalışan
-
 ' kayıtlarının Raporla alanının değerini 5 olarak
-
 ' değiştirir.
-
-dbs.Execute "UPDATE Çalışanlar " \_
-
-& "SET Raporla = 5 " \_
-
+dbs.Execute "UPDATE Çalışanlar " _
+& "SET Raporla = 5 " _
 & "WHERE Raporla = 2;"
-
 dbs.Close
-
 End Sub
+```
 
 **TRANSFORM Deyimi**
 
@@ -775,9 +652,11 @@ Bir çapraz sorgu oluşturur.
 
 **Sözdizimi**
 
-**TRANSFORM *****toplamişlevi*****
-*****seçmedeyimi*****
-PIVOT *****özetalanı***** \[IN (*****değer1*****\[, *****değer2*****\[, ...\]\])\]**
+```sql
+TRANSFORM toplamişlevi
+seçmedeyimi
+PIVOT özetalanı [IN (değer1[, değer2[, ...]])]
+```
 
 TRANSFORM deyiminin bölümleri şunlardır:
 
@@ -806,181 +685,103 @@ TRANSFORM isteğe bağlıdır, ancak seçildiğinde, bir SQL dizesinin ilk deyim
 
 Bu örnek, 1994 yılının her üç aylık dönemi için çalışanların verdikleri sipariş miktarını gösteren bir çapraz sorgu oluşturmak üzere bir SQLTRANSFORM yan tümcesi kullanır. SQLTRANSFORMOutput işlevi, bu yordamın çalışması için gereklidir.
 
+```vbnet
 Sub TransformX1()
-
 Dim dbs As Database
-
 Dim strSQL As String
-
 Dim qdfTRANSFORM As QueryDef
-
-strSQL = "PARAMETERS prmYear SHORT; TRANSFORM " \_
-
-& "Count(SiparişNo) " \_
-
-& "SELECT Ady & "" "" & Soyady AS " \_
-
-& "TamAdı FROM Çalışanlar INNER JOIN Siparişler " \_
-
-& "ON Çalışanlar.ÇalışanNo = " \_
-
-& "Siparişler.ÇalışanNo WHERE TarihAralığı " \_
-
-& "(""yyyy"", SiparişTarihi) = \[prmYear\] "
-
-strSQL = strSQL & "GROUP BY Ady & " \_
-
-& """ "" & Soyady " \_
-
-& "ORDER BY Ady & "" "" & Soyady " \_
-
+strSQL = "PARAMETERS prmYear SHORT; TRANSFORM " _
+& "Count(SiparişNo) " _
+& "SELECT Ady & "" "" & Soyady AS " _
+& "TamAdı FROM Çalışanlar INNER JOIN Siparişler " _
+& "ON Çalışanlar.ÇalışanNo = " _
+& "Siparişler.ÇalışanNo WHERE TarihAralığı " _
+& "(""yyyy"", SiparişTarihi) = [prmYear] "
+strSQL = strSQL & "GROUP BY Ady & " _
+& """ "" & Soyady " _
+& "ORDER BY Ady & "" "" & Soyady " _
 & "PIVOT TarihAralığı(""q"", SiparişTarihi)"
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
-Set qdfTRANSFORM = dbs.CreateQueryDef \_
-
+Set qdfTRANSFORM = dbs.CreateQueryDef _
 ("", strSQL)
-
 SQLTRANSFORMOutput qdfTRANSFORM, 1994
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, 1994 yılının her üç aylık dönemi için çalışanların verdikleri siparişlerin toplam TL miktarını gösteren daha karmaşık bir çapraz sorgu oluşturmak üzere bir SQLTRANSFORM yan tümcesi kullanır. SQLTRANSFORMOutput işlevi, bu yordamın çalışması için gereklidir.
 
+```vbnet
 Sub TransformX2()
-
 Dim dbs As Database
-
 Dim strSQL As String
-
 Dim qdfTRANSFORM As QueryDef
-
-strSQL = "PARAMETERS prmYear SMALLINT; TRANSFORM " \_
-
-& "Sum(AltToplam) SELECT Ady & "" """ \_
-
-& "& Soyady AS TamAdy " \_
-
-& "FROM Çalışanlar INNER JOIN " \_
-
-& "(Siparişler INNER JOIN \[Sipariş Alt Toplamları\] " \_
-
-& "ON Siparişler.SiparişNo = " \_
-
-& "\[Sipariş Alt Toplamları\].SiparişNo) " \_
-
-& "ON Çalışanlar.ÇalışanNo = " \_
-
-& "Siparişler.ÇalışanNo WHERE TarihAralığı " \_
-
-& "(""yyyy"", SiparişTarihi) = \[prmYear\] "
-
-strSQL = strSQL & "GROUP BY Ady & "" """ \_
-
-& "& Soyady " \_
-
-& "ORDER BY Ady & "" "" & Soyady " \_
-
+strSQL = "PARAMETERS prmYear SMALLINT; TRANSFORM " _
+& "Sum(AltToplam) SELECT Ady & "" """ _
+& "& Soyady AS TamAdy " _
+& "FROM Çalışanlar INNER JOIN " _
+& "(Siparişler INNER JOIN [Sipariş Alt Toplamları] " _
+& "ON Siparişler.SiparişNo = " _
+& "[Sipariş Alt Toplamları].SiparişNo) " _
+& "ON Çalışanlar.ÇalışanNo = " _
+& "Siparişler.ÇalışanNo WHERE TarihAralığı " _
+& "(""yyyy"", SiparişTarihi) = [prmYear] "
+strSQL = strSQL & "GROUP BY Ady & "" """ _
+& "& Soyady " _
+& "ORDER BY Ady & "" "" & Soyady " _
 & "PIVOT TarihAralığı(""q"",SiparişTarihi)"
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
-Set qdfTRANSFORM = dbs.CreateQueryDef \_
-
+Set qdfTRANSFORM = dbs.CreateQueryDef _
 ("", strSQL)
-
 SQLTRANSFORMOutput qdfTRANSFORM, 1994
-
 dbs.Close
-
 End Sub
+```
 
-Function SQLTRANSFORMOutput(qdfTemp As QueryDef, \_
-
+```vbnet
+Function SQLTRANSFORMOutput(qdfTemp As QueryDef, _
 intYear As Integer)
-
 Dim rstTRANSFORM As Recordset
-
 Dim fldLoop As Field
-
 Dim booFirst As Boolean
-
 qdfTemp.PARAMETERS!prmYear = intYear
-
 Set rstTRANSFORM = qdfTemp.OpenRecordset()
-
 Debug.Print qdfTemp.SQL
-
 Debug.Print
-
 Debug.Print , , "Üç Ay"
-
 With rstTRANSFORM
-
 booFirst = True
-
 For Each fldLoop In .Fields
-
 If booFirst = True Then
-
 Debug.Print fldLoop.Name
-
 Debug.Print , ;
-
 booFirst = False
-
 Else
-
 Debug.Print , fldLoop.Name;
-
 End If
-
 Next fldLoop
-
 Debug.Print
-
 Do While Not .EOF
-
 booFirst = True
-
 For Each fldLoop In .Fields
-
 If booFirst = True Then
-
 Debug.Print fldLoop
-
 Debug.Print , ;
-
 booFirst = False
-
 Else
-
 Debug.Print , fldLoop;
-
 End If
-
 Next fldLoop
-
 Debug.Print
-
 .MoveNext
-
 Loop
-
 End With
-
 End Function
+```
 
 **EXECUTE Deyimi**
 
@@ -1035,8 +836,10 @@ SELECT deyiminde listelenen alanları içeren tabloları veya sorguları belirti
 
 **Sözdizimi**
 
-**SELECT *****alanlistesi*****
-FROM *****tablodeyimi***** \[IN *****dışveritabanı*****\]**
+```sql
+SELECT alanlistesi
+FROM tablodeyimi [IN dışveritabanı]
+```
 
 FROM yan tümcesi içeren bir SELECT deyiminin bölümleri şunlardır:
 
@@ -1060,9 +863,10 @@ Daha yüksek bir başarımı ve daha kolay kullanım sağlamak için, dış bir 
 
 Aşağıdaki örnek, Çalışanlar tablosundan nasıl veri alabileceğinizi gösterir:
 
+```sql
 SELECT Soyadı, Adı
-
 FROM Çalışanlar;
+```
 
 **SELECT Deyimi, FROM Yan Tümcesi Örneği******
 
@@ -1070,223 +874,129 @@ Aşağıdaki örneklerden bazıları, Çalışanlar tablosunda Maaş alanının 
 
 Bu örnek, Çalışanlar tablosundaki tüm kayıtların Adı ve Soyadı alanlarını seçen bir SQL deyimini temel alan bir **Recordset **devingen küme türü oluşturur. **Recordset** nesnesinin içeriklerini **Hata Ayıklama** penceresine yazdıran EnumFields yordamını çağırır.
 
+```vbnet
 Sub SelectX1()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanlar tablosundaki tüm kayıtların adı ve soyadı
-
 ' değerlerini seçer.
-
-Set rst = dbs.OpenRecordset("SELECT Soyady, " \_
-
+Set rst = dbs.OpenRecordset("SELECT Soyady, " _
 & "Adı FROM Çalışanlar;")
-
 ' Yeni kayıt kümesini başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır.
-
 EnumFields rst,12
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, PostaKodu alanında girilmiş değeri olan kayıt sayısını sayar ve geri döndürülen alanı Sayaç olarak adlandırır.
 
+```vbnet
 Sub SelectX2()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' PostaKodu değeri olan kayıt sayısını sayar ve
-
 ' sonucu Sayaç alanynda verir.
-
-Set rst = dbs.OpenRecordset("SELECT Count " \_
-
+Set rst = dbs.OpenRecordset("SELECT Count " _
 & "(PostaKodu) AS Sayaç FROM Müşteriler;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Alan genişliğini 12 yapar.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, çalışan sayısını ve maaşların ortalaması ile en yüksek değerini gösterir.
 
+```vbnet
 Sub SelectX3()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışan sayısını sayar, ortalama maaşı hesaplar
-
 ' ve en yüksek maaşı verir.
-
-Set rst = dbs.OpenRecordset("SELECT Count (\*) " \_
-
-& "AS ToplamÇalışan, Avg(Maaş) " \_
-
-& "AS OrtalamaMaaş, Max(Maaş) " \_
-
+Set rst = dbs.OpenRecordset("SELECT Count (*) " _
+& "AS ToplamÇalışan, Avg(Maaş) " _
+& "AS OrtalamaMaaş, Max(Maaş) " _
 & "AS EnYüksekMaaş FROM Çalışanlar;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 17
-
 dbs.Close
-
 End Sub
+```
 
 EnumFields **Sub** yordamı, çağıran yordamdan bir **Recordset** nesnesi aktarır. Daha sonra, **Recordset** alanlarını biçimlendirir ve **Hata Ayıklama** penceresine yazdırır. intFldLen değişkeni, istenen basılı alan genişliğidir. Bazı alanlar düzgün basılmadan kesilebilir.
 
+```vbnet
 Sub EnumFields(rst As Recordset, intFldLen As Integer)
-
 Dim lngRecords As Long, lngFields As Long
-
 Dim lngRecCount As Long, lngFldCount As Long
-
 Dim strTitle As String, strTemp As String
-
 ' lngRecords değişkenini Recordset içindeki
-
 ' kayıt sayısına eşitler.
-
 lngRecords = rst.RecordCount
-
 ' lngFields değişkenini Recordset içindeki
-
 ' alan sayısına eşitler.
-
 lngFields = rst.Fields.Count
-
-Debug.Print "Kayyt kümesinde " & lngRecords \_
-
-& " kayyt " & lngFields \_
-
+Debug.Print "Kayyt kümesinde " & lngRecords _
+& " kayyt " & lngFields _
 & " alan var."
-
 Debug.Print
-
 ' Sütun başlığını yazdırmak üzere bir dize oluşturur.
-
 strTitle = "Kayyt "
-
 For lngFldCount = 0 To lngFields - 1
-
-strTitle = strTitle \_
-
-& Left(rst.Fields(lngFldCount).Name \_
-
+strTitle = strTitle _
+& Left(rst.Fields(lngFldCount).Name _
 & Space(intFldLen), intFldLen)
-
 Next lngFldCount
-
 ' Sütun başlığını yazdırır.
-
 Debug.Print strTitle
-
 Debug.Print
-
 ' Recordset içinde dönerek kayyt sayysyny ve
-
 ' alan değerlerini yazdırır.
-
 rst.MoveFirst
-
 For lngRecCount = 0 To lngRecords - 1
-
-Debug.Print Right(Space(6) & \_
-
+Debug.Print Right(Space(6) & _
 Str(lngRecCount), 6) & " ";
-
 For lngFldCount = 0 To lngFields - 1
-
 ' Null değerleri denetler.
-
 If IsNull(rst.Fields(lngFldCount)) Then
-
 strTemp = "<null>"
-
 Else
-
 ' strTemp içeriğini alan içeriği olarak ayarlar.
-
-Select Case \_
-
+Select Case _
 rst.Fields(lngFldCount).Type
-
 Case 11
-
 strTemp = ""
-
 Case dbText, dbMemo
-
-strTemp = \_
-
+strTemp = _
 rst.Fields(lngFldCount)
-
 Case Else
-
-strTemp = \_
-
+strTemp = _
 str(rst.Fields(lngFldCount))
-
 End Select
-
 End If
-
-Debug.Print Left(strTemp \_
-
+Debug.Print Left(strTemp _
 & Space(intFldLen), intFldLen);
-
 Next lngFldCount
-
 Debug.Print
-
 rst.MoveNext
-
 Next lngRecCount
-
 End Sub
+```
 
 **GROUP BY Yan Tümcesi**
 
@@ -1294,10 +1004,12 @@ Belirtilen alan listesindeki benzer değerlere sahip kayıtları tek bir kayıt 
 
 **Sözdizimi**
 
-**SELECT *****alanlistesi*****
-FROM *****tablo*****
-WHERE *****ölçüt*****
-\[GROUP BY *****grupalanlistesi*****\]**
+```sql
+SELECT alanlistesi
+FROM tablo
+WHERE ölçüt
+[GROUP BY grupalanlistesi]
+```
 
 GROUP BY yan tümcesi içeren bir SELECT deyiminin bölümleri şunlardır:
 
@@ -1334,83 +1046,51 @@ Bu örnek, benzersiz iş ünvanlarının ve bu ünvanlara sahip olan çalışan 
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub GroupByX1()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Her ünvan için, bu ünvana sahip çalışanları
-
 ' sayar.
-
-Set rst = dbs.OpenRecordset("SELECT Ünvan, " \_
-
-& "Count(\[Ünvan\]) AS Sayaç " \_
-
+Set rst = dbs.OpenRecordset("SELECT Ünvan, " _
+& "Count([Ünvan]) AS Sayaç " _
 & "FROM Çalışanlar GROUP BY Ünvan;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 25
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek benzersiz her iş ünvanı için, bu ünvana sahip İstanbul'daki çalışan sayısını hesaplar.
 
+```vbnet
 Sub GroupByX2()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Her ünvan için, bu ünvana sahip çalışanları
-
 ' sayar. Yalnyzca Ystanbul bölgesindeki
-
 ' çalışanları bulundurur.
-
-Set rst = dbs.OpenRecordset("SELECT Ünvan, " \_
-
-& "Count(Ünvan) AS Sayaç " \_
-
-& "FROM Çalışanlar WHERE Bölge = 'İS' " \_
-
+Set rst = dbs.OpenRecordset("SELECT Ünvan, " _
+& "Count(Ünvan) AS Sayaç " _
+& "FROM Çalışanlar WHERE Bölge = 'İS' " _
 & "GROUP BY Ünvan;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 25
-
 dbs.Close
-
 End Sub
+```
 
 **HAVING Yan Tümcesi**
 
@@ -1418,11 +1098,13 @@ GROUP BY yan tümcesi olan bir SELECT deyiminde hangi gruplandırılmış kayıt
 
 **Sözdizimi**
 
-**SELECT *****alanlistesi*****
-FROM *****tablo*****
-WHERE *****seçmeölçütü*****
-GROUP BY *****grupalanlistesi*****
-\[HAVING *****grupölçütü*****\]**
+```sql
+SELECT alanlistesi
+FROM tablo
+WHERE seçmeölçütü
+GROUP BY grupalanlistesi
+[HAVING grupölçütü]
+```
 
 HAVING yan tümcesi içeren bir SELECT deyiminin bölümleri şunlardır:
 
@@ -1446,15 +1128,13 @@ HAVING isteğe bağlıdır.
 
 HAVING, WHERE'e benzer ve hangi kayıtların seçileceğini belirler. Kayıtlar GROUP BY ile gruplandırıldıktan sonra HAVING de hangi kayıtların görüntüleneceğini belirtir.
 
+```sql
 SELECT KategoriNo,
-
 Sum(StoktakiBirim)
-
 FROM Ürünler
-
 GROUP BY KategoriNo
-
-HAVING Sum(StoktakiBirim) > 100 And Like "BOS\*";
+HAVING Sum(StoktakiBirim) > 100 And Like "BOS*";
+```
 
 Bir HAVING yan tümcesi, **And** ve **Or** gibi mantıksal işleçlerle birbirine bağlı en çok 40 ifade içerebilir.
 
@@ -1464,39 +1144,25 @@ Bu örnek, İstanbul bölgesindeki birden çok çalışana atanmış iş ünvanl
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub HavingX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' İstanbul bölgesindeki birden çok çalışana atanmış
-
 ' iş ünvanlarını seçer.
-
-Set rst = dbs.OpenRecordset("SELECT Ünvan, " \_
-
-& "Count(Ünvan) as Toplam FROM Çalışanlar " \_
-
-& "WHERE Bölge = 'YS' " \_
-
+Set rst = dbs.OpenRecordset("SELECT Ünvan, " _
+& "Count(Ünvan) as Toplam FROM Çalışanlar " _
+& "WHERE Bölge = 'YS' " _
 & "GROUP BY Ünvan HAVING Count(Ünvan) > 1;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdırmak üzere EnumFields'i çağırır.
-
 EnumFields rst, 25
-
 dbs.Close
-
 End Sub
+```
 
 **IN Yan Tümcesi**
 
@@ -1511,8 +1177,10 @@ Hedef bir tablo belirlemek için:
 
 Kaynak bir tablo belirlemek için:
 
-**FROM *****tabloifadesi***** IN
-{*****yol***** | \["*****yol*****" "*****tür*****"\] | \["" \[*****tür*****; DATABASE = *****yol*****\]\]}**
+```sql
+FROM tabloifadesi IN
+{yol | ["yol" "tür"] | ["" [tür; DATABASE = yol]]}
+```
 
 IN yan tümcesi içeren bir SELECT deyiminin bölümleri şunlardır:
 
@@ -1535,9 +1203,13 @@ Microsoft Jet veritabanı dışında bir veritabanı belirtmek için, ada bir no
 
 Dış veritabanı belirlemek için DATABASE saklı sözcüğünü de kullanabilirsiniz. Örneğin, aşağıdaki satırlar aynı tabloyu belirtir:
 
-**... FROM Tablo IN "" \[dBASE IV; DATABASE=C:\\DBASE\\DATA\\SALES;\];******
+```sql
+... FROM Tablo IN "" [dBASE IV; DATABASE=C:\DBASE\DATA\SALES;];
+```
 
-**... FROM Tablo IN "C:\\DBASE\\DATA\\SALES" "dBASE IV;"******
+```sql
+... FROM Tablo IN "C:\DBASE\DATA\SALES" "dBASE IV;"
+```
 
 **Notlar******
 
@@ -1579,10 +1251,12 @@ Sorgunun sonuç kayıtlarını belirtilen alan veya alanlara göre artan veya az
 
 **Sözdizimi**
 
-**SELECT *****alanlistesi*****
-FROM *****tablo*****
-WHERE *****seçmeölçütü*****
-\[ORDER BY *****alan1***** \[ASC | DESC \]\[, *****alan2***** \[ASC | DESC \]\]\[, ...\]\]\]**
+```sql
+SELECT alanlistesi
+FROM tablo
+WHERE seçmeölçütü
+[ORDER BY alan1 [ASC | DESC ][, alan2 [ASC | DESC ]][, ...]]]
+```
 
 ORDER BY yan tümcesi içeren bir SELECT deyiminin bölümleri şunlardır:
 
@@ -1605,25 +1279,25 @@ ORDER BY isteğe bağlıdır. Ancak, kayıtların sıralanmış olarak görünt�
 
 Varsayılan sıralama düzeni artan düzendir (A'dan Z'ye, 0'dan 9'a). Aşağıdaki örneklerden her ikisi de, çalışan adlarını soyadına göre sıralar:
 
+```sql
 SELECT Soyady, Ady
-
 FROM Çalışanlar
-
 ORDER BY Soyady;
+```
 
+```sql
 SELECT Soyady, Ady
-
 FROM Çalışanlar
-
 ORDER BY Soyady ASC;
+```
 
 Azalan sırada sıralamak için (Z'den A'ya, 9'dan 0'a), azalan sırada sıralamak istediğiniz her alanın sonuna DESC saklı sözcüğünü ekleyin. Aşağıdaki örnek maaşları seçer ve bunları azalan sırada sıralar:
 
+```sql
 SELECT Soyadı, Maaş
-
 FROM Çalışanlar
-
 ORDER BY Maaş DESC, Soyadı;
+```
 
 ORDER BY yan tümcesinde Not veya OLE Nesnesi verileri içeren bir alanı belirtirseniz bir hata oluşur. Microsoft Jet veritabanı alt yapısı bu bu türdeki alanları gruplandıramaz.
 
@@ -1637,39 +1311,25 @@ Aşağıdaki örnekte gösterilen SQL deyimi, soyadlarını azalan sırada (Z-A)
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub OrderByX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanlar tablosundan adı ve soyadı değerlerini
-
 ' seçer ve bunlary azalan syrada syralar.
-
 '
-
-Set rst = dbs.OpenRecordset("SELECT Soyady, " \_
-
-& "Adı FROM Çalışanlar " \_
-
+Set rst = dbs.OpenRecordset("SELECT Soyady, " _
+& "Adı FROM Çalışanlar " _
 & "ORDER BY Soyady DESC;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdırmak üzere EnumFields'i çağırır.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 **WHERE Yan Tümcesi**
 
@@ -1677,9 +1337,11 @@ FROM yan tümcesinde listelenen tablolardaki hangi kayıtların SELECT, UPDATE v
 
 **Sözdizimi**
 
-**SELECT *****alanlistesi*****
-FROM *****tabloifadesi*****
-WHERE *****ölçüt*********
+```sql
+SELECT alanlistesi
+FROM tabloifadesi
+WHERE ölçüt
+```
 
 WHERE yan tümcesi içeren bir SELECT deyiminin bölümleri şunlardır:
 
@@ -1707,47 +1369,51 @@ GROUP BY yan tümcesi ile gruplandırmak istemediğiniz kayıtları elemek için
 
 SQL deyiminin döndüreceği kayıtları belirlemek için değişik ifadeler kullanın. Örneğin aşağıdaki SQL deyimi, yıllık maaşları 600 Milyon TL'den yüksek olan çalışanları seçer.
 
+```sql
 SELECT Soyadı, Maaş
-
-**FROM Çalışanlar******
-
-**WHERE Maaş > 21000;******
+FROM Çalışanlar
+WHERE Maaş > 21000;
+```
 
 Bir WHERE yan tümcesi, **And** ve **Or** gibi mantıksal işleçlerle birbirine bağlı en çok 40 ifade içerebilir.
 
 Bir boşluk veya noktalama işareti içeren bir alan adı girerken, adı köşeli ayraçlar (\[ \]) içine alın. Örneğin bir müşteri bilgileri tablosu, belirli müşteriler hakkında bilgiler içerebilir:
 
-**SELECT \[Müşterinin En Sevdiği Lokanta\]******
+```sql
+SELECT [Müşterinin En Sevdiği Lokanta]
+```
 
 *Ölçüt* değişkenini belirttiğinizde, tarih rakamları, Microsoft® Jet veritabanı alt yapısının A.B.D. sürümünü kullanmıyor olsanız bile A.B.D. biçiminde olmalıdır. Örneğin 10 Mayıs 1996, İngilizce biçiminde 10/5/96 şeklinde ve A.B.D. biçiminde 5/10/96 olarak yazılır. Tarih rakamlarını, aşağıdaki örnekte görüldüğü gibi diyez işareti (#) içine aldığınızdan emin olun.
 
 Bir İngiltere veritabanında 10 Mayıs 1996 tarihli kayıtları bulmak için, aşağıdaki SQL deyimini kullanmalısınız.
 
-**SELECT \*******
-
-**FROM Siparişler******
-
-**WHERE YüklemeTarihi = #5/10/96#;******
+```sql
+SELECT *
+FROM Siparişler
+WHERE YüklemeTarihi = #5/10/96#;
+```
 
 Ayrıca, Microsoft Windows® tarafından belirlenen uluslararası ayarları algılayan **DateValue** işlevini de kullanabilirsiniz. Örneğin, A.B.D. için şu kodları kullanın:
 
-**SELECT \*******
-
-**FROM Siparişler******
-
-**WHERE YüklemeTarihi = TarihDeğeri('5/10/96');******
+```sql
+SELECT *
+FROM Siparişler
+WHERE YüklemeTarihi = TarihDeğeri('5/10/96');
+```
 
 Ve İngiltere için şu kodları kullanın:
 
-**SELECT \*******
-
-**FROM Siparişler******
-
-**WHERE YüklemeTarihi = TarihDeğeri('10/5/96');******
+```sql
+SELECT *
+FROM Siparişler
+WHERE YüklemeTarihi = TarihDeğeri('10/5/96');
+```
 
 **Not **Ölçüt dizesinde başvurulan sütun GUID türünde ise, ölçüt ifadesi biraz farklı bir sözdizimi kullanır:
 
-**WHERE YinelemeNo = {GUID {12345678-90AB-CDEF-1234-567890ABCDEF}}******
+```sql
+WHERE YinelemeNo = {GUID {12345678-90AB-CDEF-1234-567890ABCDEF}}
+```
 
 Gösterildiği gibi içiçe parantezler ve tireler eklediğinizden emin olun.
 
@@ -1759,39 +1425,25 @@ Bu örnek, soyadı Etikan olan kayıtların Adı ve Soyadı bilgilerini seçer.
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub WhereX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanlar tablosundan, soyadı Etikan olan
-
 ' kayytlary seçer.
-
-Set rst = dbs.OpenRecordset("SELECT Soyady, " \_
-
-& "Adı FROM Çalışanlar " \_
-
+Set rst = dbs.OpenRecordset("SELECT Soyady, " _
+& "Adı FROM Çalışanlar " _
 & "WHERE Soyady = 'Etikan';")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 **CONSTRAINT Yan Tümcesi**
 
@@ -1805,20 +1457,24 @@ CONSTRAINT yan tümcesini ALTER TABLE ve CREATE TABLE deyimlerinde, kısıtlama 
 
 Tek alan kısıtlaması:
 
-**CONSTRAINT *****adı***** {PRIMARY KEY | UNIQUE | NOT NULL |
-REFERENCES *****yabancıtablo***** \[(*****yabancıalan1, yabancıalan2*****)\]
-\[ON UPDATE CASCADE | SET NULL\]
-\[ON DELETE CASCADE | SET NULL\]}**
+```sql
+CONSTRAINT adı {PRIMARY KEY | UNIQUE | NOT NULL |
+REFERENCES yabancıtablo [(yabancıalan1, yabancıalan2)]
+[ON UPDATE CASCADE | SET NULL]
+[ON DELETE CASCADE | SET NULL]}
+```
 
 Çok alan kısıtlaması:
 
-**CONSTRAINT *****adı*****
-{PRIMARY KEY (*****birincil1*****\[, *****birincil2***** \[, ...\]\]) |
-UNIQUE (*****benzersiz1*****\[, *****benzersiz2***** \[, ...\]\]) |
-NOT NULL (*****nulldeğil1*****\[, *****nulldeğil2***** \[, ...\]\]) |
-FOREIGN KEY \[NO INDEX\] (*****başvuru1*****\[, *****başvuru2***** \[, ...\]\]) REFERENCES *****yabancıtablo***** \[(*****yabancıalan1 *****\[, *****yabancıalan2 *****\[, ...\]\])\]
-\[ON UPDATE CASCADE | SET NULL\]
-\[ON DELETE CASCADE | SET NULL\]}**
+```sql
+CONSTRAINT adı
+{PRIMARY KEY (birincil1[, birincil2 [, ...]]) |
+UNIQUE (benzersiz1[, benzersiz2 [, ...]]) |
+NOT NULL (nulldeğil1[, nulldeğil2 [, ...]]) |
+FOREIGN KEY [NO INDEX] (başvuru1[, başvuru2 [, ...]]) REFERENCES yabancıtablo [(yabancıalan1 [, yabancıalan2 [, ...]])]
+[ON UPDATE CASCADE | SET NULL]
+[ON DELETE CASCADE | SET NULL]}
+```
 
 CONSTRAINT yan tümcesinin bölümleri şunlardır:
 
@@ -1860,17 +1516,23 @@ Yabancı anahtar kısıtlamaları, ilgili bir birincil anahtar değeri değişti
 
 CONTRAINT yan tümcesinin tanımlı olduğu tablodaki birincil anahtarda yürütülecek ilgili eylemi temel alan ve yabancı tabloda gerçekleştirilecek eylemleri belirleyebilirsiniz. Örneğin, Müşteriler tablosunda aşağıdaki tanımın yapıldığını düşünelim:
 
+```sql
 CREATE TABLE Müşteriler (MüştNo INTEGER PRIMARY KEY, İstNo NCHAR VARYING (50))
+```
 
 Siparişler tablosunda da, Müşteriler tablosunun birincil anahtarına başvuran yabancı anahtar ilişkisinin tanımlandığını düşünelim:
 
+```sql
 CREATE TABLE Siparişler (SiparişNo INTEGER PRIMARY KEY, MüştNo INTEGER, SiparişNotları NCHAR VARYING (255), CONSTRAINT YASiparişlerMüştNo FOREIGN KEY (MüştNo) REFERENCES Müşteriler ON UPDATE CASCADE ON DELETE CASCADE
+```
 
 Yabancı anahtarda hem ON UPDATE CASCADE hem de ON DELETE CASCADE yan tümcesi tanımlıdır. ON UPDATE CASCADE yan tümcesi, müşterinin numarası (MüştNo) Müşteriler tablosunda güncelleştirildiğinde bu güncelleştirmenin Siparişler tablosunda da yapılmasını sağlar. İlgili müşteri numarası değeri içeren her sipariş, otomatik olarak yeni değer ile güncelleştirilir. ON DELETE CASCADE yan tümcesi, Müşteriler tablosunda bir müşteri silindiğinde Siparişler tablosundaki aynı müşteri numarası değerini içeren tüm satırların silinmesini sağlar.
 
 Şimdi de, Siparişler tablosunda CASCADE eylemi yerine SET NULL eylemini kullanarak farklı bir tanım yapıldığını düşünelim:
 
+```sql
 CREATE TABLE Siparişler (SiparişNo INTEGER PRIMARY KEY, MüştNo INTEGER, SiparişNotları NCHAR VARYING (255), CONSTRAINT YASiparişlerMüştNo FOREIGN KEY (MüştNo) REFERENCES Müşteriler ON UPDATE SET NULL ON DELETE SET NULL
+```
 
 ON UPDATE SET NULL yan tümcesi, müşterinin numarası (MüştNo) Müşteriler tablosunda güncelleştirildiğinde, Siparişler tablosunda otomatik olarak ilgili yabancı anahtar değerlerinin NULL olarak belirlenmesini sağlar. Benzer biçimde, ON DELETE SET NULL yan tümcesi, müşteri Müşteriler tablosundan silindiğinde, Siparişler tablosunda otomatik olarak tüm ilgili yabancı anahtarların NULL olarak belirlenmesini sağlar.
 
@@ -1920,57 +1582,34 @@ Bu örnek, sorguyu KategoriListesi olarak adlandırır.
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub ProcedureX()
-
 Dim dbs As Database, rst As Recordset
-
 Dim qdf As QueryDef, strSql As String
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
-strSql = "PROCEDURE KategoriListesi; " \_
-
-& "SELECT DISTINCTROW KategoriAdy, " \_
-
-& "KategoriNo FROM Kategoriler " \_
-
+strSql = "PROCEDURE KategoriListesi; " _
+& "SELECT DISTINCTROW KategoriAdy, " _
+& "KategoriNo FROM Kategoriler " _
 & "ORDER BY KategoriAdy;"
-
 ' SQL deyimini temel alan bir adlandırılmış
-
 ' bir QueryDef oluşturur.
-
 Set qdf = dbs.CreateQueryDef("YeniSorgu", strSql)
-
 ' Geçici bir anlık görüntü türünde Recordset oluşturur.
-
 Set rst = qdf.OpenRecordset(dbOpenSnapshot)
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 15
-
 ' Bu bir örnek olduğu için QueryDef'i
-
 ' siler.
-
 dbs.QueryDefs.Delete "YeniSorgu"
-
 dbs.Close
-
 End Sub
+```
 
 **İşlemler**
 
@@ -1994,13 +1633,12 @@ UNION işleminin bölümleri şunlardır:
 
 İki veya daha fazla sorgunun, tablonun ve SELECT deyiminin sonuçlarını herhangi bir birleşimde tek bir UNION işleminde birleştirebilirsiniz. Aşağıdaki örnek, Yeni Hesaplar adlı var olan bir tablo ile bir SELECT deyimini birleştirir:
 
-**TABLE \[Yeni Hesaplar\] UNION ALL******
-
-**SELECT \*******
-
-**FROM Müşteriler******
-
-**WHERE SiparişMiktarı >= .1000);******
+```sql
+TABLE [Yeni Hesaplar] UNION ALL
+SELECT *
+FROM Müşteriler
+WHERE SiparişMiktarı >= .1000);
+```
 
 Varsayım olarak, UNION işlemini kullandığınızda yinelenen kayıt döndürülmez; ancak, tüm kayıtların döndürüldüğünden emin olmak için ALL doğrulamasını bulundurabilirsiniz. Bu ayrıca, sorguyu daha hızlandırır.
 
@@ -2020,45 +1658,28 @@ Bu örnek, Brezilya'daki tüm sağlayıcıların şehirlerini ve adlarını alı
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub UnionX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Brezilya'daki tüm sağlayıcıların ve müşterilerin
-
 ' adlarını ve şehirlerini alır.
-
-Set rst = dbs.OpenRecordset("SELECT ŞirketAdı," \_
-
-& " Şehir FROM Sağlayıcılar" \_
-
-& " WHERE Ülke = 'Brezilya' UNION" \_
-
-& " SELECT ŞirketAdı, Şehir FROM Müşteriler" \_
-
+Set rst = dbs.OpenRecordset("SELECT ŞirketAdı," _
+& " Şehir FROM Sağlayıcılar" _
+& " WHERE Ülke = 'Brezilya' UNION" _
+& " SELECT ŞirketAdı, Şehir FROM Müşteriler" _
 & " WHERE Ülke = 'Brazil';")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 **INNER JOIN İşlemi**
 
@@ -2066,7 +1687,9 @@ Ortak bir alanda eşleşen değerler olduğunda iki tablonun kayıtlarını birl
 
 **Sözdizimi**
 
-**FROM *****tablo1***** INNER JOIN *****tablo2***** ON *****tablo1*****.*****alan1***** *****karşılaştırma tablo2*****.*****alan2*********
+```sql
+FROM tablo1 INNER JOIN tablo2 ON tablo1.alan1 karşılaştırma tablo2.alan2
+```
 
 INNER JOIN işleminin bölümleri şunlardır:
 
@@ -2090,31 +1713,35 @@ Benzer türdeki herhangi iki sayısal alanı birleştirebilirsiniz. Örneğin, b
 
 Aşağıdaki örnek, Kategoriler ve Ürünler tablolarını KategoriNo alanına göre nasıl birleştirebileceğinizi gösterir:
 
+```sql
 SELECT KategoriAdy, ÜrünAdy
-
 FROM Kategoriler INNER JOIN Ürünler
-
 ON Kategoriler.KategoriNo = Ürünler.KategoriNo;
+```
 
 Önceki örnekte KategoriNo, birleştirilen alandır ancak SELECT deyiminde yer almadığı için sorgu sonuçlarında bulunmaz. Birleştirilen alanı bulundurmak için, alan adını SELECT deyiminde yazın (örneğimizde Kategoriler.KategoriNo).
 
 Aşağıdaki sözdizimini kullanarak, JOIN deyimi içinde çok sayıda ON yan tümcesini de bağlayabilirsiniz:
 
-SELECT *alanlar*
-FROM *tablo1* INNER JOIN *tablo2*
-ON *tablo1*.*alan1* *karşılaştırma* *tablo2*.*alan1* AND
-ON *tablo1*.*alan2* *karşılaştırma* *tablo2*.*alan2*) OR
-ON *tablo1*.*alan3* *karşılaştırma* *tablo2*.*alan3*)\];
+```sql
+SELECT alanlar
+FROM tablo1 INNER JOIN tablo2
+ON tablo1.alan1 karşılaştırma tablo2.alan1 AND
+ON tablo1.alan2 karşılaştırma tablo2.alan2) OR
+ON tablo1.alan3 karşılaştırma tablo2.alan3)];
+```
 
 Aşağıdaki sözdizimini kullanarak içiçe JOIN deyimleri de oluşturabilirsiniz:
 
-SELECT *alanlar*
-FROM *tablo1* INNER JOIN
-(*tablo2* INNER JOIN \[( \]*tablo3*
-\[INNER JOIN \[( \]*tablox* \[INNER JOIN ...)\]
-ON *tablo3*.*alan3* *karşılaştırma* *tablox*.*alanx*)\]
-ON *tablo2*.*alan2* *karşılaştırma* *tablo3*.*alan3*)
-ON *tablo1*.*alan1* *karşılaştırma* *tablo2*.*alan2*;
+```sql
+SELECT alanlar
+FROM tablo1 INNER JOIN
+(tablo2 INNER JOIN [( ]tablo3
+[INNER JOIN [( ]tablox [INNER JOIN ...)]
+ON tablo3.alan3 karşılaştırma tablox.alanx)]
+ON tablo2.alan2 karşılaştırma tablo3.alan3)
+ON tablo1.alan1 karşılaştırma tablo2.alan2;
+```
 
 Bir LEFT JOIN veya bir RIGHT JOIN bir INNER JOIN içinde içiçe yer alabilir ancak bir INNER JOIN bir LEFT JOIN veya RIGHT JOIN içinde yer alamaz.
 
@@ -2124,59 +1751,35 @@ Bu örnek iki benzer-birleşim oluşturur: biri Sipariş Ayrıntıları ve Sipar
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub InnerJoinX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Sipariş Ayrıntıları ve Siparişler tablosu arasında
-
 ' bir birleşim ve Siparişler ile Çalışanlar tabloları
-
 ' arasında da bir birleşim oluşturur. Çalışanların listesini
-
 ' ve onların toplam satış miktarlarını alır.
-
-Set rst = dbs.OpenRecordset("SELECT DISTINCTROW " \_
-
-& "Sum(BirimFiyatı \* Miktar) AS Satışlar, " \_
-
-& "(Ady & Chr(32) & Soyady) AS Ad " \_
-
-& "FROM Çalışanlar INNER JOIN(Siparişler " \_
-
-& "INNER JOIN \[Sipariş Ayrıntıları\] " \_
-
-& "ON \[Sipariş Ayrıntıları\].SiparişNo = " \_
-
-& "Siparişler.SiparişNo ) " \_
-
-& "ON Siparişler.ÇalışanNo = " \_
-
-& "Çalışanlar.ÇalışanNo " \_
-
+Set rst = dbs.OpenRecordset("SELECT DISTINCTROW " _
+& "Sum(BirimFiyatı * Miktar) AS Satışlar, " _
+& "(Ady & Chr(32) & Soyady) AS Ad " _
+& "FROM Çalışanlar INNER JOIN(Siparişler " _
+& "INNER JOIN [Sipariş Ayrıntıları] " _
+& "ON [Sipariş Ayrıntıları].SiparişNo = " _
+& "Siparişler.SiparişNo ) " _
+& "ON Siparişler.ÇalışanNo = " _
+& "Çalışanlar.ÇalışanNo " _
 & "GROUP BY (Ady & Chr(32) & Soyady);")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 20
-
 dbs.Close
-
 End Sub
+```
 
 **LEFT JOIN, RIGHT JOIN İşlemleri**
 
@@ -2184,8 +1787,10 @@ Herhangi bir FROM yan tümcesinde kullanıldığında kaynak tablo kayıtların�
 
 **Sözdizimi**
 
-**FROM *****tablo1***** \[ LEFT | RIGHT \] JOIN *****tablo2*****
-ON *****tablo1.alan1***** *****karşılaştırma tablo2.alan2*********
+```sql
+FROM tablo1 [ LEFT | RIGHT ] JOIN tablo2
+ON tablo1.alan1 karşılaştırma tablo2.alan2
+```
 
 LEFT JOIN ve RIGHT JOIN işlemlerinin bölümleri şunlardır:
 
@@ -2207,13 +1812,12 @@ Bir sağ dış birleşim oluşturmak için RIGHT JOIN işlemini kullanın. Sağ 
 
 Aşağıdaki örnek, Kategoriler ve Ürünler tablolarını KategoriNo alanına göre nasıl birleştirebileceğinizi gösterir. Sorgu, ürün içermeyenler de dahil olmak üzere tüm kategorilerin bir listesini oluşturur:
 
+```sql
 SELECT KategoriAdy,
-
 ÜrünAdy
-
 FROM Kategoriler LEFT JOIN Ürünler
-
 ON Kategoriler.KategoriNo = Ürünler.KategoriNo;
+```
 
 Bu örnekte KategoriNo, birleştirilen alandır ancak SELECT deyiminde yer almadığı için sorgu sonuçlarında bulunmaz. Birleştirilen alanı bulundurmak için, alan adını SELECT deyiminde yazın (örneğimizde Kategoriler.KategoriAdı).
 
@@ -2235,49 +1839,30 @@ Bu örnek, içinde çalışan bulunmayanlar dahil tüm bölümleri seçer.
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub LeftRightJoinX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanı bulunmayanlar dahil tüm bölümleri
-
 ' seçer.
-
-Set rst = dbs.OpenRecordset \_
-
-("SELECT \[Bölüm Ady\], " \_
-
-& "Ady & Chr(32) & Soyady AS Ad " \_
-
-& "FROM Bölümler LEFT JOIN Çalışanlar " \_
-
-& "ON Bölümler.\[Bölüm No\] = " \_
-
-& "Çalışanlar.\[Bölüm No\] " \_
-
-& "ORDER BY \[Bölüm Ady\];")
-
+Set rst = dbs.OpenRecordset _
+("SELECT [Bölüm Ady], " _
+& "Ady & Chr(32) & Soyady AS Ad " _
+& "FROM Bölümler LEFT JOIN Çalışanlar " _
+& "ON Bölümler.[Bölüm No] = " _
+& "Çalışanlar.[Bölüm No] " _
+& "ORDER BY [Bölüm Ady];")
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 20
-
 dbs.Close
-
 End Sub
+```
 
 **İşleçler**
 
@@ -2329,41 +1914,26 @@ Bu örnek, adları A ile D harfleri arasındaki harflerle başlayan çalışanla
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub LikeX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Adları A ile D arasındaki harflerle başlayan
-
 ' çalışanların listesini verir.
-
-Set rst = dbs.OpenRecordset("SELECT Soyady," \_
-
-& "Adı FROM Çalışanlar" \_
-
-& " WHERE Soyady Like '\[A-D\]\*';")
-
+Set rst = dbs.OpenRecordset("SELECT Soyady," _
+& "Adı FROM Çalışanlar" _
+& " WHERE Soyady Like '[A-D]*';")
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 15
-
 dbs.Close
-
 End Sub
+```
 
 **Between...And İşleci**
 
@@ -2386,9 +1956,10 @@ Bir ifadenin değerinin, belirtilen değer aralığı içinde olup olmadığın�
 
 Bir alanın değerinin, belirtilen sayısal aralık içinde olup olmadığını belirlemek için **Between...And** işlecini kullanabilirsiniz. Aşağıdaki örnek, bir siparişin belirli bir posta kodu aralığındaki adrese gönderilip gönderilmediğini belirler. Posta kodu 98101 ve 98199 arasında ise, **IIf** işlevi "Yerel" değerini verir. Aksi takdirde, "Yerel Değil" değerini verir.
 
+```sql
 SELECT IIf(PostaKodu Between 98101 And 98199, “Yerel”, “Yerel Değil”)
-
 FROM Yayyncylar
+```
 
 *İfade*, *değer1* veya *değer2* **Null** ise **Between...And**, **Null** değerini verir.
 
@@ -2415,11 +1986,11 @@ Bir ifadenin değerinin, belirtilen listedeki değerlerden herhangi birine eşit
 
 Örneğin, belirtilen bölgeler topluluğuna hangi siparişlerin gönderilmiş olduğunu belirlemek için **In** işlecini kullanabilirsiniz:
 
-**SELECT \*******
-
-**FROM Siparişler******
-
-**WHERE TeslimBölgesi In (‘Avon’,’Glos’,’Som’)******
+```sql
+SELECT *
+FROM Siparişler
+WHERE TeslimBölgesi In (‘Avon’,’Glos’,’Som’)
+```
 
 **In İşleci Örneği******
 
@@ -2427,41 +1998,26 @@ Aşağıdaki örnek, İstanbul ve Ankara'ya teslim edilen tüm siparişleri ve b
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub InX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Siparişler tablosundan, TeslimYeri İstanbul
-
 ' veya Ankara olan kayytlary seçer.
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-
-& "MüşteriNo, TeslimTarihi FROM Siparişler " \_
-
-& "WHERE TeslimYeri In " \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "MüşteriNo, TeslimTarihi FROM Siparişler " _
+& "WHERE TeslimYeri In " _
 & "('Istanbul','Ankara');")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 **SQL TOPLAM İŞLEVLERİ**
 
@@ -2491,41 +2047,26 @@ Bu örnek, navlun bedeki 100 milyonun üzerindeki siparişlerin ortalama navlun 
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub AvgX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Navlun bedeli 100 milyonun üzerindeki siparişlerin
-
 ' ortalama navlun bedellerini hesaplar.
-
-Set rst = dbs.OpenRecordset("SELECT Avg(Navlun)" \_
-
-& " AS \[Ortalama Navlun\]" \_
-
+Set rst = dbs.OpenRecordset("SELECT Avg(Navlun)" _
+& " AS [Ortalama Navlun]" _
 & " FROM Siparişler WHERE Navlun > 100;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 25
-
 dbs.Close
-
 End Sub
+```
 
 **Count İşlevi**
 
@@ -2545,17 +2086,18 @@ Her ne kadar *ifade* de alan üzerinde hesap yapabilirse de, **Count**, basit bi
 
 *İfade* yıldız şeklinde (\*) bir joker karakteri değilse, **Count** işlevi **Null**** **değerine sahip olan kayıtları saymaz. unless . Bir yıldız kullanırsanız, **Count**, **Null** alanları içeren kayıtlar da dahil olmak üzere toplam kayıt sayısını hesaplar. **Count(**\***)**, **Count(**\[*Sütun Adı*\]**)** işlevinden belirgin biçimde daha hızlıdır. Yıldız karakterini tırnak imleri (' ') içine almayın. Aşağıdaki örnek, Siparişler tablosundaki kayıt sayısını hesaplar.
 
-**SELECT Count(\*)******
-
-**AS ToplamSiparişler FROM Siparişler;******
+```sql
+SELECT Count(*)
+AS ToplamSiparişler FROM Siparişler;
+```
 
 *İfade* çok sayıda alanı belirtiyorsa, **Count** işlevi yalnızca, alan değerlerinden en az biri **Null** olmayan kayıtları sayar. Belirtilen alanların tümü **Null** ise, kayıt sayılmaz. Alan adlarını & simgesi ile ayırın. Aşağıdaki örnek, sayma işlemini, SevkTarihi veya Navlun değerlerinin **Null** olmaması durumu ile nasıl sınırlandırdığınızı gösterir:
 
-**SELECT******
-
-**Count('SevkTarihi & Navlun')******
-
-**AS \[Not Null\] FROM Siparişler;******
+```sql
+SELECT
+Count('SevkTarihi & Navlun')
+AS [Not Null] FROM Siparişler;
+```
 
 **Count**'u sorgu ifadesinde kullanabilirsiniz. Bu ifadeyi ayrıca, bir **QueryDef** nesnesinin **SQL** özelliğinde veya bir SQL sorgusunu temel alan bir **Recordset** nesnesi oluştururken kullanabilirsiniz.
 
@@ -2565,43 +2107,27 @@ Bu örnek, İngiltere'ye teslim edilen sipariş sayısını hesaplamak için Sip
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub CountX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' İngiltere'ye yapılmış teslimlerin sayısını
-
 ' hesaplar.
-
-Set rst = dbs.OpenRecordset("SELECT" \_
-
-& " Count (TeslimÜlkesi)" \_
-
-& " AS \[İngiltere Siparişleri\] FROM Siparişler" \_
-
+Set rst = dbs.OpenRecordset("SELECT" _
+& " Count (TeslimÜlkesi)" _
+& " AS [İngiltere Siparişleri] FROM Siparişler" _
 & " WHERE TeslimÜlkesi = 'Yngiltere';")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 25
-
 dbs.Close
-
 End Sub
+```
 
 **First, Last İşlevleri**
 
@@ -2625,102 +2151,61 @@ Bu örnek, Çalışanlar tablosundaki ilk ve son kayıtların Soyadı alanların
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub FirstLastX1()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Tablonun ilk ve son kayytlarynyn Soyady
-
 ' alanının değerini verir.
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-
-& "First(Soyady) as Ylk, " \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "First(Soyady) as Ylk, " _
 & "Last(Soyadı) as Son FROM Çalışanlar;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 Bir sonraki örnek, Çalışanların ilk ve son doğum tarihlerini bulmak üzere basit bir şekilde **Min** ve **Max** işlevlerini kullanmak ile, **First** ve **Last** işlevlerini kullanmayı karşılaştırır.
 
+```vbnet
 Sub FirstLastX2()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanların ilk ve son doğum tarihlerini
-
 ' bulur.
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-
-& "First(DoğumTarihi) as İlkDT, " \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "First(DoğumTarihi) as İlkDT, " _
 & "Last(DoğumTarihi) as SonDT FROM Çalışanlar;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 12
-
 Debug.Print
-
 ' Çalışanların ilk ve son doğum tarihlerini
-
 ' bulur.
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-& "Min(DoğumTarihi) as EnKüçükDT," \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "Min(DoğumTarihi) as EnKüçükDT," _
 & "Max(DoğumTarihi) as EnBüyükDT FROM Çalışanlar;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 **Min, Max İşlevleri**
 
@@ -2746,43 +2231,27 @@ Bu örnek, İngiltere'ye teslim edilen siparişlerin en az ve en çok navlun bed
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub MinMaxX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' İngiltere'ye teslim edilmiş olan siparişlerin en az
-
 ' ve en çok navlun bedelini verir.
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-
-& "Min(Navlun) AS \[En Az Navlun\], " \_
-
-& "Max(Navlun)AS \[En Çok Navlun\] " \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "Min(Navlun) AS [En Az Navlun], " _
+& "Max(Navlun)AS [En Çok Navlun] " _
 & "FROM Siparişler WHERE TeslimÜlkesi = 'İngiltere';"
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 12
-
 dbs.Close
-
 End Sub
+```
 
 **StDev, StDevP İşlevleri**
 
@@ -2810,65 +2279,38 @@ Bu örnek, İngiltere'ye teslim edilen siparişlerin navlun bedellerinin standar
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub StDevX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' İngiltere'ye teslim edilmiş olan siparişlerin navlun
-
 ' bedellerinin standart sapmasyny hesaplar.
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-
-& "StDev(Navlun) " \_
-
-& "AS \[Navlun Dev\] FROM Siparişler " \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "StDev(Navlun) " _
+& "AS [Navlun Dev] FROM Siparişler " _
 & "WHERE TeslimÜlkesi = 'Yngiltere';")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 15
-
 Debug.Print
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-
-& "StDevP(Navlun) " \_
-
-& "AS \[Navlun DevP\] FROM Siparişler " \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "StDevP(Navlun) " _
+& "AS [Navlun DevP] FROM Siparişler " _
 & "WHERE TeslimÜlkesi = 'Yngiltere';")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 15
-
 dbs.Close
-
 End Sub
+```
 
 **Sum İşlevi**
 
@@ -2886,11 +2328,11 @@ Sorguda belirtilen alanda bulunan değer kümesinin toplamını hesaplar.
 
 **Sum** işlevi, **Null** alanlarını içeren kayıtları yoksayar. Aşağıdaki örnek, ürünlerin BirimFiyatı ve Miktar bilgilerinin toplamını nasıl toplayabileceğinizi gösterir:
 
-**SELECT******
-
-**Sum(BirimFiyaty \* Miktar)******
-
-**AS \[Toplam Gelir\] FROM \[Sipariş Ayrıntıları\];******
+```sql
+SELECT
+Sum(BirimFiyaty * Miktar)
+AS [Toplam Gelir] FROM [Sipariş Ayrıntıları];
+```
 
 **Sum** işlevini bir sorgu ifadesinde kullanabilirsiniz. Bu ifadeyi ayrıca, bir **QueryDef** nesnesinin **SQL** özelliğinde veya bir SQL sorgusunu temel alan bir **Recordset** nesnesi oluştururken kullanabilirsiniz.
 
@@ -2900,47 +2342,29 @@ Bu örnek, İngiltere'ye teslim edilen siparişlerin toplam satış miktarını 
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub SumX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' İngiltere'ye teslim edilmiş siparişlerin toplam
-
 ' satış miktarını hesaplar.
-
-Set rst = dbs.OpenRecordset("SELECT" \_
-
-& " Sum(BirimFiyaty\*Miktar)" \_
-
-& " AS \[Toplam İngiltere Satışları\] FROM Siparişler" \_
-
-& " INNER JOIN \[Sipariş Ayrıntıları\] ON" \_
-
-& " Siparişler.SiparişNo = \[Sipariş Ayrıntıları\].SiparişNo" \_
-
+Set rst = dbs.OpenRecordset("SELECT" _
+& " Sum(BirimFiyaty*Miktar)" _
+& " AS [Toplam İngiltere Satışları] FROM Siparişler" _
+& " INNER JOIN [Sipariş Ayrıntıları] ON" _
+& " Siparişler.SiparişNo = [Sipariş Ayrıntıları].SiparişNo" _
 & " WHERE (TeslimÜlkesi = 'Yngiltere');")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 15
-
 dbs.Close
-
 End Sub
+```
 
 **Var, VarP İşlevleri**
 
@@ -2968,65 +2392,38 @@ Bu örnek, İngiltere'ye teslim edilen siparişlerin navlun bedellerinin varyans
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub VarX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' İngiltere'ye teslim edilmiş olan siparişlerin navlun
-
 ' bedellerinin varyansyny hesaplar.
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-
-& "Var(Navlun) " \_
-
-& "AS \[Yngiltere Navlun Var\] " \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "Var(Navlun) " _
+& "AS [Yngiltere Navlun Var] " _
 & "FROM Siparişler WHERE TeslimÜlkesi = 'İngiltere';")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 20
-
 Debug.Print
-
-Set rst = dbs.OpenRecordset("SELECT " \_
-
-& "VarP(Navlun) " \_
-
-& "AS \[Yngiltere Navlun VarP\] " \_
-
+Set rst = dbs.OpenRecordset("SELECT " _
+& "VarP(Navlun) " _
+& "AS [Yngiltere Navlun VarP] " _
 & "FROM Siparişler WHERE TeslimÜlkesi = 'İngiltere';")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 20
-
 dbs.Close
-
 End Sub
+```
 
 **VERİ TANIMI DİLİ**
 
@@ -3038,7 +2435,9 @@ Yeni bir tablo oluşturur.
 
 **Sözdizimi**
 
-**CREATE \[TEMPORARY\] TABLE *****tablo***** (*****alan1 tür***** \[(*****boyut*****)\] \[NOT NULL\] \[WITH COMPRESSION | WITH COMP\] \[*****dizin1*****\] \[, *****alan2***** *****tür***** \[(*****boyut*****)\] \[NOT NULL\] \[*****dizin2*****\] \[, ...\]\] \[, CONSTRAINT *****çokalanlıdizin***** \[, ...\]\])**
+```sql
+CREATE [TEMPORARY] TABLE tablo (alan1 tür [(boyut)] [NOT NULL] [WITH COMPRESSION | WITH COMP] [dizin1] [, alan2 tür [(boyut)] [NOT NULL] [dizin2] [, ...]] [, CONSTRAINT çokalanlıdizin [, ...]])
+```
 
 CREATE TABLE deyiminin bölümleri şunlardır:
 
@@ -3075,83 +2474,55 @@ Verileri sıkıştırılmış biçimde saklamak için MEMO sütunları da tanım
 
 Bu örnek, iki metin alanı olan BuTablo adlı yeni bir tablo oluşturur.
 
+```vbnet
 Sub CreateTableX1()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' İki metin alanı olan bir tablo oluşturur.
-
-dbs.Execute "CREATE TABLE BuTablo " \_
-
+dbs.Execute "CREATE TABLE BuTablo " _
 & "(Ady CHAR, Soyady CHAR);"
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, iki metin alanı bir Tarih/Saat alanı ve bu üç alandan oluşan benzersiz bir dizini olan Tablom adlı yeni bir tablo oluşturur.
 
+```vbnet
 Sub CreateTableX2()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Üç alanı ve bu üç alandan oluşan benzersiz
-
 ' bir dizini olan bir tablo oluşturur.
-
-dbs.Execute "CREATE TABLE Tablom " \_
-
-& "(Ady CHAR, Soyady CHAR, " \_
-
-& "DoğumTarihi DATETIME, " \_
-
-& "CONSTRAINT TablomKysytlamasy UNIQUE " \_
-
+dbs.Execute "CREATE TABLE Tablom " _
+& "(Ady CHAR, Soyady CHAR, " _
+& "DoğumTarihi DATETIME, " _
+& "CONSTRAINT TablomKysytlamasy UNIQUE " _
 & "(Adı, Soyadı, DoğumTarihi));"
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, iki metin alanı ve bir tamsayı alanı olan yeni bir tablo oluşturur. SSN alanı birincil anahtardır.
 
+```vbnet
 Sub CreateTableX3()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Üç alany ve bir birincil anahtary olan bir tablo
-
 ' oluşturur.
-
-dbs.Execute "CREATE TABLE YeniTablo " \_
-
-& "(Ady CHAR, Soyady CHAR, " \_
-
-& "SSN INTEGER CONSTRAINT AlanymKysytlamasy " \_
-
+dbs.Execute "CREATE TABLE YeniTablo " _
+& "(Ady CHAR, Soyady CHAR, " _
+& "SSN INTEGER CONSTRAINT AlanymKysytlamasy " _
 & "PRIMARY KEY);"
-
 dbs.Close
-
 End Sub
+```
 
 **CREATE INDEX Deyimi**
 
@@ -3161,9 +2532,11 @@ Var olan bir tabloda yeni bir dizin oluşturur.
 
 **Sözdizimi**
 
-**CREATE \[ UNIQUE \] INDEX *****dizin*****
-ON *****tablo***** (*****alan***** \[ASC|DESC\]\[, *****alan***** \[ASC|DESC\], ...\])
-\[WITH { PRIMARY | DISALLOW NULL | IGNORE NULL }\]**
+```sql
+CREATE [ UNIQUE ] INDEX dizin
+ON tablo (alan [ASC|DESC][, alan [ASC|DESC], ...])
+[WITH { PRIMARY | DISALLOW NULL | IGNORE NULL }]
+```
 
 CREATE INDEX deyiminin bölümleri şunlardır:
 
@@ -3199,8 +2572,10 @@ Saklı bir yordam oluşturur.
 
 **Sözdizimi**
 
-CREATE PROCEDURE *yordam*
-\[*param1 veritürü*\[, *param2 veritürü*\[, ...\]\] AS sqlstatement
+```sql
+CREATE PROCEDURE yordam
+[param1 veritürü[, param2 veritürü[, ...]] AS sqlstatement
+```
 
 CREATE PROCEDURE deyiminin bölümleri şunlardır:
 
@@ -3212,7 +2587,9 @@ CREATE PROCEDURE deyiminin bölümleri şunlardır:
 
 *param1*, *param2*1 ile 255 arasında alan adı veya parametredir. Örneğin:
 
-CREATE PROCEDURE Ülkelere\_Göre\_Satışlar \[Başlangıç Tarihi\] DateTime, \[Bitiş Tarihi\] DateTime;
+```sql
+CREATE PROCEDURE Ülkelere_Göre_Satışlar [Başlangıç Tarihi] DateTime, [Bitiş Tarihi] DateTime;
+```
 
 | Parametreler hakkında ayrıntılı bilgi için PARAMETERS konusuna bakın. |
 | --- |
@@ -3233,57 +2610,34 @@ Bu örnek, sorguyu KategoriListesi olarak adlandırır.
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub ProcedureX()
-
 Dim dbs As Database, rst As Recordset
-
 Dim qdf As QueryDef, strSql As String
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
-strSql = "PROCEDURE KategoriListesi; " \_
-
-& "SELECT DISTINCTROW KategoriAdy, " \_
-
-& "KategoriNo FROM Kategoriler " \_
-
+strSql = "PROCEDURE KategoriListesi; " _
+& "SELECT DISTINCTROW KategoriAdy, " _
+& "KategoriNo FROM Kategoriler " _
 & "ORDER BY KategoriAdy;"
-
 ' SQL deyimini temel alan bir adlandırılmış
-
 ' bir QueryDef oluşturur.
-
 Set qdf = dbs.CreateQueryDef("YeniSorgu", strSql)
-
 ' Geçici bir anlık görüntü türünde Recordset oluşturur.
-
 Set rst = qdf.OpenRecordset(dbOpenSnapshot)
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 15
-
 ' Bu bir örnek olduğu için QueryDef'i
-
 ' siler.
-
 dbs.QueryDefs.Delete "YeniSorgu"
-
 dbs.Close
-
 End Sub
+```
 
 **CREATE USER veya GROUP Deyimi**
 
@@ -3293,11 +2647,15 @@ Bir veya daha çok kullanıcı veya grup oluşturur.
 
 Kullanıcı oluşturma:
 
-**CREATE USER *****kullanıcı***** *****parola kimlikno *****\[, *****kullanıcı***** *****parola kimlikno*****, …\]**
+```sql
+CREATE USER kullanıcı parola kimlikno [, kullanıcı parola kimlikno, …]
+```
 
 **Grup oluşturma:**
 
-**CREATE GROUP *****grup***** *****kimlikno*****\[, *****grup***** *****kimlikno*****, …\]**
+```sql
+CREATE GROUP grup kimlikno[, grup kimlikno, …]
+```
 
 CREATE USER veya GROUP deyimlerinin bölümleri şunlardır:
 
@@ -3322,7 +2680,9 @@ Yeni bir görünüm oluşturur.
 
 **Sözdizimi**
 
-**CREATE VIEW *****görünüm***** \[(*****alan1*****\[, *****alan2*****\[, ...\]\])\] AS *****seçmedeyimi*********
+```sql
+CREATE VIEW görünüm [(alan1[, alan2[, ...]])] AS seçmedeyimi
+```
 
 CREATE VIEW deyiminin bölümleri şunlardır:
 
@@ -3375,11 +2735,15 @@ Varolan bir veya daha çok *kullanıcıyı* veya *grubu* siler veya varolan bir 
 
 Bir veya daha çok *kullanıcıyı* siler veya bir *gruptan *bir veya daha çok *kullanıcıyı* kaldırır.
 
-**DROP USER *****kullanıcı*****\[, *****kullanıcı*****, …\] \[FROM *****grup*****\]**
+```sql
+DROP USER kullanıcı[, kullanıcı, …] [FROM grup]
+```
 
 Bir veya daha çok *grubu* silme:
 
-**DROP GROUP *****grup*****\[, *****grup*****, …\]**
+```sql
+DROP GROUP grup[, grup, …]
+```
 
 DROP USER veya GROUP deyimlerinin bölümleri şunlardır:
 
@@ -3406,10 +2770,12 @@ CREATE TABLE deyimi ile oluşturulan tablonun tasarımını değiştirir.
 
 **Sözdizimi**
 
-**ALTER TABLE *****tablo***** {ADD {COLUMN *****alan türü*****\[(*****boyut*****)\] \[NOT NULL\] \[CONSTRAINT *****dizin*****\] |
-ALTER COLUMN *****alan türü*****\[(*****boyut*****)\] |
-CONSTRAINT *****çokalanlıdizin*****} |
-DROP {COLUMN *****alan***** I CONSTRAINT *****dizinadı*****} }**
+```sql
+ALTER TABLE tablo {ADD {COLUMN alan türü[(boyut)] [NOT NULL] [CONSTRAINT dizin] |
+ALTER COLUMN alan türü[(boyut)] |
+CONSTRAINT çokalanlıdizin} |
+DROP {COLUMN alan I CONSTRAINT dizinadı} }
+```
 
 ALTER TABLE deyiminin bölümleri şunlardır:
 
@@ -3433,7 +2799,9 @@ ALTER TABLE deyimini kullanarak var olan bir tabloyu farklı yollarla değiştir
 
 Tabloya yeni bir alan eklemek için ADD COLUMN'ı kullanabilirsiniz. Alan adını, veri türünü ve isteğe bağlı olarak boyutu (Metin ve İkili alanlar için) belirtirsiniz. Örneğin, aşağıdaki deyim Çalışan tablosuna Notlar adlı 25 karakterlik bir Metin alanı ekler.
 
+```sql
 ALTER TABLE Çalışan ADD COLUMN Notlar TEXT(25)
+```
 
 Bu alana bir dizin de tanımlayabilirsiniz. Tek alanlı dizinler konusunda ayrıntılı bilgi için CONSTRAINT Yan Tümcesi konusuna bakın.
 
@@ -3441,7 +2809,9 @@ Bir alan için NOT NULL özelliğini belirlerseniz, bu alanda geçerli veriler b
 
 Var olan bir alanın veri türünü değiştirmek için ALTER COLUMN'ı kullanabilirsiniz. Alan adını, yeni veri türünü ve isteğe bağlı olarak Metin ve İkili alan boyutunu belirtirsiniz. Örneğin aşağıdaki deyim, Çalışan tablosundaki özgün olarak Tamsayı şeklinde tanımlı PostaKodu alanının veri türünü 10 karakterlik Metin alanı olarak değiştirir:
 
+```sql
 ALTER TABLE Çalışan ALTER COLUMN PostaKodu TEXT(25)
+```
 
 Çok alanlı dizin eklemek için ADD CONSTRAINT'i kullanabilirsiniz. Çok alanlı dizinler konusunda ayrıntılı bilgi için CONSTRAINT Yan Tümcesi konusuna bakın.
 
@@ -3461,123 +2831,83 @@ Tek bir alanda veya CONSTRAINT adlı tek veya çok alana uygulanmış adlandır�
 
 Bu örnek, Çalışanlar tablosuna **Money** veri türünde bir Maaş alanı ekler.
 
+```vbnet
 Sub AlterTableX1()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Maaş alanını Çalışanlar tablosuna ekler ve
-
 ' alanyn veri türünü Money yapar.
-
-dbs.Execute "ALTER TABLE Çalışanlar " \_
-
+dbs.Execute "ALTER TABLE Çalışanlar " _
 & "ADD COLUMN Maaş MONEY;"
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, Maaş alanının veri türünü **Money** yerine **Char** olarak değiştirir.
 
+```vbnet
 Sub AlterTableX2()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Maaş alanını Çalışanlar tablosuna ekler ve
-
 ' alanyn veri türünü Money yapar.
-
-dbs.Execute "ALTER TABLE Çalışanlar " \_
-
+dbs.Execute "ALTER TABLE Çalışanlar " _
 & "ALTER COLUMN Maaş CHAR(20);"
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek Maaş alanını Çalışanlar tablosundan kaldırır.
 
+```vbnet
 Sub AlterTableX3()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Maaş alanını Çalışanlar tablosundan siler.
-
-dbs.Execute "ALTER TABLE Çalışanlar " \_
-
+dbs.Execute "ALTER TABLE Çalışanlar " _
 & "DROP COLUMN Maaş;"
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek Siparişler tablosuna bir yabancı anahtar ekler. Yabancı anahtar ÇalışanNo alanını temel alır ve Çalışanlar tablosundaki ÇalışanNo alanına başvurur. Bu örnekte, REFERENCES yan tümcesinde Çalışanlar tablosundan sonra ÇalışanNo alanını listelemeniz gerekmez çünkü ÇalışanNo, Çalışanlar tablosunun birincil anahtarıdır.
 
+```vbnet
 Sub AlterTableX4()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Siparişler tablosuna bir yabancı anahtar ekler.
-
-dbs.Execute "ALTER TABLE Siparişler " \_
-
-& "ADD CONSTRAINT Siparişlerİlişkisi " \_
-
-& "FOREIGN KEY (ÇalışanNo) " \_
-
+dbs.Execute "ALTER TABLE Siparişler " _
+& "ADD CONSTRAINT Siparişlerİlişkisi " _
+& "FOREIGN KEY (ÇalışanNo) " _
 & "REFERENCES Çalışanlar (ÇalışanNo);"
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek Siparişler tablosundan yabancı anahtarı kaldırır.
 
+```vbnet
 Sub AlterTableX5()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Siparişlerİlişkisi yabancı anahtarını Siparişler
-
 ' tablosundan kaldyryr.
-
-dbs.Execute "ALTER TABLE Siparişler " \_
-
-& "DROP CONSTRAINT Siparişlerİlişkisi " \_
-
+dbs.Execute "ALTER TABLE Siparişler " _
+& "DROP CONSTRAINT Siparişlerİlişkisi " _
 dbs.Close
-
 End Sub
+```
 
 **ALTER USER veya DATABASE Deyimi**
 
@@ -3585,9 +2915,13 @@ Varolan bir kullanıcının veya bir veritabanının parolasını değiştirir.
 
 **Sözdizimi**
 
-**ALTER DATABASE PASSWORD *****yeniparola eskiparola***** **
+```sql
+ALTER DATABASE PASSWORD yeniparola eskiparola
+```
 
-**ALTER USER *****kullanıcı***** PASSWORD *****yeniparola eskiparola*********
+```sql
+ALTER USER kullanıcı PASSWORD yeniparola eskiparola
+```
 
 ALTER USER veya DATABASE deyimlerinin bölümleri şunlardır:
 
@@ -3605,7 +2939,9 @@ Varolan bir tabloyu, yordamı veya görünümü veritabanından siler; ya da var
 
 **Sözdizimi**
 
-**DROP {TABLE *****tablo***** | INDEX *****dizin***** ON *****tablo***** | PROCEDURE *****yordam***** | VIEW *****görünüm*****}**
+```sql
+DROP {TABLE tablo | INDEX dizin ON tablo | PROCEDURE yordam | VIEW görünüm}
+```
 
 DROP deyiminin bölümleri şunlardır:
 
@@ -3630,43 +2966,31 @@ Aşağıdaki örnek, Northwind veritabanındaki Çalışanlar tablosunda YeniDiz
 
 Bu örnek, Dizinim dizinini Çalışanlar tablosundan siler.
 
+```vbnet
 Sub DropX1()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' YeniDizin dizinini Çalışanlar tablosundan siler.
-
 dbs.Execute "DROP INDEX YeniDizin ON Çalışanlar;"
-
 dbs.Close
-
 End Sub
+```
 
 Bu örnek, Çalışanlar tablosunu veritabanından siler.
 
+```vbnet
 Sub DropX2()
-
 Dim dbs As Database
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Çalışanlar tablosunu siler.
-
 dbs.Execute "DROP TABLE Çalışanlar;"
-
 dbs.Close
-
 End Sub
+```
 
 **GRANT Deyimi**
 
@@ -3674,11 +2998,12 @@ Belitilen ayrıcalıkları varolan bir kullanıcıya veya gruba verir.
 
 **Sözdizimi**
 
-**GRANT {*****ayrıcalık*****\[,***** ayrıcalık*****, …\]}***** *****ON*****
-*****{TABLE *****tablo***** |
-OBJECT *****nesne*****|**
-
-**CONTAINER *****konteyner***** } TO {*****yetkisahibiadı*****\[, *****yetkisahibiadı*****, …\]}**
+```sql
+GRANT {ayrıcalık[, ayrıcalık, …]} ON
+{TABLE tablo |
+OBJECT nesne|
+CONTAINER konteyner } TO {yetkisahibiadı[, yetkisahibiadı, …]}
+```
 
 GRANT deyiminin bölümleri şunlardır:
 
@@ -3700,12 +3025,13 @@ Belitilen ayrıcalıkları varolan bir kullanıcıdan veya gruptan geri alır.
 
 **Sözdizimi**
 
-**REVOKE {*****ayrıcalık*****\[,***** ayrıcalık*****, …\]}***** *****ON
-{TABLE *****tablo***** |
-OBJECT *****nesne*****|**
-
-** CONTAINER *****konteyner***** }
-FROM {*****yetkisahibiadı*****\[, *****yetkisahibiadı*****, …\]}**
+```sql
+REVOKE {ayrıcalık[, ayrıcalık, …]} ON
+{TABLE tablo |
+OBJECT nesne|
+ CONTAINER konteyner }
+FROM {yetkisahibiadı[, yetkisahibiadı, …]}
+```
 
 REVOKE deyiminin bölümleri şunlardır:
 
@@ -3725,8 +3051,10 @@ SQL sorguları ile seçilen kayıtları belirler.
 
 **Sözdizimi**
 
-**SELECT \[ALL | DISTINCT | DISTINCTROW | \[TOP *****n***** \[PERCENT\]\]\]
-FROM *****tablo*********
+```sql
+SELECT [ALL | DISTINCT | DISTINCTROW | [TOP n [PERCENT]]]
+FROM tablo
+```
 
 Bu doğrulamaları içeren bir SELECT deyiminin bölümleri şunlardır:
 
@@ -3735,18 +3063,22 @@ Bu doğrulamaları içeren bir SELECT deyiminin bölümleri şunlardır:
 
 ALLBu doğrulamalardan herhangi birini bulundurmazsanız varsayılan değerdir. Microsoft Jet veritabanı alt yapısı, SQL deyimindeki koşullara uyan tüm kayıtları seçer. Aşağıdadaki iki örnek eşdeğerdir ve Çalışanlar tablosundaki tüm kayıtları döndürürler.
 
-SELECT ALL \*
+```sql
+SELECT ALL *
 FROM Çalışanlar
 ORDER BY ÇalışanNo;
+```
 
 | SELECT \* FROM Çalışanlar ORDER BY ÇalışanNo; |
 | --- |
 
 DISTINCTSeçili alanlardan yinelenen verileri içeren kayıtları gözardı eder. Sorgu sonuçlarında yer alabilmesi için, SELECT deyiminde listelenen her alanın değeri benzersiz olmalıdır. Örneğin, Çalışanlar tablosundaki çok sayıda çalışan aynı soyadına sahip olabilir. İki kayıt Soyadı alanında Etikan adını içeriyorsa, aşağıdaki SQL deyimi Etikan adını içeren yalnızca bir tek kayıt döndürür.
 
+```sql
 SELECT DISTINCT
 Soyadı
 FROM Çalışanlar;
+```
 
 DISTINCT'i yazmazsanız, bu sorgu her iki Etikan kaydını da döndürür.
 
@@ -3756,10 +3088,12 @@ DISTINCT'i kullanan bir sorgunun çıktısı güncelleştirilebilir değildir ve
 
 DISTINCTROWAlanların değil, kaydın tamamı yineleniyorsa verileri gözardı eder. Örneğin, Müşteriler ve Siparişler tablolarını MüşteriNo alanıyla birleştiren bir sorgu oluşturabilirsiniz. Müşteriler tablosunda yinelenen MüşteriNo alanı yoktur, ancak her müşterinin çok sayıda siparişi olduğundan Siparişler tablosunda yinelenen MüşteriNo alanı vardır. Aşağıdaki SQL deyimi, en az bir siparişi olan şirketlerin listesini bu siparişler hakkında herhangi bir ayrıntı vermeden oluşturmak üzere DISTINCTROW'u nasıl kullanacağınızı gösterir.
 
+```sql
 SELECT DISTINCTROW ŞirketAdı
 FROM Müşteriler INNER JOIN Siparişler
 ON Müşteriler.MüşteriNo = Siparişler.MüşteriNo
 ORDER BY ŞirketAdı;
+```
 
 DISTINCTROW'u yazmazsanız bu sorgu, birden fazla siparişi olan her şirket için çok sayıda satır oluşturur.
 
@@ -3767,11 +3101,13 @@ Sorguda kullanılan tabloların tüm alanlarını değil yalnızca bazı alanlar
 
 TOP *n* \[PERCENT\]ORDER BY yan tümcesi ile belirtilen aralığın üstüne veya altına düşen belirli sayıda kaydı döndürür. 1994 yılının en başarılı 25 öğrencisinin adlarını almak istediğinizi varsayalım:
 
+```sql
 SELECT TOP 25
 Adı, Soyadı
 FROM Öğrenciler
 WHERE MezuniyetYılı = 1994
 ORDER BY MezuniyetDerecesi DESC;
+```
 
 ORDER BY yan tümcesini bulundurmazsanız, sorgu, WHERE yan tümcesini sağlayan Öğrenciler tablosunun rasgele 25 kaydını döndürür.
 
@@ -3779,11 +3115,13 @@ TOP seçimi, eşit değerler arasında seçim yapmaz. Önceki örnekte 25. ve 26
 
 ORDER BY yan tümcesi ile belirtilen aralığın üstüne veya altına düşen kayıtların belirli bir yüzdesini döndürmek için, PERCENT saklı sözcüğünü de kullanabilirsiniz. 25 öğrencisi yerine, sınıfın en düşük yüzde 10'unun adlarını almak istediğinizi varsayalım:
 
+```sql
 SELECT TOP 10 PERCENT
 Adı, Soyadı
 FROM Öğrenciler
 WHERE MezuniyetYılı = 1994
 ORDER BY MezuniyetDerecesi ASC;
+```
 
 ASC doğrulaması, alttaki değerlerin döndürüleceğini belirtir. TOP'u sağlayan değer, işaretsiz bir **Tamsayı** olmalıdır.
 
@@ -3796,49 +3134,30 @@ TOP, sorgunun güncelleştirilebilir olup olmamasını etkilemez.
 
 Bu örnek, Müşteriler ve Siparişler tablolarını MüşteriNo alanıyla birleştiren bir sorgu oluşturur. Müşteriler tablosunda yinelenen MüşteriNo alanı yoktur, ancak her müşterinin çok sayıda siparişi olduğundan Siparişler tablosunda yinelenen MüşteriNo alanı vardır. DISTINCTROW kullanılarak, en az bir siparişi olan şirketlerin listesi, bu siparişlerin ayrıntıları verilmeden oluşturulur.
 
+```vbnet
 Sub AllDistinctX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' Müşteriler ve Siparişler tabloları MüşteriNo
-
 ' alanı ile birleştirilir. En az bir siparişi olan
-
 ' şirketler seçilir.
-
-Set rst = dbs.OpenRecordset("SELECT DISTINCTROW " \_
-
-& "ŞirketAdı FROM Müşteriler " \_
-
-& "INNER JOIN Siparişler " \_
-
-& "ON Müşteriler.MüşteriNo = " \_
-
-& "Siparişler.MüşteriNo " \_
-
+Set rst = dbs.OpenRecordset("SELECT DISTINCTROW " _
+& "ŞirketAdı FROM Müşteriler " _
+& "INNER JOIN Siparişler " _
+& "ON Müşteriler.MüşteriNo = " _
+& "Siparişler.MüşteriNo " _
 & "ORDER BY ŞirketAdı;")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 25
-
 dbs.Close
-
 End Sub
+```
 
 **WITH OWNERACCESS OPTION Bildirimi**
 
@@ -3855,13 +3174,12 @@ WITH OWNERACCESS OPTION bildirimi isteğe bağlıdır.
 
 Aşağıdaki örnek, sorgu sahibinin maaş bilgilerini görüntüleme iznine sahip olması halinde, kullanıcının bu bilgileri görmesini (kullanıcının Bordro tablosunu görüntüleme izni olmasa bile) sağlar:
 
+```sql
 SELECT Soyady,
-
 Adı, Maaş
-
 FROM Çalışanlar
-
 ORDER BY Soyady
+```
 
 WITH OWNERACCESS OPTION;
 
@@ -3900,7 +3218,9 @@ Aşağıdaki tablo, Northwind.mdb veritabanındaki Siparişler ve Sipariş Ayrı
 
 Aşağıdaki örnek, Northwind.mdb veritabanındaki tüm siparişlerin ortalama indirim miktarını hesaplar. Her siparişin indirim miktarını hesaplamak için BirimFiyatı ile İndirim alanlarındaki değerleri çarpar ve sonra ortalamayı hesaplar. Bu ifadeyi bir Visual Basic kodunda SQL deyimi olarak kullanabilirsiniz:
 
-SELECT Avg(BirimFiyatı \* İndirim) AS \[Ortalama İndirim\] FROM \[Sipariş Ayrıntıları\];
+```sql
+SELECT Avg(BirimFiyatı * İndirim) AS [Ortalama İndirim] FROM [Sipariş Ayrıntıları];
+```
 
 **PARAMETERS Bildirimi**
 
@@ -3929,21 +3249,20 @@ PARAMETERS bildirimi isteğe bağlıdır ancak belirtilirse, SELECT dahil tüm d
 
 Bildirimde birden fazla parametre varsa, bunları birbirlerinden virgüller ile ayırın. Aşağıdaki örnek iki parametre içerir:
 
-PARAMETERS \[Düşük fiyat\] ParaBirimi, \[Başlangıç tarihi\] TarihSaat;
+```sql
+PARAMETERS [Düşük fiyat] ParaBirimi, [Başlangıç tarihi] TarihSaat;
+```
 
 WHERE veya HAVING yan tümcesinde *adı* değişkenini kullanabilirsiniz ancak *veritürü* değişkenini kullanamazsınız. Aşağıdaki örnek, iki parametrenin girilmesini ister ve sonra ölçütü Siparişler tablosuna uygular:
 
-PARAMETERS \[Düşük fiyat\] ParaBirimi,
-
-\[Başlangıç tarihi\] TarihSaat;
-
+```sql
+PARAMETERS [Düşük fiyat] ParaBirimi,
+[Başlangıç tarihi] TarihSaat;
 SELECT SiparişNo, SiparişMiktarı
-
 FROM Siparişler
-
-WHERE SiparişMiktarı > \[Düşük fiyat\]
-
-AND SiparişTarihi >= \[Başlangıç tarihi\];
+WHERE SiparişMiktarı > [Düşük fiyat]
+AND SiparişTarihi >= [Başlangıç tarihi];
+```
 
 **PARAMETERS Bildirimi Örneği******
 
@@ -3951,117 +3270,64 @@ Bu örnek, kullanıcının iş ünvanını sağlamasını ister ve bu iş ünvan
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub ParametersX()
-
 Dim dbs As Database, qdf As QueryDef
-
 Dim rst As Recordset
-
 Dim strSql As String, strParm As String
-
 Dim strMessage As String
-
 Dim intCommand As Integer
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("NorthWind.mdb")
-
 ' Parameters yan tümcesini tanymlar.
-
-strParm = "PARAMETERS \[Çalışan Ünvanı\] CHAR; "
-
+strParm = "PARAMETERS [Çalışan Ünvanı] CHAR; "
 ' Parameters yan tümcesini içeren bir SQL
-
 ' deyimi tanymlar.
-
-strSql = strParm & "SELECT Soyady, Ady, " \_
-
-& "ÇalışanNo " \_
-
-& "FROM Çalışanlar " \_
-
-& "WHERE Ünvan =\[Çalışan Ünvanı\];"
-
+strSql = strParm & "SELECT Soyady, Ady, " _
+& "ÇalışanNo " _
+& "FROM Çalışanlar " _
+& "WHERE Ünvan =[Çalışan Ünvanı];"
 ' SQL deyimini temel alan bir QueryDef nesnesi
-
 ' oluşturur.
-
-Set qdf = dbs.CreateQueryDef \_
-
+Set qdf = dbs.CreateQueryDef _
 ("Çalışanları Bul", strSql)
-
 Do While True
-
-strMessage = "Çalışanları İşe Göre Bul " \_
-
-& "ünvan:" & Chr(13) \_
-
-& " İş Ünvanını Seçin:" & Chr(13) \_
-
-& " 1 - Satış Müdürü" & Chr(13) \_
-
-& " 2 - Satış Temsilcisi" & Chr(13) \_
-
+strMessage = "Çalışanları İşe Göre Bul " _
+& "ünvan:" & Chr(13) _
+& " İş Ünvanını Seçin:" & Chr(13) _
+& " 1 - Satış Müdürü" & Chr(13) _
+& " 2 - Satış Temsilcisi" & Chr(13) _
 & " 3 - İç Satışlar Koordinatörü"
-
 intCommand = Val(InputBox(strMessage))
-
 Select Case intCommand
-
 Case 1
-
-qdf("Çalışan Ünvanı") = \_
-
+qdf("Çalışan Ünvanı") = _
 "Satış Müdürü"
-
 Case 2
-
-qdf("Çalışan Ünvanı") = \_
-
+qdf("Çalışan Ünvanı") = _
 "Satış Temsilcisi"
-
 Case 3
-
-qdf("Çalışan Ünvanı") = \_
-
+qdf("Çalışan Ünvanı") = _
 "İç Satışlar Koordinatörü"
-
 Case Else
-
 Exit Do
-
 End Select
-
 ' Geçici bir anlık görüntü türünde Recordset oluşturur.
-
 Set rst = qdf.OpenRecordset(dbOpenSnapshot)
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 12
-
 Loop
-
 ' Bu bir örnek olduğu için QueryDef'i
-
 ' siler.
-
 dbs.QueryDefs.Delete "Çalışanları Bul"
-
 dbs.Close
-
 End Sub
+```
 
 **SQL Alt Sorguları**
 
@@ -4071,11 +3337,17 @@ Bir alt sorgu, SELECT, SELECT...INTO, INSERT...INTO, DELETE veya UPDATE deyimi i
 
 Alt sorgu oluşturmak için üç tür sözdizimi kullanabilirsiniz:
 
-***karşılaştırma***** \[ANY | ALL | SOME\] (*****sqldeyimi*****)**
+```sql
+karşılaştırma [ANY | ALL | SOME] (sqldeyimi)
+```
 
-***ifade***** \[NOT\] IN (*****sqldeyimi*****)**
+```sql
+ifade [NOT] IN (sqldeyimi)
+```
 
-**\[NOT\] EXISTS (*****sqldeyimi*****)**
+```sql
+[NOT] EXISTS (sqldeyimi)
+```
 
 Bir alt sorgunun bölümleri şunlardır:
 
@@ -4093,25 +3365,23 @@ SELECT deyiminin alan listesinde veya WHERE ile HAVING yan tümcesinde yazılaca
 
 Eşanlamlı olan ANY veya SOME doğrulamalarını, alt sorguda alınan kayıtlarla yapılan karşılaştırmaları sağlayan kayıtları ana sorguda almak için kullanın. Aşağıdaki örnek, birim fiyatı, yüzde 25 veya daha fazla indirimle satılmış ürünlerin birim fiyatından daha büyük olan tüm ürünleri verir.
 
-**SELECT \* FROM Ürünler******
-
-**WHERE BirimFiyaty > ANY******
-
-**(SELECT BirimFiyatı FROM SiparişAyrıntıları******
-
-**WHERE Yndirim >= .25);******
+```sql
+SELECT * FROM Ürünler
+WHERE BirimFiyaty > ANY
+(SELECT BirimFiyatı FROM SiparişAyrıntıları
+WHERE Yndirim >= .25);
+```
 
 ALL doğrulamasını, yalnızca alt sorguda alınan tüm kayıtlarla yapılan karşılaştırmaları sağlayan kayıtları ana sorguda almak için kullanın. Önceki örnekte ANY yerine ALL yazılırsa, sorgu sonucunda birim fiyatı, yüzde 25 veya daha fazla indirimle satılmış tüm ürünlerin birim fiyatından daha yüksek olan kayıtlar alınır. Bu daha kısıtlayıcıdır.
 
 IN doğrulamasını, yalnızca, alt sorgudaki bazı kayıtların değerine eşit olan kayıtları ana sorguda almak için kullanın. Aşağıdaki örnek, yüzde 25 veya daha fazla indirimi olan tüm ürünleri verir:
 
-**SELECT \* FROM Ürünler******
-
-**WHERE ÜrünNo IN******
-
-**(SELECT ÜrünNo FROM SiparişAyrıntıları******
-
-**WHERE Yndirim >= .25);******
+```sql
+SELECT * FROM Ürünler
+WHERE ÜrünNo IN
+(SELECT ÜrünNo FROM SiparişAyrıntıları
+WHERE Yndirim >= .25);
+```
 
 Buna karşılık NOT IN deyimini, yalnızca, alt sorgudaki kayıtların değerine eşit olmayan kayıtları ana sorguda almak için kullanın.
 
@@ -4119,19 +3389,15 @@ EXISTS doğrulamasını, (isteğe bağlı NOT saklı sözcüğü olmadan) doğru
 
 Ayrıca, alt sorgunun dışındaki FROM yan tümcesinde listelenen tablolara başvurmak için, alt sorguda tablo diğer adlarını da kullanabilirsiniz. Aşağıdaki örnek, maaşları, aynı iş ünvanına sahip olan tüm çalışanların maaş ortalamasına eşit veya ondan daha yüksek olan çalışanların adlarını verir. Çalışanlar tablosuna "T1" diğeradı verilmiştir:
 
-**SELECT Soyady,******
-
-**Adı, Ünvan, Maaş******
-
-**FROM Çalışanlar AS T1******
-
-**WHERE Maaş >=******
-
-**(SELECT Avg(Maaş)******
-
-**FROM Çalışanlar******
-
-**WHERE T1.Ünvan = Çalışanlar.Ünvan) Order by Ünvan;******
+```sql
+SELECT Soyady,
+Adı, Ünvan, Maaş
+FROM Çalışanlar AS T1
+WHERE Maaş >=
+(SELECT Avg(Maaş)
+FROM Çalışanlar
+WHERE T1.Ünvan = Çalışanlar.Ünvan) Order by Ünvan;
+```
 
 Önceki örnekte, AS saklı sözcüğü isteğe bağlıdır.
 
@@ -4143,51 +3409,31 @@ Bu örnek, 1995'in ikinci üç aylık döneminde sipariş vermiş olan her müş
 
 Bu örnek, SELECT deyimi örneğinde bulabileceğiniz EnumFields yordamını çağırır.
 
+```vbnet
 Sub SubQueryX()
-
 Dim dbs As Database, rst As Recordset
-
 ' Bu satyry, bilgisayarynyzdaki Northwind yolunu
-
 ' bulundurmak üzere değiştirin.
-
 Set dbs = OpenDatabase("Northwind.mdb")
-
 ' 1995'in ikinci üç aylık döneminde sipariş vermi
-
 ' olan her müşterinin müşteri ve ilgili kişi
-
 ' adyny listeler.
-
-Set rst = dbs.OpenRecordset("SELECT KişiAdı," \_
-
-& " ŞirketAdı, KişiÜnvanı, Telefon" \_
-
-& " FROM Müşteriler" \_
-
-& " WHERE MüşteriNo" \_
-
-& " IN (SELECT MüşteriNo FROM Siparişler" \_
-
-& " WHERE SiparişTarihi Between #04/1/95#" \_
-
+Set rst = dbs.OpenRecordset("SELECT KişiAdı," _
+& " ŞirketAdı, KişiÜnvanı, Telefon" _
+& " FROM Müşteriler" _
+& " WHERE MüşteriNo" _
+& " IN (SELECT MüşteriNo FROM Siparişler" _
+& " WHERE SiparişTarihi Between #04/1/95#" _
 & " And #07/1/95#);")
-
 ' Recordset'i başlatır.
-
 rst.MoveLast
-
 ' Recordset içeriklerini yazdyrmak üzere EnumFields
-
 ' yordamını çağırır. Recordset nesnesini ve
-
 ' istenen alan genişliğini aktarır.
-
 EnumFields rst, 25
-
 dbs.Close
-
 End Sub
+```
 
 **SQL Ayrılmış Sözcükleri**
 
@@ -4660,8 +3906,10 @@ TEXT (MEMO olarak da bilinir) veya CHAR (belirli bir uzunlukta TEXT(n) olarak da
 
 Microsoft® Jet SQL, tek verili işlevlerde ODBC tanımlı sözdizimini kullanımı destekler. Örneğin, aşağıdaki sorgu:
 
+```sql
 SELECT DAILYCLOSE, DAILYCHANGE FROM DAILYQUOTE
 WHERE {fn ABS(DAILYCHANGE)} > 5
+```
 
 stok fiyatındaki değişimin mutlak değeri beşten büyük olan tüm satırları verecektir.
 
@@ -4711,7 +3959,9 @@ Microsoft Jet SQL ve ANSI SQL'in her birinin farklı saklı sözcükleri ve veri
 
 **Between...And** yapısında, aşağıdaki sözdizimi ile farklı kuralları uygulanır:
 
-*ifade1* \[NOT\] **Between** *değer1* **And** *değer2*
+```sql
+ifade1 [NOT] Between değer1 And değer2
+```
 
 Microsoft Jet SQL'de, *değer1* *değer2*'den büyük olabilir; ANSI SQL'de *değer1* *değer2*'ye eşit veya ondan küçük olmalıdır.
 
@@ -4819,7 +4069,9 @@ Bir karakter aralığı belirtilirken, karakterler artan sıralama düzeninde ol
 
 Aşağıda, parametreli SQL deyimlerine bir örnek verilmiştir:
 
-**CREATE TABLE Müşteriler (CustId IDENTITY (100, 10) CONSTRAINT pkCustomers PRIMARY KEY, CFrstNm VARCHAR(10), CLstNm VARCHAR(15));**
+```sql
+CREATE TABLE Müşteriler (CustId IDENTITY (100, 10) CONSTRAINT pkCustomers PRIMARY KEY, CFrstNm VARCHAR(10), CLstNm VARCHAR(15));
+```
 
 İlk satırdaki CustId alanının değeri 100, ikinci satırın değeri 110 olacaktır.
 

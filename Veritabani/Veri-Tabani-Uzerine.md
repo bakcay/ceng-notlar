@@ -337,8 +337,15 @@ Burada şunu da belirtmek gerekiyor; browserlar arasındaki yorum farklarından 
 
 Dosyayı çift tıklayarak açın ve şunları yazın:
 
-| <head> <title>İlk Sayfam</title> </head> <body> Sayfama Hoşgeldiniz </body> </html> |
-| --- |
+```html
+<head>
+<title>İlk Sayfam</title>
+</head>
+<body>
+Sayfama Hoşgeldiniz
+</body>
+</html>
+```
 
 Şimdi dosyayı kaydedin *(Dosya/Farklı Kaydet...)*. Dosya adı kısmına şöyle yazın: *"sayfa1.htm"* (tırnaklar dahil) ve Tamam'a basın.
 
@@ -350,18 +357,24 @@ Tebrikler ilk HTML sayfanızı yaptınız.
 
 Burada kullandığımız etiketler ve anlamları şöyle:
 
+```html
 <html>...</html>
+```
 
 | Tarayıcıya HTML dosyasının başladığını ve bittiğini belirtiyor. Diğer tüm kodlar bu iki etiket arasına yazılır. |
 | --- |
 
+```html
 <head>...</head>
 <body>...</body>
+```
 
 | Bir HTML belgesi iki bölüme ayrılıyor: head(baş) ve body(gövde). <head>...</head> etiketleri arasına sayfa hakkında bilgiler yazıyoruz. meta ve title gibi etiketler burada yeralıyor. Meta etiketlerine ileride değineceğiz. <body>...</body> arası ise sayfamızın gövde bölümü. Ekranda gösterilecek kısımlar bu tagler arasında yeralıyor. |
 | --- |
 
+```html
 <title>...</title>
+```
 
 | Title sayfanın başlığını belirtiyor. Burada yazılanlar browser'ın üst tarafında browser adıyla beraber gösteriliyor. |
 | --- |
@@ -389,8 +402,21 @@ Birinci metotta her metin için ayrı ayrı stil belirtirken ikinci ve üçünc�
 
 Burada konumuz birinci metoda göre biçimlendirmeyi öğrenmek. Başlık etiketlerinden başlıyoruz. Notepad'i açıyor ve şu kodları yazıyoruz;
 
-| <html> <head> <title>Başlık Etiketleri</title> </head> <body> <h1>Başlık 1</h1> <h2>Başlık 2</h2> <h3>Başlık 3</h3> <h4>Başlık 4</h4> <h5>Başlık 5</h5> <h6>Başlık 6</h6> </body> </html> |
-| --- |
+```html
+<html>
+<head>
+<title>Başlık Etiketleri</title>
+</head>
+<body>
+<h1>Başlık 1</h1>
+<h2>Başlık 2</h2>
+<h3>Başlık 3</h3>
+<h4>Başlık 4</h4>
+<h5>Başlık 5</h5>
+<h6>Başlık 6</h6>
+</body>
+</html>
+```
 
 Sayfanın işleyişine baktığımızda, önce her zaman yapmamız gerektiği gibi <html>, <head>, <title> etiketlerini yerleştirdik. Sayfa başlığı olarak "Başlık Etiketleri"ni seçtik ve sayfanın gövde <body> kısmına istediğimiz metinleri yazdık ve bu metinleri <h1>'den <h6>'ya kadar olan biçimlendirme etiketlerinin arasına aldık. Browser metin biçimleme etiketleri olan <h1>...<h6> etiketleri arasındaki kelimelere belirli büyüklükler verdi.
 
@@ -398,39 +424,61 @@ Sayfanın işleyişine baktığımızda, önce her zaman yapmamız gerektiği gi
 
 Diğer etiketleri toplu olarak kullanarak yeni bir HTML dosyası oluşturalım. Kodlar şu şekilde olsun:
 
-| <html> <head> <title>Başlık Etiketleri-2</title> </head> <body> <h1><center>Sayfama Hoşgeldiniz</center></h1> <p>HTML etiketleri ile, </p> Yazıları <b>koyu </b> <i>italik </i> ve <u>altı çizili </u> olarak yazabiliyorum </body> </html> |
-| --- |
+```html
+<html>
+<head>
+<title>Başlık Etiketleri-2</title>
+</head>
+<body>
+<h1><center>Sayfama Hoşgeldiniz</center></h1>
+<p>HTML etiketleri ile, </p>
+Yazıları <b>koyu </b> <i>italik </i> ve <u>altı çizili </u> olarak yazabiliyorum
+</body>
+</html>
+```
 
 Etiketleri kullanma mantığını anladınız herhalde. Biçimlendirmek istediğimiz metnin başına ilgili etiketi yazıyoruz ve metnin sonunda da ilgili etiketi sonlandırıyoruz. Etiket biz sonlandırmadığımız müddetçe etkisini göstermeye devam ediyor. Eğer hala tereddütleriniz varsa örnekler üzerindeki kodların yerlerini değiştirerek kaydedin ve diğer taraftan browser'ınızın **reload/yenile** tuşuna basarak değişiklikleri gözlemleyin.
 
 Yeni öğrendiğimiz kodlara bir göz atalım:
 
+```html
 <center>....</center>
+```
 
 | Aradaki metinleri sayfaya göre ortalar. (center) |
 | --- |
 
+```html
 <b>....</b>
+```
 
 | Aradaki metni koyu (bold) yazar. |
 | --- |
 
+```html
 <i>....</i>
+```
 
 | Aradaki metni eğik (italic) yazar. |
 | --- |
 
+```html
 <u>....</u>
+```
 
 | Aradaki metni altı çizili (underline) olarak yazar. |
 | --- |
 
+```html
 <h1>....<h6>
+```
 
 | Başlık (heading) etiketi. h1 en büyük, h6 en küçük. |
 | --- |
 
+```html
 <p>....</p>
+```
 
 | Aradaki metin paragraf özelliği kazanır. Sonlandırıldığında, takib eden metin bir satır boşluk bırakılarak ve satır başına yazılır. |
 | --- |
@@ -441,7 +489,9 @@ Burada bilmeyenler için küçük bir bilgi; bir html dökümanını açtığım
 
 Font etiketinin kullanımı;
 
+```html
 <font face="..." size="..." color="...">...</font>
+```
 
 face= yazıtipinin adı (arial, tahoma, verdana, ...)
 size= yazının büyüklüğü (1-7 arası)
@@ -453,15 +503,35 @@ Bunlara font etiketinin parametreleri diyoruz.
 
 Buna bir örnek verelim;
 
-| <html> <head> <title>BR etiketi</title> </head> <body> pazartesi salı çarşamba <br>ocak<br> şubat<br> mart<br> nisan </body> </html> |
-| --- |
+```html
+<html>
+<head>
+<title>BR etiketi</title>
+</head>
+<body>
+pazartesi salı çarşamba
+<br>ocak<br> şubat<br> mart<br> nisan
+</body>
+</html>
+```
 
 Yukarıdaki örneğimizde "pazartesi, salı ve çarşamba"yı yazarken Enter tuşu ile bir alt satıra geçmemize rağmen browser bunu gözönüne almayarak tüm metni bir satırda yazdı. Fakat ikinci sefer ay adlarını tek bir satıra yazdığımız halde bu kez browser aradaki <br> etiketine bakarak bir sonraki metni satır başına aldı. Buradan da anlaşıldığı üzere Enter tuşu etkisini <br> etiketiyle veriyoruz. Bu etiketin bir özelliği de sonlandırılmaması.
 
 Şimdi font etiketinin kullanımını bir örnekle inceleyelim. Eğer kullanmak istediğiniz font bilgisayarınızda yüklü değilse font etiketi ile biçimlemek istediğiniz metin browser'ın varsayılan fontu ile gösterilecektir. Bu yüzden önce sisteminizde yüklü olan fontları inceleyin *(Başlat/Ayarlar/Denetim Masası/Yazıtipleri)*. Buradan yazıtiplerini açarak inceleyebilir ve beğendiklerinizi kullanabilirsiniz. Eğer benim örnekte kullandığım yazıtipleri *(tahoma, comic sans ms, verdana, arial)* sisteminizde yüklü değilse bunun yerine sizde olan istediğiniz fontu kullanabilirsiniz.
 
-| <html> <head> <title>Renkler ve Mevsimler</title> </head> <body> <font face="tahoma" size="5" color="#008000">İlkbahar</font> <br> <font face="verdana" size="5" color="#ff0000">Yaz</font> <br> <font face="arial" size="5" color="#ffff00">Sonbahar</font> <br> <font face="comic sans ms" size="5" color="#0000ff">Kış</font> <br> </body> </html> |
-| --- |
+```html
+<html>
+<head>
+<title>Renkler ve Mevsimler</title>
+</head>
+<body>
+<font face="tahoma" size="5" color="#008000">İlkbahar</font> <br>
+<font face="verdana" size="5" color="#ff0000">Yaz</font> <br>
+<font face="arial" size="5" color="#ffff00">Sonbahar</font> <br>
+<font face="comic sans ms" size="5" color="#0000ff">Kış</font> <br>
+</body>
+</html>
+```
 
 Her zamankinden farklı olarak ve ilk defa sayfamızda renk kullandık. Örnekte de gördüğünüz gibi bu işi renk kodlarıyla yaptık. Aslında bunun bir yolu daha var o da renk kodu yerine rengin ingilizce adını yazmak (color="red" gibi).
 
@@ -483,6 +553,7 @@ Liste içine alınacak metinler <ol>...</ol> etiketleri arasına alınarak yazı
 
 Bundan sonraki örneklerimizde sayfa kodunun yalnız body (gövde) bölümünü vereceğiz. Kodun geri kalan kısımlarını kendi sayfanızda tam olarak yazmayı unutmayın.
 
+```html
 <ol type="1">
 <li>Kimya
 <ol type="a">
@@ -504,6 +575,7 @@ Bundan sonraki örneklerimizde sayfa kodunun yalnız body (gövde) bölümünü 
 </ol>
 </ol>
 </ol>
+```
 
 | Kimya Organik İnorganik Analitik Fizik Dinamik Statik Matematik Sayılar Diğer Türev İntegral |
 | --- |
@@ -514,6 +586,7 @@ Listeleri buradaki örnekte olduğu gibi iç içe hazırlamak ta mümkün. Dikka
 
 Bu tip listede de mantık aynı. Fark, listeleme yaparken maddelerin başına harf, rakam gibi unsurlar yerine küçük yuvarlaklar,kareler kullanabilmemiz. <ol> etiketi yerine <ul> etiketini kullanıyoruz, liste maddeleri için kullandığımız <li> etiketi burada da geçerli. <ol> için kullanılabilecek parametreler ise şöyle; **type** için **disc** (içi dolu daire), **circle** (içi boş daire), **square** (içi dolu kare). **Compact** parametresi sırasız listelerde de kullanılabiliyor.
 
+```html
 <ul type="disc">
 <li>Kimya
 <ul type="square">
@@ -535,6 +608,7 @@ Bu tip listede de mantık aynı. Fark, listeleme yaparken maddelerin başına ha
 </ul>
 </ul>
 </ul>
+```
 
 | Kimya Organik İnorganik Analitik Fizik Dinamik Statik Matematik Sayılar Diğer Türev İntegral |
 | --- |
@@ -572,8 +646,20 @@ Bu renklerle yalnızca metinleri değil sayfamızın artalananını da renklendi
 
 Bunun için <body bgcolor=#xxxxxx> etiketini kullanıyoruz. Daha doğrusu sayfamızın gövdesini belirtmek için yazdığımız <body> etiketini, <body bgcolor=#xxxxxx> şeklinde değiştiriyoruz.
 
-| <body bgcolor="#ffcc00"> <font type="verdana" size="4" color="#ffffff"> <ol><h2><u>Günler</u></h2> <font color="#0000ff"> <li>Pazartesi <li>Salı <li>Çarşamba <li>Perşembe <li>Cuma </font> <font color="ff0000"> <li>Cumartesi <li>Pazar </font> </ol> </font> </body> |
-| --- |
+```html
+<body bgcolor="#ffcc00">
+<font type="verdana" size="4" color="#ffffff">
+<ol><h2><u>Günler</u></h2>
+<font color="#0000ff">
+<li>Pazartesi <li>Salı <li>Çarşamba <li>Perşembe <li>Cuma
+</font>
+<font color="ff0000">
+<li>Cumartesi <li>Pazar
+</font>
+</ol>
+</font>
+</body>
+```
 
 **Resimler**
 
@@ -581,7 +667,9 @@ Renkleri de öğrendikten sonra geldik en heyecanlı konuların bir diğerine, e
 
 Resim ekleme işi gayet kolay. Yapmamız gereken browser'a sayfaya koyacağı resmin nerede olduğunu göstermekten ibaret. Her ne kadar şart olmasa da resmin pixel cinsinden en ve boy uzunluğunu belirtmeniz sizin hayrınıza olacaktır. Kullanacağımız etiket şu şekilde olacak;
 
+```html
 <img src="resmin bulunduğu yer ve adı" width="x" height="y">
+```
 
 Burada **x** resmin enini y ise boyunu belirtiyor. Bu bilgileri, resmi herhangi bir grafik editörüyle açarak öğrenebilirsiniz.
 
@@ -590,17 +678,23 @@ Burada **x** resmin enini y ise boyunu belirtiyor. Bu bilgileri, resmi herhangi 
 Örneğin bu sevimli kediyi sayfamıza ekleyelim, peki işte size bir soru: bu resmin nerede olduğunu browser'a nasıl izah ederiz?
 Diyelim ki resmimizin adı **kedi.gif** eni **65**, boyu da **91** piksel, eğer bu resim html sayfamızla aynı dizinde duruyorsa sorun yok, kod aynen şu şekilde olmalı:
 
+```html
 <img src="kedi.gif" width="65" height="91">
+```
 
 **Bağlantılar**
 
+```html
 <a>...</a>
+```
 
 Geldik HTML'de en önemli unsurlardan birisi olan bağlantılara. Bağlantılar sayesinde hazırladığımız birçok sayfayı birbirleriyle ilişkili hale getirebiliriz. Bir tıklama bizi istediğimiz yere götürecektir. HTML'de metinlere ve resimlere bağlantı kazandırmak mümkündür. Örnek için bu sayfayı incelemeniz yeterli. Sol tarafta konuları veren bir menü bölümü var. Siz bu bağlantılardan birisini tıkladığınızda ilgili konu açılıyor, sayfa sonlarındaki ileri-geri düğmeleriyle de bağlantılar oluşturulmuş, bunlar da tıklandığında ilgili sayfa açılıyor. Bu yolla başka neler yapılabilir? Ses, grafik dosyaları, sıkıştırılmış dosyalar, internet adresleri,.. bunların hepsine bağlantı kazandırmak mümkün. Hatta yapacağımız bağlantı sayfa içinde, yani dahili bir bağlantı da olabilir.
 
 Şimdi yapmak istediğimiz bağlantıya göre kullanacağımız komutları inceleyim:
 
+```html
 <a href="....">...</a>
+```
 
 Bu komutla oluşturduğumuz bağlantı ile yeni bir sayfa açabilir, kullanıcıyı farklı bir internet adresine yönlendirebilir, kullanıcının kendisine sunduğunuz bir dosyaya ulaşmasını sağlayabilirsiniz. Yani bu tanıma göre bildiğimiz bağlantıları oluşturmak mümkün.
 

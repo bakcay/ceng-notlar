@@ -942,23 +942,17 @@ Kullanımı: Görüntülenmesini istemediğimiz komut satırından önceki satı
 
 4- Pause: Toplu işlem dosyası pause komut satırına geldiğinde klavyeden bir tuşa basana kadar yaptığı işlemi durdurur. Herhangi bir tuşa basmamız halinde işlemine kaldığı yerden devam eder. Şimdi bir toplu işlem dosyası örneği yazalım:
 
+```bash
 @echo off
-
-cd\\
-
+cd\
 C:
-
-cd C:\\tiny
-
+cd C:\tiny
 ttalk.exe
-
 ttconf load merhaba
-
-cd\\
-
+cd\
 echo on
-
 "TİNY PROGRAMINIZ HAZIRLANDI"
+```
 
 Yukarıda okuduğunuz toplu işlem dosyasında öncelikle komut satırlarının ekranda görüntülenmemesi için ilk satırı yazdık. Daha sonra kök dizine döndük. Bulunduğumuz kök dizin çalıştırmak istediğimiz kök dizin olmaması olasılığını düşünerek C sürücüsüne bilgisayarı yönlendirdik. Bundan sonra C sürücüsünde bulunan Tiny dizinine gittik. Tiny dizinine girdikten sonra bu programı çalıştıracak olan exe dosyasını çalıştırdık. Arkasından bu programın sağlıklı çalışması için programa ait olan configrasyon dosyasının yüklenmesini sağladık. Program çalıştıktan sonra Tiny dizinini terk ettik ve ekrana programın hazır olduğunu bildiren bir mesaj gönderildi. Sizlerde çok sık kullandığınız komutlardan oluşan toplu işlem dosyaları üreterek zamandan kazanabilirsiniz.
 

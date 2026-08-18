@@ -54,13 +54,20 @@ MS-DOS’ta, bilgisayar açıldığında otomatik olarak çalıştırılması ge
 
 İlk örneğimiz, sistemde yaratmış olabileceğimiz bazı gereksiz dosyaları, arada sırada temizlemek için kullanacağımız bir kabuk programı yazmakla ilgili...
 
-Öncelikle aşağıdaki UNIX komutlarını temizle temizle temizle temizle isimli bir dosyaya kaydediniz. Bu iş için vi vi vi vi komutunu kullanabilirsiniz. df df df df cd ~ cd ~ cd ~ cd ~ /usr/bin/rm \*tmp /usr/bin/rm \*tmp /usr/bin/rm \*tmp /usr/bin/rm \*tmp cd proglar cd proglar cd proglar cd proglar /usr/bin/rm \*.o /usr/bin/rm \*.o /usr/bin/rm \*.o /usr/bin/rm \*.o cd .. cd .. cd .. cd ..
+Öncelikle aşağıdaki UNIX komutlarını temizle temizle temizle temizle isimli bir dosyaya kaydediniz. Bu iş için vi vi vi vi komutunu kullanabilirsiniz.
 
-/usr/bin/rm core /usr/bin/rm core /usr/bin/rm core /usr/bin/rm core df df df df Bir sonraki adımda, bu dosyanın bir program dosyası gibi çalıştırılacağını belirtmemiz gerekir. (Dosya erişim yetkilerini hatırlayınız...)
+```bash
+df df df df cd ~ cd ~ cd ~ cd ~ /usr/bin/rm *tmp /usr/bin/rm *tmp /usr/bin/rm *tmp /usr/bin/rm *tmp cd proglar cd proglar cd proglar cd proglar /usr/bin/rm *.o /usr/bin/rm *.o /usr/bin/rm *.o /usr/bin/rm *.o cd .. cd .. cd .. cd ..
+/usr/bin/rm core /usr/bin/rm core /usr/bin/rm core /usr/bin/rm core df df df df
+```
+
+Bir sonraki adımda, bu dosyanın bir program dosyası gibi çalıştırılacağını belirtmemiz gerekir. (Dosya erişim yetkilerini hatırlayınız...)
 
 Bunu yapabilmek için
 
+```bash
 % chmod % chmod % chmod % chmod 755 temizle 755 temizle 755 temizle 755 temizle
+```
 
 komutunu veriniz. (rwxr-xr-x rwxr-xr-x rwxr-xr-x rwxr-xr-x yetki kalıbı).
 
@@ -86,7 +93,9 @@ Silme komutunu sadece rm rm rm rm şeklinde kullanmış olsaydık, büyük olas�
 
 Aslında bütün bu silme işlerini tek bir rm rm rm rm komutuyla, yapabilirdik; ama o zaman kabuk programlamaya fazla kısa bir örnek vermiş olurduk (!).
 
-/usr/bin/rm ~/\*tmp ~/proglar/\*.o ~/core /usr/bin/rm ~/\*tmp ~/proglar/\*.o ~/core /usr/bin/rm ~/\*tmp ~/proglar/\*.o ~/core /usr/bin/rm ~/\*tmp ~/proglar/\*.o ~/core
+```bash
+/usr/bin/rm ~/*tmp ~/proglar/*.o ~/core /usr/bin/rm ~/*tmp ~/proglar/*.o ~/core /usr/bin/rm ~/*tmp ~/proglar/*.o ~/core /usr/bin/rm ~/*tmp ~/proglar/*.o ~/core
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 144
 
@@ -102,19 +111,15 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 144
 
 Bu csh csh csh csh kabuk programı (adı merhaba merhaba merhaba merhaba olabilir) çalıştırıldığında; parametresi olarak verilen kullanıcının sistemde olup olmadığına bakacak; kullanıcı sistemdeyse, talk talk talk talk programını başlatarak onunla doğrudan görüşmemizi sağlayacak; yok eğer o kullanıcı sistemde değilse, mail mail mail mail programını başlatıp ona bir elektronik mesaj göndermemizi sağlayacaktır.
 
+```bash
 #!/bin/csh #!/bin/csh #!/bin/csh #!/bin/csh
-
-\# Ornek bir csh kabuk programi # Ornek bir csh kabuk programi # Ornek bir csh kabuk programi # Ornek bir csh kabuk programi
-
-\# # # #
-
-\# # # # 9 Mayis 1995 - Ugur Ayfer 9 Mayis 1995 - Ugur Ayfer 9 Mayis 1995 - Ugur Ayfer 9 Mayis 1995 - Ugur Ayfer
-
-\# # # #
-
-set w = (\`who | grep $argv\[1\]\` ) set w = (\`who | grep $argv\[1\]\` ) set w = (\`who | grep $argv\[1\]\` ) set w = (\`who | grep $argv\[1\]\` ) if ($#w == 0) then if ($#w == 0) then if ($#w == 0) then if ($#w == 0) then echo "$argv\[1\] sistemde degil... mektup gonderiniz..." echo "$argv\[1\] sistemde degil... mektup gonderiniz..." echo "$argv\[1\] sistemde degil... mektup gonderiniz..." echo "$argv\[1\] sistemde degil... mektup gonderiniz..." mail $argv\[1\] mail $argv\[1\] mail $argv\[1\] mail $argv\[1\] else else else else echo "$argv\[ echo "$argv\[ echo "$argv\[ echo "$argv\[1\] sistemde... Gorusebilirsiniz...." 1\] sistemde... Gorusebilirsiniz...." 1\] sistemde... Gorusebilirsiniz...." 1\] sistemde... Gorusebilirsiniz...." talk $argv\[1\] talk $argv\[1\] talk $argv\[1\] talk $argv\[1\]
-
+# Ornek bir csh kabuk programi # Ornek bir csh kabuk programi # Ornek bir csh kabuk programi # Ornek bir csh kabuk programi
+# # # #
+# # # # 9 Mayis 1995 - Ugur Ayfer 9 Mayis 1995 - Ugur Ayfer 9 Mayis 1995 - Ugur Ayfer 9 Mayis 1995 - Ugur Ayfer
+# # # #
+set w = (`who | grep $argv[1]` ) set w = (`who | grep $argv[1]` ) set w = (`who | grep $argv[1]` ) set w = (`who | grep $argv[1]` ) if ($#w == 0) then if ($#w == 0) then if ($#w == 0) then if ($#w == 0) then echo "$argv[1] sistemde degil... mektup gonderiniz..." echo "$argv[1] sistemde degil... mektup gonderiniz..." echo "$argv[1] sistemde degil... mektup gonderiniz..." echo "$argv[1] sistemde degil... mektup gonderiniz..." mail $argv[1] mail $argv[1] mail $argv[1] mail $argv[1] else else else else echo "$argv[ echo "$argv[ echo "$argv[ echo "$argv[1] sistemde... Gorusebilirsiniz...." 1] sistemde... Gorusebilirsiniz...." 1] sistemde... Gorusebilirsiniz...." 1] sistemde... Gorusebilirsiniz...." talk $argv[1] talk $argv[1] talk $argv[1] talk $argv[1]
 endif endif endif endif
+```
 
 İşte bu kabuk programı biraz çetrefilli...
 
@@ -134,13 +139,15 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 145
 
 Eğer, w listesinin uzunluğu sıfırdan büüyükse, ilgilendiğimiz kullanıcı en az bir iş yapıyor demektir. Bu durumda, ( else else else else ) ..... sistemde... ..... sistemde... ..... sistemde... ..... sistemde... Gorusebilirsiniz... Gorusebilirsiniz... Gorusebilirsiniz... Gorusebilirsiniz... mesajını yazıp talk talk talk talk programını başlatacağız. Yazdığımız bu merhaba programını kullanabilmek için bir kullanıcın adını parametre olarak vermeliyiz; örneğin :
 
+```bash
 % merhaba maslan merhaba maslan merhaba maslan merhaba maslan
-
 maslan sistemde degil... mektup gonderiniz... mail programı başlatılır...
+```
 
+```bash
 % merhaba reyyan merhaba reyyan merhaba reyyan merhaba reyyan
-
 reyyan sistemde... Gorusebilirsiniz... talk programı başlatılır...
+```
 
 İşte şimdi UNIX’ce konuşmaya başladık...
 
@@ -154,7 +161,9 @@ Sergio Aragones Daha önce find find find find komutundan bahsederken daha kolay
 
 Önce problemi bir kez daha tanımlayalım : a) ff ff ff ff adlı bir kabuk programı yaratacağız. b) Bu program tek parametre ile kullanılırsa, çalışma dizinimizde ve alt dizinlerinde, parametrede verilen dosyayı arayan find find find find komutunu çalıştıracağız.. c) Eğer program iki parametre ile kullanılırsa, ikinci parametredeki dosyayı birinci parametredeki dizinden başlayarak arayacak bir find find find find komutu çalıştıracağız. d) Programın parametresiz ya da ikiden fazla parametre ile kullanılmasına izin vermeyeceğiz.
 
-#!/bin/sh #!/bin/sh #!/bin/sh #!/bin/sh case $# in case $# in case $# in case $# in 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; \*) echo "Error. Usage: ff \[path\] name" \*) echo "Error. Usage: ff \[path\] name" \*) echo "Error. Usage: ff \[path\] name" \*) echo "Error. Usage: ff \[path\] name" echo " ff \[path\] \\"name\*\\"" echo " ff \[path\] \\"name\*\\"" echo " ff \[path\] \\"name\*\\"" echo " ff \[path\] \\"name\*\\"" echo " ff \[path\] \\"\*name\\"" echo " ff \[path\] \\"\*name\\"" echo " ff \[path\] \\"\*name\\"" echo " ff \[path\] \\"\*name\\"" esac esac esac esac
+```bash
+#!/bin/sh #!/bin/sh #!/bin/sh #!/bin/sh case $# in case $# in case $# in case $# in 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 1) find . -name "$1" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; 2) find "$1" -name "$2" -print;; *) echo "Error. Usage: ff [path] name" *) echo "Error. Usage: ff [path] name" *) echo "Error. Usage: ff [path] name" *) echo "Error. Usage: ff [path] name" echo " ff [path] \"name*\"" echo " ff [path] \"name*\"" echo " ff [path] \"name*\"" echo " ff [path] \"name*\"" echo " ff [path] \"*name\"" echo " ff [path] \"*name\"" echo " ff [path] \"*name\"" echo " ff [path] \"*name\"" esac esac esac esac
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 146
 
@@ -190,17 +199,14 @@ kabuk programı yazacak olsaydık
 
 kabuk programı yazacak olsaydık
 
-#!/bin/csh #!/bin/csh #!/bin/csh #!/bin/csh if ("$#argv" == 1) then if ("$#argv" == 1) then if ("$#argv" == 1) then if ("$#argv" == 1) then find . -name "$argv\[1\]" -print find . -name "$argv\[1\]" -print find . -name "$argv\[1\]" -print find . -name "$argv\[1\]" -print
-
+```bash
+#!/bin/csh #!/bin/csh #!/bin/csh #!/bin/csh if ("$#argv" == 1) then if ("$#argv" == 1) then if ("$#argv" == 1) then if ("$#argv" == 1) then find . -name "$argv[1]" -print find . -name "$argv[1]" -print find . -name "$argv[1]" -print find . -name "$argv[1]" -print
 endif endif endif endif
-
-if ("$#argv" == 2) then if ("$#argv" == 2) then if ("$#argv" == 2) then if ("$#argv" == 2) then find "$argv\[1\]" -name "$argv\[2\]" -print find "$argv\[1\]" -name "$argv\[2\]" -print find "$argv\[1\]" -name "$argv\[2\]" -print find "$argv\[1\]" -name "$argv\[2\]" -print
-
+if ("$#argv" == 2) then if ("$#argv" == 2) then if ("$#argv" == 2) then if ("$#argv" == 2) then find "$argv[1]" -name "$argv[2]" -print find "$argv[1]" -name "$argv[2]" -print find "$argv[1]" -name "$argv[2]" -print find "$argv[1]" -name "$argv[2]" -print
 endif endif endif endif
-
-if ("$#argv" < 1 || "$#argv" > 2) then if ("$#argv" < 1 || "$#argv" > 2) then if ("$#argv" < 1 || "$#argv" > 2) then if ("$#argv" < 1 || "$#argv" > 2) then echo "Error. Usage: ff \[path\] name" echo "Error. Usage: ff \[path\] name" echo "Error. Usage: ff \[path\] name" echo "Error. Usage: ff \[path\] name" echo ' ff \[path\] "name\*" ' echo ' ff \[path\] "name\*" ' echo ' ff \[path\] "name\*" ' echo ' ff \[path\] "name\*" ' echo ' ff \[path\] "\*name" ' echo ' ff \[path\] "\*name" ' echo ' ff \[path\] "\*name" ' echo ' ff \[path\] "\*name" '
-
+if ("$#argv" < 1 || "$#argv" > 2) then if ("$#argv" < 1 || "$#argv" > 2) then if ("$#argv" < 1 || "$#argv" > 2) then if ("$#argv" < 1 || "$#argv" > 2) then echo "Error. Usage: ff [path] name" echo "Error. Usage: ff [path] name" echo "Error. Usage: ff [path] name" echo "Error. Usage: ff [path] name" echo ' ff [path] "name*" ' echo ' ff [path] "name*" ' echo ' ff [path] "name*" ' echo ' ff [path] "name*" ' echo ' ff [path] "*name" ' echo ' ff [path] "*name" ' echo ' ff [path] "*name" ' echo ' ff [path] "*name" '
 endif endif endif endif
+```
 
 Bu programı yazarken kullanıdığım bazı önemli kavramlar :
 
@@ -218,9 +224,12 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 148
 
 İyi bir bilgisayar kullanıcısı elinin altındaki kaynakları tanımalı, o kaynakların kuvvetli ve zayıf taraflarının yanısıra kullanım alanlarını iyi bilmelidir. UNIX için bu tanıma süreci, PC’lere göre oldukça uzun sürer. Sanıldığının aksine, bu gecikme UNIX’in zorluğundan değil, büyüklüğünden kaynaklanmaktadır. Ehhh, tabi, büyük olunca da biraz da karmaşık oluyor ama genede öğrenilemeyecek kadar değil.
 
-Hangi UNIX bilgisayarında olursa olsun; bir terminalin başına geçip, login login login login etmeyi başarıp, ‘ne var, ne yok!’ ‘ne var, ne yok!’ ‘ne var, ne yok!’ ‘ne var, ne yok!’ anlamında bir "ls /" ls /" ls /" ls /" çektiğinizde aşağı yukarı aynı listeyle karşılaşırsınız. abc:/home/ayfer> ls / ls / ls / ls / Mail/ etc/ lost+found/ sys/ bin@ export/ mnt/ tmp/ boot home/ pcfs/ usr/ cdrom/ kadb\* quotas var/ dev/ lib@ sbin/ vmunix\*
+Hangi UNIX bilgisayarında olursa olsun; bir terminalin başına geçip, login login login login etmeyi başarıp, ‘ne var, ne yok!’ ‘ne var, ne yok!’ ‘ne var, ne yok!’ ‘ne var, ne yok!’ anlamında bir "ls /" ls /" ls /" ls /" çektiğinizde aşağı yukarı aynı listeyle karşılaşırsınız.
 
+```bash
+abc:/home/ayfer> ls / ls / ls / ls / Mail/ etc/ lost+found/ sys/ bin@ export/ mnt/ tmp/ boot home/ pcfs/ usr/ cdrom/ kadb* quotas var/ dev/ lib@ sbin/ vmunix*
 abc:/home/ayfer>
+```
 
 - Bu örnek liste, BSD UNIX (SUNOS 4.1.1) işletim sistemiyle çalışan, DTK marka bir SPARC iş istasyonundan alınmıştır.
 
@@ -432,15 +441,20 @@ Eğer diskimiz hazırsa, root root root root kullanıcı, bu diski, / / / / dosy
 
 Son olarak mount mount mount mount noktası (mount point)
 
-\# mount /dev/sd1c /disk2 # mount /dev/sd1c /disk2 # mount /dev/sd1c /disk2 # mount /dev/sd1c /disk2
+```bash
+# mount /dev/sd1c /disk2 # mount /dev/sd1c /disk2 # mount /dev/sd1c /disk2 # mount /dev/sd1c /disk2
+```
 
 komutuyla mount mount mount mount işlemini gerçekleştirir. Artık ikinci disk birimi bilgisayarın dosya yapısına entegre oldu ve tüm kullanıcılara / / / / dizininin altında disk2 disk2 disk2 disk2 isimli bir dizin olarak görünüyor. Normal koşullarda kullanıcıların, sistemde gördükleri dizinlerin birer disk birimi mi, yoksa disk bölümü mü, yoksa basit birer dizin mi olduklarını bilmeleri gerekmez. Ancak, sistem yöneticisinin tüm bu olup bitenlerden haberi olmalıdır.
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 157
 
-Eğer kullandığınız bilgisayardaki disklerin (veya disk bölümlerinin nasıl bir düzen içinde ve nerelere mount mount mount mount edildiklerini öğrenmek isterseniz, mount mount mount mount komutunu parametresiz olarak kullanabilirsiniz. abc:/home/ayfer> mount mount mount mount /dev/sd0a on / type 4.2 (rw,quota) /dev/sd0g on /usr type 4.2 (rw) /dev/sd0h on /home type 4.2 (rw,quota)
+Eğer kullandığınız bilgisayardaki disklerin (veya disk bölümlerinin nasıl bir düzen içinde ve nerelere mount mount mount mount edildiklerini öğrenmek isterseniz, mount mount mount mount komutunu parametresiz olarak kullanabilirsiniz.
 
+```bash
+abc:/home/ayfer> mount mount mount mount /dev/sd0a on / type 4.2 (rw,quota) /dev/sd0g on /usr type 4.2 (rw) /dev/sd0h on /home type 4.2 (rw,quota)
 abc:/home/ayfer>
+```
 
 Bu listeden öğrendiklerimiz şunlar : a) Sistemde sadece bir disk var ( ikinci disk varsa bile, mount mount mount mount edilmemiş).
 
@@ -450,7 +464,13 @@ Bir bilgisayardaki disklerin ve disk bölümlerinin, sistemin açılışı sıra
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 158
 
-Tipik bir /etc/fstab /etc/fstab /etc/fstab /etc/fstab dosyasında /dev/sd0a / 4.2 rw 1 1 /dev/sd0a / 4.2 rw 1 1 /dev/sd0a / 4.2 rw 1 1 /dev/sd0a / 4.2 rw 1 1 /dev/sd0h /home 4.2 rw 1 3 /dev/sd0h /home 4.2 rw 1 3 /dev/sd0h /home 4.2 rw 1 3 /dev/sd0h /home 4.2 rw 1 3 /dev/sd0g /usr 4.2 rw 1 2 /dev/sd0g /usr 4.2 rw 1 2 /dev/sd0g /usr 4.2 rw 1 2 /dev/sd0g /usr 4.2 rw 1 2 satırları bulunur.
+Tipik bir /etc/fstab /etc/fstab /etc/fstab /etc/fstab dosyasında
+
+```bash
+/dev/sd0a / 4.2 rw 1 1 /dev/sd0a / 4.2 rw 1 1 /dev/sd0a / 4.2 rw 1 1 /dev/sd0a / 4.2 rw 1 1 /dev/sd0h /home 4.2 rw 1 3 /dev/sd0h /home 4.2 rw 1 3 /dev/sd0h /home 4.2 rw 1 3 /dev/sd0h /home 4.2 rw 1 3 /dev/sd0g /usr 4.2 rw 1 2 /dev/sd0g /usr 4.2 rw 1 2 /dev/sd0g /usr 4.2 rw 1 2 /dev/sd0g /usr 4.2 rw 1 2
+```
+
+satırları bulunur.
 
 BSD UNIX’lerdeki /etc/fstab /etc/fstab /etc/fstab /etc/fstab dosyasının görevini, SVR4 UNIX’lerde /etc/vfstab /etc/vfstab /etc/vfstab /etc/vfstab dosyası üstlenmiştir. /etc/vfstab /etc/vfstab /etc/vfstab /etc/vfstab dosyasındaki satır desenleri biraz farklı olmakla beraber, /etc/fstab /etc/fstab /etc/fstab /etc/fstab ile aynı mantıkta düzenlenmişlerdir.
 
@@ -458,81 +478,97 @@ Bu açıklamalardan sonra, günlük hayatta rastlanan mount mount mount mount uy
 
 - Bir disk bölümünü salt oku salt oku salt oku salt oku (read only) olarak mount mount mount mount etmek için :
 
-\# mount -r /dev/sd1c /home/disk2 # mount -r /dev/sd1c /home/disk2 # mount -r /dev/sd1c /home/disk2 # mount -r /dev/sd1c /home/disk2
-
-\# mount -o ro /dev/dsk/c0t1d0s2 /home/disk2 # mount -o ro /dev/dsk/c0t1d0s2 /home/disk2 # mount -o ro /dev/dsk/c0t1d0s2 /home/disk2 # mount -o ro /dev/dsk/c0t1d0s2 /home/disk2
+```bash
+# mount -r /dev/sd1c /home/disk2 # mount -r /dev/sd1c /home/disk2 # mount -r /dev/sd1c /home/disk2 # mount -r /dev/sd1c /home/disk2
+# mount -o ro /dev/dsk/c0t1d0s2 /home/disk2 # mount -o ro /dev/dsk/c0t1d0s2 /home/disk2 # mount -o ro /dev/dsk/c0t1d0s2 /home/disk2 # mount -o ro /dev/dsk/c0t1d0s2 /home/disk2
+```
 
 mount mount mount mount komutunu kullanabilmek için root root root root kullanıcı olmanız gerekir.
 
 - xyz xyz xyz xyz isimli bir başka bilgisayarın (doğal olarak, bizim bilgisayarımızla aynı bilgisayar ağında bulunmak kaydıyla) bir dizinini, kendi bilgisayarımızdaki bir dizine mount mount mount mount etmek için :
 
-\# mount -t nfs xyz:/home /home2 # mount -t nfs xyz:/home /home2 # mount -t nfs xyz:/home /home2 # mount -t nfs xyz:/home /home2
-
-\# mount -F nfs xyx:/home /home2 # mount -F nfs xyx:/home /home2 # mount -F nfs xyx:/home /home2 # mount -F nfs xyx:/home /home2
+```bash
+# mount -t nfs xyz:/home /home2 # mount -t nfs xyz:/home /home2 # mount -t nfs xyz:/home /home2 # mount -t nfs xyz:/home /home2
+# mount -F nfs xyx:/home /home2 # mount -F nfs xyx:/home /home2 # mount -F nfs xyx:/home /home2 # mount -F nfs xyx:/home /home2
+```
 
 - Üzerinde UNIX dosya sistemi olan bir disketi mount mount mount mount etmek için :
 
-\# mount /dev/fd0 /mnt # mount /dev/fd0 /mnt # mount /dev/fd0 /mnt # mount /dev/fd0 /mnt
-
-\# mount /dev/diskette /mnt # mount /dev/diskette /mnt # mount /dev/diskette /mnt # mount /dev/diskette /mnt
+```bash
+# mount /dev/fd0 /mnt # mount /dev/fd0 /mnt # mount /dev/fd0 /mnt # mount /dev/fd0 /mnt
+# mount /dev/diskette /mnt # mount /dev/diskette /mnt # mount /dev/diskette /mnt # mount /dev/diskette /mnt
+```
 
 - Aynı disketin yazmaya karşı koruma deliği açıksa (disket yazmaya karşı korumalıysa) :
 
-\# mount -r /dev/fd0 /mnt # mount -r /dev/fd0 /mnt # mount -r /dev/fd0 /mnt # mount -r /dev/fd0 /mnt
-
-\# mount -o ro /dev/diskette /mnt # mount -o ro /dev/diskette /mnt # mount -o ro /dev/diskette /mnt # mount -o ro /dev/diskette /mnt
+```bash
+# mount -r /dev/fd0 /mnt # mount -r /dev/fd0 /mnt # mount -r /dev/fd0 /mnt # mount -r /dev/fd0 /mnt
+# mount -o ro /dev/diskette /mnt # mount -o ro /dev/diskette /mnt # mount -o ro /dev/diskette /mnt # mount -o ro /dev/diskette /mnt
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 159
 
 - MS-DOS formatlı bir disketi mount mount mount mount etmek için :
 
-\# mount -t pcfs /dev/fd0 /pcfs # mount -t pcfs /dev/fd0 /pcfs # mount -t pcfs /dev/fd0 /pcfs # mount -t pcfs /dev/fd0 /pcfs
-
-\# mount -F pcfs /dev/diskette /pcfs # mount -F pcfs /dev/diskette /pcfs # mount -F pcfs /dev/diskette /pcfs # mount -F pcfs /dev/diskette /pcfs
+```bash
+# mount -t pcfs /dev/fd0 /pcfs # mount -t pcfs /dev/fd0 /pcfs # mount -t pcfs /dev/fd0 /pcfs # mount -t pcfs /dev/fd0 /pcfs
+# mount -F pcfs /dev/diskette /pcfs # mount -F pcfs /dev/diskette /pcfs # mount -F pcfs /dev/diskette /pcfs # mount -F pcfs /dev/diskette /pcfs
+```
 
 - MS-DOS formatlı ve yazmaya karşı korumalı bir disketi mount mount mount mount etmek için :
 
-\# mount -r -t pcfs /dev/fd0 /pcfs # mount -r -t pcfs /dev/fd0 /pcfs # mount -r -t pcfs /dev/fd0 /pcfs # mount -r -t pcfs /dev/fd0 /pcfs
-
-\# mount -F pcfs -o ro /dev/diskette /pcfs # mount -F pcfs -o ro /dev/diskette /pcfs # mount -F pcfs -o ro /dev/diskette /pcfs # mount -F pcfs -o ro /dev/diskette /pcfs
+```bash
+# mount -r -t pcfs /dev/fd0 /pcfs # mount -r -t pcfs /dev/fd0 /pcfs # mount -r -t pcfs /dev/fd0 /pcfs # mount -r -t pcfs /dev/fd0 /pcfs
+# mount -F pcfs -o ro /dev/diskette /pcfs # mount -F pcfs -o ro /dev/diskette /pcfs # mount -F pcfs -o ro /dev/diskette /pcfs # mount -F pcfs -o ro /dev/diskette /pcfs
+```
 
 - ISO 9660 ISO 9660 ISO 9660 ISO 9660 standardında kaydedilmiş bir CD yi mount mount mount mount etmek için ( -r -r -r -r : CD ler her zaman yazmaya karşı korumalıdır) :
 
-\# mount -r /dev/sr0 /cdrom # mount -r /dev/sr0 /cdrom # mount -r /dev/sr0 /cdrom # mount -r /dev/sr0 /cdrom
-
-\# mount -o ro /dev/dsk/c0t6d0s2 /cdrom # mount -o ro /dev/dsk/c0t6d0s2 /cdrom # mount -o ro /dev/dsk/c0t6d0s2 /cdrom # mount -o ro /dev/dsk/c0t6d0s2 /cdrom
+```bash
+# mount -r /dev/sr0 /cdrom # mount -r /dev/sr0 /cdrom # mount -r /dev/sr0 /cdrom # mount -r /dev/sr0 /cdrom
+# mount -o ro /dev/dsk/c0t6d0s2 /cdrom # mount -o ro /dev/dsk/c0t6d0s2 /cdrom # mount -o ro /dev/dsk/c0t6d0s2 /cdrom # mount -o ro /dev/dsk/c0t6d0s2 /cdrom
+```
 
 - High Sierra File System High Sierra File System High Sierra File System High Sierra File System standardında kaydedilmiş bir CD yi mount mount mount mount etmek için :
 
-\# mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom
-
-\# mount -F hsfs -r ro /dev/dsk/c0t6d0s2 /cdrom # mount -F hsfs -r ro /dev/dsk/c0t6d0s2 /cdrom # mount -F hsfs -r ro /dev/dsk/c0t6d0s2 /cdrom # mount -F hsfs -r ro /dev/dsk/c0t6d0s2 /cdrom
+```bash
+# mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom
+# mount -F hsfs -r ro /dev/dsk/c0t6d0s2 /cdrom # mount -F hsfs -r ro /dev/dsk/c0t6d0s2 /cdrom # mount -F hsfs -r ro /dev/dsk/c0t6d0s2 /cdrom # mount -F hsfs -r ro /dev/dsk/c0t6d0s2 /cdrom
+```
 
 - xyz xyz xyz xyz isimli bir başka bilgisayarın (doğal olarak, bizim bilgisayarımızla aynı bilgisayar ağında bulunmak kaydıyla) /cdrom /cdrom /cdrom /cdrom dizinine mount mount mount mount edilmiş bir CD-ROM sürücüsünü, kendi bilgisayarımızdaki /cdrom /cdrom /cdrom /cdrom dizinine mount mount mount mount etmek için :
 
-\# mount -t nfs xyz:/cdrom /cdrom # mount -t nfs xyz:/cdrom /cdrom # mount -t nfs xyz:/cdrom /cdrom # mount -t nfs xyz:/cdrom /cdrom
-
-\# mount -F nfs xyz:/cdrom /cdrom # mount -F nfs xyz:/cdrom /cdrom # mount -F nfs xyz:/cdrom /cdrom # mount -F nfs xyz:/cdrom /cdrom
+```bash
+# mount -t nfs xyz:/cdrom /cdrom # mount -t nfs xyz:/cdrom /cdrom # mount -t nfs xyz:/cdrom /cdrom # mount -t nfs xyz:/cdrom /cdrom
+# mount -F nfs xyz:/cdrom /cdrom # mount -F nfs xyz:/cdrom /cdrom # mount -F nfs xyz:/cdrom /cdrom # mount -F nfs xyz:/cdrom /cdrom
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 160
 
 - mount mount mount mount edilmiş bir dosya sistemini, bilgisayarın / / / / dosya sisteminden ayırmak istediğinizde, (bu iş genellikle disket ve CD ler için anlamlıdır) :
 
-\# umount /dev/xxx # umount /dev/xxx # umount /dev/xxx # umount /dev/xxx unmount
+```bash
+# umount /dev/xxx # umount /dev/xxx # umount /dev/xxx # umount /dev/xxx unmount
+```
 
 veya
 
-\# umount /mmm # umount /mmm # umount /mmm # umount /mmm
+```bash
+# umount /mmm # umount /mmm # umount /mmm # umount /mmm
+```
 
 komutu kullanılmalıdır. Burada xxx xxx xxx xxx sürücünün /dev dizinindeki adı; mmm mmm mmm mmm ise mount mount mount mount noktasının noktasının noktasının noktasının adıdır. Bir örnek vermek gerekirse, önceden
 
-\# mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom
+```bash
+# mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom # mount -r -t hsfs /dev/sr0 /cdrom
+```
 
 komutuyla mount mount mount mount edilmiş bir CD yi umount umount umount umount etmek için
 
-\# umount /dev/sr0 # umount /dev/sr0 # umount /dev/sr0 # umount /dev/sr0 veya
-
-\# umount /cdrom # umount /cdrom # umount /cdrom # umount /cdrom
+```bash
+# umount /dev/sr0 # umount /dev/sr0 # umount /dev/sr0 # umount /dev/sr0 veya
+# umount /cdrom # umount /cdrom # umount /cdrom # umount /cdrom
+```
 
 komutlarını kullanabilirsiniz.
 
@@ -561,9 +597,10 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 161
 
 istediğinizde “Device Busy” “Device Busy” “Device Busy” “Device Busy” hata mesajıyla uyrarılırsınız; bindiğiniz dalı kesmenize izin verilmez.) mount mount mount mount edilmiş CD, disket gibi takılıp çıkarılabilen birimleri umount umount umount umount etmeden kesinlikle yuvalarından çıkarmayınız. Zaten bu yüzden, bir çok UNIX bilgisayarında CD ve disket sürücülerin üzerinde CD ve disketi çıkarmak için kullanılan düğme bulunmaz; bulunsa bile içinde mount mount mount mount edilmiş medya bulunuyorsa, düğme çalışmaz. Bu tip sürücülerin içindeki medyayı çıkarabilmek için
 
-\# eject cdrom # eject cdrom # eject cdrom # eject cdrom
-
-\# eject floppy # eject floppy # eject floppy # eject floppy
+```bash
+# eject cdrom # eject cdrom # eject cdrom # eject cdrom
+# eject floppy # eject floppy # eject floppy # eject floppy
+```
 
 gibi komutlar kullanmanız gerekir. Bu komutlar, kullandığınız bilgisayara göre değişebilir.
 
@@ -585,51 +622,78 @@ Senaryolar Senaryolar Senaryolar Senaryolar Şimdi isterseniz MS-DOS formatlı b
 
 Sonra, disketi nereye mount mount mount mount edeceğinize karar vermalisiniz. Bence /disket /disket /disket /disket dizini uygun.. Sonra /disket /disket /disket /disket diye bir dizininin (mount point) bulunup bulunmadığını kontrol etmelisiniz.
 
-\# ls /disket ls /disket ls /disket ls /disket
+```bash
+# ls /disket ls /disket ls /disket ls /disket
+```
 
 Olumsuz bir mesajla karşılaşmazsanız ve dizin boşsa devam edebilirsiniz. Eğer böyle bir dizin olmadığına ilişkin bir mesaj alırsanız
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 162
 
-\# mkdir /disket mkdir /disket mkdir /disket mkdir /disket komutuyla, dizini yaratabilirsiniz.
+```bash
+# mkdir /disket mkdir /disket mkdir /disket mkdir /disket
+```
+
+komutuyla, dizini yaratabilirsiniz.
 
 Ardından
 
-\# mount -t pcfs /dev/fd0 /disket mount -t pcfs /dev/fd0 /disket mount -t pcfs /dev/fd0 /disket mount -t pcfs /dev/fd0 /disket
+```bash
+# mount -t pcfs /dev/fd0 /disket mount -t pcfs /dev/fd0 /disket mount -t pcfs /dev/fd0 /disket mount -t pcfs /dev/fd0 /disket
+```
 
 komutuyla disketi mount mount mount mount ediniz. Eğer disket yazmaya karşı korumalıysa, komutu
 
-\# mount -r -t pcfs /dev/fd0 /disket mount -r -t pcfs /dev/fd0 /disket mount -r -t pcfs /dev/fd0 /disket mount -r -t pcfs /dev/fd0 /disket
+```bash
+# mount -r -t pcfs /dev/fd0 /disket mount -r -t pcfs /dev/fd0 /disket mount -r -t pcfs /dev/fd0 /disket mount -r -t pcfs /dev/fd0 /disket
+```
 
 şeklinde vermelisiniz. mount mount mount mount işlemi başarılı olursa, herhangi bir mesaj almadan sistem hazır işaretini (prompt) görürsünüz.
 
 Şimdi kopyalama işine başlayabilirsiniz.
 
-\# cp /disket/\*.dat /home/ayfer cp /disket/\*.dat /home/ayfer cp /disket/\*.dat /home/ayfer cp /disket/\*.dat /home/ayfer
+```bash
+# cp /disket/*.dat /home/ayfer cp /disket/*.dat /home/ayfer cp /disket/*.dat /home/ayfer cp /disket/*.dat /home/ayfer
+```
 
 Kopyalama bittiğinde,
 
-\# umount /disket umount /disket umount /disket umount /disket veya
-
-\# umount /dev/fd0 umount /dev/fd0 umount /dev/fd0 umount /dev/fd0
+```bash
+# umount /disket umount /disket umount /disket umount /disket veya
+# umount /dev/fd0 umount /dev/fd0 umount /dev/fd0 umount /dev/fd0
+```
 
 komutuyla disketi sistemden ayırıp,
 
-\# eject floppy eject floppy eject floppy eject floppy komutuyla yuvasından çıkarmalısınız.
+```bash
+# eject floppy eject floppy eject floppy eject floppy
+```
+
+komutuyla yuvasından çıkarmalısınız.
 
 Bir de kısaca, CD kullanımına örnek vereyim. Bu örnekteki en önemli detay, CD kayıt tipiyle ilgili. Bir kaç paragraf önce ISO 9660 ISO 9660 ISO 9660 ISO 9660 ve High Sierra File System High Sierra File System High Sierra File System High Sierra File System adlı CD kayıt sistemlerinden söz ettim. Bir CD nin hangi sisteme göre kaydedildiğini her zaman kolayca anlayamazsınız Böyle durumlarda en kötü olasılıkla mount mount mount mount komutunun iki formunu da deneyerek işinizi görebilirsiniz.
 
-\# ls /cdrom ls /cdrom ls /cdrom ls /cdrom /cdrom dizini var mı?
+```bash
+# ls /cdrom ls /cdrom ls /cdrom ls /cdrom /cdrom dizini var mı?
+```
 
-\# mount -r /dev/sr0 /cdrom mount -r /dev/sr0 /cdrom mount -r /dev/sr0 /cdrom mount -r /dev/sr0 /cdrom
+```bash
+# mount -r /dev/sr0 /cdrom mount -r /dev/sr0 /cdrom mount -r /dev/sr0 /cdrom mount -r /dev/sr0 /cdrom
+```
 
-\# cd /cdrom cd /cdrom cd /cdrom cd /cdrom çalı şma dizinini
+```bash
+# cd /cdrom cd /cdrom cd /cdrom cd /cdrom çalı şma dizinini
+```
 
 /cdrom yaptık.
 
-\# cp \*.dat /home/ayfer cp \*.dat /home/ayfer cp \*.dat /home/ayfer cp \*.dat /home/ayfer Kopyalama i şleri...
+```bash
+# cp *.dat /home/ayfer cp *.dat /home/ayfer cp *.dat /home/ayfer cp *.dat /home/ayfer Kopyalama i şleri...
+```
 
-\# umount /cdrom umount /cdrom umount /cdrom umount /cdrom CD’yi umount umount umount umount etmek
+```bash
+# umount /cdrom umount /cdrom umount /cdrom umount /cdrom CD’yi umount umount umount umount etmek
+```
 
 için...
 
@@ -637,9 +701,13 @@ Device Busy Bindi ğ iniz dalı kesemezsiniz..
 
 Çalı şma dizinini değ i ştirdik
 
-\# cd /home/ayfer cd /home/ayfer cd /home/ayfer cd /home/ayfer # umount /cdrom umount /cdrom umount /cdrom umount /cdrom
+```bash
+# cd /home/ayfer cd /home/ayfer cd /home/ayfer cd /home/ayfer # umount /cdrom umount /cdrom umount /cdrom umount /cdrom
+```
 
-\# eject cdrom eject cdrom eject cdrom eject cdrom CD’yi çıkarmak için
+```bash
+# eject cdrom eject cdrom eject cdrom eject cdrom CD’yi çıkarmak için
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 163
 
@@ -723,89 +791,86 @@ Böylece dosyayı alan kişi, o dosyanın bir tar tar tar tar paketi olduğunu; 
 
 Genel formu (basitçe) :
 
-% tar \[cxt\]\[v\]f tar-dosyas  \[dosyalar\] % tar \[cxt\]\[v\]f tar-dosyas  \[dosyalar\] % tar \[cxt\]\[v\]f tar-dosyas  \[dosyalar\] % tar \[cxt\]\[v\]f tar-dosyas  \[dosyalar\]
+```bash
+% tar [cxt][v]f tar-dosyas  [dosyalar] % tar [cxt][v]f tar-dosyas  [dosyalar] % tar [cxt][v]f tar-dosyas  [dosyalar] % tar [cxt][v]f tar-dosyas  [dosyalar]
+```
 
 Bu karmaşık genel formu çözmeye çalışmayın; çeşitli seçenekleri birer örnekle açıklamaya çalışacağım. Ancak; c c c c, x, x, x, x, t t t t ve v v v v harfleriyle belirtilen işlem kodlarını önce bir tanıyalım. c c c c tar tar tar tar dosyası yarat (create create create create) anlamında x x x x tar tar tar tar dosyasını aç (extract extract extract extract) anlamında t t t t tar tar tar tar dosyasının içindeki dosyaların isimlerini listele (table of contents table of contents table of contents table of contents) v v v v c, x c, x c, x c, x veya t t t t emrini yerine getirirken, olup biteni ekrana listele demektir (verbose verbose verbose verbose). Bu seçeneği kullanmazsanız tar tar tar tar komutu sessizce çalışır ve hangi dosyaları işlediğini ekrana listelemez. Bu seçeneği her zaman kullanmanızı öneririm.
 
 Şimdi örneklere geçelim... Diyelim ki, home home home home dizinizde dosya1 dosya1 dosya1 dosya1 (10 KByte) dosya2 dosya2 dosya2 dosya2 (12 KByte) dosya3 dosya3 dosya3 dosya3 (20 Kbyte) isimli 3 dosya var.
 
-% tar cvf dosyalar.tar dosya\* % tar cvf dosyalar.tar dosya\* % tar cvf dosyalar.tar dosya\* % tar cvf dosyalar.tar dosya\* create
-
+```bash
+% tar cvf dosyalar.tar dosya* % tar cvf dosyalar.tar dosya* % tar cvf dosyalar.tar dosya* % tar cvf dosyalar.tar dosya* create
 % tar cvf dosyalar.tar dosya? % tar cvf dosyalar.tar dosya? % tar cvf dosyalar.tar dosya? % tar cvf dosyalar.tar dosya?
-
 % tar cvf dosyalar.tar dosya1 dosya2 dosya3 % tar cvf dosyalar.tar dosya1 dosya2 dosya3 % tar cvf dosyalar.tar dosya1 dosya2 dosya3 % tar cvf dosyalar.tar dosya1 dosya2 dosya3
+```
 
 komutlarından herhangi biriyle bu üç dosyayı birleştirip dosyalar.tar dosyalar.tar dosyalar.tar dosyalar.tar isimli dördüncü bir dosya oluşturabilirsiniz.
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 167
 
-Yeni yaratılmış olan tar dosyası abc:/home/ayfer> ls -l dos\* ls -l dos\* ls -l dos\* ls -l dos\*
+Yeni yaratılmış olan tar dosyası
 
+```bash
+abc:/home/ayfer> ls -l dos* ls -l dos* ls -l dos* ls -l dos*
 -rw------- 1 ayfer 10240 May 12 16:53 dosya1
-
 -rw------- 1 ayfer 12288 May 12 16:53 dosya2
-
 -rw------- 1 ayfer 20480 May 12 16:53 dosya3
-
-abc:/home/ayfer> tar cvf dosyalar.tar dosya\* tar cvf dosyalar.tar dosya\* tar cvf dosyalar.tar dosya\* tar cvf dosyalar.tar dosya\*
-
+abc:/home/ayfer> tar cvf dosyalar.tar dosya* tar cvf dosyalar.tar dosya* tar cvf dosyalar.tar dosya* tar cvf dosyalar.tar dosya*
 a dosya1 20 blocks
-
 a dosya2 24 blocks
-
 a dosya3 40 blocks
-
 abc:/home/ayfer>
+```
 
-Bu komuttan sonra home home home home dizininizdeki adı dos dos dos dos ile başlayan dosyaları listelediğinizde abc:/home/ayfer> ls -l dos\* ls -l dos\* ls -l dos\* ls -l dos\*
+Bu komuttan sonra home home home home dizininizdeki adı dos dos dos dos ile başlayan dosyaları listelediğinizde
 
+```bash
+abc:/home/ayfer> ls -l dos* ls -l dos* ls -l dos* ls -l dos*
 -rw------- 1 ayfer 10240 May 12 16:53 dosya1
-
 -rw------- 1 ayfer 12288 May 12 16:53 dosya2
-
 -rw------- 1 ayfer 20480 May 12 16:53 dosya3
-
 -rw-r--r-- 1 ayfer 49152 May 12 16:53 dosyalar.tar
-
 abc:/home/ayfer>
+```
 
 Diskinizde bulunan bir tar tar tar tar dosyasının içinde yer alan dosyaların isim listesini görmek istediğinizde
 
+```bash
 % tar tvf dosyalar.tar % tar tvf dosyalar.tar % tar tvf dosyalar.tar % tar tvf dosyalar.tar table of contents
+```
 
-komutunu vermeniz yeterlidir. abc:/home/ayfer> tar tvf dosyalar.tar tar tvf dosyalar.tar tar tvf dosyalar.tar tar tvf dosyalar.tar
+komutunu vermeniz yeterlidir.
 
+```bash
+abc:/home/ayfer> tar tvf dosyalar.tar tar tvf dosyalar.tar tar tvf dosyalar.tar tar tvf dosyalar.tar
 rw-------8700/33 10240 May 12 16:53 1995 dosya1
-
 rw-------8700/33 12288 May 12 16:53 1995 dosya2
-
 rw-------8700/33 20480 May 12 16:53 1995 dosya3
-
 abc:/home/ayfer>
+```
 
 Bir tar tar tar tar dosyasını bir başka bilgisayara taşıyıp, orada yeniden açmak istediğinizdeyse
 
+```bash
 % tar xvf dosyalar.tar % tar xvf dosyalar.tar % tar xvf dosyalar.tar % tar xvf dosyalar.tar extract
+```
 
 komutunu kullanmalısınız.
 
-Başka bilgisayar, başka dizin... xyz:/home/hasan> tar xvf dosyalar.tar tar xvf dosyalar.tar tar xvf dosyalar.tar tar xvf dosyalar.tar
+Başka bilgisayar, başka dizin...
 
+```bash
+xyz:/home/hasan> tar xvf dosyalar.tar tar xvf dosyalar.tar tar xvf dosyalar.tar tar xvf dosyalar.tar
 x dosya1, 10240 bytes, 20 tape blocks
-
 x dosya2, 12288 bytes, 24 tape blocks
-
 x dosya3, 20480 bytes, 40 tape blocks
-
-xyz:/home/hasan> ls -l dos\* ls -l dos\* ls -l dos\* ls -l dos\*
-
+xyz:/home/hasan> ls -l dos* ls -l dos* ls -l dos* ls -l dos*
 -rw------- 1 ayfer 10240 May 12 16:53 dosya1
-
 -rw------- 1 ayfer 12288 May 12 16:53 dosya2
-
 -rw------- 1 ayfer 20480 May 12 16:53 dosya3
-
 xyz:/home/hasan>
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 168
 
@@ -813,7 +878,9 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 168
 
 Örneğin
 
-% tar cvf /dev/rst0 dosya\* % tar cvf /dev/rst0 dosya\* % tar cvf /dev/rst0 dosya\* % tar cvf /dev/rst0 dosya\* create
+```bash
+% tar cvf /dev/rst0 dosya* % tar cvf /dev/rst0 dosya* % tar cvf /dev/rst0 dosya* % tar cvf /dev/rst0 dosya* create
+```
 
 komutunu verirseniz, dosya1 dosya1, dosya2 dosya2 dosya2 dosya2 ve dosya3 dosya3 dosya3 dosya3 dosyalarının birleştirilmesiyle
 
@@ -833,21 +900,26 @@ olmaz. olmaz. olmaz. olmaz. Teyp sürücüsünün adı ve teyp kasetinin okuyucu
 
 Kasetinin başında bir tar tar tar tar dosyası bulunan teypden, bu tar tar tar tar dosyasının içindeki dosyaları çalışma dizininize indirmek istediğinizde
 
+```bash
 % tar xvf /dev/rst0 % tar xvf /dev/rst0 % tar xvf /dev/rst0 % tar xvf /dev/rst0 extract
+```
 
 komutunu kullanabilirsiniz.
 
 Aynı mantıkla, teybin başındaki tar tar tar tar dosyasının içindekilerin listesini görmek istiyorsanız
 
+```bash
 % tar tvf /dev/rst0 % tar tvf /dev/rst0 % tar tvf /dev/rst0 % tar tvf /dev/rst0 table of contents
+```
 
 komutu işinizi görecektir.
 
 Örnekler hep BSD UNIX için verilmiştir. SVR4 UNIX kullanılması durumunda değişecek tek şey, teyp sürücüsünün /dev /dev /dev /dev dizinindeki adı olacaktır.
 
-% tar cvf /dev/rmt/0 dosya\* % tar cvf /dev/rmt/0 dosya\* % tar cvf /dev/rmt/0 dosya\* % tar cvf /dev/rmt/0 dosya\*
-
+```bash
+% tar cvf /dev/rmt/0 dosya* % tar cvf /dev/rmt/0 dosya* % tar cvf /dev/rmt/0 dosya* % tar cvf /dev/rmt/0 dosya*
 % tar tvf /dev/rmt/1 % tar tvf /dev/rmt/1 % tar tvf /dev/rmt/1 % tar tvf /dev/rmt/1 gibi...
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 169
 
@@ -873,7 +945,9 @@ Kasetinizde ardarda birden fazla tar tar tar tar dosyası varsa ve siz bu iki ka
 
 İşi bitince başa sarmayan sarmayan sarmayan sarmayan teyp sürücüleri teyp sürücüleri teyp sürücüleri teyp sürücüleri BSD BSD BSD BSD SVR4 SVR4 SVR4 SVR4 Sürücü Sürücü Sürücü Sürücü /dev/nrst0 /dev/rmt/0n Birinci teyp sürücü /dev/nrst1 /dev/rmt/1n İkinci teyp sürücü
 
+```bash
 % tar xvf /dev/nrst0 % tar xvf /dev/nrst0 % tar xvf /dev/nrst0 % tar xvf /dev/nrst0 /dev /dev /dev /dev adındaki n n n n harfine dikkat!
+```
 
 komutunu kullandığınızda ( nrst0 : nrst0 : nrst0 : nrst0 : no rewind SCSI tape 0 no rewind SCSI tape 0 no rewind SCSI tape 0 no rewind SCSI tape 0 ), tar tar tar tar komutu işini bitirince, teyp kaseti başa sarılmayacaktır. Böylece ikinci tar tar tar tar dosyasını da diske indirmeniz mümkün olacaktır. Ancak, burada küçük bir sorun var. Teybin okuyucu kafası şu anda ikinci tar tar tar tar dosyasının başında değil de, iki tar tar tar tar dosyası arasındaki boşlukta duruyor. O nedenle ikinci tar tar tar tar dosyasını işlemek için vereceğiniz tar tar tar tar komutu bir hata mesajına neden olacaktır. tar: /dev/rst0: I/O error tar: /dev/rst0: I/O error tar: /dev/rst0: I/O error tar: /dev/rst0: I/O error Bu hata mesajını aldığınızda okuyucu kafa bu boşluğu atlamış olacağından son komutu tekrarlarsanız, ikinci tar tar tar tar dosyasını işlemeye başlamış olursunuz; tabii ikinci tar tar tar tar dosyası gerçekten varsa... Eğer tekrar aynı hata komutunu alırsanız, kasetin gerisi boş demektir. Daha fazla uğraşmanız anlamsızdır.
 
@@ -915,17 +989,23 @@ Teyp şeridi
 
 Dosya atlamanın en kolay yolu, tar tar tar tar komutunu t t t t seçeneği ile kullanmak olduğundan
 
+```bash
 % tar tvf /dev/nrst0 tar tvf /dev/nrst0 tar tvf /dev/nrst0 tar tvf /dev/nrst0
+```
 
 komutuyla ilk dosyanın içindekilerin listesini alınız. Bu liste anlamsız olmakla birlikte teybin çalıştığını göstermesi açısından yararlıdır. Bu tar tar tar tar komutunda boş bulunup /dev/rst0 /dev/rst0 /dev/rst0 /dev/rst0 kullanırsanız listeyi boşuna almış olursunuz. Çünkü tar tar tar tar komutu istediğiniz listeyi (t t t t seçeneği) verdikten sonra kaseti tekrar başa saracaktır.
 
 Şimdi okuyucu kafa birinci ve ikinci dosyalar arasındaki boşlukta duruyor olmalı. Anlamsız da olsa bir tar tar tar tar komutuyla bu boşluğu atlamalısınız (biliyorsunuz, hata mesajı gelecek).
 
+```bash
 % tar tvf /dev/nrst0 tar tvf /dev/nrst0 tar tvf /dev/nrst0 tar tvf /dev/nrst0
+```
 
 tar: /dev/rst0: I/O error Şimdi teybin okuyucu kafası ikinci tar tar tar tar dosyasının başında... Bu dosyayı ve arkasındaki boşluğu da atlamak için
 
+```bash
 % !! !! !! !! % !! !! !! !! İkinci tar tar tar tar dosyasını atlamak için
+```
 
 İkinci ve üçüncü tar tar tar tar dosyalarının arasındaki boşluğu atlamak için komutlarını ardarda verebilirsiniz. (!! !! !! !! komutu ancak csh csh csh csh kabuk programını kullanıyorsanız ve history history history history değişkeninin bir değeri varsa anlamlıdır; eğer sh sh sh sh kabuğu kullanıyorsanız son komutu paşa paşa tekrar yazmak zorundasınız).
 
@@ -933,7 +1013,9 @@ tar: /dev/rst0: I/O error Şimdi teybin okuyucu kafası ikinci tar tar tar tar d
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 171
 
+```bash
 % tar xvf /dev/rst0 tar xvf /dev/rst0 tar xvf /dev/rst0 tar xvf /dev/rst0 tar tar tar tar komutu
+```
 
 bitti ğ inde i şimiz de bitmi ş olacağ ından, artık kaset başa sarılabilir.
 
@@ -959,13 +1041,16 @@ dosyalar
 
 c c c c ile başlayan dosyaların tar tar tar tar dosyası İlk önce kasetin başına adı a a a a ile başlayan dosyaların tar tar tar tar dosyasını yaratmalısınız.
 
-% tar cvf /dev/nrst0 a\* tar cvf /dev/nrst0 a\* tar cvf /dev/nrst0 a\* tar cvf /dev/nrst0 a\*
+```bash
+% tar cvf /dev/nrst0 a* tar cvf /dev/nrst0 a* tar cvf /dev/nrst0 a* tar cvf /dev/nrst0 a*
+```
 
 Hemen ardından ikinci ve üçüncü tar tar tar tar dosyalarını yaratabilirsiniz.. Dosyalar arasındaki boşlukların yaratılması sizin sorumluluğunuzda olmayacaktır.
 
-% tar cvf /dev/nrst0 b\* tar cvf /dev/nrst0 b\* tar cvf /dev/nrst0 b\* tar cvf /dev/nrst0 b\*
-
-% tar cvf /dev/nrst0 c\* tar cvf /dev/nrst0 c\* tar cvf /dev/nrst0 c\* tar cvf /dev/nrst0 c\*
+```bash
+% tar cvf /dev/nrst0 b* tar cvf /dev/nrst0 b* tar cvf /dev/nrst0 b* tar cvf /dev/nrst0 b*
+% tar cvf /dev/nrst0 c* tar cvf /dev/nrst0 c* tar cvf /dev/nrst0 c* tar cvf /dev/nrst0 c*
+```
 
 3. 3. 3. 3. home home home home dizinizdeki adı a, b a, b a, b a, b ve c c c c ile başlayan dosyaları tek bir tar tar tar tar dosyası
 
@@ -991,7 +1076,9 @@ dosyalar
 
 Bu işi tek komutta yapmalısınız. (Tek bir tar tar tar tar dosyası elde edebilmek için)..
 
-% tar cvf /dev/nrst0 a\* b\* c\* tar cvf /dev/nrst0 a\* b\* c\* tar cvf /dev/nrst0 a\* b\* c\* tar cvf /dev/nrst0 a\* b\* c\*
+```bash
+% tar cvf /dev/nrst0 a* b* c* tar cvf /dev/nrst0 a* b* c* tar cvf /dev/nrst0 a* b* c* tar cvf /dev/nrst0 a* b* c*
+```
 
 4. 4. 4. 4. Kasetinizde adı a, b a, b a, b a, b ve c c c c ile başlayan dosyalardan oluşan tek bir tar tar tar tar
 
@@ -1025,7 +1112,11 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 172
 
 HATALI ! HATALI ! HATALI ! HATALI !
 
-% tar xvf /dev/rst0 b1\* tar xvf /dev/rst0 b1\* tar xvf /dev/rst0 b1\* tar xvf /dev/rst0 b1\* şeklinde bir komut yazmanızı söylüyor, değilmi?
+```bash
+% tar xvf /dev/rst0 b1* tar xvf /dev/rst0 b1* tar xvf /dev/rst0 b1* tar xvf /dev/rst0 b1*
+```
+
+şeklinde bir komut yazmanızı söylüyor, değilmi?
 
 Maalesef içgüdünüz sizi yanıltıyor ! Vermeniz gereken komut
 
@@ -1035,7 +1126,9 @@ Maalesef içgüdünüz sizi yanıltıyor !
 
 Maalesef içgüdünüz sizi yanıltıyor !
 
-% tar xvf /dev/rst0 "b1\*" % tar xvf /dev/rst0 "b1\*" % tar xvf /dev/rst0 "b1\*" % tar xvf /dev/rst0 "b1\*" DOÐRU ! DOÐRU ! DOÐRU ! DOÐRU !
+```bash
+% tar xvf /dev/rst0 "b1*" % tar xvf /dev/rst0 "b1*" % tar xvf /dev/rst0 "b1*" % tar xvf /dev/rst0 "b1*" DOÐRU ! DOÐRU ! DOÐRU ! DOÐRU !
+```
 
 Hatanın ne olduğunu ilk bakışta görememeniz oldukça normal.
 
@@ -1151,27 +1244,33 @@ Kasetinizdeki kayıt yapısı
 
 Kayıt Sonu İşareti şeklindeyken, kısa bir tar tar tar tar dosyası oluşturmak için
 
+```bash
 % mt -f /dev/rst1 rewind mt -f /dev/rst1 rewind mt -f /dev/rst1 rewind mt -f /dev/rst1 rewind
-
 % tar cvf /dev/nrst1 kisa-dosyalar tar cvf /dev/nrst1 kisa-dosyalar tar cvf /dev/nrst1 kisa-dosyalar tar cvf /dev/nrst1 kisa-dosyalar
+```
 
 komutlarını verirseniz yeni kaset yapınız Kısa tar tar tar tar dosyası şekline dönüşür. (Üzgünüm... Üzgünüm... Üzgünüm... Üzgünüm...)
 
 5. 5. 5. 5. tar tar tar tar programı, daha önce bir tar tar tar tar dosyası içine paketlenmiş olan dosyaları geri çıkarırken (extract extract extract extract ederken) bu dosyaları alındıkları dizinlere yerleştirmeye çalışır. Örneğin
 
-% tar cvf /dev/nrst1 /home/ayfer/\* tar cvf /dev/nrst1 /home/ayfer/\* tar cvf /dev/nrst1 /home/ayfer/\* tar cvf /dev/nrst1 /home/ayfer/\*
+```bash
+% tar cvf /dev/nrst1 /home/ayfer/* tar cvf /dev/nrst1 /home/ayfer/* tar cvf /dev/nrst1 /home/ayfer/* tar cvf /dev/nrst1 /home/ayfer/*
+```
 
 şeklinde bir komutla tar tar tar tar’lanmış dosyaları bir başka bilgisayarda
 
+```bash
 % tar xvf /dev/nrst0 tar xvf /dev/nrst0 tar xvf /dev/nrst0 tar xvf /dev/nrst0
+```
 
 komutuyla geri indirmek istediğinizde, dosyalar yeni bilgisayarda /home/ayfer /home/ayfer /home/ayfer /home/ayfer diye bir dizinin altına indirilecek; böyle bir dizin yoksa yaratılmaya çalışılacaktır. Bu tip sıkıntıları önlemek için tar tar tar tar programıyla dosya çekerken
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 175
 
+```bash
 % cd /home/ayfer cd /home/ayfer cd /home/ayfer cd /home/ayfer
-
-% tar cvf /dev/nrst1 ./\* tar cvf /dev/nrst1 ./\* tar cvf /dev/nrst1 ./\* tar cvf /dev/nrst1 ./\*
+% tar cvf /dev/nrst1 ./* tar cvf /dev/nrst1 ./* tar cvf /dev/nrst1 ./* tar cvf /dev/nrst1 ./*
+```
 
 şeklinde göreceli dizin tanımları kullanmanızı öneririm. ./\* ./\* ./\* ./\* kalıbı; “bulunduğum dizindeki herşey” anlamına gelmektedir.
 
@@ -1183,11 +1282,11 @@ Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 175
 
 9. 9. 9. 9. Bazı tar tar tar tar programları, tar tar tar tar dosyası yaratırken bir yandan da veri sıkıştırması yapabilirler. Bu özellik standart olmadığından, bir başka bilgisayara taşımak üzere tar tar tar tar dosyası (tar tar tar tar teybi) yaratırken tar tar tar tar programlarının bu sıkıştırma özelliğini kullanmayınız. Eğer mutlaka sıkıştırma yapmanız gerekiyorsa, dosyalarınızı önce diskte bir dosyaya tar tar tar tar’layın; sonra bu dosyayı standart UNIX compress compress compress compress komutuyla sıkıştırın, ondan sonra bu dosyayı tekrar tar tar tar tar komutuyla teybe (ya da diskete) kaydedin. Bu yöntemi kullandığınızı teyp ya da disketin etiketi üzerinde açıklayıcı bir not olarak iliştirip diğer bilgisayarda kullanılmak üzere yollayın. Örnek olarak :
 
-% tar cvf dosyalar.tar dosya\* tar cvf dosyalar.tar dosya\* tar cvf dosyalar.tar dosya\* tar cvf dosyalar.tar dosya\*
-
+```bash
+% tar cvf dosyalar.tar dosya* tar cvf dosyalar.tar dosya* tar cvf dosyalar.tar dosya* tar cvf dosyalar.tar dosya*
 % compress dosyalar.tar compress dosyalar.tar compress dosyalar.tar compress dosyalar.tar
-
 % tar cvf /dev/fd0 dosyalar.tar.Z tar cvf /dev/fd0 dosyalar.tar.Z tar cvf /dev/fd0 dosyalar.tar.Z tar cvf /dev/fd0 dosyalar.tar.Z
+```
 
 compress programı sıkıştırdığı dosyanın adının sonuna .Z .Z .Z .Z ekler.
 
@@ -1197,13 +1296,21 @@ Etkileyici Bir UNIX Gösterisi Etkileyici Bir UNIX Gösterisi Etkileyici Bir UNI
 
 Yapmak istediğimiz iş şu :
 
-Bilgisayar ağı üzerindeki abc abc abc abc bilgisayarının önünde oturarak, dosyalarımızı xyz xyz xyz xyz makinasının üzerindeki rst1 rst1 rst1 rst1 teyp ünitesinde takılı olan kasete kopyalayacağız. abc:/> tar cvfb - 20 dosya\* | rsh xyz dd of=/dev/rst0 obs=20b abc:/> tar cvfb - 20 dosya\* | rsh xyz dd of=/dev/rst0 obs=20b abc:/> tar cvfb - 20 dosya\* | rsh xyz dd of=/dev/rst0 obs=20b abc:/> tar cvfb - 20 dosya\* | rsh xyz dd of=/dev/rst0 obs=20b Neler olup bittiğini merak ettiyseniz, açıklayayım: abc abc abc abc bilgisayarında tar tar tar tar programını başlatıyoruz, adı dosya\* dosya\* dosya\* dosya\* kalıbına uyan dosyaları bir tar tar tar tar dosyasına dönüştürüyoruz; ancak bu tar tar tar tar dosyasını fiziksel bir sürücü yerine standart çıktıya yönlendiriyoruz ( tar tar tar tar dosyası adı olarak - - - - işareti). Aynı anda; adı xyz xyz xyz xyz olan uzaktaki bilgisayarda dd dd dd dd ( device to device device to device device to device device to device copy copy copy copy) programını başlatıyoruz (rsh rsh rsh rsh : remote shell komutu). abc abc abc abc makinasının standart çıktısındaki kayıtları (tar tar tar tar dosyamızı), xyz xyz xyz xyz makinasında çalışmakta olan dd dd dd dd programına girdi olarak pipe pipe pipe pipe edip, dd dd dd dd programının çıktı dosyası olarak tanımlanmış olan /dev/rst0 /dev/rst0 /dev/rst0 /dev/rst0 sürücüsüne kaydedilmesini sağlıyoruz. Bu arada, bilgisayarlar arası transferi hızlandırmak amacıyla da kayıtlarımızı 20’şer 20’şer blokluyoruz. dd dd dd dd komutunu merak ettiyseniz, bir /dev /dev /dev /dev biriminden bir başka /dev /dev /dev /dev birimine veri kopyalamak için kullanılan programdır. Örneğin teypten teybe, disketten teybe kopyalamalarda kullanılabilir. Daha fazla bilgi almak için man dd man dd man dd man dd komutunu kullanınız. dump dump dump dump (BSD UNIX) ve ufsdump ufsdump ufsdump ufsdump (SVR4) genellikle sadece sistem yöneticilerini ilgilendiren ve diskleri teyplere yedeklemek için kullanılan komutlardır. Bu komutları kitabın “Sistem Yöneticine” başlıklı bölümlerinde anlatacağım.
+Bilgisayar ağı üzerindeki abc abc abc abc bilgisayarının önünde oturarak, dosyalarımızı xyz xyz xyz xyz makinasının üzerindeki rst1 rst1 rst1 rst1 teyp ünitesinde takılı olan kasete kopyalayacağız.
+
+```bash
+abc:/> tar cvfb - 20 dosya* | rsh xyz dd of=/dev/rst0 obs=20b abc:/> tar cvfb - 20 dosya* | rsh xyz dd of=/dev/rst0 obs=20b abc:/> tar cvfb - 20 dosya* | rsh xyz dd of=/dev/rst0 obs=20b abc:/> tar cvfb - 20 dosya* | rsh xyz dd of=/dev/rst0 obs=20b
+```
+
+Neler olup bittiğini merak ettiyseniz, açıklayayım: abc abc abc abc bilgisayarında tar tar tar tar programını başlatıyoruz, adı dosya\* dosya\* dosya\* dosya\* kalıbına uyan dosyaları bir tar tar tar tar dosyasına dönüştürüyoruz; ancak bu tar tar tar tar dosyasını fiziksel bir sürücü yerine standart çıktıya yönlendiriyoruz ( tar tar tar tar dosyası adı olarak - - - - işareti). Aynı anda; adı xyz xyz xyz xyz olan uzaktaki bilgisayarda dd dd dd dd ( device to device device to device device to device device to device copy copy copy copy) programını başlatıyoruz (rsh rsh rsh rsh : remote shell komutu). abc abc abc abc makinasının standart çıktısındaki kayıtları (tar tar tar tar dosyamızı), xyz xyz xyz xyz makinasında çalışmakta olan dd dd dd dd programına girdi olarak pipe pipe pipe pipe edip, dd dd dd dd programının çıktı dosyası olarak tanımlanmış olan /dev/rst0 /dev/rst0 /dev/rst0 /dev/rst0 sürücüsüne kaydedilmesini sağlıyoruz. Bu arada, bilgisayarlar arası transferi hızlandırmak amacıyla da kayıtlarımızı 20’şer 20’şer blokluyoruz. dd dd dd dd komutunu merak ettiyseniz, bir /dev /dev /dev /dev biriminden bir başka /dev /dev /dev /dev birimine veri kopyalamak için kullanılan programdır. Örneğin teypten teybe, disketten teybe kopyalamalarda kullanılabilir. Daha fazla bilgi almak için man dd man dd man dd man dd komutunu kullanınız. dump dump dump dump (BSD UNIX) ve ufsdump ufsdump ufsdump ufsdump (SVR4) genellikle sadece sistem yöneticilerini ilgilendiren ve diskleri teyplere yedeklemek için kullanılan komutlardır. Bu komutları kitabın “Sistem Yöneticine” başlıklı bölümlerinde anlatacağım.
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 177
 
 mt Komutu mt Komutu mt Komutu mt Komutu (magnetic tape controls) Teyp sürücülerindeki kasetlerin okuma/yazma kafası karşısındaki pozisyonunu ayarlamak için kullanılan bir komuttur.
 
+```bash
 % mt -f /dev/nrst0 hareket-kodu % mt -f /dev/nrst0 hareket-kodu % mt -f /dev/nrst0 hareket-kodu % mt -f /dev/nrst0 hareket-kodu
+```
 
 hareket-kodu hareket-kodu hareket-kodu hareket-kodu olarak rewind rewind rewind rewind (kısaca rew rew rew rew de kullanılabilir) (forward space file) fsf fsf fsf fsf fsf n fsf n fsf n fsf n eof eof eof eof retension retension retension retension (end of file) erase erase erase erase anahtar sözcükleri kullanılabilir. mt hareket-kodu mt hareket-kodu mt hareket-kodu mt hareket-kodu Görevi Görevi Görevi Görevi rewind rewind rewind rewind Kaseti başa sarar fsf fsf fsf fsf Kaseti bir dosya veya dosyalar arası boşluk kadar ileri sarar fsf n fsf n fsf n fsf n Kaseti n n n n tane dosya ve dosyalar arası boşluk kadar ileri sarar. (Örneğin, kasetinizi 3 dosya ileri atlatmak istiyorsanız fsf 6 fsf 6 fsf 6 fsf 6 kullanmalısınız.
 
@@ -1221,7 +1328,9 @@ Meraklı okuyucularla devam edelim....
 
 Aşağıdaki komut satırı, find find find find ve cpio cpio cpio cpio programlarını birlikte kullanarak son 10 gün içinde değişikliğe uğramış olan dosyaları teybe çekecektir. (İster inanın ister inanmayın).
 
+```bash
 % find . -type f -mtime -10 -p % find . -type f -mtime -10 -p % find . -type f -mtime -10 -p % find . -type f -mtime -10 -print | cpio -o > /dev/nrst0 rint | cpio -o > /dev/nrst0 rint | cpio -o > /dev/nrst0 rint | cpio -o > /dev/nrst0
+```
 
 Komut satırının mantığı şu :
 
@@ -1229,11 +1338,15 @@ Komut satırının mantığı şu :
 
 Yukarıdaki komutla yedeklenmiş dosyaları teypden geri yüklemeniz gerekirse
 
+```bash
 % cpio -idmuv < /dev/rst0 cpio -idmuv < /dev/rst0 cpio -idmuv < /dev/rst0 cpio -idmuv < /dev/rst0
+```
 
 Eğer sadece bir dosyayı indirmek isterseniz (tabii ki daha önce cpio cpio cpio cpio ile teybe kaydedilmiş olmak şartıyla)
 
-% cpio -idmuv istenen\_dosya < /dev/rst0 cpio -idmuv istenen\_dosya < /dev/rst0 cpio -idmuv istenen\_dosya < /dev/rst0 cpio -idmuv istenen\_dosya < /dev/rst0
+```bash
+% cpio -idmuv istenen_dosya < /dev/rst0 cpio -idmuv istenen_dosya < /dev/rst0 cpio -idmuv istenen_dosya < /dev/rst0 cpio -idmuv istenen_dosya < /dev/rst0
+```
 
 cpio cpio cpio cpio komutuyla birlikte kullandığım garip idmuv idmuv idmuv idmuv seçeneklerinin ne olduğunu merak ettiyseniz man man man man komutu size yardımcı olabilir.
 
@@ -1261,7 +1374,9 @@ Kullanı ş lı UNIX Komutları
 
 UNIX işletim sisteminde, /bin /bin /bin /bin ve-veya /usr/bin /usr/bin /usr/bin /usr/bin, /usr/sbin /usr/sbin /usr/sbin /usr/sbin, /usr/5bin /usr/5bin /usr/5bin /usr/5bin gibi dizinlerinde yüzlerce program bulunur. Bunların önemli bir kısmının ne işe yaradığını bile anlamak meseledir. Ancak zamanla; çıraklık yapa yapa ve başınızı vura vura bu programlarının çoğunu anlayacak, öğrenecek ve kullanacaksınız. Başlangıçta bilmeniz gerekebilecek bazı komutları seçip açıklamak istiyorum. Bu seçimimde kullandığım kriter basit : seyrek de olsa kendi kullandığım komutlardan, herhangi bir sırayı dikkate almaksızın söz edeceğim. Bu arada, bazı tekrarlar olacak ama sizi rahatsız edeceğini sanmıyorum.
 
+```bash
 % cat % cat % cat % cat (catenate)
+```
 
 En temel kopyalama programı. Standart girişi standart çıkışa kopyalar.
 
@@ -1279,55 +1394,79 @@ Parametreli olarak Parametreli olarak Parametreli olarak Parametreli olarak kull
 
 Buraya kadar olan kısmı zaten biliyordunuz. Peki aşağıdaki cat cat cat cat komutu formlarına ne dersiniz?
 
-% cat dosya1 dosya2 dosya3 > genel\_dosya cat dosya1 dosya2 dosya3 > genel\_dosya cat dosya1 dosya2 dosya3 > genel\_dosya cat dosya1 dosya2 dosya3 > genel\_dosya
+```bash
+% cat dosya1 dosya2 dosya3 > genel_dosya cat dosya1 dosya2 dosya3 > genel_dosya cat dosya1 dosya2 dosya3 > genel_dosya cat dosya1 dosya2 dosya3 > genel_dosya
+```
 
 dosya1, dosya2 ve dosya3 dosyalarını bu sırayla peşpeşe ekleyip bir genel\_dosya dosyası oluşturur.
 
-% cat dosya1 dosya2 dosya3 > genel\_dosya & cat dosya1 dosya2 dosya3 > genel\_dosya & cat dosya1 dosya2 dosya3 > genel\_dosya & cat dosya1 dosya2 dosya3 > genel\_dosya &
+```bash
+% cat dosya1 dosya2 dosya3 > genel_dosya & cat dosya1 dosya2 dosya3 > genel_dosya & cat dosya1 dosya2 dosya3 > genel_dosya & cat dosya1 dosya2 dosya3 > genel_dosya &
+```
 
 Aynı işi arka planda çalışarak yapar.
 
-% cat buyuk\_dosya > /dev/null cat buyuk\_dosya > /dev/null cat buyuk\_dosya > /dev/null cat buyuk\_dosya > /dev/null
+```bash
+% cat buyuk_dosya > /dev/null cat buyuk_dosya > /dev/null cat buyuk_dosya > /dev/null cat buyuk_dosya > /dev/null
+```
 
 buyuk\_dosya buyuk\_dosya buyuk\_dosya buyuk\_dosya isimli dosyayı “kara deliğe” yani “hiç bir yere” kopyalar. Böyle bir komutla, dosyanın başından sonuna kadar okunabilir olup olmadığını denemiş olursunuz.
 
+```bash
 % cat liste > /dev/bpp0 cat liste > /dev/bpp0 cat liste > /dev/bpp0 cat liste > /dev/bpp0
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 181
 
 liste isimli programı doğrudan yazıcı arabirimine kopyalar. Yazıcı ile ilgili daemon daemon daemon daemon’lar çalışmıyor olsa bile bu yöntemle yazıcıdan döküm alabilirsiniz. Ancak, root root root root kullanıcı olmanız gerekir.
 
+```bash
 % cat < /dev/ttyb cat < /dev/ttyb cat < /dev/ttyb cat < /dev/ttyb
+```
 
 İkinci seri arabirime bağlı olan terminalin klavyesinden yazılan her şeyi sizin ekranınıza kopyalar. Bu komut ancak mesai arkadaşlarını deli etmek isteyen root root root root kullanıcılar tarafından verilebilir.
 
-% compress dosya\_adi % compress dosya\_adi % compress dosya\_adi % compress dosya\_adi
+```bash
+% compress dosya_adi % compress dosya_adi % compress dosya_adi % compress dosya_adi
+```
 
 Kısa dönemde gerekli olmayacak ya da teybe çekilecek disk dosyalarının daha az yer işgal etmelerini sağlamak amacıyla kullanılan sıkıştırma programıdır.
 
-% compress buyuk\_dosya compress buyuk\_dosya compress buyuk\_dosya compress buyuk\_dosya
+```bash
+% compress buyuk_dosya compress buyuk_dosya compress buyuk_dosya compress buyuk_dosya
+```
 
 komutunu verdiğinizde, buyuk\_dosya buyuk\_dosya buyuk\_dosya buyuk\_dosya isimli dosya sıkıştırılır ve buyuk\_dosya.Z buyuk\_dosya.Z buyuk\_dosya.Z buyuk\_dosya.Z isimli daha küçük bir dosyaya dönüştürülür. (MS-DOS dünyasındaki PKZIP gibi). Küçültmenin ne oranda olacağı tamamen dosyanın içeriğine bağlıdır.
 
 ASCII text içeren dosyalarda sıkıştırma oranı oldukça yüksek olabilir. MS- DOS'daki PKZIP programından farklı olarak compress compress compress compress programı, dosyaları teker teker teker teker teker ve kendi üzerlerine teker ve kendi üzerlerine teker ve kendi üzerlerine teker ve kendi üzerlerine sıkıştırır.
 
-% uncompress dosya\_adi % uncompress dosya\_adi % uncompress dosya\_adi % uncompress dosya\_adi
+```bash
+% uncompress dosya_adi % uncompress dosya_adi % uncompress dosya_adi % uncompress dosya_adi
+```
 
 Daha önce sıkıştırılmış olan dosyaları geri açan programdır.
 
-% uncompress buyuk\_dosya.Z uncompress buyuk\_dosya.Z uncompress buyuk\_dosya.Z uncompress buyuk\_dosya.Z
+```bash
+% uncompress buyuk_dosya.Z uncompress buyuk_dosya.Z uncompress buyuk_dosya.Z uncompress buyuk_dosya.Z
+```
 
-% tail \[ -n \] dosya % tail \[ -n \] dosya % tail \[ -n \] dosya % tail \[ -n \] dosya
+```bash
+% tail [ -n ] dosya % tail [ -n ] dosya % tail [ -n ] dosya % tail [ -n ] dosya
+```
 
 Bir ASCII text dosyasının en son n n n n satırını listelemek için kullanılır. Eğer -n -n -n -n belirtilmemişse son 10 satır listelenir. tail tail tail tail komutunun çok hoş bir özelliği daha vardır. Eğer komutu -f -f -f -f parametresiyle kullanırsanız, ( tail -f uzayan\_dosya tail -f uzayan\_dosya tail -f uzayan\_dosya tail -f uzayan\_dosya ) dosyanın sonuna gelindiğinde program durmaz, eklenecek yeni kayıtları beklemeye başlar. Böylece, başka programlar tarafından sonuna devamlı kayıt eklenen dosyalara eklenen satırları ekranınızda sürekli olarak gözleyebilirsiniz. Gözleminiz sona erince, programı Ctrl-C ile durdurabilirsiniz.
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 182
 
-% head \[ -n \] dosya % head \[ -n \] dosya % head \[ -n \] dosya % head \[ -n \] dosya
+```bash
+% head [ -n ] dosya % head [ -n ] dosya % head [ -n ] dosya % head [ -n ] dosya
+```
 
 Bir ASCII text dosyasının ilk n n n n satırını listelemek için kullanılır. Eğer -n -n -n -n belirtilmemişse ilk 10 satır listelenir.
 
-% sort \[ -d % sort \[ -d % sort \[ -d % sort \[ -dbfru + bfru + bfru + bfru +f f f f - - - -g g g g \] dosya \] dosya \] dosya \] dosya
+```bash
+% sort [ -d % sort [ -d % sort [ -d % sort [ -dbfru + bfru + bfru + bfru +f f f f - - - -g g g g ] dosya ] dosya ] dosya ] dosya
+```
 
 dosya dosya dosya dosya isimli dosyanın içindeki satırları alfabetik sıraya dizer, sıralı dosyayı standart çıktı birimine (ekrana) gönderir.
 
@@ -1337,7 +1476,9 @@ dosya dosya dosya dosya isimli dosyanın içindeki satırları alfabetik sıraya
 
 -r -r -r -r parametresi kullanılırsa, sıralama küçükten büyüğe değil, büyükten küçüğe doğru yapılır (reverse reverse reverse reverse order order order order) -u -u -u -u parametresi kullanılırsa birbirinin aynı olan satırlara rastlandığında sadece bir tanesi dikkate alınır. Bu parametreyi aşağıdaki örnekteki gibi kullanarak bir dosyadaki mükerrer kayıtları ayıklayabilirsiniz.
 
+```bash
 % sort -u dosya1 > dosya2 sort -u dosya1 > dosya2 sort -u dosya1 > dosya2 sort -u dosya1 > dosya2
+```
 
 + + + +f f f f parametresi, sıralamada kullanılacak anahtar bilginin, satırın f f f f numaralı bilgi sahasında başladığını gösterir. (Dikkat Dikkat Dikkat Dikkat ! Bilgi saha sıra numaraları sıfırdan başlar) -g -g -g -g parametresi ise sıralamada kullanılacak anahtar bilginin, satırın g g g g numaralı sahasında sona erdiğini belirtir. (Dikkat ! Dikkat ! Dikkat ! Dikkat ! Saha sıra numaraları sıfırdan başlar) Satırlardaki sahalar boşluk karakterleri ve TAB karakterleriyle belirlenir.
 
@@ -1379,15 +1520,16 @@ mutfak bardak 70 mutfak bardak 70 mutfak bardak 70 mutfak bardak 70
 
 sarf silgi 123 sarf silgi 123 sarf silgi 123 sarf silgi 123
 
+```bash
 sort -r sirasiz > sirali sort -r sirasiz > sirali sort -r sirasiz > sirali sort -r sirasiz > sirali
+```
 
+```bash
 sort +1 -2 sirasiz > sirali
-
 sort +1 -2 sirasiz > sirali
-
 sort +1 -2 sirasiz > sirali
-
 sort +1 -2 sirasiz > sirali
+```
 
 komutundan sonra komutundan sonra
 
@@ -1423,7 +1565,9 @@ mobilya masa 12 mobilya masa 12 mobilya masa 12 mobilya masa 12
 
 sarf silgi 123 sarf silgi 123 sarf silgi 123 sarf silgi 123
 
+```bash
 % cmp dosya1 dosya2 % cmp dosya1 dosya2 % cmp dosya1 dosya2 % cmp dosya1 dosya2 (compare files)
+```
 
 dosya1
 
@@ -1447,25 +1591,37 @@ Elma, insanlar tarafindan Elma, insanlar tarafindan Elma, insanlar tarafindan El
 
 Uzun yillardir Uzun yillardir Uzun yillardir Uzun yillardir ben ben ben ben de de de de Uzun yillardir Uzun yillardir Uzun yillardir Uzun yillardir biz biz biz biz de de de de elma yemeyi bir elma yemeyi bir elma yemeyi bir elma yemeyi bir elma yemeyi bir elma yemeyi bir elma yemeyi bir elma yemeyi bir aliskanlik haline aliskanlik haline aliskanlik haline aliskanlik haline aliskanlik haline aliskanlik haline aliskanlik haline aliskanlik haline getirdik. getirdik. getirdik. getirdik. getirdik. getirdik. getirdik. getirdik. dosyalarına
 
+```bash
 % cmp dosya1 dosya2 cmp dosya1 dosya2 cmp dosya1 dosya2 cmp dosya1 dosya2
+```
 
-komutu uygulanırsa dosya1 dosya2 differ: char 69, line 3 dosya1 dosya2 differ: char 69, line 3 dosya1 dosya2 differ: char 69, line 3 dosya1 dosya2 differ: char 69, line 3
+komutu uygulanırsa
+
+```bash
+dosya1 dosya2 differ: char 69, line 3 dosya1 dosya2 differ: char 69, line 3 dosya1 dosya2 differ: char 69, line 3 dosya1 dosya2 differ: char 69, line 3
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 184
 
 yanıtını alırız. (Her satırın sonundaki satır başı karakterini de bir karakter saymayı unutmayın. cmp cmp cmp cmp komutundan daha yetenekli olan bir de diff diff diff diff komutu vardır. Bu diff diff diff diff komutunu öğrenmek de sizin ödeviniz olsun. Sınavda sorarım haaaa!
 
-% crypt < normal\_dosya > kriptolu\_dosya % crypt < normal\_dosya > kriptolu\_dosya % crypt < normal\_dosya > kriptolu\_dosya % crypt < normal\_dosya > kriptolu\_dosya
+```bash
+% crypt < normal_dosya > kriptolu_dosya % crypt < normal_dosya > kriptolu_dosya % crypt < normal_dosya > kriptolu_dosya % crypt < normal_dosya > kriptolu_dosya
+```
 
 Diskteki normal\_dosya normal\_dosya normal\_dosya normal\_dosya isimli dosyayı okur, klavyeden bir anahtar sözcük anahtar sözcük anahtar sözcük anahtar sözcük girmenizi ister ve bu anahtar sözcüğü kullanarak şifreli bir dosya olan kriptolu\_dosya kriptolu\_dosya kriptolu\_dosya kriptolu\_dosya dosyasını yaratır. Eğer normal\_dosya normal\_dosya normal\_dosya normal\_dosya isimli dosyayı silerseniz, geriye kalan şifreli dosyanın içeriğini sizden başka hiç kimse bir daha göremez. (root root root root kullanıcı dahi göremez). Ancak, programa verdiğiniz anahtar sözcüğü kesinlikle unutmamanız gerekir. Eğer bu sözcüğü bir unutursanız, dosyanızın şifresini çözebilmek için size hiç, ama hiç kimse yardım edemez.
 
-% tr \[-ds\] \[dizi\_1\] \[dizi\_2\] < dosya1 > dosya2 % tr \[-ds\] \[dizi\_1\] \[dizi\_2\] < dosya1 > dosya2 % tr \[-ds\] \[dizi\_1\] \[dizi\_2\] < dosya1 > dosya2 % tr \[-ds\] \[dizi\_1\] \[dizi\_2\] < dosya1 > dosya2
+```bash
+% tr [-ds] [dizi_1] [dizi_2] < dosya1 > dosya2 % tr [-ds] [dizi_1] [dizi_2] < dosya1 > dosya2 % tr [-ds] [dizi_1] [dizi_2] < dosya1 > dosya2 % tr [-ds] [dizi_1] [dizi_2] < dosya1 > dosya2
+```
 
 translate dizi\_1 dizi\_1 Standart girişteki tüm karakterleri tarayarak dizi\_1 dizi\_1 kalıbına uyanları dizi\_2 dizi\_2 dizi\_2 dizi\_2 kalıbındakilerle değiştirir.
 
 Örneğin
 
+```bash
 % tr 123 abc < dosya1 > dosya2 tr 123 abc < dosya1 > dosya2 tr 123 abc < dosya1 > dosya2 tr 123 abc < dosya1 > dosya2
+```
 
 komutu verildiğinde, dosya1 dosya1 dosyası taranarak, bu dosyada rastlanan tüm 1 1 1 1’ler
 
@@ -1477,25 +1633,35 @@ a a a a ile; tüm 2 2 2 2’ler b b b b ile ve tüm 3 3 3 3’ler c c c c ile de
 
 Aynı komutu
 
-% tr \[1-3\] \[a-c\] < dosya1 > dosya2 tr \[1-3\] \[a-c\] < dosya1 > dosya2 tr \[1-3\] \[a-c\] < dosya1 > dosya2 tr \[1-3\] \[a-c\] < dosya1 > dosya2şeklinde de verebilirdik.
+```bash
+% tr [1-3] [a-c] < dosya1 > dosya2 tr [1-3] [a-c] < dosya1 > dosya2 tr [1-3] [a-c] < dosya1 > dosya2 tr [1-3] [a-c] < dosya1 > dosya2
+```
+
+şeklinde de verebilirdik.
 
 Komutun -s -s -s -s parametresi kullanılırsa, tekrar eden karakterden oluşan diziler tek karaktere dönüştürülür.
 
 Örneğin, tekrarli tekrarli tekrarli tekrarli isimli dosyanın içinde "Imdaaaaaaaat!!!!!!" "Imdaaaaaaaat!!!!!!" "Imdaaaaaaaat!!!!!!" "Imdaaaaaaaat!!!!!!" dizisi varsa
 
+```bash
 % tr -s < tekrarli tr -s < tekrarli tr -s < tekrarli tr -s < tekrarli
+```
 
 komutu ekrana (standart çıktıya) "Imdat!" "Imdat!" "Imdat!" "Imdat!" sözcüğünü gönderir.
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 185
 
+```bash
 % file dosya(lar) % file dosya(lar) % file dosya(lar) % file dosya(lar)
+```
 
 Parametresi olarak verilen dosyaların ne tip dosyalar olduğunu belirtir.
 
 Acemi kullanıcılar sık sık bir dosyanın ne içerdiğini görmek için
 
-% cat dosya\_adi cat dosya\_adi cat dosya\_adi cat dosya\_adi
+```bash
+% cat dosya_adi cat dosya_adi cat dosya_adi cat dosya_adi
+```
 
 komutunu verip, dosyayı ekrana listelemek isterler. Eğer söz konusu dosya bir ASCII text dosyası değilse, dosyanın içinde yer alan kod dizilerinden birinin terminali kilitleme olasılığı yüksektir.
 
@@ -1505,75 +1671,97 @@ Bu komutun ASCII ASCII ASCII ASCII ya da text text text text olarak nitelendirdi
 
 Örneğin
 
-% file a\* b\* file a\* b\* file a\* b\* file a\* b\*
+```bash
+% file a* b* file a* b* file a* b* file a* b*
+```
 
-komutu, adı a a a a veya b b b b harfiyle başlayan dosyaların tiplerini ekrana listeler. abc:/home/ayfer> cd /etc cd /etc cd /etc cd /etc abc:/etc> file a\* b\* c\* d\* file a\* b\* c\* d\* file a\* b\* c\* d\* file a\* b\* c\* d\* adm: symbolic link to ../var/adm aliases: ascii text aliases.dir: empty aliases.pag: binary Computer Graphics Metafile arp: symbolic link to ../usr/etc/arp autoreply.data: c-shell commands cron: symbolic link to ../usr/etc/cron domainname: ascii text dp: directory dp.conf: English text dp.start: executable shell script dumpdates: ascii text abc:/etc>
+komutu, adı a a a a veya b b b b harfiyle başlayan dosyaların tiplerini ekrana listeler.
+
+```bash
+abc:/home/ayfer> cd /etc cd /etc cd /etc cd /etc abc:/etc> file a* b* c* d* file a* b* c* d* file a* b* c* d* file a* b* c* d* adm: symbolic link to ../var/adm aliases: ascii text aliases.dir: empty aliases.pag: binary Computer Graphics Metafile arp: symbolic link to ../usr/etc/arp autoreply.data: c-shell commands cron: symbolic link to ../usr/etc/cron domainname: ascii text dp: directory dp.conf: English text dp.start: executable shell script dumpdates: ascii text abc:/etc>
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 186
 
-% du \[dizin adi\] % du \[dizin adi\] % du \[dizin adi\] % du \[dizin adi\] (disk usage)
+```bash
+% du [dizin adi] % du [dizin adi] % du [dizin adi] % du [dizin adi] (disk usage)
+```
 
 Parametresi olarak belirtilen dizinde (dizin belirtilmezse çalışma dizini kabul edilir) ve onun alt dizinlerinin diskte harcadıkları alanların büyüklükleri listelenir. Bu liste blok blok blok blok cinsinden verilir ve 1 blok = 512 Byte’ 1 blok = 512 Byte’dır.
 
-1 blok = 512 Byte’ 1 blok = 512 Byte’ abc:/home/ayfer> du du du du 146 ./Mail 1 ./.elm 1086 ./burkey 1 ./.wastebasket 1473 ./docs 233 ./denemeler 91 ./kitap/bolumler 134 ./kitap 734 ./Humor 3899 .
+1 blok = 512 Byte’ 1 blok = 512 Byte’
 
+```bash
+abc:/home/ayfer> du du du du 146 ./Mail 1 ./.elm 1086 ./burkey 1 ./.wastebasket 1473 ./docs 233 ./denemeler 91 ./kitap/bolumler 134 ./kitap 734 ./Humor 3899 .
 abc:/home/ayfer>
+```
 
 Bu örneğe göre Mail Mail Mail Mail dizinindeki dosyaların toplam uzunluğu 73 Kbyte, burkey burkey burkey burkey dizini 543 Kbyte ve tüm dizinlerin toplamı da yaklaşık 1.95 Mbyte dır.
 
+```bash
 % df % df % df % df (disk free)
+```
 
-Komutun verildiği anda mount mount mount mount edilmiş olan tüm dosya sistemlerinin toplam kapasitelerini, ne kadarlarının kullanıldığını ve boş yer miktarını Kbyte Kbyte Kbyte Kbyte cinsinden listeler. SVR4 UNIX kullanıcıları, aşağıdakine benzer bir liste alabilmek için, komutu “df -k” “df -k” “df -k” “df -k” şeklinde kullanmak zorunda kalabilirler. abc:/home/ayfer> df df df df Filesystem kbytes used avail capacity Mounted on /dev/sd0a 16327 12417 2278 84% / /dev/sd0g 413767 367489 4902 99% /usr /dev/sd0h 529020 419638 56480 88% /home
+Komutun verildiği anda mount mount mount mount edilmiş olan tüm dosya sistemlerinin toplam kapasitelerini, ne kadarlarının kullanıldığını ve boş yer miktarını Kbyte Kbyte Kbyte Kbyte cinsinden listeler. SVR4 UNIX kullanıcıları, aşağıdakine benzer bir liste alabilmek için, komutu “df -k” “df -k” “df -k” “df -k” şeklinde kullanmak zorunda kalabilirler.
 
+```bash
+abc:/home/ayfer> df df df df Filesystem kbytes used avail capacity Mounted on /dev/sd0a 16327 12417 2278 84% / /dev/sd0g 413767 367489 4902 99% /usr /dev/sd0h 529020 419638 56480 88% /home
 abc:/home/ayfer>
+```
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 187
 
+```bash
 % tty % tty % tty % tty (teletype)
+```
 
-Terminalinizin sisteme hangi arabirimden bağlı olduğunu merak ederseniz kullanmanız gereken komuttur. abc:/home/ayfer> tty tty tty tty /dev/ttya
+Terminalinizin sisteme hangi arabirimden bağlı olduğunu merak ederseniz kullanmanız gereken komuttur.
 
+```bash
+abc:/home/ayfer> tty tty tty tty /dev/ttya
 abc:/home/ayfer>
+```
 
+```bash
 % bc % bc % bc % bc (high Precision calculator)
+```
 
-Oldukça kullanışlı bir hesap makinası programıdır. Tipik kullanıma bir örnek abc:/home/ayfer> bc bc bc bc 12+19 12+19 12+19 12+19
+Oldukça kullanışlı bir hesap makinası programıdır. Tipik kullanıma bir örnek
 
+```bash
+abc:/home/ayfer> bc bc bc bc 12+19 12+19 12+19 12+19
 31
-
 37 - 19 37 - 19 37 - 19 37 - 19
-
 18
-
-9 \* 6 9 \* 6 9 \* 6 9 \* 6
-
+9 * 6 9 * 6 9 * 6 9 * 6
 54
-
 84/7 84/7 84/7 84/7
-
 12
-
 sqrt(64) sqrt(64) sqrt(64) sqrt(64)
-
 8
-
 quit quit quit quit
-
 abc:/home/ayfer>
+```
 
-% split \[ -n \] cok\_buyuk\_dosya % split \[ -n \] cok\_buyuk\_dosya % split \[ -n \] cok\_buyuk\_dosya % split \[ -n \] cok\_buyuk\_dosya
+```bash
+% split [ -n ] cok_buyuk_dosya % split [ -n ] cok_buyuk_dosya % split [ -n ] cok_buyuk_dosya % split [ -n ] cok_buyuk_dosya
+```
 
 Çok büyük dosyaları daha küçük parçalara ayırmak için kullanılır. Eğer -n -n -n -n parametresiyle bir sayı verilmezse çok-büyük-dosya çok-büyük-dosya çok-büyük-dosya çok-büyük-dosya 1000’er satırlık parçalara bölünecek ve xaa, xab, xac,...., xaz, xba, xbb, ..... xaa, xab, xac,...., xaz, xba, xbb, ..... xaa, xab, xac,...., xaz, xba, xbb, ..... xaa, xab, xac,...., xaz, xba, xbb, ..... diye isimler altında gereği kadar dosya yaratılacaktır. Satır başı karakterleri (CR : Carriage Return) ile ayrılmış bilgi grupları satır kabul edilecektir. Eğer dosyanın içinde hiç satır başı karakteri yoksa veya makul sıklıkta satır başı karakteri yoksa, parçalama pek başarılı olmayabilir.
 
 Bir dosyayı 100’er satırlık parçalara bölmek isterseniz, kullanacağınız komut
 
+```bash
 % split -100 dosya split -100 dosya split -100 dosya split -100 dosya
+```
 
 olmalıdır.
 
 Kim Korkar UNIX’ten? - Can Uğur Ayfer - PUSULA YAYINCILIK 188
 
-% join dosya1 dosya2 > yeni\_dosya % join dosya1 dosya2 > yeni\_dosya % join dosya1 dosya2 > yeni\_dosya % join dosya1 dosya2 > yeni\_dosya
+```bash
+% join dosya1 dosya2 > yeni_dosya % join dosya1 dosya2 > yeni_dosya % join dosya1 dosya2 > yeni_dosya % join dosya1 dosya2 > yeni_dosya
+```
 
 İki dosyayı yanyana yanyana yanyana yanyana birleştirmek için kullanılır. Sanırım bir örnekle açıklaması çok daha kolay olacak :
 
@@ -1597,13 +1785,19 @@ selami selami selami selami
 
 266-345 345 345 266-345 345 345 266-345 345 345 266-345 345 345
 
-% join dosya1 dosya2 > dosya3 join dosya1 dosya2 > dosya3 join dosya1 dosya2 > dosya3 join dosya1 dosya2 > dosya3 komutundan sonra
+```bash
+% join dosya1 dosya2 > dosya3 join dosya1 dosya2 > dosya3 join dosya1 dosya2 > dosya3 join dosya1 dosya2 > dosya3
+```
+
+komutundan sonra
 
 dosya3 dosya3 dosya3 dosya3
 
 isimler telefonlar isimler telefonlar isimler telefonlar isimler telefonlar ali 312-111 323 333 ali 312-111 323 333 ali 312-111 323 333 ali 312-111 323 333 veli 212-777 666 666 veli 212-777 666 666 veli 212-777 666 666 veli 212-777 666 666 selami 266-345 345 345 selami 266-345 345 345 selami 266-345 345 345 selami 266-345 345 345
 
+```bash
 % touch dosya % touch dosya % touch dosya % touch dosya
+```
 
 Bazen, içinde hiç bir şey olmayan boş bir dosya yaratmanız gerekebilir. Böyle bir durumda touch touch touch touch komutundan yararlanabilirsiniz.
 

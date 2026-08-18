@@ -37,25 +37,31 @@ Yapacağımız ilk şey doğal olarak, uygulamamıza bir Winsock kontrolü eklem
 
 Sunucu bilgisyar iletişim için ilk adımı başlatmalıdır. Port tanımını yapmalı ve dinleme moduna geçmelidir.
 
-Private Sub Form\_Load()
+```vbnet
+Private Sub Form_Load()
 Winsock1.localport = 4444
 Winsock1.listen
 End Sub
+```
 
 İlk komut port tanımını yapmak, ikinci komut ise olası bir istemciden gelecek olan iletişim talebini beklemek içindir. Dinleme modunda bekleyen sunucuya bir iletişim talebi geldiğinde "ConnectionRequest" olayı gerçekleşir. O yüzden bu olay için de bir kod yazmamız gerekir.
 
-Private Sub Winsock1\_ConnectionRequest(ByVal requestID As Long)
+```vbnet
+Private Sub Winsock1_ConnectionRequest(ByVal requestID As Long)
 Winsock1.Close
 Winsock1.Accept requestID
 End Sub
+```
 
 İlk komutla dinleme modundan çıkış gerçekleştirilmektedir. Artık dinleme modundan çıkmamız gerekiyor çünkü iletişim için artık bir istemci bize ulaşmıştır. İkinci komutla gelen talep kabul edilmektedir. Sunucu tarafında olması gereken zorunlu son kod ise istemciden gelen datanın alınması komutudur. İstemcinin bağlantı talebi kabul edildikten sonra istemciden gelecek olana data sunucuya ulaşınca "DataArrival" olayı gerçekleşir. Dolayısıyla datanın alınması ile ilgili komut bu olayla ilgili prosedüre yazılır.
 
-Private Sub Winsock1\_DataArrival(ByVal bytesTotal As Long)
+```vbnet
+Private Sub Winsock1_DataArrival(ByVal bytesTotal As Long)
 Dim bilgi As String
 Winsock1.GetData bilgi
 MsgBox bilgi
 End Sub
+```
 
 İkinci komutla, istemciden gelen data alınıp bir değişkene aktarılmaktadır.
 
@@ -65,17 +71,21 @@ Download
 
 İstemci bilgisyarın yapması gereken ilk şey, sunucunun, bağlantıya açtığı portu kullanmak olmalıdır. İkinci adım ise bağlantı kuracağı sunucunun IP adresini belirtmek olacaktır. Burada örnek olarak kendi bilgisayarımızla bağlantı kurabiliriz. Dolayısıyla bilgisayarımızın IP adresini bilmemiz gerekiyor. Bunu öğrenmek için windows "Başlat" menüsünden "Çalıştır" komutunu işletip komut satırına "winipcfg" komutunu yazmak olacaktır. Sonuç olarak istemcinin bağlantıya hazırlık komutları şu şekilde olacaktır:
 
-Private Sub Form\_Load()
+```vbnet
+Private Sub Form_Load()
 Winsock1.RemotePort = 4444
 Winsock1.RemoteHost = "195.87.88.55"
 Winsock1.Connect
 End Sub
+```
 
 İlk komutla, kullanılacak olan portun numarası; ikinci komutla, bağlantı kurulacak olan sunucunun IP adresi tanımlanırken, üçüncü komutla bağlantı talebi devreye sokulmaktadır. Bu komut sayesinde sunucuda "ConnectionRequest" olayı gerçekleşir ve sunucu "Accept" komutuyla istemciden gelen talebi kabul eder. Bu durumda sıra istemcidedir ve yapması gereken datayı göndermek olacaktır.
 
-Private Sub Command1\_Click()
+```vbnet
+Private Sub Command1_Click()
 Winsock1.SendData bilgi
 End Sub
+```
 
 İstemci datayı gönderdiğinde sunucuda "DataArrival" olayı gerçekleşecek ve sonrasında gelen datayı alacaktır.
 
@@ -132,13 +142,12 @@ Diğer : Bunların dışındaki her türlü sembol (örneğin (,-,),@ gibi karak
 
 Örnek programda bu karakterler kullanılarak değişik maske kullanımlarına yer verilmiştir. Text propertisi aracılığıyla MaskEdit kutusunun içeriğini ilgili veri alanlarına aktarabilirsiniz. Yine text propertisini kullanarak program içinden MaskEdit kutusunun içeriğini değiştirebilirsiniz ama bu konuda bir şeye dikkat etmeniz gerekiyor. Eğer tanımlı bir maske varsa önce bunu kaldırmalısınız. Aksi taktirde Run-time hata oluşacaktır. Bunu engellemek için text properisini aşağıdaki şekilde değiştirmek gerekir:
 
+```vbnet
 Gecici = MaskEdBox1.Mask
-
 MaskEdBox1.Mask = ""
-
 MaskEdBox1.Text=YeniMetin
-
 MaskEdBox1.Mask=Gecici
+```
 
 | Download |
 | --- |
@@ -154,7 +163,9 @@ FileList: Dosya listesini verir.
 
 Bu kontrolların birbirleriyle ilişkilendirilmeleri de çok basittir. DriveList'ten bir sürücü seçildiği zaman bu değer "Drive" propertisine aktarılır. Bu değeri, DirectoryList kontrolünün "Path" propertisine aktarırsanız, DirectoryList'te seçilen sürücünün klasör yapısı görüntülenecektir. Kullanıcı bu listeden istediği bir klasörü seçtiğinde seçilen klasörün adresi yine "path" propertisinde olacaktır. Bu değeri FileList'in "Path" propertisine aktardığınızda ise FileList'te o klasör içindeki dosyalar görüntülenecektir. Son olarak FileList'ten bir dosya adı seçtiğinizde bu değer FileList'in "FileName" propertisinde olacaktır. Tüm bu zincirin sonunda elde seçilen dosyanın tamyol adı şu olacaktır:
 
-Dir1.Path + "\\" + File1.FileName
+```vbnet
+Dir1.Path + "\" + File1.FileName
+```
 
 Aşağıdaki örnek programı önce çalıştırın sonra da birkaç satırdan oluşan kod yapısını inceleyiniz.
 
@@ -192,7 +203,9 @@ Treeview, Node (Düğüm) nesnelerinin hiyerarşik diziliminden oluşan bir kont
 
 Şimdi, Treeview kontrolünün en önemli komutunu biraz detaylı ele alalım. Treeview penceresinde görüntülenecek olan tüm düğümlerin tanımlanması gerekmektedir. Bu da "Add" komutu ile gerçekleştirilir.
 
+```vbnet
 Treeview1.Nodes.Add(relative, relationship, key, text, image, selectedimage)
+```
 
 relative: Kendisinden önceki düğümün adı - opsiyonel
 
@@ -256,13 +269,16 @@ CommonDialog kontrolünün "ShowOpen" metodu ile "Dosya Aç" diyalog penceresi a
 
 Bu örnekte, bir TextBox'ta yer alan metnin programatik olarak seçilmesi gösterilmektedir. Bu işleme genelde, yanlış bir veri girişi yapıldığında kullanıcıya düzeltme yapabilme kolaylığı vermek için ihtiyaç duyulmaktadır. Bu işlemi gerçekleştirmek için TextBox'ın SelStart ve SelLength özellikleri kullanılır. Seçilecek metnin başlangıç noktası SelStart ile belirlenir. SelLength ile de seçilecek parçanın uzunluğu tanımlanır.
 
+```vbnet
 Text1.Selstart=0
-
 Text1.SelLength=Len(Text1.Text)
+```
 
 SelLength'in diğer bir özelliği daha vardır. Programatik olarak metin üzerinde herhangi bir yere konumlanmak için SelStart'a bir değer verilmesi yeterlidir.
 
+```vbnet
 Text1.Selstart=3 'İmleç TextBox'taki metnin 3.harfine konumlanır
+```
 
 TextBox kullanımında yer verilmesi gereken bir incelik bulunmaktadır: Birden çok textbox'ın bulunduğu bir veri giriş ekranında, kullanıcı Enter'a bastıkça imleçin sonraki textbox'a otomatik olarak geçmesi istenir. Aslında bu işlem Tab tuşuyla gerçekleşmekte ama pek kullanışlı olmamaktadır. Bu iş için yapılacak işlem çok basittir: TextBox'ın keydown olayı gerçekleştiğinde basılan tuşun koduna bakılıyor. Bu kod eğer Enter'a aitse, SendKey komutuyla bir "Tab" karakteri gönderiliyor. Böylece programatik olarak Tab tuşuna basıldığı algılanmış oluyor. Enter'a basıldığında ortaya çıkan bip sesinin bastırılması içinse KeyPress olayı kullanılmıştır. Tüm bu işlemlerin işe yaraması için TextBox'ların TabIndex değerleri sıralı olmalıdır. Bu arada bir şeye dikkat etmeniz gerekiyor: Son TextBox'tan sonra "Kaydet" tuşuna geçiliyor ve kullanıcının Enter'a basmasıyla TextBox'ların içindeki değerler gerekli yere kaydedilip TextBox'ların içi boşaltılıyor. Son olarak SetFocus metoduyla imleç tekrar ilk TextBox'a konumlandırılıyor.
 

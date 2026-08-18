@@ -212,13 +212,17 @@ Bunlar, size, kontrol isimlerinin nasıl seçileceği konusunda bir fikir vermel
 
 Uygun kontrol isimleri kullanmanın önemini belirtmek için, Visual Basic’te ortak bir amaca bakalım. Bir Visual Basic Projesini geliştirme adımlarından birisinin Design(dizayn) mod’unda kontrol özelliklerini oluşturmak olduğunu gördük. Siz aynı zamanda, projeniz **run(çalışma) **mod’unda iken **properties(özellikler)**’ini değiştirebilir veya oluşturabilirsiniz. Örneğin, **Sample** projesinde, bir **option button(seçenek buton)**’una tıkladığınızda, formun **BackColor** özelliği değişecektir. **Run(çalışma)** modunda bir özelliği(property) değiştirmek için, bir satır BASIC kodu kullanmamız gerekmektedir. ( İlk BASIC satırını öğrenmek üzeresiniz !). Bu kod için **format (yapı -şekil)** aşağıdaki gibidir:
 
-## **ControlName.PropertyName = PropertyValue******
+```vbnet
+ControlName.PropertyName = PropertyValue
+```
 
 Kontrolün ismi, bir nokta (küsurat-ondalık noktası gibi), değiştirdiğimiz özelliğin ismi, (özellikler penceresi içinde bulunur), bir eşittir işareti (bir atama işlemcisi olarak adlandırılır) ve yeni bir değer yazdık. Böylesi bir format **dot** **notation-Nokta Notasyon **olarak adlandırılır.
 
 Sample Projesi Form’unun artalan rengini maviye dönüştüren kod:
 
-## **frmSample.BackColor = vbBlue******
+```vbnet
+frmSample.BackColor = vbBlue
+```
 
 Dikkat edin, hiç BASIC bilmemenize rağmen, uygun isim kullanılması, bu kod satırını çok anlaşılabilir bir hale getirmiştir. Sample form’un **artalan(background)** rengini maviye ayarlanmasını söylemektedir.
 
@@ -226,21 +230,21 @@ Dikkat edin, hiç BASIC bilmemenize rağmen, uygun isim kullanılması, bu kod s
 
 Uygun kontrol ismi vermenin önemi bir kez daha event procedures ( olay prosedürleri) yazarken ortaya çıkar (diğer derslerde ele alınacaktır). Bir form üzerine bir kontrol koyduğunuzda, kontrol yapan olay prosedürlerinin tümü, projenize eklenecektir. Bu **event procedures(olay prosedürleri)**’ni, **code window (kod penceresi)**’nde göreceğiz. Bu olay prosedürleri için yapı:
 
-## Başlık satırı : **Private Sub ControlName\_EventName()******
+Başlık satırı : `Private Sub ControlName_EventName()`
 
 \[BASIC kodu buradan devam eder\]
 
-Alt(taban) satırı : **End Sub******
+Alt(taban) satırı : `End Sub`
 
 Başlık satırının kontrol ismi kullandığına dikkat edin. Böylece, uygun isimlendirme ile bizler kolaylıkla her olay prosedürünü tanımlayabiliriz
 
 Bir örnek olarak, yine **Sample** programını kullanarak, **optBlue** kontrolü için **Click** olay prosedürü:
 
-## **Private Sub optBlue\_Click()**
-
-## **frmSample.BackColor = vbBlue**
-
-## **End Sub**
+```vbnet
+Private Sub optBlue_Click()
+frmSample.BackColor = vbBlue
+End Sub
+```
 
 Fark etmemiz gereken şey, kullanıcının **optBlue** option buttonunu çalıştıracak kod budur.
 
@@ -256,11 +260,11 @@ Henüz şimdi belirttiğimiz gibi, bir form üzerine bir kontrol yerleştirdiği
 
 Her kontrol birçok olay prosedürüne sahiptir. Her prosedür için BASIC kodu yazmak zorunda değilsiniz-**yalnızca bilgisayarın cevap(karşılık) vermesini istedikleriniz için** yazmalısınız. Bir kere bir olayın **‘kodlanması’** gerektiğine karar verirseniz, bu olay prosedüründe ne gerçekleşmesi gerektiğine karar verin ve bu isteklerinizi gerçek BASIC kod satırlarına çevirin. Daha evvel görüldüğü gibi, her olay prosedürü için **format(yapı-şekil) **aşağıdaki gibidir:
 
-## Başlık Satırı : **Private Sub ControlName\_EventName()******
+Başlık Satırı : `Private Sub ControlName_EventName()`
 
 \[BASIC kodu buradan devam ediyor\]
 
-Alt(taban) satırı: **End Sub******
+Alt(taban) satırı: `End Sub`
 
 ‘**Private Sub’** kelimeleri , bunun bir **Subroutine** (prosedür için başka bir kelime) ve bunun yalnızca forma **Private(Özel) **olduğunu belirtmektedir (yalnızca bu form tarafından kullanılabilir – şimdilik bunun ne anlama geldiği konusunu dert etmeyin!).
 
@@ -326,7 +330,9 @@ Kod penceresi bir kelime işlemcisi gibi davranır. Pencere içine metin yazıla
 
 Tek bir satır yazın:
 
-## ** Beep**
+```vbnet
+Beep
+```
 
 Bu bir BASIC talimatı olup, bilgisayara** bip** sesi vermesini söylemektedir.
 
@@ -342,7 +348,9 @@ Form şu şekilde belirecektir:
 
 Buradaki kod satırı(Beep) yorumlanacak ve bilgisayar bip sesi verecektir. Projenizi durdurun. Kod penceresine gidin ve **cmdBeep\_Click** olayını bulun. **Beep** satırından sonra, şu satırı ekleyin:
 
-## **frmFirstCode.BackColor = vbBlue******
+```vbnet
+frmFirstCode.BackColor = vbBlue
+```
 
 Aynen yukarıda yazıldığı gibi yazdığınızdan emin olun. Hatırlayın**, bilgisayar programları kesin olmalıdır**. Projeyi yeniden çalıştırın(Run). Komut butonunu tıklayın. Kontrol, olay prosedürü ve BASIC kodu ile olan ilişkisini açıklayın. Projenizi durdurun.
 

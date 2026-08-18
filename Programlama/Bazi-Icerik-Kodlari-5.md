@@ -67,7 +67,9 @@ Bir Excel dosyasını açmak için Excel'i çalıştırıp dosyayı açmak gerek
 
 Bu dersimizde komut satırındaki parametrenin program içinde nasıl kullanıldığı anlatılmaktadır. Uygulamamızın komut satırında yer alan parametreler Command() fonksiyonu ile okunur.
 
+```vbnet
 KomutParametresi=Command()
+```
 
 Örnek uygulamamızda, komut satırıyla gelen parametrenin bir metin dosyasının adı olduğu kabul edilerek, dosya açılıp içeriği bir metin kutusuna aktarılmaktadır. Örnek uygulamanın komut satırları arasında gerekli açıklamalar yapılmıştır. Uygulamanın EXE haline BenimEditör.EXE adını verdim. Açtığı dosyaların uzantısını da .benim olduğunu varsaydım ve örnek bir metin dosyası da koydum.
 
@@ -103,15 +105,16 @@ Tüm programlama dillerinde kendini hissettiren bir ihtiyaç vardır. Çalışma
 
 Duruma göre kullanılan üç farklı şekli bulunmaktadır.
 
-ON ERROR GOTO satıradı : Hata durumunda programın, satıradı ile isimlendirilmiş olan satırına gidilir.
+`ON ERROR GOTO satıradı` : Hata durumunda programın, satıradı ile isimlendirilmiş olan satırına gidilir.
 
-ON ERROR RESUME NEXT : Hata durumunda bir sonraki komut işleme konur.
+`ON ERROR RESUME NEXT` : Hata durumunda bir sonraki komut işleme konur.
 
-ON ERROR GOTO 0 : Hata denetimi pasifleştirilir.
+`ON ERROR GOTO 0` : Hata denetimi pasifleştirilir.
 
 Bu kullanım şekillerinden üçüncüsü hata denetimini iptal etmek için kullanılır. Detaylı bir açıklamaya gerek bulunmamaktadır. İkinci kullanım şekli ise hatanın oluştuğu program satırının gözardı edilmesini sağlamak ve bir sonraki komutu işleme koymak içindir. Bu komut için de detaya inmeye gerek bulunmamaktadır. Geniş şekilde ele alacak olduğum kullanım şekli ilkidir. Bu kullanım şekli ya hatayı gidermek için alternatif bir çözüm üretmekte ya da kullanıcıyı hata konusunda bilgilendirmek için kullanılmalıdır. Aşağıda, kullanıcıyı hata konusunda bilgilendirme yönünde basit bir örnek kullanım şekli yer almaktadır:
 
-Private Sub Command1\_Click()
+```vbnet
+Private Sub Command1_Click()
 On Error GoTo hata
 Open "testdosyasi.txt" For Input As #1
 '
@@ -121,17 +124,18 @@ Open "testdosyasi.txt" For Input As #1
 On Error GoTo 0
 Exit Sub
 hata:
-mesaj = MsgBox("Bir hata oluştu" + Chr(13) + "Hata Kodu: " + Str(Err.Number) \_
-
+mesaj = MsgBox("Bir hata oluştu" + Chr(13) + "Hata Kodu: " + Str(Err.Number) _
 + Chr(13) + "Hata Adı: " + Err.Description)
 On Error GoTo 0
 End Sub
+```
 
 İlk komutla, hata oluşması durumunda "hata" adındaki satıra gidileceği yorumlayıcıya bildirilmiş oldu. İkinci komutla bir dosya okuma amaçlı olarak açılmak isteniyor. Eğer bahsi geçen dosya bu uygulamanın çalıştığı klasörde varsa sonraki komutlar işleme konacak ve Exit Sub komutuyla prosedür sonlandırılıp bu prosedürün çağrıldığı yere gidilecektir. Ancak eğer bu dosya klasörde yoksa o zaman run-time hata oluşacaktır ve ON ERROR komutuyla, daha önceden belirtilmiş olan satıra yani "hata" isimli satıra gidilecektir. Burada kullanıcıya bir mesaj verilmektedir. Hatanın kodu ve açıklaması. Kullanıcı bu kodu ve açıklamayı alıp program satıcısı ile yani sizle bağlantı kurarak bu hatanın giderilmesini talep edebilecektir. (Hata kodu ve açıklamasının Err nesnesinin Number ve Description propertileriyle elde edildiğine dikkat ediniz)
 
 Kullanıcının hata konusunda bilgilendirilmesini gördük şimdi de hatanın giderilmesine bir örnek verelim.
 
-Private Sub Command1\_Click()
+```vbnet
+Private Sub Command1_Click()
 On Error GoTo hata
 Open "testdosyasi.txt" For Input As #1
 On Error GoTo 0
@@ -141,6 +145,7 @@ Open "testdosyasi.txt" For Output As #1
 Open "testdosyasi.txt" For Input As #1
 On Error GoTo 0
 End Sub
+```
 
 Yine aynı örnek. İlk komutta dosya Input modunda açılıyor. Eğer dosya yoksa hata satırına gelinecek ve burada dosya önce Output modunda açılacak (dolayısıyla dosya klasörde oluşturulacak) sonra da Input modunda açılacak. Sonuç olarak bu prosedürün çalıştırılmasının ardından öyle ya da böyle kullanıcının elinde Input modunda açılmış bir dosya olacaktır.
 
@@ -216,7 +221,9 @@ Uygulama pencerenizin ikonunun hareketli olması herhalde ilginç olacaktır. Ti
 
 İstastiksel amaçlarla ilgili bir uygulama yapacaksanız ya da bir şans oyunu programlamayı düşünüyorsanız rastgele üretilen sayılara ihtiyacınız olacaktır. "Rnd", bu ihtiyaçı karşılayan bir fonksiyondur. Rnd fonksiyonu 0 ile 1 arasında, sıfıra eşit olabilen ama 1'e eşit olmayan 7 ondalık rakamlı bir sayı üretir. Ancak bu sayıyı belli değerlerle çarpıp tamsayı kısmını alırsanız istediğiniz aralıklarda istediğiniz türden sayılar elde edebilirsiniz. Herhangi iki sayı değeri arasında yer alan bir tamsayı üretmenin temel formulü şudur:
 
-Sayi = Int(Rnd\*(ÜstSınır-AltSınır+1)) + AltSınır
+```vbnet
+Sayi = Int(Rnd*(ÜstSınır-AltSınır+1)) + AltSınır
+```
 
 Bu genel formülden yola çıkarak ortaya konmuş, tavla zarı ve yazı/tura atışına kadar varan çeşitli örnekleri aşağıdaki uygulamamızda görebilirsiniz.
 
@@ -226,7 +233,9 @@ Bu genel formülden yola çıkarak ortaya konmuş, tavla zarı ve yazı/tura at�
 
 Bir diyalog penceresi aracılığıyla kullanıcıya bir mesaj gösterir ve kullanıcının bir tuşa basmasından sonra basılan tuşun tamsayı karşılığını verir.
 
+```vbnet
 MsgBox(Mesaj,Tuşlar,Başlık,Yardım Dosyası,Konu Numarası)
+```
 
 Mesaj: Diyalog penceresinde kullanıcıya iletilecek olan mesaj metni - Gerekli
 
@@ -256,11 +265,11 @@ Tuş Numarası TuşAdı Görüntülenen tuşlar
 
 Örnek kullanımlar:
 
+```vbnet
 mesaj = MsgBox("Ad Soyad alanını boş geçmeyiniz.", vbOKOnly)
-
 mesaj = MsgBox("Programdan çıkmak istediğinizden emin misiniz?", 20, "Önemli soru")
-
 '4 ve 16'nın toplamı kullanıldı
+```
 
 Şimdi de, kullanıcını bu tuşlardan hangisine bastığını belirlemeye geldik. Aşağıda bazı tuşların numara karşılıkları listelenmiştir.
 
@@ -276,7 +285,9 @@ No 7
 
 Yukarıdaki ikinci örneğin sonucunun, program için kullanımı şu şekilde olacaktır:
 
+```vbnet
 If mesaj = 6 Then Unload Me
+```
 
 ## 6- Splash ekran kullanımı
 
@@ -326,7 +337,9 @@ Doğal olarak, deklerasyon bölümünde bazı değişkenler tanımlanmış Form\
 
 Oluşturulan dataların ya da dosyalar üzerinde yapılan değişikliklerin, uygulamanın kapatılması sırasında kullanıcının unutkanlığı yüzünden kaybolmaması için, güvenlik altına alınması gerekmektedir. Bu da uygulamalarımızda her zaman yer verdiğimiz "kapat" komutuna özel bir rutin yerleştirerek sağlanabilir. Ancak kullanıcı, uygulama penceresinin sağ üst köşesinde yer alan ve pencerenin kendisine ait olan "Close" tuşuna da basabilir. İşte bunun da bir şekilde de denetim altına alınması gerekmektedir. Aşağıdaki örnek programda "Unload" işlemi üç şekilde denetim altına alınmaktadır. Pencereye konmuş olan bir Command butonu, menüye yerleştirilmiş bir "Çıkış" komutu ve formun kendisine ait olan "Close" komutu bu örnek uygulamada kombine olarak denetim altına alınmıştır. Command1'in click programının hepiniz için anlaşılır olduğunu sanıyorum. Size "unload" olayının denetimini anlatayım. "Unload" olayı, form kapatıldığında gerçekleşir. Bu da uygulamada yer alan bir unload komutu ile ya da formun kapat tuşuna basılması ile gerçekleşir.
 
-## Private Sub Form\_Unload(Cancel As Integer)
+```vbnet
+Private Sub Form_Unload(Cancel As Integer)
+```
 
 Burada yer alan cancel parametresine uygulama içerisinde bir değer atayarak uygulamanın geleceği belirlenebilir. 0 değeri atanırsa form kapanır, sıfırdan farklı bir değer atanırsa formun kapatılmasına izin verilmez. Örnek uygulamamızda kullanıcının, Msgbox aracılığıyla kendisine sorulan soruya verdiği cevaba bağlı olarak cancel parametresine değer atanmaktadır. Kullanıcı, değişikliklerin kaydedilmesi sorusuna evet derse ilgili değişiklikler işleme konur ve cancel=0 yapılarak form kapatılır. Hayır derse değişiklikler dikkate alınmaz ve yine cancel=0 yapılır. Eğer kullanıcı iptal tuşuna basarsa cancel=1 yapılarak formun kapatılmasına izin verilmez ve formda kalınan yere geri dönülür. Burada muhtemelen "cikisizni" parametresi dikkatinizi çekmiştir. Bu parametre mükerrer denetim yapmamak için kullanılmıştır. Çünkü menüden yapılan kapatma işlemi ile yapılan denetimlerden sonra unload komutu ile pencere kapatılıyor ve bu da maalesef unload olayını tetikliyor. Bunun sonucunda da ilgili denetim programı tekrar çalıştırılıyor. Bu programda "cikisizni" değerine bakılıyor ve eğer değer true ise denetim yapılmış olduğu için mükerrerlik gerçekleşmiyor.
 
@@ -336,15 +349,19 @@ Burada yer alan cancel parametresine uygulama içerisinde bir değer atayarak uy
 
 Bu örnekte, bir kontrol üzerinde sağ klik yapıldığında bir popup menünün devreye sokulması anlatılmaktadır. Bu iş için "popupmenu" komutu kullanılmaktadır.
 
+```vbnet
 PopupMenu sag1 'sag1: Örneğimizdeki popup menünün adı.
+```
 
 Tasarım sırasında menü editörü ile ilgili popup menü tanımlanır ve visible özelliği false yapılır. Program sırasında ilgili kontrolün MouseUp olayı için küçük bir kod yazılması yeterlidir. Eğer sağ klik yapılmışsa PopupMenu komutuyla popup aktive edilir.
 
-Private Sub DBGrid1\_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+```vbnet
+Private Sub DBGrid1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 If Button = 2 Then 'Mouseun sağ tuşuna basılmış
 PopupMenu sag1
 End If
 End Sub
+```
 
 Geriye popup menümüzün herbir komutu için ilgili kodların yazılması kalmaktadır. Bu örneğimizde VisualBasic'le beraber gelen Biblio.mdb dosyasının verileri kullanılarak DBGrid kontrolüne yer verilmiştir. Programı çalıştırmadan önce, data1 kontrolünün DatabaseName özelliğine kendi bilgisayarınızdaki Biblio.mdb dosyasını tam adresi ile yazın, RecordSource özelliğine de Autors yazın. Visible özelliğini de false yaptıktan sonra, DBGrid kontrolünün DataSource özelliğine data1 yazın. Biblio.mdb dosyasının orijinalliğini bozmamak için popup menüde yer alan "Yeni" ve "Sil" komutları işlevsel olarak kullanılmamışlardır.
 
