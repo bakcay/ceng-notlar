@@ -1,0 +1,72 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>RESÝM DEÐÝÞTÝRMEK</h2></font>
+
+Web sayfalarýnda üzerine gidince deðiþen resimlere sýk sýk rastlýyorsunuzdur.
+Java Applet, ActiveX kontrolü gibi derlenmiþ bir öðe kullanmadan bu iþi
+siz de kolayca gerçekleþtirebilirsiniz. Örneðimizi uygulamadan önce grafik
+editörünüz ile 100*20 ebatlarýnda RESIM1-1.GIF, RESIM1-2.GIF, RESIM2-1.GIF,
+RESIM 2-2.GIF adlarýnda 4 adet grafik dosyasýný hazýrlayýn. "-1" uzantýsý
+ile biten dosyalar resmin ilk halini "-2" uzantýsý ile bitenler ise resmin
+fare imleci üzerine gittiði hali oluþturacaktýr.
+
+<P>Script'imizde her bir resim için bilgi "aOn.src", "bOn.src" gibi deðiþkenlerde
+tanýmlanmýþ. Bu deðiþkenleri uzatarak dilediðiniz sayýda kýsayol kullanabilirsiniz.
+Resimleri oluþturduktan sonra örnek HTML dosyamýzý oluþturun ve resimleri
+HTML sayfanýzla ayný klasöre taþýyýn. Resim ebatlarýný deðiþtirmek için
+ise tek yapacaðýnýz newImage(100, 20); ifadesi ile oynamak olacaktýr.
+
+<P>&lt;HTML>
+<BR>&lt;script language="javaScript">
+
+<P>if ((navigator.appName == "Netscape" &amp;&amp; parseInt(navigator.appVersion)
+>= 3)
+<BR>|| (navigator.appName == "Microsoft Internet Explorer" &amp;&amp; parseInt(navigator.appVersion)
+>= 4)) {
+<BR>rollOvers = 1;} else {rollOvers = 0;}
+<BR>var dirLevel = 1;
+<BR>var levelMod = "";
+<BR>levelMod = "";
+<BR>for (i = 0;i &lt; dirLevel;i++) {}
+
+<P>if (rollOvers) {
+<BR>aOn = new Image(100, 20);
+<BR>aOn.src = "resim1-1.gif";
+<BR>aOff = new Image(100, 20);
+<BR>aOff.src = "resim1-2.gif";
+<BR>bOn = new Image(100, 20);
+<BR>bOn.src = "resim2-1.gif";
+<BR>bOff = new Image(100, 20);
+<BR>bOff.src = "resim2-2.gif";
+<BR>}
+<BR>function switchOn(imgName) {
+<BR>if (rollOvers){
+<BR>imgOn = eval(imgName + "On.src");
+<BR>document [imgName].src = imgOn;}}
+<BR>function switchOff(imgName) {
+<BR>if (rollOvers){
+<BR>imgOff = eval(imgName + "Off.src");
+<BR>document [imgName].src = imgOff;
+<BR>}}&lt;/script>
+
+<P>&lt;a href="http://www.pcmagazine.com.tr/haberler" onMouseover="switchOn('a')"
+onMouseout="switchOff('a')">
+<BR>&lt;IMG SRC="resim1-2.gif" border=0 name="a">&lt;/a>
+<BR>&lt;p>
+<BR>&lt;a href="http://www.pcmagazine.com.tr/share" onMouseover="switchOn('b')"
+onMouseout="switchOff('b')">
+<BR>&lt;IMG SRC="resim2-2.gif" border=0 name="b">&lt;/a>
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+
+
+
+
+</td></tr></table>

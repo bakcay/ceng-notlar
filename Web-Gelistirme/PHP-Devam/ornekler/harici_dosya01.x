@@ -1,0 +1,1 @@
+Ben harici bir dosyanýn içindeki yazýyým.. Beni bir PHP programý alýp buraya getirdi! Kendisine teþekkür ederim

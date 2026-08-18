@@ -1,0 +1,106 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Channel Desteði</h2></font>
+
+Internet Explorer 4.0 bir çok yeni özellik ve deðiþiklikle karþýmýza
+geldi. Aktif HTML ve kanallar bu özelliklerden belki de en can alýcý olanlarý.
+Eðer üzerinde çalýþtýðýnýz web projesini sýk sýk güncellemeyi düþünüyorsanýz
+ve Internet Explorer 4.0 kullanýcýlarýný bu güncellemelerden en iyi þekilde
+faydalanmasýný istiyorsanýz IE4 ile gelen Channel özelliðini sitenize uygulamak
+isteyebilirsiniz.
+
+<P>Öncelikle belirtelim ki sitenizin içeriði statik ise ve deðiþmeyen bilgileri
+kullanýcýlara sunmak istiyorsanýz Channel özelliðini kullanmanýza gerek
+yok. Çünkü Channel mantýðý sitedeki deðiþikliklerden kullanýcýyý haberdar
+etmek ve deðiþiklik yapýlan iç sayfalara kolay eriþim saðlamak. Siteniz
+güncellenmiyorsa kullanýcýlarýn size "Sýk Kullanýlanlar " menüsünden ulaþmasý
+daha doðru olacaktýr.
+
+<P>Aslýnda sitenizin Aktif Kanal'ýný oluþturmak sandýðýnýz kadar zor deðil,
+3-5 gerekli öðeyi biraraya getirdikten sonra kanalýnýzý kurmak çok az zamanýnýzý
+alacaktýr. Aktif Kanal seçeneðinin sadece bir web sunucusu üzerinde çalýþacaðýný
+ve lokal olarak hazýrladýðýnýz dosyalarý denemek için bir web sunucusu
+kullanmanýz gerektiðini belirttikten sonra kanal oluþturmak için gerekli
+olan "malzemeleri" sayalým:
+
+<P><B>194x32, 32x32, 80x32 piksel boyutlarýnda üç adet GIF dosyasý:</B>
+<BR>En büyük olan GIF dosyasý, kullanýcý kanalýnýza üye olduðunda Internet
+Explorer'ýn Kanallar çubuðuna belirecek. 80x32 ebatlarýnda olan diðer bir
+GIF dosyamýz ise masaüstünüzdeki kanallar bölümüne yerleþecek. 32x32 boyutlarýndaki
+GIF ise bir simge niteliðinde.
+
+<P><B>Alt bölümlerin planý ve ikonlarý:</B>
+<BR>Kullanýcý sitenize ait kanala abone olduðunda kanal çubuðunda kanalýnýzý
+simgeleyen grafiði görür. Kullanýcý size ait olan öðeye çift týklayarak
+önemli gördüðünüz, her zaman güncellenen bölümlere ulaþabilmelidir. CDF
+dosyasýný hazýrlamadan önce bu bölümleri kafanýzda tasarlamalý her biri
+için 32x32 boyutlarýnda simgeler oluþturmalýsýnýz.
+
+<P><B>Önizleme sayfasý</B>
+<BR>Kanalýnýza abone olan kullanýcý kanal çubuðundaki simgenize her týkladýðýnýzda
+önizleme sayfanýzla karþýlaþacaktýr. Önizleme sayfasý kanalýnýzýn çekiciliðini
+arttýrmak için alt seçenekler dýþýnda elinizdeki yegane kozdur. Bu sayfayý
+elinizden geldiði kadar çok güncellemeli, sitenizdeki tüm yenilikleri bu
+sayfaya anýnda yansýtmalýsýnýz.
+
+<P><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#000099">Püf Noktasý:</FONT></FONT></B>
+Kanal önizleme sayfasýnýn geniþliði 460 pikseli geçmemelidir. Sayfa bu
+geniþliði geçerse sitenizi 640x480 çözünürlükte izleyen kullanýcýlar kanal
+çubuðu karþýlarýna geldiðinde önizleme sayfasý sað tarafa kayacaðýndan
+sayfanýn tümünü görmekte zorlanacak, alttaki kaydýrma çubuðunu kullanmak
+zorunda kalacaklardýr.
+
+<P><B>CDF dosyasý</B>
+<BR>Geldik can alýcý noktaya. Kullanýcýnýn kanalýnýza abone olabilmesi
+için kanalýnýzý karþý tarafýn sistemine tanýtacak bir dosya oluþturmaya
+ihtiyacýnýz var. Bu dosya CDF (Channel Definition File/Kanal Taným Dosyasý)
+uzantýsýný taþýyor. Tüm CDF dosyalarý birkaç ufak deðiþiklik týþýnda ayný
+tag'larý taþýr ve oluþturmasý çok kolaydýr. Dosyayý hazýrlarken dikkat
+etmeniz gerekenler Türkçe karakter kullanýlmamak ve girilediðiniz tüm URL'leri
+kontrol etmek. Internet Explorer URL yanlýþlýðý veya Türkçe karaktere rastladýðýnda
+dosyanýn geçersiz olduðunu söyleyecektir. Ýþte örnek CDF dosyanýz:
+
+<P>&lt;?XML VERSION="1.0" ENCODING="UTF-8"?>
+<BR>&lt;!DOCTYPE Channel SYSTEM "http://www.w3c.org/channel.dtd">
+<BR>&lt;CHANNEL HREF="http://www.projem.com.tr/channel/index.htm" SELF="
+http://www.projem.com.tr/channel/proje.cdf">
+<BR>&lt;TITLE>Kanal Basligi&lt;/TITLE>
+<BR>&lt;ABSTRACT>Site slogani/Aciklamasi&lt;/ABSTRACT>
+
+<P>&lt;LOGO HREF="http://www.projem.com.tr/channel/32x32.ico" STYLE="ICON"/>
+<BR>&lt;LOGO HREF="http://www.projem.com.tr/channel/80x32.gif" STYLE="IMAGE"/>
+<BR>&lt;LOGO HREF="http://www.projem.com.tr/channel/194x32.gif" STYLE="IMAGE-WIDE"/>
+
+<P>&lt;ITEM HREF=" http://www.projem.com.tr/deneme.htm"
+<BR>LASTMOD="1997.07.08T09:43+0200" PRECACHE="YES">
+<BR>&lt;TITLE>DENEMEDIR&lt;/TITLE>
+<BR>&lt;LOGO HREF="http://www.projem.com.tr/channel/ornek.ico" STYLE="ICON"/>
+<BR>&lt;ABSTRACT>DENEMEDIR&lt;/ABSTRACT>
+<BR>&lt;/ITEM>
+<BR>……
+<BR>[Bu alana diðer alt seçenekler girecek]
+<BR>……
+<BR>&lt;/CHANNEL>
+
+<P><B><FONT FACE="Arial,Helvetica">KULLANICI NASIL ÜYE OLACAK?</FONT></B>
+<BR>Yukarýda istediðimiz tüm öðeleri bir klasörde biraraya getirdiniz ve
+uygun CDFdosyasýný hazýrladýnýz. Þimdi kullanýcýlarýnýzýn, hazýrldýðýnýz
+bu nadide kanala abone olabilmeleri için gerekli olan kodlarý ana sayfanýza
+girmelisiniz.
+
+<P>&lt;a href="javascript:window.external.addChannel('http://www.projem.com.tr/channel/proje.cdf')">
+<BR>&lt;img src="abone.gif" border=0>&lt;br>Kanalýma Abone Olun!&lt;/a>
+
+<P>...þeklindeki kodlarý sayfanýza girdiðinizde artýk sizi ziyaret eden bir
+þahýs kolaylýkla sitenize abone olabilir, deðiþiklikleri öðrenebilir. Ýþte
+bu kadar basit!
+
+
+
+</td></tr></table>

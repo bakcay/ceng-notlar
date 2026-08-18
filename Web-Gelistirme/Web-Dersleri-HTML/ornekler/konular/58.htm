@@ -1,0 +1,46 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+
+<P><FONT FACE="Arial,Helvetica"><FONT SIZE=+2><B>ÝSTENÝLEN BOYUTLARDA YENÝ
+BÝR PENCERE</B></FONT></FONT>
+<BR>Aþaðýdaki kodlarý istediðiniz boyutlarda baþlýk çubuksuz, gezinme tuþlarý
+olmayan bir pencere açmak için kullanabilirsiniz. Yazdýðýmýz Javascript
+PopIt adlý bir fonksiyon oluþturuyor ve sayfanýn herhangi bir yerinden
+bu fonksiyonu çaðýrmamýza olanak tanýyor. Biz örneðimizde fonksiyonun bir
+tuþa basýldýðýnda çaðrýlmasýný saðladýk.
+
+<P>Örneðin sayfa açýlýrken ayný anda baþka bir pencere açýlsýn istiyorsanýz
+<BR>&lt;BODY onload="PopIt('deneme.htm', 160, 300)">
+<BR>gibi bir ifade kullanabilirsiniz.
+
+<P>&lt;HTML>
+<BR>&lt;title>Ýstenilen boyutlarda yeni bir pencere&lt;/title>
+<BR>&lt;SCRIPT LANGUAGE="JavaScript">
+<BR>&lt;!--
+<BR>function PopIt(filename, h, w){
+<BR>popup = window.open(filename,"popDialog","height="+h+",width="+w+",scrollbars=no")
+<BR>if ( popup.document.close() ) {
+<BR>popup.document.close()
+<BR>}
+<BR>}
+<BR>// -->
+<BR>&lt;/SCRIPT>
+
+<P>&lt;BODY BGCOLOR="#FFFFFF">
+<BR>&lt;FORM>
+<BR>&lt;INPUT TYPE="BUTTON" VALUE="Penceremi aç!" onClick="PopIt('deneme.htm',
+160, 300)">
+<BR>&lt;/FORM>
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+
+
+
+</td></tr></table>

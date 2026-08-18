@@ -1,0 +1,35 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>DURUM ÇUBUÐUNDA YANIP SÖNEN YAZI</h2></font>
+
+Geçen ay, sayfa yüklendiðinde durum çubuðuna yerleþen ve çubukta sabit
+kalan bir yazý oluþturmak için gerekli Javascript kodunu vermiþtik. Aþaðýdaki
+Javascript bir adým ileri giderek durum çubuðuna yanýp sönen bir yazý yerleþtiriyor.
+Kullanýcý herhangi bir URL üzerine gittiðinde devreden çýkan yazý hiç bir
+kýsayol üzerine gidilmediðinde yine yanýp sönmeye baþlýyor.
+
+<P>&lt;SCRIPT language="JavaScript">&lt;!---
+<BR>var yazi = "Yanip sönen yazilarla dikkat cekebilirsiniz...";
+<BR>var hiz = 150;
+<BR>var control = 1;
+<BR>function flash()
+<BR>{if (control == 1)
+<BR>{window.status=yazi; control=0;}
+<BR>else
+<BR>{window.status=""; control=1;}
+<BR>setTimeout("flash();",hiz);}
+<BR>// -->&lt;/SCRIPT>
+
+<P>&lt;BODY OnLoad="flash();">
+
+
+
+
+
+</td></tr></table>

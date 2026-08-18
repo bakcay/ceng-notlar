@@ -1,0 +1,84 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<p><FONT FACE="Arial,Helvetica"><FONT SIZE=+2><B>LÝNKLERLE DOLU BÝR SAYFA!</B></FONT></FONT>
+<BR>Kendinize Internet kýsayollaýyla&nbsp; dolu kiþisel bir sayfa hazýrlamak
+ve sýk sýk kullandýðýnýz linkleri içeren bu sayfadaki dilediðiniz linkleri
+sýrayla gezmek istiyorsunuz. Bu iþi gerçekleþtiremek için size oldukça
+akýllý bþr javasript sunuyoruz. We b sayfasýnda yanýnda iþaretlenebilecek
+kutucuklar olan linkler gösteren ve seçili kutucuklardan oluaþn bir link
+listesi hazýrlayan javascript Explorer 3.0 Netscape 3 üstü tarayýcýlarda
+çalýþýyor.
+
+<P>&lt;html>
+<BR>&lt;script language="JavaScript">
+
+<P>&lt;!--
+<BR>function newlink(href, descr) {
+<BR>document.write ('&lt;FORM>&lt;INPUT TYPE="checkbox" NAME="picklink"
+VALUE="off">&lt;a href="' + href +'">' + href + '&lt;/a>&lt;br>' + descr
++'&lt;INPUT TYPE=HIDDEN NAME="site" VALUE="' + href + '">&lt;INPUT TYPE=HIDDEN
+NAME="desc" VALUE="' + descr +'">&lt;/FORM>');
+<BR>}
+
+<P>function makepage () {
+<BR>linkPage = '&lt;HTML>&lt;HEAD>&lt;TITLE>Gezeceðim Kýsayollar:&lt;/TITLE>&lt;/HEAD>'
++
+<BR>'&lt;BODY TEXT="#000088" BGCOLOR="#FFFFCC" LINK="#800000" VLINK="#800000"
+ALINK="#800000">' +
+<BR>'&lt;h1>Gezeceðim Kýsayollar:&lt;/H1>&lt;hr noshade color="#880000">';
+<BR>n = (document.forms.length - 0)
+<BR>// replace 0 with number of extenal forms on page
+<BR>for (var i = 0; i &lt; n; i++) {
+<BR>if (document.forms[i].picklink.checked == true) {
+<BR>var site = document.forms[i].site.value;
+<BR>var desc = document.forms[i].desc.value;
+<BR>link = '&lt;a href="' + site + '" target="opener">' + site + '&lt;/a>&lt;br>'
++ desc + '&lt;br>&lt;br>';
+<BR>linkPage = linkPage + link
+<BR>}
+<BR>}
+<BR>linkPage = linkPage +'&lt;/BODY>&lt;/HTML>';
+<BR>remote = window.open("","remotewin","width=350,height=400,scrollbars=yes");
+<BR>remote.document.write (linkPage);
+<BR>remote.document.close()
+<BR>if (remote.opener == null)
+<BR>remote.opener = window;
+<BR>remote.opener.name = "opener";
+<BR>}
+<BR>//-->
+<BR>&lt;/script>
+<BR>&lt;BODY BGCOLOR="#FFFFFF">
+
+<P>Aþaðýdaki kýsayollardan dilediklerinizi iþaretledikten sonra&lt;br>
+<BR>"Sayfayý Hazýrla" Tuþuna Basýn.&lt;P>
+<BR>&lt;script>
+<BR>&lt;!--
+<BR>newlink ("http://www.yahoo.com/ ", "Yahoo - Örnek vermek için link...")
+<BR>newlink ("http://www.excite.com/ ", "Excite - Arama motoru...")
+<BR>newlink ("http://www.infoseek.com/ ", "Infoseek - Baþka bir arama motoru")
+<BR>newlink ("http://www.lycos.com/ ", "Lycos - Örnek için diðer bir link.")
+<BR>document.write ('&lt;br>&lt;A HREF = "javascript:makepage()">Sayfayý
+Hazýrla.&lt;/A>');
+<BR>//-->
+<BR>&lt;/script>
+<BR>&lt;hr>
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+<P>Örneðimizde sadece 4 adet kýsayol verdik. "newlink" fonksiyonunu kullanarak
+dilediðiniz kadar fazla iþaretlenebilir kýsayol oluþturabilir. Sayfayý
+Hazýrla tuþuna bastýktan sonra çýkan küçük pencereyi kullanarak ilgili
+siteleri sýrayla gezebilirsiniz.
+
+
+
+
+
+
+</td></tr></table>

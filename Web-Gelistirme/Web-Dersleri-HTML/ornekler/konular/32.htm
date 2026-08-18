@@ -1,0 +1,69 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>"ÇEREZLER" ÝLE ZÝYARET SAYISINI ÖÐRENMEK</h2></font>
+
+Genellikle büyük yabancý firmalarýn web sitelerinden yolanan ve bilgisayarýmýza
+yerleþen cookie'ler (Microsoft Türkçesi ile "çerezler") bilgisayarýnýzýn
+veya sizin hakkýnýzdaki basit bilgileri sabit diskinizde belirli bir klasörde
+tutmak için kullanýlýr. Web sitesini tekrar ziyaret ettiðinizde bu bilgiler
+sunucu tarafýndan okunur ve sunucu sizin hakkýnýzdaki bilgileri bu yolla
+edinir. Windows'unuzu tekrar kurduðunuzda bazý web sitelerinde oluþturduðunuz
+kiþisel sayfalarýn karþýnýza gelmemesinin sebebi budur. Web sunucu, cookies
+klasöründeki bilgilerinizi bulamadýðý için sizin kim olduðunuzu anlayamaz…
+
+<P>Sayfanýzý ziyaret eden kullanýcýnýn sabit diskinde bilgi tutmak çok
+kolaydýr. Aþaðýdaki Javascript, kullanýcýnýn ziyaret sayýsýný yine kullanýcýnýn
+sabit diskinde tutar ve kullanýcýnýn her yeni ziyaretinde sayýyý bir arttýrýr.
+Çerezler hakkýnda daha çok bilgiyi ilerki sayýlarýmýzda bulacaksýnýz, yine
+de merakýnýzý gidermek istiyorsanýz http://www.netscape.com/newsref/std/cookie_spec.html
+adresini ziyaret edebilirsiniz.
+
+<P>&lt;html>&lt;head>
+<BR>&lt;script>
+<BR>cookie_name = "Counter_Cookie";
+<BR>function doCookie() {
+<BR>if(document.cookie) {
+<BR>index = document.cookie.indexOf(cookie_name);
+<BR>} else {index = -1;}
+<BR>if (index == -1) {
+<BR>document.cookie=cookie_name+"=1; expires=Tuesday, 01-Apr-1999 08:00:00
+GMT";
+<BR>} else {
+<BR>countbegin = (document.cookie.indexOf("=", index) + 1);
+<BR>countend = document.cookie.indexOf(";", index);
+<BR>if (countend == -1) {countend = document.cookie.length;}
+<BR>count = eval(document.cookie.substring(countbegin, countend)) + 1;
+<BR>document.cookie=cookie_name+"="+count+"; expires=Tuesday, 01-Apr-1999
+08:00:00 GMT";}}
+<BR>function gettimes() {if(document.cookie) {
+<BR>index = document.cookie.indexOf(cookie_name);
+<BR>if (index != -1) {
+<BR>countbegin = (document.cookie.indexOf("=", index) + 1);
+<BR>countend = document.cookie.indexOf(";", index);
+<BR>if (countend == -1) {
+<BR>countend = document.cookie.length;}
+<BR>count = document.cookie.substring(countbegin, countend);
+<BR>if (count == 1) {
+<BR>return (count+" kere");
+<BR>} else {return (count+" kere");}}}
+<BR>return ("0 kere");}
+<BR>&lt;/script>
+<BR>&lt;/head>
+
+<P>&lt;body onLoad="doCookie()">
+<BR>&lt;center>&lt;script>
+<BR>document.write("&lt;b>Merhaba! Bu sayfaya daha önce "+gettimes()+"
+uðradýnýz.&lt;/b>");
+<BR>&lt;/script>&lt;/center>
+
+
+
+
+
+</td></tr></table>

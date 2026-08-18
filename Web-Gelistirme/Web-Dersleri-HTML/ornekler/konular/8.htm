@@ -1,0 +1,104 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Frame Kullanmak</h2></font>
+
+Frame'ler web tarayýcýnýzýn penceresini birbirine yapýþýk parçalara ayýrarak her bir parçanýn ayrý bir içerik sergilemesine izin verir. Yüklenen basit bir sayfayla yapýlan pencereyi ayýrma iþlemi, her pencere için HTML standartlarýna uygun bir sayfanýn yüklenmesiyle tamamlanýr. Frame'ler bulunan bir sayfa oluþturmak için herhangi bir HTML editörüne gerek yoktur. Tek ihtiyacýnýz olan basit bir metin editörü ve kafanýzda tasarladýðýnýz çerçeve stilini gerçekleþtirmek için biraz düþünmek.
+<P>Sayfanýzda frame uygulamasýna geçmeden önce hemen bu özelliðinin HTML 3.0 standartlarýnda bulunmadýðýný fakat en yeni web tarayýcýlarý tarafýndan desteklendiðini belirtelim. Netscape Navigator'ýn 2.0 ve Microsoft Internet Explorer'ýn 3.0 ve daha üstü sürümleri frameleri destekliyor.
+<P>Frame'leri destekleyen bir sayfa oluþturuyorsanýz mutlaka sayfanýn, bu özelliði desteklemeyen web tarayýcýlarý için bir alternatifini oluþturmalýsýnýz, aksi takdirde sitenize terminal ekranýndan veya eski bir web tarayýcýyla baðlanan kimseler içerikten faydalanamayacak ve sayfa ziyaret sayýnýza katkýda bulunmayacaklardýr (!) Frame'lere nasýl alternatif oluþturulduðunu yazýmýzýn ilerki bölümlerinde anlatacaðýz. Baþlamadan önce herkesin yaptýðý gibi frame'ler konusunda 1-2 örnek verip sadece TAG'larý açýklamayacaðýmýzý belirtelim, ayný zamanda kendi özgün çerçevelerinizi oluþturmanýz için iþin mantýðýna da deðineceðiz.
+
+<B><P>Frame'ler ne zaman kullanýlmalýdýr?
+</B><P>Hiç gereði olmadýðý halde web sayfanýzda frame'lerden faydalanmak hem sayfanýzýn iþlevselliðini yok edip kullanýcýnýn kafasýný karýþtýracak hem de sayfanýn yüklenmesini zorlayacaktýr, web tarayýcýnýz bir web sayfasýnýn yüklenmesi için sunucudan komutlar aldýðýndan en az iki sayfadan oluþacak çerçeveli bir sayfayý yüklemek için ana sayfa da içinde olmak üzere üç sayfa için ayrý ayrý sunucudan bilgi alacaktýr. Sayfa içerisinde, yüklenmesi uzun süre alacak, büyük bir resim, menü gibi deðiþmeyen öðeleri her seferinde tekrar yüklememek için bu bölümler ayrý bir pencere olarak tanýmlanabilir.
+<P>Sayfa içerisinde iliþkilendirmeler oluþturmak, sayfanýn deðiþik alanlarýna týklandýðýnda baðýmsýz bir yerde bir içerik oluþturmak frame'ler sayesinde çok kolaydýr. 
+<P>
+<B><P>Nasýl oluyor da oluyor?
+</B><P>Frame'lere sahip bir sayfa oluþturmaya baþlamadan önce web tarayýcýlarýnda bu teknolojiyi destekleyen iki rakip firmanýn ortak olarak kullandýðý komutlarý açýklayalým. 
+<P>
+<B><P>&lt;FRAMESET&gt;
+</B><P>Bu tag, yatay ve dikey pencerelerin tanýmýna "baþlamak" için kullanýlýr. Tag ile birlikte kullanýlabilecek iki adet taký vardýr ki bu takýlar olu&#355;turulacak pencerelerin cinsini belirler.
+<P>COL takýsý dikey nitelikte ROW takýsý yatay nitelikte bir pencere oluþturmak için kullanýlýr.
+<P>
+<P>&lt;FRAMESET COL="100,50,*&gt; komutu bundan sonra üç sayfanýn tanýmý yapýlacaðýný, bu sayfalarýn kolon nitelikli olacaðýný, bunlardan iki tanesinin sabit uzunluklu, üçüncüsünün uzunluðunun ise deðiþebilir olduðunu gösterir. Týrnak içinde sabit bir sayý ve yýldýz kullanabileceðiniz gibi "%30,%70" bir yüzde deðer de belirtebilirsiniz, bu durumda frame'in boyutu sayfanýn boyutu göz önüne alýnarak otomatik olarak ayarlanýr. &lt;FRAMESET&gt; takýsý &lt;/FRAMESET&gt; ile bitirilmeden önce iç içe kullanýlarak komplike pencere tanýmlarý yapmanýza izin verir.
+<P>
+<B><P>&lt;FRAME&gt;
+</B><P>Bu tag ise &lt;frameset&gt; ile baþlayacaðýnýzý belirttiðiniz sayfalarý oluþturmakta kullanýlýr ve sayfanýn genel yapýsýný belirler. &lt;frame&gt; takýsýnýn iki web tarayýcýsýnýn da desteklediði 6 adet takýsý vardýr.
+<P>
+<P>SRC="URL/DOSYA_ADI"&#9;Pencere içerisine yüklenecek dosyayý seçmek için kullanýlýr. Bu deðer sunucu içinde herhangi bir dosya olduðu gibi deðiþik bir Internet adresi de içerebilir.
+<P>
+<P>NAME="FRAME_ADI"&#9;&#9;Daha sonra sayfayý çaðýrmak için referans olarak kullanýlacak isim bu deðere atanmalýdýr.
+<P>
+<P>MARGINWIDTH="DEÐER"&#9;Sayfadaki ilk nesnenin soldan ne kadar uzak olacaðýný belirler.
+<P>MARGINHEIGHT="DEÐER " &#9;Sayfadaki ilk nesnenin yukardan ne kadar uzak olacaðýný belirler.
+<P>SCROLL=AUTO/YES/NO&#9;Kaydýrma çubuklarýnýn durumunu belirler.
+<P>NORESIZE&#9;Pencerenin fare yardýmýyla geniþletilip daraltýlamamasýný saðlar.
+<P>
+<B><P>&lt;NOFRAME&gt;
+</B><P>Bu taký iki çerçeveyi oluþturacak sayfada kullanýlýr ve frame'leri desteklemeyen web tarayýcýsýnda sayfanýn görünümünü oluþturur. Web tasarýmcýsý &lt;noframe&gt; ve &lt;/noframe&gt; takýlarý arasýna &lt;HTML&gt;, &lt;BODY&gt; tag'larýný barýndýran tam bir HTML sayfasý girebilir.
+<P>
+<P>Son olarak frame'leri tanýmlayan sayfada bulunmayan fakat frame'in tanýmladýðý sayfaya koyabileceðiniz bir tag daha vardýr. &lt;BASE TARGET="pencere"&gt; tagý o pencere içerisinden bir link'e týklandýðýnda kaynaðýn hangi pencerede açýlacaðýný belirler.
+<P>
+Nelere dikkat etmeli ?
+</B><P>Frame'lerin kullanýmýný ve komutlarýný anlatýrken dikkat etmeniz gereken unsurlarýn bir kýsmýndanbahsettik, ama yine de Internet üzerinde rastladýðýmýz sayfalarda sýk yapýlan hatalarý belirtelim. Böylece siz de ilk deneyimlerinizde bu hatalardan kaçýnabilirsiniz.
+<P>
+<P>Frame içindeki bir sayfada dýþarýya bir referans bulunuyorsa &lt;A HREF="… ile baþlattýðýnýz tag içinde mutlaka TARGET="_TOP" veya TARGET="_BLANK" takýlarýný kullanýn. Bunu yapmazsanýz frame'li sayfanýz içinda baþka bir frame'li sayfa açýlmasý veya küçücük pencerenize sýðmayacak bir sitenin yüklenmesi kaçýnýlmaz olur.
+<P>
+<P>Frame'inizi tasarlarken kaydýrma çubuklarýnýn otomatik olmasýna özen gösterin. Sayfanýn içerisinde yeterince içerik olmasa bile sayfa kenarlarýnda kaydýrma çubuklarýnýn bulunmasý kullanýcýya rahatsýzlýk verecektir.
+<P> 
+<P>Frame'lerin içeriðini her zaman iyi kontrol edin. Çerçevelerden birini menü olarak kullanýyorsanýz o çerçeve içerisinde yanlýþlýkla baþka bir sayfanýn açýlmasýna mahal vermeyin.
+<P>
+<P>Pencerelerden bir tanesini "kaydýrýlamaz" olarak atýyorsanýz ya bu frame'in geniþliðini ve yüksekliðini sabit olarak atayýn ya da sayfayý 640*480 çözünürlüðe uygun olarak tasarlayýn. Bunu uygulamazsanýz 
+<P>640*480 çözünürlükte frame'in içeriðinin bir kýsmýnýn görülmesi kullanýcý ne yaparsa yapsýn mümkün olmayacaktýr.
+
+<font face=arial color=red><h3>Deðiþik çerçeve stilleri için kaynak kodlar</h3></font>
+<font size="-1">
+<img src="1.gif"><br>&lt;FRAMESET COLS="100,*"&gt;
+<br>&lt;FRAME SRC="1.htm" NAME="1"&gt;
+<br>&lt;FRAME SRC="2.htm" NAME="2"&gt;
+<br>&lt;/FRAMESET&gt;
+<P>
+<P>---------------
+<P>
+<img src="2.gif"><br>&lt;FRAMESET ROWS="100,*"&gt;
+<br>&lt;FRAME SRC="1.htm" NAME="1"&gt;
+<br>&lt;FRAME SRC="2.htm" NAME="2"&gt;
+<br>&lt;/FRAMESET&gt;
+<P>
+<P>--------------------------
+<P>
+<img src="3.gif"><br>&lt;FRAMESET ROWS="100,*"&gt;
+<br>&lt;FRAME SRC="1.htm" NAME="1"&gt;
+<br>&#9;&lt;FRAMESET COLS="100,*"&gt;
+<br>&#9;&lt;FRAME SRC="2.htm" NAME="2"&gt;
+<br>&#9;&lt;FRAME SRC="3.htm" NAME="3"&gt;
+<br>&#9;&lt;/FRAMESET&gt;
+<br>&lt;/FRAMESET&gt;
+<P>
+<P>---------------
+<P>
+<img src="4.gif"><br>&lt;FRAMESET COLS="100,*"&gt;
+<br>&lt;FRAME SRC="1.htm" NAME="1"&gt;
+<br>&#9;&lt;FRAMESET ROWS="100,*"&gt;
+<br>&#9;&lt;FRAME SRC="2.htm" NAME="2"&gt;
+<br>&#9;&lt;FRAME SRC="3.htm" NAME="3"&gt;
+<br>&#9;&lt;/FRAMESET&gt;
+<br>&lt;/FRAMESET&gt;
+<P>
+<P>-------------
+<P>
+<img src="5.gif"><br>&lt;FRAMESET COLS="100,*"&gt;
+<br>&lt;FRAME SRC="1.htm" NAME="1"&gt;
+<br>&#9;&lt;FRAMESET ROWS="100,*"&gt;
+<br>&#9;&lt;FRAME SRC="2.htm" NAME="2"&gt;
+<br>&#9;&lt;FRAME SRC="3.htm" NAME="3"&gt;
+<br>&#9;&lt;FRAME SRC="4.htm" NAME="3"&gt;
+<br>&#9;&lt;/FRAMESET&gt;
+<br>&lt;/FRAMESET&gt;
+</font>
+
+
+</td></tr></table>

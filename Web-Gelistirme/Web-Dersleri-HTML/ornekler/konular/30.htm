@@ -1,0 +1,38 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Yönlendirme</h2></font>
+Web tarayýcýsýnýn tipine göre kullanýcýyý ilgili sayfaya yönlendirmeyi gösteriyoruz. Özellikle Internet Explorer'da çekici görüldüðünü düþündüðünüz bir sayfa varsa fakat sayfanýn normal halinin diðer kullanýcýlar tarafýndan izlenebilmesini istiyorsanýz bu yola baþvurabilirsiniz. Aþaðýdaki kodlar Internet Explorer 4.0 web tarayýcýsýný gördüðünde hemen ilgili sayfaya gidecek aksi durumlarda ise sayfanýn içeriðini gösterecektir.
+
+<P>&lt;HTML>
+<BR>&lt;HEAD>&lt;TITLE>DENEME&lt;/TITLE>&lt;/HEAD>
+<BR>&lt;BODY BGCOLOR="#FFFFFF">
+
+<P>&lt;!-- Web tarayýcýsýnýn tipini ve sürümünü öðreniyoruz -->
+<BR>&lt;script language="JavaScript">
+<BR>browser = navigator.appName;
+<BR>version = parseInt(navigator.appVersion);
+<BR>if (browser == "Microsoft Internet Explorer" &amp;&amp; version >=
+4) type = "e4";
+<BR>else&nbsp; type = "e1";
+<BR>&lt;/script>
+
+<P>&lt;!-- Explorer 4.0 ise ayný dizindeki IE.HTM dosyasýna yönlendiriyoruz
+-->
+<BR>&lt;script language="JavaScript">
+<BR>if (type == "e4") { location = "IE.HTM " }
+<BR>&lt;/script>
+
+<P>Netscape ve Internet Explorer'ýn önceki sürümleri için hazýrladýðýnýz
+sayfa.
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+
+
+</td></tr></table>

@@ -1,0 +1,390 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-9">
+   <META NAME="Author" CONTENT="Deyvi Levitas">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.05 [en] (Win95; I) [Netscape]">
+   <TITLE>asp</TITLE>
+</HEAD>
+<BODY>
+<B><FONT FACE="Arial,Helvetica"><FONT SIZE=+2>Sunucu Taraflı Geliştirme
+Ortamı ASP</FONT></FONT></B>
+
+<P><B><I><FONT COLOR="#FF0000">Dinamik içerik sunmak için kullanıcının
+tercih ettiği Web tarayıcı ile sınırlı değilsiniz, sunucu taraflı bir teknoloji
+olan ASP ile Web tarayıcısından bağımsız değişken sayfalar hazırlayabilirsiniz.</FONT></I></B>
+
+<P>Temel HTML kodlarının kullanımının anlatılmasını uzun süre önce tamamladık,
+bir kaç ay ard ard yayınladığımız kullanışlı JavaScript programcıkları
+ile de sayfalarınızın işlevini arttırmayı amaçladık. Siz Web Okulu okuyucularının
+ufkunu genişletmek, yeni teknolojilerden haberdar olmanızı ve kullanabilmenizi
+sağlamak için bu sayıdan itibaren öğrenmesi zevkli ve gelecek vaadeden
+teknolojilere değineceğiz. Anlatmaya başlayacağımız ilk teknoloji ASP.
+İki sayıdan az olmayan ASP yazımızı zevkle okuyacağınızı ve uygulayacağınızı
+umuyoruz.
+
+<P>
+<TABLE align=right CELLSPACING=0 CELLPADDING=4 COLS=1 WIDTH="270" BGCOLOR="#FFFF00" >
+<TR>
+<TD BGCOLOR="#000099"><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#FFFFFF">ASP
+ile ilgili Web adresleri</FONT></FONT></B></TD>
+</TR>
+
+<TR>
+<TD>İşte ASP konusunda size en çok yardımı dokunacak Web siteleri. Bu sitelerde
+teknoloji ile ilgili dökümanların yanısıra ücretsiz bileşenler, püf noktaları
+ve kodlar bulacaksınız.&nbsp;
+
+<font size=-1><P><A HREF="http://www.microsoft.com/iis">http://www.microsoft.com/iis</A>&nbsp;
+<BR><A HREF="http://www.activeserverpages.com/">http://www.activeserverpages.com/</A>&nbsp;
+<BR><A HREF="http://www.asphole.com/">http://www.asphole.com/</A>&nbsp;
+<BR><A HREF="http://www.15seconds.com">http://www.15seconds.com</A>&nbsp;
+<BR><A HREF="http://www.aspsite.com/">http://www.aspsite.com/</A>&nbsp;
+<BR><A HREF="http://www.vallin.com/pub/1/asp1.asp">http://www.vallin.com/pub/1/asp1.asp</A>&nbsp;
+<BR><A HREF="http://www.aspdeveloper.net/">http://www.aspdeveloper.net/</A>&nbsp;
+<BR>&nbsp;</TD>
+</TR>
+</TABLE>
+<FONT FACE="Arial,Helvetica"><B>ASP NEDİR ?</B></FONT>
+<BR>Sunucu taraflı bir teknoloji olan ASP, (Active Server Pages/Aktif Sunucu
+Sayfaları) kullanıcı tarafına etkileşimli, dinamik Web sayfaları göndermek
+için kullanılır. ASP, Web programcılarına HTML, scripting ve kullanıcıdan
+bağımsız veritabanı uygulamalarını özgürce kullanma fırsatı verir. ASP
+programlama ortamının özgür olmasının sebebi tüm derleme işleminin sunucu
+tarafında bitmesi ve kullanıcının sadece sonuçta oluşan HTML sayfalarını
+görmesidir.
+
+<P>Çok geniş bir kullanım alanı olan ASP, scripting diye tabir edilen VBScript,
+JavaScript gibi her türlü ham kodu kullanabilir, sunduğu kolay anlaşılır
+doğal dili ile orta derece HTML bilen kimseler tarafından bile kolayca
+kavranabilir. Bir scripting dili olsa bile ASP, sunucu tarafında uygulama
+çalıştırmanıza da izin verir. Web sunucunuza bağlanan kullanıcı sizin tarafınızda
+neler olup bittiğini bilmezken kendisine gelen HTML formatındaki sonuca
+baktığında yazdığınız ASP kodlarını değil, Internet sunucusunun onun için
+hazırladığı HTML kodlarını görür.
+
+<P>ASP'nin Netscape Navigator / Internet Explorer /Opera gibi Web tarayıcılarından
+bağımsız olmasının yanısıra en büyük avantajlarından biri kullandığınız
+teknolojilerin, scriptlerin saklı kalmasıdır. Normal şartlarda, dinamik
+içerik hazırlamak için HTML sayfasında emek dökerek kullandığınız scriptler
+diğerleri tarafından "beğenilip" kolayca tekrar kullanılabilirken ASP için
+böyle bir şey söz konusu değildir. Uyanık kullanıcılar ASP sayfasını tıpkı
+başka bir dosya gibi bilgisayarlarına kaydetmek istediklerinde ise Web
+sunucunuz bunu anlayacak ve yine sayfanın hazırlanmış halini kullanıcıya
+sunacaktır.
+
+<P><B><FONT FACE="Arial,Helvetica">ASP NASIL İŞLİYOR?</FONT></B>
+<BR>ASP arabiriminin işleyişi oldukça basit, sisteminize ASP eklentisini
+yüklediğinizde Internet Information Server'ınızın zaten sahip olduğu scripting
+özellikleri işlemeye başlıyor. İstemci tarafı sunucudan normal bir HTML
+sayfasını istediğinde, IIS bu dosyayı sabit diskten çağırarak istemci tarafındaki
+Web tarayıcıya yollar. İstemci tarafından yapılan istek bir ASP sayfasıysa
+IIS bunu sayfanın uzantısından anlayarak ASP eklentisini devreye sokar.
+ASP eklentisi sayfa içindeki scriptleri yine IIS'a çalıştırdıktan sonra
+oluşan HTML sayfasını istemci tarafındaki Web tarayıcısına yollar, bu arada
+"kuzu" durumunda olan kullanıcının sunucuda gerçekleşen işlemlerden haberi
+olmaz. ASP sisteminin dezavantajı Web sunucunuza daha fazla yük getirmesidir.
+Normal bir HTML sayfasının sabit diskten alınarak sunulması sunucuya fazla
+yük getirmezken ASP sayfalarının işlenmesi sunucunuzun değerli bellek ve
+işlemci kaynaklarından daha fazla yararlanacaktır. Yukarıdaki işlemleri
+anlatırken ASP'nin getirdiği en büyük avantajlardan biri olan veritabanı
+kullanımına hiç değinmedik, ASP, sunucu üzerinde yüklü ODBC veritabanlarını
+kullanabilir, şirketinize ait veritabanlarını Intranet'inize veya Internet'e
+açabilir.
+
+<P><FONT FACE="Arial,Helvetica"><B>ASP'Yİ NASIL KULLANMAYA BAŞLAYACAĞIM?</B></FONT>
+<BR>Web sitenizin dilediğiniz bölümlerini ASP'ye göre düzenlemeden önce
+bir takım şeyler yapmanız gerekiyor. Windows NT kullananlar öncelikle sistemlerine
+tamamen ücretsiz olan Microsoft Internet Information Server (IIS) 3 veya
+4'ü kurmalılar. IIS'ı kurduktan sonra Microsoft'un sitesinden (<A HREF="http://www.microsoft.com/iis">http://www.microsoft.com/iis</A>)
+güncel bir sürümünü edebileceğiniz ASP eklentisini yüklemelisiniz. Internet
+Information Server yapısı gereği bir Web uygulamasının kendisi üzerinde
+çalıştırılabilmesi için uygulamanın çalıştırıldığı klasöre bu izninin verilmiş
+olmasını ister. Bu yüzden ASP'lerin konulacağı klasörlere "execute" hakkı
+verin, IIS execute hakkı verilmiş bir klasörün alt klasörlerine de otomatik
+olarak bu hakkı tanır.
+
+<P>Web sayfalarını sunmak için Windows 95 işletim sistemi altında çalışan
+Personal Web Server'ı tercih edenler de ASP'yi hemen kullanmaya başlamakta
+pek zorlanmayacaklar. ASP eklentisini yükleyip ilgili hakları verdikten
+sonra hemen, vereceğimiz başlangıç örneklerini deneyebilirler. Web sayfalarını
+Unix veya başka işletim sistemleri üzerinde tutan veya bir Web sunucusuna
+sahip olmaksızın sayfalarını sunmak için ücretsiz servislerden faydalanan
+okurların işi ise biraz daha zor.
+
+<P>Chilisoft (<A HREF="http://www.chilisoft.com/">http://www.chilisoft.com/</A>)
+adlı yazılım firması değişik işletim sistemleri için ASP eklentileri sunuyor,
+ayrıca bir Web sunucusuna sahip olmayanlar Internet'te ASP dosyalarını
+ücretsiz olarak sunan hosting firmalarından faydalanabilirler. Altavista
+Web tarayıcısında "ASP hosting" anahtar kelimeleriyle yapacağınız araştırma
+sizi bu firmalara ulaştıracaktır.
+
+<P><FONT FACE="Arial,Helvetica"><B>ASP NE İŞİME YARAYACAK?</B></FONT>
+<BR>Eskiden taş düşürtecek kadar zahmetli olan HTML formlarını değerlendirme
+işi ASP ile "çocuk oyuncağı" haline getirilmiş, önceleri bu işi yapmak
+için CGI (Common Gateway Interface) uygulamaları yazmış, hazır ve esnekliğe
+izin vermeyen tek platformlu form değerlendirme programları kullanmış olabilirsiniz,
+Web sitenizi ASP tabanlı bir hale getirdiğinizde tüm bunlardan kurtulmuş
+olacaksınız. ASP yetenekleriniz geliştikten sonra sunucu üzerinde yüklü
+ODBC veritabanlarını kullanan ActiveX uygulamaları yazmaya başlayabilirsiniz
+veritabanlarına bilgi yazabilir ve okuyabilirsiniz. VBScript, JavaScript,
+PERL veya REXX gibi bir scripting dili hakkında bilginiz varsa aynı zamanda
+ASP biliyorsunuz demektir çünkü ASP, IIS 4'ü veya dışardan yüklenebilen
+modülleri kullanarak bu dilleri anlayabilir. ASP aynı zamanda sunucu üzerinde
+çalışan Microsoft BackOffice ailesi uygulamalardan maksimum derecede faydalanır,
+bu işleve sahip önceden hazırlanmış ASP modülleri başka sayfalar içine
+gömülebilir.
+
+<P><FONT FACE="Arial,Helvetica"><B>ASP İLE PROGRAMLAMAYA BAŞLANGIÇ</B></FONT>
+<BR>Yukarıda ASP'ye kısa bir giriş yaptık, anlattıklarımızı pekiştirmek
+için dilerseniz iki tane örnek verelim. ASP sayfalarını kullanabilmek için
+yukarıda anlattığımız olayları gerçekleştirdiyseniz execute hakkı verdiğiniz
+bir klasörde aşağıda kodlarını verdiğimiz ASP sayfalarını hazırlayın.
+
+<P>http://sunucu_ismi/klasor/asp_ismi.asp
+
+<P>komutunu kullandığınızda Web tarayıcınız ASP kodlarının altında verdiğimiz
+HTML dökümlerini oluşturacaktır.
+<BR>Sunucu üzerindeki ASP dosyasını çağırdığınızda boş bir sayfa geliyorsa
+Internet Information Server'ınız üzerine ASP eklentisi yüklü değildir.
+Kodlar çağrıldığında hata mesajı geliyorsa IIS'ınızın sürümü çok düşüktür
+veya ASP kodlarını doğru olarak girmemişsiniz demektir.
+<BR>&nbsp;
+<BR><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#000099">1.Örneğimiz</FONT></FONT></B>
+
+<P><B>ASP KODLARI</B>
+<BR>&lt;HTML>
+<BR>&lt;HEAD>&lt;TITLE>
+<BR>Script yardımıyla değişik ebatlarda yazılar...
+<BR>&lt;/TITLE>&lt;/HEAD>
+<BR>&lt;BODY BGCOLOR=#FFFFFF>
+<BR>&lt;% for i = 3 to 7 %>
+<BR>&lt;FONT SIZE=&lt;% = i %>>Biz biz idik biz idik otuziki kız idik.&lt;/FONT>&lt;BR>
+<BR>&lt;% next %>
+<BR>&lt;BR>
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+<P><B>KULLANICI TARAFINDA GÖRÜLEN</B>
+<BR>&lt;HTML>
+<BR>&lt;HEAD>&lt;TITLE>
+<BR>Script yardımıyla değişik ebatlarda yazılar...
+<BR>&lt;/TITLE>&lt;/HEAD>
+<BR>&lt;BODY BGCOLOR=#FFFFFF>
+<BR>&lt;FONT SIZE=3>Biz biz idik biz idik otuziki kız idik.&lt;/FONT>&lt;BR>
+<BR>&lt;FONT SIZE=4>Biz biz idik biz idik otuziki kız idik.&lt;/FONT>&lt;BR>
+<BR>&lt;FONT SIZE=5>Biz biz idik biz idik otuziki kız idik.&lt;/FONT>&lt;BR>
+<BR>&lt;FONT SIZE=6>Biz biz idik biz idik otuziki kız idik.&lt;/FONT>&lt;BR>
+<BR>&lt;FONT SIZE=7>Biz biz idik biz idik otuziki kız idik.&lt;/FONT>&lt;BR>
+<BR>&lt;BR>
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+<P><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#CC0000">2. Örneğimiz:</FONT></FONT></B>
+
+<P><B>ASP KODLARI</B>
+<BR>&lt;html>
+<BR>&lt;title>ASP ile rasgele püf noktası...&lt;/title>
+<BR>&lt;%
+<BR>' Sayfada göstermek üzere 1'den 10'a kadar bir püf noktası seç.
+<BR>Randomize
+<BR>TipNumber = Int(Rnd*10)
+<BR>' İçinde 10 adet püf noktası olan dosyayı aç
+<BR>Set FileObject = Server.CreateObject("Scripting.FileSystemObject")
+<BR>Set Instream = FileObject.OpenTextFile (Server.MapPath ("/deneme")
+&amp; "\puf.txt", 1, FALSE, FALSE)
+<BR>' Göstermek istediğim püf noktasına kadar olanları atla
+<BR>For i = 1 to TipNumber -1
+<BR>InStream.SkipLine()
+<BR>Next
+<BR>' Dosyadan alınan satırı PufNoktasi değişkenine ata.
+<BR>PufNoktasi = Instream.ReadLine
+<BR>%>
+<BR>&lt;FONT FACE="Verdana" SIZE=4>&lt;B>
+<BR>&lt;%= PufNoktasi %>&lt;/B>&lt;/FONT>
+<BR>&lt;/html>
+
+<P><B>KULLANICI TARAFINDA GÖRÜLENLER</B>
+<BR>&lt;html>
+<BR>&lt;title>ASP ile rasgele püf noktası...&lt;/title>
+<BR>&lt;FONT FACE="Verdana" SIZE=4>&lt;B>
+<BR>Rasgele püf noktası * 5&lt;/B>&lt;/FONT>
+<BR>&lt;/html>
+
+<P>
+<HR WIDTH="100%">
+<BR>&nbsp;
+<BR><FONT FACE="Arial,Helvetica"><B>FORM İÇERİĞİNİ ASP'YE NASIL YOLLARIM?</B></FONT>
+<BR>HTML formları Web sitelerinde kullanıcıdan veri almak için kullanılan
+yegane yoldur. ASP teknolojisini en önemli görevlerinden biri de form verilerini
+saklamak, hatırlamak ve değerlendirmektir. İçeriğinde bir form olan ASP
+sayfaları tabii ki yapılabilir, ama HTML sayfalarındaki verilerin, bir
+yardımcı programa veya script'e ihtiyaç duyulmaksızın herhangi bir ASP
+dosyası tarafından değerlendirilebileceğini bilmek sanırım hoşunuza gidecektir.
+
+<P>ASP sayfalarının sunucunuzda çalışan veritabanı modülünü kullanarak
+veritabanlarına erişebileceğini ve buradaki verileri Web'e aktarabileceğini
+söylemiştik. Form içeriğine girilen verileri ASP sayfalarına yollamak oldukça
+basittir sadece ASP sayfasında bir değişkene form kontrollerinden birinin
+ismini atamak yeterli. Aşağıdaki örnekleri inceleyince parametre mantığını
+daha iyi anlayacaksınız.
+
+<P>GET ile hazırlanmış formlarda değişkenlerin toplam karakterinde bir
+sınırlama vardır. Bunun yanısıra geçtiğiniz parametreler Web tarayıcınızın
+URL kutusunda görülecektir. ASP Script'inin bu tip formlardaki verileri
+alabilmesi HTML kısmında ve script içinde aşağıdaki gibi kodlar kullanılması
+gerekir:
+<BR>&nbsp;
+<BR><B>Formu oluşturmak için:</B>
+
+<P>&lt;form action="deneme.asp" method=GET>
+<BR>.... Diğer form üyeleri ....
+<BR>&lt;input type=submit>&lt;input type=reset>
+<BR>&lt;/form>
+
+<P><B>ASP Script'inde okumak için:</B>
+
+<P>&lt;%degisken=request.querystring("form_bolgesi")%>
+<BR>POST ile hazırlanmış formlarda ise karakter ve uzunluk sınırlaması
+GET kadar sınırlı değildir. Web tarayıcınız geçtiğiniz değişkenleri adres
+penceresinde göstermeyecektir. ASP Script'inin bu tip formlardaki verileri
+alabilmesi HTML kısmında ve script içinde aşağıdaki gibi kodlar kullanılması
+gerekir:
+<BR>Formu oluşturmak için:
+<BR>&lt;form action="deneme.asp" method=POST>
+<BR>.... Diğer form üyeleri ....
+<BR>&lt;input type=submit>&lt;input type=reset>
+<BR>&lt;/form>
+<BR>ASP Script'inde okumak için:
+<BR>&lt;%degisken=request.form("form_bolgesi")%>
+
+<P><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#FF0000"><FONT SIZE=+2>ASP
+ile başka ne gibi eklentiler kullanabilirim?</FONT></FONT></FONT></B>
+
+<P><B><FONT FACE="Arial,Helvetica">ASP İLE BİLEŞEN KULLANMA</FONT></B>
+<BR>Microsoft'un sunucu teknolojisi ASP için bir çok ikinci parti bileşen
+bulunuyor. ASP sayfaları ile uyum içerisinde çalışarak sonuç sayfalarının
+oluşturulması, Web sayfası sahiplerine işlenmiş bilgi aktarılması gibi
+işlere yarayan bileşenlerden en popüler olanları ASPMail ve RoboHTTP. Server
+Objects firmasının bu iki ürünü, sayfadaki formların içeriğinin kullanıcıya
+e-mail olarak kullanılması, misafir defteri oluşturulması ve bir çok değişik
+bilginin bir sayfada toplanması gibi işlemleri kolayca hallediyor. CGI
+Script yazmak veya NT sunucularına bir servis daha yükleyerek meşgul etmek
+istemeyenler <A HREF="http://www.serverobjects.com">http://www.serverobjects.com</A>
+adresindeki Web sitesini ziyaret ederek daha geniş bilgi edinebilirler.
+
+<P><B><FONT FACE="Arial,Helvetica">VERİTABANLARINI ASP İLE ZAHMETSİZ NASIL
+KULLANIRIM?</FONT></B>
+<BR>Kurumunuzun veritabanını ASP teknolojisini kullanarak Web sayfalarından
+ulaşılır ve değiştirilebilir hale dönüştürmek istiyorsunuz. Bunu yapmak
+için işi bilen bir kişinin saatlerce bilgisayarın başında oturup veritabanındaki
+field'leri girmesi, sorgulamaları programlaması gerekmiyor. Microsoft'un,
+Internet teknolojilerinin programlanmasını ve kullanımını kolaylaştıran
+ürünü Visual InterDev bir Access97 veritabanını alarak bunu kolayca Web'den
+erişilebilecek duruma getirebiliyor. Bu işi yapmak için kullanımı inanılmaz
+kolay sihirbazlar içeren program hakkında daha fazla bilgi için <A HREF="http://www.microsoft.com/vinterdev/">http://www.microsoft.com/vinterdev/</A>
+adresine bağlanın.
+
+<P><B><FONT FACE="Arial,Helvetica">OTURUM NEDİR?</FONT></B>
+<BR>Internet Information Server'ın en vurucu özelliklerinden olan "oturum"dan
+ASP teknolojisi sonuna kadar faydalanır. Bir kullanıcının Web sitenize
+bağlandığı andan Web sitenizden ayrıldığı ana kadar olan zaman dilimine
+"oturum/ session" adı verilir. Bu süre içerisinde sunucunuzdaki ASP eklentisi
+kullanıcıyı takip eder ve yaptığı hareketleri, yolladığı tüm bilgileri
+kontrol eder. Örneğin bir kullanıcının alışveriş sepetine koyduğu tüm ürünler
+ASP eklentisi tarafından sunucunun belleğinde tutulur, kullanıcı siteden
+çıktığı anda bellektekiler eğer aksi belirtilmediyse oturum sonlandığı
+için silinir. Oturum takibi işini bir ISAPI (Internet Server Application
+Programming Interface) filtresi olan Cookie Munger ile yapabilirsiniz,
+bu arabirim aynı zamanda kullanıcıya yolladığı çerezler ile eğer silinmemişse
+sunucu üzerinde bulunan bir oturumun devamını da sağlayabilir.
+
+<P>Sunucuya oturumu hatırlatmak amacıyla kullanıcıya yollanan çerezlerin
+hiç bir zararı yoktur. Aynı zamanda yollanılan çerezlerin içinde sadece
+bir hatırlatma numarası olduğundan kullanıcının kendi bilgisayarında sunucuya
+ait olan bilgileri ele geçirmesi mümkün değildir, bu yüzden çerezler bir
+güvenlik açığı oluşturmaz.
+
+<P>Ücretsiz olan Cookie Munger hakkında daha çok bilgi için <A HREF="http://www.microsoft.com/workshop/server/toolbox/cookie.asp">http://www.microsoft.com/workshop/server/toolbox/cookie.asp</A>
+adresini kullanabilirsiniz.
+<BR>&nbsp;
+<BR><FONT FACE="Arial,Helvetica"><FONT COLOR="#FF0000"><B>Kod örnekleri:</B></FONT></FONT><B></B>
+
+<P><FONT FACE="Arial,Helvetica"><B>WEB SUNUCUMA KİMLER BAĞLI?</B></FONT>
+<BR>Yukarıda IIS'ın kendisine bağlı her bir kullanıcıyı takip ettiğini
+söylemiştik. ASP Script ile Web sunucunuza bağlı olan kullanıcıları ve
+hangi sayfalarda bulunduklarını kolayca ortaya çıkarabilirsiniz. Aşağıdaki
+kodları NT4 - Service Pack 3 yüklü ve Internet Information Server 4'e sahip
+bir sunucunun "execute" hakkı verilmiş bir klasöründen çalıştırdığınızda
+size sunucunuzdaki kullanıcıların IP adreslerini ve şu anda bulundukları
+sayfaları söyleyecektir. Sayfayı her seferinde yenilemenize gerek yok,
+ASP sayfası bu işi kendisi hallediyor...
+
+<P>&lt;!-- #INCLUDE VIRTUAL="/includes/tracker.asp" > -->
+<BR>&lt;%
+<BR>MyServer=Request.ServerVariables("SERVER_NAME")
+<BR>MyPath=Request.ServerVariables("SCRIPT_NAME")
+<BR>MySelf="HTTP://"&amp;MyServer&amp;MyPath
+<BR>%>
+<BR>&lt;html>
+<BR>&lt;head>
+<BR>&lt;meta HTTP-EQUIV="REFRESH" CONTENT="20;&lt;%=MySelf%>">
+<BR>&lt;/head>
+<BR>&lt;body BGCOLOR="#FFFFFF">
+<BR>&lt;%
+<BR>Application.Lock
+<BR>Set TempStats=Application("stats")
+<BR>Application.Unlock
+<BR>%>
+<BR>&lt;center>
+<BR>&lt;b>Toplam Kullanıcı:&lt;/b> &lt;%=TempStats.Count %>
+<BR>&lt;table BORDER="1" CELLPADDING="10" bgcolor="#6699cc">
+<BR>&lt;tr>&lt;th>Kullanıcı&lt;/th>&lt;th>Bulunduğu sayfa&lt;/th>&lt;/tr>
+<BR>&lt;%
+<BR>TempItems=TempStats.Items
+<BR>TempKeys=TempStats.Keys
+<BR>For i=0 to UBOUND(TempKeys)
+<BR>%>
+<BR>&lt;tr>&lt;td>&lt;%=Tempkeys(i)%>&lt;/td>&lt;td>&lt;%=TempItems(i)%>&lt;/td>&lt;/tr>
+<BR>&lt;%
+<BR>Next
+<BR>%>
+<BR>&lt;/table>
+<BR>&lt;/center>
+<BR>&lt;/body>
+<BR>&lt;/html>
+
+<P><FONT FACE="Arial,Helvetica"><B>ZAMAN ETİKETİNİ FORMATLAMAK</B></FONT>
+<BR>Aşağıdaki ASP script'i o anki tarihi 5 ayrı formatta yazar. ASP scriptinin
+tarih formatlama özelliğini göstermek için verdiğimiz örnek basit bir döngü
+ve fonksiyon tanımlanmasından oluşuyor. Her tarihi yazdıktan sonra bir
+paragraf boşluk veren ve ardından bir çizgi çeken script'i çalıştırdıktan
+sonra en çok beğendiğinizi kullanmaya başlayabilirsiniz.
+
+<P>&lt;html>&lt;head>
+<BR>&lt;title>Zamanı formatlamak&lt;/title>
+<BR>&lt;/head>&lt;body bgcolor="#FFFFFF">&lt;html>
+<BR>&lt;%
+<BR>response.write "&lt;hr>"
+<BR>for counter=0 to 4
+<BR>currentdate=now()
+<BR>response.write "Bu gün..." &amp; "&lt;br>"
+<BR>response.write currentdate &amp; "&lt;P>"
+<BR>select case counter
+<BR>case 0
+<BR>whichformat="vbgeneraldate"
+<BR>case 1
+<BR>whichformat="vblongdate"
+<BR>case 2
+<BR>whichformat="vbshortdate"
+<BR>case 3
+<BR>whichformat="vblongtime"
+<BR>case 4
+<BR>whichformat="vbshorttime"
+<BR>end select
+<BR>response.write "FormatDate(now()," &amp; whichformat &amp; ")="
+<BR>response.write Formatdatetime(currentdate,counter) &amp; "&lt;P>&lt;HR>"
+<BR>next%>
+<BR>&lt;/body>&lt;/html>
+
+</BODY>
+</HTML>

@@ -1,0 +1,57 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>TÜM ÝÞ ARKAPLANDA</h2></font>
+
+PC Magazine Online'ýn sayfalarýný hazýrlarken sol tarafý þeritli sayfalarý
+oldukça sýk kullanýyoruz. Hem göze güzel gelen hem de konu baþlýklarýnýn
+kolayca yerleþtirebileceðiniz bu sayfa tipini uygulamak çok kolaydýr. Bu
+tip bir sayfayý oluþturmak için tek gerekli olan þey uygun bir arkaplan
+ve sayfayý bu arkaplana göre ayýracak iki hücreli bir tablodur.
+
+<P>Þeritli bir arkaplan oluþturmak için sadece 1 piksel yüksekliðinde ve
+1024 piksel uzunluðunda bir grafik oluþturun. Grafiðin ana sayfayý oluþturacak
+kýsmýný dilediðiniz renkte boyadýktan sonra þerit için uygun bir renk seçin
+ve sol taraftan dilediðiniz kadar pikseli bu renkle boyayýn. Þeridin 100
+piksel olduðunu varsayan kodlar aþaðýdakine benzer olmalýdýr:
+
+<P>&lt;HTML>
+<BR>&lt;BODY BACKGROUND="ARKA.GIF">
+<BR>&lt;TABLE BORDER=0 WIDTH=590>&lt;TR>&lt;TD WIDTH=100>
+<BR>Þerit üstündeki yazýlar
+<BR>&lt;/TD>&lt;TD WIDTH=490>
+<BR>Ana sayfadaki yazýlar…
+<BR>&lt;/TD>&lt;/TR>&lt;/TABLE>
+
+<P><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#000099">ÜSTE NASIL ÞERÝT KOYACAÐIZ?</FONT></FONT></B>
+<BR>Sol tarafýnda þerit olan arkaplaný anlattýktan sonra, üst tarafýnda
+þerit olan arkaplaný oluþturmayý
+<BR>tahmin etmek pek de zor olmayacaktýr. Sayfanýzýn uzunluðu kadar uzun
+fakat 1 piksel geniþliðinde bir grafik dosyasý oluþturduktan sonra bu grafiðin
+üstten dilediðiniz kadar pikselini boyayýn ve aþaðýdaki kodlarý yazýn.
+Ýþte size üstünden þerit geçen bir HTML sayfasý. Hayal gücünüzü zorlayarak
+"uçuk" sayfa tasarýmlarýný web tarayýcýlarýnýn arkaplan döþeme sistemlerinden
+de yararlanarak uygulayabilirsiniz.
+
+<P>&lt;HTML>
+<BR>&lt;BODY BACKGROUND="ARKA.GIF">
+<BR>&lt;TABLE BORDER=0 WIDTH=590>&lt;TR>&lt;TD HEIGHT=100>
+<BR>Þerit üstündeki yazýlar
+<BR>&lt;/TD>&lt;/TR>&lt;TR>&lt;TD>
+<BR>Ana sayfadaki yazýlar…
+<BR>&lt;/TD>&lt;/TR>&lt;/TABLE>
+
+<P><B>PÜF NOKTASI:</B> Sayfanýzýn arkaplanýna döþediðiniz grafiðin sabit
+kalmasýný yazýlarý kaydýrdýðýnýzda grafiðin kaymamasýný istiyorsanýz &lt;BODY
+BACKGROUND="ARKA.GIF" BGPROPERTIES=FIXED> gibi bir ifade kullanmalýsýnýz.
+
+
+
+
+
+</td></tr></table>

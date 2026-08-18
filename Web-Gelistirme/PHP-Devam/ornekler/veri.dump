@@ -1,0 +1,3 @@
+CREATE TABLE calisanlar ( id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (id), adi VARCHAR(20), soyadi VARCHAR(20), adres VARCHAR(60), pozisyon VARCHAR(60));
+INSERT INTO calisanlar VALUES (1 , 'Muharrem' , 'Tac' , 'Iþýk Kultur Merkezi, Bursa' , 'Yonetmen');
+INSERT INTO calisanlar VALUES (3 , 'Sahika' ,'Tabak' ,'PCLife Dergisi, Istanbul' , 'Yazar');

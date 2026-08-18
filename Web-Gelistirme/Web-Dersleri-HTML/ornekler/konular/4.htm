@@ -1,0 +1,116 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+
+
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Internet Kýsayollarý</h2></font>
+LINK veya shortcut dediðimiz Internet kýsayollarý, Internet'te belki de
+en çok kullanýlan özelliklerden biridir. Asli amacý Internet üzerinde herhangi
+bir sunucuya baðlý bir dosyayla baðlantý kurmak olan kýsayollar ayrýca
+elektronik posta yollamak, Telnet baðlantýsý kurmak gibi deðiþik amaçlar
+için de kullanýlabilir.
+<BR>
+<BR><B>&lt;a href=" [Adres] [:port]" >[Görüntü]&lt;/a></B> 
+<BR>
+<BR>Internet kýsayollarýnýn kullanýmý yukarýdaki gibidir. Adres kýsmý baðlanýlacak
+HTML sayfasýný, görüntü kýsmý ise kýsayolun, sayfadaki görüntüsünü belirler.
+Örneðin yazacaðýnýz
+<BR>
+<BR><B>&lt;a href=" http://www.pcmagazine.com.tr" >PC Magazine Online&lt;/a></B> 
+<BR>
+<BR>gibi bir satýr ekranda PC Magazine Online olarak görülecek ve sizi doðruca
+pc magazine Türkiye'nin Web sitesine baðlayacaktýr.
+<BR>Adres kýsmý oldukça basit olmasýna raðmen, bazý küçük püf noktalarý da
+yok deðil. Örneðin, adres kýsmýný kullanýcýnýn size mail atmasý için kullanabilirsiniz.
+Bunu gerçekleþtirmek için kiþisel e-posta adresinizin önüne mailto: takýsýný
+getirmeniz yeterlidir. Örneðin hazýrladýðýnýz sayfada kullanýcýlarýn size
+mail atabilmeleri için
+<BR>Bana <B>&lt;a href=" mailto:cenk.tarhan@pcmagazine.com.tr" >mail&lt;/a></B> atabilirsiniz.
+<BR>gibi bir satýr kullanabilirsiniz. Kýsayollar ayrýca Telnet, FTP, Gopher
+servislerini de çaðýrabilirler. Bunlarý çaðýrmak için, sizin de tahmin
+edebileceðiniz gibi ftp://, gopher:// takýlarýný site isminin önüne getirmek
+yeterlidir. Genel kullanýmda verdiðimiz :port takýsýnýn ne iþe yaradýðýný
+merak edenler için hemen bir açýklama getirelim: Bu taký tüm web servisleri
+için 80 olup genelde kullanýlmalarýna gerek yoktur. Hýzla geliþen Web teknolojisi
+çoook eskiden kullanýlan :port takýsýnýn kullanýmýný gereksiz bir hale
+getirmiþtir.
+<BR>Internet kýsayollarý, Web tarayýcýnýzýn ayarýyla oynamadýkça ve HTML sayfasýnda
+aksini belirtmedikçe ekranda mavi altý çizili yazýlar olarak görülürler.
+Siz ilgili linke týkladýðýnýzda ve iþaret ettiði sayfayý izlediðinizde
+o sayfadaki link maviden mora dönüþür.
+<BR>Daha önce de belirttiðimiz gibi kýsayol renkleri HTML sayfasýndaki kodlarla
+deðiþtirilebilirler, üstelik siz bunu yaptýðýnýzda kullanýcý web tarayýcýsýnýn
+ayarýyla oynayarak kýsayolun rengini kendisine göre tayin edemez. Ýþte
+bunun nasýl yapýlacaðý:
+<BR>Sayfanýzýn baþýnda <B>&lt;BODY...> </B>' tag'ýyla birlikte <B>link=deðer
+vlink=deðer</B> takýlarýný kullanarak ziyaret edilmiþ ve edilmemiþ kýsayol
+renklerini belirleyebilirsiniz. Her zamanki gibi bunu yapmak için Hex renk
+kodlarýný ve hazýr renk adlarýný kullanabilirsiniz. Örneðin sayfadaki kýsayollarýn
+altý sarý çizgili görülmesini, ayný kýsayollarýn ziyaret edilince kýrmýzýya
+dönüþmesini istiyorsunuz bunu yapmak için
+<BR>
+<BR><B>&lt;BODY BGCOLOR=WHITE LINK=YELLOW VLINK=RED></B> 
+<BR>
+<BR>satýrýný kullanabilirsiniz. Mutlaka siz de rastlamýþsýnýzdýr: Bazen resimler
+de bir Internet kýsayolu olarak kullanýlabiliyor. ' Bunu nasýl yapabilirim?' 
+diyorsanýz, hemen çok basit olduðunu belirtelim. Genel kullaným bölümünde
+verdiðimiz [görüntü] bölümüne önceki örneklerimizde hep yazý yazdýk, bir
+de resim koymayý deneyelim:
+<BR>
+<BR><B>&lt;a href=" http://www.pcmagazine.com.tr" >&lt;img src=" PCM.GIF"  alt="
+PC Magazine Online" >&lt;/a></B> 
+<BR>
+<BR>satýrýný yazdýðýnýzda PCM.GIF isimli resim PC Magazine Online'a baðlanmak
+için bir kýsayol olarak kullanýlacaktýr. Burada dikkat etmeniz gereken
+bir husus var, o da resimlerin link olarak kullanýldýðýnda mavi (ya da
+link için atadýðýnýz renk neyse) bir çerçeve içine alýndýðýdýr.
+<BR>Bunu önlemek için resmi yükleyen ' tag'ýn sonuna bir <B>border=0</B> ekini
+girebilirsiniz. Þöyle:
+<BR>
+<BR><B>&lt;a href=" http://www.pcmagazine.com.tr" >&lt;img src=" PCM.GIF"  border=0>&lt;/a></B> 
+<p>
+<b>Dikkat Etmeniz Gerekenler</b>
+<ul>
+<li> Bir kýsayol oluþturduktan sonra mutlaka ' Acaba bir hata yapmýþ mýyým?'  diyerek kýsayolu kontrol edin. Bozuk kýsayollarýn sitenizin ziyaret sayýsýný ve itibarýný zedeleyeceðini unutmayýn.
+<li> Sonradan doldururum diye kýsayolu önceden yerleþtirmeyin. Sitenin baþýna ' inþa aþamasýnda'  yazsanýz bile yapmadýðýnýz bölümlerin linklerini koymayýn. Bunun yerine hazýrladýðýnýz bölümleri kýsayol oluþturmaksýnýz Web sayfasýna yerleþtirin. 
+<li> Sitenize bulunduðunuz makineden FTP programýyla uzunca bir shareware yolluyorsunuz diyelim. Shareware'inizin kýsayolunu önceden yollamayýn, geçen zaman süresince sitenize baðlanýp o program ile ilgilenenler ' 404 Not Found'  hatasý ile karþýlaþýrlar.
+<li> Internet adresi verirken baþýna http://, mail adresi verirken baþýna mailto: koymayý unutmayýn. Bunu yapmazsanýz verdiðiniz www.pcmagazine.com.tr veya cenk.tarhan@pcmagazine.com.tr gibi bir adres lokal bir dosya olarak görülür ve linkine týklayýnca doðal olarak hata verir. 
+</ul>
+
+<p>Internet kýsayollarýný ve resimlerin kýsayollara atanmasý için nasýl kullanýldýðýný
+öðrendik...
+
+<p><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#DD0000">Ýþte bize en çok sorulan sorulardan biri:</FONT></FONT></B> 
+<BR><B><I><FONT COLOR="#6666CC">' Web projem bir klasörde duruyor, lokal olarak
+çalýþýyorum ve bir alt veya üst klasördeki dosyayý bulunduðum sayfadan
+çaðýrmak istiyorum. Nasýl yapacaðým?'</FONT></I></B> 
+<BR>
+<BR>Üzerinde çalýþtýðýnýz HTML sayfasý C:\PROJE\1 klasöründe olsun, sizin de
+C:\PROJE klasöründeki DENEME.HTM sayfasýný çaðýrmak istediðinizi varsayalým.
+Bu dosyayý çaðýrmak için þöyle bir satýr kullanmalýsýnýz:
+<BR>
+<BR><B>&lt;A HREF=" ../DENEME.HTM" >KISAYOL DENEME.HTM&lt;/A></B> 
+<BR>
+<BR>../ ifadesini istediðiniz kadar kullanabilirsiniz. Ýki alt klasördeki dosyayý
+çaðýrmak için ../../DENEME.HTM gibi bir ifade kullanabilirsiniz. Bir üst
+klasördeki (C:\PROJE\1\BASKA\SAYFA.HTM gibi) dosyayý çaðýrmak için ise
+þöyle bir yol izlemelisiniz:
+<BR>
+<BR><B>&lt;A HREF=" BASKA/SAYFA.HTM" >KISAYOL&lt;/A></B> 
+<BR>
+<BR>Eðer bir Web sunucusu üzerinde çalýþýyorsanýz ve sabit diskinizin tümü
+veya bir alt dizinini Web sayfalarýnýz için tanýmlanmýþsa kök dizine inmek
+ve buradan baþka bir klasöre geçmek için / karakterini kullanabilirsiniz.
+Örneðin
+<BR><B>&lt;a href=" /GIRIS.HTM" >GIRIS&lt;/a> </B>satýrý sizi web için ayrýlan bölümün en dibine kadar indirecek ve GIRIS.HTM dosyasýna kýsayol oluþturacaktýr. Bunun gibi resimler dizinindeki bir resmi çaðýrmak için
+<BR><B>&lt;img src=" /resimler/pcmagazine.gif" > </B>gibi bir ifade kullanmalýsýnýz.
+
+
+</td></tr></table>

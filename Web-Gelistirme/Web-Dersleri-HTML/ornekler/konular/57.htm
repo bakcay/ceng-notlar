@@ -1,0 +1,66 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<P><FONT FACE="Arial,Helvetica"><FONT SIZE=+2><B>SAYFANIZI ÇERÇEVELERDEN
+KURTARIN!</B></FONT></FONT>
+<BR>Onca zahmetle hazýrladýðýnýz sayfa linkleri açmak için doðrum kod kullanmayan
+kiþiler yüzünden frame (çerçeveler) arasýnda sýkýþýp klýyorsa ya da kullanýcýlarýnýza
+çerçeveler içerisinde sunduðunuz içeriði bir tuþla tam ekrana yansýtsýn
+istiyorsanýz aþaðýdaki kodlarý kullanabilirisiniz
+
+<P>OLUSTUR.HTM
+<BR>&lt;HTML>
+<BR>&lt;HEAD>
+<BR>&lt;TITLE>Sayfanýzý çerçevelerden kurtarýn!&lt;/TITLE>
+<BR>&lt;/HEAD>
+<BR>&lt;FRAMESET COLS="150,*">
+<BR>&lt;FRAME SRC="1.htm" NAME="nav">
+<BR>&lt;FRAME SRC="2.htm" NAME="main">
+<BR>&lt;/FRAMESET>
+<BR>&lt;/HTML>
+
+<P>1.HTM
+<BR>&lt;HTML>
+<BR>&lt;BODY BGCOLOR="#00c0FF">
+<BR>&lt;b>Frame Ýçin Örnek Sayfa....&lt;/b>
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+<P>2.HTM
+<BR>&lt;HTML>
+<BR>&lt;SCRIPT>
+<BR>&lt;!--
+<BR>function check()
+<BR>{if (top.location != location)
+<BR>{document.frm.button.value="Çerçevelerden Kurtul"}
+<BR>else
+<BR>{document.frm.button.value="Çerçevelere Geri Dön"}}
+<BR>function frame_noframe()
+<BR>{if (top.location != location)
+<BR>{top.location.href = document.location.href}
+<BR>else
+<BR>{top.location="olustur.htm"}}
+<BR>//-->
+<BR>&lt;/SCRIPT>
+<BR>&lt;/HEAD>
+
+<P>&lt;BODY BGCOLOR="#FFFFFF" onLoad="check()">
+<BR>&lt;FORM NAME="frm">
+<BR>&lt;INPUT TYPE="button" VALUE="kurtul" NAME="button" onClick="frame_noframe()">
+<BR>&lt;/FORM>
+<BR>&lt;HR>
+<BR>Yukarýdaki tuþa basarak sayfanýn çerçevelerden kurtulmasýný,&lt;br>
+<BR>tekrar basarak sayfanýn çerçeveler içine geri dönmesini saðlayabilirsiniz.
+<BR>&lt;hr>
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+
+
+
+</td></tr></table>

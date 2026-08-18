@@ -1,0 +1,30 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Hangi tarayýcý?</h2></font>
+
+Kullanýcýnýzýn sitenize hangi web tarayýcýsýyla baðlandýðýný ve hangi siteden geldiðini göstermek istiyorsanýz aþaðýdaki kodlarý kullanabilirsiniz.<p>
+Internet üzerindeki herhangi bir siteden sayfanýza gelen kullanýcý bu kodlar sayesinde geldiði adresi, Web tarayýcýsýnýn tipini ve sürümünü öðrenecektir. Kullanýcýnýn geldiði adresi öðrenmesi için muhakkak bir web sunucusundan baðlanmasý gerekmektedir.<p>
+Sayfanýza lokal bir web sayfasýndan týklayarak gelen kullanýcýlar 1. Satýrý boþ göreceklerdir. Verdiðimiz örnek kodlarý deðiþtirerek sayfanýza baðlanan kullanýcýnýn geldiði siteye geri dönmesi için bir tuþ koyabilir, web tarayýcýsýnýn cinsine göre deðiþik içeriklere ulaþmasýný saðlayabilirsiniz.
+
+<P>&lt;HTML>
+<BR>&lt;HEAD>&lt;TITLE>Hangi Tarayýcý?&lt;/TITLE>&lt;/HEAD>
+
+<P>&lt;FONT SIZE=+1 FACE=ARIAL>
+<BR>&lt;SCRIPT LANGUAGE="JavaScript">
+<BR>var where = document.referrer
+<BR>var name = navigator.appName
+<BR>var vers = navigator.appVersion
+<BR>document.write("Sizi buraya yollayan adres: "+where+" &lt;P>Kullandýðýnýz
+tarayýcý: "+name+" &lt;BR>"+vers+" ")
+<BR>&lt;/SCRIPT>
+<BR>&lt;/CENTER>
+<BR>&lt;/HTML>
+
+
+</td></tr></table>

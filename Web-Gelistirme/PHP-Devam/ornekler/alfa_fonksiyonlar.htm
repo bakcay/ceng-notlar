@@ -1,0 +1,1765 @@
+<html>
+
+<head>
+<meta name=Generator content="Microsoft Office HTML Filter 2.0">
+<meta http-equiv=Content-Type content="text/html; charset=Windows-1254">
+<meta name=Originator content="Microsoft Word 9">
+<title>String functions</title>
+<style>
+<!--
+ 
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+h1
+	{
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Arial Black";
+	font-weight:normal;}
+h2
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:150%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Arial Black";
+	font-weight:normal;}
+h3
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:Verdana;
+	letter-spacing:-.25pt;
+	font-weight:bold;}
+h4
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Verdana;
+	text-transform:uppercase;
+	letter-spacing:1.5pt;
+	font-weight:bold;}
+h5
+	{
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:9.0pt;
+	font-family:"Arial Black";
+	letter-spacing:-.25pt;
+	font-weight:normal;}
+h6
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:8.0pt;
+	font-family:Garamond;
+	font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	background:#F2F2F2;
+	border:none;
+	padding:0cm;
+	font-size:14.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:16.0pt;
+	page-break-after:avoid;
+	border:none;
+	padding:0cm;
+	font-size:7.0pt;
+	font-family:"Arial Black";
+	text-transform:uppercase;
+	letter-spacing:3.0pt;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:8.0pt;
+	font-family:Garamond;
+	font-weight:bold;
+	font-style:italic;}
+p.MsoIndex1, li.MsoIndex1, div.MsoIndex1
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-36.0pt;
+	line-height:12.0pt;
+	font-size:7.5pt;
+	font-family:"Arial Black";}
+p.MsoIndex2, li.MsoIndex2, div.MsoIndex2
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:9.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:12.0pt;
+	font-size:7.5pt;
+	font-family:"Arial Black";}
+p.MsoIndex3, li.MsoIndex3, div.MsoIndex3
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:9.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:12.0pt;
+	font-size:9.0pt;
+	font-family:Garamond;}
+p.MsoIndex4, li.MsoIndex4, div.MsoIndex4
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:9.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:12.0pt;
+	font-size:9.0pt;
+	font-family:Garamond;}
+p.MsoIndex5, li.MsoIndex5, div.MsoIndex5
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:9.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:12.0pt;
+	font-size:9.0pt;
+	font-family:Garamond;}
+p.MsoIndex6, li.MsoIndex6, div.MsoIndex6
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-8.0pt;
+	line-height:12.0pt;
+	font-size:7.5pt;
+	font-family:"Arial Black";}
+p.MsoIndex7, li.MsoIndex7, div.MsoIndex7
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:56.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-8.0pt;
+	line-height:12.0pt;
+	font-size:7.5pt;
+	font-family:"Arial Black";}
+p.MsoIndex8, li.MsoIndex8, div.MsoIndex8
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-8.0pt;
+	line-height:200%;
+	font-size:8.0pt;
+	font-family:Garamond;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:42.55pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:150%;
+	font-size:9.0pt;
+	font-family:Arial;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:42.55pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:150%;
+	font-size:8.0pt;
+	font-family:Arial;}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:150%;
+	border:none;
+	padding:0cm;
+	font-size:8.0pt;
+	font-family:Arial;}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:43.2pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:150%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:56.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:64.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:9.0pt;
+	font-family:Garamond;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:9.35pt;
+	margin-bottom:.0001pt;
+	text-indent:-9.35pt;
+	line-height:11.0pt;
+	font-size:8.0pt;
+	font-family:Garamond;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:7.0pt;
+	font-family:"Arial Black";
+	text-transform:uppercase;
+	letter-spacing:3.0pt;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:normal;
+	border:none;
+	padding:0cm;
+	font-size:8.0pt;
+	font-family:"Arial Black";}
+p.MsoIndexHeading, li.MsoIndexHeading, div.MsoIndexHeading
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:24.0pt;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Garamond;
+	color:gray;
+	text-transform:uppercase;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;
+	font-weight:bold;}
+p.MsoTof, li.MsoTof, div.MsoTof
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+span.MsoFootnoteReference
+	{
+	vertical-align:super;}
+span.MsoPageNumber
+	{
+	font-weight:bold;}
+span.MsoEndnoteReference
+	{
+	vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:9.35pt;
+	margin-bottom:.0001pt;
+	text-indent:-9.35pt;
+	line-height:11.0pt;
+	font-size:9.0pt;
+	font-family:Garamond;}
+p.MsoToa, li.MsoToa, div.MsoToa
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoMacroText, li.MsoMacroText, div.MsoMacroText
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.MsoToaHeading, li.MsoToaHeading, div.MsoToaHeading
+	{
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:18.0pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Arial Black";
+	letter-spacing:-.5pt;
+	font-weight:bold;}
+p.MsoList, li.MsoList, div.MsoList
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:18.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:18.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Andale Mono";
+	letter-spacing:-.25pt;}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:36.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoList2, li.MsoList2, div.MsoList2
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:54.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoList3, li.MsoList3, div.MsoList3
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoList4, li.MsoList4, div.MsoList4
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:90.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoList5, li.MsoList5, div.MsoList5
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:108.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:54.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Andale Mono";
+	letter-spacing:-.25pt;}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Andale Mono";
+	letter-spacing:-.25pt;}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:90.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Andale Mono";
+	letter-spacing:-.25pt;}
+p.MsoListBullet5, li.MsoListBullet5, div.MsoListBullet5
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-18.0pt;
+	line-height:16.0pt;
+	border:none;
+	padding:0cm;
+	font-size:9.0pt;
+	font-family:Garamond;}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:54.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:90.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListNumber5, li.MsoListNumber5, div.MsoListNumber5
+	{
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:108.0pt;
+	text-align:justify;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{
+	margin-top:5.0pt;
+	margin-right:0cm;
+	margin-bottom:180.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:30.0pt;
+	page-break-after:avoid;
+	border:none;
+	padding:0cm;
+	font-size:24.0pt;
+	font-family:"Arial Black";
+	color:gray;
+	letter-spacing:-1.75pt;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoListContinue, li.MsoListContinue, div.MsoListContinue
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:18.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListContinue2, li.MsoListContinue2, div.MsoListContinue2
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:54.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListContinue3, li.MsoListContinue3, div.MsoListContinue3
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:72.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListContinue4, li.MsoListContinue4, div.MsoListContinue4
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:90.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoListContinue5, li.MsoListContinue5, div.MsoListContinue5
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:108.0pt;
+	text-align:justify;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.25pt;}
+p.MsoMessageHeader, li.MsoMessageHeader, div.MsoMessageHeader
+	{
+	margin-top:0cm;
+	margin-right:108.0pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:-54.0pt;
+	line-height:14.0pt;
+	font-size:10.0pt;
+	font-family:Arial;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{
+	margin-top:97.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:10.0pt;
+	page-break-after:avoid;
+	border:none;
+	padding:0cm;
+	font-size:9.0pt;
+	font-family:Garamond;
+	color:gray;
+	text-transform:uppercase;
+	letter-spacing:1.5pt;
+	font-weight:bold;}
+p.MsoDate, li.MsoDate, div.MsoDate
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:28.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoBodyTextIndent2, li.MsoBodyTextIndent2, div.MsoBodyTextIndent2
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MsoBodyTextIndent3, li.MsoBodyTextIndent3, div.MsoBodyTextIndent3
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:189.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-153.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+em
+	{
+	font-style:normal;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	background:navy;
+	font-size:10.0pt;
+	font-family:Tahoma;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.Kod, li.Kod, div.Kod
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:normal;
+	background:yellow;
+	font-size:12.0pt;
+	font-family:"Courier New";
+	letter-spacing:-.25pt;}
+p.NorKod, li.NorKod, div.NorKod
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:normal;
+	background:yellow;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	letter-spacing:-.25pt;}
+p.ChapterLabel, li.ChapterLabel, div.ChapterLabel
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	border:none;
+	padding:0cm;
+	font-size:7.5pt;
+	font-family:"Arial Black";
+	text-transform:uppercase;
+	letter-spacing:3.5pt;}
+p.ChapterSubtitle, li.ChapterSubtitle, div.ChapterSubtitle
+	{
+	margin-top:0cm;
+	margin-right:90.0pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Arial;
+	letter-spacing:-1.0pt;
+	font-style:italic;}
+p.ChapterTitle, li.ChapterTitle, div.ChapterTitle
+	{
+	margin-top:24.0pt;
+	margin-right:108.0pt;
+	margin-bottom:18.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:22.0pt;
+	page-break-before:always;
+	page-break-after:avoid;
+	font-size:22.0pt;
+	font-family:"Arial Black";}
+p.DocumentLabel, li.DocumentLabel, div.DocumentLabel
+	{
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:18.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Garamond;
+	font-weight:bold;}
+p.FooterEven, li.FooterEven, div.FooterEven
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:normal;
+	border:none;
+	padding:0cm;
+	font-size:8.0pt;
+	font-family:"Arial Black";}
+p.FooterFirst, li.FooterFirst, div.FooterFirst
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:normal;
+	font-size:8.0pt;
+	font-family:"Arial Black";
+	letter-spacing:-.5pt;}
+p.FooterOdd, li.FooterOdd, div.FooterOdd
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:normal;
+	border:none;
+	padding:0cm;
+	font-size:8.0pt;
+	font-family:"Arial Black";}
+p.FootnoteBase, li.FootnoteBase, div.FootnoteBase
+	{
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:9.0pt;
+	font-family:Garamond;}
+p.HeaderBase, li.HeaderBase, div.HeaderBase
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:8.0pt;
+	font-family:Garamond;}
+p.HeaderEven, li.HeaderEven, div.HeaderEven
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:7.0pt;
+	font-family:"Arial Black";
+	text-transform:uppercase;
+	letter-spacing:3.0pt;}
+p.HeaderFirst, li.HeaderFirst, div.HeaderFirst
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:7.0pt;
+	font-family:Garamond;
+	text-transform:uppercase;
+	letter-spacing:3.0pt;
+	font-weight:bold;}
+p.HeaderOdd, li.HeaderOdd, div.HeaderOdd
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:right;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:7.0pt;
+	font-family:"Arial Black";
+	text-transform:uppercase;
+	letter-spacing:3.0pt;}
+p.HeadingAnimate, li.HeadingAnimate, div.HeadingAnimate
+	{
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:"Arial Black";
+	color:red;
+	text-transform:uppercase;
+	text-shadow:auto;}
+p.HeadingBase, li.HeadingBase, div.HeadingBase
+	{
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:18.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+p.Icon1, li.Icon1, div.Icon1
+	{
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:72.0pt;
+	background:#E5E5E5;
+	font-size:80.0pt;
+	font-family:Wingdings;
+	color:white;
+	letter-spacing:-.5pt;
+	font-weight:bold;}
+p.IndexBase, li.IndexBase, div.IndexBase
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:12.0pt;
+	font-size:9.0pt;
+	font-family:Garamond;}
+span.Lead-inEmphasis
+	{
+	text-transform:uppercase;}
+p.ListBulletFirst, li.ListBulletFirst, div.ListBulletFirst
+	{
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+p.ListBulletLast, li.ListBulletLast, div.ListBulletLast
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+p.ListFirst, li.ListFirst, div.ListFirst
+	{
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:36.0pt;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+p.ListLast, li.ListLast, div.ListLast
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:36.0pt;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+p.ListNumberFirst, li.ListNumberFirst, div.ListNumberFirst
+	{
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:36.0pt;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+p.ListNumberLast, li.ListNumberLast, div.ListNumberLast
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:36.0pt;
+	text-indent:-18.0pt;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+p.PartLabel, li.PartLabel, div.PartLabel
+	{
+	margin-top:16.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:78.0pt;
+	background:#CCCCCC;
+	font-size:98.0pt;
+	font-family:"Arial Black";
+	color:white;}
+p.PartSubtitle, li.PartSubtitle, div.PartSubtitle
+	{
+	margin-top:18.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:Arial;
+	font-style:italic;}
+p.PartTitle, li.PartTitle, div.PartTitle
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:24.0pt;
+	page-break-before:always;
+	page-break-after:avoid;
+	background:#CCCCCC;
+	font-size:18.0pt;
+	font-family:"Arial Black";
+	letter-spacing:-2.5pt;}
+p.Picture, li.Picture, div.Picture
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:Verdana;
+	letter-spacing:-.25pt;}
+p.ReturnAddress, li.ReturnAddress, div.ReturnAddress
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;
+	letter-spacing:-.15pt;}
+p.SectionHeading, li.SectionHeading, div.SectionHeading
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:32.0pt;
+	font-size:7.5pt;
+	font-family:"Arial Black";
+	text-transform:uppercase;
+	letter-spacing:3.0pt;}
+p.SectionLabel, li.SectionLabel, div.SectionLabel
+	{
+	margin-top:102.0pt;
+	margin-right:0cm;
+	margin-bottom:18.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:24.0pt;
+	font-size:24.0pt;
+	font-family:"Arial Black";
+	color:gray;
+	letter-spacing:-1.75pt;}
+p.SubtitleCover, li.SubtitleCover, div.SubtitleCover
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:264.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:24.0pt;
+	page-break-after:avoid;
+	border:none;
+	padding:0cm;
+	font-size:22.0pt;
+	font-family:Verdana;
+	letter-spacing:-.75pt;}
+span.Superscript
+	{
+	vertical-align:super;}
+p.TitleCover, li.TitleCover, div.TitleCover
+	{
+	margin-top:0cm;
+	margin-right:30.0pt;
+	margin-bottom:0cm;
+	margin-left:30.0pt;
+	margin-bottom:.0001pt;
+	text-align:right;
+	text-indent:36.0pt;
+	line-height:72.0pt;
+	background:#E5E5E5;
+	border:none;
+	padding:0cm;
+	font-size:72.0pt;
+	font-family:Garamond;
+	letter-spacing:-3.5pt;}
+p.TOCBase, li.TOCBase, div.TOCBase
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Arial;}
+p.Author, li.Author, div.Author
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:0cm;
+	line-height:200%;
+	font-size:12.0pt;
+	font-family:Garamond;
+	letter-spacing:-.1pt;}
+p.BlockQuotation, li.BlockQuotation, div.BlockQuotation
+	{
+	margin-top:0cm;
+	margin-right:36.0pt;
+	margin-bottom:3.0pt;
+	margin-left:72.0pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:Verdana;
+	font-style:italic;}
+p.BlockQuotationFirst, li.BlockQuotationFirst, div.BlockQuotationFirst
+	{
+	margin-top:0cm;
+	margin-right:24.0pt;
+	margin-bottom:0cm;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	text-indent:3.0pt;
+	line-height:200%;
+	background:#E5E5E5;
+	border:none;
+	padding:0cm;
+	font-size:10.5pt;
+	font-family:"Arial Black";
+	letter-spacing:-.5pt;}
+p.BlockQuotationLast, li.BlockQuotationLast, div.BlockQuotationLast
+	{
+	margin-top:0cm;
+	margin-right:36.0pt;
+	margin-bottom:3.0pt;
+	margin-left:72.0pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+p.BodyTextKeep, li.BodyTextKeep, div.BodyTextKeep
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.cat, li.cat, div.cat
+	{
+	margin-right:0cm;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Arial Unicode MS";
+	color:black;}
+p.CompanyName, li.CompanyName, div.CompanyName
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:54.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	page-break-after:avoid;
+	font-size:30.0pt;
+	font-family:"Times New Roman";
+	letter-spacing:-1.5pt;}
+p.GlossaryDefinition, li.GlossaryDefinition, div.GlossaryDefinition
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:normal;
+	font-size:10.0pt;
+	font-family:Verdana;}
+span.GlossaryEntry
+	{
+	font-weight:bold;}
+p.HEADINGKUTU, li.HEADINGKUTU, div.HEADINGKUTU
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:150%;
+	page-break-after:avoid;
+	background:#E0E0E0;
+	font-size:12.0pt;
+	font-family:"Arial Black";}
+p.KutuMetin, li.KutuMetin, div.KutuMetin
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	background:#E6E6E6;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.MakroTextKutulu, li.MakroTextKutulu, div.MakroTextKutulu
+	{
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:54.0pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:normal;
+	background:#E6E6E6;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	font-weight:bold;}
+p.NNormalBaslik, li.NNormalBaslik, div.NNormalBaslik
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Georgia;
+	font-weight:bold;}
+p.Name, li.Name, div.Name
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.NormKod, li.NormKod, div.NormKod
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:9.0pt;
+	font-family:"Courier New";}
+p.NormalBaslik, li.NormalBaslik, div.NormalBaslik
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:Verdana;
+	font-weight:bold;}
+p.NormalInt, li.NormalInt, div.NormalInt
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:153.35pt;
+	margin-bottom:.0001pt;
+	text-indent:-153.35pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+p.nt, li.nt, div.nt
+	{
+	margin-right:0cm;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Arial Unicode MS";
+	color:black;}
+p.rl, li.rl, div.rl
+	{
+	margin-right:0cm;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Arial Unicode MS";
+	color:black;}
+p.ShortReturnAddress, li.ShortReturnAddress, div.ShortReturnAddress
+	{
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:Verdana;}
+span.Slogan
+	{
+	letter-spacing:-.3pt;
+	font-style:italic;}
+p.t, li.t, div.t
+	{
+	margin-right:0cm;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:10.0pt;
+	font-family:"Arial Unicode MS";
+	color:black;}
+p.TableHeader, li.TableHeader, div.TableHeader
+	{
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:8.0pt;
+	font-family:"Arial Black";}
+p.TableText, li.TableText, div.TableText
+	{
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:36.0pt;
+	line-height:200%;
+	font-size:8.0pt;
+	font-family:Verdana;}
+p.TOC10, li.TOC10, div.TOC10
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:11.0pt;
+	margin-left:0cm;
+	text-indent:36.0pt;
+	line-height:11.0pt;
+	font-size:10.0pt;
+	font-family:Arial;
+	font-style:italic;}
+p.TOCforBox, li.TOCforBox, div.TOCforBox
+	{
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:72.0pt;
+	margin-bottom:.0001pt;
+	text-indent:0cm;
+	line-height:150%;
+	border:none;
+	padding:0cm;
+	font-size:8.0pt;
+	font-family:Arial;
+	font-style:italic;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=Section1>
+
+<h1 style='text-indent:0cm'><span lang=TR style='font-family:Tahoma'>String
+functions</span></h1>
+
+<p style='text-indent:0cm'><span lang=TR style='font-family:Tahoma'>These
+functions all manipulate strings in various ways. Some more specialized
+sections can be found in the regular expression and URL handling sections. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><b><span lang=TR style='font-family:
+Tahoma'>Table of Contents</span></b></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.addcslashes.php">AddCSlashes</a>
+— Quote string with slashes in a C style. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.addslashes.php">AddSlashes</a>
+— Quote string with slashes </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.bin2hex.php">bin2hex</a> —
+Convert binary data into hexadecimal representation </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.chop.php">Chop</a> — Remove
+trailing whitespace. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.chr.php">Chr</a> — Return a
+specific character. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.chunk-split.php">chunk_split</a>
+— Split a string into smaller chunks. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.convert-cyr-string.php">convert_cyr_string</a>
+— Convert from one Cyrillic character set to another. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.count-chars.php">count_chars</a>
+— Return information abouts characters used in a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.crypt.php">crypt</a> —
+DES-encrypt a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.echo.php">echo</a> — Output
+one or more strings. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.explode.php">explode</a> —
+Split a string by string </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.flush.php">flush</a> —
+Flush the output buffer. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a
+href="http://www.php.net/manual/function.get-html-translation-table.php">get_html_translation_table</a>
+— Returns the translation table used by <a
+href="http://www.php.net/manual/function.htmlspecialchars.php">htmlspecialchars()</a>
+and <a href="http://www.php.net/manual/function.htmlentities.php">htmlentities()</a>.
+</span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.get-meta-tags.php">get_meta_tags</a>
+— Extracts all meta tag content attributes from a file and returns an array. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.htmlentities.php">htmlentities</a>
+— Convert all applicable characters to HTML entities. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.htmlspecialchars.php">htmlspecialchars</a>
+— Convert special characters to HTML entities. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.implode.php">implode</a> —
+Join array elements with a string </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.join.php">join</a> — Join
+array elements with a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.levenshtein.php">levenshtein</a>
+— Calculate Levenshtein distance between two strings </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.ltrim.php">ltrim</a> —
+Strip whitespace from the beginning of a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.md5.php">md5</a> — Calculate
+the md5 hash of a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.metaphone.php">Metaphone</a>
+— Calculate the metaphone key of a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.nl2br.php">nl2br</a> —
+Converts newlines to HTML line breaks. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.ord.php">Ord</a> — Return
+ASCII value of character. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.parse-str.php">parse_str</a>
+— Parses the string into variables. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.print.php">print</a> —
+Output a string </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.printf.php">printf</a> —
+Output a formatted string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.quoted-printable-decode.php">quoted_printable_decode</a>
+— Convert a quoted-printable string to an 8 bit string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.quotemeta.php">QuoteMeta</a>
+— quote meta characters </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.rawurldecode.php">rawurldecode</a>
+— Decode URL-encoded strings </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.rawurlencode.php">rawurlencode</a>
+— URL-encode according to RFC1738. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.setlocale.php">setlocale</a>
+— Set locale information. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.similar-text.php">similar_text</a>
+— Calculate the similarity between two strings. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.soundex.php">soundex</a> —
+Calculate the soundex key of a string </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.sprintf.php">sprintf</a> —
+Return a formatted string </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strcasecmp.php">strcasecmp</a>
+— Binary safe case-insensitive string comparison. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strchr.php">strchr</a> —
+Find the first occurrence of a character. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strcmp.php">strcmp</a> —
+Binary safe string comparison </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strcspn.php">strcspn</a> —
+Find length of initial segment not matching mask. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strip-tags.php">strip_tags</a>
+— Strip HTML and PHP tags from a string </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.stripcslashes.php">StripCSlashes</a>
+— un-quote string quoted with addcslashes </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.stripslashes.php">StripSlashes</a>
+— Un-quote string quoted with addslashes </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.stristr.php">stristr</a> —
+Case-insensitive <a href="http://www.php.net/manual/function.strstr.php">strstr()</a>.
+</span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strlen.php">strlen</a> —
+Get string length. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strpos.php">strpos</a> —
+Find position of first occurrence of a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strrchr.php">strrchr</a> —
+Find the last occurrence of a character in a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.str-repeat.php">str_repeat</a>
+— Repeat a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strrev.php">strrev</a> —
+Reverse a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strrpos.php">strrpos</a> —
+Find position of last occurrence of a char in a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strspn.php">strspn</a> —
+Find length of initial segment matching mask. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strstr.php">strstr</a> —
+Find first occurrence of a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strtok.php">strtok</a> —
+Tokenize string </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strtolower.php">strtolower</a>
+— Make a string lowercase. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strtoupper.php">strtoupper</a>
+— Make a string uppercase. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.str-replace.php">str_replace</a>
+— Replace all occurrences of needle in haystack with str. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.strtr.php">strtr</a> —
+Translate certain characters. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.substr.php">substr</a> —
+Return part of a string </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.substr-replace.php">substr_replace</a>
+— Replace text within a portion of a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.trim.php">trim</a> — Strip
+whitespace from the beginning and end of a string. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.ucfirst.php">ucfirst</a> —
+Make a string's first character uppercase. </span></p>
+
+<p class=MsoNormal style='text-indent:0cm'><span lang=TR style='font-family:
+Tahoma'><a href="http://www.php.net/manual/function.ucwords.php">ucwords</a> —
+Uppercase the first character of each word in a string </span></p>
+
+<p class=MsoNormal><span lang=TR>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>BÝR MENÜDE SÝTE HARÝTASI!</h2></font>
+
+Internet'te rastladýðýmýz bir çok sitede kullanýcýnýn istediði sayfaya
+kolayca eriþebilmesi veya ana sayfaya bir klikleme ile ulaþabilmesi için
+navigasyon çubuklarý kullanýlýr. Kullanýcýyý sürekli olarak web tarayýcýsýnýn
+geri tuþuna basmaktan kurtaran bu özelliði þimdi vereceðimiz kodlarý sayfanýza
+ekleyerek uygulayabilirsiniz.
+
+<P>Aþaðýdaki örnek HTML sayfasý, içerisinde bir Javascript barýndýrýyor.
+Javascript'i kendinize göre özelleþtirerek dilediðiniz tipte bir navigasyon
+menüsüne sahip olabilirsiniz. Dilediðiniz sayfaya gitmek için tek yapmanýz
+gereken ilgili bölümü seçmek ve Git tuþuna basmak.
+
+<P>&lt;html>&lt;head>&lt;script language="JavaScript">
+<BR>&lt;!--
+<BR>function buildArray() {
+<BR>&nbsp; var a = buildArray.arguments;
+<BR>&nbsp; for (i=0; i&lt;a.length; i++) {
+<BR>&nbsp;&nbsp;&nbsp; this[i] = a[i];
+<BR>&nbsp; }
+<BR>&nbsp; this.length = a.length;
+<BR>}
+<BR>var urls1 = new buildArray("",
+<BR>"http://www.pcmagazine.com.tr/",
+<BR>"http://www.pcmagazine.com.tr/haberler/",
+<BR>"http://www.pcmagazine.com.tr/rehber/",
+<BR>"http://www.pcmagazine.com.tr/games/",
+<BR>"http://www.pcmagazine.com.tr/share/");
+<BR>function go(which, num, win) {
+<BR>&nbsp; n = which.selectedIndex;
+<BR>&nbsp; if (n != 0) {
+<BR>&nbsp;&nbsp;&nbsp; var url = eval("urls" + num + "[n]")
+<BR>&nbsp;&nbsp;&nbsp; if (win) {
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; openWindow(url);
+<BR>&nbsp;&nbsp;&nbsp; } else {
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; location.href = url;
+<BR>&nbsp;&nbsp;&nbsp; }
+<BR>&nbsp; }
+<BR>}
+<BR>// -->
+<BR>&lt;/script>&lt;/head>
+
+<P>&lt;body>
+<BR>&lt;form name="form1">
+<BR>&lt;select name="menu1">
+<BR>&lt;option>Seçiminizi Yapýn
+<BR>&lt;option>Ana Sayfa
+<BR>&lt;option>Haberler
+<BR>&lt;option>Internet Rehberi
+<BR>&lt;option>PC Games
+<BR>&lt;option>Shareware
+<BR>&lt;/select>
+<BR>&lt;input type="button" name="goButton" value="Git!" onClick="go(this.form.menu1,
+1, false)">
+<BR>&lt;/form>&lt;/body>&lt;/html>
+
+<P>Bu anlatýklarýmýzdan sonra "ama ben navigasyon menümden kim nereye gitmiþ
+kim hangi bölümü kaç kere gezmiþ öðrenmek isterim, bilmek isterim" derseniz
+yine Internet üzerinden bulabileceðiniz bir CGI veya Perl Script'ten faydalanmanýzý
+öneririz.
+
+
+
+
+
+</td></tr></table>

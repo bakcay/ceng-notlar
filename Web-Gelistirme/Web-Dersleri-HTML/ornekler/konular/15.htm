@@ -1,0 +1,51 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+
+
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Rastgele Ýþlemler</h2></font>
+
+WEB dersanesi sayfalarýmýzda zaman zaman faydalý Java Script kodlarý bulabilirsiniz.
+Ýþte bunlardan bir tanesi; kodlarýmýz bulunulan saniyeyi okuyarak her saniyede
+deðiþik bir Murphy kuralýný ekrana getiriyor. ' AR'  deðiþkeniyle kaç adet
+kural olduðu tanýmlandýktan sonra, kural Getmessge fonksiyonuna atanýyor
+ve fonksiyon &lt;BODY...> tag'ýnýn içerisinden çaðrýlýyor. Kendi vecizelerinizi
+bu script'e eklemek için öncelikle ' Array(3)'  deðerini daha sonra ' ar[sec
+% 4])'  deðerini yükselmeli ve vecizeyi yeni bir ' ar[x] ='  satýrýna eklemelisiniz.
+
+<P>&lt;HTML>
+<BR>&lt;HEAD>
+<BR>&lt;TITLE>Rastgele Vecizeler&lt;/TITLE>
+<BR>&lt;SCRIPT LANGUAGE=' JavaScript' >
+<BR>&lt;!--
+<BR>function getMessage() {
+<BR>var ar = new Array(3)
+<BR>ar[0] = ' Hiç bir iþ göründüðü kadar kolay deðildir.'
+<BR>ar[1] = ' Her iþ tahmin ettiðinizden çok vakit alýr.'
+<BR>ar[2] = ' Yanlýþ gitme olasýlýðý olan her iþ yanlýþ gider.'
+<BR>ar[3] = ' Bir takým iþlerin yanlýþ gitme olasýlýðý varsa size en çok
+zarar verecek olaný yanlýþ gider.'
+<BR>var now = new Date()
+<BR>var sec = now.getSeconds()
+<BR>alert(' Murphy Kanunu:\r'  + ar[sec % 4])
+<BR>}
+<BR>//-->
+<BR>&lt;/SCRIPT>
+<BR>&lt;/HEAD>
+<BR>&lt;BODY onLoad=' getMessage()' >
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+
+
+
+
+
+</td></tr></table>

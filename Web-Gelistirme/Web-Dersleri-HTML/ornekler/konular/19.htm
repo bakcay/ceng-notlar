@@ -1,0 +1,59 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Resimlerinizin Haritasýný Çýkartýn</h2></font>
+<img src=6.gif align=right>IMAGE map'ler kullanýcýnýn belirli bir resmin deðiþik alanlarýna týkladýðýnda
+farklý adreslere gidebilmesine olanak tanýr. Ýki þekilde hazýrlanabilecek
+Image Map'ler isteðe göre HTML sayfasýna veya sunucu üzerindeki baþka bir
+dosyaya yerleþtirilebilir. Biz bu konumuzda HTML sayfalarýna yerleþtirilen
+Image Map'leri inceleyecek Paint Shop Pro yardýmýyla bir resmin haritasýnýn
+nasýl çýkarýlacaðýný göstereceðiz.
+
+<P>&lt;MAP NAME="map1">&lt;!-- Örnek resmin HTML kodlarý -->
+<BR>&lt;AREA SHAPE="RECT"&nbsp; COORDS=' 7, 7, 119, 74'&nbsp; HREF="http://www.pcmagazine.com.tr">
+<BR>&lt;AREA SHAPE="CIRCLE"&nbsp; COORDS=' 178, 41, 35'&nbsp; href="http://www.idg.com.tr">
+<BR>&lt;/MAP>
+
+<P>Öncelikle HTML sayfasýnda yukarýdaki gibi kodlar kullanýr ve istediðimiz
+resimde hangi noktalara týklandýðýnda hangi adreslere baðlanýlacaðýný belirtiriz.
+Daha sonra &lt;IMG SRC=' map1.gif'&nbsp; USEMAP=' #map1' > gibi bir ifade
+kullanýlarak haritasýnýn çýkarýlmasýný istediðimiz resmi sayfaya yerleþtirir
+ve bu resim için ' map1'&nbsp; isimli haritanýn kullanýlacaðýný belirtiriz.
+
+<P><B>MAP</B> TAG'I &lt;MAP NAME='deneme' > AREA takýlarýyla tanýmlanan
+haritaya baþlangýç yapar ve bir isim verir.<B></B>
+
+<P><B>AREA TAG'I</B>
+<BR><TT>&lt;AREA COORDS=koordinatlar SHAPE=tip HREF=url TARGET=pencere></TT>
+
+<P><B>COORDS</B>
+<BR>Tanýmlanan þekle göre deðiþik koordinatlar girebilmenizi saðlar
+
+<P><B>SHAPE=tip</B>
+<BR>Tip RECTANGLE, CIRCLE, POLYGON seçeneklerinden biri olabilir. RECTANGLE
+Bir kare tanýmlar ve ' x1, y1, x2, y2'&nbsp; deðerleri kullanýlýr. CIRCLE
+Bir çember tanýmlar ve ' OrtaX, OrtaY, Yarýçap'&nbsp; deðerleri kullanýlýr.
+POLYGON Bir poligon tanýmlar. Birçok noktadan oluþabilir.
+
+<P><B>HREF</B>
+<BR>Þekle týklandýðýnda hangi adrese gidileceðini belirler.
+
+<P><B>TARGET</B>
+<BR>Gidilecek adresin hangi pencerede açýlacaðýný belirler
+
+<P>Peki tanýmladýðýmýz þekillerin koordinatlarýný nasýl bulacaðýz? Bu da
+çok basit, en büyük yardýmcýmýz olan Paint Shop Pro'yu kullanarak istediðimiz
+bir noktadaki koordinatlarý bulabiliriz. Örneðin bir karenin sýnýrlarýný
+öðrenmek istiyorsunuz, hemen resmi açýn ve tanýmlamak istediðiniz karenin
+üst sol noktasýna gidin. X1 ve Y1 noktalarýný durum çubuðundan öðrenip
+bir kenara not ettikten sonra sol alt sýnýra gidin ve X2, Y2 noktalarýný
+öðrenin. Ýþte bu kadar basit.
+
+
+
+</td></tr></table>

@@ -1,0 +1,615 @@
+{
+  "belge": 303,
+  "ornek": 316,
+  "gorsel": 34,
+  "arsiv": 24,
+  "yonlendirme": 3,
+  "dizin": 2,
+  "hata": [],
+  "kisa": [
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Arac-Cubuklari.md",
+      158
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-1.md",
+      71
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-3.md",
+      42
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Perl-Kullanimi-2.md",
+      65
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Perl-Kullanimi-3.md",
+      81
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Perl-Kullanimi-5.md",
+      4
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Donanim.md",
+      128
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Flash-Dersleri-Mask-Teknigi.md",
+      275
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Hedef-Programlama-1.md",
+      262
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Icon-Author-Yazarlik-Yaziliminda-Hazirlanmasi.md",
+      293
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/IP-Adresleri-Ve-Alt-Aglar-2.md",
+      19
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-1.md",
+      76
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-2.md",
+      22
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-3.md",
+      23
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-4.md",
+      28
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-5.md",
+      68
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-6.md",
+      81
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-7.md",
+      66
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-8.md",
+      260
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-9.md",
+      172
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-10.md",
+      288
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-11.md",
+      25
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-13.md",
+      58
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Mobil-Uygulamalari-1.md",
+      151
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Perl-Ve-CGI-1.md",
+      33
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Perl-Ve-CGI-2.md",
+      91
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Perl-Ve-CGI-4.md",
+      189
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-Devam-2.md",
+      50
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-1.md",
+      94
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-13.md",
+      139
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/PIC-1-Ve-PIC-2-2.md",
+      174
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/_Arsiv/Tip.md",
+      22
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-5-0in-Getirdigi-Yenilikler.md",
+      271
+    ]
+  ],
+  "yeniden_adlandirilan": [
+    [
+      "ekitap-Hakki_Ícal-Kitapcik_CGI_Perl_ekler.rar",
+      "ekitap-Hakki_Ical-Kitapcik_CGI_Perl_ekler.rar"
+    ],
+    [
+      "Html Kitabı.chm",
+      "Html-Kitabi.chm"
+    ],
+    [
+      "html notları/html notları/html2000.chm",
+      "html2000-2.chm"
+    ],
+    [
+      "ekitap-Hakki_Ícal-Kitapcik_Javascript_÷rnekler.rar",
+      "ekitap-Hakki_Ical-Kitapcik_Javascript_-rnekler.rar"
+    ],
+    [
+      "ekitap-Hakki_Ícal-Kitap_ik_PHP_÷rnekler/PHP Hosting Companies Search the Directory.htm",
+      "PHP-Hosting-Companies-Search-the-Directory.htm"
+    ],
+    [
+      "Microsoft SQL JET Basvurusu.chm",
+      "Microsoft-SQL-JET-Basvurusu.chm"
+    ],
+    [
+      "Aesop - Fables.lit",
+      "Aesop-Fables.lit"
+    ],
+    [
+      "Bram Stoker - Dracula.lit",
+      "Bram-Stoker-Dracula.lit"
+    ],
+    [
+      "Edgar Alan Poe - The Gold Bug.lit",
+      "Edgar-Alan-Poe-The-Gold-Bug.lit"
+    ],
+    [
+      "Francis Bacon - New Atlantis.lit",
+      "Francis-Bacon-New-Atlantis.lit"
+    ],
+    [
+      "HG Wells - The Island of Doctor Moreau.lit",
+      "HG-Wells-The-Island-of-Doctor-Moreau.lit"
+    ],
+    [
+      "Lewis Carroll - Alices Adventures in Wonderland.lit",
+      "Lewis-Carroll-Alices-Adventures-in-Wonderland.lit"
+    ],
+    [
+      "Mark Twain - Tom Sawyer.lit",
+      "Mark-Twain-Tom-Sawyer.lit"
+    ],
+    [
+      "Robert Louis Stevenson - The Strange Case of Dr Jekyll and M.lit",
+      "Robert-Louis-Stevenson-The-Strange-Case-of-Dr-Jekyll-and-M.lit"
+    ],
+    [
+      "Washington Irving - The Legend of Sleepy Hollow.lit",
+      "Washington-Irving-The-Legend-of-Sleepy-Hollow.lit"
+    ],
+    [
+      "William Shakespeare - King Lear.lit",
+      "William-Shakespeare-King-Lear.lit"
+    ],
+    [
+      "ekitap-Anonim-XML/xml_dosyalar/FILELIST.XML",
+      "FILELIST-2.XML"
+    ]
+  ],
+  "cakisma": [],
+  "kurtarma": [
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/FLASH DERSLERİ/ekitap-Anonim-Flash_Ders_111/DERS111.html",
+      1755
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/INTERTECH/INTERTECH.doc",
+      9855
+    ]
+  ],
+  "bos": [],
+  "yazilan": [
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/3D-Mini-Sozluk.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/3D-Studio-Max.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/A-Dan-Z-Ye-Bilgisayar-Terimleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/A-Plus-Kurs-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/AC-DC-Conventer.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Access-Kurs-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Access-Programi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Access-Veri-Tabani.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Ag-Kurulumu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Ag-Teknolojisi-Ve-Getirdikleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Ag-Yuklemesi-Icin-Daha-Fazla-Planlama.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Algoritma.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Anakartlar.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/ANSI-ASCII-OSI.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/API-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Append-Arama-Yolu-Ayarlama.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Arac-Cubuklari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Ana-Objeler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Book-Ornekler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Giris.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Giris-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Kitap-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Konularinin-Devami.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Uzerine.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Net.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Assembler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-4.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-5.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-6.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-7.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-8.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-9.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Autocad-Ders-Notlari-10.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Aspye-Giris-ASP-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/B-ISDN-Yapisi-Ve-Kullanimi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Basic-Dili.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Bazi-Icerik-Kodlari-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Bazi-Icerik-Kodlari-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Bazi-Icerik-Kodlari-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Bazi-Icerik-Kodlari-4.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Bazi-Icerik-Kodlari-5.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Bellek-Turleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/BIOS-Sesli-Hata-Uyarilarinin-Ve-POST-Mesajlarinin-Anlami-Ve-Cozumu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/BIOS-Ve-BIOS-Guncelleme-Islemleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Bilgisayar-Aglarinda-Temel-Kavramlar.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/Bilgisayar-Hakkinda-Bilgiler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/Bilgisayar-Ingilizcesi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/Bilgisayar-Kontrollu-Kayan-Yazi-Devresi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/Bilgisayar-Uzerine-Hersey.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/Bilgisayar-Veri-Iletimi-Ve-Dijital-Yayincilik-Sozlugu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Bilisim-Dunyasina-Genel-Bakis.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Bilisim-Suclari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Bir-Text-Dosyasi-Olusturmak.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Bir-Veri-Tabaninin-Olusturulmasi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Birden-Cok-Domain-Ile-Calisma.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Bilgisayar-Ve-Programlama-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/C-Ders-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/C-Kodlama-Standartlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/C-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/CSharp-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Cpp-Ders-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Cpp-Veri-Tipleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Perl-Kullanimi-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Perl-Kullanimi-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Perl-Kullanimi-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Perl-Kullanimi-4.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CGI-Perl-Kullanimi-5.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Cift-Anahtarli-Bilgi-Guvenligi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/CMOS-Nedir-TTL-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/CPU.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/CSS-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Corel-Photopaint-10.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Corel-Photopaint-10-Devami.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Cevre-Birimleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Cift-Anahtarli-Bilgi-Guvenligi-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Cevirmeli-Ag-Komut-Dosyasi-Yazma-Destegi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/Dairede-Poisson.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Delphi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Delphi-De-SQL-Kullanimi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Delphi-Menuleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Delphide-Sartli-Calisma-Ve-Blok-Kontrol-Islemleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Denetim-Masasi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Digital-Versatile-Disc.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Disk-Ve-Dosya-Komutlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/DNS-Domain-Main-System.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/DNS-In-Hiyerarsik-Yapisi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/DNS-Domain-Name-System-Domain-Isim-Sistemi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Donanim.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/DOS-Hakkinda-Hersey.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/DOS-Isletim-Sistemi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/DOS-Komutlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/DSL-Digital-Subscrible-Line.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Dijital-Sinir-Sistemiyle-Dusunce-Hizinda-Calismak-Bill-Gates.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/E-Ticaret-Web-Sitesi-Altyapi-Ve-Maliyet.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/E-Ticaret-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/E-Ticarette-Dikkat-Edilmesi-Gereken-Kurallar.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Elektronik-Ticaret-E-Ticaret-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Elektronik-Ticaret-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Elektronik-Ticaret-Terimler-Sozlugu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Elektronik-Ticaretin-Tanim-Kapsam-Ve-Araclari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Elektronik-Ticaretin-Tanimi-Ve-Temel-Araclari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/En-Cok-Kullanilan-Modem-Komutlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Ethernet-Teknolojileri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/Ev-Otomasyonu-Kontrolu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Excel-e-Giris.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Excel-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Excell-2000-Full-Kitap.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Excell-Dersleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Excellde-Matematik-Ve-Trigonometri-Islevleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/FDISK-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Flash-5-Makale.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Flash-Dersleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Flash-Dersleri-Mask-Teknigi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Flash-Hakkinda.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Flash-Nasil-Calisir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Flash-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Front-Page-Egitim-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Frontpage-98.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Frontpage-Dersleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/General-Information-About-Information-And-MIS.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Hacker-Ligin-Kisa-Tarihcesi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Hedef-Programlama-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Hedef-Programlama-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Herkes-Icin-Visual-Basic-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Herkes-Icin-Visual-Basic-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Herkes-Icin-Visual-Basic-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Herkes-Icin-Visual-Basic-4.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Herkes-Icin-Visual-Basic-5.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Herkes-Icin-Visual-Basic-6.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Herkes-Icin-Visual-Basic-7.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/HTML-Devam.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/HTML-Notlari-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/HTML-Notlari-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/HTML-Notlari-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Icon-Author.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Icon-Author-Yazarlik-Yaziliminda-Hazirlanmasi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Informix-4gl-Programlarinin-Derlenmesi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Internet-Adresleri-Ve-Ag-Siniflari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Internet-Web-Server-Ve-Web-Tarayicilari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Internet-Intranet-Extranet.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Intertech.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/IP-Adresleri-Ve-Alt-Aglar-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/IP-Adresleri-Ve-Alt-Aglar-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/ISA-Hakkinda-Hersey.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/ISDN-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/ISO-9001.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Iki-Boyutlu-Dizi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Internet-Sitesi-Kuralim.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Islemciler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Isletim-Sistemi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Isletim-Sistemleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Ve-Nesne-Yonetimli-Programlama.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-4.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-5.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-6.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-7.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-8.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-9.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-10.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-11.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-12.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Java-Programlama-Dili-13.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Java-Script.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Java-Script-Devami.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Java-Script-Eklentileri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Kablosuz-Ag-Teknolojisi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/Kim-Korkar-Bilgisayardan.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Kim-Korkar-UNIX-Ten-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Kim-Korkar-UNIX-Ten-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Kim-Korkar-UNIX-Ten-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Kim-Korkar-UNIX-Ten-4.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Kim-Korkar-UNIX-Ten-5.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Kullanici-Profilleri-Ile-Bireysel-Ayarlar-Yapmak.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Kullanilan-Deyim-Ve-Fonksiyonlar.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/LAN-Local-Area-Network-Yerel-Ag-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Linux-Kurulumu-Ve-Baslangic.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Linux-Ve-Avantajlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/List-Box.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Linux-Guvenlik-Aciklari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/Mekatronik-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Microsoft-Project.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/MIDI-Formlar.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Microsoft-Access-97.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Microsoft-Excell.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Mikroislemciler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Mikroislemciler-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/Mikrokontrolor-Ve-Calisma-Esaslari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Mini-HTML.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Minix-Isletim-Sistemi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Mobil-Uygulamalari-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Mobil-Uygulamalari-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Mouse-Scanner.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/MS-DOS-Ve-Komutlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/My-SQL.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Network-Ag-Kavramlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Network-Temelleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/ODTU-Teknokent.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Ofis-Programlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Open-GL.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Oracle-VTYS-Ler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/OSI-Referans-Modeli.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Pascal-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Pascal-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Pascal-Kodlari-Ve-Ornek-Sorular.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Pascal-Programlama-Dersinden-Gecme-Klavuzu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/PC-Sorunlarina-Kolay-Cozumler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Perl-Ve-CGI-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Perl-Ve-CGI-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Perl-Ve-CGI-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Perl-Ve-CGI-4.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Personel-Web-Server.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Photoshop.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Photoshop-Ara-Yuzleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Grafik-ve-Tasarim/Photoshop-Yazilari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-Devam-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-Devam-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-Devami-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-3.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-4.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-5.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-6.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-7.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-8.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-9.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-10.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-11.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-12.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/PHP-2-13.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/PIC-1-Ve-PIC-2-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/PIC-1-Ve-PIC-2-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/PLC-Sistemlerinin-Incelenmesi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Problem-Cozme-Ve-Algoritma.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Program-Kontrol-Ve-Dongu-Deyimleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Programlama-Dilleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Programlama-Dilleri-Ve-Genel-Bakis.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Programlama-Lab-II.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Programlamanin-Temel-Kavramlari-Ve-C-Programlama-Diline-Giris.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Programming-In-Pascal.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Yapay-Zeka/Prolog-Ile-Uzman-Sistem-Hazirlama.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/RAID.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/Router-Nasil-Calisir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/Sayisal-Elektronik-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Ses-Kartlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Donanim/Ses-Kartlarinda-Bilmeniz-Gerekenler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Spam-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/SQL-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/SQL-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/SQL-Notlar.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/SQL-Programlama.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/SQL-Sorgulama-Dili.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/TCP-IP-Ve-Firewal.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Temel-Konular-Ve-Kodlama.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/_Arsiv/Tip.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Toolbox-VB-Kontrol-Elamanlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Turbo-Pascal-a-Giris-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Elektronik/Two-Port-Networks.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/UNIX.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ofis-Yazilimlari/Uygulama-Yazilimlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Sozluk-ve-Referans/Uzaktan-Egitim-Terimler-Sozlugu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Ust-Ortam-Programlama-Sunucusu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Veri-Tabani-Yonetimi-DBASE.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Veri-Tabani-Kavrami.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Veri-Tabani-Sorulamalari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Veri-Tabani-Uzerine.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Veri-Tabani-Ve-Bazi-Kavramlari-1.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Veri-Tabani-Ve-Bazi-Kavramlari-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Veri-Yapilari-Ders-Notlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Veritabani/Veritabani-Secerken-Nelere-Dikkat-Etmeliyim-Veritabani-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-De-Bilgi-Giris-Ve-Mesaj-Pencereleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-De-Operatorler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-5-0in-Getirdigi-Yenilikler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-Menuleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-Programlama-Diline-Giris.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basici-Kurulumu.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-Tipleri-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-De-Degisken-Tanimlama.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Cpp-Programlama-Dili.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Virusler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Virusler-Hakkinda-Hersey.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-De-Dosyalama-Islemleri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Visual-Basic-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/WAN-Teknolojileri.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Bilisim-ve-E-Ticaret/Web-Tabanli-Ogretim.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Web-Dersleri-HTML.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Web-Programcisinin-El-Kitabi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Window-2000-Kurulum-Adimlari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Isletim-Sistemleri/Windows-2000-De-DNS.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Windows-NT-Guvenligi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/What-Is-Buffer-Overflows-Security-Risks-Preventive-Measures-And-Exploitation.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/XML.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/XML-e-Giris.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/XML-i-Kavramak.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/XML-Ve-XML-Uygulamalari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Yapay-Zeka/Yapay-Sinir-Aglari.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Yapay-Zeka/Yapay-Zeka.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Yazilim-Gelistirme-Teknikleri-Ile-Yazilim-Uretimi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Yazilim-Ve-Program-Dillerinin-Siniflandirmasi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Yedekleme-Nedir.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Quickbasickursu.md"
+  ],
+  "yonlendirme_yollari": [
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Guvenlik/Cift-Anahtarli-Bilgi-Guvenligi-2.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Ag-ve-Iletisim/DNS-Domain-Name-System-Domain-Isim-Sistemi.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Programlama/Temel-Konular-Ve-Kodlama.md"
+  ],
+  "dizin_yollari": [
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/ASP-Book-Ornekler.md",
+    "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/MD/Web-Gelistirme/Web-Dersleri-HTML.md"
+  ],
+  "silinen": [],
+  "mojibake_onarilan": [
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/BİRDEN ÇOK DOMAİN İLE ÇALIŞMA/BIRDEN COK DOMAIN ILE CALISMA.doc",
+      430
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/Çevirmeli Ağ Komut Dosyası Yazma Desteği/Çevirmeli Ağ Komut Dosyası Yazma Desteği.doc",
+      692
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/DELPHI'DE ŞARTLI ÇALIŞMA VE BLOK KONTROL İŞLEMLERİ/DELPHI'DE ŞARTLI ÇALIŞMA VE BLOK KONTROL İŞLEMLERİ.doc",
+      561
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/EXCELL DERSLERİ/EXCEL DERSLERİ.doc",
+      7547
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/ICON AUTHOR YAZARLIK YAZILIMINDA HAZIRLANMASI/ICON AUTHOR YAZARLIK YAZILIMINDA HAZIRLANMASI.doc",
+      173
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/NETWORK ( AĞ ) KAVRAMLARI/NETWORK ( AĞ ) KAVRAMLARI.doc",
+      2227
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/PHOTOSHOP/photoshop.pdf",
+      3431
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/PHOTOSHOP ARA YÜZLERİ/ekitap-Anonim-Photoshop_Aray³z.pdf",
+      724
+    ]
+  ],
+  "utf16_kurtarilan": [
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/AĞ KURULUMU/AĞ KURULUMU.doc",
+      15589
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/ICON AUTHOR/ICON AUTHOR 2.doc",
+      6794
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/KULLANICI PROFİLLERİ İLE BİREYSEL AYARLAR YAPMAK/KULLANICI PROFİLLERİ İLE BİREYSEL AYARLAR YAPMAK.doc",
+      4685
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/VISUAL BASIC MENÜLERİ/VISUAL BASİC MENÜLERİ.doc",
+      2872
+    ],
+    [
+      "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/INTERTECH/INTERTECH.doc",
+      9855
+    ]
+  ],
+  "kodlama_yedegi": [
+    {
+      "path": "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/FLASH DERSLERİ/ekitap-Anonim-Flash_Ders_111/DERS111.html",
+      "declared": null,
+      "used": "windows-1254",
+      "lossy": false
+    },
+    {
+      "path": "/Users/bunyaminakcay/Downloads/Bilgisayar Bilgileri/PASCAL/Pascal Hakkynda Döküman 2 - bornova_ege_edu_tr.htm",
+      "declared": "windows-1254",
+      "used": "iso-8859-9",
+      "lossy": false
+    }
+  ]
+}

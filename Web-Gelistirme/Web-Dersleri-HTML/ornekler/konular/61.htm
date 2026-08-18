@@ -1,0 +1,84 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+
+<P><FONT FACE="Arial,Helvetica"><FONT SIZE=+2><B>ZAMANLAYICI</B></FONT></FONT>
+<BR>Öyle bir Web sayfanýz var ki sayfaya baðlanan kullanýcýlara o sayfayý
+izlemek için belirli bir süre vermek istiyorsunuz. Kalan süre bir þekilde
+kullanýcýya aktarýlsýn ve süre bittiðinde kullanýcýya bir mesaj kutusuyla
+haber verilerek baþka bir sayfa yüklensin. Bir test sayfasý hazýrlýyorsanýz
+ya da sayfalarýn belirli bir süre sonra zamanýnýn dolmasýný istiyorsanýz
+aþaðýdaki JavaScript tam size göre, kodlar kullanýcýya istediðiniz kadar
+zaman vermenize olanak tanýyor.
+
+<P>&lt;HTML>
+<BR>&lt;TITLE>Zamanlayýcý&lt;/TITLE>
+<BR>&lt;SCRIPT LANGUAGE="JavaScript">
+<BR>&lt;!--
+<BR>function display()
+<BR>{
+<BR>rtime=etime-ctime;
+<BR>if (rtime>60)
+<BR>m=parseInt(rtime/60);
+<BR>else
+<BR>m=0;
+<BR>s=parseInt(rtime-m*60);
+<BR>if(s&lt;10)
+<BR>s="0"+s
+<BR>window.status="Kalan Süre:&nbsp; "+m+":"+s
+<BR>window.setTimeout("checktime()",1000)
+<BR>}
+<BR>function settimes()
+<BR>{
+<BR>alert("Bu testi tamamlamak için 5 dakikanýz var.")
+<BR>var time= new Date();
+<BR>hours= time.getHours();
+<BR>mins= time.getMinutes();
+<BR>secs= time.getSeconds();
+<BR>etime=hours*3600+mins*60+secs;
+<BR>etime+=300;
+<BR>checktime();
+<BR>}
+<BR>function checktime()
+<BR>{
+<BR>var time= new Date();
+<BR>hours= time.getHours();
+<BR>mins= time.getMinutes();
+<BR>secs= time.getSeconds();
+<BR>ctime=hours*3600+mins*60+secs
+<BR>if(ctime>=etime)
+<BR>expired();
+<BR>else
+<BR>display();
+<BR>}
+<BR>function expired()
+<BR>{
+<BR>alert("Süre Doldu");
+<BR>location.href="Sonraki.htm";
+<BR>}
+<BR>// -->
+<BR>&lt;/SCRIPT>
+<BR>&lt;BODY BGCOLOR="#FFFFFF" onLoad="settimes()">
+<BR>&lt;P>&lt;font size=+2 face=arial>&lt;b>Zamanlayýcý&lt;/font>&lt;/b>&lt;p>
+
+<P>Bu Javascript kullanýcýya belirli bir miktar süre vererek verilen süre
+bitince sayfanýn otomatik olarak baþka bir yönlenmesini saðlar.
+<BR>&lt;HR>
+<BR>&lt;FORM>
+<BR>&lt;INPUT TYPE="button" VALUE="tamamla" onClick="location.href='bitti.html'">
+<BR>&lt;/FORM>
+<BR>&lt;hr>
+
+<P>Yukarýdaki 300 deðerini dilediðiniz gibi deðiþtirerek verilen süreyi
+ayarlayabilirsiniz. 300 sayýsý verilen saniyeyi belirtmektedir. Verilebilecek
+en fazla zaman ise 60 dakikadýr.
+
+
+
+
+</td></tr></table>

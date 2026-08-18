@@ -1,0 +1,46 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+
+<P><FONT FACE="Arial,Helvetica"><FONT SIZE=+2><B>WEB SAYFASINI EN ÜSTTE TUTMAK</B></FONT></FONT>
+<BR>Web sitenizde kolay gezinme saðlamak için bir pencere içerisinde navigasyon
+menüsü hazýrladýnýz. Fakat bu menü hep arka planda kalarak iþlevini yerine
+getiremiyor. Sizin istediðiniz ise bu menünün her zaman üstte kalmasý ve
+kullanýcýnýn kolayca ona eriþmesi.
+
+<P>Bir Web sayfasýný her zaman üstte tutmak çok kolaydýr, tek yapmanýz
+gereken onBlur="self.focus()" ifadesini BODY tag'ýnýn içine yerleþtirmektir.
+Bu ifadenin kullanýlmasýný aþaðýdaki örneðimizde bulacaksýnýz. Öncelikle
+navigasyon sayfamýzý ateþleyecek bir sayfa oluþturalým:
+
+<P>&lt;HTML>
+<BR>&lt;BODY>
+<BR>&lt;SCRIPT LANGUAGE="JavaScript">
+<BR>&lt;!-- Begin
+<BR>function topWindow(){
+<BR>popup = window.open("dirinfo.htm","","height=175,width=300,scrollbars=no");
+<BR>}
+<BR>// End -->
+<BR>&lt;/SCRIPT>
+
+<P>&lt;FORM>
+<BR>&lt;INPUT TYPE="BUTTON" VALUE="Pop-Up" onClick="topWindow()">
+<BR>&lt;/FORM>
+<BR>&lt;/HTML>
+
+<P>Þimdi ise gezinme menüsünü oluþturan kodlarý hazýrlayalým:
+
+<P>&lt;HTML>
+<BR>&lt;BODY onBlur="self.focus()" bgcolor=ffffff>
+<BR>Burada gezinme için gerekli olan kodlar bulunacak...
+
+
+
+
+
+</td></tr></table>

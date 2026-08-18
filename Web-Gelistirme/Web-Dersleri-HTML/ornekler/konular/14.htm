@@ -1,0 +1,67 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+
+
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Ýlkel Bir 'Client Pull'</h2></font>
+
+POINTCAST'i hepiniz bilirsiniz. Kullanýcý bu servisin saðladýðý arabirimde
+bir takým seçenekleri iþaretler ve bu seçenekler doðrultusunda masaüstüne
+bilgiler gelir. &lt;META> tag'ýnýn yaptýðý iþ de bundan pek farklý deðildir.
+Kullanýcýya ulaþan web sayfasý bu tag sayesinde kendini belirli aralýklarla
+tekrar yükler veya kullanýcýyý baþka bir web sayfasýna ýþýnlar. ' Sayfayý
+isteme'  iþi kullanýcý tarafýndan sunucuya yollandýðýndan bu komut ' client
+pull'  iþlemini baþarýyor diyebiliriz. Bu tag ile birlikte aþaðýdaki ekler
+kullanýlmaktadýr.
+
+<P><B>HTTP-EQUIV=' REFRESH'</B> : Saniyelerle belirlenen aralýklarla dokümanýn
+kullanýcýya tekrar ulaþmasýný saðlar.<B></B>
+
+<P><B>CONTENT=' n; URL=url'</B> : Web tarayýcýya sayfanýn ne aralýklarla
+tekrar yükleneceðini belirler. CONTENT eki içinde ayrýca URL ifadesi kullanýlmýþsa
+belirtilen zaman aralýðýndan sonra hangi sayfanýn yükleneceði de belirtilebilir.
+
+<P>Aþaðýda, mutlaka &lt;HEAD> - &lt;/HEAD> aralýðýnda kullanýlmasý gereken
+&lt;META> tag'ýnýn iki örneðini veriyoruz. 1. örnek, bulunulan sayfayý
+her iki saniyede bir tekrar yükleyecek, 2. örnek ise açýldýktan 5 saniye
+sonra <A HREF="http://www.pcmagazine. com.tr">www.pcmagazine. com.tr</A> adresli
+<B><FONT COLOR="#FF0000">PC Magazine Online</FONT></B>'ýn web sitesine baðlanacaktýr.
+
+<P><B>ÖRNEK - 1</B>
+<BR>&lt;HTML>
+<BR>&lt;HEAD>
+<BR>&lt;META HTTP-EQUIV=' REFRESH'  CONTENT=2>
+<BR>&lt;TITLE>Tekrar Yükleme&lt;/TITLE>
+<BR>&lt;/HEAD>
+<BR>&lt;P>Bu sayfa 2 saniyede bir tekrar yüklenecektir.
+<BR>&lt;/HTML>
+
+<P>
+<HR WIDTH="100%">
+
+<P><B>ÖRNEK - 2</B>
+<BR>&lt;HTML>
+<BR>&lt;HEAD>
+<BR>&lt;META HTTP-EQUIV=' REFRESH'  CONTENT=' 5; URL=http://www.pcmagazine.com.tr'
+>
+<BR>&lt;TITLE>Ýkinci Dokümaný Yükle...&lt;/TITLE>
+<BR>&lt;/HEAD>
+<BR>&lt;BODY>
+<BR>&lt;P>Bu sayfa 5 saniye sonra PC Magazine Online'ýn web sitesine baðlanacaktýr.
+<BR>&lt;/BODY>
+<BR>&lt;/HTML>
+
+<P>
+<HR WIDTH="100%">
+
+
+
+
+</td></tr></table>

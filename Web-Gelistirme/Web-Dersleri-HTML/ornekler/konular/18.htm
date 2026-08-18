@@ -1,0 +1,139 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>WEB SAYFALARINDA FORM KULLANIMI</h2></font>
+
+<BR>FORMLAR, Web sayfasý tasarlayan kiþi veya þirketlerle Internet kullanýcýlarý
+arasýndaki veri alýþveriþini saðlamak için ideal bir araçtýr. HTML 2.0
+standartlarýnýn konmasýyla tanýþtýðýmýz formlar bir çok sitede kullanýcýlarýn
+da bilgi göndermesine olanak tanýyarak etkileþimli bir ortam oluþturmaktadýr.
+
+<P>Formlar iki yönlü olarak çalýþýr; Web tarayýcý tarafýndan ekranda oluþturulan
+görüntü, kullanýcý tarafýndan doldurulduktan sonra gönderilir ve Web tarayýcý
+bu bilgileri alarak sunucuda çalýþtýrýlan bir programa iletir. Program
+bilgileri deðerlendirdikten sonra gerekli iþlemleri yapar.
+
+<p><TABLE CELLSPACING=0 CELLPADDING=4 WIDTH="230" align=right BGCOLOR="#FFFF00">
+<TR><TD BGCOLOR="#000099"><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#FFFFFF">FORM NASIL DEÐERLENDÝRÝLECEK?</FONT></FONT></B></TD></TR>
+
+<TR><TD>WEB üzerinden herhangi bir formu göndermek için sunucunuzun tipine
+göre bir ek programa ihtiyaç duyacaksýnýz. Peki bu programý nereden bulacaksýnýz?
+Ýþte pc magazine Türkiye size daha önce hiç bir gazetenin sunmadýðý bir fýrsat
+sunuyor ve " beleþ"&nbsp; bir form deðerlendirici bulabileceðiniz adresi
+size veriyor. <A HREF="http://www.nt-tools.com/mailform/">http://www.nt-tools.com/mailform/</A>
+adresinden indirebileceðiniz MailForm isimli programý web sitenize yerleþtirerek
+kendi formlarýnýzý baþkalarýnýn göndermesini saðlayabilirsiniz.&nbsp;</TD>
+</TR></TABLE>
+
+Bir form oluþturmak için &lt;FORM>&lt;/FORM> tag"larý arasýna istenilen
+kontroller INPUT tag"ý sayesinde belirtilir. Kontrollerden toplanan bilgilerin
+nasýl deðerlendirileceði FORM tag"ýnýn içinde gösterilir. FORM ve INPUT
+tag"larýnýn kullanýmýný inceledikten sonra örnek olarak verdiðimiz kodlara
+bakarak bu kodlarýn nasýl bir görüntü oluþturduðunu görebilirsiniz.
+
+<P><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#000099">FORM TAG'I</FONT></FONT></B>
+<BR><TT>Genel kullaným: &lt;FORM ACTION=url METHOD=get-post TARGET=pencere></TT>
+
+<P><B>ACTION=url</B>
+<BR>Formun gönderildiðinde hangi program tarafýndan deðerlendirileceðini
+belirtir.
+
+<P><B>METHOD=get-post</B>
+<BR>Bilgilerin sunucuya hangi yolla gönderileceðini belirtir. GET deðeri
+verildiðinde kontrollere girilen içerik o anda bulunulan adrese eklenip
+deðerlendiriciye gönderilir. POST deðeri ise form içeriðini direkt olarak
+derleyici programa yönlendirir.
+
+<P><B>TARGET=window</B>
+<BR>Netscape tarafýndan getirilen bu tag form deðerlendirici tarafýndan
+kullanýcýya geri gönderilen yanýtýn hangi pencerede belireceðini gösterir.
+Pencere isimleri FRAME konumuzu iþlerken gösterdiðimiz " _blank" , " _top"&nbsp;
+gibi deðerlerden biri olabilir.
+
+<P><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#000099">INPUT TAG'I</FONT></FONT></B>
+<BR><TT>Genel kullaným: &lt;INPUT ALIGN=tip [CHECKED|] MAXLENGTH=uzunluk</TT>
+<BR><TT>NAME=isim SIZE=boyut SRC=adres TYPE=tip VALUE=deðer></TT>
+
+<P><B>ALIGN=tip</B>
+<BR>TYPE deðeri bir resim olarak atandýðýnda bir sonraki satýrýn resme
+göre nasýl yerleþtirileceðini belirtir. TOP, MIDDLE veya BOTTOM deðerlerinden
+birini alabilir.
+
+<P><B>CHECKED</B>
+<BR>Kontrol olarak bir iþaretleme veya seçim kutusu kullanýldýðýnda CHECKED
+deðeri bu kutularýn iþaretlenmiþ olarak karþýmýza gelmesini saðlar.
+
+<P><B>MAXLENGTH=uzunluk</B>
+<BR>Metin kutusuna kullanýcýnýn maksimum kaç karakter girebileceðini belirler.
+
+<P><B>NAME=isim</B>
+<BR>Kontrole bir isim verir
+
+<P><B>SIZE=boyut</B>
+<BR>Kontrolün boyutlarýný karakter cinsinden belirlemenizi saðlar. TEXTAREA
+kontrolü kullanýldýðýnda ' en,boy'&nbsp; gibi bir ifade kullanýlarak kontrolün
+hem eni hem de yüksekliði belirtilebilir.
+
+<P><B>SRC=adres</B>
+<BR>Kontrol olarak resim seçildiðinde resmin bulunduðu adresi taþýr.
+
+<P><B>TYPE=tip</B>
+<BR>Kontrolün cinsini belirler ve þu deðerlerden biri olabilir:
+
+<P><B>CHECKBOX:</B> Bir iþaretleme kutusu görüntüler ve sadece doðru veya
+yanlýþ deðerlerini alabilir.
+<BR><B>HIDDEN:</B> Web tarayýcýsýnýn penceresinde görünmez fakat içerdiði
+deðer gönderilen form ile web sunucusuna ulaþýr.
+<BR><B>IMAGE</B> Bir resmi ifade eder ve üzerine týklandýðýnda form deðerlerini
+sunucuya yollar. Genellikle bu amaçla kullanýlsa da istenilirse kullanýcýnýn
+resmin hangi x ve y noktalarýna dokunduðu öðrenilebilir. Bu tag SRC ile
+birlikte kullanýlýr ve SRC komutu resmin bulunduðu URL'yi göstermelidir.
+<BR><B>PASSWORD</B><img src=7.gif align=right> TEXT kontrolü ile ayný özellikleri taþýr fakat kullanýcýnýn
+girdiði karakterler bu kontrolde yýldýz olarak görülür.
+<BR><B>RADIO</B> Kullanýcýnýn bir çok seçenek içerisinden bir tanesini
+seçebilmesine olanak tanýr. Grup içindeki RADIO kontolleri her zaman ayný
+ismi taþýmalý kontrollerin deðerleri VALUE deðerine atanmalýdýr.
+<BR><B>RESET</B> Týklandýðýnda form içeriðini temizler. Kullanýcýnýn form'u
+tekrar doldurmasýný saðlar.
+<BR><B>SUBMIT</B> Form içeriðini sunucuya yollar. VALUE deðeri kullanýlarak
+üzerindeki yazý deðiþtirilebilir.
+<BR><B>TEXT</B> Kullanýcýdan tek satýrlýk veri alýnmasýna olanak tanýr.
+SIZE ve MAXLENGTH takýlarý,&nbsp; bu kontrolle birlikte kullanýlabilir
+
+<P><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#FF0000">Ýþte size bir
+örnek: resimde görmüþ olduðunuz ve bizim</FONT></FONT></B>
+<BR><B><FONT FACE="Arial,Helvetica"><FONT COLOR="#FF0000">hazýrladýðýmýz
+formu kendiniz oluþturmak için...</FONT></FONT></B>
+
+<P><FONT SIZE=-1>&lt;HTML>&lt;title>Web Okulu - Form Denemesi&lt;/title>&lt;body
+bgcolor=' #c0c0c0' ></FONT>
+<BR><FONT SIZE=-1>&lt;h2>Tüm Form Öðelerinin Kullanýmý&lt;/h2></FONT>
+<BR><FONT SIZE=-1>&lt;FORM ACTION=' http://internet/form'&nbsp; METHOD=POST></FONT>
+<BR><FONT SIZE=-1>&lt;P>Ýsim&lt;BR>&lt;INPUT NAME=' CONTROL1'&nbsp; TYPE=TEXT
+VALUE=' Ýsim Girecek' ></FONT>
+<BR><FONT SIZE=-1>&lt;P>Þifre&lt;BR>&lt;INPUT TYPE=' PASSWORD'&nbsp; NAME='
+CONTROL2' ></FONT>
+<BR><FONT SIZE=-1>&lt;P>Renk&lt;BR>&lt;INPUT TYPE=' RADIO'&nbsp; NAME='
+CONTROL3'&nbsp; VALUE=' 0'&nbsp; CHECKED>Kýrmýzý</FONT>
+<BR><FONT SIZE=-1>&lt;INPUT TYPE=' RADIO'&nbsp; NAME=' CONTROL3'&nbsp;
+VALUE=' 1' >Yeþil</FONT>
+<BR><FONT SIZE=-1>&lt;INPUT TYPE=' RADIO'&nbsp; NAME=' CONTROL3'&nbsp;
+VALUE=' 2' >Mavi</FONT>
+<BR><FONT SIZE=-1>&lt;P>Görüþleriniz&lt;BR>&lt;INPUT TYPE=' TEXTAREA'&nbsp;
+NAME=' CONTROL4'&nbsp; SIZE=' 20,5'&nbsp; MAXLENGTH=' 250' ></FONT>
+<BR><FONT SIZE=-1>&lt;P>&lt;INPUT NAME=' CONTROL5'&nbsp; TYPE=CHECKBOX
+CHECKED>Beni Email Listenizene Kaydedin</FONT>
+<BR><FONT SIZE=-1>&lt;P>&lt;INPUT TYPE=' SUBMIT'&nbsp; VALUE=' Gönder'
+>&lt;INPUT TYPE=' RESET'&nbsp; VALUE=' Temizle' ></FONT>
+<BR><FONT SIZE=-1>&lt;/FORM>&lt;/body>&lt;/HTML></FONT>
+
+
+
+
+</td></tr></table>

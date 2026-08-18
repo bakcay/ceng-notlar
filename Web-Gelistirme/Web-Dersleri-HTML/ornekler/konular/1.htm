@@ -1,0 +1,143 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Tasarýmýn Temelleri</h2></font>
+
+<font color=red><b><i>Internet'te sörf yapmakla yetinmeyin. Bir Web sunucusunda yer edinme ve kendi Web sayfalarýnýzý tasarlama þansýnýz var. Ýþte bu iþin sýrlarý..</i><p></b></font>
+
+
+INTERNET açýlalý beri, PC Magazine Online'a koyduðumuz Misafir Defteri'ne býraktýðýnýz mesajlar, kendi Web sitenizi tasarlamaya ne kadar hevesli olduðunuzu açýkça gösteriyor. Bizi aradýnýz, mesajlar býraktýnýz, deneyimlerimizden yararlanarak kendi Web sayfalarýnýzý tasarlamakta yardýmcý olacak bilgiler istediniz.<p> Ýþte biz de isteklerinizi kýrmýyor ve bu sayýdan itibaren bir Internet gezgininin kendi sayfalarýný tasarlayarak Web'de nasýl aktif rol alabileceðini açýklayan yazýlarýmýza baþlýyoruz.
+<p>Bir Web sayfasý tasarlamanýn yolu HTML dilini bilmekten geçiyor. Elbette Microsoft'un Ofis programlarý için geliþtirdiði Internet Asistanlarý, Web sayfasý tasarlamak için onlarca pratik program var, ancak HTML kodlarýný bilmiyorsanýz, herhangi bir tasarým problemi ile karþýlaþýnca takýlýp kalabilirsiniz. Tabii, Java, Java Script, ActiveX, PERL gibi ileri seviye Web programcýlýðýna yönelik araçlar da var. <p>
+Bu sayfalarda temelden baþlayarak hepsi hakkýnda bilgiler vereceðiz. Bunlarýn arasýnda grafik tasarýmlarýnýzý verimli ve etkin bir biçimde yapmanýzý, sayfalarýnýza eriþim hýzýnýzý yükseltmek için grafikleri küçültmenizi saðlayacak püf noktalarý da olacak. HTML kodlarýna ve diðer teknik detaylara girmeden önce, Internet üzerinde bir Web sayfasý nasýl edineceðinizi anlatarak yazýmýza baþlamak istiyoruz.<p>
+
+<h3>WEB'DE NASIL YER ALIRIM?</h3>
+ÝNSANIN dünyada bir mekaný ve World Wide Web'de benim diyeceði, küçük de olsa bir alaný olmalý. Bunu saðlamak için iki seçeneðiniz var. Bunlardan birincisi baþka birine (muhtemelen bir ISS'ye ait) Web sunucusundan belirli bir sabit disk alaný kiralamak. Türkiye'deki servis saðlayýcýlar bu tür hizmetler veriyor. Hatta bazý ISS'lerde Internet hesabý açtýrdýðýnýzda size küçük de olsa ücretsiz bir Web sayfasý alaný saðlýyorlar. Ama hazýrlayacaðýnýz Web sayfalarýný ticari amaçlarla kullanacaksanýz, örneðin firmanýzýn ürünlerini Web sayfalarýnýzda tanýtmak ve pazarlamak istiyorsanýz belirli bir ücret ödemek zorundasýnýz.
+<p>Ýkinci seçenek yine genelde firmalara yönelik. Yani, Türk Telekom'a baþvurup bir kiralýk hat (leased line) aracýlýðý ile Web sayfalarýnýzý kendi Web sunucunuz üzerinden yayýnlamak veya Web sunucunuzu bir ISS'ye yerleþtirip buradan yayýn yapmak. Kuþkusuz bu seçenekler içinde bir ISS'nin sunucusundan - kiraladýðýnýz yerin MB cinsinden büyüklüðüne göre ücret ödeyerek - yer kiralamak en ucuzu. Bunun karþýlýðýnda Web sayfalarýnýza karþýlýk gelecek bir Web adresi (URL) ediniyorsunuz. Bu adres ISS'nizin ismi ile baþlayýp kendi sitenizin ismi ile devam edebileceði gibi <b>(örneðin http://www.iss.com.tr/benimsitem)</b>, ISS'nizle yaptýðýnýz anlaþmaya göre tamamen kendi verdiðiniz 
+isim de olabilir <b>(örneðin http://www.benimsitem.com.tr).</b><p>Elbette ISS'ler belirli bir ücret karþýlýðý Web sayfalarýnýzý tasarlayabilirler, ancak burada amacýmýz kendi Web sayfalarýnýzý tasarlamayý öðretmek olduðuna göre sayfalarýnýzý kendinizin tasarlayacaðýnýzý ve ISS'nizin sunucusuna yaptýðýnýz anlaþmaya göre belirli zamanlarda modem ile ' upload' edeceðinizi varsayýyoruz. Buraya kadar ticari anlamda bir Web sitesi kurmak için neler yapabileceðinizi açýkladýk, ancak yazýmýz daha çok amatörlere yönelik olduðu için size ücretsiz alternatiflerden haberdar etmek de boynumuzun borcu. 
+Türkiye'de bazý ISS'lerin Internet eriþimi için hesap açtýrdýðýnýzda size ücretsiz bir Web sayfasý alaný saðladýklarýný söylemiþtik. Yurtdýþýnda hesabý olsun olmasýn herkese Web sayfalarýný yayýnlamak için ücretsiz belirli bir alan açan ISS'ler de var. <p>Örneðin ABD'de faaliyet gösteren Geocities (http://www.geocities.com/homestead/) herkese 2MB'lýk bir Web sayfasý alaný açýyor. Internet'te sörf yaparken kuþkusuz bu tür baþka promosyonlarla da karþýlaþabilirsiniz. Hazýrladýðýnýz sayfalarý bir FTP client programý ile (örneðin ws_ftp) bu sitelere ' upload' edebiliyorsunuz. Yine de bu hizmetin sürekliliði konusunda emin olamazsýnýz. Bu yüzden Web sunucusunda yer açan bir ISS bulmanýzý öneririz.<p>
+
+<h3>WEB SAYFASI TASARIMIN TEMELLERÝ</h3>EVET, nihayet bir Web sunucusunda kendinize ait bir alan elde ettiniz ve Web aracýlýðý ile baþkalarýna söyleyecek çok þeyiniz var. Peki bir Web sayfasýný tasarlamaya nereden baþlamalý? Öðrenmeniz gereken temel dilin HTML (Hypertext Mark-up Language) olduðunu belirtmiþtik. Bu dil aslýnda, normal metni, hypertext adý verilen ve web browser'larla görüntülenmeye uygun metin haline dönüþtüren bir kodlar silsilesi. Diðer bir deyiþle HTML, basit bir belgeyi alýp içine bu belgenin sayfa düzeni ve metin biçimleri ile ilgili bilgiler yerleþtirmenin ve bu belgeyi diðer metin (ve/veya grafik) içerikli belgelerle iliþkilendirmenin yoludur.<p>Web'de yayýnlanmak üzere belgeler hazýrlarken, HTML kodlarý ile metinlerinize vereceðiniz 
+biçimler belirteç (Ýngilizce adý ile mark-up veya tag) adýný taþýr. Bunlar metnin çeþitli yerlerinde, ' <' ve ' >' þeklindeki parantezlerin arasýna yerleþtirilen kodlardýr. Bunlar arasýnda diðer Internet sayfalarýna (veya URL'lere) geçiþi saðlayan ‘link'ler de bulunabilir.HTML bir dil olarak adlandýrýlsa da, HTML belgelerinin (kýsaca Web sayfalarýnýn) hazýrlanmasý klasik bilgisayar dilleri ile 
+programlama yapmaya pek benzemez. Daha çok kelime iþlemcilerle çalýþmaya benzer. Ancak burada 
+yazýtipi büyüklüðünü ayarlamak, bir metni kalýn veya italik yapmak için menü komutlarýný 
+kullanmaz, bunlarý metnin baþýna ve sonuna koyduðunuz kodlarla belirlersiniz. (WordPerfect ile 
+çalýþanlar bunu kolayca anlayacaktýr, çünkü bu kelime iþlemcide yazdýðýnýz metinlerin biçim 
+kodlarýný da Reveal Codes komutu ile görüntüleyebilirsiniz.) Metni ve bu kodlarý nerede yazacaðýz 
+diyorsanýz, baþlangýçta (hatta PC Magazine Online'nýn webmaster'larýna sorarsanýz her zaman) 
+Windows'un Not Defteri fazlasýyla yeterli olacaktýr.<p>Bu kýsa giriþten sonra bir örnek ile HTML 
+kodlarýný kullanmaya baþlayalým. Diyelim ki elimizde þöyle bir metin var: 
+<pre>Düþünde bile göremez iþler,
+Düþlerin gördüðü iþleri.</pre>
+
+Bu metni HTML kodlarý ile þöyle yazarsak:
+<p>
+&ltB&gtDüþünde&lt/B&gt bile 
+göremez,<br> &ltB&gtiþler&lt/B&gt,&ltBR&gt&ltB&gtDüþlerin&lt/B&gt gördüðü &ltB&gtiþleri&lt/B&gt.&ltBR&gt<p>Web browser'da 
+aþaðýdaki gibi bir görüntü elde ederiz:<br>
+<b>Düþünde</b> bile göremez <b>iþler</b>,<p><b>Düþlerin</b> gördüðü <b>iþleri</b>.
+
+<p>Bu örnekte &ltB&gt ve &lt/B&gt belirteçleri Web browser'a aralarýndaki metni kalýn (bold) göstermesini söyler. &ltBR&gt 
+belirteci ise satýr baþý verilmesi gerektiðini. Bunlar gibi baþka pek çok belirteç var ama güzel bir Web 
+sayfasý tasarlamak için baþlangýçta öðrenmeniz gereken belirteç sayýsý 30-40 kadardýr. 
+Profesyonelleþtikçe yeni belirteçler kullanmaya baþlayabilirsiniz.
+
+<p>Bir de yazdýklarýnýzýn düzgün 
+görünmesi için her html dosyasýnýn baþýnda:&lthtml&gt &lthead&gt &lttitle&gt &lt/title&gt 
+&lt/head&gt&ltbody&gt<p>sonunda:<p>&lt/body&gt&lt/html&gt<p>belirteçlerinin bulunmasýna dikkat edin. Bunlar sayfanýn 
+baþýný sonunu belirlemek için gerekli belirteçlerdir. Koymazsanýz, Web browser'ýnýzda metin 
+belirteçleri ile birlikte görünebilir.Bu örnekteki belirteçleri kendiniz denemek istiyorsanýz, Not 
+Defteri'ne istediðiniz metni bu belirteçleri kullanarak girin. Belgeye bir isim ve htm soyadýný 
+(Windows 95'te html soyadýný da kullanabilirsiniz) vererek kaydedin. Sisteminize bir Web browser 
+yüklü ise htm soyadlý bu belgenin üzerine çift týkladýðýnýzda browser açýlacak ve metniniz 
+biçimlendirilmiþ haliyle ekrana geelcek.
+
+<h3>HAYDÝ BÝR WEB SAYFASI YAPALIM</h3> HTML dilini 
+öðrenmenin en kolay yolu, deneme yanýlma ile web sayfalarý hazýrlayarak bu sayfalarý web tarayýcýsý 
+ile kontrol etmek, hatalarý düzelterek ilerlemektir. Ayrýca bilmediðiniz kodlarýn nasýl kullanýldýðýný 
+öðrenmek için Internet baðlantýnýz varsa varolan HTML sayfalarýný web tarayýcýnýzýn kaydetme 
+seçeneðini kullanarak sabit diske kaydedip herhangi bir metin editörü kullanarak açýp 
+inceleyebilirsiniz. Þimdi adým adým bir web sayfasý hazýrlayalým. 
+
+<b>Adým 1. Pencere Baþlýðýnýn, arka planýn belirlenmesi ve renkler.</b> Her web sayfasýnýn bir baþlýðý olmalýdýr. Bu baþlýk web tarayýcýsýnýn 
+baþlýk çubuðunda görüntülenecektir. Bu iþ için &lttitle&gt tag'ý kullanýlýr.<p> &lttitle&gt ve &lt/title&gt <p>tag'larý 
+arasýna yazacaðýnýz metin web sayfasýnýn baþlýðý olarak görüntülenecektir. &lttitle&gt tag'ý aþaðýdaki gibi 
+kullanýlýr. &lttitle&gtBu benim ilk denemem!&lt/title&gtWeb sayfalarýnýn arka planýný da istediðiniz gibi 
+ayarlayabilirsiniz. Bu aþamada iki adet seçeneðiniz var. Birincisi boþ bir arka plan kullanarak bu arka 
+planýn rengini ayarlamak, ikincisi ise bir resim dosyasýndaki resmi alýp web sayfasýnýn arka planýna ' 
+döþemek'. Bu iþlemi aynen Windows 95'in masaüstündeki duvar kaðýdýna benzetebiliriz. Önce boþ bir 
+arka planý renklendirmeyi görelim. Web sayfasýnýn arka planýnýn rengi  &ltbody&gt tag'ýný kullanarak 
+deðiþtirilir. Default arka plan rengi gridir. Arka plan rengini örneðin beyaz yapmak için body tag'ýný <p>
+&ltbody bgcolor='white'&gtveya &ltbody bgcolor='#FFFFFF'&gt<p>þeklinde kullanabilirsiniz. Birinci seçenekte 
+rengin Ýngilizce ismi, ikinci seçenekte ise ayný rengin RGB cinsinden renk kodu hexadecimal (onaltýlý 
+sayý sistemi) olarak verilmektedir. Eski tarihli browser'lar renk isimlerini algýlayamazlar, bu yüzden 
+sayfalarýnýzda renklerin onaltýlý sayý sistemi kodlarýný kullanmak daha hayýrlýdýr. Yan tarafta 
+gördüðünüz tabloda, web sayfalarýnýn arka planlarýnda kullanýlabilecek olan temel renkler isim ve 
+sayý kodu olarak listelenmiþtir. Onaltýlý sayýlarýn RGB kombinasyonlarý ile oynayarak istediðiniz 
+rengi web sayfasý arka plan rengi olarak belirleyebilirsiniz.<p> Bir Web sayfasýnýn arka planýna bir resim 
+döþeyebilirsiniz. Bu iþlem için ilk önce elinizde bir resim dosyasý olmasý gerekir. Web sayfalarýnda 
+kullanýlabilecek bütün resimler JPG veya GIF formatýnda olmalýdýr. Web okulunu hazýrlarken 
+elinizde bir resim düzenleme programýnýn olduðunu ve JPG veya GIF formatýndaki dosyalarla 
+çalýþmayý bildiðinizi varsayýyoruz. Örneðin elimizde arka.gif diye bir resim olsun. Bu resmi web 
+sayfasýnýn arka planýna döþemek için yine &ltbody&gt tag'ýný kullanacaðýz. ARKA.GIF adýndaki bir resmi 
+web sayfasýnýn arkasýna döþemek için &ltbody&gt tag'ýný aþaðýdaki gibi<p>&ltbody background=' 
+arka.gif'&gt<p>kullanmalýsýnýz. Bu aþamada ARKA.GIF dosyasýnýn, HTM dosyasý ile ayný klasörde yer 
+almasý gereklidir. Örnek bir resim döþemesi aþaðýdaki resimde gösterilmiþtir. Bu aþamada bir web 
+sayfasýnýn arka planýnda bir resim döþediðinizde, arka plan rengi kullanmaya gerek kalmadýðý gibi bir 
+hisse kapýlýrsýnýz, yanýlýrsýnýz. Genelde Internet yavaþ bir þey olduðu için, çoðu kullanýcý sörf 
+yaparken resimleri kapatma yoluna gidiyorlar. Böyle olunca arka plana döþenmiþ resimler 
+görünmeyecek, arka plan rengi de default olarak gri olduðu için sizin hiç düþünmediðiniz bir web 
+sayfasý ortaya çýkabilecektir. Bu yüzden size tavsiyemiz, arka plan grafiði kullandýðýnýzda arka planda 
+kullandýðýnýz resme uygun bir arka plan rengini de &ltbody&gt tag'ýnýn içinde belirtmenizdir. Ýki belirteç 
+bir tag içerisinde kullanýlabilir. Ve resmiler kapatýldýðýnda web tarayýcýsý otomatik olarak belirtilen 
+arka plan rengini web sayfasýna uygulayacaktýr. Sarý içerikli bir arka plan resmi ile kullanýlmasý 
+gereken &ltbody&gt tag'ý aþaðýda gösterilmiþtir.<p> &ltbody background=' arka.gif' bgcolor='#ffff00'&gt<p><b>Adým 2. 
+Web sayfasýnýn metin içeriði.</b> Web sayfalarýnda aynen kitap veya dergi sayfalarýnda olduðu gibi 
+metinler ve resimler kullanýlabilir. 2. Adýmda web sayfalarýnda metinlerin kullanýmýna deðineceðiz. 
+Web sayfalarýnda metinler aynen Word veya benzeri bir kelime iþlemci programda olduðu gibi bold, 
+italik vs.. þeklinde formatlanabilir, font tipi, rengi ve boyutu ayarlanabilir. Web sayfasýnýn içerisine 
+yazdýðýnýz metin web tarayýcýsýnýn geniþliði boyunca yazýlýr, artan kýsým otomatik olarak alt satýra 
+atýlýr. Örneðin aþaðýdaki gibi bir metnimiz olsun.<p> Merhaba. Bu benim ilk web sayfasý denemem. 
+Yazdýðým metni bold, italik, veya altçizgili olarak görüntülemek istiyorum.<p> Bu metni web sayfasýna 
+girdiðinizde aþaðýdaki gibi bir ekran görüntüsü ile karþýlaþacaksýnýz. Þimdi bu metni formatlamaya 
+baþlayalým. Öncelikle merhaba kýsmýný büyük yapmak lazým. Bunun için de &lthx&gt tag'ýný 
+kullanacaðýz. Bu tag'da x yerine birden 6'ya kadar numara verebilirsiniz. 1 en büyük boyut, 6 en 
+küçük boyuttur. Denemeyle sabittir, 1 ile 4 arasýnda rakamlar kullanmak en iyisidir. Þimdi merhaba 
+yazýsýný büyütmek için onu &lth1&gt tag'ýna alalým. <p>&lth1&gtMerhaba&lt/h1&gt<p>Burada, &lth1&gt ile &lt/h1&gt 
+arasýndaki metin, büyültülecektir. Aþaðýdaki resimde merhaba tag'ý deðiþik &lthx&gt boyutlarýnda 
+kullanýlmýþtýr. Böylece merhaba yazýsýný istediðimiz gibi büyüttük. &lthx&gt tag'ýný kullanýrken 
+öðrendiðimiz bir ikinci þey ise metin formatlamasýnýn nasýl yapýldýðý. Demek ki, bir tag'ýn 
+formatlamasý iki tag arasýna (&lth1&gt ile açýlýþ, &lt/h1&gt ile kapanýþ) aldýðýmýz metne uygulanýyor. Þimdi 
+hýzlý bir biçimde diðer metin tag'larýný inceleyelelim.<p>&ltb&gt   &lt/b&gt aradaki metni bold (kalýn) yapar<p>&lti&gt   
+&lt/i&gt aradaki metni italik yapar<p>&ltu&gt   &lt/u&gt aradaki metnin altýný çizer<p>Bu tür metin formatlama tag'larý 
+birbirlerinin içinde kullanýlabilirler. Örneðin bir metin parçasýný hem bold hem de italik yapmak için 
+&ltb&gt&lti&gt .....  &lt/i&gt&lt/b&gt<p>formatlamasýný kullanmak gerekecektir. Özgün metnimize geri dönelim. Bu 
+metinde adý geçen formatlamalarý uyguladýðýmýzda HTML sayfamýzdaki metin aþaðýdaki gibi 
+olacaktýr. <p>&lth1&gtMerhaba. &lt/h1&gtBu benim ilk web sayfasý denemem. Yazdýðým metni &ltb&gtbold&lt/b&gt, 
+&lti&gtitalik&lt/i&gt, veya &ltu&gtaltçizgili&lt/u&gt olarak görüntülemek istiyorum. <p>Böyle bir formatlama 
+yapýldýðýnda elde edilecek olan web sayfasý görüntüsü aþaðýdaki gibidir. Metin parçalarýný web 
+sayfasýnda görüntülerken paragraf baþý ve satýr sonunu da elle iþaretlemek zorundasýnýz yoksa metin 
+otomatik olarak alta kaydýrýlacaktýr. Burada karþýmýza iki adet tag çýkýyor. Bunlardan birincisi &ltbr&gt, 
+ikincisi de &ltp&gt tag'ý. Birincisi satýr sonu, ikincisi ise paragraf baþý anlamýna geliyor. Söz konusu 
+metinde ' Bu benim ilk web sayfasý denemem'  yazýsýndan sonra bir satýr sonu yani &ltenter&gt verelim. 
+Ayrýca paragraf baþýný denemek için de ' bold, italik, veya altçizgili' metnini yeni bir paragraftan 
+baþlatalým. Bu durumda kullanacaðýmýz formatlama aþaðýdaki gibi olacaktýr. &lth1&gtMerhaba. &lt/h1&gtBu 
+benim ilk web sayfasý denemem. &ltbr&gtYazdýðým metni &ltp&gt&ltb&gtbold&lt/b&gt, &lti&gtitalik&lt/i&gt, veya 
+&ltu&gtaltçizgili&lt/u&gt &ltp&gtolarak görüntülemek istiyorum.Dikkat ederseniz, &ltp&gt yani paragraf baþý 
+tag'ýnýn kullanýldýðý yerlerde &ltbr&gt yani satýr sonu kullanmýyoruz. Çünkü paragraf baþý tag'ý zaten satýr 
+sonunu da belirlemektedir. Yukarýdaki örnekte kullanýlan tag'lamanýn ekranda göstereceði sonuç 
+aþaðýdadýr. Son olarak HTML sayfalarýnda enter tuþunu kullanmanýn web sayfasýnýn görünümüne bir 
+etkisi olmadýðýný söyleyelim. Web sayfalarýnýn ekranda görünümünde satýr sonlarý, satýr aralarý ve 
+paragraf  baþlarý tamamen tag'lar ile belirlenir. Bu yüzden metin dosyasýnda enter kullanmanýn web 
+sayfasýna herhangi bir etkisi yoktur. Ancak web sayfasýný düzenlerken her þeyin derli toplu 
+gözükebilmesi için bu tür bir enter'lama yapabilirsiniz. Gelecek sayýmýzda metin formatlarken renk ve 
+font kullanmayý, &ltpre&gt tag'ýnýn ne iþe yaradýðýný, metinlerin bir liste halinde nasýl alt alta 
+sýralanacaðýný görecek ve web sayfalarýnda resim kullanýmýna giriþ yapacaðýz.
+
+
+</td></tr></table>
+

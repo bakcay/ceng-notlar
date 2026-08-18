@@ -1,0 +1,17 @@
+<HTML>
+<HEAD>
+<TITLE>VBScript ile Tarih</TITLE>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-9">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
+</HEAD>
+
+<BODY BGCOLOR=WHITE>
+<H1>Merhaba Dünya</H1>
+<H2>Bugün:</H2>
+<H3>
+<SCRIPT LANGUAGE=VBScript RUNAT=SERVER>
+Response.write(Date)
+</SCRIPT>.
+</H3>
+</BODY>
+</HTML>

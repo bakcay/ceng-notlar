@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Elektronik Mesaj Formu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-9">
+<meta http-equiv="Content-Language" content="tr">
+</head>
+<body bgcolor="#FFFFFF">
+<p><b>Elektronik Mesaj Gönderme sayfasına Hoşgeldiniz</b></p>
+<form action="eposta.pl" method="POST">
+<table border="0" width="450" cellspacing="0">
+<tr> 
+<td> Adınız: </td>
+<!--------------  Start of Text boxes  ---------------> 
+<td> 
+<input type  = "text" size = "40" name = "ad">
+</td>
+</tr>
+<tr> 
+<td>Kurum-Kuruluş-Okul: </td>
+<td><input type = "text" size = "40" name = "kurum"></td>
+</tr>
+<tr> 
+<td>Kent: </td>
+<td> 
+<input type = "text" size = "40" name = "kent">
+</td>
+</tr>
+<!-------------  Seçme Kutuları  -------------> 
+<tr> 
+<td>Ülke: </td>
+<td><select name = "ulke" size = "1">
+          <option selected value = ""> Ülkeyi seçiniz</option>
+          <option value = "Türkiye">Türkiye</option>
+          <option value = "ülke2">Ülke 2</option>
+          <option value = "ülke3">Ülke 3</option>
+          <option value = "ülke4">Ülke 4</option>
+</select></td>
+</tr>
+<!--------------  Seçme Kutuları Bitti  --------------> 
+<tr> 
+<td>E-Posta Adresi: </td>
+<td><input type ="text" size ="40" name = "eposta"></td>
+</tr>
+<tr> 
+<td colspan = "2">&nbsp;<p><b> 
+<!-------------  İşaret Kutuları  -------------> 
+Hangi tür hizmetlerimizle İlgileniyorsunuz?</b><br>
+          <input type = "checkbox" name = "hizmetler" value = "Program Güncellemeleri">
+          Program Güncellemeleri &nbsp;&nbsp; 
+          <input type = "checkbox" name = "hizmetler" value = "Teknik Yardım">Teknik Yardım</p>
+<!--------------  İşaret Kutuları Bitti  --------------> 
+<!------------  Radayo Düğmeleri  ------------> 
+<p><b>Sitemiz güncelleştirildiğinde bilgi edinmek ister misiniz?:</b><br>
+          <input type = "radio" name = "bilgi" value = "Evet" checked>Evet&nbsp;&nbsp; 
+          <input type = "radio" name = "bilgi" value = "Hayır">Hayır<br>
+          <br>
+<!-------------  Radyo Düğmeleri Bitti  -------------> 
+         <b>Bize mesajınız: </b><br>
+<!---------------  Mesaj  --------------> 
+<textarea name = "mesaj" rows = "6" cols = "44" wrap = "virtual"></textarea></p>
+<!----------------  Mesaj Bitti  ---------------> 
+<p> 
+<input type = "submit" name = "submit" value = "Gönder">&nbsp;&nbsp;
+<input type = "reset" name = "reset" value = " Sil ">
+</td>
+</tr>
+</table>
+</form>
+</font> 
+</body>
+</html>

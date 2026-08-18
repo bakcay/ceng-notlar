@@ -1,0 +1,52 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>ÝÞLETÝM SÝSTEMÝNÝ BULMA</h2></font>
+
+Sunucunuza baðlanan bir Internet kullanýcýsýnýn Web tarayýcýsýnýn tipini
+bulmak, geldiði adresi öðrenmek gibi püf noktalarýný daha önce bu sayfalarda
+vermiþtik. Þimdi ise sayfalarýnýzý izleyen kullanýcýlarýn iþletim sistemini
+bulmanýz için gerekli JavaScript'i veriyoruz. Sayfa herhangi bir bilgisayardan
+yüklendiðinde, yüklenen bilgisayarýn iþletim sistemi izleyicinin ekranýnda
+anýnda belirecektir. Daha önce verdiðimiz püf noktalarýný kullanarak çýkan
+sonuca göre kullanýcýlarý yönlendirmeyi siz de baþarabilirsiniz.
+
+<P>&lt;HTML>
+<BR>&lt;SCRIPT LANGUAGE="JavaScript">
+<BR>&lt;!--
+<BR>function checkOS() {
+<BR>if(navigator.userAgent.indexOf('IRIX') != -1)
+<BR>{ var OpSys = "Irix"; }
+<BR>else if((navigator.userAgent.indexOf('Win') != -1) &amp;&amp;
+<BR>(navigator.userAgent.indexOf('95') != -1))
+<BR>{ var OpSys = "Windows 95"; }
+<BR>else if(navigator.userAgent.indexOf('Win') != -1)
+<BR>{ var OpSys = "Windows3.1 veya NT"; }
+<BR>else if(navigator.userAgent.indexOf('Mac') != -1)
+<BR>{ var OpSys = "Macintosh"; }
+<BR>else { var OpSys = "diðer…"; }
+<BR>return OpSys;
+<BR>}
+<BR>// -->
+<BR>&lt;/SCRIPT>
+
+<P>&lt;BODY BGCOLOR="#FFFFFF">
+<BR>Ýþletim sisteminiz: &lt;b>
+<BR>&lt;SCRIPT LANGUAGE="JavaScript">
+<BR>&lt;!--
+<BR>var OpSys = checkOS();
+<BR>document.write(OpSys);
+<BR>// -->
+<BR>&lt;/SCRIPT>
+<BR>&nbsp;
+
+
+
+
+
+</td></tr></table>

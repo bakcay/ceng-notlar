@@ -1,0 +1,35 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Her giriþte farklý bir resim!</h2></font>
+
+"Aman sitemde her türlü script'i kullanayým, geri kalmayayým" diyorsanýz
+iþte size harika bir script veriyoruz. Kodlarýmýzý kullanarak web sayfanýz
+yüklenirken sunucunuzun RESIM klasöründe bulunan RESIM1… RESIM2 gibi GIF
+dosyalarýndan herhangi bir tanesinin rastgele olarak seçilmesini ve gösterilmesini
+saðlayabilirsiniz. Bu programcýk ayrýca resmin üzerine týklandýðýnda resimle
+ayný adý taþýyan fakat HTM (RESIM1.HTM) uzantýlý dosyanýn da ayrý bir pencerede
+açýlmasýný saðlýyor.
+
+<P>&lt;script language="JavaScript">
+<BR>&lt;!--
+<BR>var now=new Date();&nbsp; var status=(now.getSeconds())%3;
+<BR>document.write('&lt;a target="_blank" href="/resim/resim'+status+'.htm">&lt;img
+src="/resim/resim'+status+'.gif">&lt;/a>');
+<BR>//-->
+<BR>&lt;/script>
+
+<P>Not: Kodlarý kullanýrken kullanýcýya her defasýnda bir tanesini görmesi
+için verdiðin tüm resimleri görebileceðini söylememize gerek yoktur herhalde.
+Bunu yapabilmesi için sadece HTML kodlarýnýza bir gözatmasý yeterli olacak.
+
+
+
+
+
+</td></tr></table>

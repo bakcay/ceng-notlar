@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<BASEFONT FACE="Tahoma">
+<HTML>
+<HEAD>
+<TITLE>Form Ornegi</TITLE>
+<META http-equiv="content-type" content="text/html; charset=ISO-8859-9">
+<META http-equiv="Content-Type" content="text/html; charset=windows-1254">
+</HEAD>
+<BODY>
+<H4>Birinci Form</H4>
+<FORM ACTION="FormOrnek.asp?HangiForm=1" METHOD="POST">
+<INPUT TYPE="Text" NAME="MetinGir" VALUE="Mesajınızı buraya yazınız" SIZE="30" MAXLENGTH="75"><BR>
+<INPUT TYPE="Password" NAME="ParolaAlani" SIZE="30"  VALUE="parola"><BR>
+<TEXTAREA NAME="MetinAlani" COLS="30" ROWS="3" WRAP="VIRTUAL">
+Buraya istediğiniz yazıyı yazabilirsiniz...</TEXTAREA><P>
+<INPUT TYPE="Submit" VALUE="Gönder">&nbsp;&nbsp;<INPUT TYPE="RESET" VALUE="Sil">
+</FORM>
+<HR>
+<H4>İkinci Form</H4>
+<FORM ACTION="FormOrnek.asp?HangiForm=2" METHOD="POST">
+<TABLE BORDER = 0>
+<TR><TD><INPUT TYPE="Radio" NAME="Radyo" VALUE="Tercih1" CHECKED>Radyo Düğmesi Tercih 1<BR>
+<INPUT TYPE="Radio" NAME="Radyo" VALUE="Tercih2">Radyo Düğmesi Tercih 2<BR>
+<INPUT TYPE="Radio" NAME="Radyo" VALUE="Tercih3">Radyo Düğmesi Tercih 3</TD>
+<TD width=30>&nbsp;</TD>
+<TD><INPUT TYPE="Checkbox" NAME="IsaretKutusu" VALUE="Isaret1">İşaret Kutusu 1<BR>
+<INPUT TYPE="Checkbox" NAME="IsaretKutusu" VALUE="Isaret2">İşaret Kutusu 2<BR>
+<INPUT TYPE="Checkbox" NAME="IsaretKutusu" VALUE="Isaret3">İşaret Kutusu 3</TD>
+</TR>
+</TABLE><BR>
+<INPUT TYPE="Submit" VALUE="Gönder">&nbsp;&nbsp;<INPUT TYPE="RESET" VALUE="Sil">
+</FORM>
+<HR>
+<H4>Üçüncü Form</H4>
+<FORM ACTION="FormOrnek.asp" METHOD="GET">
+<INPUT TYPE="Hidden" NAME="HangiForm" VALUE="3">
+<SELECT NAME="SecmeListesi" SIZE="1">
+<OPTION VALUE="ListeTercih1">Liste Tercih 1
+<OPTION VALUE="ListeTercih2">Liste Tercih 2
+<OPTION VALUE="ListeTercih3">Liste Tercih 3
+</SELECT>
+<SELECT NAME="CokluSecme" SIZE="3" MULTIPLE>
+<OPTION VALUE="ListeKutu1">Çoklu Seçme Kutusu 1
+<OPTION VALUE="ListeKutu2">Çoklu Seçme Kutusu 2
+<OPTION VALUE="ListeKutu3">Çoklu Seçme Kutusu 3
+</SELECT><P>
+<INPUT TYPE="Submit" VALUE="Gönder">&nbsp;&nbsp;<INPUT TYPE="RESET" VALUE="Sil">
+</FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,72 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+
+
+
+
+<img src="../konu.gif">
+
+<font face=arial><h2>Tablolar</h2></font>
+Tablolar, HTML sayfasýnda listeler ve þablonlar hazýrlamak dýþýnda, resimleri
+ve metinleri sayfa içerisinde istenilen bölgelere yerleþtirmek ve bunun
+gibi bir çok alanda kullanýlýrlar. HTML 3.2 ile birlikte pek çok yeni özelliðe
+kavuþan ve daha görsel hale getirilen tablolar konusunu iyi öðrenen bir
+webmaster, hayalgücü ile tasarladýðý "TÜM" sayfalarý tablolar yardýmý ile
+oluþturabilir.
+<BR>&lt;TR>,&lt;TD>,&lt;TH> ve bunlarý kapatma taglarýyla birlikte kullanýlan
+&lt;TABLE...> tag'ýnýn genel kullanýmý þöyledir:
+<BR>
+<BR>&lt;TABLE BORDER=X CELLPADDING=X CELLSPACING=X WIDTH=[% veya X] HEIGHT=[%
+veya X] BGCOLOR=X BACKGROUND="X">
+<BR>
+<BR>BORDER deðiþkenine verilecek 0 veya daha üstü bir deðer tablonun kalýnlýðýný
+belirler. CELLPADDING deðiþkenine verilebilecek herhangi bir sayý, tablonun
+sýnýrlarý ile tablo içeriði arasýndaki mesafeyi, CELLSPACING ise hücreler
+arasýndaki mesafeyi belirler.
+<BR>WIDTH ve HEIGHT deðiþkenleri bir yüzde deðeri veya bir sayý olabilir. WIDTH=590
+deðeri verildiðinde 640*480 çözünürlükte ekranýn tüm geniþliðini kaplayacak
+bir tablo oluþturulur. WIDTH=%50 deðerini verildiðinizde ise Web tarayýcýnýz
+o tablonun her zaman ekran geniþliðinin yarýsýný kaplamasýný saðlar.
+<BR>&lt;TABLE> tag'ýnýn içerisinde kullanýlan BGCOLOR deðiþkeni tablonun fon
+rengini tayin eder. X deðeri geçen aylarda deðindiðimiz HEX kodlarýndan
+(#FFFF00) veya renk isimlerinden (white, olive...) biri olmalýdýr. Tablonuz
+daha canlý ve profesyonel görünsün istiyorsanýz, arka fonuna bir GIF veya
+JPG resmini de BACKGROUND ekini kullanarak döþetebilirsiniz.
+<BR>Gelelim tablonun oluþturulmasýna. Genel prensip þudur: &lt;TABLE> tag'ýyla
+tabloya baþladýktan sonra her satýrý oluþturmak için &lt;TR>, her sütunu
+oluþturmak için ise &lt;TD> tag'ýný kullanmalýsýnýz. Aman bu taglarý kullanýyorsanýz
+her satýrýn sonuna &lt;/TR> ve her sütunun sonuna &lt;/TD> tag'larýnýn
+koymayý unutmayýn!
+<BR>Bir diðer durum da, herhangi bir hücrenin yanýndaki iki ya da daha çok
+hücreyi enine ya da boyuna doðru içine almasýdýr ki bu iþlemi yapmak için
+&lt;TD [COLSPAN=X, ROWSPAN=X]> veya &lt;TR [COLSPAN=X, ROWSPAN=X]> ekleri
+kullanýlýr.  Örneðin 2 satýr ve 2 sütunlu 1.tablonun oluþturulmasý için aþaðýdaki kodlara ihtiyaç vardýr, bu kodlar ayný zamanda COLSPAN ve
+ROWSPAN eklerini de anlatmaktadýr.
+<BR>
+<BR>&lt;TABLE BORDER=1 CELLSPACING=2 CELLPADDING=3>
+<BR>&lt;!---Bu kodlarla, çerçeve kalýnlýðý 1, hücreler arasý boþluðu 2, hücre
+ile yazý aralýðý 3 olan yeni bir tablo oluþturuyoruz.--->
+<BR>&lt;TR>&lt;TH COLSPAN=2>   &lt;!---iki kolonu içine alacak, yazýlar kalýn
+olacak ve ortalanacak (yani baþlýk olacak) --->
+<BR>
+<BR><B>Tablo Örneði:</B>
+<BR>
+<BR>&lt;/TR>&lt;/TD>&lt;TR>&lt;TD>
+<BR>deneme1
+<BR>&lt;/TD>&lt;TD>  &lt;!-- yeni bir kolona baþlýyoruz... -->
+<BR>deneme2
+<BR>&lt;/TR>&lt;/TD>&lt;TR>&lt;TD>
+<BR>deneme3
+<BR>&lt;/TD>&lt;TD>  &lt;!-- yeni bir kolona baþlýyoruz... -->
+<BR>deneme4
+<BR>&lt;/TD>&lt;/TR>&lt;/TABLE>    &lt;!-- tüm tag'larý kapatýp tabloyu sonlandýrýyoruz.
+-->
+<BR>
+<BR>Eðer renkli tablolar elde etmek isteseydik &lt;TABLE .... ifadesinin yanýna
+BGCOLOR="#FFFF80", &lt;TD.. ifadesinin yanýna ise BGCOLOR="#000080" eklerini
+girmeniz gerekecekti. 
+</td></tr></table>

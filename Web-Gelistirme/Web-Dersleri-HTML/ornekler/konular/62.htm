@@ -1,0 +1,48 @@
+<html>
+<title>PC Magazine Online - Web Okulu</title>
+<body bgcolor="#ffffff">
+<table border=0 width=560><tr><td>
+
+
+<img src="../konu.gif">
+
+
+<P><FONT FACE="Arial,Helvetica"><FONT SIZE=+2><B>SAYFA HANGÝ KLASÖRDE?</B></FONT></FONT>
+<BR>Daha önce Web tarayýcýnýzla bir FTP sitesine baðlandýysanýz görmüþsünüzdür,
+sayfanýn tepesinde FTP sitesinin hangi klasöründe olduðu görüntülenir.
+Böyle bir iþlemi Web sayfalarýnýz için yapmak istiyorsanýz aþaðýdaki Javascript'i
+kullanabilirsiniz. Kullanýcýlar sayfadaki linkleri kullanarak istedikleri
+klasöre kolayca atlayabilir hatta sitenizin ana sayfasýna bir týklama ile
+eriþebilirler.
+
+<P>&lt;HTML>
+<BR>&lt;font face=arial size=+2>&lt;b>
+<BR>HTML dosyasýnýn bulunduðu klasör
+<BR>&lt;/b>&lt;/font>
+<BR>&lt;SCRIPT LANGUAGE="JavaScript">
+<BR>&lt;!--
+<BR>var path = "";
+<BR>var href = document.location.href;
+<BR>var s = href.split("/");
+<BR>for (var i=2;i&lt;(s.length-1);i++) {
+<BR>path+="&lt;A HREF=\""+href.substring(0,href.indexOf(s[i])+s[i].length)+"/\">"+s[i]+"&lt;/A>
+/ ";
+<BR>}
+<BR>i=s.length-1;
+<BR>path+="&lt;A HREF=\""+href.substring(0,href.indexOf(s[i])+s[i].length)+"\">"+s[i]+"&lt;/A>";
+<BR>var url = window.location.protocol + "//" + path;
+<BR>document.writeln(url);
+<BR>// End -->
+<BR>&lt;/script>
+
+<P>Javascript'imiz oldukça kýsa ve baþardýðý iþ biraz da sizin becerinize
+kalmýþ. Çünkü script'imiz HTML dosyasýnýn bulunduðu tüm alt klasörleri
+listeleyerek kullanýcýnýn týklamasýna izin veriyor, yani her klasörün içerisinde
+daha önce sunucunuzda ayný isimle tanýmlanmýþ bir baþlangýç sayfasý olmasý
+(genellikle index.html) gerekir. Böyle bir sayfa bulunamazsa "HTTP/1.0
+403 Access Forbidden" hatasý verilir.
+
+
+
+
+</td></tr></table>
