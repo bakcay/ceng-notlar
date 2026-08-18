@@ -1,5 +1,4 @@
-<!--
-/* 
+/*
 	DHTML Library Version 2.0b5
 	Last Updated: March 29, 1999
 	Copyright 1997-1999 by InsideDHTML.com, LLC
